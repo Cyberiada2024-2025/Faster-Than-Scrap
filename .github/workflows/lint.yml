@@ -29,4 +29,4 @@ jobs:
       # Lint the godot-xr-tools addon
       - name: Linter
         run: |
-          gdlint *.gd
+          gdlint faster-than-scrap/*.gd

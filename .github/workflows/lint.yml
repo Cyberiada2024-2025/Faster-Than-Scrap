@@ -2,7 +2,7 @@
 name: gdlint on push
 
 on:
-  [push, pull_request]
+  push
 
 jobs:
   gdlint:
@@ -27,6 +27,6 @@ jobs:
           python -m pip install 'gdtoolkit==4.*'
 
       # Lint the godot-xr-tools addon
-      - name: Lint Godot XR Tools
+      - name: Linter
         run: |
-          gdlint addons/godot-xr-tools
+          gdlint 

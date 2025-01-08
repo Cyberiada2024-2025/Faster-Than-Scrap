@@ -29,10 +29,21 @@ jobs:
       # Lint the godot-xr-tools addon
       - name: Linter
         run: |
-          set +e
+          error_found=0  # Initialize a flag to track errors
+  
           for file in $(find . -type f -name "*.gd"); do
-              echo "Processing $file"              
-              gdlint $file
+              echo "Processing $file"
+              if ! gdlint "$file"; then
+                  echo "Error in $file"
+                  error_found=1  # Set the flag if gdlint fails
+              fi
           done
-          set -e
+          
+          if [ $error_found -ne 0 ]; then
+              echo "Linting completed with errors."
+              exit 1  # Exit with failure if any errors were found
+          else
+              echo "All files passed linting."
+              exit 0  # Exit with success if no errors were found
+          fi
           

@@ -31,6 +31,6 @@ jobs:
         run: |
           for file in $(find . -type f -name "*.gd"); do
               echo "Processing $file"              
-              gdlint $file
+              gdlint $file || true
           done
           

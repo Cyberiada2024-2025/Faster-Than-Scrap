@@ -29,8 +29,10 @@ jobs:
       # Lint the godot-xr-tools addon
       - name: Linter
         run: |
+          set +e
           for file in $(find . -type f -name "*.gd"); do
               echo "Processing $file"              
-              gdlint $file || true
+              gdlint $file
           done
+          set -e
           

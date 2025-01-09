@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddu35b6rus6x0"]
+
+[ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="1_3itn7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8dvid"]
+
+[node name="WierzbaSandbox" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.45337)
+
+[node name="ModuleBase" parent="." instance=ExtResource("1_3itn7")]
+activation_key = 76
+
+[node name="ModuleBase" parent="ModuleBase" instance=ExtResource("1_3itn7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53897, 0, 0)
+hp = 10000
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ModuleBase/ModuleBase"]
+mesh = SubResource("BoxMesh_8dvid")
+skeleton = NodePath("")
+
+[node name="ModuleBase" parent="ModuleBase/ModuleBase" instance=ExtResource("1_3itn7")]
+hp = 1000
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ModuleBase/ModuleBase/ModuleBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3921, 0)
+mesh = SubResource("BoxMesh_8dvid")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ModuleBase"]
+mesh = SubResource("BoxMesh_8dvid")
+skeleton = NodePath("")

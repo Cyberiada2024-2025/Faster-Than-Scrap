@@ -3,14 +3,13 @@ class_name Module
 extends Node3D
 
 
-'''
-Base class for all modules
-'''
+## Base class for all modules
 
 @export var activation_key: Key = KEY_NONE
 @export var hp: int = 100
 @export var ship: Ship
 
+## whether module should react to keyboard input (should be inactive when the game is paused)
 @export var active: bool = true
 
 var was_key_pressed: bool = false
@@ -41,13 +40,13 @@ func _on_release(_delta: float) -> void:
 	print("RELEASE")
 
 
-func take_damage(damage:int) -> void:
+func take_damage(damage: int) -> void:
 	hp -= damage
 	if hp <=0 :
 		_on_destroy()
 
+## will destroy also child modules
 func _on_destroy() -> void:
-	'''will destroy also child modules'''
 	for child_module in self.get_children():
 		if(child_module.has_method("take_damage")):
 			child_module.take_damage(INF)

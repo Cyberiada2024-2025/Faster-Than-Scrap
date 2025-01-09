@@ -41,7 +41,7 @@ func _on_release(_delta: float) -> void:
 	print("RELEASE")
 
 
-func take_damage(damage:int)	-> void:
+func take_damage(damage:int) -> void:
 	hp -= damage
 	if hp <=0 :
 		_on_destroy()

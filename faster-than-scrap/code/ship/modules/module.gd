@@ -1,6 +1,7 @@
+class_name Module
+
 extends Node3D
 
-class_name Module
 
 '''
 Base class for all modules
@@ -58,6 +59,6 @@ func _on_destroy() -> void:
 	queue_free() # delete self as an object
 
 func _explode() -> void:
-	# TODO create particles object, 
+	# TODO create particles object,
 	# which will die after some die by itself
 	pass

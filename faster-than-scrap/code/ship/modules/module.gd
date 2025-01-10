@@ -52,6 +52,7 @@ func _on_destroy() -> void:
 		if child_module is Module:
 			remove_child(child_module) # detach from node tree
 			get_tree().get_root().add_child(child_module) # attach to scene root
+			child_module.active = false
 	queue_free() # delete self as an object
 
 func _explode() -> void:

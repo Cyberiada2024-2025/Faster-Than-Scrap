@@ -45,11 +45,13 @@ func take_damage(damage: int) -> void:
 	if hp <=0 :
 		_on_destroy()
 
-## will destroy also child modules
+## destroy self, and detach children
 func _on_destroy() -> void:
+	_explode()
 	for child_module in self.get_children():
-		if(child_module.has_method("take_damage")):
-			child_module.take_damage(INF)
+		if child_module is Module:
+			remove_child(child_module) # detach from node tree
+			get_tree().get_root().add_child(child_module) # attach to scene root
 	queue_free() # delete self as an object
 
 func _explode() -> void:

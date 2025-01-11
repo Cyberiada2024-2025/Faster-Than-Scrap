@@ -48,11 +48,11 @@ func take_damage(damage: int) -> void:
 ## destroy self, and detach children
 func _on_destroy() -> void:
 	_explode()
-	for child_module in self.get_children():
-		if child_module is Module:
-			remove_child(child_module) # detach from node tree
-			get_tree().get_root().add_child(child_module) # attach to scene root
-			child_module.active = false
+	for child in self.get_children():
+		if child is Module:
+			remove_child(child) # detach from node tree
+			get_tree().get_root().add_child(child) # attach to scene root
+			child.active = false
 	queue_free() # delete self as an object
 
 func _explode() -> void:

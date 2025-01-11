@@ -29,15 +29,14 @@ func _process(_delta: float) -> void:
 				was_key_pressed = true
 
 # virtual functions
-# must be overriden, not extended!
 func _on_key_press(_delta: float) -> void:
-	print("JUST PRESSED")
+	pass
 
 func _on_key(_delta: float) -> void:
-	print("PRESSING")
+	pass
 
 func _on_release(_delta: float) -> void:
-	print("RELEASE")
+	pass
 
 
 func take_damage(damage: int) -> void:

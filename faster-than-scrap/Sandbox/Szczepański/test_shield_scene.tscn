@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4rtlnyal6qo1"]
+
+[ext_resource type="PackedScene" uid="uid://3a5vwad6lsnu" path="res://prefabs/VFX/shield_vfx.tscn" id="1_0y58s"]
+
+[node name="Test Scene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.348464, 0.439919, 0.250364)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -0.0104692, 4.97567, 0.0423762)
+
+[node name="Shield_VFX" parent="." instance=ExtResource("1_0y58s")]

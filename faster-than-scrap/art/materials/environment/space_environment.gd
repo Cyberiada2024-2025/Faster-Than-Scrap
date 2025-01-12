@@ -9,13 +9,7 @@ var time : float = 0;
 
 @onready var space_env : Environment = get_environment()
 
-
-func _ready() -> void:
-	pass 
-
-
 func _process(delta: float) -> void:
-	
 	# Texture rotation
 	space_env.sky_rotation.y += fmod( delta * rotation_speed * 0.001 , 2 * PI )
 	

@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://b670jj7lnajsd"]
+
+[ext_resource type="Shader" path="res://art/materials/environment/SpaceTexture.gdshader" id="1_8c7b8"]
+[ext_resource type="Texture2D" uid="uid://nestbbq4mbpo" path="res://art/textures/environment/SpaceTexture.png" id="2_khuy1"]
+[ext_resource type="Script" path="res://art/materials/environment/space_environment.gd" id="3_2xw8w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_phh7h"]
+shader = ExtResource("1_8c7b8")
+shader_parameter/sky_texture = ExtResource("2_khuy1")
+
+[sub_resource type="Sky" id="Sky_m58s1"]
+sky_material = SubResource("ShaderMaterial_phh7h")
+
+[sub_resource type="Environment" id="Environment_56b0j"]
+background_mode = 2
+sky = SubResource("Sky_m58s1")
+sky_rotation = Vector3(1.5708, 0, 0)
+ambient_light_source = 3
+reflected_light_source = 2
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.5
+glow_strength = 0.0
+glow_bloom = 0.3
+volumetric_fog_density = 0.059
+
+[node name="SpaceEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_56b0j")
+script = ExtResource("3_2xw8w")

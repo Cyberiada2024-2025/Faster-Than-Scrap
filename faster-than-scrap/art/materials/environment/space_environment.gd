@@ -7,7 +7,7 @@ extends WorldEnvironment
 
 var time : float = 0;
 
-@onready var SpaceEnv : Environment = get_environment()
+@onready var space_env : Environment = get_environment()
 
 
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	# Texture rotation
-	SpaceEnv.sky_rotation.y += fmod( delta * rotation_speed * 0.001 , 2 * PI )
+	space_env.sky_rotation.y += fmod( delta * rotation_speed * 0.001 , 2 * PI )
 	
 	# Time calculaton with respect to bloom speed
 	time += delta * bloom_speed * 0.1
@@ -25,4 +25,4 @@ func _process(delta: float) -> void:
 	
 	# Bloom animation
 	var bloom_value = bloom_offset + bloom_amplitude * sin(time)
-	SpaceEnv.set_glow_bloom(bloom_value)
+	space_env.set_glow_bloom(bloom_value)

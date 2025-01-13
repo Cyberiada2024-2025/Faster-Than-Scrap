@@ -6,7 +6,6 @@ var is_finished : bool = false
 var about : String = ""
 var type : MissionType
 var difficulty : int
-#var reward : 
 
 
 

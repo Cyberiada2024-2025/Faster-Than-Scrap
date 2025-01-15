@@ -40,7 +40,7 @@ func _on_key(_delta: float) -> void:
 
 func _on_release(_delta: float) -> void:
 	super(_delta)
-	
+
 	if constant_fire and active_projectile != null:
 		_despawn_projectile()
 
@@ -53,25 +53,25 @@ func try_shoot() -> bool:
 		return false
 	if ship.energy < energy_cost:
 		return false
-	
+
 	current_cooldown = cooldown
 	ship.energy -= energy_cost
 	# todo: add recoil to ship in the
-	
+
 	if not constant_fire:
 		_spawn_projectile()
 		return true
-		
+
 	if active_projectile == null:
 		_spawn_projectile()
 		return true
-		
+
 	return false
 
 
 func _spawn_projectile() -> void:
 	var new_projectile = projectile.instantiate()
-	
+
 	new_projectile.position = Vector3(
 		position.x + muzzle_position.x,
 		position.y,
@@ -82,12 +82,12 @@ func _spawn_projectile() -> void:
 		rotation_degrees.y + muzzle_rotation,
 		rotation_degrees.z,
 	)
-	
+
 	get_tree().get_root().add_child(new_projectile)
-	
+
 	print(new_projectile.position)
 	print(new_projectile.rotation_degrees)
-	
+
 	if constant_fire:
 		active_projectile = new_projectile
 

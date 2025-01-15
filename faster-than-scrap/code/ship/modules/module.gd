@@ -58,3 +58,6 @@ func _explode() -> void:
 	# TODO create particles object,
 	# which will die after some die by itself
 	pass
+
+func detachable() -> bool:
+	return true

@@ -4,7 +4,8 @@ extends BaseWeapon
 
 ## Weapon that can spawn multiple projectiles, such as bullets, laser bolts, etc.
 
-## Tries to shoot. Returns the spawned projectile if it succeeded, and [code]null[/code] otherwise. [br]
+## Tries to shoot. Returns the spawned projectile if it succeeded,
+## and [code]null[/code] otherwise. [br]
 ## [method SpawnerWeapon.try_activate] can fail if [member Weapon.ship] doesn't have enough energy
 ## or if the [member Weapon.cooldown] time hasn't yet passed.
 func try_activate() -> Projectile:

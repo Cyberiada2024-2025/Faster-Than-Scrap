@@ -5,8 +5,8 @@ extends Module
 @export var weapon: BaseWeapon
 
 ## If set to false, tries to shoot only after a key has just been pressed. [br]
-## Otherwise, the player may hold the activation key to shoot automatically, whenever the conditions,
-## such as cooldown or energy requirement, are met.
+## Otherwise, the player may hold the activation key to shoot automatically,
+## whenever the conditions, such as cooldown or energy requirement, are met.
 @export var allow_auto_fire: bool
 
 

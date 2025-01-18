@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 # virtual functions
 
 ## Called on one frame, when [member Module.activation_key] has just been pressed
-func _on_key_press(_delta: float) -> void:\
+func _on_key_press(_delta: float) -> void:
 	pass
 
 ## Called on every frame when [member Module.activation_key] is pressed

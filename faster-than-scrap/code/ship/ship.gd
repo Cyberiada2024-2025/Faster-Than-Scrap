@@ -2,7 +2,7 @@ class_name Ship
 
 extends Node3D
 
-var energy: float = 100
+@export var energy: float = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

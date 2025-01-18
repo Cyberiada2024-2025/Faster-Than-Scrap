@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://art/materials/environment/SpaceTexture.gdshader" id="1_8c7b8"]
 [ext_resource type="Texture2D" uid="uid://kqv7cdehidxy" path="res://art/textures/environment/SpaceTexture2.png" id="2_270j1"]
-[ext_resource type="Script" path="res://art/materials/environment/space_environment.gd" id="3_2xw8w"]
+[ext_resource type="Script" path="res://code/evironment/space_environment.gd" id="3_2xw8w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_phh7h"]
 shader = ExtResource("1_8c7b8")
@@ -27,3 +27,20 @@ volumetric_fog_density = 0.059
 [node name="SpaceEnvironment" type="WorldEnvironment"]
 environment = SubResource("Environment_56b0j")
 script = ExtResource("3_2xw8w")
+
+[node name="NebulaLights" type="Marker3D" parent="."]
+
+[node name="RedNebulaLight" type="DirectionalLight3D" parent="NebulaLights"]
+transform = Transform3D(0.390731, 0.644043, 0.657676, 0, -0.714473, 0.699663, 0.920505, -0.27338, -0.279167, 0, 0, 0)
+light_color = Color(0.806446, 0.545834, 0.685043, 1)
+light_energy = 1.5
+
+[node name="BlueNebulaLight" type="DirectionalLight3D" parent="NebulaLights"]
+transform = Transform3D(0.716229, 1.06726e-08, -0.697865, -0.254986, 0.930858, -0.261696, 0.649614, 0.36538, 0.666708, 0, 0, 0)
+light_color = Color(0.584561, 0.843877, 0.882863, 1)
+light_energy = 1.5
+
+[node name="WhiteNebulaLight" type="DirectionalLight3D" parent="NebulaLights"]
+transform = Transform3D(-0.911403, 0.210713, 0.353474, 0, 0.85896, -0.512043, -0.411514, -0.466678, -0.782859, 0, 0, 0)
+light_color = Color(0.854642, 0.845302, 0.842967, 1)
+light_energy = 2.0

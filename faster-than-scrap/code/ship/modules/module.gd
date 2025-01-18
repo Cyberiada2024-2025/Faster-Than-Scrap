@@ -43,7 +43,6 @@ func _on_key(_delta: float) -> void:
 func _on_release(_delta: float) -> void:
 	pass
 
-
 func take_damage(damage: int) -> void:
 	hp -= damage
 	if hp <=0 :

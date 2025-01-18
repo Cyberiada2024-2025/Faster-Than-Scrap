@@ -15,12 +15,10 @@ func _on_key_press(_delta: float) -> void:
 	if not allow_auto_fire:
 		weapon.try_activate()
 
-
 func _on_key(_delta: float) -> void:
 	super(_delta)
 	if allow_auto_fire:
 		weapon.try_activate()
-
 
 func _on_release(_delta: float) -> void:
 	super(_delta)

@@ -3,7 +3,7 @@ class_name GameManager
 extends Node
 
 @export var game_state :GameState.state = GameState.state.FLY
-@export var ship: Ship
+@export var ship: PlayerShip
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -24,5 +24,5 @@ func use_energy(amount: float) -> bool:
 func _on_energy_change() -> void:
 	pass
 
-func on_destroy() -> void: 
+func on_destroy() -> void:
 	pass

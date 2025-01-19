@@ -7,17 +7,17 @@ extends Ship
 ## all modules of the ship (to prevent checking the tree hierarchy)
 @export var modules: Array[Module] = []
 
-func on_game_change_state(new_state : GameState.state) -> void:
+func on_game_change_state(new_state : GameState.State) -> void:
 	match new_state:
-		GameState.state.FLY:
+		GameState.State.FLY:
 			_activate_modules()
-		GameState.state.PAUSE: 
+		GameState.State.PAUSE:
 			_deactivate_modules()
-		GameState.state.CUTSCENE: 
+		GameState.State.CUTSCENE:
 			_deactivate_modules()
-		GameState.state.BUILD: 
+		GameState.State.BUILD:
 			_deactivate_modules()
-		GameState.state.MAIN_MENU: 
+		GameState.State.MAIN_MENU:
 			pass
 
 func _deactivate_modules():

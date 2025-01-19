@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://2wj0k5c222sf"]
+
+[ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_ibr8p"]
+[ext_resource type="Material" uid="uid://css7je76l8eb7" path="res://art/materials/cabin/cabin_material_3d.tres" id="2_ln5n7"]
+[ext_resource type="ArrayMesh" uid="uid://d3jn6wcbnxlbs" path="res://art/models/cabin/Cabin_Model.obj" id="3_h3rkr"]
+[ext_resource type="PackedScene" uid="uid://bj4t8dhdyq0uc" path="res://art/models/cabin/cabin_collision_shape_3d.tscn" id="4_cs1n1"]
+
+[node name="FilipLSandbox" type="Node3D"]
+
+[node name="SpaceEnvironment" parent="." instance=ExtResource("1_ibr8p")]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+
+[node name="CabinModel" type="MeshInstance3D" parent="CharacterBody3D"]
+material_override = ExtResource("2_ln5n7")
+mesh = ExtResource("3_h3rkr")
+skeleton = NodePath("../..")
+
+[node name="Cabin_CollisionShape3D" parent="CharacterBody3D" instance=ExtResource("4_cs1n1")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.31906, 0)
+current = true

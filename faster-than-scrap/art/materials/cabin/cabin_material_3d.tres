@@ -1,17 +1,17 @@
 [gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://css7je76l8eb7"]
 
-[ext_resource type="Texture2D" uid="uid://cd80wuyp1ov7r" path="res://art/textures/cabin/Cabin_Albedo.png" id="1_exqxy"]
-[ext_resource type="Texture2D" uid="uid://bdno6yr21w0j8" path="res://art/textures/cabin/Cabin_AO.png" id="2_hbbab"]
-[ext_resource type="Texture2D" uid="uid://btalboiriv4x5" path="res://art/textures/cabin/Cabin_Metalness.png" id="3_ceu4y"]
-[ext_resource type="Texture2D" uid="uid://dyxnxbm03jx4t" path="res://art/textures/cabin/Cabin_Normal.png" id="4_woflq"]
-[ext_resource type="Texture2D" uid="uid://brd4d8dmk4jn8" path="res://art/textures/cabin/Cabin_Roughness.png" id="5_d0w8m"]
+[ext_resource type="Texture2D" uid="uid://cs70uhoksincm" path="res://art/textures/cabin/Cabin_2_Albedo.png" id="1_w871g"]
+[ext_resource type="Texture2D" uid="uid://e8xj7ki06y8o" path="res://art/textures/cabin/Cabin_2_AO.png" id="2_335hl"]
+[ext_resource type="Texture2D" uid="uid://csne4b8l6sdmy" path="res://art/textures/cabin/Cabin_2_Metalness.png" id="3_krgqb"]
+[ext_resource type="Texture2D" uid="uid://doo20b7g6060d" path="res://art/textures/cabin/Cabin_2_Normal.png" id="4_1vwap"]
+[ext_resource type="Texture2D" uid="uid://df7bps2r7dd6r" path="res://art/textures/cabin/Cabin_2_Roughness.png" id="5_i0ntg"]
 
 [resource]
-albedo_texture = ExtResource("1_exqxy")
+albedo_texture = ExtResource("1_w871g")
 metallic = 1.0
-metallic_texture = ExtResource("3_ceu4y")
-roughness_texture = ExtResource("5_d0w8m")
+metallic_texture = ExtResource("3_krgqb")
+roughness_texture = ExtResource("5_i0ntg")
 normal_enabled = true
-normal_texture = ExtResource("4_woflq")
+normal_texture = ExtResource("4_1vwap")
 ao_enabled = true
-ao_texture = ExtResource("2_hbbab")
+ao_texture = ExtResource("2_335hl")

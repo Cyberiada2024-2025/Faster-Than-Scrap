@@ -22,25 +22,29 @@ func _process(_delta: float) -> void:
 	else:
 		if Input.is_key_pressed(activation_key):
 			_on_key_press(_delta)
+			_on_key(_delta)
 			was_key_pressed = true
 
 # virtual functions
+
+## Called on one frame, when [member Module.activation_key] has just been pressed
 func _on_key_press(_delta: float) -> void:
 	pass
 
+## Called on every frame when [member Module.activation_key] is pressed
 func _on_key(_delta: float) -> void:
 	pass
 
+## Called on one frame, when [member Module.activation_key] has just been released
 func _on_release(_delta: float) -> void:
 	pass
-
 
 func take_damage(damage: int) -> void:
 	hp -= damage
 	if hp <=0 :
 		_on_destroy()
 
-## destroy self, and detach children
+## Destroy self and detach children
 func _on_destroy() -> void:
 	_explode()
 	for child in self.get_children():

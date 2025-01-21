@@ -2,7 +2,11 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://bei4nndstuv7x"
+<<<<<<< Updated upstream
+uid="uid://t67vegnbv1op"
+=======
+uid="uid://by3fn7661l2bx"
+>>>>>>> Stashed changes
 path="res://.godot/imported/broń-laserowa 1.1.mp3-b118f8e4a1a7918af9ff98d729eb73da.mp3str"
 
 [deps]
@@ -13,7 +17,12 @@ dest_files=["res://.godot/imported/broń-laserowa 1.1.mp3-b118f8e4a1a7918af9ff98
 [params]
 
 loop=false
+<<<<<<< Updated upstream
 loop_offset=0
 bpm=0
+=======
+loop_offset=0.0
+bpm=0.0
+>>>>>>> Stashed changes
 beat_count=0
 bar_beats=4

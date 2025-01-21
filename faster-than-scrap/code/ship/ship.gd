@@ -3,16 +3,21 @@ class_name Ship
 extends Node3D
 
 var energy: float = 100
+var restore = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
+	
+func _process(delta: float) -> void:
+	energy += restore * delta
+	pass
 
 ## Called when module wants to use the ship's energy [member Ship.energy].
 ## Returns true when it can afford that amount (and reduces the energy accordingly)
 ## otherwise returns false and doesn't change the energy amount.
 func use_energy(amount: float) -> bool:
-	if energy<amount:
+	if energy<=amount:
 		return false
 	energy -= amount
 	_on_energy_change()

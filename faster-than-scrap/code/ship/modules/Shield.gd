@@ -26,8 +26,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if(on && !ship.use_energy(delta * energy_per_sec)):
 		turn_on_off()
-	pass
-	
+
 func turn_on_off() -> void:
 	print(on)
 	if(on):
@@ -44,8 +43,7 @@ func turn_on_off() -> void:
 		audio_player.stream = sound_apply
 		audio_player.pitch_scale = randf_range(0.9, 1.1)
 		audio_player.play()
-	pass
-	
+
 func take_damage(dmg: float) -> void:
 	if(on && !ship.use_energy(dmg * energy_per_dmg)):
 		turn_on_off();
@@ -54,4 +52,3 @@ func take_damage(dmg: float) -> void:
 		audio_player.stream = sound_hit
 		audio_player.pitch_scale = randf_range(0.8, 1.2)
 		audio_player.play()
-	pass

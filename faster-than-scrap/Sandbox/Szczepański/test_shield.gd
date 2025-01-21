@@ -13,4 +13,3 @@ func _process(delta: float) -> void:
 	elif(timer <= 0 && Input.is_key_pressed(KEY_SPACE)):
 		shield.take_damage(50)
 		timer = wait
-	pass

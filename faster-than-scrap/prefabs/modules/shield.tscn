@@ -116,7 +116,7 @@ _data = {
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rxw6g"]
 points = PackedVector3Array(-0.951058, -0.000195742, -0.011405, 0.850515, -0.525842, -1.97636e-05, -0.000186205, -1, -1.97636e-05, -0.5258, -0.850822, -1.97636e-05, -0.894456, -0.447338, -1.97636e-05, -0.951058, -0.000195742, 0.308966, -0.850702, 0.525646, -1.97636e-05, -0.425444, 0.850626, -0.00239581, -0.000186205, 1, -1.97636e-05, 0.525614, 0.850626, -1.97636e-05, 0.89427, 0.447142, -1.97636e-05, 0.723534, -0.447338, 0.525681, 0.425258, -0.850822, 0.308966, 0.425258, -0.850822, 0.00968244, 0.951058, -0.000195742, 0.00572236, 0.951058, -0.000195742, 0.308966, -0.162544, -0.850822, 0.499941, -0.688344, -0.525842, 0.499941, -0.587801, -0.000195742, 0.808926, -0.72372, 0.447142, 0.525681, -0.425444, 0.850626, 0.308966, 0.162358, 0.850626, 0.499941, 0.688158, 0.525646, 0.499941, 0.587615, -0.000195742, 0.808926, 0.262714, -0.525842, 0.808926, -0.276492, -0.447338, 0.850606, -0.000186205, -0.000195742, 1, -0.2629, 0.525646, 0.808926, 0.276306, 0.447142, 0.850606)
 
-[node name="Shield" type="MeshInstance3D" node_paths=PackedStringArray("animator", "audio_player")]
+[node name="Shield" type="MeshInstance3D" node_paths=PackedStringArray("animator", "audio_player", "collider")]
 mesh = SubResource("BoxMesh_wyndn")
 script = ExtResource("1_884yg")
 energy_per_sec = 0.5
@@ -126,6 +126,7 @@ audio_player = NodePath("Shield_VFX/AudioStreamPlayer3D")
 sound_apply = ExtResource("2_jnf3w")
 sound_break = ExtResource("3_1w31e")
 sound_hit = ExtResource("4_noks4")
+collider = NodePath("Shield_Collision/CollisionShape3D")
 
 [node name="Shield_VFX" parent="." instance=ExtResource("5_5c2jc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

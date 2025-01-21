@@ -2,6 +2,8 @@ class_name GameManager
 
 extends Node
 
+signal new_game_state
+
 ## root for the game tree (not the root of the scene tree)
 ## game manager is next to that, so it can turn it off using
 ## builtin .paused flag and allow the ui and game manager work
@@ -9,8 +11,6 @@ extends Node
 @export var game_state :GameState.State = GameState.State.FLY
 @export var ship: PlayerShip
 
-
-signal new_game_state
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

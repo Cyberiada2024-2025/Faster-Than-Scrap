@@ -4,7 +4,8 @@ extends Ship
 
 @export var cockpit: Cockpit
 
-## all modules of the ship (to prevent checking the tree hierarchy)
+## All modules of the ship (to prevent checking the tree hierarchy).
+## Mostly used for building phase
 @export var modules: Array[Module] = []
 
 func on_game_change_state(new_state : GameState.State) -> void:

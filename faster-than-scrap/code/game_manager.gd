@@ -17,7 +17,10 @@ func _ready() -> void:
 	if ship == null:
 		printerr("Game manager has player ship as nil")
 	else:
-		new_game_state.connect(ship.on_game_change_state) # connect signal to ship
+		# connect signal to ship
+		# connecting should be moved elsewhere, when the main menu
+		# is implemented
+		new_game_state.connect(ship.on_game_change_state)
 
 
 func _set_game_state(new_state: GameState.State) -> void:

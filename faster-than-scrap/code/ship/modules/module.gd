@@ -9,24 +9,20 @@ extends Node3D
 @export var hp: int = 100
 @export var ship: Ship
 
-## whether module should react to keyboard input (should be inactive when the game is paused)
-@export var active: bool = true
-
 var was_key_pressed: bool = false
 
 
 func _process(_delta: float) -> void:
-	if active:
-		if was_key_pressed:
-			if Input.is_key_pressed(activation_key):
-				_on_key(_delta)
-			else:
-				was_key_pressed = false
-				_on_release(_delta)
+	if was_key_pressed:
+		if Input.is_key_pressed(activation_key):
+			_on_key(_delta)
 		else:
-			if Input.is_key_pressed(activation_key):
-				_on_key_press(_delta)
-				was_key_pressed = true
+			was_key_pressed = false
+			_on_release(_delta)
+	else:
+		if Input.is_key_pressed(activation_key):
+			_on_key_press(_delta)
+			was_key_pressed = true
 
 # virtual functions
 func _on_key_press(_delta: float) -> void:
@@ -58,3 +54,6 @@ func _explode() -> void:
 	# TODO create particles object,
 	# which will die after some die by itself
 	pass
+
+func detachable() -> bool:
+	return true

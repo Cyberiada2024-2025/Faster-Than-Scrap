@@ -23,11 +23,11 @@ skeleton = NodePath("")
 [node name="ModuleBase" parent="ModuleBase/ModuleBase" instance=ExtResource("1_3itn7")]
 hp = 1000
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ModuleBase/ModuleBase/ModuleBase"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ModuleBase/ModuleBase/ModuleBase"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3921, 0)
 mesh = SubResource("BoxMesh_8dvid")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ModuleBase"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ModuleBase"]
 mesh = SubResource("BoxMesh_8dvid")
 skeleton = NodePath("")

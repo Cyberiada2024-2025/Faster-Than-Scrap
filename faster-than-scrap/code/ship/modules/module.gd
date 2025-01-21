@@ -22,7 +22,7 @@ func _process(_delta: float) -> void:
 	else:
 		if Input.is_key_pressed(activation_key):
 			_on_key_press(_delta)
-      _on_key(_delta)
+			_on_key(_delta)
 			was_key_pressed = true
 
 # virtual functions

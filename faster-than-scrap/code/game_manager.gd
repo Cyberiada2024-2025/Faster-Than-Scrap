@@ -4,16 +4,13 @@ extends Node
 
 signal new_game_state
 
-## root for the game tree (not the root of the scene tree)
-## game manager is next to that, so it can turn it off using
-## builtin .paused flag and allow the ui and game manager work
-@export var game_root : Node3D
 @export var game_state :GameState.State = GameState.State.FLY
 @export var ship: PlayerShip
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	if ship == null:
 		printerr("Game manager has player ship as nil")
 	else:
@@ -41,7 +38,7 @@ func _set_game_state(new_state: GameState.State) -> void:
 			_unpause_entities()
 
 func _pause_entities():
-	game_root.get_tree().paused = true
+	get_tree().root.paused = true
 
 func _unpause_entities():
-	game_root.get_tree().paused = false
+	get_tree().root.paused = false

@@ -27,13 +27,6 @@ grow_vertical = 2
 texture = ExtResource("1_kjdh4")
 expand_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-offset_left = 486.0
-offset_top = 275.0
-offset_right = 666.0
-offset_bottom = 275.0
-
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1

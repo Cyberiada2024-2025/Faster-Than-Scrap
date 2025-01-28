@@ -8,6 +8,12 @@ extends Ship
 ## Mostly used for building phase
 @export var modules: Array[Module] = []
 
+
+func _ready() -> void:
+	super()
+	GameManager.new_game_state.connect(on_game_change_state)
+	GameManager.player_ship = self
+
 func on_game_change_state(new_state : GameState.State) -> void:
 	match new_state:
 		GameState.State.FLY:

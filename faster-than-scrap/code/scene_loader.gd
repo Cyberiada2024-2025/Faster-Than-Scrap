@@ -2,7 +2,7 @@ class_name SceneLoader
 
 extends Node
 
-## object which loads new scene and informs the game manager 
+## object which loads new scene and informs the game manager
 ## of the game game state
 ## Used as a helper node, so there can be multiple of scene managers in the same scene
 

@@ -1,3 +1,22 @@
-[gd_scene format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=4 format=3 uid="uid://dtjixr3e113vw"]
+
+[ext_resource type="Script" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
+[ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="2_x4bbk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fhjhg"]
 
 [node name="BuildShip" type="Node3D"]
+
+[node name="ShipBuilder" type="Node3D" parent="."]
+script = ExtResource("1_d5jmr")
+
+[node name="Camera3D" type="Camera3D" parent="ShipBuilder"]
+transform = Transform3D(0.999906, -0.00794326, -0.0111908, 0.0110874, -0.0129395, 0.999855, -0.00808691, -0.999885, -0.0128502, 0, 5.135, 0)
+
+[node name="ModuleBase" parent="." instance=ExtResource("2_x4bbk")]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="ModuleBase"]
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ModuleBase/RigidBody3D"]
+shape = SubResource("SphereShape3D_fhjhg")

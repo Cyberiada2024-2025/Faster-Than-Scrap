@@ -19,14 +19,14 @@ func _process(delta: float) -> void:
 	if(shield.on && !ship.use_energy(delta * energy_per_sec)):
 		shield.turn_on_off()
 	super._process(delta)
-		
+
 func take_shield_damage(dmg: int) -> void:
 	if(shield.on && !ship.use_energy(dmg * energy_per_dmg)):
 		shield.turn_on_off()
 		ship.use_energy(ship.energy - 1)
 	elif(shield.on):
 		shield.take_damage()
-		
+
 func _on_key_press(_delta: float) -> void:
 	if(shield.on):
 		shield.turn_on_off()

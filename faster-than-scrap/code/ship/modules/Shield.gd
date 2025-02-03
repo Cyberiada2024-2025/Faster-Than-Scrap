@@ -18,11 +18,6 @@ var anim_hit = "Hit";
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func turn_on_off() -> void:
 	print(on)
 	if(on):

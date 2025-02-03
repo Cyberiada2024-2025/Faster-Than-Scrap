@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 ## Returns true when it can afford that amount (and reduces the energy accordingly)
 ## otherwise returns false and doesn't change the energy amount.
 func use_energy(amount: float) -> bool:
-	if energy<=amount:
+	if energy<amount:
 		return false
 	energy -= amount
 	_on_energy_change()

@@ -2,7 +2,7 @@ class_name TimedGPUParticles3D
 
 extends GPUParticles3D
 
-## GPU particles that are removed from the scene after some time passes
+## GPU particles that are removed from the scene after some time has passed
 
 @export var _lifetime: float
 

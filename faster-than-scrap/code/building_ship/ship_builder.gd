@@ -105,16 +105,15 @@ func _get_module_to_attach()->Module:
 func _position_module(intersection_position: Vector3, intersection_normal: Vector3)->void:
 	print(attach_point_index)
 	var attach_point : Node3D = active_module.get_attach_point(attach_point_index)
-	var local_offset: Vector3 = attach_point.position
+	var local_space_offset: Vector3 = attach_point.position
 	var angle = atan2(-intersection_normal.z, intersection_normal.x)
 	
-	if local_offset != Vector3.ZERO:
+	if local_space_offset != Vector3.ZERO:
 		active_module_ghost.rotation.y = angle + PI/2 - attach_point.rotation.y
-		pass
 	else:
 		active_module_ghost.rotation.y = angle + PI/2
-	var global_offset = active_module_ghost.global_position - active_module_ghost.to_global(local_offset)
-	active_module_ghost.global_position=intersection_position + global_offset
+	var global_space_offset = active_module_ghost.global_position - active_module_ghost.to_global(local_space_offset)
+	active_module_ghost.global_position=intersection_position + global_space_offset
 
 
 func _input(event: InputEvent):

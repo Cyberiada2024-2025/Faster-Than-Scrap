@@ -2,7 +2,9 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bdx5k0v6bl3dg"
+
+uid="uid://6deuor6eyups"
+
 path="res://.godot/imported/shield_takingdmg_sound.wav-0f678a5c68a3e669cb21466860bac00d.sample"
 
 [deps]

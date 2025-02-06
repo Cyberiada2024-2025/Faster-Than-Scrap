@@ -2,8 +2,10 @@ class_name Ship
 
 extends Node3D
 
-var energy: float = 100
-var restore = 0.5
+## Base class for player and enemy
+
+@export var energy: float = 100
+
 
 
 func _process(delta: float) -> void:
@@ -21,4 +23,7 @@ func use_energy(amount: float) -> bool:
 
 ## Called whenever the energy amount changes.
 func _on_energy_change() -> void:
+	pass
+
+func on_destroy() -> void:
 	pass

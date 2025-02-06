@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c4rtlnyal6qo1"]
 
 [ext_resource type="Script" path="res://code/ship/ship.gd" id="1_c4uj3"]
-[ext_resource type="PackedScene" uid="uid://deadls1gmho43" path="res://prefabs/modules/shield_module.tscn" id="2_8pru4"]
+[ext_resource type="PackedScene" uid="uid://deadls1gmho43" path="res://prefabs/modules/shield_module.tscn" id="2_gwib6"]
 [ext_resource type="Script" path="res://Sandbox/Szczepański/test_shield.gd" id="3_cnuig"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n5nxb"]
@@ -34,10 +34,8 @@ current = true
 [node name="Ship" type="Node3D" parent="."]
 script = ExtResource("1_c4uj3")
 
-[node name="ShieldModule" parent="Ship" node_paths=PackedStringArray("ship") instance=ExtResource("2_8pru4")]
-activation_key = 87
-ship = NodePath("..")
+[node name="ShieldModule" parent="Ship" instance=ExtResource("2_gwib6")]
 
 [node name="ShieldTest" type="Node" parent="." node_paths=PackedStringArray("shield")]
 script = ExtResource("3_cnuig")
-shield = NodePath("../Ship/ShieldModule")
+shield = NodePath("")

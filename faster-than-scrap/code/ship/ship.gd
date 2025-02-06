@@ -5,6 +5,7 @@ extends Node3D
 ## Base class for player and enemy
 
 @export var energy: float = 100
+@export var max_energy: float = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

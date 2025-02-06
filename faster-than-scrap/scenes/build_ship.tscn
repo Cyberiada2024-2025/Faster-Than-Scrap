@@ -1,9 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=6 format=3 uid="uid://do4ouqe0jdjlh"]
 
 [ext_resource type="Script" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
-[ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="2_x4bbk"]
+[ext_resource type="PackedScene" uid="uid://cpxkxwkuyh6l2" path="res://prefabs/ships/player_ship_example.tscn" id="3_gsuxg"]
+[ext_resource type="Script" path="res://code/ship/modules/module.gd" id="3_kgbhb"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_fhjhg"]
+[sub_resource type="BoxMesh" id="BoxMesh_ka4ql"]
+size = Vector3(1, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lciky"]
+size = Vector3(1, 1, 4)
 
 [node name="BuildShip" type="Node3D"]
 
@@ -13,10 +18,25 @@ script = ExtResource("1_d5jmr")
 [node name="Camera3D" type="Camera3D" parent="ShipBuilder"]
 transform = Transform3D(0.999906, -0.00794326, -0.0111908, 0.0110874, -0.0129395, 0.999855, -0.00808691, -0.999885, -0.0128502, 0, 5.135, 0)
 
-[node name="ModuleBase" parent="." instance=ExtResource("2_x4bbk")]
+[node name="PlayerShipExample" parent="." instance=ExtResource("3_gsuxg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99755, 0, 0)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="ModuleBase"]
+[node name="SquareMOdule" type="RigidBody3D" parent="." node_paths=PackedStringArray("attach_points")]
 gravity_scale = 0.0
+script = ExtResource("3_kgbhb")
+attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ModuleBase/RigidBody3D"]
-shape = SubResource("SphereShape3D_fhjhg")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SquareMOdule"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+mesh = SubResource("BoxMesh_ka4ql")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SquareMOdule"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012301, -0.00674105, 1.99174)
+shape = SubResource("BoxShape3D_lciky")
+
+[node name="AttachPoints" type="Node3D" parent="SquareMOdule"]
+
+[node name="AttachPoint1" type="Node3D" parent="SquareMOdule/AttachPoints"]
+
+[node name="AttachPoint2" type="Node3D" parent="SquareMOdule/AttachPoints"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 2)

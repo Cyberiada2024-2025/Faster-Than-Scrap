@@ -1,13 +1,15 @@
 class_name Module
 
-extends Node3D
+extends RigidBody3D
 
 
 ## Base class for all modules
+## The object should have scale 1 to work properly!
 
 @export var activation_key: Key = KEY_NONE
 @export var hp: int = 100
 @export var ship: Ship
+@export var attach_points: Array[Node3D] = []
 
 var was_key_pressed: bool = false
 
@@ -61,3 +63,20 @@ func _explode() -> void:
 
 func detachable() -> bool:
 	return true
+
+## return the offset of the module from
+## the rear to the center
+## Would gladly change to AABB for collisionShape, but it doesn't exist ;_;
+func get_attach_point(index: int) -> Node3D:
+	if attach_points.size() == 0:
+		printerr("MODULE HAS NO ATTACH POINTS")
+	return attach_points[index % attach_points.size()]
+	
+func create_ghost() -> Area3D:
+	var ghost := Area3D.new()
+	for child in get_children():
+		var child_copy = child.duplicate()
+		ghost.add_child(child_copy)
+	get_tree().root.add_child(ghost)
+	return ghost
+	

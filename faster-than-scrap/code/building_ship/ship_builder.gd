@@ -164,10 +164,20 @@ func _process(_delta: float) -> void:
 		var intersections = space_state.intersect_ray(query)
 		
 		if intersections.size() == 0:
-			# mouse too close to other module
+			# mouse inside other module
 			# do not allow build
 			# display in ui as illegal or invalid position
 			legal = false
 		else:
 			_position_module(intersections.position,intersections.normal)
+			var overlapping = active_module_ghost.get_overlapping_bodies()
+			ListUtils.remove(overlapping,attach_target)
+			ListUtils.remove(overlapping,active_module)
+			if overlapping.size() > 0:
+				# Module colliding with other module
+				# do not allow build
+				# display in ui as illegal or invalid position
+				legal = false
+				return
 			legal = true
+				

@@ -5,8 +5,10 @@ extends Node3D
 ## Base class for player and enemy
 
 @export var energy: float = 100
+@export var restore: float = 10
 
-
+func _ready() -> void:
+	pass
 
 func _process(delta: float) -> void:
 	energy += restore * delta

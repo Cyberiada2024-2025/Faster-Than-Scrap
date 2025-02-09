@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyj46rbaohfnw"]
+[gd_scene load_steps=4 format=3 uid="uid://dyj46rbaohfnw"]
 
 [ext_resource type="Script" path="res://code/main_menu.gd" id="1_4xnjd"]
 [ext_resource type="Texture2D" uid="uid://ckvfh4pwc78ge" path="res://art/textures/title_placeholder.png" id="1_kjdh4"]
+[ext_resource type="Script" path="res://code/scene_loader.gd" id="3_0uprt"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -59,6 +60,9 @@ focus_neighbor_top = NodePath("../StartButton")
 focus_neighbor_bottom = NodePath("../StartButton")
 theme_override_font_sizes/font_size = 30
 text = "EXIT"
+
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource("3_0uprt")
 
 [connection signal="pressed" from="Buttons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_exit_button_pressed"]

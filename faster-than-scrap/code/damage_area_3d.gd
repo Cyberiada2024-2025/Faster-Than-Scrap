@@ -6,9 +6,21 @@ extends Area3D
 ## Should mostly be used for actual area collisions.
 ## For other collisions (e.g. projectiles), use raycasts.
 
-enum _damage_type_enum {ON_ENTER, ON_STAY, ON_EXIT}
+enum DamageType {
+	## The damage will be applied only to [Damageable] nodes that have just entered the area.
+	ON_ENTER,
+	## The damage will be applied on every frame to [Damageable] nodes that are currently colliding
+	## with the area. In this mode [member _damage] specifies damage [i]per second[/i], not per frame.
+	ON_STAY,
+	## The damage will be applied only to [Damageable] nodes that have just exited the area.
+	ON_EXIT
+}
 
-@export var _damage_type: _damage_type_enum
+## Determines how and when the damage should be applied. See [enum DamageType] for possible values.
+@export var _damage_type: DamageType = DamageType.ON_STAY
+
+## How much damage does the area deal to [Damageable] objects.
+## If [member _damage_type] is set to [code]ON_STAY[/code], specifies damage per second.
 @export var _damage: float
 
 var _colliding_areas: Array[Damageable] = []
@@ -20,24 +32,24 @@ func _ready():
 
 
 func _process(delta):
-	if _damage_type == _damage_type_enum.ON_STAY:
+	if _damage_type == DamageType.ON_STAY:
 		for area in _colliding_areas:
 			area.take_damage(_damage * delta, self)
 
 
 func _on_area_entered(area: Area3D) -> void:
 	if area is Damageable:
-		if _damage_type == _damage_type_enum.ON_ENTER:
+		if _damage_type == DamageType.ON_ENTER:
 			area.take_damage(_damage, self)
-		elif _damage_type == _damage_type_enum.ON_STAY:
+		elif _damage_type == DamageType.ON_STAY:
 			_colliding_areas.append(area)
 
 
 func _on_area_exited(area: Area3D) -> void:
 	if area is Damageable:
-		if _damage_type == _damage_type_enum.ON_EXIT:
+		if _damage_type == DamageType.ON_EXIT:
 			area.take_damage(_damage, self)
-		elif _damage_type == _damage_type_enum.ON_STAY:
+		elif _damage_type == DamageType.ON_STAY:
 			# _colliding_areas is an array, so erase() can be very slow in some extreme cases
 			# (e.g. erasing the first element from a large array). Because Godot doesn't have lists,
 			# this isn't as easy to fix as it should be. Probably won't cause any problems,

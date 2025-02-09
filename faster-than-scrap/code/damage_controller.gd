@@ -1,12 +1,34 @@
 @tool
 class_name DamageController
 
-extends Node3D
+extends Node
 
+## Controls the damage applied to a node with multiple [Damageable] nodes
+## (for example, an enemy with multiple damageable areas, a module with a weak point, etc.) [br]
+## DamageController isn't necessarily required in case of just one [Damageable], but should probably
+## be used for the sake of consistency.
+
+## Emitted when any of the child [Damageable] nodes takes damage.
+## The signal is emitted at most once per frame,
+## and contains all damage that should be applied for that frame.
 signal damaged(damage: float)
 
-enum _damage_mode_enum {HIGHEST, LOWEST, ALL}
-@export var _damage_mode: _damage_mode_enum = _damage_mode_enum.LOWEST
+enum DamageMode {
+	## When multiple [Damageable] nodes take damage from the same source,
+	## only the highest damage will be applied.
+	HIGHEST,
+	## When multiple [Damageable] nodes take damage from the same source,
+	## only the lowest damage will be applied.
+	LOWEST,
+	## When multiple [Damageable] nodes take damage from the same source,
+	## all of the damage will be applied.
+	ALL,
+}
+
+## Specifies the behaviour of what happens when multiple [Damageable] nodes
+## (possibly with different damage multipliers) take damage from the same source.
+## See [enum DamageMode] for possible values.
+@export var _damage_mode: DamageMode = DamageMode.LOWEST
 
 
 var _damage: Dictionary = {}
@@ -17,11 +39,11 @@ func _ready():
 		return
 
 	# DamageController should be processed last, after all the damage has been inflicted.
-	set_process_priority(1000000) 
+	set_process_priority(1000000)
 	
 	for child in get_children():
 		if child is Damageable:
-				child.damaged.connect(_add_damage)
+			child.damaged.connect(_add_damage)
 
 
 func _add_damage(damage: float, source: Node):
@@ -31,7 +53,7 @@ func _add_damage(damage: float, source: Node):
 		_damage[source] = [damage]
 
 
-func _process(delta):
+func _process(_delta):
 	if Engine.is_editor_hint():
 		return
 		
@@ -39,11 +61,11 @@ func _process(delta):
 	for source in _damage:
 		var damage_list = _damage[source]
 		match _damage_mode:
-			_damage_mode_enum.LOWEST:
+			DamageMode.LOWEST:
 				total_damage += min(damage_list)
-			_damage_mode_enum.HIGHEST:
+			DamageMode.HIGHEST:
 				total_damage += max(damage_list)
-			_damage_mode_enum.ALL:
+			DamageMode.ALL:
 				for damage in damage_list:
 					total_damage += damage
 	
@@ -60,7 +82,7 @@ func _get_configuration_warnings():
 			damageable_children_count += 1
 
 	if damageable_children_count == 0:
-		var warning_text = "Damage controller needs at least one damageable children.\n"
+		var warning_text = "DamageController needs at least one damageable children.\n"
 		warning_text += "Please add a Damageable node as a direct child of this node."
 		warnings.append(warning_text)
 

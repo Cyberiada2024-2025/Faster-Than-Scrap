@@ -64,9 +64,17 @@ func _explode() -> void:
 func detachable() -> bool:
 	return true
 
-## return the offset of the module from
-## the rear to the center
-## Would gladly change to AABB for collisionShape, but it doesn't exist ;_;
+
+func has_child_module() -> bool:
+	for child in get_children():
+		if child is Module:
+			return true
+	return false
+
+
+## Returns the node3D which is the center of the attach point.
+## Foward vector of that returned node indicates the forward rotation of the module
+## when attached to that point
 func get_attach_point(index: int) -> Node3D:
 	if attach_points.size() == 0:
 		printerr("MODULE HAS NO ATTACH POINTS")

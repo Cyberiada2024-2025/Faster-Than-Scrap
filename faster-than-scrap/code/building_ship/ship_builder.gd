@@ -2,6 +2,11 @@ class_name ShipBuilder
 
 extends Node3D
 
+## class used in the building ship
+## it reacts to mouse clicking for grabbing the module
+## and snapping it to the ship if close enough.
+
+
 const RAY_LENGTH = 1000.0
 
 var active_module_ghost: Area3D = null
@@ -16,7 +21,7 @@ var mouse_position_3d: Vector3 = Vector3.ZERO
 var lmb_was_pressed: bool = false
 var lmb_is_pressed: bool = false
 
-# mouse ---------------------------------------------
+# ---------------mouse ---------------------------------------------
 func _get_mouse_3d_position():
 	var camera = $Camera3D
 	var position2D = get_viewport().get_mouse_position()
@@ -39,15 +44,16 @@ func _check_attach_point_index(event: InputEvent) -> void:
 		attach_point_index += 1
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
 		attach_point_index -= 1
-# raycasts hits ------------------------------------
 
+
+# ----------------raycasts hits ------------------------------------
 func _get_module_from_hit(hit:Dictionary) -> Module:
 	var rigid_body : RigidBody3D = hit.get("collider")
 	if rigid_body is Module:
 		return rigid_body
 	return null
 
-func _get_hit(event: InputEvent) -> Dictionary:
+func _get_raycast_hit(event: InputEvent) -> Dictionary:
 	var camera3d = $Camera3D
 	var from = camera3d.project_ray_origin(event.position)
 	var to = from + camera3d.project_ray_normal(event.position) * RAY_LENGTH
@@ -56,15 +62,7 @@ func _get_hit(event: InputEvent) -> Dictionary:
 	query.collide_with_areas = true
 	return space_state.intersect_ray(query)
 
-
-
-func _module_has_child_module(module: Module)->bool:
-	for child in module.get_children():
-		if child is Module:
-			return true
-	return false
-
-
+# ---------------- proximity check ------------------------------------
 func _check_colliders_in_range(point: Vector3, radius: float) -> Array:
 	var space_state = get_world_3d().direct_space_state
 	
@@ -82,14 +80,17 @@ func _check_colliders_in_range(point: Vector3, radius: float) -> Array:
 func _get_module_to_attach()->Module:
 	var colliders = _check_colliders_in_range(mouse_position_3d,1)
 	# remove held module from detected collisions
-	for i in range(colliders.size()):
-		if colliders[i].collider == active_module or colliders[i].collider == active_module_ghost:
-			colliders.remove_at(i)
-			break
+	#for i in range(colliders.size()):
+		#if colliders[i].collider == active_module or colliders[i].collider == active_module_ghost:
+			#colliders.remove_at(i)
+			#break
+	ListUtils.remove_by_field(colliders,"collider",active_module)
+	ListUtils.remove_by_field(colliders,"collider",active_module_ghost)
 	
 	if colliders.size() == 0:
 		return null
-	
+		
+	# find closest module
 	var min_distance = INF
 	var closest_rigidbody = null
 	for coll in colliders:
@@ -115,34 +116,61 @@ func _position_module(intersection_position: Vector3, intersection_normal: Vecto
 	var global_space_offset = active_module_ghost.global_position - active_module_ghost.to_global(local_space_offset)
 	active_module_ghost.global_position=intersection_position + global_space_offset
 
+func _on_module_clicked(clicked_module: Module)-> void:
+	if clicked_module != null and  not clicked_module.has_child_module():
+		var name = clicked_module.name # godot renames to Node3D after reparenting :/
+		# change parent to root scene
+		clicked_module.reparent(get_tree().get_root())
+		clicked_module.name = name
+		# set variables
+		active_module = clicked_module
+		active_module_ghost = clicked_module.create_ghost()
+		attach_point_index = 0
+
+func _on_lmb_release()->void:
+	# if legal position, set the module's position
+	if legal and active_module_ghost != null:
+		active_module.global_position = active_module_ghost.global_position
+		active_module.global_rotation = active_module_ghost.global_rotation
+		# if there is a attach target, reparent to it
+		if attach_target != null:
+			active_module.reparent(attach_target)
+	# if exist delete ghost
+	if active_module_ghost != null:
+		active_module_ghost.queue_free()
+	# clear module variables 
+	active_module_ghost = null
+	active_module = null
 
 func _input(event: InputEvent):
 	_check_lmb_state(event)
 	_get_mouse_3d_position()
 	_check_attach_point_index(event)
+	
 	if _lmb_just_pressed():
-		var hit := _get_hit(event)
+		var hit := _get_raycast_hit(event)
 		if hit.size() > 0:
 			var clicked_module := _get_module_from_hit(hit)
-			if not _module_has_child_module(clicked_module):
-				var name = clicked_module.name # godot renames to Node3D after reparenting :/
-				# change parent to root scene
-				clicked_module.reparent(get_tree().get_root())
-				clicked_module.name = name
-				# set variables
-				active_module = clicked_module
-				active_module_ghost = clicked_module.create_ghost()
-				attach_point_index = 0
+			_on_module_clicked(clicked_module)
 	if _lmb_just_released():
-		if legal and active_module_ghost != null:
-			active_module.global_position = active_module_ghost.global_position
-			active_module.global_rotation = active_module_ghost.global_rotation
-			if attach_target != null:
-				active_module.reparent(attach_target)
-		if active_module_ghost != null:
-			active_module_ghost.queue_free()
-		active_module_ghost = null
-		active_module = null
+		_on_lmb_release()
+
+# find intersection point to snap module
+func _get_intersection() -> Dictionary:
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(
+		active_module_ghost.global_position,
+		attach_target.global_position,~0, [active_module.get_rid()]) # ignore active_module
+	var intersection = space_state.intersect_ray(query)
+	return intersection
+
+# check whether the active module collides with other modules
+func _module_collides() -> bool :
+	var overlapping = active_module_ghost.get_overlapping_bodies()
+	ListUtils.remove(overlapping,attach_target)
+	ListUtils.remove(overlapping,active_module)
+	return overlapping.size() > 0
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -156,28 +184,20 @@ func _process(_delta: float) -> void:
 			legal = true
 			return
 
-		# check collisions
-		var space_state = get_world_3d().direct_space_state
-		var query = PhysicsRayQueryParameters3D.create(
-			active_module_ghost.global_position,
-			attach_target.global_position,~0, [active_module.get_rid()]) # ignore active_module
-		var intersections = space_state.intersect_ray(query)
+		# find the point on the attach target where can the module be snapped
+		var intersection = _get_intersection()
 		
-		if intersections.size() == 0:
-			# mouse inside other module
+		if intersection.size() == 0:
+			# module inside other attach target
 			# do not allow build
 			# display in ui as illegal or invalid position
 			legal = false
 		else:
-			_position_module(intersections.position,intersections.normal)
-			var overlapping = active_module_ghost.get_overlapping_bodies()
-			ListUtils.remove(overlapping,attach_target)
-			ListUtils.remove(overlapping,active_module)
-			if overlapping.size() > 0:
+			_position_module(intersection.position,intersection.normal)
+			if _module_collides():
 				# Module colliding with other module
 				# do not allow build
 				# display in ui as illegal or invalid position
 				legal = false
-				return
-			legal = true
-				
+			else:
+				legal = true

@@ -79,7 +79,7 @@ func get_attach_point(index: int) -> Node3D:
 	if attach_points.size() == 0:
 		printerr("MODULE HAS NO ATTACH POINTS")
 	return attach_points[index % attach_points.size()]
-	
+
 func create_ghost() -> Area3D:
 	var ghost := Area3D.new()
 	for child in get_children():
@@ -87,4 +87,3 @@ func create_ghost() -> Area3D:
 		ghost.add_child(child_copy)
 	get_tree().root.add_child(ghost)
 	return ghost
-	

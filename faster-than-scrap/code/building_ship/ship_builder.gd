@@ -28,9 +28,13 @@ var rmb_was_pressed: bool = false
 # ---------------mouse ---------------------------------------------
 func _get_mouse_3d_position():
 	var camera = $Camera3D
-	var position2D = get_viewport().get_mouse_position()
-	var dropPlane  = Plane(Vector3(0, 1, 0), 0)
-	mouse_position_3d = dropPlane.intersects_ray(camera.project_ray_origin(position2D),camera.project_ray_normal(position2D))
+	var position_2d = get_viewport().get_mouse_position()
+	var drop_plane  = Plane(Vector3(0, 1, 0), 0)
+	mouse_position_3d = (
+		drop_plane.intersects_ray(
+			camera.project_ray_origin(position_2d),
+			camera.project_ray_normal(position_2d))
+		)
 	
 func _lmb_just_pressed():
 	return !lmb_was_pressed and lmb_is_pressed
@@ -43,7 +47,7 @@ func _rmb_just_pressed(event: InputEvent) -> bool:
 	var just_pressed : bool =  pressed and not rmb_was_pressed
 	rmb_was_pressed = pressed
 	return just_pressed
-		
+
 
 ## custom function for detecting mouse lmb state
 func _check_lmb_state(event: InputEvent) -> void:
@@ -76,7 +80,7 @@ func _get_raycast_hit(event: InputEvent) -> Dictionary:
 # ---------------- proximity check ------------------------------------
 func _check_colliders_in_range(point: Vector3, radius: float) -> Array:
 	var space_state = get_world_3d().direct_space_state
-	
+
 	var query = PhysicsShapeQueryParameters3D.new()
 	var sphere = SphereShape3D.new()
 	sphere.radius = radius
@@ -90,17 +94,13 @@ func _check_colliders_in_range(point: Vector3, radius: float) -> Array:
 
 func _get_module_to_attach()->Module:
 	var colliders = _check_colliders_in_range(mouse_position_3d,1)
-	# remove held module from detected collisions
-	#for i in range(colliders.size()):
-		#if colliders[i].collider == active_module or colliders[i].collider == active_module_ghost:
-			#colliders.remove_at(i)
-			#break
+	# remove held module and ghost from detected collisions
 	ListUtils.remove_by_field(colliders,"collider",active_module)
 	ListUtils.remove_by_field(colliders,"collider",active_module_ghost)
-	
+
 	if colliders.size() == 0:
 		return null
-		
+
 	# find closest module
 	var min_distance = INF
 	var closest_rigidbody = null
@@ -118,7 +118,7 @@ func _position_module(intersection_position: Vector3, intersection_normal: Vecto
 	var attach_point : Node3D = active_module.get_attach_point(attach_point_index)
 	var local_space_offset: Vector3 = attach_point.position
 	var angle = atan2(-intersection_normal.z, intersection_normal.x)
-	
+
 	if local_space_offset != Vector3.ZERO:
 		active_module_ghost.rotation.y = angle + PI/2 - attach_point.rotation.y
 	else:
@@ -148,7 +148,7 @@ func _on_lmb_release()->void:
 	# if exist delete ghost
 	if active_module_ghost != null:
 		active_module_ghost.queue_free()
-	# clear module variables 
+	# clear module variables
 	active_module_ghost = null
 	active_module = null
 
@@ -156,9 +156,9 @@ func _input(event: InputEvent):
 	_check_lmb_state(event)
 	_get_mouse_3d_position()
 	_check_attach_point_index(event)
-	
+
 	## TODO add some display in UI in which state the player is
-	
+
 	match state:
 		State.NONE:
 			if _lmb_just_pressed():
@@ -220,7 +220,7 @@ func _process(_delta: float) -> void:
 
 		# find the point on the attach target where can the module be snapped
 		var intersection = _get_intersection()
-		
+
 		if intersection.size() == 0:
 			# module inside other attach target
 			_display_illegal()

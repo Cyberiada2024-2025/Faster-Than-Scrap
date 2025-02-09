@@ -1,11 +1,9 @@
 extends StateEnemyShip
 
+func enter(_previous_state_path: String, _data := {}) -> void:
+	#set parameters
+	pass
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func physics_update(_delta: float) -> void:
+	# move in random direction, changeing every few seconds
 	pass

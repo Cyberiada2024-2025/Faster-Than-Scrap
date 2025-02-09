@@ -35,7 +35,7 @@ func _get_mouse_3d_position():
 			camera.project_ray_origin(position_2d),
 			camera.project_ray_normal(position_2d))
 		)
-	
+
 func _lmb_just_pressed():
 	return !lmb_was_pressed and lmb_is_pressed
 
@@ -55,9 +55,13 @@ func _check_lmb_state(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		lmb_is_pressed = event.is_pressed()
 func _check_attach_point_index(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
+	if (event is InputEventMouseButton and 
+		event.button_index == MOUSE_BUTTON_WHEEL_UP and 
+		event.pressed):
 		attach_point_index += 1
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
+	if (event is InputEventMouseButton and 
+		event.button_index == MOUSE_BUTTON_WHEEL_DOWN and
+		event.pressed):
 		attach_point_index -= 1
 
 
@@ -84,7 +88,7 @@ func _check_colliders_in_range(point: Vector3, radius: float) -> Array:
 	var query = PhysicsShapeQueryParameters3D.new()
 	var sphere = SphereShape3D.new()
 	sphere.radius = radius
-	
+
 	query.shape = sphere
 	query.transform.origin = point
 	query.collision_mask = 1  # Adjust mask as needed
@@ -123,7 +127,10 @@ func _position_module(intersection_position: Vector3, intersection_normal: Vecto
 		active_module_ghost.rotation.y = angle + PI/2 - attach_point.rotation.y
 	else:
 		active_module_ghost.rotation.y = angle + PI/2
-	var global_space_offset = active_module_ghost.global_position - active_module_ghost.to_global(local_space_offset)
+	var global_space_offset = (
+		active_module_ghost.global_position - 
+		active_module_ghost.to_global(local_space_offset)
+	)
 	active_module_ghost.global_position=intersection_position + global_space_offset
 
 func _on_module_clicked(clicked_module: Module)-> void:

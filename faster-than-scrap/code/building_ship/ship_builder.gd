@@ -55,11 +55,11 @@ func _check_lmb_state(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		lmb_is_pressed = event.is_pressed()
 func _check_attach_point_index(event: InputEvent) -> void:
-	if (event is InputEventMouseButton and 
-		event.button_index == MOUSE_BUTTON_WHEEL_UP and 
+	if (event is InputEventMouseButton and
+		event.button_index == MOUSE_BUTTON_WHEEL_UP and
 		event.pressed):
 		attach_point_index += 1
-	if (event is InputEventMouseButton and 
+	if (event is InputEventMouseButton and
 		event.button_index == MOUSE_BUTTON_WHEEL_DOWN and
 		event.pressed):
 		attach_point_index -= 1
@@ -128,7 +128,7 @@ func _position_module(intersection_position: Vector3, intersection_normal: Vecto
 	else:
 		active_module_ghost.rotation.y = angle + PI/2
 	var global_space_offset = (
-		active_module_ghost.global_position - 
+		active_module_ghost.global_position -
 		active_module_ghost.to_global(local_space_offset)
 	)
 	active_module_ghost.global_position=intersection_position + global_space_offset

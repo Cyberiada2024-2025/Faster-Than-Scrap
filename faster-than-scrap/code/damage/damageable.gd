@@ -4,7 +4,8 @@ extends Area3D
 
 ## Represents a damageable object, or a part of such object.
 
-## Signal emitted when the object takes damage. (i.e. when [method Damageable.take_damage] is called.)
+## Signal emitted when the object takes damage.
+## (i.e. when [method Damageable.take_damage] is called.)
 signal damaged(damage: float, source: Node)
 
 ## The damage taken is multiplied by this value when the object takes damage. [br]

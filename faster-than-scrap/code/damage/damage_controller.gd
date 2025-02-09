@@ -40,7 +40,7 @@ func _ready():
 
 	# DamageController should be processed last, after all the damage has been inflicted.
 	set_process_priority(1000000)
-	
+
 	for child in get_children():
 		if child is Damageable:
 			child.damaged.connect(_add_damage)
@@ -56,7 +56,7 @@ func _add_damage(damage: float, source: Node):
 func _process(_delta):
 	if Engine.is_editor_hint():
 		return
-		
+
 	var total_damage: float = 0
 	for source in _damage:
 		var damage_list = _damage[source]
@@ -68,14 +68,14 @@ func _process(_delta):
 			DamageMode.ALL:
 				for damage in damage_list:
 					total_damage += damage
-	
+
 	if total_damage > 0:
 		damaged.emit(total_damage)
 
 
 func _get_configuration_warnings():
 	var warnings = []
-	
+
 	var damageable_children_count = 0
 	for child in get_children():
 		if child is Damageable:

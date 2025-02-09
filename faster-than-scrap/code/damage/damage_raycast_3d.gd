@@ -6,7 +6,7 @@ extends RayCast3D
 ## For area collisions (e.g. engine exhaust), use [DamageArea3D].
 
 ## Signal emitted everytime this node applies damage to a [Damageable] node.
-signal appliedDamage(damage: float, target: Damageable)
+signal damage_applied(damage: float, target: Damageable)
 
 ## If set to [code]true[/code], this node will be destroyed immediately after applying damage. [br]
 ## If set to [code]false[/code], the damage will be applied constantly.
@@ -38,6 +38,6 @@ func _process(delta):
 
 func _apply_damage(damage: float, target: Damageable) -> void:
 	target.take_damage(damage, self)
-	appliedDamage.emit(damage, target)
+	damage_applied.emit(damage, target)
 	if not _constant_fire:
 		queue_free()

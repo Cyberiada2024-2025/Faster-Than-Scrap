@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctftkodo3rxpv"]
+
+[ext_resource type="Script" path="res://code/damage_controller.gd" id="1_wrj56"]
+[ext_resource type="Script" path="res://code/damageable.gd" id="2_4q7u2"]
+[ext_resource type="Script" path="res://code/damage_area_3d.gd" id="3_vypfq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_akj12"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u04sj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_atl0f"]
+
+[node name="DamageSystemTest" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.932425, 0.361364, 0, -0.361364, 0.932425, 0, 2.62368, 6.77927)
+
+[node name="DamageController" type="Node3D" parent="."]
+transform = Transform3D(0.999928, 0, 0, 0, 0.999928, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_wrj56")
+_damage_mode = null
+
+[node name="Damageable" type="Area3D" parent="DamageController"]
+script = ExtResource("2_4q7u2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable"]
+shape = SubResource("CapsuleShape3D_akj12")
+
+[node name="DamageArea3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.22)
+script = ExtResource("3_vypfq")
+_damage = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea3D"]
+shape = SubResource("BoxShape3D_u04sj")
+
+[node name="DamageArea3D2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.445)
+script = ExtResource("3_vypfq")
+_damage = 12.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea3D2"]
+shape = SubResource("CapsuleShape3D_atl0f")

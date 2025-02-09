@@ -1,4 +1,4 @@
-class_name StateEnemyShip extends State
+class_name StateEnemy extends State
 
 
 const IDLE = "Idle"
@@ -11,5 +11,4 @@ var enemy: Ship
 func _ready() -> void:
 	await owner.ready
 	enemy = owner as Ship	# getting a typed reference to controlled ship
-	assert(enemy != null, "The EnemyState state type must be used only in the enemy scene. 
-It needs the owner to be an Enemy node.")
+	assert(enemy != null, "The enemy state needs the owner to be an Enemy node")

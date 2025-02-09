@@ -62,9 +62,9 @@ func _process(_delta):
 		var damage_list = _damage[source]
 		match _damage_mode:
 			DamageMode.LOWEST:
-				total_damage += min(damage_list)
+				total_damage += damage_list.min()
 			DamageMode.HIGHEST:
-				total_damage += max(damage_list)
+				total_damage += damage_list.max()
 			DamageMode.ALL:
 				for damage in damage_list:
 					total_damage += damage

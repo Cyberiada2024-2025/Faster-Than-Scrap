@@ -71,6 +71,7 @@ func _process(_delta):
 
 	if total_damage > 0:
 		damaged.emit(total_damage)
+		_damage = {}
 
 
 func _get_configuration_warnings():

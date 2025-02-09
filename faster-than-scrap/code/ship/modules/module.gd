@@ -1,12 +1,12 @@
 class_name Module
 
-extends Node3D
+extends RigidBody3D
 
 
 ## Base class for all modules
 
 @export var activation_key: Key = KEY_NONE
-@export var hp: int = 100
+@export var hp: float = 100
 @export var ship: Ship
 
 var was_key_pressed: bool = false
@@ -39,7 +39,7 @@ func _on_key(_delta: float) -> void:
 func _on_release(_delta: float) -> void:
 	pass
 
-func take_damage(damage: int) -> void:
+func _on_take_damage(damage: float) -> void:
 	hp -= damage
 	if hp <=0 :
 		_on_destroy()

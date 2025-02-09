@@ -2,9 +2,12 @@ class_name DamageArea3D
 
 extends Area3D
 
-## Area3D which damages all [Damageable] objects that are in it. [br]
+## Area3D which damages all [Damageable] nodes that are in it. [br]
 ## Should mostly be used for actual area collisions.
-## For other collisions (e.g. projectiles), use raycasts.
+## For other collisions (e.g. projectiles), use [DamageRaycast3D].
+
+## Signal emitted everytime this node applies damage to a [Damageable] node.
+signal appliedDamage(damage: float, target: Damageable)
 
 enum DamageType {
 	## The damage will be applied only to [Damageable] nodes that have just entered the area.
@@ -19,9 +22,12 @@ enum DamageType {
 ## Determines how and when the damage should be applied. See [enum DamageType] for possible values.
 @export var _damage_type: DamageType = DamageType.ON_STAY
 
-## How much damage does the area deal to [Damageable] objects.
+## How much damage does the area deal to [Damageable] nodes.
 ## If [member _damage_type] is set to [code]ON_STAY[/code], specifies damage per second.
 @export var _damage: float
+
+## If set to true, this node will be destroyed immediately after applying damage.
+@export var _die_on_hit: bool = false
 
 var _colliding_areas: Array[Damageable] = []
 
@@ -34,13 +40,20 @@ func _ready():
 func _process(delta):
 	if _damage_type == DamageType.ON_STAY:
 		for area in _colliding_areas:
-			area.take_damage(_damage * delta, self)
+			_apply_damage(_damage * delta, area)
+
+
+func _apply_damage(damage: float, target: Damageable) -> void:
+	target.take_damage(damage, self)
+	appliedDamage.emit(damage, target)
+	if _die_on_hit:
+		queue_free()
 
 
 func _on_area_entered(area: Area3D) -> void:
 	if area is Damageable:
 		if _damage_type == DamageType.ON_ENTER:
-			area.take_damage(_damage, self)
+			_apply_damage(_damage, area)
 		elif _damage_type == DamageType.ON_STAY:
 			_colliding_areas.append(area)
 
@@ -48,7 +61,7 @@ func _on_area_entered(area: Area3D) -> void:
 func _on_area_exited(area: Area3D) -> void:
 	if area is Damageable:
 		if _damage_type == DamageType.ON_EXIT:
-			area.take_damage(_damage, self)
+			_apply_damage(_damage, area)
 		elif _damage_type == DamageType.ON_STAY:
 			# _colliding_areas is an array, so erase() can be very slow in some extreme cases
 			# (e.g. erasing the first element from a large array). Because Godot doesn't have lists,

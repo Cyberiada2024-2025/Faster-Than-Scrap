@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://tx8vl60viw86"]
+
+[ext_resource type="PackedScene" uid="uid://cpxkxwkuyh6l2" path="res://prefabs/ships/player_ship_example.tscn" id="1_23pgk"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="PlayerShipExample" parent="." instance=ExtResource("1_23pgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00861, 0, 1.41573)

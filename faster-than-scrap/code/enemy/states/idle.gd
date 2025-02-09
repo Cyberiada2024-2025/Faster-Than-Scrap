@@ -1,4 +1,4 @@
-extends Node
+extends StateEnemyShip
 
 func enter(previous_state_path: String, data := {}) -> void:
 	#set parameters

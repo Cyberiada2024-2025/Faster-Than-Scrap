@@ -17,7 +17,7 @@ var active_module: Module = null
 var attach_target: Node3D = null
 var legal: bool = false
 
-var attach_point_index : int = 0
+var attach_point_index: int = 0
 
 var mouse_position_3d: Vector3 = Vector3.ZERO
 
@@ -29,12 +29,13 @@ var rmb_was_pressed: bool = false
 func _get_mouse_3d_position():
 	var camera = $Camera3D
 	var position_2d = get_viewport().get_mouse_position()
-	var drop_plane  = Plane(Vector3(0, 1, 0), 0)
+	var drop_plane = Plane(Vector3(0, 1, 0), 0)
 	mouse_position_3d = (
 		drop_plane.intersects_ray(
 			camera.project_ray_origin(position_2d),
-			camera.project_ray_normal(position_2d))
+			camera.project_ray_normal(position_2d)
 		)
+	)
 
 func _lmb_just_pressed():
 	return !lmb_was_pressed and lmb_is_pressed
@@ -43,8 +44,8 @@ func _lmb_just_released():
 	return lmb_was_pressed and !lmb_is_pressed
 
 func _rmb_just_pressed(event: InputEvent) -> bool:
-	var pressed =  event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT
-	var just_pressed : bool =  pressed and not rmb_was_pressed
+	var pressed = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT
+	var just_pressed: bool = pressed and not rmb_was_pressed
 	rmb_was_pressed = pressed
 	return just_pressed
 
@@ -55,19 +56,16 @@ func _check_lmb_state(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		lmb_is_pressed = event.is_pressed()
 func _check_attach_point_index(event: InputEvent) -> void:
-	if (event is InputEventMouseButton and
-		event.button_index == MOUSE_BUTTON_WHEEL_UP and
-		event.pressed):
-		attach_point_index += 1
-	if (event is InputEventMouseButton and
-		event.button_index == MOUSE_BUTTON_WHEEL_DOWN and
-		event.pressed):
-		attach_point_index -= 1
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			attach_point_index += 1
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			attach_point_index -= 1
 
 
 # ----------------raycasts hits ------------------------------------
 func _get_module_from_hit(hit:Dictionary) -> Module:
-	var rigid_body : RigidBody3D = hit.get("collider")
+	var rigid_body: RigidBody3D = hit.get("collider")
 	if rigid_body is Module:
 		return rigid_body
 	return null
@@ -96,11 +94,11 @@ func _check_colliders_in_range(point: Vector3, radius: float) -> Array:
 	var result = space_state.intersect_shape(query)
 	return result  # Returns an array of dictionaries with collider info
 
-func _get_module_to_attach()->Module:
-	var colliders = _check_colliders_in_range(mouse_position_3d,1)
+func _get_module_to_attach() -> Module:
+	var colliders = _check_colliders_in_range(mouse_position_3d, 1)
 	# remove held module and ghost from detected collisions
-	ListUtils.remove_by_field(colliders,"collider",active_module)
-	ListUtils.remove_by_field(colliders,"collider",active_module_ghost)
+	ListUtils.remove_by_field(colliders, "collider", active_module)
+	ListUtils.remove_by_field(colliders, "collider", active_module_ghost)
 
 	if colliders.size() == 0:
 		return null
@@ -118,8 +116,8 @@ func _get_module_to_attach()->Module:
 
 # --------------------------------
 
-func _position_module(intersection_position: Vector3, intersection_normal: Vector3)->void:
-	var attach_point : Node3D = active_module.get_attach_point(attach_point_index)
+func _position_module(intersection_position: Vector3, intersection_normal: Vector3) -> void:
+	var attach_point: Node3D = active_module.get_attach_point(attach_point_index)
 	var local_space_offset: Vector3 = attach_point.position
 	var angle = atan2(-intersection_normal.z, intersection_normal.x)
 
@@ -131,11 +129,11 @@ func _position_module(intersection_position: Vector3, intersection_normal: Vecto
 		active_module_ghost.global_position -
 		active_module_ghost.to_global(local_space_offset)
 	)
-	active_module_ghost.global_position=intersection_position + global_space_offset
+	active_module_ghost.global_position = intersection_position + global_space_offset
 
-func _on_module_clicked(clicked_module: Module)-> void:
-	if clicked_module != null and  not clicked_module.has_child_module():
-		var name = clicked_module.name # godot renames to Node3D after reparenting :/
+func _on_module_clicked(clicked_module: Module) -> void:
+	if clicked_module != null and not clicked_module.has_child_module():
+		var name = clicked_module.name  # godot renames to Node3D after reparenting :/
 		# change parent to root scene
 		clicked_module.reparent(get_tree().get_root())
 		clicked_module.name = name
@@ -144,7 +142,7 @@ func _on_module_clicked(clicked_module: Module)-> void:
 		active_module_ghost = clicked_module.create_ghost()
 		attach_point_index = 0
 
-func _on_lmb_release()->void:
+func _on_lmb_release() -> void:
 	# if legal position, set the module's position
 	if legal and active_module_ghost != null:
 		active_module.global_position = active_module_ghost.global_position
@@ -189,7 +187,7 @@ func _input(event: InputEvent):
 		State.SETTING_BUTTON:
 			## check if keyboard pressed
 			if event is InputEventKey and event.pressed:
-				var key_event :InputEventKey = event
+				var key_event: InputEventKey = event
 				active_module.activation_key = key_event.keycode
 				state = State.NONE
 				print("new state = none")
@@ -200,15 +198,18 @@ func _get_intersection() -> Dictionary:
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(
 		active_module_ghost.global_position,
-		attach_target.global_position,~0, [active_module.get_rid()]) # ignore active_module
+		attach_target.global_position,
+		~0,  # collision mask: ~0 means 0xFFFFFFFF (full collision mask)
+		[active_module.get_rid()]
+	)  # ignore active_module
 	var intersection = space_state.intersect_ray(query)
 	return intersection
 
 # check whether the active module collides with other modules
-func _module_collides() -> bool :
+func _module_collides() -> bool:
 	var overlapping = active_module_ghost.get_overlapping_bodies()
-	ListUtils.remove(overlapping,attach_target)
-	ListUtils.remove(overlapping,active_module)
+	ListUtils.remove(overlapping, attach_target)
+	ListUtils.remove(overlapping, active_module)
 	return overlapping.size() > 0
 
 
@@ -233,7 +234,7 @@ func _process(_delta: float) -> void:
 			_display_illegal()
 			legal = false
 		else:
-			_position_module(intersection.position,intersection.normal)
+			_position_module(intersection.position, intersection.normal)
 			if _module_collides():
 				# Module colliding with other module
 				_display_illegal()
@@ -243,10 +244,10 @@ func _process(_delta: float) -> void:
 
 # allow build
 # display in ui as legal
-func _display_legal() -> void :
+func _display_legal() -> void:
 	pass
 
 # do not allow build
 # display in ui as illegal or invalid position
-func _display_illegal() -> void :
+func _display_illegal() -> void:
 	pass

@@ -31,7 +31,7 @@ jobs:
         run: |
           error_found=0  # Initialize a flag to track errors
   
-          for file in $(find . -type f -name "*.gd"); do
+          for file in $(find . -type f -name "*.gd" -not -path "./addons/*"); do
               echo "Processing $file"
               if ! gdlint "$file"; then
                   echo "Error in $file"

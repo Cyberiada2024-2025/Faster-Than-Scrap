@@ -6,11 +6,11 @@ extends Node3D
 ## it reacts to mouse clicking for grabbing the module
 ## and snapping it to the ship if close enough.
 
-enum State {NONE, DRAGGING, SETTING_BUTTON}
+enum _State {NONE, DRAGGING, SETTING_BUTTON}
 
 const RAY_LENGTH = 1000.0
 
-var state = State.NONE
+var state = _State.NONE
 
 var active_module_ghost: Area3D = null
 var active_module: Module = null
@@ -49,19 +49,18 @@ func _rmb_just_pressed(event: InputEvent) -> bool:
 	rmb_was_pressed = pressed
 	return just_pressed
 
-
-## custom function for detecting mouse lmb state
+# custom function for detecting mouse lmb state
 func _check_lmb_state(event: InputEvent) -> void:
 	lmb_was_pressed = lmb_is_pressed
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		lmb_is_pressed = event.is_pressed()
+
 func _check_attach_point_index(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			attach_point_index += 1
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			attach_point_index -= 1
-
 
 # ----------------raycasts hits ------------------------------------
 func _get_module_from_hit(hit:Dictionary) -> Module:
@@ -112,7 +111,6 @@ func _get_module_to_attach() -> Module:
 			min_distance = distance
 			closest_rigidbody = coll.collider
 	return closest_rigidbody
-
 
 # --------------------------------
 
@@ -165,33 +163,32 @@ func _input(event: InputEvent):
 	## TODO add some display in UI in which state the player is
 
 	match state:
-		State.NONE:
+		_State.NONE:
 			if _lmb_just_pressed():
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
 					var clicked_module := _get_module_from_hit(hit)
 					_on_module_clicked(clicked_module)
-					state = State.DRAGGING
+					state = _State.DRAGGING
 					print("new state = dragging")
 			elif _rmb_just_pressed(event):
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
 					active_module = _get_module_from_hit(hit)
-					state = State.SETTING_BUTTON
+					state = _State.SETTING_BUTTON
 					print("new state = setting button")
-		State.DRAGGING:
+		_State.DRAGGING:
 			if _lmb_just_released():
 				_on_lmb_release()
 				print("new state = none")
-				state = State.NONE
-		State.SETTING_BUTTON:
+				state = _State.NONE
+		_State.SETTING_BUTTON:
 			## check if keyboard pressed
 			if event is InputEventKey and event.pressed:
 				var key_event: InputEventKey = event
 				active_module.activation_key = key_event.keycode
-				state = State.NONE
+				state = _State.NONE
 				print("new state = none")
-
 
 # find intersection point to snap module
 func _get_intersection() -> Dictionary:
@@ -212,11 +209,10 @@ func _module_collides() -> bool:
 	ListUtils.remove(overlapping, active_module)
 	return overlapping.size() > 0
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	# if dragging
-	if state == State.DRAGGING and active_module != null:
+	if state == _State.DRAGGING and active_module != null:
 		active_module_ghost.global_position = mouse_position_3d
 		# check if can attach to anything
 		attach_target = _get_module_to_attach()

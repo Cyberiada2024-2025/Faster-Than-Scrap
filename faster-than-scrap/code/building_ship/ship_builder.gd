@@ -6,11 +6,11 @@ extends Node3D
 ## it reacts to mouse clicking for grabbing the module
 ## and snapping it to the ship if close enough.
 
-enum _State {NONE, DRAGGING, SETTING_BUTTON}
+enum _state_enum {NONE, DRAGGING, SETTING_BUTTON}
 
 const RAY_LENGTH = 1000.0
 
-var state = _State.NONE
+var state = _state_enum.NONE
 
 var active_module_ghost: Area3D = null
 var active_module: Module = null
@@ -163,31 +163,31 @@ func _input(event: InputEvent):
 	## TODO add some display in UI in which state the player is
 
 	match state:
-		_State.NONE:
+		_state_enum.NONE:
 			if _lmb_just_pressed():
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
 					var clicked_module := _get_module_from_hit(hit)
 					_on_module_clicked(clicked_module)
-					state = _State.DRAGGING
+					state = _state_enum.DRAGGING
 					print("new state = dragging")
 			elif _rmb_just_pressed(event):
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
 					active_module = _get_module_from_hit(hit)
-					state = _State.SETTING_BUTTON
+					state = _state_enum.SETTING_BUTTON
 					print("new state = setting button")
-		_State.DRAGGING:
+		_state_enum.DRAGGING:
 			if _lmb_just_released():
 				_on_lmb_release()
 				print("new state = none")
-				state = _State.NONE
-		_State.SETTING_BUTTON:
+				state = _state_enum.NONE
+		_state_enum.SETTING_BUTTON:
 			## check if keyboard pressed
 			if event is InputEventKey and event.pressed:
 				var key_event: InputEventKey = event
 				active_module.activation_key = key_event.keycode
-				state = _State.NONE
+				state = _state_enum.NONE
 				print("new state = none")
 
 # find intersection point to snap module
@@ -212,7 +212,7 @@ func _module_collides() -> bool:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	# if dragging
-	if state == _State.DRAGGING and active_module != null:
+	if state == _state_enum.DRAGGING and active_module != null:
 		active_module_ghost.global_position = mouse_position_3d
 		# check if can attach to anything
 		attach_target = _get_module_to_attach()

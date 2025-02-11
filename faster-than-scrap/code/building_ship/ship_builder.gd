@@ -10,6 +10,11 @@ enum State {NONE, DRAGGING, SETTING_BUTTON}
 
 const RAY_LENGTH = 1000.0
 
+## the mask of checked colliders when checking if there are modules near the mouse
+@export var collision_mask: int = 1
+## the range of spherecast when checking if there are modules near the mouse
+@export var snap_range: float = 1
+
 var state = State.NONE
 
 var active_module_ghost: Area3D = null
@@ -85,13 +90,13 @@ func _check_colliders_in_range(point: Vector3, radius: float) -> Array:
 
 	query.shape = sphere
 	query.transform.origin = point
-	query.collision_mask = 1  # Adjust mask as needed
+	query.collision_mask = collision_mask # Adjust mask as needed
 
 	var result = space_state.intersect_shape(query)
 	return result  # Returns an array of dictionaries with collider info
 
 func _get_module_to_attach() -> Module:
-	var colliders = _check_colliders_in_range(mouse_position_3d, 1)
+	var colliders = _check_colliders_in_range(mouse_position_3d, snap_range)
 	# remove held module and ghost from detected collisions
 	ArrayUtils.remove_by_field(colliders, "collider", active_module)
 	ArrayUtils.remove_by_field(colliders, "collider", active_module_ghost)
@@ -146,6 +151,8 @@ func _on_lmb_release() -> void:
 		# if there is a attach target, reparent to it
 		if attach_target != null:
 			active_module.reparent(attach_target)
+		else:
+			active_module.reparent(get_tree().get_root())
 	# if exist delete ghost
 	if active_module_ghost != null:
 		active_module_ghost.queue_free()

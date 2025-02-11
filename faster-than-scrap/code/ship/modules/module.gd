@@ -7,7 +7,7 @@ extends RigidBody3D
 ## The object should have scale 1 to work properly!
 
 @export var activation_key: Key = KEY_NONE
-@export var hp: int = 100
+@export var hp: float = 100
 @export var ship: Ship
 @export var attach_points: Array[Node3D] = []
 
@@ -41,7 +41,7 @@ func _on_key(_delta: float) -> void:
 func _on_release(_delta: float) -> void:
 	pass
 
-func take_damage(damage: int) -> void:
+func _on_take_damage(damage: float) -> void:
 	hp -= damage
 	if hp <=0 :
 		_on_destroy()

@@ -135,7 +135,7 @@ func _position_module(intersection_position: Vector3, intersection_normal: Vecto
 func _on_module_clicked(clicked_module: Module) -> bool:
 	if clicked_module != null and not clicked_module.has_child_module():
 		clicked_module.hide()
-		
+
 		# set variables
 		active_module = clicked_module
 		active_module_ghost = clicked_module.create_ghost()

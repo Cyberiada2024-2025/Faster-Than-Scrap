@@ -93,8 +93,8 @@ func _check_colliders_in_range(point: Vector3, radius: float) -> Array:
 func _get_module_to_attach() -> Module:
 	var colliders = _check_colliders_in_range(mouse_position_3d, 1)
 	# remove held module and ghost from detected collisions
-	ListUtils.remove_by_field(colliders, "collider", active_module)
-	ListUtils.remove_by_field(colliders, "collider", active_module_ghost)
+	ArrayUtils.remove_by_field(colliders, "collider", active_module)
+	ArrayUtils.remove_by_field(colliders, "collider", active_module_ghost)
 
 	if colliders.size() == 0:
 		return null
@@ -204,8 +204,8 @@ func _get_intersection() -> Dictionary:
 # check whether the active module collides with other modules
 func _module_collides() -> bool:
 	var overlapping = active_module_ghost.get_overlapping_bodies()
-	ListUtils.remove(overlapping, attach_target)
-	ListUtils.remove(overlapping, active_module)
+	overlapping.erase(attach_target)
+	overlapping.erase(active_module)
 	return overlapping.size() > 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

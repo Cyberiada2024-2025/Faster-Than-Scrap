@@ -5,11 +5,17 @@ extends Node3D
 ## Base class for player and enemy
 
 @export var energy: float = 100
+
 @export var max_energy: float = 100
 
-# Called when the node enters the scene tree for the first time.
+@export var restore: float = 10
+
+
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
+
+func _process(delta: float) -> void:
+	energy += restore * delta
 
 ## Called when module wants to use the ship's energy [member Ship.energy].
 ## Returns true when it can afford that amount (and reduces the energy accordingly)

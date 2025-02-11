@@ -204,7 +204,7 @@ func _input(event: InputEvent):
 #        |     .      |
 #        +----/|------+
 #          | / V normal vector
-#   second |/ first raycast  
+#   second |/ first raycast
 #          .
 # find intersection point to snap module
 func _get_intersection() -> Dictionary:

@@ -14,6 +14,8 @@ script = ExtResource("1_if6ta")
 attach_points = [NodePath("AttachPoints/AttachPoint1")]
 sprite = NodePath("Sprite3D")
 label = NodePath("Label3D")
+healthy_color = Color(0, 1, 0, 1)
+dead_color = Color(1, 0, 0, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_gdxup")

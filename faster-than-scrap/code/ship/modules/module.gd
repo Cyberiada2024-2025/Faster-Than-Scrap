@@ -79,4 +79,3 @@ func on_key_change(key: Key) -> void:
 	activation_key = key
 	if(label != null):
 		label.text = OS.get_keycode_string(activation_key)
-	

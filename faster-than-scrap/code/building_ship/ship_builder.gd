@@ -133,7 +133,9 @@ func _position_module(intersection_position: Vector3, intersection_normal: Vecto
 
 ## return whether successfully grabed module
 func _on_module_clicked(clicked_module: Module) -> bool:
-	if clicked_module != null and not clicked_module.has_child_module():
+	if (clicked_module != null 
+		and not clicked_module.has_child_module() 
+		and clicked_module is not Cockpit): # cockpit is immovable
 		clicked_module.hide()
 
 		# set variables
@@ -151,8 +153,10 @@ func _on_lmb_release() -> void:
 		# if there is a attach target, reparent to it
 		if attach_target != null:
 			active_module.reparent(attach_target)
+			active_module.ship = attach_target.ship # copy the reference to the ship
 		else:
 			active_module.reparent(get_tree().get_root())
+			active_module.ship = null
 	# if exist delete ghost
 	if active_module_ghost != null:
 		active_module_ghost.queue_free()

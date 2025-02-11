@@ -210,7 +210,19 @@ func _get_intersection() -> Dictionary:
 		[active_module.get_rid()]
 	)  # ignore active_module
 	var intersection = space_state.intersect_ray(query)
-	return intersection
+
+	if intersection.size() == 0:
+		return intersection
+
+	var query2 = PhysicsRayQueryParameters3D.create(
+		mouse_position_3d,
+		mouse_position_3d - intersection.normal * 10,
+		~0,  # collision mask: ~0 means 0xFFFFFFFF (full collision mask)
+		[active_module.get_rid()]
+	)  # ignore active_module
+	var intersection2 = space_state.intersect_ray(query2)
+	
+	return intersection2
 
 # check whether the active module collides with other modules
 func _module_collides() -> bool:

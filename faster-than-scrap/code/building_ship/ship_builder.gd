@@ -37,11 +37,8 @@ func _get_mouse_3d_position():
 		)
 	)
 
-func _lmb_just_pressed(event: InputEvent) -> bool:
-	var pressed = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT
-	var just_pressed: bool = pressed and not lmb_was_pressed
-	lmb_was_pressed = pressed
-	return just_pressed
+func _lmb_just_pressed() -> bool:
+	return !lmb_was_pressed and lmb_is_pressed
 
 func _rmb_just_pressed(event: InputEvent) -> bool:
 	var pressed = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT
@@ -49,7 +46,13 @@ func _rmb_just_pressed(event: InputEvent) -> bool:
 	rmb_was_pressed = pressed
 	return just_pressed
 
-func _check_attach_point_index(event: InputEvent) -> void:
+# custom function for detecting mouse lmb state
+func _update_lmb_state(event: InputEvent) -> void:
+	lmb_was_pressed = lmb_is_pressed
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		lmb_is_pressed = event.is_pressed()
+
+func _update_attach_point_index(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			attach_point_index += 1
@@ -123,16 +126,17 @@ func _position_module(intersection_position: Vector3, intersection_normal: Vecto
 	)
 	active_module_ghost.global_position = intersection_position + global_space_offset
 
-func _on_module_clicked(clicked_module: Module) -> void:
+## return whether successfully grabed module
+func _on_module_clicked(clicked_module: Module) -> bool:
 	if clicked_module != null and not clicked_module.has_child_module():
-		var name = clicked_module.name  # godot renames to Node3D after reparenting :/
-		# change parent to root scene
-		clicked_module.reparent(get_tree().get_root())
-		clicked_module.name = name
+		clicked_module.hide()
+		
 		# set variables
 		active_module = clicked_module
 		active_module_ghost = clicked_module.create_ghost()
 		attach_point_index = 0
+		return true
+	return false
 
 func _on_lmb_release() -> void:
 	# if legal position, set the module's position
@@ -145,25 +149,27 @@ func _on_lmb_release() -> void:
 	# if exist delete ghost
 	if active_module_ghost != null:
 		active_module_ghost.queue_free()
+	active_module.show()
 	# clear module variables
 	active_module_ghost = null
 	active_module = null
 
 func _input(event: InputEvent):
+	_update_lmb_state(event)
 	_get_mouse_3d_position()
-	_check_attach_point_index(event)
+	_update_attach_point_index(event)
 
 	## TODO add some display in UI in which state the player is
 
 	match state:
 		State.NONE:
-			if _lmb_just_pressed(event):
+			if _lmb_just_pressed():
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
 					var clicked_module := _get_module_from_hit(hit)
-					_on_module_clicked(clicked_module)
-					state = State.DRAGGING
-					print("new state = dragging")
+					if _on_module_clicked(clicked_module):
+						state = State.DRAGGING
+						print("new state = dragging")
 			elif _rmb_just_pressed(event):
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
@@ -171,7 +177,7 @@ func _input(event: InputEvent):
 					state = State.SETTING_BUTTON
 					print("new state = setting button")
 		State.DRAGGING:
-			if _lmb_just_pressed(event):
+			if _lmb_just_pressed():
 				_on_lmb_release()
 				print("new state = none")
 				state = State.NONE

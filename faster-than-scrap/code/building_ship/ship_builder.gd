@@ -202,6 +202,7 @@ func _input(event: InputEvent):
 
 # find intersection point to snap module
 func _get_intersection() -> Dictionary:
+	# first find intersection with the attach target to find the face normal
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(
 		mouse_position_3d,
@@ -214,6 +215,7 @@ func _get_intersection() -> Dictionary:
 	if intersection.size() == 0:
 		return intersection
 
+	# now find the intersection using the face normal
 	var query2 = PhysicsRayQueryParameters3D.create(
 		mouse_position_3d,
 		mouse_position_3d - intersection.normal * 10,
@@ -222,7 +224,12 @@ func _get_intersection() -> Dictionary:
 	)  # ignore active_module
 	var intersection2 = space_state.intersect_ray(query2)
 	
-	return intersection2
+	if intersection2.size() == 0:
+		return intersection2
+	
+	if intersection2.collider == attach_target:
+		return intersection2
+	return {}
 
 # check whether the active module collides with other modules
 func _module_collides() -> bool:

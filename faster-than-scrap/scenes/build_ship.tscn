@@ -41,6 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 0)
 
 [node name="SquareMOdule2" type="RigidBody3D" parent="." node_paths=PackedStringArray("attach_points")]
+transform = Transform3D(0.772922, 0, -0.634501, 0, 1, 0, 0.634501, 0, 0.772922, 3, 0, 0)
 gravity_scale = 0.0
 script = ExtResource("3_kgbhb")
 attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2")]
@@ -57,4 +58,24 @@ shape = SubResource("BoxShape3D_lciky")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="AttachPoint2" type="Node3D" parent="SquareMOdule2/AttachPoints"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 0)
+
+[node name="SquareMOdule2" type="RigidBody3D" parent="SquareMOdule2" node_paths=PackedStringArray("attach_points")]
+transform = Transform3D(0.772922, 0, -0.634501, 0, 1, 0, 0.634501, 0, 0.772922, 3, 0, 0)
+gravity_scale = 0.0
+script = ExtResource("3_kgbhb")
+attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SquareMOdule2/SquareMOdule2"]
+mesh = SubResource("BoxMesh_ka4ql")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SquareMOdule2/SquareMOdule2"]
+shape = SubResource("BoxShape3D_lciky")
+
+[node name="AttachPoints" type="Node3D" parent="SquareMOdule2/SquareMOdule2"]
+
+[node name="AttachPoint1" type="Node3D" parent="SquareMOdule2/SquareMOdule2/AttachPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="AttachPoint2" type="Node3D" parent="SquareMOdule2/SquareMOdule2/AttachPoints"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 0)

@@ -70,7 +70,7 @@ func _change_value(input: float) -> void:
 	value = input
 	bar.value = value
 	
-	var temp: int = (int)(value)
+	var temp: int = int(value)
 	var str: String = ""
 	for i in 4:
 		str += String.num(temp % 10)

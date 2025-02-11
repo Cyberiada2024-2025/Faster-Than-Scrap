@@ -54,8 +54,7 @@ func _on_release(_delta: float) -> void:
 
 func take_damage(damage: int) -> void:
 	hp -= damage
-	sprite.modulate = lerp(dead_color, healthy_color, (float)(hp)/max_hp)
-	print(hp/max_hp)
+	sprite.modulate = lerp(dead_color, healthy_color, float(hp)/max_hp)
 	if hp <=0 :
 		_on_destroy()
 

@@ -200,6 +200,12 @@ func _input(event: InputEvent):
 				state = State.NONE
 				print("new state = none")
 
+#        +------------+
+#        |     .      |
+#        +----/|------+
+#          | / V normal vector
+#   second |/ first raycast  
+#          .
 # find intersection point to snap module
 func _get_intersection() -> Dictionary:
 	# first find intersection with the attach target to find the face normal

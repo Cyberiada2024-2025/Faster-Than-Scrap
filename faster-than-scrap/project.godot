@@ -15,9 +15,15 @@ run/main_scene="res://prefabs/environment/space_environment.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+
+[global_group]
+
+"affected by vortex"=""
+
 [autoload]
 
 GameManager="*res://code/Singletons/game_manager.gd"
+
 
 [display]
 
@@ -31,3 +37,4 @@ window/stretch/mode="canvas_items"
 [rendering]
 
 viewport/hdr_2d=true
+

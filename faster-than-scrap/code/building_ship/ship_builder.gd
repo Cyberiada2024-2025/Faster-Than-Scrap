@@ -37,23 +37,17 @@ func _get_mouse_3d_position():
 		)
 	)
 
-func _lmb_just_pressed():
-	return !lmb_was_pressed and lmb_is_pressed
-
-func _lmb_just_released():
-	return lmb_was_pressed and !lmb_is_pressed
+func _lmb_just_pressed(event: InputEvent) -> bool:
+	var pressed = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT
+	var just_pressed: bool = pressed and not lmb_was_pressed
+	lmb_was_pressed = pressed
+	return just_pressed
 
 func _rmb_just_pressed(event: InputEvent) -> bool:
 	var pressed = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT
 	var just_pressed: bool = pressed and not rmb_was_pressed
 	rmb_was_pressed = pressed
 	return just_pressed
-
-# custom function for detecting mouse lmb state
-func _check_lmb_state(event: InputEvent) -> void:
-	lmb_was_pressed = lmb_is_pressed
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		lmb_is_pressed = event.is_pressed()
 
 func _check_attach_point_index(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
@@ -156,7 +150,6 @@ func _on_lmb_release() -> void:
 	active_module = null
 
 func _input(event: InputEvent):
-	_check_lmb_state(event)
 	_get_mouse_3d_position()
 	_check_attach_point_index(event)
 
@@ -164,7 +157,7 @@ func _input(event: InputEvent):
 
 	match state:
 		State.NONE:
-			if _lmb_just_pressed():
+			if _lmb_just_pressed(event):
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
 					var clicked_module := _get_module_from_hit(hit)
@@ -178,7 +171,7 @@ func _input(event: InputEvent):
 					state = State.SETTING_BUTTON
 					print("new state = setting button")
 		State.DRAGGING:
-			if _lmb_just_released():
+			if _lmb_just_pressed(event):
 				_on_lmb_release()
 				print("new state = none")
 				state = State.NONE

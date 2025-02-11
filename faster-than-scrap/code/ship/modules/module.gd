@@ -4,10 +4,12 @@ extends RigidBody3D
 
 
 ## Base class for all modules
+## The object should have scale 1 to work properly!
 
 @export var activation_key: Key = KEY_NONE
 @export var hp: float = 100
 @export var ship: Ship
+@export var attach_points: Array[Node3D] = []
 
 var was_key_pressed: bool = false
 
@@ -61,3 +63,31 @@ func _explode() -> void:
 
 func detachable() -> bool:
 	return true
+
+
+func has_child_module() -> bool:
+	for child in get_children():
+		if child is Module:
+			return true
+	return false
+
+
+## Returns the node3D which is the center of the attach point.
+## Foward vector of that returned node indicates the forward rotation of the module
+## when attached to that point
+func get_attach_point(index: int) -> Node3D:
+	if attach_points.size() == 0:
+		printerr("MODULE HAS NO ATTACH POINTS")
+	return attach_points[index % attach_points.size()]
+
+
+## Create an Area3D object which is a copy of module tree
+## with the only difference of a root not being a module (rigidbody3d).
+## All children are copied!
+func create_ghost() -> Area3D:
+	var ghost := Area3D.new()
+	for child in get_children():
+		var child_copy = child.duplicate()
+		ghost.add_child(child_copy)
+	get_tree().root.add_child(ghost)
+	return ghost

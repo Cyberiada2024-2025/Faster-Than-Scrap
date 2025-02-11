@@ -50,7 +50,6 @@ attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/A
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SquareMOdule2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 mesh = SubResource("BoxMesh_ka4ql")
-skeleton = NodePath("../../SquareMOdule2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SquareMOdule2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012301, -0.00674105, 1.99174)

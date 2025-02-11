@@ -1,25 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://b66go7dtdv2m1"]
+[gd_scene load_steps=7 format=3 uid="uid://b66go7dtdv2m1"]
 
 [ext_resource type="Script" path="res://code/ship/modules/module.gd" id="1_if6ta"]
 [ext_resource type="Script" path="res://code/damage/damage_controller.gd" id="2_hf3tu"]
 [ext_resource type="Script" path="res://code/damage/damageable.gd" id="3_w4c6n"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_e0ull"]
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_gdxup"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_8rabm"]
 
-[node name="RigidBody3D" type="RigidBody3D" node_paths=PackedStringArray("attach_points")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_0b53g"]
+
+[node name="Module" type="RigidBody3D" node_paths=PackedStringArray("attach_points")]
 gravity_scale = 0.0
 script = ExtResource("1_if6ta")
 attach_points = [NodePath("AttachPoints/AttachPoint1")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_gdxup")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_e0ull")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_8rabm")
@@ -30,3 +27,14 @@ skeleton = NodePath("")
 [node name="AttachPoint1" type="Node3D" parent="AttachPoints"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.5)
 metadata/_edit_group_ = true
+
+[node name="DamageController" type="Node" parent="."]
+script = ExtResource("2_hf3tu")
+
+[node name="Damageable" type="Area3D" parent="DamageController"]
+script = ExtResource("3_w4c6n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable"]
+shape = SubResource("SphereShape3D_0b53g")
+
+[connection signal="damaged" from="DamageController" to="." method="_on_take_damage"]

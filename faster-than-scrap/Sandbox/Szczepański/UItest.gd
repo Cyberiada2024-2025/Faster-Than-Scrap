@@ -2,6 +2,7 @@ extends Node
 
 @export var ship: Ship
 @export var energy_bar: ResourceBar
+@export var module: Module
 
 var timer: float
 var wait: float = 0.2
@@ -24,4 +25,7 @@ func _process(delta: float) -> void:
 		index = (index + 1) % sizes.size()
 		energy_bar._on_max_change(sizes[index])
 		ship.use_energy(-(sizes[index] - ship.energy))
+		timer = wait
+	elif(timer <= 0 && Input.is_key_pressed(KEY_Q)):
+		module.take_damage(10)
 		timer = wait

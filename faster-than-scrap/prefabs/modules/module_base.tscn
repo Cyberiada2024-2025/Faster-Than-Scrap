@@ -1,11 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://b66go7dtdv2m1"]
+[gd_scene load_steps=5 format=3 uid="uid://b66go7dtdv2m1"]
 
 [ext_resource type="Script" path="res://code/ship/modules/module.gd" id="1_if6ta"]
+[ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/UI/Minimap/Placeholder/Enemy.png" id="2_3n0f2"]
+[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="3_vguyv"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_8rabm"]
 
-[node name="ModuleBase" type="Node3D"]
+[node name="ModuleBase" type="Node3D" node_paths=PackedStringArray("sprite", "label")]
 script = ExtResource("1_if6ta")
+sprite = NodePath("Sprite3D")
+label = NodePath("Label3D")
+healthy_color = Color(0, 1, 0, 1)
+dead_color = Color(1, 0, 0, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_8rabm")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, -0.4, 0, 0.4, -1.74846e-08, 0, 0, 0)
+layers = 2
+texture = ExtResource("2_3n0f2")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.109732, 0)
+layers = 2
+double_sided = false
+modulate = Color(0, 0, 0, 1)
+text = "SPACe"
+font = ExtResource("3_vguyv")
+font_size = 55
+outline_size = 0
+uppercase = true
+autowrap_mode = 1
+justification_flags = 0
+width = 175.0

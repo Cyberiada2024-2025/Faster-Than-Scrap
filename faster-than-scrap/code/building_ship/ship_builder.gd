@@ -26,8 +26,8 @@ var lmb_is_pressed: bool = false
 var rmb_was_pressed: bool = false
 
 # ---------------mouse ---------------------------------------------
-func _get_mouse_3d_position():
-	var camera = $Camera3D
+func _update_mouse_3d_position():
+	var camera = get_viewport().get_camera_3d()
 	var position_2d = get_viewport().get_mouse_position()
 	var drop_plane = Plane(Vector3(0, 1, 0), 0)
 	mouse_position_3d = (
@@ -67,7 +67,7 @@ func _get_module_from_hit(hit:Dictionary) -> Module:
 	return null
 
 func _get_raycast_hit(event: InputEvent) -> Dictionary:
-	var camera3d = $Camera3D
+	var camera3d = get_viewport().get_camera_3d()
 	var from = camera3d.project_ray_origin(event.position)
 	var to = from + camera3d.project_ray_normal(event.position) * RAY_LENGTH
 	var space_state = get_world_3d().direct_space_state
@@ -156,7 +156,7 @@ func _on_lmb_release() -> void:
 
 func _input(event: InputEvent):
 	_update_lmb_state(event)
-	_get_mouse_3d_position()
+	_update_mouse_3d_position()
 	_update_attach_point_index(event)
 
 	## TODO add some display in UI in which state the player is

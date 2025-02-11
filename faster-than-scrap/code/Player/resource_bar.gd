@@ -85,7 +85,7 @@ func _change_value(input: float) -> void:
 		wait_timer = 0
 
 ## Call when user tries to use more resource then they have
-## Will result in red flashig
+## Will result in red flashing
 func _on_warning() -> void:
 	animator.play(warning_anim)
 

@@ -200,7 +200,7 @@ func _input(event: InputEvent):
 func _get_intersection() -> Dictionary:
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(
-		active_module_ghost.global_position,
+		mouse_position_3d,
 		attach_target.global_position,
 		~0,  # collision mask: ~0 means 0xFFFFFFFF (full collision mask)
 		[active_module.get_rid()]
@@ -219,7 +219,8 @@ func _module_collides() -> bool:
 func _process(_delta: float) -> void:
 	# if dragging
 	if state == State.DRAGGING and active_module != null:
-		active_module_ghost.global_position = mouse_position_3d
+		_position_module(mouse_position_3d, Vector3.BACK)
+		#active_module_ghost.global_position = mouse_position_3d
 		# check if can attach to anything
 		attach_target = _get_module_to_attach()
 		if attach_target == null:

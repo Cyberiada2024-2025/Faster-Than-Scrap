@@ -1,21 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpxkxwkuyh6l2"]
 
 [ext_resource type="Script" path="res://code/Player/player_ship.gd" id="1_ddodb"]
-[ext_resource type="PackedScene" uid="uid://3xoku32llsaa" path="res://prefabs/modules/cockpit.tscn" id="2_4lw14"]
+[ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="2_4lw14"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="3_a4hie"]
 
-[node name="PlayerShipExample" type="Node3D" node_paths=PackedStringArray("cockpit", "modules")]
+[node name="PlayerShipExample" type="Node3D" node_paths=PackedStringArray("cockpit")]
 script = ExtResource("1_ddodb")
 cockpit = NodePath("Cockpit")
-modules = [NodePath("Cockpit/ModuleBase"), NodePath("Cockpit/ModuleBase/ModuleBase"), NodePath("Cockpit/ModuleBase/ModuleBase/ModuleBase")]
 
-[node name="Cockpit" parent="." instance=ExtResource("2_4lw14")]
+[node name="Cockpit" parent="." node_paths=PackedStringArray("ship") instance=ExtResource("2_4lw14")]
+ship = NodePath("..")
 
-[node name="ModuleBase" parent="Cockpit" instance=ExtResource("3_a4hie")]
+[node name="ModuleBase" parent="Cockpit" node_paths=PackedStringArray("ship") instance=ExtResource("3_a4hie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.12175)
+ship = NodePath("../..")
 
-[node name="ModuleBase" parent="Cockpit/ModuleBase" instance=ExtResource("3_a4hie")]
+[node name="ModuleBase2" parent="Cockpit/ModuleBase" node_paths=PackedStringArray("ship") instance=ExtResource("3_a4hie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05367, 0, -0.0354288)
+ship = NodePath("../../..")
 
-[node name="ModuleBase" parent="Cockpit/ModuleBase/ModuleBase" instance=ExtResource("3_a4hie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2459, 0, -0.0354288)
+[node name="ModuleBase3" parent="Cockpit/ModuleBase" node_paths=PackedStringArray("ship") instance=ExtResource("3_a4hie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19223, 0, -0.0708575)
+ship = NodePath("../../..")

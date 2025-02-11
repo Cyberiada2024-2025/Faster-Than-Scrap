@@ -19,8 +19,7 @@ extends Node3D
 var was_key_pressed: bool = false
 
 func _ready() -> void:
-	if(label != null):
-		label.text = OS.get_keycode_string(activation_key)
+	on_key_change(activation_key)
 	take_damage(0)
 
 func _process(_delta: float) -> void:
@@ -75,3 +74,9 @@ func _explode() -> void:
 
 func detachable() -> bool:
 	return true
+
+func on_key_change(key: Key) -> void:
+	activation_key = key
+	if(label != null):
+		label.text = OS.get_keycode_string(activation_key)
+	

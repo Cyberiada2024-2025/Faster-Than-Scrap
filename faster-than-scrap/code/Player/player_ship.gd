@@ -3,15 +3,17 @@ class_name PlayerShip
 extends Ship
 
 @export var cockpit: Cockpit
-@export var energy_bar: ResourceBar
+@export var hud: Hud
 
 ## All modules of the ship (to prevent checking the tree hierarchy).
 ## Mostly used for building phase
 @export var modules: Array[Module] = []
 
+var energy_bar: ResourceBar
 
 func _ready() -> void:
 	super()
+	energy_bar = hud.energy_bar
 	GameManager.new_game_state.connect(on_game_change_state)
 	GameManager.player_ship = self
 	energy_bar._on_max_change(max_energy)

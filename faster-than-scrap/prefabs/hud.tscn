@@ -1,8 +1,21 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckx4pgnacau0i"]
+[gd_scene load_steps=17 format=3 uid="uid://ckx4pgnacau0i"]
 
-[ext_resource type="Script" path="res://code/Player/resource_bar.gd" id="1_npww4"]
-[ext_resource type="Texture2D" uid="uid://b2wcjw2km4vjf" path="res://art/textures/UI/battery2.png" id="2_31qis"]
-[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="3_4ule1"]
+[ext_resource type="Script" path="res://code/Player/hud.gd" id="1_x65cj"]
+[ext_resource type="Script" path="res://code/Player/resource_bar.gd" id="2_1s2ai"]
+[ext_resource type="Texture2D" uid="uid://b2wcjw2km4vjf" path="res://art/textures/UI/battery2.png" id="3_6m4ql"]
+[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="4_5fqad"]
+
+[sub_resource type="Environment" id="Environment_s7i6o"]
+background_mode = 1
+background_color = Color(0, 0.0392157, 0.0196078, 1)
+ambient_light_source = 1
+reflected_light_source = 1
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 2.21
+glow_strength = 0.72
+glow_bloom = 0.55
+glow_blend_mode = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cg4l6"]
 bg_color = Color(0, 0, 0, 1)
@@ -78,22 +91,52 @@ _data = {
 bg_color = Color(1, 1, 0, 1)
 corner_detail = 1
 
-[sub_resource type="FontVariation" id="FontVariation_d77by"]
-base_font = ExtResource("3_4ule1")
+[sub_resource type="FontVariation" id="FontVariation_lfv0r"]
+base_font = ExtResource("4_5fqad")
 
 [sub_resource type="LabelSettings" id="LabelSettings_iqvll"]
-font = SubResource("FontVariation_d77by")
+font = SubResource("FontVariation_lfv0r")
 font_size = 8
 font_color = Color(0, 1, 0.227451, 1)
 shadow_size = 0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xp0th"]
-viewport_path = NodePath("MainCamera/ModuleViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_5rj5o"]
+viewport_path = NodePath("ModuleViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_nt3i1"]
-viewport_path = NodePath("MainCamera/MinimapViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_77x52"]
+viewport_path = NodePath("MinimapViewport")
 
-[node name="HUD" type="Control"]
+[node name="MainCamera" type="Camera3D" node_paths=PackedStringArray("energy_bar")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+cull_mask = 1048569
+script = ExtResource("1_x65cj")
+energy_bar = NodePath("HUD/Energy Bar")
+
+[node name="ModuleViewport" type="SubViewport" parent="."]
+use_hdr_2d = true
+canvas_cull_mask = 4293918722
+
+[node name="ModuleCamera" type="Camera3D" parent="ModuleViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+cull_mask = 2
+environment = SubResource("Environment_s7i6o")
+projection = 1
+fov = 37.8493
+size = 10.0
+
+[node name="MinimapViewport" type="SubViewport" parent="."]
+use_hdr_2d = true
+canvas_cull_mask = 4293918724
+
+[node name="MinimapCamera" type="Camera3D" parent="MinimapViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+cull_mask = 4
+environment = SubResource("Environment_s7i6o")
+projection = 1
+fov = 37.8493
+size = 100.0
+
+[node name="HUD" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,7 +144,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Energy Bar" type="Control" parent="." node_paths=PackedStringArray("bar", "bar1", "overlay", "numbers", "animator")]
+[node name="Energy Bar" type="Control" parent="HUD" node_paths=PackedStringArray("bar_main", "bar_under", "overlay", "numbers", "animator")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
@@ -109,7 +152,7 @@ offset_top = 640.0
 offset_right = 8.0
 offset_bottom = 640.0
 size_flags_horizontal = 0
-script = ExtResource("1_npww4")
+script = ExtResource("2_1s2ai")
 change_speed = 500.0
 change_wait = 1.2
 base_max_value = 100.0
@@ -120,13 +163,13 @@ bar_base_height = 30
 bar_max_height = 605
 bar_base_pos = -55
 bar_max_pos = -625
-bar = NodePath("ProgressBar2/ProgressBar")
-bar1 = NodePath("ProgressBar2")
+bar_main = NodePath("ProgressBar2/ProgressBar")
+bar_under = NodePath("ProgressBar2")
 overlay = NodePath("ProgressBar2/Overlay")
 numbers = NodePath("ProgressBar2/Overlay/Display")
 animator = NodePath("ProgressBar2/AnimationPlayer")
 
-[node name="ProgressBar2" type="ProgressBar" parent="Energy Bar"]
+[node name="ProgressBar2" type="ProgressBar" parent="HUD/Energy Bar"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = -55.0
@@ -139,12 +182,12 @@ value = 1.0
 fill_mode = 3
 show_percentage = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Energy Bar/ProgressBar2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/Energy Bar/ProgressBar2"]
 libraries = {
 "": SubResource("AnimationLibrary_46h7k")
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="Energy Bar/ProgressBar2"]
+[node name="ProgressBar" type="ProgressBar" parent="HUD/Energy Bar/ProgressBar2"]
 layout_mode = 2
 offset_right = 30.0
 offset_bottom = 30.0
@@ -155,7 +198,7 @@ value = 1.0
 fill_mode = 3
 show_percentage = false
 
-[node name="Overlay" type="NinePatchRect" parent="Energy Bar/ProgressBar2"]
+[node name="Overlay" type="NinePatchRect" parent="HUD/Energy Bar/ProgressBar2"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -166,13 +209,13 @@ offset_right = 905.0
 offset_bottom = 731.0
 grow_horizontal = 2
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_31qis")
+texture = ExtResource("3_6m4ql")
 patch_margin_left = 475
 patch_margin_top = 200
 patch_margin_right = 475
 patch_margin_bottom = 300
 
-[node name="Display" type="Label" parent="Energy Bar/ProgressBar2/Overlay"]
+[node name="Display" type="Label" parent="HUD/Energy Bar/ProgressBar2/Overlay"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 7
@@ -191,7 +234,7 @@ text = "0010"
 label_settings = SubResource("LabelSettings_iqvll")
 horizontal_alignment = 2
 
-[node name="Module Display" type="Control" parent="."]
+[node name="Module Display" type="Control" parent="HUD"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 98.0
@@ -199,7 +242,7 @@ offset_top = 383.0
 offset_right = 98.0
 offset_bottom = 383.0
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HUD"]
 layout_mode = 0
 offset_left = 74.0
 offset_top = 510.0
@@ -209,13 +252,13 @@ stretch_mode = 1
 alignment_horizontal = 0
 alignment_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer"]
+[node name="TextureRect" type="TextureRect" parent="HUD/AspectRatioContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-texture = SubResource("ViewportTexture_xp0th")
+texture = SubResource("ViewportTexture_5rj5o")
 expand_mode = 2
 
-[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="."]
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="HUD"]
 layout_mode = 2
 offset_left = 1013.0
 offset_top = 509.0
@@ -225,8 +268,8 @@ stretch_mode = 1
 alignment_horizontal = 0
 alignment_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer2"]
+[node name="TextureRect" type="TextureRect" parent="HUD/AspectRatioContainer2"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-texture = SubResource("ViewportTexture_nt3i1")
+texture = SubResource("ViewportTexture_77x52")
 expand_mode = 2

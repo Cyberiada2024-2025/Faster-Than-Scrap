@@ -63,29 +63,27 @@ func _process(delta: float) -> void:
 	elif(value1 > value):
 		value1 -= change_speed * delta
 		bar1.value = value1
-	pass
-	
+
 func _change_value(input: float) -> void:
 	wait_timer = change_wait
 	value = input
 	bar.value = value
-	
+
 	var temp: int = int(value)
 	var str: String = ""
 	for i in 4:
 		str += String.num(temp % 10)
 		temp /= 10
 	numbers.text = str.reverse()
-	
+
 	if(value > value1):
 		value1 = value
 		bar1.value = value1
 		wait_timer = 0
-	pass
-	
+
 func _on_warning() -> void:
 	animator.play(warning_anim)
-	
+
 func _on_max_change(new_max_value: float) -> void:
 	max_value = new_max_value
 	value = min(value, max_value)

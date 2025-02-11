@@ -35,7 +35,7 @@ func _process(_delta: float) -> void:
 			_on_key_press(_delta)
 			_on_key(_delta)
 			was_key_pressed = true
-	
+
 	if(label != null):
 		label.rotation.y = -global_rotation.y
 # virtual functions

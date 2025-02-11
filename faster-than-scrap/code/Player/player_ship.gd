@@ -29,12 +29,12 @@ func on_game_change_state(new_state : GameState.State) -> void:
 			pass
 		GameState.State.MAIN_MENU:
 			pass
-			
+
 ## Called whenever the energy amount changes.
 func _on_energy_change() -> void:
 	super()
 	energy_bar._change_value(energy)
-	
+
 func use_energy(amount: float) -> bool:
 	if(energy<amount):
 		energy_bar._on_warning()

@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdv44kd5tg1va"]
+[gd_scene load_steps=10 format=3 uid="uid://bdv44kd5tg1va"]
 
 [ext_resource type="Script" path="res://Sandbox/Mikulski/asteroids_test.gd" id="1_g0ax4"]
 [ext_resource type="PackedScene" uid="uid://bsnhw7nbjlr54" path="res://prefabs/environment/asteroid.tscn" id="2_jtlwr"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6b47d"]
+bounce = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhohk"]
 albedo_color = Color(0, 0, 1, 1)
@@ -12,6 +15,15 @@ size = Vector3(1, 1, 50)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uijbs"]
 size = Vector3(1, 1, 50)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ulcxc"]
+bounce = 1.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a14ve"]
+bounce = 1.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ime8b"]
+bounce = 1.0
 
 [node name="asteroids test" type="Node3D"]
 script = ExtResource("1_g0ax4")
@@ -66,7 +78,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49793, 0, 0)
 
 [node name="border" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6622, 0, 0)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_6b47d")
 gravity_scale = 0.0
+freeze = true
 linear_damp = 100.0
 angular_damp = 100.0
 
@@ -78,7 +98,9 @@ shape = SubResource("BoxShape3D_uijbs")
 
 [node name="border2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.33295, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_ulcxc")
 gravity_scale = 0.0
+freeze = true
 linear_damp = 100.0
 angular_damp = 100.0
 
@@ -90,7 +112,9 @@ shape = SubResource("BoxShape3D_uijbs")
 
 [node name="border3" type="RigidBody3D" parent="."]
 transform = Transform3D(-0.0383704, 0, -0.999264, 0, 1, 0, 0.999264, 0, -0.0383704, -1.7155, 0, 9.48552)
+physics_material_override = SubResource("PhysicsMaterial_a14ve")
 gravity_scale = 0.0
+freeze = true
 linear_damp = 100.0
 angular_damp = 100.0
 
@@ -102,7 +126,9 @@ shape = SubResource("BoxShape3D_uijbs")
 
 [node name="border4" type="RigidBody3D" parent="."]
 transform = Transform3D(0.026142, 0, -0.999658, 0, 1, 0, 0.999658, 0, 0.026142, -1.42185, 0, -9.53245)
+physics_material_override = SubResource("PhysicsMaterial_ime8b")
 gravity_scale = 0.0
+freeze = true
 linear_damp = 100.0
 angular_damp = 100.0
 

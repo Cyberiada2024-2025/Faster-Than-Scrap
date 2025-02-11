@@ -22,3 +22,4 @@ GameManager="*res://code/Singletons/game_manager.gd"
 [global_group]
 
 "affected by vortex"=""
+"take damege from asteroids"="objects that take damage from being hit by asteroids"

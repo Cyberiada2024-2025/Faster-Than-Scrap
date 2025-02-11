@@ -81,6 +81,7 @@ func detachable() -> bool:
 func on_key_change(key: Key) -> void:
 	activation_key = key
 	if(label != null):
+		label.text = OS.get_keycode_string(activation_key)
 
 
 func has_child_module() -> bool:
@@ -109,4 +110,3 @@ func create_ghost() -> Area3D:
 		ghost.add_child(child_copy)
 	get_tree().root.add_child(ghost)
 	return ghost
-

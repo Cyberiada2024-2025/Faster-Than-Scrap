@@ -14,18 +14,14 @@ ship = NodePath("..")
 
 [node name="ModuleBase" parent="Cockpit" node_paths=PackedStringArray("ship") instance=ExtResource("3_a4hie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.12175)
-
 activation_key = 65
-
 ship = NodePath("../..")
 
-
-[node name="ModuleBase2" parent="Cockpit/ModuleBase" node_paths=PackedStringArray("ship") instance=ExtResource("3_a4hie")]
+[node name="ModuleBase2" parent="Cockpit/ModuleBase" instance=ExtResource("3_a4hie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05367, 0, -0.0354288)
-
 activation_key = 32
 
-[node name="ModuleBase" parent="Cockpit/ModuleBase/ModuleBase" instance=ExtResource("3_a4hie")]
+[node name="Cockpit_ModuleBase_ModuleBase#ModuleBase" parent="." instance=ExtResource("3_a4hie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2459, 0, -0.0354288)
 activation_key = 4194325
 
@@ -35,4 +31,3 @@ layers = 4
 modulate = Color(0, 1, 0, 1)
 double_sided = false
 texture = ExtResource("4_e655p")
-

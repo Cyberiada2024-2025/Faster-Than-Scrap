@@ -216,9 +216,12 @@ func _process(_delta: float) -> void:
 		# check if can attach to anything
 		attach_target = _get_module_to_attach()
 		if attach_target == null:
-			# legal because player wants to detach the active module
-			_display_legal()
-			legal = true
+			if _module_collides():
+				# Module colliding with other module
+				_display_illegal()
+				legal = false
+			else:
+				legal = true
 			return
 
 		# find the point on the attach target where can the module be snapped

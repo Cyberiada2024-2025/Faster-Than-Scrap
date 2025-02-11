@@ -64,6 +64,9 @@ func _process(delta: float) -> void:
 		value_under -= change_speed * delta
 		bar_under.value = value_under
 
+## Call when value displayed by the bar has changed
+## Will change bar and numeric display values
+## and begin animating underbar
 func _change_value(input: float) -> void:
 	wait_timer = change_wait
 	value_main = input
@@ -81,9 +84,13 @@ func _change_value(input: float) -> void:
 		bar_under.value = value_under
 		wait_timer = 0
 
+## Call when user tries to use more resource then they have
+## Will result in red flashig
 func _on_warning() -> void:
 	animator.play(warning_anim)
 
+## Call when maximum value displayed by bar has changed
+## Will result in bar getting scaled up or down
 func _on_max_change(new_max_value: float) -> void:
 	max_value = new_max_value
 	value_main = min(value_main, max_value)

@@ -223,10 +223,10 @@ func _get_intersection() -> Dictionary:
 		[active_module.get_rid()]
 	)  # ignore active_module
 	var intersection2 = space_state.intersect_ray(query2)
-	
+
 	if intersection2.size() == 0:
 		return intersection2
-	
+
 	if intersection2.collider == attach_target:
 		return intersection2
 	return {}

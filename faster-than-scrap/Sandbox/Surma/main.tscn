@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjyrb2fperaxy"]
+
+[ext_resource type="PackedScene" uid="uid://kpc2w8wxljon" path="res://Sandbox/Surma/player.tscn" id="1_xdkxq"]
+[ext_resource type="PackedScene" uid="uid://rk0gm82fa8wn" path="res://Sandbox/Surma/prototype_enemy.tscn" id="2_ebm1s"]
+[ext_resource type="Script" path="res://Sandbox/Surma/player.gd" id="2_enufl"]
+[ext_resource type="Script" path="res://Sandbox/Surma/prototype_enemy.gd" id="3_7pljk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_61bff"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_4bkig"]
+sky_material = SubResource("ProceduralSkyMaterial_61bff")
+
+[sub_resource type="Environment" id="Environment_wg0w7"]
+background_mode = 2
+sky = SubResource("Sky_4bkig")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 1.34747, 2.81295, -2.73302)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wg0w7")
+
+[node name="Player" parent="." instance=ExtResource("1_xdkxq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00517011, 0, 0.494352)
+script = ExtResource("2_enufl")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.541517, 0.84069, 0, -0.84069, 0.541517, -0.00517011, 46.3397, 32.047)
+
+[node name="PrototypeEnemy" parent="." instance=ExtResource("2_ebm1s")]
+transform = Transform3D(0.451796, 0, -0.892121, 0, 1, 0, 0.892121, 0, 0.451796, -34.3554, 0, -31.0194)
+script = ExtResource("3_7pljk")
+
+[node name="Station" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3448, 0, -9.30956)
+use_collision = true
+inner_radius = 14.284
+outer_radius = 9.345
+sides = 7
+ring_sides = 3

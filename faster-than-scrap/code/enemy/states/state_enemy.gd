@@ -2,10 +2,10 @@ class_name StateEnemy extends State
 
 
 const IDLE = "Idle"
-#const CHASE = "Chase" # may be too similar to aggresive
 const AGGRESIVE = "Aggresive"
 const DEFENSIVE = "Defensive"
 
+# uncomment after prototyping
 var enemy: Ship
 
 func _ready() -> void:

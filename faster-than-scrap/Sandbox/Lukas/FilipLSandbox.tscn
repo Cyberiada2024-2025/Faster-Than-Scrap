@@ -1,15 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://2wj0k5c222sf"]
+[gd_scene load_steps=10 format=3 uid="uid://2wj0k5c222sf"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_ibr8p"]
 [ext_resource type="Material" uid="uid://css7je76l8eb7" path="res://art/materials/cabin/cabin_material_3d.tres" id="2_ln5n7"]
 [ext_resource type="ArrayMesh" uid="uid://d3jn6wcbnxlbs" path="res://art/models/cabin/Cabin_Model.obj" id="3_h3rkr"]
-[ext_resource type="PackedScene" uid="uid://bj4t8dhdyq0uc" path="res://art/models/cabin/cabin_collision_shape_3d.tscn" id="4_cs1n1"]
 [ext_resource type="Material" uid="uid://bbmx3djnt7c0u" path="res://art/materials/thruster/thruster_material_3d.tres" id="5_pecqx"]
 [ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/models/thruster/thruster.obj" id="6_30nrl"]
-[ext_resource type="PackedScene" uid="uid://4ckafkjtahq2" path="res://art/models/thruster/thruster_collision_shape_3d.tscn" id="8_0safq"]
 [ext_resource type="Material" uid="uid://u2jcla7cl0d0" path="res://art/materials/frame/frame_material_3d.tres" id="8_1ep80"]
+[ext_resource type="Material" uid="uid://cqu6fkku70tof" path="res://art/materials/frame1/frame1_material_3d.tres" id="8_n05gu"]
+[ext_resource type="ArrayMesh" uid="uid://ilin5br3b8v2" path="res://art/models/frame1/frame1.obj" id="9_14y4a"]
 [ext_resource type="ArrayMesh" uid="uid://dyggmpc21gmcw" path="res://art/models/frame/frame.obj" id="9_obgit"]
-[ext_resource type="PackedScene" uid="uid://bdf0j5nl5kxnc" path="res://art/models/frame/FrameCollisionShape.tscn" id="10_oj7e7"]
 
 [node name="FilipLSandbox" type="Node3D"]
 
@@ -18,30 +17,30 @@
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 
 [node name="CabinModel" type="MeshInstance3D" parent="CharacterBody3D"]
+visible = false
 material_override = ExtResource("2_ln5n7")
 mesh = ExtResource("3_h3rkr")
 skeleton = NodePath("../..")
 
-[node name="CabinCollisionShape3D" parent="CharacterBody3D" instance=ExtResource("4_cs1n1")]
-visible = false
-
 [node name="Thruster" type="MeshInstance3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.29198)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.97821)
+visible = false
 material_override = ExtResource("5_pecqx")
 mesh = ExtResource("6_30nrl")
 skeleton = NodePath("../..")
 
-[node name="ThrusterCollisionShape3D" parent="CharacterBody3D" instance=ExtResource("8_0safq")]
-visible = false
-
 [node name="frame" type="MeshInstance3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.83038)
+visible = false
 material_override = ExtResource("8_1ep80")
 mesh = ExtResource("9_obgit")
 skeleton = NodePath("../..")
 
-[node name="frame_collider" parent="CharacterBody3D" instance=ExtResource("10_oj7e7")]
-visible = false
+[node name="Frame2" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.68267)
+material_override = ExtResource("8_n05gu")
+mesh = ExtResource("9_14y4a")
+skeleton = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, -0.0186809)

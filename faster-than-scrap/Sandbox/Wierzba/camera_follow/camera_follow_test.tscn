@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bhce4swpinjsd"]
 
-[ext_resource type="Script" path="res://Sandbox/Wierzba/camera follow/move_on_press.gd" id="1_t3v2k"]
+[ext_resource type="Script" path="res://Sandbox/Wierzba/camera_follow/move_on_press.gd" id="1_t3v2k"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="2_gibu4"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="2_ig3gf"]
 [ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="3_koici"]
@@ -18,8 +18,7 @@ script = ExtResource("1_t3v2k")
 [node name="Cockpit" parent="MoveOnPress" instance=ExtResource("3_koici")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.69122)
 
-[node name="MainCamera" parent="." node_paths=PackedStringArray("playerShip") instance=ExtResource("2_gibu4")]
-playerShip = NodePath("../MoveOnPress")
+[node name="MainCamera" parent="." instance=ExtResource("2_gibu4")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22573, 0, 0)

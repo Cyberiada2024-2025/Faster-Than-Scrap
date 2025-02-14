@@ -1,9 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://kpc2w8wxljon"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_urb5s"]
-size = Vector3(2.36914, 1, 1.93127)
+[gd_scene format=3 uid="uid://kpc2w8wxljon"]
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
+floor_stop_on_slope = false
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -17,7 +15,3 @@ size = Vector3(2, 1, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, 0.898717)
 operation = 2
 sides = 48
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.468079)
-shape = SubResource("BoxShape3D_urb5s")

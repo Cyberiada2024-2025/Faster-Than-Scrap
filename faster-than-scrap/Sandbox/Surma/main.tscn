@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjyrb2fperaxy"]
+[gd_scene load_steps=10 format=3 uid="uid://cjyrb2fperaxy"]
 
 [ext_resource type="PackedScene" uid="uid://kpc2w8wxljon" path="res://Sandbox/Surma/player.tscn" id="1_xdkxq"]
 [ext_resource type="PackedScene" uid="uid://rk0gm82fa8wn" path="res://Sandbox/Surma/prototype_enemy.tscn" id="2_ebm1s"]
@@ -18,6 +18,10 @@ sky = SubResource("Sky_4bkig")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d0fo4"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bybxr"]
+
 [node name="Main" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -29,10 +33,15 @@ environment = SubResource("Environment_wg0w7")
 
 [node name="Player" parent="." instance=ExtResource("1_xdkxq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00517011, 0, 0.494352)
+slide_on_ceiling = false
+floor_block_on_wall = false
+floor_snap_length = 0.0
+platform_on_leave = 2
 script = ExtResource("2_enufl")
+speed = 600
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.541517, 0.84069, 0, -0.84069, 0.541517, -0.00517011, 46.3397, 32.047)
+transform = Transform3D(1, 0, 0, 0, 0.541517, 0.84069, 0, -0.84069, 0.541517, -0.00517011, 27.6107, 17.4563)
 
 [node name="PrototypeEnemy" parent="." instance=ExtResource("2_ebm1s")]
 transform = Transform3D(0.451796, 0, -0.892121, 0, 1, 0, 0.892121, 0, 0.451796, -34.3554, 0, -31.0194)
@@ -45,3 +54,15 @@ inner_radius = 14.284
 outer_radius = 9.345
 sides = 7
 ring_sides = 3
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1138)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(15.242, 0, 0, 0, 15.242, 0, 0, 0, 15.242, 0.181769, -0.11172, -0.108109)
+shape = SubResource("CapsuleShape3D_d0fo4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(8.965, 0, 0, 0, -8.30126, -3.38532, 0, 3.38532, -8.30126, 0, 0, 0)
+mesh = SubResource("CylinderMesh_bybxr")
+skeleton = NodePath("")

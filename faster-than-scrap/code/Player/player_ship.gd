@@ -9,14 +9,17 @@ extends Ship
 ## Mostly used for building phase
 @export var modules: Array[Module] = []
 
-var energy_bar: ResourceBar
+signal energy_change
+signal energy_max_change
+signal energy_warning
 
+func _enter_tree() -> void:
+	GameManager.player_ship = self
+	
 func _ready() -> void:
 	super()
-	energy_bar = hud.energy_bar
 	GameManager.new_game_state.connect(on_game_change_state)
-	GameManager.player_ship = self
-	energy_bar._on_max_change(max_energy)
+	energy_max_change.emit(max_energy)
 	_on_energy_change()
 
 func on_game_change_state(new_state : GameState.State) -> void:
@@ -35,9 +38,9 @@ func on_game_change_state(new_state : GameState.State) -> void:
 ## Called whenever the energy amount changes.
 func _on_energy_change() -> void:
 	super()
-	energy_bar._change_value(energy)
+	energy_change.emit(energy)
 
 func use_energy(amount: float) -> bool:
 	if(energy<amount):
-		energy_bar._on_warning()
+		energy_warning.emit()
 	return super(amount)

@@ -2,6 +2,10 @@ class_name PlayerShip
 
 extends Ship
 
+signal energy_change
+signal energy_max_change
+signal energy_warning
+
 @export var cockpit: Cockpit
 @export var hud: Hud
 
@@ -9,13 +13,9 @@ extends Ship
 ## Mostly used for building phase
 @export var modules: Array[Module] = []
 
-signal energy_change
-signal energy_max_change
-signal energy_warning
-
 func _enter_tree() -> void:
 	GameManager.player_ship = self
-	
+
 func _ready() -> void:
 	super()
 	GameManager.new_game_state.connect(on_game_change_state)

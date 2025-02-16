@@ -8,13 +8,15 @@ extends Resource
 
 enum MissionType { DEFEND, GET_ITEM, ESCAPE }
 enum MissionState { IN_PROGRESS, FINISHED, FAILED }
+enum Priority{MAIN_QUEST, SIDE_QUEST}
 
 var state: MissionState = MissionState.IN_PROGRESS
 var about : String = ""
 var type : MissionType
 var difficulty : int
+var priority: Priority = Priority.MAIN_QUEST
 
-func _init(about: String, type: MissionType, difficulty: int):
+func set_about(about: String, type: MissionType, difficulty: int):
 	self.about = about
 	self.type = type
 	self.difficulty = difficulty

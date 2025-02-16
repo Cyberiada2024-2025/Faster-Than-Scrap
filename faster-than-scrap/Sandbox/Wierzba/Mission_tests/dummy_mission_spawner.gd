@@ -1,3 +1,5 @@
+class_name DummyMissionSpawner
+
 extends Node
 
 @export var mission_to_spawn: Mission

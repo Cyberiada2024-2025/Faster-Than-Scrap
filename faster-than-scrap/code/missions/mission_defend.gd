@@ -3,26 +3,26 @@ class_name MissionTimedDefend
 extends Mission
 
 var defendable: Node3D
-var defendable_position: Vector3=Vector3.ZERO
+@export var defendable_position: Vector3=Vector3.ZERO
 @export var time_to_defend: float = 60
 var failed = false
 
 
 func setup() -> void:
 	super()
-	var scene_root = Engine.get_main_loop().root
+
 	# create defendable object
-	defendable = MeshInstance3D.new() # TODO swap to instantiating the defendable asset
+	# TODO swap to instantiating the defendable asset f.e.: ally ship
+	defendable = MeshInstance3D.new()
 	defendable.mesh = BoxMesh.new() 
-	scene_root.add_child(defendable)
+	MissionManager.add_child(defendable)
 
 	# add timer
 	var timer := Timer.new()
-	timer.wait_time = time_to_defend
-	## add to tree
-	timer.start()
-	timer.timeout.connect(check_finish)
-	scene_root.add_child(timer)
+	# add to tree
+	timer.timeout.connect(success)
+	MissionManager.add_child(timer)
+	timer.start(time_to_defend)
 
 	# position it
 	defendable.global_position = defendable_position
@@ -40,4 +40,5 @@ func check_finish() -> void:
 ## called by the timer
 ## to signal the success of the mission
 func success() -> void:
+	print("succesfuly defended!")
 	state = MissionState.FINISHED

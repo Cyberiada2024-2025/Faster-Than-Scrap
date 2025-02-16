@@ -30,6 +30,9 @@ var lmb_was_pressed: bool = false
 var lmb_is_pressed: bool = false
 var rmb_was_pressed: bool = false
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 # ---------------mouse ---------------------------------------------
 func _update_mouse_3d_position():
 	var camera = get_viewport().get_camera_3d()

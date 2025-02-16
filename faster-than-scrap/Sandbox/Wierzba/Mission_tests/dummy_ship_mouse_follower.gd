@@ -5,7 +5,7 @@ extends PlayerShip
 func _ready() -> void:
 	GameManager.player_ship = self
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var camera = get_viewport().get_camera_3d()
 	var position_2d = get_viewport().get_mouse_position()
 	var drop_plane = Plane(Vector3(0, 1, 0), 0)

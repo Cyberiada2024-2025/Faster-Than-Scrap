@@ -2,9 +2,10 @@ class_name MissionTimedDefend
 
 extends Mission
 
-var defendable: Node3D
 @export var defendable_position: Vector3=Vector3.ZERO
 @export var time_to_defend: float = 60
+
+var defendable: Node3D
 var failed = false
 
 
@@ -14,7 +15,7 @@ func setup() -> void:
 	# create defendable object
 	# TODO swap to instantiating the defendable asset f.e.: ally ship
 	defendable = MeshInstance3D.new()
-	defendable.mesh = BoxMesh.new() 
+	defendable.mesh = BoxMesh.new()
 	MissionManager.add_child(defendable)
 
 	# add timer
@@ -32,7 +33,7 @@ func check_finish() -> void:
 	if _ended():
 		return
 
-	# check if defendable is deleted (destroyed) 
+	# check if defendable is deleted (destroyed)
 	# or removed from the tree (if the object wasn't removed from the memory)
 	if not is_instance_valid(defendable) or not defendable.is_inside_tree():
 		state = MissionState.FAILED

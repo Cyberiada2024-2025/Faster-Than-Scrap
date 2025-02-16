@@ -7,7 +7,7 @@ var missions: Array[Mission] = []
 func reset() -> void:
 	missions = []
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if main_mission_finished:
 		return
 

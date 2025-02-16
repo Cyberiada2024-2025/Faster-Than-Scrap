@@ -2,12 +2,12 @@ class_name MissionGetItem
 
 extends Mission
 
+@export var item_position: Vector3 = Vector3.ZERO
+@export var item_target_position: Vector3 = Vector3.ZERO
+
 var from: Node3D
 var to: Node3D
 var taken: bool = false
-
-@export var item_position: Vector3 = Vector3.ZERO
-@export var item_target_position: Vector3 = Vector3.ZERO
 
 func setup() -> void:
 	super()
@@ -16,7 +16,7 @@ func setup() -> void:
 	from = MeshInstance3D.new() # TODO swap to instantiating the item asset
 	to = MeshInstance3D.new()
 	from.mesh = BoxMesh.new()
-	to.mesh = BoxMesh.new() 
+	to.mesh = BoxMesh.new()
 
 	MissionManager.add_child(from)
 	MissionManager.add_child(to)

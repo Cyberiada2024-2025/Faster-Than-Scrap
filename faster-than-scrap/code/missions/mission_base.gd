@@ -3,8 +3,8 @@ class_name Mission
 extends Resource
 
 ## Base class for mission which can be added/displayed in the mission selector.
-## When the game is loaded (start of the fly ship phase) the mission 
-##should be initialized, by calling setup() 
+## When the game is loaded (start of the fly ship phase) the mission
+##should be initialized, by calling setup()
 
 enum MissionType { DEFEND, GET_ITEM, ESCAPE }
 enum MissionState { IN_PROGRESS, FINISHED, FAILED }

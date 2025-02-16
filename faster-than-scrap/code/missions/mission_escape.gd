@@ -2,15 +2,16 @@ class_name MissionEscape
 
 extends Mission
 
-var portal: Node3D
 @export var portal_position: Vector3 = Vector3.ZERO
+
+var portal: Node3D
 
 func setup() -> void:
 	super()
 
 	# create escape object
 	portal = MeshInstance3D.new() # TODO swap to instantiating the portal asset
-	portal.mesh = BoxMesh.new() 
+	portal.mesh = BoxMesh.new()
 	MissionManager.add_child(portal)
 
 	# position it

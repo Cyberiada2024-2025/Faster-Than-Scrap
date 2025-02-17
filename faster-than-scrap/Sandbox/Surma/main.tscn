@@ -44,11 +44,11 @@ speed = 600
 transform = Transform3D(1, 0, 0, 0, 0.541517, 0.84069, 0, -0.84069, 0.541517, -0.00517011, 27.6107, 17.4563)
 
 [node name="PrototypeEnemy" parent="." instance=ExtResource("2_ebm1s")]
-transform = Transform3D(0.451796, 0, -0.892121, 0, 1, 0, 0.892121, 0, 0.451796, -34.3554, 0, -31.0194)
+transform = Transform3D(0.451796, 0, -0.892121, 0, 1, 0, 0.892121, 0, 0.451796, -33.9968, 1.52588e-05, -31.1474)
 script = ExtResource("3_7pljk")
 
 [node name="Station" type="CSGTorus3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3448, 0, -9.30956)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.9555, 0, 2.40049)
 use_collision = true
 inner_radius = 14.284
 outer_radius = 9.345
@@ -56,7 +56,7 @@ sides = 7
 ring_sides = 3
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1138)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.8752, 0, -30.3291)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(15.242, 0, 0, 0, 15.242, 0, 0, 0, 15.242, 0.181769, -0.11172, -0.108109)

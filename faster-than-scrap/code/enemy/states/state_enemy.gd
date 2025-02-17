@@ -20,11 +20,14 @@ func _ready() -> void:
 func move_target_spotted(min_range_to_player: int, target: Ship) -> void:
 	var vector_to_target = target.global_position - enemy.global_position
 	var direction = vector_to_target.normalized()
-	
+	var target_basis: Basis
 	if vector_to_target.length() > min_range_to_player:
-		enemy.velocity = enemy.speed * enemy.basis.z * -1
-		enemy.move_and_slide()
 		# frame dependent
 		# https://forum.godotengine.org/t/slowly-interpolate-look-at-function-for-my-enemy/100750/3
-		var target_basis: Basis = Basis.looking_at(direction)
-		enemy.basis = enemy.basis.slerp(target_basis, 0.04)
+		target_basis = Basis.looking_at(direction)
+	else:
+		target_basis = Basis.looking_at(-1 * direction)	
+		
+	enemy.basis = enemy.basis.slerp(target_basis, 0.04)
+	enemy.velocity = enemy.speed * enemy.basis.z * -1
+	enemy.move_and_slide()		

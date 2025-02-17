@@ -15,9 +15,8 @@ script = ExtResource("1_6juta")
 
 [node name="Aggressive" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("2_ptaw0")
-speed = 200.0
 
-[node name="Node" type="Node" parent="StateMachineEnemy"]
+[node name="Defensive" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("3_qoxwt")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]

@@ -5,19 +5,26 @@ const IDLE = "Idle"
 const AGGRESIVE = "Aggresive"
 const DEFENSIVE = "Defensive"
 
-# uncomment after prototyping
 var enemy: Ship
+
+# player or another npc
+var target: Ship 
 
 func _ready() -> void:
 	await owner.ready
 	enemy = owner as Ship	# getting a typed reference to controlled ship
 	assert(enemy != null, "The enemy state needs the owner to be an Enemy node")
+	# Change for closest target once we have allied NPC
+	target = get_tree().get_first_node_in_group("Player")
 
 func move_target_spotted(min_range_to_player: int, target: Ship) -> void:
 	var vector_to_target = target.global_position - enemy.global_position
 	var direction = vector_to_target.normalized()
 	
 	if vector_to_target.length() > min_range_to_player:
-		enemy.velocity = direction*enemy.speed;
+		enemy.velocity = enemy.speed * enemy.basis.z * -1
 		enemy.move_and_slide()
-	enemy.look_at(target.position)
+		# frame dependent
+		# https://forum.godotengine.org/t/slowly-interpolate-look-at-function-for-my-enemy/100750/3
+		var target_basis: Basis = Basis.looking_at(direction)
+		enemy.basis = enemy.basis.slerp(target_basis, 0.04)

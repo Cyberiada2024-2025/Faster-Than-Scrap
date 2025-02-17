@@ -1,15 +1,10 @@
 extends StateEnemy
 class_name EnemyAggressive
 
-# player or another npc
-@export var target: Ship 
-
-# should inherit speed from Ship node
-@export var speed: float
-@export var min_range_to_player: float
+@export var min_range_to_player:=10
 func enter(_previous_state_path: String, _data := {}) -> void:
-	#set parameters
-	target = get_tree().get_first_node_in_group("Player")
+	# Change for closest target once we have allied NPC
+	target = get_tree().get_first_node_in_group("Player")	
 
 func state_physics_update(delta: float) -> void:
 	move_target_spotted(min_range_to_player, target)

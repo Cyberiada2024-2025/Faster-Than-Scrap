@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://rk0gm82fa8wn"]
+[gd_scene load_steps=5 format=3 uid="uid://rk0gm82fa8wn"]
 
 [ext_resource type="Script" path="res://code/enemy/state_machine_enemy.gd" id="1_6juta"]
 [ext_resource type="Script" path="res://code/enemy/states/aggressive.gd" id="2_ptaw0"]
+[ext_resource type="Script" path="res://code/enemy/states/defensive.gd" id="3_qoxwt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qicyb"]
 size = Vector3(2.14648, 1, 2.06055)
@@ -9,14 +10,15 @@ size = Vector3(2.14648, 1, 2.06055)
 [node name="PrototypeEnemy" type="CharacterBody3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="StateMachineEnemy" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachineEnemy" type="Node" parent="."]
 script = ExtResource("1_6juta")
-initial_state = NodePath("Aggressive")
 
 [node name="Aggressive" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("2_ptaw0")
 speed = 200.0
-max_distance = 8.0
+
+[node name="Node" type="Node" parent="StateMachineEnemy"]
+script = ExtResource("3_qoxwt")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 

@@ -26,6 +26,7 @@ window/stretch/mode="canvas_items"
 [global_group]
 
 "affected by vortex"=""
+"take damege from colisions"="objects that take contact damage"
 
 [layer_names]
 

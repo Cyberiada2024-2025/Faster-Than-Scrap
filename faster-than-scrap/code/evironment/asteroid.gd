@@ -6,16 +6,12 @@ extends RigidBody3D
 @export var self_damage_multiplier : float = 0.3
 @export_group('StartValues')
 @export var START_SPEED_RANGE : float = 10.0
-@export var START_SIZE_RANGE : float = 10.0
 
 
 func _ready() -> void:
 	self.linear_velocity.x += randf_range(-START_SPEED_RANGE, START_SPEED_RANGE)
 	self.linear_velocity.z += randf_range(-START_SPEED_RANGE, START_SPEED_RANGE)
 
-
-func _process(delta: float) -> void:
-	pass
 
 
 func take_damage(damage: int) -> void:

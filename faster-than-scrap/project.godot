@@ -19,7 +19,20 @@ config/icon="res://icon.svg"
 
 GameManager="*res://code/Singletons/game_manager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 "affected by vortex"=""
 "take damege from colisions"="objects that take contact damage"
+
+[layer_names]
+
+3d_render/layer_2="Player Ship Sprite"
+3d_render/layer_3="Minimap Sprite"
+
+[rendering]
+
+viewport/hdr_2d=true

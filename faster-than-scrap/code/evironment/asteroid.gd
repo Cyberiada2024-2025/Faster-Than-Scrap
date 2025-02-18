@@ -26,6 +26,7 @@ func _on_destroy() -> void:
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("take damege from colisions"):
 		var direction : Vector3 = self.position.direction_to(body.position).abs()
-		var damage : int = self.scale.x * damage_multiplier * (self.linear_velocity + body.linear_velocity).abs().dot(direction)
+		var v_damage : int = (self.linear_velocity + body.linear_velocity).abs().dot(direction)
+		var damage : int = self.scale.x * damage_multiplier * v_damage
 		body.take_damage(damage)
 		self.take_damage(self_damage_multiplier*damage)

@@ -9,7 +9,8 @@ bounce = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_ix2ef"]
 
-[node name="Asteroid" type="RigidBody3D" groups=["take damege from asteroids"]]
+[node name="Asteroid" type="RigidBody3D" groups=["take damege from colisions"]]
+axis_lock_linear_y = true
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_gro5k")
 gravity_scale = 0.0

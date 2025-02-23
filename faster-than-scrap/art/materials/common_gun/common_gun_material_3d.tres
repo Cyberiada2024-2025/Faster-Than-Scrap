@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://ba5cisvxw5t1"]
+
+[ext_resource type="Texture2D" uid="uid://2gjyanubtuq0" path="res://art/textures/common_gun/common_gun_Albedo.png" id="1_36rwf"]
+[ext_resource type="Texture2D" uid="uid://cfbuewvtj0krm" path="res://art/textures/common_gun/common_gun_AO.png" id="2_bxoj4"]
+[ext_resource type="Texture2D" uid="uid://d17p4g3iue8i4" path="res://art/textures/common_gun/common_gun_Metalness.png" id="3_paa76"]
+[ext_resource type="Texture2D" uid="uid://bbplkfi81cc5b" path="res://art/textures/common_gun/common_gun_Normal.png" id="4_0imec"]
+[ext_resource type="Texture2D" uid="uid://b08thixotsobt" path="res://art/textures/common_gun/common_gun_Roughness.png" id="5_5v7t4"]
+
+[resource]
+albedo_texture = ExtResource("1_36rwf")
+metallic = 1.0
+metallic_texture = ExtResource("3_paa76")
+roughness_texture = ExtResource("5_5v7t4")
+normal_enabled = true
+normal_texture = ExtResource("4_0imec")
+ao_enabled = true
+ao_texture = ExtResource("2_bxoj4")

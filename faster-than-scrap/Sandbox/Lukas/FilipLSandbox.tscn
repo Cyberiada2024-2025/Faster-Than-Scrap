@@ -1,14 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://2wj0k5c222sf"]
+[gd_scene load_steps=5 format=3 uid="uid://2wj0k5c222sf"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_ibr8p"]
-[ext_resource type="Material" uid="uid://css7je76l8eb7" path="res://art/materials/cabin/cabin_material_3d.tres" id="2_ln5n7"]
-[ext_resource type="ArrayMesh" uid="uid://d3jn6wcbnxlbs" path="res://art/models/cabin/Cabin_Model.obj" id="3_h3rkr"]
-[ext_resource type="Material" uid="uid://bbmx3djnt7c0u" path="res://art/materials/thruster/thruster_material_3d.tres" id="5_pecqx"]
-[ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/models/thruster/thruster.obj" id="6_30nrl"]
-[ext_resource type="Material" uid="uid://u2jcla7cl0d0" path="res://art/materials/frame/frame_material_3d.tres" id="8_1ep80"]
-[ext_resource type="Material" uid="uid://cqu6fkku70tof" path="res://art/materials/frame1/frame1_material_3d.tres" id="8_n05gu"]
-[ext_resource type="ArrayMesh" uid="uid://ilin5br3b8v2" path="res://art/models/frame1/frame1.obj" id="9_14y4a"]
-[ext_resource type="ArrayMesh" uid="uid://dyggmpc21gmcw" path="res://art/models/frame/frame.obj" id="9_obgit"]
+[ext_resource type="ArrayMesh" uid="uid://lwlx588xi1eg" path="res://art/models/common_gun/common_gun.obj" id="2_1qq42"]
+[ext_resource type="Material" uid="uid://ba5cisvxw5t1" path="res://art/materials/common_gun/common_gun_material_3d.tres" id="2_dbkgl"]
+[ext_resource type="PackedScene" uid="uid://m3rttyasvtxn" path="res://art/models/common_gun/common_gun_collider.tscn" id="8_sv3jf"]
 
 [node name="FilipLSandbox" type="Node3D"]
 
@@ -16,46 +11,13 @@
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 
-[node name="CabinModel" type="MeshInstance3D" parent="CharacterBody3D"]
-material_override = ExtResource("2_ln5n7")
-mesh = ExtResource("3_h3rkr")
+[node name="CommonGun" type="MeshInstance3D" parent="CharacterBody3D"]
+material_override = ExtResource("2_dbkgl")
+mesh = ExtResource("2_1qq42")
 skeleton = NodePath("../..")
 
-[node name="Thruster" type="MeshInstance3D" parent="CharacterBody3D"]
-transform = Transform3D(0.996137, 0, -0.0878164, 0, 1, 0, 0.0878164, 0, 0.996137, 0, 0, -2.978)
-material_override = ExtResource("5_pecqx")
-mesh = ExtResource("6_30nrl")
-skeleton = NodePath("../..")
-
-[node name="Thruster2" type="MeshInstance3D" parent="CharacterBody3D"]
-transform = Transform3D(0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, 0, 0, 3.319)
-material_override = ExtResource("5_pecqx")
-mesh = ExtResource("6_30nrl")
-skeleton = NodePath("../..")
-
-[node name="frame" type="MeshInstance3D" parent="CharacterBody3D"]
-transform = Transform3D(0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, -0.0287442, 0, 1.875)
-material_override = ExtResource("8_1ep80")
-mesh = ExtResource("9_obgit")
-skeleton = NodePath("../..")
-
-[node name="frame2" type="MeshInstance3D" parent="CharacterBody3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.92799, 0, 0)
-material_override = ExtResource("8_1ep80")
-mesh = ExtResource("9_obgit")
-skeleton = NodePath("../..")
-
-[node name="Frame2" type="MeshInstance3D" parent="CharacterBody3D"]
-transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 0, 0, -1.68267)
-material_override = ExtResource("8_n05gu")
-mesh = ExtResource("9_14y4a")
-skeleton = NodePath("../..")
-
-[node name="Frame3" type="MeshInstance3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5254, 0, 0)
-material_override = ExtResource("8_n05gu")
-mesh = ExtResource("9_14y4a")
-skeleton = NodePath("../..")
+[node name="CommonGunCollider" parent="CharacterBody3D" instance=ExtResource("8_sv3jf")]
+transform = Transform3D(0.999923, 0, 0.012409, 0, 1, 0, -0.012409, 0, 0.999923, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, -0.0186809)

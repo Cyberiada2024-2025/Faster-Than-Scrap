@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://taxlqo87sp7s"]
+
+[ext_resource type="Script" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_18ma3"]
+[ext_resource type="Script" path="res://code/weapons/constant_fire_weapon.gd" id="2_5rd74"]
+[ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/UI/Minimap/Placeholder/Enemy.png" id="3_ogaox"]
+[ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/test_projectile.tscn" id="3_ywc6w"]
+[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="4_hly24"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l4rl7"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4o7rk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ly0db"]
+
+[node name="Thruster" type="RigidBody3D" node_paths=PackedStringArray("weapon", "attach_points", "sprite", "label")]
+gravity_scale = 0.0
+script = ExtResource("1_18ma3")
+weapon = NodePath("ConstantFireWeapon")
+recoil_force = 5.0
+attach_points = [NodePath("AttachPoints/AttachPoint")]
+sprite = NodePath("Sprite3D")
+label = NodePath("Label3D")
+
+[node name="Mesh" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_l4rl7")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(0.6, 0, 0, 0, -1.04907e-08, -0.6, 0, 0.24, -2.62268e-08, 0, 0, -0.929963)
+mesh = SubResource("CylinderMesh_4o7rk")
+skeleton = NodePath("../..")
+
+[node name="ConstantFireWeapon" type="Node3D" parent="."]
+script = ExtResource("2_5rd74")
+projectile = ExtResource("3_ywc6w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0114746)
+shape = SubResource("CapsuleShape3D_ly0db")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.45, 0, 0, 0, -1.96701e-08, 0.45, 0, -0.45, -1.96701e-08, 0, 0, 0)
+layers = 2
+modulate = Color(0, 0, 0, 1)
+double_sided = false
+texture = ExtResource("3_ogaox")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0209912, 0)
+layers = 2
+double_sided = false
+texture_filter = 0
+modulate = Color(0, 0, 0, 1)
+font = ExtResource("4_hly24")
+font_size = 64
+outline_size = 0
+uppercase = true
+autowrap_mode = 3
+justification_flags = 161
+width = 200.0
+
+[node name="AttachPoints" type="Node3D" parent="."]
+
+[node name="AttachPoint" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.985704)

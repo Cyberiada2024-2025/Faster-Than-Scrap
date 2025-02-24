@@ -12,8 +12,7 @@ func _process(delta: float) -> void:
 
 	if active_projectile != null:
 		if ship.use_energy(energy_cost * delta):
-			pass
-			# todo add recoil
+			recoil.emit(delta)
 		else:
 			try_deactivate()
 

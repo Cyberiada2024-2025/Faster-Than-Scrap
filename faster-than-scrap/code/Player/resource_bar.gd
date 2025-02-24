@@ -55,6 +55,11 @@ var value_under = 1
 ## timer counting down waiting time
 var wait_timer: float = 0
 
+func _ready() -> void:
+	var player_ship = GameManager.player_ship
+	player_ship.energy_change.connect(_change_value)
+	player_ship.energy_max_change.connect(_change_value)
+	player_ship.energy_warning.connect(_change_value)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -32,7 +32,7 @@ func load_build_ship_scene()->void:
 func _detach_ship():
 	if GameManager.player_ship != null:
 		# detach the ship
-		GameManager.player_ship.get_parent_node_3d().remove_child(
+		GameManager.player_ship.get_parent().remove_child(
 			GameManager.player_ship
 		)
 		GameManager.player_ship.hud = null

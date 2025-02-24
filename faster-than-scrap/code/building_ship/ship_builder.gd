@@ -168,7 +168,7 @@ func _on_lmb_release() -> void:
 func _remove_joint() -> void:
 	if active_module.joint != null:
 		active_module.joint.queue_free()
-		active_module.joint = null	
+		active_module.joint = null
 
 func _add_joint() -> void:
 	_remove_joint()
@@ -177,7 +177,7 @@ func _add_joint() -> void:
 	active_module.joint.name = "Joint"
 	active_module.joint.node_a = active_module.get_path()
 	active_module.joint.node_b = attach_target.get_path()
-	
+
 func _attach_module() -> void:
 	active_module.reparent(attach_target)
 	active_module.set_ship_reference(attach_target.ship)  # copy the reference to the ship

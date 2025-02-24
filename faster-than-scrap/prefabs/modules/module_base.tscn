@@ -8,7 +8,7 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_8rabm"]
 
-[node name="RigidBody3D" type="RigidBody3D" node_paths=PackedStringArray("attach_points", "sprite", "label")]
+[node name="BaseModule" type="RigidBody3D" node_paths=PackedStringArray("attach_points", "sprite", "label")]
 gravity_scale = 0.0
 script = ExtResource("1_if6ta")
 attach_points = [NodePath("AttachPoints/AttachPoint1")]
@@ -33,6 +33,7 @@ metadata/_edit_group_ = true
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.45, 0, 0, 0, -1.96701e-08, 0.45, 0, -0.45, -1.96701e-08, 0, 0, 0)
 layers = 2
+modulate = Color(0, 1, 0, 1)
 double_sided = false
 texture = ExtResource("2_xaq42")
 
@@ -42,7 +43,6 @@ layers = 2
 double_sided = false
 texture_filter = 0
 modulate = Color(0, 0, 0, 1)
-text = "A"
 font = ExtResource("3_qv8fx")
 font_size = 64
 outline_size = 0

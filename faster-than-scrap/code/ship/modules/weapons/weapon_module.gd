@@ -32,3 +32,7 @@ func _on_release(_delta: float) -> void:
 func _recoil(delta: float) -> void:
 	apply_force(weapon.global_basis.z * recoil_force * delta)
 	pass
+
+func set_ship_reference(ship: Ship) -> void:
+	super(ship)
+	weapon.ship = ship

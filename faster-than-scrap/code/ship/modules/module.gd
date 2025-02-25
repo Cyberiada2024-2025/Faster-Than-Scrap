@@ -11,6 +11,10 @@ extends RigidBody3D
 @export var hp: int = 100
 @export var ship: Ship
 @export var attach_points: Array[Node3D] = []
+## joint for connecting two modules (rigidbodies).
+## It is not supposed to be added in prefab!
+## It should only be set in debug ships!
+@export var joint: Generic6DOFJoint3D
 
 @export var sprite: Sprite3D
 @export var label: Label3D
@@ -90,6 +94,8 @@ func has_child_module() -> bool:
 			return true
 	return false
 
+func set_ship_reference(ship: Ship) -> void:
+	self.ship = ship
 
 ## Returns the node3D which is the center of the attach point.
 ## Foward vector of that returned node indicates the forward rotation of the module

@@ -2,6 +2,9 @@ class_name PlayerShip
 
 extends Ship
 
+## Extension of Ship class.
+## Supposed to be used only by player.
+
 @export var cockpit: Cockpit
 @export var hud: Hud
 

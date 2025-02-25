@@ -41,9 +41,9 @@ func _on_key(_delta: float) -> void:
 func _on_release(_delta: float) -> void:
 	pass
 
-func _on_take_damage(damage: float) -> void:
-	hp -= damage
-	if hp <=0 :
+func _on_take_damage(damage: Damage) -> void:
+	hp -= damage.value
+	if hp <= 0:
 		_on_destroy()
 
 ## Destroy self and detach children

@@ -11,7 +11,7 @@ extends Node
 ## Emitted when any of the child [Damageable] nodes takes damage.
 ## The signal is emitted at most once per frame,
 ## and contains all damage that should be applied for that frame.
-signal damaged(damage: float)
+signal damaged(damage: Damage)
 
 enum DamageMode {
 	## When multiple [Damageable] nodes take damage from the same source,
@@ -46,7 +46,7 @@ func _ready():
 			child.damaged.connect(_add_damage)
 
 
-func _add_damage(damage: float, source: Node):
+func _add_damage(damage: Damage, source: Node):
 	if source in _damage:
 		_damage[source].append(damage)
 	else:
@@ -57,19 +57,19 @@ func _process(_delta):
 	if Engine.is_editor_hint():
 		return
 
-	var total_damage: float = 0
+	var total_damage: Damage = Damage.new(0)
 	for source in _damage:
 		var damage_list = _damage[source]
 		match _damage_mode:
 			DamageMode.LOWEST:
-				total_damage += damage_list.min()
+				total_damage = total_damage.add(ArrayUtils.min_custom(damage_list, Damage.compare))
 			DamageMode.HIGHEST:
-				total_damage += damage_list.max()
+				total_damage = total_damage.add(ArrayUtils.max_custom(damage_list, Damage.compare))
 			DamageMode.ALL:
 				for damage in damage_list:
-					total_damage += damage
+					total_damage = total_damage.add(damage)
 
-	if total_damage > 0:
+	if total_damage.value > 0:
 		damaged.emit(total_damage)
 		_damage = {}
 

@@ -7,7 +7,7 @@ extends Area3D
 ## For other collisions (e.g. projectiles), use [DamageRaycast3D].
 
 ## Signal emitted everytime this node applies damage to a [Damageable] node.
-signal damage_applied(damage: float, target: Damageable)
+signal damage_applied(damage: Damage, target: Damageable)
 
 enum DamageType {
 	## The damage will be applied only to [Damageable] nodes that have just entered the area.
@@ -24,7 +24,7 @@ enum DamageType {
 
 ## How much damage does the area deal to [Damageable] nodes.
 ## If [member _damage_type] is set to [code]ON_STAY[/code], specifies damage per second.
-@export var _damage: float
+@export var _damage: Damage
 
 ## If set to true, this node will be destroyed immediately after applying damage.
 @export var _die_on_hit: bool = false
@@ -40,10 +40,10 @@ func _ready():
 func _process(delta):
 	if _damage_type == DamageType.ON_STAY:
 		for area in _colliding_areas:
-			_apply_damage(_damage * delta, area)
+			_apply_damage(_damage.multiply(delta), area)
 
 
-func _apply_damage(damage: float, target: Damageable) -> void:
+func _apply_damage(damage: Damage, target: Damageable) -> void:
 	target.take_damage(damage, self)
 	damage_applied.emit(damage, target)
 	if _die_on_hit:

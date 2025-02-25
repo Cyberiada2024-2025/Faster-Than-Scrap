@@ -37,12 +37,8 @@ func _detach_ship():
 	GameManager.player_ship.get_parent().remove_child(
 		GameManager.player_ship
 	)
+	# hud is deleted as any node in the scene
 
-	# delete hud if exists
-	if GameManager.player_ship.hud == null:
-		return
-	GameManager.player_ship.hud.queue_free()
-	GameManager.player_ship.hud = null
 
 ## attach the ship to the scene tree
 func _attach_ship_with_hud():

@@ -10,7 +10,6 @@ signal energy_max_change
 signal energy_warning
 
 @export var cockpit: Cockpit
-@export var hud: Hud
 
 ## All modules of the ship (to prevent checking the tree hierarchy).
 ## Mostly used for building phase

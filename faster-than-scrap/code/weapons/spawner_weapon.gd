@@ -11,7 +11,7 @@ func try_activate() -> Projectile:
 
 	_current_cooldown = cooldown
 	ship.use_energy(energy_cost)
-	# todo: add recoil to the ship
+	recoil.emit(1)
 
 	var new_projectile = _spawn_projectile()
 	new_projectile.transform = global_transform

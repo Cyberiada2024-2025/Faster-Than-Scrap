@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://bbmx3djnt7c0u"]
+
+[ext_resource type="Texture2D" uid="uid://bhdlsnb6ul7qp" path="res://art/textures/thruster/thruster_Albedo.png" id="1_pbeft"]
+[ext_resource type="Texture2D" uid="uid://cg80rdh7wwt5t" path="res://art/textures/thruster/thruster_AO.png" id="2_r10oy"]
+[ext_resource type="Texture2D" uid="uid://canafk8pmnshp" path="res://art/textures/thruster/thruster_Metalness.png" id="3_hsgaq"]
+[ext_resource type="Texture2D" uid="uid://ck63baxmws3s5" path="res://art/textures/thruster/thruster_Normal.png" id="4_2b741"]
+[ext_resource type="Texture2D" uid="uid://cpl2q83jmsnq6" path="res://art/textures/thruster/thruster_Roughness.png" id="5_wlcv8"]
+
+[resource]
+albedo_texture = ExtResource("1_pbeft")
+metallic = 1.0
+metallic_texture = ExtResource("3_hsgaq")
+roughness_texture = ExtResource("5_wlcv8")
+normal_enabled = true
+normal_texture = ExtResource("4_2b741")
+ao_enabled = true
+ao_texture = ExtResource("2_r10oy")

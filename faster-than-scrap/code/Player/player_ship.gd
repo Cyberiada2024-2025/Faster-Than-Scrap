@@ -2,6 +2,9 @@ class_name PlayerShip
 
 extends Ship
 
+## Extension of Ship class.
+## Supposed to be used only by player.
+
 signal energy_change
 signal energy_max_change
 signal energy_warning

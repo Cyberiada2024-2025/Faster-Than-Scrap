@@ -9,6 +9,7 @@ extends Node3D
 enum State {NONE, DRAGGING, SETTING_BUTTON}
 
 const RAY_LENGTH = 1000.0
+const JOINT_PREFAB = preload("res://prefabs/modules/joint.tscn")
 
 ## the mask of checked colliders when checking if there are modules near the mouse
 @export var collision_mask: int = 1
@@ -29,8 +30,6 @@ var mouse_position_3d: Vector3 = Vector3.ZERO
 var lmb_was_pressed: bool = false
 var lmb_is_pressed: bool = false
 var rmb_was_pressed: bool = false
-
-const joint_prefab = preload("res://prefabs/modules/joint.tscn")
 
 # ---------------mouse ---------------------------------------------
 func _update_mouse_3d_position():
@@ -174,7 +173,7 @@ func _remove_joint() -> void:
 
 func _add_joint() -> void:
 	_remove_joint()
-	active_module.joint = joint_prefab.instantiate()
+	active_module.joint = JOINT_PREFAB.instantiate()
 	active_module.add_child(active_module.joint)
 	active_module.joint.name = "Joint"
 	active_module.joint.node_a = active_module.get_path()

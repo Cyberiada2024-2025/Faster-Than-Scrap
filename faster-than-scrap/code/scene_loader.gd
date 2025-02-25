@@ -30,12 +30,19 @@ func load_build_ship_scene()->void:
 
 ## detach the ship from the scene tree, to preserve it, when it is changed
 func _detach_ship():
-	if GameManager.player_ship != null:
-		# detach the ship
-		GameManager.player_ship.get_parent().remove_child(
-			GameManager.player_ship
-		)
-		GameManager.player_ship.hud = null
+	if GameManager.player_ship == null:
+		return
+
+	# detach the ship
+	GameManager.player_ship.get_parent().remove_child(
+		GameManager.player_ship
+	)
+
+	# delete hud if exists
+	if GameManager.player_ship.hud == null:
+		return
+	GameManager.player_ship.hud.queue_free()
+	GameManager.player_ship.hud = null
 
 ## attach the ship to the scene tree
 func _attach_ship_with_hud():

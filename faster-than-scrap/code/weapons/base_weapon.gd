@@ -4,7 +4,7 @@ extends Node3D
 
 ## Base class for all weapons.
 
-signal recoil
+signal recoil(force_multiplier: float)
 
 @export var ship: Ship
 

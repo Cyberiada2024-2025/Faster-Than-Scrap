@@ -172,7 +172,7 @@ func _remove_joint() -> void:
 
 func _add_joint() -> void:
 	_remove_joint()
-	active_module.joint = Generic6DOFJoint3D.new()
+	active_module.joint = load("res://prefabs/modules/joint.tscn").instantiate()
 	active_module.add_child(active_module.joint)
 	active_module.joint.name = "Joint"
 	active_module.joint.node_a = active_module.get_path()

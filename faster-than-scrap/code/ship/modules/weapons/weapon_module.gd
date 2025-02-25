@@ -29,8 +29,8 @@ func _on_release(_delta: float) -> void:
 	super(_delta)
 	weapon.try_deactivate()
 
-func _recoil(delta: float) -> void:
-	apply_force(weapon.global_basis.z * recoil_force * delta)
+func _recoil(force_multiplier: float) -> void:
+	apply_force(weapon.global_basis.z * recoil_force * force_multiplier)
 
 func set_ship_reference(ship: Ship) -> void:
 	super(ship)

@@ -1,4 +1,4 @@
-class_name StateEnemy extends State
+class_name StateNPC extends State
 
 
 const IDLE = "Idle"
@@ -13,7 +13,7 @@ var target: Ship
 func _ready() -> void:
 	await owner.ready
 	controlledShip = owner as Ship	# getting a typed reference to controlled ship
-	assert(controlledShip != null, "The enemy state needs the owner to be an Enemy node")
+	assert(controlledShip != null, "The npc state needs the owner to be an npc node")
 	
 	# Change for closest target once we have allied NPC
 	target = get_tree().get_first_node_in_group("Player")

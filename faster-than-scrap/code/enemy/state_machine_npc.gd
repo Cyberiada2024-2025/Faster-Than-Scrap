@@ -1,4 +1,4 @@
-class_name StateMachineEnemy extends Node
+class_name StateMachineNPC extends Node
 
 
 ## The initial state of the state machine. If not set, the first child node is used.

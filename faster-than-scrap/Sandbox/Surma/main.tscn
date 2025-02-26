@@ -38,7 +38,7 @@ floor_block_on_wall = false
 floor_snap_length = 0.0
 platform_on_leave = 2
 script = ExtResource("2_enufl")
-speed = 600
+speed = 1500
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.541517, 0.84069, 0, -0.84069, 0.541517, -0.00517011, 27.6107, 17.4563)

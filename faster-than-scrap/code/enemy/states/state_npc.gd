@@ -14,8 +14,8 @@ func _ready() -> void:
 	await owner.ready
 	controlledShip = owner as Ship	# getting a typed reference to controlled ship
 	assert(controlledShip != null, "The npc state needs the owner to be an npc node")
-	
-	for transition: baseTransition in get_children():
+	 
+	for transition: baseTransition in find_children("*", "baseTransition"):
 		transitions.append(transition)
 	
 	# Change for closest target once we have allied NPC

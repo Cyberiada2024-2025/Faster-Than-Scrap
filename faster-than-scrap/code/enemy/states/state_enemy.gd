@@ -14,6 +14,7 @@ func _ready() -> void:
 	await owner.ready
 	enemy = owner as Ship	# getting a typed reference to controlled ship
 	assert(enemy != null, "The enemy state needs the owner to be an Enemy node")
+	
 	# Change for closest target once we have allied NPC
 	target = get_tree().get_first_node_in_group("Player")
 

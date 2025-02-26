@@ -1,4 +1,4 @@
-class_name StateMachineEnemy extends Node
+class_name StateMachineNPC extends Node
 
 
 ## The initial state of the state machine. If not set, the first child node is used.
@@ -8,7 +8,7 @@ class_name StateMachineEnemy extends Node
 #anonymous function to make sure starting state is set (with fallback)
 #call - invoke anonymous function
 ## The current state of the state machine.
-@onready var state: State = (func get_initial_state() -> State:
+@onready var state: StateNPC = (func get_initial_state() -> State:
 	return initial_state if initial_state != null else get_child(0)
 ).call()
 
@@ -35,6 +35,7 @@ func _transition_to_next_state(target_state_path: String, data: Dictionary = {})
 	state.exit()
 	state = get_node(target_state_path)
 	state.enter(previous_state_path, data)
+	print(owner.name + "Changed state to " + state.name)
 
 
 func _process(delta: float) -> void:
@@ -43,3 +44,5 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	state.state_physics_update(delta)
+	for t in state.transitions:
+		t.condition()

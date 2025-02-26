@@ -1,9 +1,12 @@
-extends StateEnemy
+extends StateNPC
+class_name EnemyIdle
 
+@export var min_range_to_player:=50
 func enter(_previous_state_path: String, _data := {}) -> void:
-	#set parameters
+	print("enemy is idle [zzz...]")
 	pass
 
-func physics_update(_delta: float) -> void:
-	# move in random direction, changeing every few seconds
+func state_physics_update(_delta: float) -> void:
 	pass
+	# idle movement
+	

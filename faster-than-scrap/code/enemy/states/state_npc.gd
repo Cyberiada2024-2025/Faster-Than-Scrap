@@ -6,7 +6,7 @@ const AGGRESSIVE = "Aggressive"
 const DEFENSIVE = "Defensive"
 
 var controlledShip: Ship
-
+var transitions: Array[baseTransition]
 # player or another npc
 var target: Ship 
 
@@ -14,6 +14,9 @@ func _ready() -> void:
 	await owner.ready
 	controlledShip = owner as Ship	# getting a typed reference to controlled ship
 	assert(controlledShip != null, "The npc state needs the owner to be an npc node")
+	
+	for transition: baseTransition in get_children():
+		transitions.append(transition)
 	
 	# Change for closest target once we have allied NPC
 	target = get_tree().get_first_node_in_group("Player")

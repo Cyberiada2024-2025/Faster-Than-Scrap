@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://rk0gm82fa8wn"]
+[gd_scene load_steps=7 format=3 uid="uid://rk0gm82fa8wn"]
 
 [ext_resource type="Script" path="res://code/enemy/state_machine_npc.gd" id="1_6juta"]
 [ext_resource type="Script" path="res://code/enemy/states/aggressive.gd" id="2_ptaw0"]
+[ext_resource type="Script" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="3_824ij"]
 [ext_resource type="Script" path="res://code/enemy/states/defensive.gd" id="3_qoxwt"]
 [ext_resource type="Script" path="res://code/enemy/states/idle.gd" id="4_1i4bi"]
 
@@ -17,6 +18,10 @@ initial_state = NodePath("Idle")
 
 [node name="Aggressive" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("2_ptaw0")
+
+[node name="transitionLowEnergy" type="Node" parent="StateMachineEnemy/Aggressive" node_paths=PackedStringArray("newState")]
+script = ExtResource("3_824ij")
+newState = NodePath("../../Defensive")
 
 [node name="Defensive" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("3_qoxwt")

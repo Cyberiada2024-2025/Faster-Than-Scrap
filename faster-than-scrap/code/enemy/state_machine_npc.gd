@@ -8,7 +8,7 @@ class_name StateMachineNPC extends Node
 #anonymous function to make sure starting state is set (with fallback)
 #call - invoke anonymous function
 ## The current state of the state machine.
-@onready var state: State = (func get_initial_state() -> State:
+@onready var state: StateNPC = (func get_initial_state() -> State:
 	return initial_state if initial_state != null else get_child(0)
 ).call()
 
@@ -44,3 +44,5 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	state.state_physics_update(delta)
+	for t in state.transitions:
+		t.condition()

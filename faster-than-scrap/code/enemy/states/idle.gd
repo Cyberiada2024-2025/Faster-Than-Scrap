@@ -7,6 +7,6 @@ func enter(_previous_state_path: String, _data := {}) -> void:
 	pass
 
 func state_physics_update(_delta: float) -> void:
-	var vector_to_target = target.global_position - enemy.global_position
+	var vector_to_target = target.global_position - controlledShip.global_position
 	if vector_to_target.length() < min_range_to_player: 
 		finished.emit(AGGRESSIVE)

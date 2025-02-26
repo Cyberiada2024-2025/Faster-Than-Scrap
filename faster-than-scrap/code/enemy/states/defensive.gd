@@ -8,7 +8,7 @@ func enter(_previous_state_path: String, _data := {}) -> void:
 
 func state_physics_update(_delta: float) -> void:
 	move_target_spotted(min_range_to_player, target)
-	enemy.energy += 0.5
-	if enemy.energy > 90:
+	controlledShip.energy += 0.5
+	if controlledShip.energy > 90:
 		finished.emit(AGGRESSIVE)
 	pass

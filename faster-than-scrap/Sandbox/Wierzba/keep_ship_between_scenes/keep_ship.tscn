@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3k0jg21c3exo"]
+
+[ext_resource type="PackedScene" uid="uid://cpxkxwkuyh6l2" path="res://prefabs/ships/player_ship_example.tscn" id="1_2ekd7"]
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="1_pjnld"]
+[ext_resource type="Script" path="res://code/scene_loader.gd" id="2_bi6b7"]
+
+[node name="KeepShip" type="Node3D"]
+
+[node name="MainCamera" parent="." instance=ExtResource("1_pjnld")]
+
+[node name="PlayerShipExample" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("1_2ekd7")]
+hud = NodePath("../MainCamera")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SceneLoader" type="Node" parent="UI"]
+script = ExtResource("2_bi6b7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -20.0
+offset_right = 209.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Button" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+text = "Go to main menu"
+
+[node name="Button2" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+text = "Go to build phase"
+
+[node name="Button3" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+text = "Go to fly phase"
+
+[connection signal="pressed" from="UI/HBoxContainer/Button" to="UI/SceneLoader" method="load_main_menu_scene"]
+[connection signal="pressed" from="UI/HBoxContainer/Button2" to="UI/SceneLoader" method="load_build_ship_scene"]
+[connection signal="pressed" from="UI/HBoxContainer/Button3" to="UI/SceneLoader" method="load_fly_ship_scene"]

@@ -155,7 +155,7 @@ func _on_module_clicked(clicked_module: Module) -> bool:
 		active_module_ghost = clicked_module.create_ghost()
 		attach_point_index = 0
 		return true
-	elif clicked_module is Cockpit:
+	if clicked_module is Cockpit:
 		_flash_module(clicked_module)
 	elif clicked_module.has_child_module():
 		for child in clicked_module.get_children():
@@ -313,27 +313,25 @@ func _process(_delta: float) -> void:
 # display in ui as legal
 func _display_legal() -> void:
 	outline_mat.set_shader_parameter("Color", Color.GREEN)
-	pass
 
 # do not allow build
 # display in ui as illegal or invalid position
 func _display_illegal() -> void:
 	outline_mat.set_shader_parameter("Color", Color.RED)
-	pass
-	
+
 func _create_outline(parent: Node3D) -> MeshInstance3D:
-	var moduleMesh: MeshInstance3D
+	var module_mesh: MeshInstance3D
 	for child in parent.get_children():
 		if child is MeshInstance3D:
-			moduleMesh = child
-			
+			module_mesh = child
+
 	var out = MeshInstance3D.new()
 	parent.add_child(out)
 	out.material_override = outline_mat
-	out.mesh = moduleMesh.mesh
-	
+	out.mesh = module_mesh.mesh
+
 	return out
-	
+
 func _flash_module(module: Module) -> void:
 	var flash = _create_outline(module)
 	flash.material_override = flash_mat
@@ -342,7 +340,6 @@ func _flash_module(module: Module) -> void:
 	tween.tween_property(flash, "material_override:shader_parameter/Color", Color.BLACK, flash_time/2)
 	tween.tween_callback(flash.queue_free)
 	tween.play()
-	pass
 
 
 func _on_finish_pressed() -> void:

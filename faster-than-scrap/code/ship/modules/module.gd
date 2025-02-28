@@ -55,7 +55,8 @@ func _on_release(_delta: float) -> void:
 
 func take_damage(damage: int) -> void:
 	hp -= damage
-	sprite.modulate = lerp(dead_color, healthy_color, float(hp)/max_hp)
+	if(sprite != null):
+		sprite.modulate = lerp(dead_color, healthy_color, float(hp)/max_hp)
 	if hp <=0 :
 		_on_destroy()
 
@@ -80,8 +81,14 @@ func detachable() -> bool:
 
 func on_key_change(key: Key) -> void:
 	activation_key = key
+	var text: String = OS.get_keycode_string(activation_key)
 	if(label != null):
-		label.text = OS.get_keycode_string(activation_key)
+		label.text = text
+		## one line text up to 3 characters
+		if text.length() > 0 and text.length() <= 3:
+			label.font_size = 160/text.length()
+		else:
+			label.font_size = 160/text.length() * 2
 
 
 func has_child_module() -> bool:

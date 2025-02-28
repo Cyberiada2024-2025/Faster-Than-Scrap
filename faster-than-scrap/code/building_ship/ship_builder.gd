@@ -14,6 +14,18 @@ const RAY_LENGTH = 1000.0
 @export var collision_mask: int = 1
 ## the range of spherecast when checking if there are modules near the mouse
 @export var snap_range: float = 1
+## material of ghost outline
+
+@export_group('Visuals')
+@export var outline_mat: ShaderMaterial
+## material for flashing modules
+@export var flash_mat: ShaderMaterial
+## time of warning flash animation
+@export_custom(PROPERTY_HINT_NONE, "suffix:sec") var flash_time: float
+@export var choose_key_message: Control
+@export var confirm_finish_message: Control
+
+var outline: MeshInstance3D
 
 var state = State.NONE
 
@@ -143,6 +155,12 @@ func _on_module_clicked(clicked_module: Module) -> bool:
 		active_module_ghost = clicked_module.create_ghost()
 		attach_point_index = 0
 		return true
+	elif clicked_module is Cockpit:
+		_flash_module(clicked_module)
+	elif clicked_module.has_child_module():
+		for child in clicked_module.get_children():
+			if child is Module:
+				_flash_module(child)
 	return false
 
 func _on_lmb_release() -> void:
@@ -157,13 +175,20 @@ func _on_lmb_release() -> void:
 		else:
 			active_module.reparent(get_tree().get_root())
 			active_module.ship = null
-	# if exist delete ghost
-	if active_module_ghost != null:
-		active_module_ghost.queue_free()
-	active_module.show()
-	# clear module variables
-	active_module_ghost = null
-	active_module = null
+		# if exist delete ghost
+		if active_module_ghost != null:
+			active_module_ghost.queue_free()
+		active_module.show()
+		# clear module variables
+		active_module_ghost = null
+		active_module = null
+		print("new state = none")
+		state = State.NONE
+		outline.mesh = null
+	else:
+		var overlapping = active_module_ghost.get_overlapping_bodies()
+		for module in overlapping:
+			_flash_module(module)
 
 func _input(event: InputEvent):
 	_update_lmb_state(event)
@@ -174,30 +199,35 @@ func _input(event: InputEvent):
 
 	match state:
 		State.NONE:
+			if confirm_finish_message.visible || choose_key_message.visible:
+				return
 			if _lmb_just_pressed():
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
 					var clicked_module := _get_module_from_hit(hit)
 					if _on_module_clicked(clicked_module):
 						state = State.DRAGGING
+						outline = _create_outline(active_module_ghost)
 						print("new state = dragging")
 			elif _rmb_just_pressed(event):
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
 					active_module = _get_module_from_hit(hit)
 					state = State.SETTING_BUTTON
+					choose_key_message.visible = true
 					print("new state = setting button")
 		State.DRAGGING:
+			if confirm_finish_message.visible || choose_key_message.visible:
+				return
 			if _lmb_just_pressed():
 				_on_lmb_release()
-				print("new state = none")
-				state = State.NONE
 		State.SETTING_BUTTON:
 			## check if keyboard pressed
 			if event is InputEventKey and event.pressed:
 				var key_event: InputEventKey = event
-				active_module.activation_key = key_event.keycode
+				active_module.on_key_change(key_event.keycode)
 				state = State.NONE
+				choose_key_message.visible = false
 				print("new state = none")
 
 #        +------------+
@@ -258,6 +288,7 @@ func _process(_delta: float) -> void:
 				_display_illegal()
 				legal = false
 			else:
+				_display_legal()
 				legal = true
 			return
 
@@ -275,14 +306,51 @@ func _process(_delta: float) -> void:
 				_display_illegal()
 				legal = false
 			else:
+				_display_legal()
 				legal = true
 
 # allow build
 # display in ui as legal
 func _display_legal() -> void:
+	outline_mat.set_shader_parameter("Color", Color.GREEN)
 	pass
 
 # do not allow build
 # display in ui as illegal or invalid position
 func _display_illegal() -> void:
+	outline_mat.set_shader_parameter("Color", Color.RED)
 	pass
+	
+func _create_outline(parent: Node3D) -> MeshInstance3D:
+	var moduleMesh: MeshInstance3D
+	for child in parent.get_children():
+		if child is MeshInstance3D:
+			moduleMesh = child
+			
+	var out = MeshInstance3D.new()
+	parent.add_child(out)
+	out.material_override = outline_mat
+	out.mesh = moduleMesh.mesh
+	
+	return out
+	
+func _flash_module(module: Module) -> void:
+	var flash = _create_outline(module)
+	flash.material_override = flash_mat
+	var tween =  get_tree().create_tween().bind_node(flash).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(flash, "material_override:shader_parameter/Color", Color.RED, flash_time/2)
+	tween.tween_property(flash, "material_override:shader_parameter/Color", Color.BLACK, flash_time/2)
+	tween.tween_callback(flash.queue_free)
+	tween.play()
+	pass
+
+
+func _on_finish_pressed() -> void:
+	confirm_finish_message.visible = true
+
+func _on_confirm_pressed() -> void:
+	# TODO: change scene to map
+	pass # Replace with function body.
+
+func _on_deny_pressed() -> void:
+	confirm_finish_message.visible = false

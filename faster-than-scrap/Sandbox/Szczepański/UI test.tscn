@@ -14,7 +14,8 @@ hud = NodePath("../MainCamera")
 [node name="ModuleBase" parent="PlayerShipExample" instance=ExtResource("2_ifg7j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33242, 0, 0)
 
-[node name="MainCamera" parent="." instance=ExtResource("3_qgcv5")]
+[node name="MainCamera" parent="." node_paths=PackedStringArray("player_ship") instance=ExtResource("3_qgcv5")]
+player_ship = NodePath("../PlayerShipExample")
 
 [node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("ship", "module")]
 script = ExtResource("5_rbsty")

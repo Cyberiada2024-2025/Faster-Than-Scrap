@@ -31,3 +31,5 @@ skeleton = NodePath("")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="ModuleBase"]
 mesh = SubResource("BoxMesh_8dvid")
 skeleton = NodePath("")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

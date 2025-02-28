@@ -109,6 +109,7 @@ viewport_path = NodePath("MinimapViewport")
 [node name="MainCamera" type="Camera3D" node_paths=PackedStringArray("energy_bar")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
 cull_mask = 1048569
+current = true
 script = ExtResource("1_x65cj")
 energy_bar = NodePath("HUD/Energy Bar")
 

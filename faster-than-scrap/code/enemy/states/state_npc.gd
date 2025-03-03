@@ -1,10 +1,5 @@
 class_name StateNPC extends State
 
-
-const IDLE = "Idle"
-const AGGRESSIVE = "Aggressive"
-const DEFENSIVE = "Defensive"
-
 var controlledShip: Ship
 var transitions: Array[baseTransition]
 # player or another npc
@@ -19,7 +14,7 @@ func _ready() -> void:
 		transitions.append(transition)
 	
 	# Change for closest target once we have allied NPC
-	target = get_tree().get_first_node_in_group("Player")
+	target = GameManager.player_ship
 
 func move_target_spotted(min_range_to_player: int, target: Ship) -> void:
 	var vector_to_target = target.global_position - controlledShip.global_position

@@ -9,6 +9,7 @@ extends Node3D
 enum State {NONE, DRAGGING, SETTING_BUTTON}
 
 const RAY_LENGTH = 1000.0
+const JOINT_PREFAB = preload("res://prefabs/modules/joint.tscn")
 
 ## the mask of checked colliders when checking if there are modules near the mouse
 @export var collision_mask: int = 1
@@ -29,6 +30,9 @@ var mouse_position_3d: Vector3 = Vector3.ZERO
 var lmb_was_pressed: bool = false
 var lmb_is_pressed: bool = false
 var rmb_was_pressed: bool = false
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 # ---------------mouse ---------------------------------------------
 func _update_mouse_3d_position():
@@ -152,11 +156,11 @@ func _on_lmb_release() -> void:
 		active_module.global_rotation = active_module_ghost.global_rotation
 		# if there is a attach target, reparent to it
 		if attach_target != null:
-			active_module.reparent(attach_target)
-			active_module.ship = attach_target.ship # copy the reference to the ship
+			_attach_module()
 		else:
 			active_module.reparent(get_tree().get_root())
-			active_module.ship = null
+			active_module.set_ship_reference(null)
+			_remove_joint()
 	# if exist delete ghost
 	if active_module_ghost != null:
 		active_module_ghost.queue_free()
@@ -164,6 +168,24 @@ func _on_lmb_release() -> void:
 	# clear module variables
 	active_module_ghost = null
 	active_module = null
+
+func _remove_joint() -> void:
+	if active_module.joint != null:
+		active_module.joint.queue_free()
+		active_module.joint = null
+
+func _add_joint() -> void:
+	_remove_joint()
+	active_module.joint = JOINT_PREFAB.instantiate()
+	active_module.add_child(active_module.joint)
+	active_module.joint.name = "Joint"
+	active_module.joint.node_a = active_module.get_path()
+	active_module.joint.node_b = attach_target.get_path()
+
+func _attach_module() -> void:
+	active_module.reparent(attach_target)
+	active_module.set_ship_reference(attach_target.ship)  # copy the reference to the ship
+	_add_joint()
 
 func _input(event: InputEvent):
 	_update_lmb_state(event)

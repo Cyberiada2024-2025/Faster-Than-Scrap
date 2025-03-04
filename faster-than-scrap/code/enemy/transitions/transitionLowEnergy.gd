@@ -1,8 +1,8 @@
 extends baseTransition
 
-@export var lowEnergyTreshold := 20
+@export var low_energy_treshold := 20
+
 
 func condition() -> void:
-	if controlledShip.energy < lowEnergyTreshold:
-		finished.emit(newState.name)
-	
+	if controlled_ship.energy < low_energy_treshold:
+		finished.emit(new_state.name)

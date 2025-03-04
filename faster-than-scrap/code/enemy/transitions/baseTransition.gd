@@ -1,6 +1,6 @@
 class_name baseTransition extends StateNPC
 
-@export var newState : State
+@export var new_state : State
 
 func condition() -> void:
 	pass

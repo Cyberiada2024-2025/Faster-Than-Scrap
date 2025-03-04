@@ -6,7 +6,6 @@ extends MapNode
 @export var missionType: Mission.MissionType = Mission.MissionType.ESCAPE
 
 func _set_color() -> void:
-	super()
 	match missionType:
 		Mission.MissionType.ESCAPE: 
 			modulate = Color.BLUE
@@ -14,6 +13,7 @@ func _set_color() -> void:
 			modulate = Color.GREEN
 		Mission.MissionType.GET_ITEM: 
 			modulate = Color.PURPLE
+	super()
 
 
 func get_description() -> String:

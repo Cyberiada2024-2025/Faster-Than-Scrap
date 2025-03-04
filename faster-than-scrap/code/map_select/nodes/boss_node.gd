@@ -5,8 +5,8 @@ class_name BossNode
 extends MapNode
 
 func _set_color() -> void:
-	super()
 	modulate = Color.RED
+	super()
 
 
 func get_description() -> String:

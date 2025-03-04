@@ -2,7 +2,7 @@ class_name MissionTimedDefend
 
 extends Mission
 
-var info: MissionInfoDefend 
+var info: MissionInfoDefend
 
 var defendable: Node3D
 var failed = false

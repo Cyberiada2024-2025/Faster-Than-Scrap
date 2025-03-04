@@ -2,13 +2,12 @@ class_name Mission
 
 extends Node
 
-## Base class for mission which can be added/displayed in the mission selector.
-## When the game is loaded (start of the fly ship phase) the mission
-##should be initialized, by calling setup()
-
-enum MissionState { IN_PROGRESS, FINISHED, FAILED }
+## Base class for mission which will check its completion in game
+## When created it will automaticaly set itself up by calling [setup()]
 
 signal finished
+
+enum MissionState { IN_PROGRESS, FINISHED, FAILED }
 
 var state: MissionState = MissionState.IN_PROGRESS
 
@@ -20,7 +19,7 @@ func setup() -> void:
 	# add self to manager
 	MissionManager.missions.append(self)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 ## returns whether the missions ended.

@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4jqr03bnsxl8"]
+[gd_scene load_steps=11 format=3 uid="uid://bkn8atkk3qg3d"]
 
-[ext_resource type="PackedScene" uid="uid://b4qhk0itbsi2m" path="res://prefabs/environment/asteroid.tscn" id="2_jtlwr"]
+[ext_resource type="PackedScene" uid="uid://dn3mypfoixbpt" path="res://prefabs/environment/asteroid.tscn" id="2_jtlwr"]
+[ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="2_jusb2"]
+[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="3_rgp7d"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6b47d"]
 
@@ -24,6 +26,7 @@ size = Vector3(1, 6.355, 50)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64.1306, 0)
+omni_range = 4096.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0779893, 0.996954, 0, -0.996954, 0.0779893, 0, 16.3629, 0)
@@ -131,3 +134,8 @@ mesh = SubResource("BoxMesh_t8gxn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="border4"]
 shape = SubResource("BoxShape3D_uijbs")
+
+[node name="BaseModule" parent="." instance=ExtResource("2_jusb2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.30498, 2.38419e-07, 4.52976)
+
+[node name="CollisionDamageCalculator" parent="BaseModule" instance=ExtResource("3_rgp7d")]

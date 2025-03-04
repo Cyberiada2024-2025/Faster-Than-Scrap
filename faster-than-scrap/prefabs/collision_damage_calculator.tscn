@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgkib8kqd2cdh"]
+[gd_scene load_steps=2 format=3 uid="uid://hs3ujnysju5o"]
 
 [ext_resource type="Script" path="res://code/collision_damage_calculator.gd" id="1_ehkyb"]
 

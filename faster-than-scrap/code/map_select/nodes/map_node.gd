@@ -54,3 +54,12 @@ func on_hover_leave() -> void:
 
 func get_description() -> String:
 	return ""
+
+func is_after_node(before_node: MapNode) -> bool:
+	for node in before_node.next_map_nodes:
+		if node == self:
+			return true
+	return false
+
+func change_scene(sceneLoader: SceneLoader) -> void:
+	pass

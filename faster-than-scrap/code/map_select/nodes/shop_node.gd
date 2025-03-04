@@ -9,3 +9,7 @@ func _set_color() -> void:
 
 func get_description() -> String:
 	return "Shop node!"
+
+func change_scene(sceneLoader: SceneLoader) -> void:
+	super(sceneLoader)
+	sceneLoader.load_build_ship_scene()

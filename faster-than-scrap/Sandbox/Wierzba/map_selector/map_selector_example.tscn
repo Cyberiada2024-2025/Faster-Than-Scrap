@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnr8e8annnar3"]
+[gd_scene load_steps=3 format=3 uid="uid://dnr8e8annnar3"]
 
 [ext_resource type="PackedScene" uid="uid://eol251w0tnh0" path="res://Sandbox/Wierzba/map_selector/map_example.tscn" id="1_plhp1"]
+[ext_resource type="Script" path="res://code/scene_loader.gd" id="2_425mv"]
 
 [node name="MapSelectorExample" type="Control"]
 layout_mode = 3
@@ -10,10 +11,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MapSelectExample" parent="." node_paths=PackedStringArray("label") instance=ExtResource("1_plhp1")]
+[node name="MapSelectExample" parent="." node_paths=PackedStringArray("label", "sceneLoader") instance=ExtResource("1_plhp1")]
 layout_mode = 1
 offset_right = -239.0
 label = NodePath("../Label")
+sceneLoader = NodePath("../SceneLoader")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -40,3 +42,8 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Select Mission
 "
+
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource("2_425mv")
+
+[connection signal="pressed" from="Button" to="MapSelectExample" method="on_leave_button_clicked"]

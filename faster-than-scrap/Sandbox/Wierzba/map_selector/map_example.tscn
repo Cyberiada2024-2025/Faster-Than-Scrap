@@ -45,7 +45,6 @@ missionType = 0
 next_map_nodes = [NodePath("../../MapLayer3/MissionNode"), NodePath("../../MapLayer3/MissionNode2")]
 
 [node name="ShopNode" parent="MapLayer2" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_siwq3")]
-modulate = Color(1, 1, 0, 1)
 layout_mode = 2
 next_map_nodes = [NodePath("../../MapLayer3/MissionNode3")]
 
@@ -57,7 +56,6 @@ layout_mode = 2
 nodes = [NodePath("MissionNode"), NodePath("MissionNode2"), NodePath("MissionNode3")]
 
 [node name="MissionNode" parent="MapLayer3" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("4_llrlf")]
-modulate = Color(0, 0, 1, 1)
 layout_mode = 2
 next_map_nodes = [NodePath("../../MapLayer4/BossNode")]
 
@@ -81,7 +79,6 @@ layout_mode = 2
 nodes = [NodePath("BossNode")]
 
 [node name="BossNode" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("7_2c4xb")]
-modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 next_map_nodes = [NodePath("../../MapLayer5/ShopNode")]
 
@@ -93,7 +90,6 @@ layout_mode = 2
 nodes = [NodePath("ShopNode")]
 
 [node name="ShopNode" parent="MapLayer5" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_siwq3")]
-modulate = Color(1, 1, 0, 1)
 layout_mode = 2
 next_map_nodes = [NodePath("../../MapLayer6/MissionNode"), NodePath("../../MapLayer6/MissionNode2")]
 
@@ -105,7 +101,6 @@ layout_mode = 2
 nodes = [NodePath("MissionNode"), NodePath("MissionNode2")]
 
 [node name="MissionNode" parent="MapLayer6" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("4_llrlf")]
-modulate = Color(0, 0, 1, 1)
 layout_mode = 2
 next_map_nodes = [NodePath("../../MapLayer7/BossNode")]
 
@@ -123,7 +118,6 @@ layout_mode = 2
 nodes = [NodePath("BossNode")]
 
 [node name="BossNode" parent="MapLayer7" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("7_2c4xb")]
-modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 next_map_nodes = [NodePath("../../MapLayer8/FinnishNode")]
 

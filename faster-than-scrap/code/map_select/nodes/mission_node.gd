@@ -26,3 +26,7 @@ func get_description() -> String:
 		Mission.MissionType.GET_ITEM: 
 			mission_string="Get item"
 	return "Mission Type: \n" + mission_string
+
+func change_scene(sceneLoader: SceneLoader) -> void:
+	super(sceneLoader)
+	sceneLoader.load_fly_ship_scene()

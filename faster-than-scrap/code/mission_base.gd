@@ -1,3 +1,5 @@
+class_name Mission
+
 extends Node
 
 enum MissionType { DEFEND, GET_ITEM, ESCAPE }

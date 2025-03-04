@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5xg3xp2pf4fn"]
+
+[ext_resource type="Script" path="res://code/map_select/map_selector.gd" id="1_tdbkc"]
+
+[node name="MapSelector" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tdbkc")

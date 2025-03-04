@@ -2,8 +2,7 @@ class_name MissionGetItem
 
 extends Mission
 
-@export var item_position: Vector3 = Vector3.ZERO
-@export var item_target_position: Vector3 = Vector3.ZERO
+var info: MissionInfoGetItem
 
 var from: Node3D
 var to: Node3D
@@ -21,11 +20,11 @@ func setup() -> void:
 	MissionManager.add_child(from)
 	MissionManager.add_child(to)
 
-	from.global_position = item_position
-	to.global_position = item_target_position
+	from.global_position = info.item_position
+	to.global_position = info.item_target_position
 
-func check_finish() -> void:
-	super()
+func _process(_delta: float) -> void:
+	super(_delta)
 	if _ended():
 		return
 	if not taken:
@@ -38,3 +37,4 @@ func check_finish() -> void:
 		if to.position.distance_to(GameManager.player_ship.position) < 2:
 			print("item take finished")
 			state = MissionState.FINISHED
+			finished.emit()

@@ -2,7 +2,7 @@ class_name DummyMissionSpawner
 
 extends Node
 
-@export var mission_to_spawn: Mission
+@export var mission_to_spawn: MissionInfo
 
 func _ready() -> void:
-	mission_to_spawn.setup()
+	mission_to_spawn.start()

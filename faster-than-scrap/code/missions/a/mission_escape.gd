@@ -2,7 +2,7 @@ class_name MissionEscape
 
 extends Mission
 
-@export var portal_position: Vector3 = Vector3.ZERO
+var info: MissionInfoEscape
 
 var portal: Node3D
 
@@ -15,12 +15,13 @@ func setup() -> void:
 	MissionManager.add_child(portal)
 
 	# position it
-	portal.global_position = portal_position
+	portal.global_position = info.portal_position
 
-func check_finish() -> void:
-	super()
+func _process(_delta: float) -> void:
+	super(_delta)
 	if _ended():
 		return
 	if portal.position.distance_to(GameManager.player_ship.position) < 2:
 		print("ESCAPE SUCCESS")
 		state = MissionState.FINISHED
+		finished.emit()

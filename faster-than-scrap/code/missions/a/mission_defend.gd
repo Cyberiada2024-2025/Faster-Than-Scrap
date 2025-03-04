@@ -2,8 +2,7 @@ class_name MissionTimedDefend
 
 extends Mission
 
-@export var defendable_position: Vector3=Vector3.ZERO
-@export var time_to_defend: float = 60
+var info: MissionInfoDefend 
 
 var defendable: Node3D
 var failed = false
@@ -23,13 +22,13 @@ func setup() -> void:
 	# add to tree
 	timer.timeout.connect(success)
 	MissionManager.add_child(timer)
-	timer.start(time_to_defend)
+	timer.start(info.time_to_defend)
 
 	# position it
-	defendable.global_position = defendable_position
+	defendable.global_position = info.defendable_position
 
-func check_finish() -> void:
-	super()
+func _process(_delta: float) -> void:
+	super(_delta)
 	if _ended():
 		return
 
@@ -43,3 +42,4 @@ func check_finish() -> void:
 func success() -> void:
 	print("succesfuly defended!")
 	state = MissionState.FINISHED
+	finished.emit()

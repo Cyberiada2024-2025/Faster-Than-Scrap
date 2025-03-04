@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_ibr8p"]
 [ext_resource type="Material" uid="uid://css7je76l8eb7" path="res://art/materials/cabin/cabin_material_3d.tres" id="2_ln5n7"]
-[ext_resource type="ArrayMesh" uid="uid://d3jn6wcbnxlbs" path="res://art/models/cabin/Cabin_Model.obj" id="3_h3rkr"]
+[ext_resource type="ArrayMesh" uid="uid://d3jn6wcbnxlbs" path="res://art/Models/cabin/Cabin_Model.obj" id="3_h3rkr"]
 [ext_resource type="Material" uid="uid://bbmx3djnt7c0u" path="res://art/materials/thruster/thruster_material_3d.tres" id="5_pecqx"]
-[ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/models/thruster/thruster.obj" id="6_30nrl"]
+[ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/Models/thruster/thruster.obj" id="6_30nrl"]
 [ext_resource type="Material" uid="uid://u2jcla7cl0d0" path="res://art/materials/frame/frame_material_3d.tres" id="8_1ep80"]
 [ext_resource type="Material" uid="uid://cqu6fkku70tof" path="res://art/materials/frame1/frame1_material_3d.tres" id="8_n05gu"]
-[ext_resource type="ArrayMesh" uid="uid://ilin5br3b8v2" path="res://art/models/frame1/frame1.obj" id="9_14y4a"]
-[ext_resource type="ArrayMesh" uid="uid://dyggmpc21gmcw" path="res://art/models/frame/frame.obj" id="9_obgit"]
+[ext_resource type="ArrayMesh" uid="uid://ilin5br3b8v2" path="res://art/Models/frame1/frame1.obj" id="9_14y4a"]
+[ext_resource type="ArrayMesh" uid="uid://dyggmpc21gmcw" path="res://art/Models/frame/frame.obj" id="9_obgit"]
 
 [node name="FilipLSandbox" type="Node3D"]
 

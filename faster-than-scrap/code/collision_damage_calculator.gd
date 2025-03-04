@@ -4,7 +4,7 @@ extends Node3D
 func _ready() -> void:
 	get_parent().body_entered.connect(_find_parent_collision)
 	get_parent().contact_monitor = true
-	if get_parent().max_contacts_reported <=0:
+	if get_parent().max_contacts_reported <= 0:
 		get_parent().max_contacts_reported = 10
 
 
@@ -34,4 +34,4 @@ func calculate_damage(me: Node, oponent: Node) -> int:
 	if "mass" in oponent:
 		damage *= oponent.mass / (me.mass + oponent.mass)
 
-	return (int)(damage)
+	return int(damage)

@@ -11,6 +11,10 @@ extends RigidBody3D
 @export var hp: int = 100
 @export var ship: Ship
 @export var attach_points: Array[Node3D] = []
+## joint for connecting two modules (rigidbodies).
+## It is not supposed to be added in prefab!
+## It should only be set in debug ships!
+@export var joint: Generic6DOFJoint3D
 
 @export var sprite: Sprite3D
 @export var label: Label3D
@@ -55,7 +59,8 @@ func _on_release(_delta: float) -> void:
 
 func take_damage(damage: int) -> void:
 	hp -= damage
-	sprite.modulate = lerp(dead_color, healthy_color, float(hp)/max_hp)
+	if(sprite != null):
+		sprite.modulate = lerp(dead_color, healthy_color, float(hp)/max_hp)
 	if hp <=0 :
 		_on_destroy()
 
@@ -80,8 +85,14 @@ func detachable() -> bool:
 
 func on_key_change(key: Key) -> void:
 	activation_key = key
+	var text: String = OS.get_keycode_string(activation_key)
 	if(label != null):
-		label.text = OS.get_keycode_string(activation_key)
+		label.text = text
+		## one line text up to 3 characters
+		if text.length() > 0 and text.length() <= 3:
+			label.font_size = 160/text.length()
+		else:
+			label.font_size = 160/text.length() * 2
 
 
 func has_child_module() -> bool:
@@ -90,6 +101,8 @@ func has_child_module() -> bool:
 			return true
 	return false
 
+func set_ship_reference(ship: Ship) -> void:
+	self.ship = ship
 
 ## Returns the node3D which is the center of the attach point.
 ## Foward vector of that returned node indicates the forward rotation of the module

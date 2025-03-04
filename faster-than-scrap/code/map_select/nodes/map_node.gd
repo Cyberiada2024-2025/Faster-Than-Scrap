@@ -26,15 +26,15 @@ func _draw_connections() -> void:
 	for next_node in next_map_nodes:
 		if next_node != null:
 			var offset = (
-				 # offset between beggings of rects
+				# offset between beggings of rects
 				Vector2(next_node.global_position.x - global_position.x,0)
 				# offset to center of next node
-				+ (next_node.get_rect().get_center() - next_node.get_rect().position) 
+				+ (next_node.get_rect().get_center() - next_node.get_rect().position)
 				+ next_node.get_rect().position - get_rect().position
 				)
 			draw_line(
 				local_start,
-				offset, 
+				offset,
 				Color.BLACK, 8.0)
 
 ## change color according to node type
@@ -63,5 +63,5 @@ func is_after_node(before_node: MapNode) -> bool:
 			return true
 	return false
 
-func change_scene(scene_loader: SceneLoader) -> void:
+func change_scene(_scene_loader: SceneLoader) -> void:
 	pass

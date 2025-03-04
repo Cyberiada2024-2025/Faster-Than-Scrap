@@ -6,7 +6,7 @@ extends HBoxContainer
 @export var active_node: MapNode
 
 @export var label: Label
-@export var sceneLoader: SceneLoader
+@export var scene_loader: SceneLoader
 
 var selected_node: MapNode = null
 
@@ -22,5 +22,4 @@ func on_node_clicked(clicked_node: MapNode) -> void:
 func on_leave_button_clicked() -> void:
 	if selected_node != null and selected_node.is_after_node(active_node):
 		active_node = selected_node
-		selected_node.change_scene(sceneLoader)
-	
+		selected_node.change_scene(scene_loader)

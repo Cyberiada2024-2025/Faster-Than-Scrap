@@ -3,7 +3,7 @@ class_name StateNPC extends State
 var controlled_ship: Ship
 var transitions: Array[baseTransition]
 # player or another npc
-var target: Ship
+@onready var target: Ship
 
 
 func _ready() -> void:

@@ -1,5 +1,5 @@
-extends StateNPC
 class_name EnemyAggressive
+extends StateNPC
 
 @export var min_range_to_player := 10
 

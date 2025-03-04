@@ -24,30 +24,27 @@ script = ExtResource("2_ptaw0")
 
 [node name="LowEnergy" type="Node" parent="StateMachineEnemy/Aggressive" node_paths=PackedStringArray("newState")]
 script = ExtResource("3_824ij")
+low_energy_treshold = null
 newState = NodePath("../../Defensive")
 
-[node name="OutOfRange" type="Node" parent="StateMachineEnemy/Aggressive" node_paths=PackedStringArray("newState")]
+[node name="OutOfRange" type="Node" parent="StateMachineEnemy/Aggressive"]
 script = ExtResource("4_hcry6")
-newState = NodePath("../../Idle")
 
 [node name="Defensive" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("3_qoxwt")
 
-[node name="HighEnergy" type="Node" parent="StateMachineEnemy/Defensive" node_paths=PackedStringArray("newState")]
+[node name="HighEnergy" type="Node" parent="StateMachineEnemy/Defensive"]
 script = ExtResource("5_3j72n")
-newState = NodePath("../../Aggressive")
 
-[node name="OutOfRange" type="Node" parent="StateMachineEnemy/Defensive" node_paths=PackedStringArray("newState")]
+[node name="OutOfRange" type="Node" parent="StateMachineEnemy/Defensive"]
 script = ExtResource("4_hcry6")
-newState = NodePath("../../Idle")
 
 [node name="Idle" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("4_1i4bi")
 min_range_to_player = 30
 
-[node name="InRange" type="Node" parent="StateMachineEnemy/Idle" node_paths=PackedStringArray("newState")]
+[node name="InRange" type="Node" parent="StateMachineEnemy/Idle"]
 script = ExtResource("7_usy60")
-newState = NodePath("../../Aggressive")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 

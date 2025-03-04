@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsnhw7nbjlr54"]
+[gd_scene load_steps=6 format=3 uid="uid://b4qhk0itbsi2m"]
 
 [ext_resource type="Script" path="res://code/evironment/asteroid.gd" id="1_dsopr"]
+[ext_resource type="PackedScene" uid="uid://bgkib8kqd2cdh" path="res://prefabs/collision_damage_calculator.tscn" id="2_wuo07"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gro5k"]
 bounce = 1.0
@@ -9,21 +10,23 @@ bounce = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_ix2ef"]
 
-[node name="Asteroid" type="RigidBody3D" groups=["take damege from colisions"]]
+[node name="Asteroid" type="RigidBody3D" node_paths=PackedStringArray("collision_damage_calculator") groups=["take damege from colisions"]]
 axis_lock_linear_y = true
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_gro5k")
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 5
-angular_velocity = Vector3(0.00392699, 0, 0.00305433)
 angular_damp_mode = 1
 script = ExtResource("1_dsopr")
+collision_damage_calculator = NodePath("CollisionDamageCalculator")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_keyhs")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_ix2ef")
+
+[node name="CollisionDamageCalculator" parent="." instance=ExtResource("2_wuo07")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

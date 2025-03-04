@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdv44kd5tg1va"]
+[gd_scene load_steps=9 format=3 uid="uid://d4jqr03bnsxl8"]
 
-[ext_resource type="PackedScene" uid="uid://bsnhw7nbjlr54" path="res://prefabs/environment/asteroid.tscn" id="2_jtlwr"]
+[ext_resource type="PackedScene" uid="uid://b4qhk0itbsi2m" path="res://prefabs/environment/asteroid.tscn" id="2_jtlwr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6b47d"]
 
@@ -23,7 +23,7 @@ size = Vector3(1, 6.355, 50)
 [node name="asteroids test" type="Node3D"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 84.7605, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64.1306, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0779893, 0.996954, 0, -0.996954, 0.0779893, 0, 16.3629, 0)

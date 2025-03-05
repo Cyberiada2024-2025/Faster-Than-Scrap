@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://beaivb4nm47co"]
+[gd_scene load_steps=11 format=3 uid="uid://beaivb4nm47co"]
 
 [ext_resource type="Script" path="res://code/ship/ship.gd" id="1_c6sek"]
 [ext_resource type="Script" path="res://code/ship/modules/weapons/weapon_module.gd" id="2_db42y"]
 [ext_resource type="Script" path="res://code/weapons/spawner_weapon.gd" id="3_hbd76"]
 [ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/test_projectile.tscn" id="4_scxmj"]
-[ext_resource type="Script" path="res://code/ship/modules/module.gd" id="5_gpcja"]
 [ext_resource type="Script" path="res://code/weapons/constant_fire_weapon.gd" id="5_h3vti"]
+[ext_resource type="PackedScene" uid="uid://bnvojbycskewd" path="res://prefabs/projectiles/test_beam.tscn" id="6_bglpm"]
+[ext_resource type="Script" path="res://code/damage/damageable.gd" id="7_7weoh"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_30wr0"]
 top_radius = 0.1
@@ -15,15 +16,12 @@ height = 1.0
 [sub_resource type="BoxMesh" id="BoxMesh_puthi"]
 size = Vector3(0.2, 0.2, 0.2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rcb50"]
+
 [node name="weapon_demo" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.96321, 0.268752, 0, -0.268752, 0.96321, -0.737433, 1.54382, 4.39564)
-
-[node name="Module" type="Node3D" parent="." node_paths=PackedStringArray("ship")]
-script = ExtResource("5_gpcja")
-activation_key = 4194312
-ship = NodePath("../WeaponTesting/Ship")
+transform = Transform3D(1, 0, 0, 0, 0.96321, 0.268752, 0, -0.268752, 0.96321, 2.64744, 1.54382, 5.36035)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.851304, 0.512229, 0.113591, -0.292392, 0.283404, 0.91334, 0.435647, -0.810742, 0.391035, 0, 4.85017, -0.000734568)
@@ -33,8 +31,9 @@ transform = Transform3D(0.851304, 0.512229, 0.113591, -0.292392, 0.283404, 0.913
 [node name="Ship" type="Node3D" parent="WeaponTesting"]
 script = ExtResource("1_c6sek")
 
-[node name="WeaponModule1" type="Node3D" parent="WeaponTesting" node_paths=PackedStringArray("weapon", "ship")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40153, 0)
+[node name="WeaponModule1" type="RigidBody3D" parent="WeaponTesting" node_paths=PackedStringArray("weapon", "ship")]
+transform = Transform3D(-0.12973, 0, -0.991549, 0, 1, 0, 0.991549, 0, -0.12973, 0, 2.40153, 0)
+gravity_scale = 0.0
 script = ExtResource("2_db42y")
 weapon = NodePath("SpawnerWeapon")
 activation_key = 81
@@ -47,14 +46,15 @@ cooldown = 1.0
 projectile = ExtResource("4_scxmj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/WeaponModule1/SpawnerWeapon"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_30wr0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/WeaponModule1"]
 mesh = SubResource("BoxMesh_puthi")
 
-[node name="WeaponModule2" type="Node3D" parent="WeaponTesting" node_paths=PackedStringArray("weapon", "ship")]
-transform = Transform3D(0.85274, 0, -0.522335, 0, 1, 0, 0.522335, 0, 0.85274, 0, -0.125692, 0)
+[node name="WeaponModule2" type="RigidBody3D" parent="WeaponTesting" node_paths=PackedStringArray("weapon", "ship")]
+transform = Transform3D(0.292605, 0, -0.956233, 0, 1, 0, 0.956233, 0, 0.292605, 0, -0.125692, 0)
+gravity_scale = 0.0
 script = ExtResource("2_db42y")
 weapon = NodePath("SpawnerWeapon")
 allow_auto_fire = true
@@ -68,14 +68,15 @@ cooldown = 1.0
 projectile = ExtResource("4_scxmj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/WeaponModule2/SpawnerWeapon"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_30wr0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/WeaponModule2"]
 mesh = SubResource("BoxMesh_puthi")
 
-[node name="WeaponModule3" type="Node3D" parent="WeaponTesting" node_paths=PackedStringArray("weapon", "ship")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.93436, 0)
+[node name="WeaponModule3" type="RigidBody3D" parent="WeaponTesting" node_paths=PackedStringArray("weapon", "ship")]
+transform = Transform3D(0.478922, 0, -0.877858, 0, 1, 0, 0.877858, 0, 0.478922, 0, -1.93436, 0)
+gravity_scale = 0.0
 script = ExtResource("2_db42y")
 weapon = NodePath("ConstantFireWeapon")
 activation_key = 69
@@ -85,17 +86,18 @@ ship = NodePath("../Ship")
 script = ExtResource("5_h3vti")
 ship = NodePath("../../Ship")
 cooldown = 1.0
-projectile = ExtResource("4_scxmj")
+projectile = ExtResource("6_bglpm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/WeaponModule3/ConstantFireWeapon"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_30wr0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/WeaponModule3"]
 mesh = SubResource("BoxMesh_puthi")
 
-[node name="WeaponModule4" type="Node3D" parent="WeaponTesting" node_paths=PackedStringArray("weapon", "ship")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.67161, 0)
+[node name="WeaponModule4" type="RigidBody3D" parent="WeaponTesting" node_paths=PackedStringArray("weapon", "ship")]
+transform = Transform3D(-0.0610892, -0.532891, -0.843976, -0.0384714, 0.846184, -0.531501, 0.997391, 0, -0.0721938, 0, -3.67161, 0)
+gravity_scale = 0.0
 script = ExtResource("2_db42y")
 weapon = NodePath("ConstantFireWeapon")
 allow_auto_fire = true
@@ -103,15 +105,22 @@ activation_key = 82
 ship = NodePath("../Ship")
 
 [node name="ConstantFireWeapon" type="Node3D" parent="WeaponTesting/WeaponModule4" node_paths=PackedStringArray("ship")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("5_h3vti")
 ship = NodePath("../../Ship")
 cooldown = 1.0
-projectile = ExtResource("4_scxmj")
+projectile = ExtResource("6_bglpm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/WeaponModule4/ConstantFireWeapon"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_30wr0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/WeaponModule4"]
 mesh = SubResource("BoxMesh_puthi")
+
+[node name="Damageable" type="Area3D" parent="WeaponTesting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74161, -1.80464, -0.853822)
+script = ExtResource("7_7weoh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WeaponTesting/Damageable"]
+shape = SubResource("BoxShape3D_rcb50")

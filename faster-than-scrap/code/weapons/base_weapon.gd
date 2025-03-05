@@ -10,7 +10,7 @@ extends Node3D
 @export var cooldown: float
 @export var recoil_force: float
 
-## Prefab of the projectile that will be spawned when shooting. Must be of type [class Projectile].
+## Prefab of the projectile that will be spawned when shooting.
 @export var projectile: PackedScene
 
 var _current_cooldown: float = 0
@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 	if _current_cooldown > 0:
 		_current_cooldown -= delta
 
+
 ## Returns whether or not the weapon can be activated.
 ## Takes into account [member Ship.energy] and the current [member cooldown]
 func can_activate() -> bool:
@@ -27,10 +28,12 @@ func can_activate() -> bool:
 		return false
 	return true
 
+
 ## Tries to activate the weapon.
-## Returns the spawned [class Projectile] if it succeded and [code]null[/code] otherwise
-func try_activate() -> Projectile:
+## Returns the spawned projectile if it succeded and [code]null[/code] otherwise
+func try_activate() -> Node3D:
 	return null
+
 
 ## Tries to deactivate the weapon.
 ## Returns whether or not it succeeded. [br]
@@ -38,5 +41,6 @@ func try_activate() -> Projectile:
 func try_deactivate() -> bool:
 	return false
 
-func _spawn_projectile() -> Projectile:
+
+func _spawn_projectile() -> Node3D:
 	return projectile.instantiate()

@@ -2,13 +2,46 @@ class_name Projectile
 
 extends Node3D
 
+## A projectile that moves forward and dies after
+## a certain amount of time has passed.
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+## Curve representing the projectile's velocity in time.
+## [code]X = 1[/code] on the curve represents the end of
+## the projectile's lifetime.
+@export var velocity: Curve
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+## Velocity from the [param velocity] curve will be multiplied by this number.
+## This makes it easier to quickly adjust the projectile's speed.
+@export var velocity_multiplier: float
+
+## How much time passes before the projectile dies on it's own.
+@export var lifetime: float
+
+## If true, the projectile will die immediately after hitting something.
+## Otherwise it will keep going until the end of its lifetime. [br]
+## Note: In both cases, die_on_hit in the child [DamageArea3D] should be set to false.
+@export var die_on_hit: bool = true
+
+var _current_lifetime: float = 0
+
+@onready var _damage_area: DamageArea3D = $DamageArea3D
+
+
+func _ready():
+	_damage_area.damage_applied.connect(_on_damage_applied)
+
+
 func _process(delta: float) -> void:
-	var velocity = Vector2(1, 0).rotated(-rotation.y) * delta
-	position.x += velocity.x
-	position.z += velocity.y
+	var speed = velocity.sample_baked(_current_lifetime / lifetime)
+	speed *= velocity_multiplier
+	translate_object_local(Vector3.FORWARD * speed * delta)
+
+	_current_lifetime += delta
+
+	if _current_lifetime >= lifetime:
+		queue_free()
+
+
+func _on_damage_applied(_damage: Damage, _target: Damageable):
+	if die_on_hit:
+		queue_free()

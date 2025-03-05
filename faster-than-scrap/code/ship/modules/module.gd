@@ -89,7 +89,9 @@ func on_key_change(key: Key) -> void:
 	if(label != null):
 		label.text = text
 		## one line text up to 3 characters
-		if text.length() > 0 and text.length() <= 3:
+		if text.length() <= 0:
+			return
+		if text.length() <= 3:
 			label.font_size = 160/text.length()
 		else:
 			label.font_size = 160/text.length() * 2

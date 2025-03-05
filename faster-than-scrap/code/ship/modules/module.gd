@@ -2,7 +2,6 @@ class_name Module
 
 extends RigidBody3D
 
-
 ## Base class for all modules
 ## The object should have scale 1 to work properly!
 
@@ -27,39 +26,47 @@ func _process(_delta: float) -> void:
 			_on_key(_delta)
 			was_key_pressed = true
 
+
 # virtual functions
+
 
 ## Called on one frame, when [member Module.activation_key] has just been pressed
 func _on_key_press(_delta: float) -> void:
 	pass
 
+
 ## Called on every frame when [member Module.activation_key] is pressed
 func _on_key(_delta: float) -> void:
 	pass
 
+
 ## Called on one frame, when [member Module.activation_key] has just been released
 func _on_release(_delta: float) -> void:
 	pass
+
 
 func _on_take_damage(damage: Damage) -> void:
 	hp -= damage.value
 	if hp <= 0:
 		_on_destroy()
 
+
 ## Destroy self and detach children
 func _on_destroy() -> void:
 	_explode()
 	for child in self.get_children():
 		if child is Module:
-			remove_child(child) # detach from node tree
-			get_tree().get_root().add_child(child) # attach to scene root
+			remove_child(child)  # detach from node tree
+			get_tree().get_root().add_child(child)  # attach to scene root
 			child.active = false
-	queue_free() # delete self as an object
+	queue_free()  # delete self as an object
+
 
 func _explode() -> void:
 	# TODO create particles object,
 	# which will die after some die by itself
 	pass
+
 
 func detachable() -> bool:
 	return true

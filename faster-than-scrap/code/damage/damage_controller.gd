@@ -30,7 +30,6 @@ enum DamageMode {
 ## See [enum DamageMode] for possible values.
 @export var _damage_mode: DamageMode = DamageMode.LOWEST
 
-
 var _damage: Dictionary = {}
 
 

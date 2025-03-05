@@ -10,6 +10,7 @@ extends RigidBody3D
 @export var hp: float = 100
 @export var ship: Ship
 @export var attach_points: Array[Node3D] = []
+
 ## joint for connecting two modules (rigidbodies).
 ## It is not supposed to be added in prefab!
 ## It should only be set in debug ships!
@@ -23,9 +24,10 @@ extends RigidBody3D
 
 var was_key_pressed: bool = false
 
+
 func _ready() -> void:
 	on_key_change(activation_key)
-	take_damage(0)
+	update_sprite()
 
 
 func _process(_delta: float) -> void:
@@ -41,7 +43,7 @@ func _process(_delta: float) -> void:
 			_on_key(_delta)
 			was_key_pressed = true
 
-	if(label != null):
+	if label != null:
 		label.rotation.y = -global_rotation.y
 
 
@@ -63,12 +65,16 @@ func _on_release(_delta: float) -> void:
 	pass
 
 
-func take_damage(damage: int) -> void:
+func take_damage(damage: Damage) -> void:
 	hp -= damage.value
-	if(sprite != null):
-		sprite.modulate = lerp(dead_color, healthy_color, float(hp)/max_hp)
+	update_sprite()
 	if hp <= 0:
 		_on_destroy()
+
+
+func update_sprite() -> void:
+	if sprite != null:
+		sprite.modulate = lerp(dead_color, healthy_color, hp / max_hp)
 
 
 ## Destroy self and detach children
@@ -95,13 +101,13 @@ func detachable() -> bool:
 func on_key_change(key: Key) -> void:
 	activation_key = key
 	var text: String = OS.get_keycode_string(activation_key)
-	if(label != null):
+	if label != null and text.length() != 0:
 		label.text = text
 		## one line text up to 3 characters
-		if text.length() > 0 and text.length() <= 3:
-			label.font_size = 160/text.length()
+		if text.length() <= 3:
+			label.font_size = 160 / text.length()
 		else:
-			label.font_size = 160/text.length() * 2
+			label.font_size = 160 / text.length() * 2
 
 
 func has_child_module() -> bool:
@@ -110,8 +116,10 @@ func has_child_module() -> bool:
 			return true
 	return false
 
+
 func set_ship_reference(ship: Ship) -> void:
 	self.ship = ship
+
 
 ## Returns the node3D which is the center of the attach point.
 ## Foward vector of that returned node indicates the forward rotation of the module

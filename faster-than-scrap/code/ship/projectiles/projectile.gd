@@ -5,8 +5,6 @@ extends Node3D
 ## A projectile that moves forward and dies after
 ## a certain amount of time has passed.
 
-@onready var _damage_area: DamageArea3D = $DamageArea3D
-
 ## Curve representing the projectile's velocity in time.
 ## [code]X = 1[/code] on the curve represents the end of
 ## the projectile's lifetime.
@@ -25,6 +23,8 @@ extends Node3D
 @export var die_on_hit: bool = true
 
 var _current_lifetime: float = 0
+
+@onready var _damage_area: DamageArea3D = $DamageArea3D
 
 
 func _ready():

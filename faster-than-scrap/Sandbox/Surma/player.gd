@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' ishe elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var x = 0
 	var y = 0
 
@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_S):
 		y = 1
 
-	controller.velocity.x = x * speed 
+	controller.velocity.x = x * speed
 	controller.velocity.y = 0
-	controller.velocity.z = y * speed 
+	controller.velocity.z = y * speed
 	controller.move_and_slide() # already takes delta into account

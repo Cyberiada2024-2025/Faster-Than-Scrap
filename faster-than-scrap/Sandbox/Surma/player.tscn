@@ -8,7 +8,8 @@ floor_stop_on_slope = false
 script = ExtResource("1_u0ry0")
 ship = NodePath("Player")
 
-[node name="Player" type="Node3D" parent="."]
+[node name="Player" type="RigidBody3D" parent="."]
+gravity_scale = 0.0
 script = ExtResource("1_j12q1")
 speed = 16
 

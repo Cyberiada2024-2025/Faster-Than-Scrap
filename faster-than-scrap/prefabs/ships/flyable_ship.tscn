@@ -1,33 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://creq1gbmemif6"]
+[gd_scene load_steps=5 format=3 uid="uid://creq1gbmemif6"]
 
 [ext_resource type="Script" path="res://code/Player/player_ship.gd" id="1_keeht"]
 [ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="1_odfy5"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="2_eda7p"]
-[ext_resource type="Script" path="res://code/Player/copy_position.gd" id="2_tyssn"]
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="3_ymjaj"]
 
-[node name="FlyableShip" type="Node3D" node_paths=PackedStringArray("cockpit", "modules")]
+[node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "modules")]
+gravity_scale = 0.0
 script = ExtResource("1_keeht")
 cockpit = NodePath("Cockpit")
-modules = [NodePath("Cockpit"), NodePath("RigidBody3D"), NodePath("RigidBody3D/Thruster Forward"), NodePath("RigidBody3D2"), NodePath("RigidBody3D3")]
+modules = [NodePath("Cockpit"), NodePath("Cockpit/RigidBody3D"), NodePath("Cockpit/RigidBody3D/Thruster Forward"), NodePath("Cockpit/RigidBody3D/RigidBody3D2"), NodePath("Cockpit/RigidBody3D/RigidBody3D3")]
 
-[node name="CopyPosition" type="Node3D" parent="." node_paths=PackedStringArray("from")]
-script = ExtResource("2_tyssn")
-from = NodePath("../Cockpit")
-
-[node name="PlayerShip" type="Node3D" parent="CopyPosition" node_paths=PackedStringArray("cockpit", "modules")]
-script = ExtResource("1_keeht")
-cockpit = NodePath("../../Cockpit")
-modules = [NodePath("../../Cockpit"), NodePath("../../Cockpit/Thruster Backward"), NodePath("../../Cockpit/Thruster Right"), NodePath("../../Cockpit/Thruster Left"), NodePath("../../RigidBody3D"), NodePath("../../RigidBody3D/Thruster Forward"), NodePath("../../RigidBody3D2"), NodePath("../../RigidBody3D3")]
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="."]
+node_a = NodePath("..")
+node_b = NodePath("../Cockpit")
 
 [node name="Cockpit" parent="." node_paths=PackedStringArray("ship") instance=ExtResource("1_odfy5")]
-ship = NodePath("../CopyPosition/PlayerShip")
+ship = NodePath("..")
 
 [node name="Thruster Backward" parent="Cockpit" node_paths=PackedStringArray("ship") instance=ExtResource("3_ymjaj")]
 transform = Transform3D(-1, 0, 7.54979e-08, 0, 1, 0, -7.54979e-08, 0, -1, -0.0145017, 0, 1.61053)
 recoil_force = 1000.0
 activation_key = 83
-ship = NodePath("../../CopyPosition/PlayerShip")
+ship = NodePath("../..")
 
 [node name="PinJoint3D" type="Generic6DOFJoint3D" parent="Cockpit/Thruster Backward"]
 transform = Transform3D(-1, 0, -7.54979e-08, 0, 1, 0, 7.54979e-08, 0, -1, -0.0145016, 0, 1.61053)
@@ -38,7 +33,7 @@ node_b = NodePath("..")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.56632, 0, 2.0007)
 recoil_force = 1000.0
 activation_key = 68
-ship = NodePath("../../CopyPosition/PlayerShip")
+ship = NodePath("../..")
 
 [node name="PinJoint3D2" type="Generic6DOFJoint3D" parent="Cockpit/Thruster Right"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.0007, 0, 1.56632)
@@ -49,47 +44,47 @@ node_b = NodePath("..")
 transform = Transform3D(1.19209e-07, 0, 1, 0, 1, 0, -1, 0, 1.19209e-07, -1.66784, 0, 2.0007)
 recoil_force = 1000.0
 activation_key = 65
-ship = NodePath("../../CopyPosition/PlayerShip")
+ship = NodePath("../..")
 
 [node name="PinJoint3D3" type="Generic6DOFJoint3D" parent="Cockpit/Thruster Left"]
 transform = Transform3D(1.19209e-07, 0, -1, 0, 1, 0, 1, 0, 1.19209e-07, 2.0007, 0, 1.66784)
 node_a = NodePath("../..")
 node_b = NodePath("..")
 
-[node name="RigidBody3D" parent="." node_paths=PackedStringArray("ship") instance=ExtResource("2_eda7p")]
+[node name="RigidBody3D" parent="Cockpit" node_paths=PackedStringArray("ship") instance=ExtResource("2_eda7p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.39162)
-ship = NodePath("../CopyPosition/PlayerShip")
+ship = NodePath("../..")
 
-[node name="Thruster Forward" parent="RigidBody3D" node_paths=PackedStringArray("ship") instance=ExtResource("3_ymjaj")]
+[node name="Thruster Forward" parent="Cockpit/RigidBody3D" node_paths=PackedStringArray("ship") instance=ExtResource("3_ymjaj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.50827)
 recoil_force = 1000.0
 activation_key = 87
-ship = NodePath("../../CopyPosition/PlayerShip")
+ship = NodePath("../../..")
 
-[node name="PinJoint3D" type="Generic6DOFJoint3D" parent="RigidBody3D/Thruster Forward"]
+[node name="PinJoint3D" type="Generic6DOFJoint3D" parent="Cockpit/RigidBody3D/Thruster Forward"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.50827)
 node_a = NodePath("../..")
 node_b = NodePath("..")
 
-[node name="PinJoint3D" type="Generic6DOFJoint3D" parent="RigidBody3D"]
+[node name="PinJoint3D" type="Generic6DOFJoint3D" parent="Cockpit/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.39162)
-node_a = NodePath("../../Cockpit")
+node_a = NodePath("../..")
 node_b = NodePath("..")
 
-[node name="RigidBody3D2" parent="." node_paths=PackedStringArray("ship") instance=ExtResource("2_eda7p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37863, 0, -1.37221)
-ship = NodePath("../CopyPosition/PlayerShip")
+[node name="RigidBody3D2" parent="Cockpit/RigidBody3D" node_paths=PackedStringArray("ship") instance=ExtResource("2_eda7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37863, 0, 0.01941)
+ship = NodePath("../../..")
 
-[node name="PinJoint3D2" type="Generic6DOFJoint3D" parent="RigidBody3D2"]
+[node name="PinJoint3D2" type="Generic6DOFJoint3D" parent="Cockpit/RigidBody3D/RigidBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37863, 0, 1.37221)
-node_a = NodePath("../../Cockpit")
+node_a = NodePath("../../..")
 node_b = NodePath("..")
 
-[node name="RigidBody3D3" parent="." node_paths=PackedStringArray("ship") instance=ExtResource("2_eda7p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63062, 0, -1.34398)
-ship = NodePath("../CopyPosition/PlayerShip")
+[node name="RigidBody3D3" parent="Cockpit/RigidBody3D" node_paths=PackedStringArray("ship") instance=ExtResource("2_eda7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63062, 0, 0.0476401)
+ship = NodePath("../../..")
 
-[node name="PinJoint3D3" type="Generic6DOFJoint3D" parent="RigidBody3D3"]
+[node name="PinJoint3D3" type="Generic6DOFJoint3D" parent="Cockpit/RigidBody3D/RigidBody3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63062, 0, 1.34398)
-node_a = NodePath("../../Cockpit")
+node_a = NodePath("../../..")
 node_b = NodePath("..")

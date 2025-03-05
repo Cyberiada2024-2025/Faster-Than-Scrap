@@ -27,5 +27,4 @@ func _physics_process(delta: float) -> void:
 	controller.velocity.x = x * speed 
 	controller.velocity.y = 0
 	controller.velocity.z = y * speed 
-	print(controller.velocity)
 	controller.move_and_slide() # already takes delta into account

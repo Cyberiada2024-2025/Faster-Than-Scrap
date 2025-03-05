@@ -19,7 +19,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 script = ExtResource("1_soqmw")
 ship = NodePath("Ship")
 
-[node name="Ship" type="Node3D" parent="."]
+[node name="Ship" type="RigidBody3D" parent="."]
+gravity_scale = 0.0
 script = ExtResource("2_lvanf")
 
 [node name="StateMachineEnemy" type="Node" parent="." node_paths=PackedStringArray("initial_state")]

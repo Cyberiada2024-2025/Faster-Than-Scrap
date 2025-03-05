@@ -4,6 +4,6 @@ extends baseTransition
 
 
 func condition() -> void:
-	var vector_to_target = target.global_position - controlled_ship.global_position
+	var vector_to_target = target.global_position - ship_controller.ship.global_position
 	if vector_to_target.length() > range_treshold:
 		finished.emit(new_state.name)

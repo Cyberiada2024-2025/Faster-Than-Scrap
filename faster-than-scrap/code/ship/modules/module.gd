@@ -101,9 +101,11 @@ func detachable() -> bool:
 func on_key_change(key: Key) -> void:
 	activation_key = key
 	var text: String = OS.get_keycode_string(activation_key)
-	if label != null and text.length() != 0:
+	if label != null:
 		label.text = text
 		## one line text up to 3 characters
+		if text.length() <= 0:
+			return
 		if text.length() <= 3:
 			label.font_size = 160 / text.length()
 		else:

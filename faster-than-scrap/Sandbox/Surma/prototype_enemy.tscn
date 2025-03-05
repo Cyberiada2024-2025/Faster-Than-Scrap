@@ -1,6 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://rk0gm82fa8wn"]
+[gd_scene load_steps=12 format=3 uid="uid://rk0gm82fa8wn"]
 
 [ext_resource type="Script" path="res://code/enemy/state_machine_npc.gd" id="1_6juta"]
+[ext_resource type="Script" path="res://Sandbox/Surma/prototype_enemy.gd" id="1_soqmw"]
+[ext_resource type="Script" path="res://code/ship/ship.gd" id="2_lvanf"]
 [ext_resource type="Script" path="res://code/enemy/states/aggressive.gd" id="2_ptaw0"]
 [ext_resource type="Script" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="3_824ij"]
 [ext_resource type="Script" path="res://code/enemy/states/defensive.gd" id="3_qoxwt"]
@@ -12,8 +14,14 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_qicyb"]
 size = Vector3(2.14648, 1, 2.06055)
 
-[node name="PrototypeEnemy" type="CharacterBody3D"]
+[node name="PrototypeEnemy" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_soqmw")
+ship = NodePath("Ship")
+
+[node name="Ship" type="RigidBody3D" parent="."]
+gravity_scale = 0.0
+script = ExtResource("2_lvanf")
 
 [node name="StateMachineEnemy" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_6juta")
@@ -24,7 +32,6 @@ script = ExtResource("2_ptaw0")
 
 [node name="LowEnergy" type="Node" parent="StateMachineEnemy/Aggressive" node_paths=PackedStringArray("new_state")]
 script = ExtResource("3_824ij")
-low_energy_treshold = null
 new_state = NodePath("../../Defensive")
 
 [node name="OutOfRange" type="Node" parent="StateMachineEnemy/Aggressive" node_paths=PackedStringArray("new_state")]

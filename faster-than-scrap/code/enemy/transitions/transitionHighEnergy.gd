@@ -4,5 +4,5 @@ extends baseTransition
 
 
 func condition() -> void:
-	if controlled_ship.energy >= high_energy_treshold:
+	if ship_controller.ship.energy >= high_energy_treshold:
 		finished.emit(new_state.name)

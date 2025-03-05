@@ -1,6 +1,6 @@
 class_name StateNPC extends State
 
-var controlled_ship: Ship
+var ship_controller: ShipController
 var transitions: Array[baseTransition]
 # player or another npc
 @onready var target: Ship
@@ -8,8 +8,8 @@ var transitions: Array[baseTransition]
 
 func _ready() -> void:
 	await owner.ready
-	controlled_ship = owner as Ship  # getting a typed reference to controlled ship
-	assert(controlled_ship != null, "The npc state needs the owner to be an npc node")
+	ship_controller = owner as ShipController  # getting a typed reference to controlled ship
+	assert(ship_controller != null, "The npc state needs the owner to be an npc node")
 
 	for transition: baseTransition in find_children("*", "baseTransition"):
 		transitions.append(transition)
@@ -19,7 +19,7 @@ func _ready() -> void:
 
 
 func move_target_spotted(min_range_to_player: int, target: Ship) -> void:
-	var vector_to_target = target.global_position - controlled_ship.global_position
+	var vector_to_target = target.global_position - ship_controller.global_position
 	var direction = vector_to_target.normalized()
 	var target_basis: Basis
 
@@ -30,6 +30,6 @@ func move_target_spotted(min_range_to_player: int, target: Ship) -> void:
 	#else:
 	#target_basis = Basis.looking_at(-1 * direction)
 
-	controlled_ship.basis = controlled_ship.basis.slerp(target_basis, 0.04)
-	controlled_ship.velocity = controlled_ship.speed * controlled_ship.basis.z * -1
-	controlled_ship.move_and_slide()
+	ship_controller.basis = ship_controller.basis.slerp(target_basis, 0.04)
+	ship_controller.velocity = ship_controller.speed * ship_controller.basis.z * -1
+	ship_controller.move_and_slide()

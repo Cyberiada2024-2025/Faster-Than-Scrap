@@ -1,0 +1,177 @@
+[gd_scene load_steps=15 format=3 uid="uid://dkt55poxl1ki4"]
+
+[ext_resource type="Script" path="res://code/boss/boss.gd" id="1_37kkp"]
+[ext_resource type="Script" path="res://code/boss/rotate.gd" id="2_01act"]
+[ext_resource type="Script" path="res://code/ship/modules/module.gd" id="2_et81v"]
+[ext_resource type="Script" path="res://code/boss/weak_point.gd" id="4_0fnq1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_mj7ff"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_237qa"]
+inner_radius = 1.0
+outer_radius = 2.0
+rings = 8
+ring_segments = 4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2wa5n"]
+height = 1.0
+radius = 1.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_kmj8b"]
+size = Vector3(0.7, 0.7, 0.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j7unu"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_fwxqk"]
+inner_radius = 4.0
+outer_radius = 3.0
+rings = 8
+ring_segments = 4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4lpbx"]
+height = 1.0
+radius = 3.8
+
+[sub_resource type="TorusMesh" id="TorusMesh_yk7nf"]
+inner_radius = 6.0
+outer_radius = 5.0
+rings = 8
+ring_segments = 4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_iwr50"]
+height = 1.0
+radius = 5.8
+
+[node name="StationaryRings" type="CharacterBody3D"]
+script = ExtResource("1_37kkp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_mj7ff")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_fe0g0")
+
+[node name="Inner Ring Rotatable" type="Node3D" parent="."]
+script = ExtResource("2_01act")
+speed = 1.0
+
+[node name="Inner Ring" type="RigidBody3D" parent="Inner Ring Rotatable"]
+script = ExtResource("2_et81v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Inner Ring Rotatable/Inner Ring"]
+transform = Transform3D(0.993301, 0, 0, 0, 0.993301, 0, 0, 0, 0.993301, 0, 0, 0)
+mesh = SubResource("TorusMesh_237qa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Inner Ring Rotatable/Inner Ring"]
+shape = SubResource("CylinderShape3D_2wa5n")
+
+[node name="WeakPoint" type="RigidBody3D" parent="Inner Ring Rotatable/Inner Ring" node_paths=PackedStringArray("damage_target", "ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.98888)
+script = ExtResource("4_0fnq1")
+damage = 100.0
+damage_target = NodePath("..")
+ship = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Inner Ring Rotatable/Inner Ring/WeakPoint"]
+mesh = SubResource("BoxMesh_kmj8b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Inner Ring Rotatable/Inner Ring/WeakPoint"]
+shape = SubResource("BoxShape3D_j7unu")
+
+[node name="WeakPoint2" type="RigidBody3D" parent="Inner Ring Rotatable/Inner Ring" node_paths=PackedStringArray("damage_target", "ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.989)
+script = ExtResource("4_0fnq1")
+damage = 100.0
+damage_target = NodePath("..")
+ship = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Inner Ring Rotatable/Inner Ring/WeakPoint2"]
+mesh = SubResource("BoxMesh_kmj8b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Inner Ring Rotatable/Inner Ring/WeakPoint2"]
+shape = SubResource("BoxShape3D_j7unu")
+
+[node name="Middle Ring Rotatable" type="Node3D" parent="."]
+script = ExtResource("2_01act")
+speed = -1.5
+
+[node name="Middle Ring" type="RigidBody3D" parent="Middle Ring Rotatable"]
+script = ExtResource("2_et81v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Middle Ring Rotatable/Middle Ring"]
+transform = Transform3D(0.993301, 0, 0, 0, 0.993301, 0, 0, 0, 0.993301, 0, 0, 0)
+mesh = SubResource("TorusMesh_fwxqk")
+skeleton = NodePath("../../../Inner Ring Rotatable/Inner Ring")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Middle Ring Rotatable/Middle Ring"]
+shape = SubResource("CylinderShape3D_4lpbx")
+
+[node name="WeakPoint3" type="RigidBody3D" parent="Middle Ring Rotatable/Middle Ring" node_paths=PackedStringArray("damage_target", "ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+script = ExtResource("4_0fnq1")
+damage = 60.0
+damage_target = NodePath("..")
+ship = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Middle Ring Rotatable/Middle Ring/WeakPoint3"]
+mesh = SubResource("BoxMesh_kmj8b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Middle Ring Rotatable/Middle Ring/WeakPoint3"]
+shape = SubResource("BoxShape3D_j7unu")
+
+[node name="WeakPoint4" type="RigidBody3D" parent="Middle Ring Rotatable/Middle Ring" node_paths=PackedStringArray("damage_target", "ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+script = ExtResource("4_0fnq1")
+damage = 60.0
+damage_target = NodePath("..")
+ship = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Middle Ring Rotatable/Middle Ring/WeakPoint4"]
+mesh = SubResource("BoxMesh_kmj8b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Middle Ring Rotatable/Middle Ring/WeakPoint4"]
+shape = SubResource("BoxShape3D_j7unu")
+
+[node name="Outer Ring Rotatable" type="Node3D" parent="."]
+script = ExtResource("2_01act")
+speed = 2.0
+
+[node name="Outer Ring" type="RigidBody3D" parent="Outer Ring Rotatable"]
+script = ExtResource("2_et81v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Outer Ring Rotatable/Outer Ring"]
+transform = Transform3D(0.993301, 0, 0, 0, 0.993301, 0, 0, 0, 0.993301, 0, 0, 0)
+mesh = SubResource("TorusMesh_yk7nf")
+skeleton = NodePath("../../../Inner Ring Rotatable/Inner Ring")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Outer Ring Rotatable/Outer Ring"]
+shape = SubResource("CylinderShape3D_iwr50")
+
+[node name="WeakPoint5" type="RigidBody3D" parent="Outer Ring Rotatable/Outer Ring" node_paths=PackedStringArray("damage_target", "ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+script = ExtResource("4_0fnq1")
+damage = 60.0
+damage_target = NodePath("..")
+ship = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Outer Ring Rotatable/Outer Ring/WeakPoint5"]
+mesh = SubResource("BoxMesh_kmj8b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Outer Ring Rotatable/Outer Ring/WeakPoint5"]
+shape = SubResource("BoxShape3D_j7unu")
+
+[node name="WeakPoint6" type="RigidBody3D" parent="Outer Ring Rotatable/Outer Ring" node_paths=PackedStringArray("damage_target", "ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+script = ExtResource("4_0fnq1")
+damage = 60.0
+damage_target = NodePath("..")
+ship = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Outer Ring Rotatable/Outer Ring/WeakPoint6"]
+mesh = SubResource("BoxMesh_kmj8b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Outer Ring Rotatable/Outer Ring/WeakPoint6"]
+shape = SubResource("BoxShape3D_j7unu")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://daiiwdcu1w6ie"]
+
+[ext_resource type="PackedScene" uid="uid://dkt55poxl1ki4" path="res://prefabs/Bosses/Examples/stationary_rings.tscn" id="2_2bxbf"]
+
+[node name="BossArena" type="Node3D"]
+
+[node name="StationaryRings" parent="." instance=ExtResource("2_2bxbf")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 9.044, 0)

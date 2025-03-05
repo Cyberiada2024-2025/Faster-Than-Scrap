@@ -9,7 +9,6 @@ var transitions: Array[baseTransition]
 func _ready() -> void:
 	await owner.ready
 	ship_controller = owner as ShipController  # getting a typed reference to controlled ship
-	var a = owner
 	assert(ship_controller != null, "The npc state needs the owner to be an npc node")
 
 	for transition: baseTransition in find_children("*", "baseTransition"):

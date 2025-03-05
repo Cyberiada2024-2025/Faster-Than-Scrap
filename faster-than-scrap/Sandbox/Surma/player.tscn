@@ -1,7 +1,16 @@
-[gd_scene format=3 uid="uid://kpc2w8wxljon"]
+[gd_scene load_steps=3 format=3 uid="uid://kpc2w8wxljon"]
 
-[node name="Player" type="CharacterBody3D" groups=["Player"]]
+[ext_resource type="Script" path="res://Sandbox/Surma/player.gd" id="1_j12q1"]
+[ext_resource type="Script" path="res://code/ship/ship_controller.gd" id="1_u0ry0"]
+
+[node name="PlayerCharacterController" type="CharacterBody3D" node_paths=PackedStringArray("ship") groups=["Player"]]
 floor_stop_on_slope = false
+script = ExtResource("1_u0ry0")
+ship = NodePath("Player")
+
+[node name="Player" type="Node3D" parent="."]
+script = ExtResource("1_j12q1")
+speed = 16
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true

@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://3t2jbpldv75a"]
+[gd_scene load_steps=4 format=3 uid="uid://3t2jbpldv75a"]
 
 [ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="1_5iglw"]
-[ext_resource type="PackedScene" path="res://prefabs/hud.tscn" id="2_um6rh"]
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="2_um6rh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_eetof"]
 
 [node name="FlyFly" type="Node3D"]
 
-[node name="FlyableShip" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("1_5iglw")]
-hud = NodePath("../MainCamera")
+[node name="FlyableShip" parent="." instance=ExtResource("1_5iglw")]
 
-[node name="MainCamera" parent="." node_paths=PackedStringArray("player_ship") instance=ExtResource("2_um6rh")]
+[node name="MainCamera" parent="." instance=ExtResource("2_um6rh")]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 10, 0)
-player_ship = NodePath("../FlyableShip")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.50015, 0, 0)
+mesh = SubResource("BoxMesh_eetof")

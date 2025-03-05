@@ -1,6 +1,6 @@
 class_name Ship
 
-extends CharacterBody3D
+extends Node3D
 
 ## Base class for player and enemy
 

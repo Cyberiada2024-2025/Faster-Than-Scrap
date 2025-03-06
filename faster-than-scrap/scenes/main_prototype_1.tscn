@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd6s2pahef4so"]
+
+[ext_resource type="PackedScene" uid="uid://bi4ogldrq2xxc" path="res://prefabs/ships/flyable_ship.tscn" id="1_wy23v"]
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="2_cojxt"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_46x43"]
+
+[node name="MainPrototype1" type="Node"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.57914, 0, 5.50989)
+mesh = SubResource("CapsuleMesh_46x43")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.57914, 0, -15.151)
+mesh = SubResource("CapsuleMesh_46x43")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.86164, 0, -8.27991)
+mesh = SubResource("CapsuleMesh_46x43")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.14882, 3.61269, 0)
+light_energy = 16.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(0.999934, 0, -0.011484, 0, 1, 0, 0.011484, 0, 0.999934, 0.192242, 8.28659, 0)
+light_energy = 7.975
+omni_range = 4096.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80378, 3.61269, 0)
+
+[node name="FlyableShip" parent="." instance=ExtResource("1_wy23v")]
+
+[node name="Camera3D" type="Camera3D" parent="FlyableShip"]
+transform = Transform3D(1, 0, 0, 0, 0.439986, 0.898005, 0, -0.898005, 0.439986, 0, 8.89242, 5.08122)
+
+[node name="MainCamera" parent="." instance=ExtResource("2_cojxt")]

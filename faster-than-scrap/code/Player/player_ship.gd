@@ -15,8 +15,10 @@ signal energy_warning
 ## Mostly used for building phase
 @export var modules: Array[Module] = []
 
+
 func _enter_tree() -> void:
 	GameManager.player_ship = self
+
 
 func _ready() -> void:
 	super()
@@ -24,7 +26,8 @@ func _ready() -> void:
 	energy_max_change.emit(max_energy)
 	_on_energy_change()
 
-func on_game_change_state(new_state : GameState.State) -> void:
+
+func on_game_change_state(new_state: GameState.State) -> void:
 	match new_state:
 		GameState.State.FLY:
 			pass
@@ -37,12 +40,14 @@ func on_game_change_state(new_state : GameState.State) -> void:
 		GameState.State.MAIN_MENU:
 			pass
 
+
 ## Called whenever the energy amount changes.
 func _on_energy_change() -> void:
 	super()
 	energy_change.emit(energy)
 
+
 func use_energy(amount: float) -> bool:
-	if(energy<amount):
+	if energy < amount:
 		energy_warning.emit()
 	return super(amount)

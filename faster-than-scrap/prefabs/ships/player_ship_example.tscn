@@ -5,18 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="3_a4hie"]
 [ext_resource type="Texture2D" uid="uid://5sl7fehpl0rk" path="res://art/textures/UI/Minimap/Placeholder/player_mini.png" id="4_e655p"]
 
-[node name="PlayerShipExample" type="Node3D" node_paths=PackedStringArray("cockpit")]
+[node name="PlayerShipExample" type="RigidBody3D" node_paths=PackedStringArray("cockpit")]
+gravity_scale = 0.0
 script = ExtResource("1_ddodb")
 cockpit = NodePath("Cockpit")
 
-[node name="Cockpit" parent="." node_paths=PackedStringArray("ship") instance=ExtResource("2_4lw14")]
+[node name="Cockpit" parent="." instance=ExtResource("2_4lw14")]
 activation_key = 66
-ship = NodePath("..")
 
-[node name="ModuleBase" parent="Cockpit" node_paths=PackedStringArray("ship") instance=ExtResource("3_a4hie")]
+[node name="ModuleBase" parent="Cockpit" instance=ExtResource("3_a4hie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.12175)
 activation_key = 65
-ship = NodePath("../..")
 
 [node name="ModuleBase2" parent="Cockpit/ModuleBase" instance=ExtResource("3_a4hie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05367, 0, -0.0354288)

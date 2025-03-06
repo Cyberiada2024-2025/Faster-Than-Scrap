@@ -171,6 +171,7 @@ script = ExtResource("4_v00nt")
 
 [node name="FlyableShip" parent="." instance=ExtResource("8_ly6ia")]
 contact_monitor = true
+max_contacts_reported = 5
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54414, 0, -1.96366)

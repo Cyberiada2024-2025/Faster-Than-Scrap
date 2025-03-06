@@ -204,9 +204,10 @@ func _on_lmb_release() -> void:
 func _attach_module() -> void:
 	if active_module.parent_module == null:
 		var area_parent = active_module.get_parent()
-		active_module.reparent(get_tree().root) # temporary
+		active_module.reparent(attach_target.ship)
 		area_parent.queue_free()
-	active_module.reparent(attach_target.ship)
+	else:
+		active_module.reparent(attach_target.ship)
 	active_module.set_ship_reference(attach_target.ship)  # copy the reference to the ship
 	attach_target.child_modules.append(active_module)
 	active_module.parent_module = attach_target
@@ -303,7 +304,9 @@ func _get_intersection() -> Dictionary:
 
 # check whether the active module collides with other modules
 func _module_collides() -> bool:
-	var overlapping = active_module_ghost.get_overlapping_bodies()
+	# why both are always empty?????
+	var overlapping = active_module_ghost.get_overlapping_bodies() 
+	var try = active_module_ghost.get_overlapping_areas()
 	overlapping.erase(attach_target)
 	overlapping.erase(active_module)
 	return overlapping.size() > 0

@@ -15,8 +15,9 @@ modules = [null, null, null, null, null]
 ship = NodePath("..")
 child_modules = [NodePath("../BaseModule"), NodePath("../Thruster Backward")]
 
-[node name="BaseModule" parent="." node_paths=PackedStringArray("parent_module", "child_modules") instance=ExtResource("2_eda7p")]
+[node name="BaseModule" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("2_eda7p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0289251, 0, -1.25452)
+ship = NodePath("..")
 parent_module = NodePath("../Cockpit")
 child_modules = [NodePath("../Thruster Forward")]
 

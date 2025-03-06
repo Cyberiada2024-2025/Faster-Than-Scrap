@@ -2,7 +2,7 @@ class_name WeakPoint
 
 extends Module
 
-@export var damage: float = 1
+@export var damage: Damage
 @export var damage_target: Module
 
 ## Destroy self and detach children

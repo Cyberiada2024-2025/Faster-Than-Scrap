@@ -1,6 +1,6 @@
 class_name Module
 
-extends RigidBody3D
+extends PhysicsBody3D
 
 ## Base class for all modules
 ## The object should have scale 1 to work properly!
@@ -84,7 +84,6 @@ func _on_destroy() -> void:
 		if child is Module:
 			remove_child(child)  # detach from node tree
 			get_tree().get_root().add_child(child)  # attach to scene root
-			child.active = false
 	queue_free()  # delete self as an object
 
 

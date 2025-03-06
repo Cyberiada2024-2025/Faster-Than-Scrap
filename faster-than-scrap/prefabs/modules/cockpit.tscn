@@ -7,8 +7,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rfens"]
 
-[node name="Cockpit" type="RigidBody3D" node_paths=PackedStringArray("sprite")]
-gravity_scale = 0.0
+[node name="Cockpit" type="StaticBody3D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_q5512")
 sprite = NodePath("Sprite3D")
 healthy_color = Color(0, 1, 0, 1)

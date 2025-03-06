@@ -12,8 +12,7 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e1j53"]
 
-[node name="BaseModule" type="RigidBody3D" node_paths=PackedStringArray("attach_points", "sprite", "label")]
-gravity_scale = 0.0
+[node name="BaseModule" type="StaticBody3D" node_paths=PackedStringArray("attach_points", "sprite", "label")]
 script = ExtResource("1_if6ta")
 attach_points = [NodePath("AttachPoints/AttachPoint1")]
 sprite = NodePath("Sprite3D")

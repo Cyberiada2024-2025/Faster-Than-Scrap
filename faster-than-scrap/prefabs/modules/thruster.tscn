@@ -12,8 +12,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ly0db"]
 
-[node name="Thruster" type="RigidBody3D" node_paths=PackedStringArray("weapon", "attach_points", "sprite", "label")]
-gravity_scale = 0.0
+[node name="Thruster" type="StaticBody3D" node_paths=PackedStringArray("weapon", "attach_points", "sprite", "label")]
 script = ExtResource("1_18ma3")
 weapon = NodePath("ConstantFireWeapon")
 recoil_force = 5.0

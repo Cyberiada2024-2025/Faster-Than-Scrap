@@ -1,6 +1,6 @@
 class_name Module
 
-extends RigidBody3D
+extends PhysicsBody3D
 
 ## Base class for all modules
 ## The object should have scale 1 to work properly!
@@ -28,6 +28,7 @@ var was_key_pressed: bool = false
 func _ready() -> void:
 	on_key_change(activation_key)
 	update_sprite()
+	add_collider_to_ship()
 
 
 func _process(_delta: float) -> void:
@@ -142,3 +143,9 @@ func create_ghost() -> Area3D:
 		ghost.add_child(child_copy)
 	get_tree().root.add_child(ghost)
 	return ghost
+
+func add_collider_to_ship() -> void:
+	var collider : CollisionShape3D= find_children("*", "CollisionShape3D")[0]
+	var copiedCollider : CollisionShape3D= collider.duplicate()
+	ship.add_child.call_deferred(copiedCollider)
+	copiedCollider.global_position = collider.global_position

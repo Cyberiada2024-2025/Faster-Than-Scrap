@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpgm8wx8t3cxu"]
+
+[ext_resource type="Script" path="res://code/Singletons/game_manager.gd" id="1_vvpif"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_vvpif")

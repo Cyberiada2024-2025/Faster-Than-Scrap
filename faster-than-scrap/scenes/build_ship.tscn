@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=22 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://code/ship/modules/module.gd" id="3_kgbhb"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/UI/ShipBuilder/outline_flash.tres" id="4_sra6p"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
-[ext_resource type="ArrayMesh" uid="uid://dyggmpc21gmcw" path="res://art/Models/frame/frame.obj" id="7_ywpn0"]
 [ext_resource type="ArrayMesh" uid="uid://ilin5br3b8v2" path="res://art/Models/frame1/frame1.obj" id="8_2lyi2"]
 [ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/Models/thruster/thruster.obj" id="9_x0rib"]
 
@@ -37,11 +36,10 @@ bg_color = Color(0.113725, 1, 0.113725, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jnae"]
 bg_color = Color(0, 0.0509804, 0.027451, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lciky"]
-size = Vector3(1, 1, 4)
+[sub_resource type="BoxShape3D" id="BoxShape3D_gx1xx"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pgx31"]
-points = PackedVector3Array(0.891579, 0.292939, 0.35828, -0.488261, -0.442171, -0.510861, -0.485739, 0.449935, -0.506515, -1.31405, -0.468568, 0.442616, -1.31405, 0.44483, 0.442616, 0.815434, -0.379717, -0.449021, 0.648742, -0.447261, 0.5236, -1.31405, -0.468568, -0.435721, 0.639098, 0.4536, -0.510722, -1.31405, 0.44483, -0.435721, 0.639098, 0.4536, 0.517618, 0.655662, -0.451, -0.520997, -0.485554, 0.449658, 0.513091, 0.88602, 0.291463, -0.383127, 0.896813, -0.282893, 0.360137, -0.485554, -0.438109, 0.513091, 0.9169, 0.057605, -0.221259, 0.820217, 0.3931, 0.424443, 0.885903, -0.279994, -0.383236, 0.815434, 0.391266, -0.449021, 0.762283, -0.4046, 0.446715, 0.90716, 0.0571488, 0.363393, 0.851275, -0.346809, 0.389712, 0.679669, -0.445855, 0.488486, 0.77793, 0.389634, 0.454, 0.850605, -0.346582, -0.416188, 0.679669, -0.445855, -0.481591)
+[sub_resource type="BoxShape3D" id="BoxShape3D_26pev"]
+size = Vector3(2.19, 1, 1)
 
 [node name="BuildShip" type="Node3D"]
 
@@ -172,65 +170,43 @@ Building"
 [node name="PlayerShipExample" parent="." instance=ExtResource("3_gsuxg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99755, 0, 0)
 
-[node name="SquareMOdule" type="RigidBody3D" parent="." node_paths=PackedStringArray("attach_points")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.92008, 0, -0.365651)
-gravity_scale = 0.0
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.31877, 0, 1.9035)
+
+[node name="SquareMOdule2" type="CollisionShape3D" parent="Area3D" node_paths=PackedStringArray("attach_points")]
+shape = SubResource("BoxShape3D_gx1xx")
 script = ExtResource("3_kgbhb")
 attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SquareMOdule"]
-mesh = ExtResource("7_ywpn0")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SquareMOdule"]
-shape = SubResource("BoxShape3D_lciky")
-
-[node name="AttachPoints" type="Node3D" parent="SquareMOdule"]
-
-[node name="AttachPoint1" type="Node3D" parent="SquareMOdule/AttachPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.962838)
-
-[node name="AttachPoint2" type="Node3D" parent="SquareMOdule/AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 0)
-
-[node name="SquareMOdule2" type="RigidBody3D" parent="." node_paths=PackedStringArray("attach_points")]
-transform = Transform3D(0.772922, 0, -0.634501, 0, 1, 0, 0.634501, 0, 0.772922, 3, 0, 0)
-gravity_scale = 0.0
-script = ExtResource("3_kgbhb")
-attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2")]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SquareMOdule2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/SquareMOdule2"]
 mesh = ExtResource("8_2lyi2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SquareMOdule2"]
-shape = SubResource("BoxShape3D_lciky")
+[node name="AttachPoints" type="Node3D" parent="Area3D/SquareMOdule2"]
 
-[node name="AttachPoints" type="Node3D" parent="SquareMOdule2"]
-
-[node name="AttachPoint1" type="Node3D" parent="SquareMOdule2/AttachPoints"]
+[node name="AttachPoint1" type="Node3D" parent="Area3D/SquareMOdule2/AttachPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
-[node name="AttachPoint2" type="Node3D" parent="SquareMOdule2/AttachPoints"]
+[node name="AttachPoint2" type="Node3D" parent="Area3D/SquareMOdule2/AttachPoints"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 0)
 
-[node name="SquareMOdule2" type="RigidBody3D" parent="SquareMOdule2" node_paths=PackedStringArray("attach_points")]
-transform = Transform3D(0.772922, 0, -0.634501, 0, 1, 0, 0.634501, 0, 0.772922, 3, 0, 0)
-gravity_scale = 0.0
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(0.194817, 0, -0.980839, 0, 1, 0, 0.980839, 0, 0.194817, 5.31877, 0, 1.9035)
+
+[node name="SquareMOdule3" type="CollisionShape3D" parent="Area3D2" node_paths=PackedStringArray("attach_points")]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_26pev")
 script = ExtResource("3_kgbhb")
 attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SquareMOdule2/SquareMOdule2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D2/SquareMOdule3"]
 mesh = ExtResource("9_x0rib")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SquareMOdule2/SquareMOdule2"]
-transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_pgx31")
+[node name="AttachPoints" type="Node3D" parent="Area3D2/SquareMOdule3"]
 
-[node name="AttachPoints" type="Node3D" parent="SquareMOdule2/SquareMOdule2"]
-
-[node name="AttachPoint1" type="Node3D" parent="SquareMOdule2/SquareMOdule2/AttachPoints"]
+[node name="AttachPoint1" type="Node3D" parent="Area3D2/SquareMOdule3/AttachPoints"]
 transform = Transform3D(-0.0369751, 0, -0.999316, 0, 1, 0, 0.999316, 0, -0.0369751, 0.768349, 0, -0.0950341)
 
-[node name="AttachPoint2" type="Node3D" parent="SquareMOdule2/SquareMOdule2/AttachPoints"]
+[node name="AttachPoint2" type="Node3D" parent="Area3D2/SquareMOdule3/AttachPoints"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 0)
 
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Confirm" to="ShipBuilder" method="_on_confirm_pressed"]

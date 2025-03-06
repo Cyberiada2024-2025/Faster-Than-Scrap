@@ -1,34 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpxkxwkuyh6l2"]
+[gd_scene load_steps=5 format=3 uid="uid://dty8ie80qkfd5"]
 
 [ext_resource type="Script" path="res://code/Player/player_ship.gd" id="1_ddodb"]
 [ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="2_4lw14"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="3_a4hie"]
 [ext_resource type="Texture2D" uid="uid://5sl7fehpl0rk" path="res://art/textures/UI/Minimap/Placeholder/player_mini.png" id="4_e655p"]
 
-[node name="PlayerShipExample" type="Node3D" node_paths=PackedStringArray("cockpit")]
+[node name="PlayerShipExample" type="RigidBody3D" node_paths=PackedStringArray("cockpit")]
+gravity_scale = 0.0
 script = ExtResource("1_ddodb")
 cockpit = NodePath("Cockpit")
 
-[node name="Cockpit" parent="." node_paths=PackedStringArray("ship") instance=ExtResource("2_4lw14")]
+[node name="Cockpit" parent="." instance=ExtResource("2_4lw14")]
 activation_key = 66
-ship = NodePath("..")
 
-[node name="ModuleBase" parent="Cockpit" node_paths=PackedStringArray("ship") instance=ExtResource("3_a4hie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.12175)
-activation_key = 65
-ship = NodePath("../..")
-
-[node name="ModuleBase2" parent="Cockpit/ModuleBase" instance=ExtResource("3_a4hie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05367, 0, -0.0354288)
-activation_key = 32
-
-[node name="Cockpit_ModuleBase_ModuleBase#ModuleBase" parent="." instance=ExtResource("3_a4hie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2459, 0, -0.0354288)
-activation_key = 4194325
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D2" type="Sprite3D" parent="Cockpit"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 layers = 4
 modulate = Color(0, 1, 0, 1)
 double_sided = false
 texture = ExtResource("4_e655p")
+
+[node name="ModuleBase" parent="." instance=ExtResource("3_a4hie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09139, 0, 1.16445)
+activation_key = 4194325
+
+[node name="ModuleBase2" parent="." instance=ExtResource("3_a4hie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.12175)
+activation_key = 65
+
+[node name="ModuleBase3" parent="." instance=ExtResource("3_a4hie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05367, 0, 1.08632)
+activation_key = 32

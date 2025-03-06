@@ -1,6 +1,6 @@
 class_name Module
 
-extends PhysicsBody3D
+extends CollisionShape3D
 
 ## Base class for all modules
 ## The object should have scale 1 to work properly!
@@ -10,11 +10,8 @@ extends PhysicsBody3D
 @export var hp: float = 100
 @export var ship: Ship
 @export var attach_points: Array[Node3D] = []
-
-## joint for connecting two modules (rigidbodies).
-## It is not supposed to be added in prefab!
-## It should only be set in debug ships!
-@export var joint: Generic6DOFJoint3D
+@export var parent_module: Module
+@export var child_modules: Array[Module] = []
 
 @export var sprite: Sprite3D
 @export var label: Label3D
@@ -28,7 +25,6 @@ var was_key_pressed: bool = false
 func _ready() -> void:
 	on_key_change(activation_key)
 	update_sprite()
-	add_collider_to_ship()
 
 
 func _process(_delta: float) -> void:
@@ -114,10 +110,7 @@ func on_key_change(key: Key) -> void:
 
 
 func has_child_module() -> bool:
-	for child in get_children():
-		if child is Module:
-			return true
-	return false
+	return child_modules.size() > 0
 
 
 func set_ship_reference(ship: Ship) -> void:
@@ -143,9 +136,3 @@ func create_ghost() -> Area3D:
 		ghost.add_child(child_copy)
 	get_tree().root.add_child(ghost)
 	return ghost
-
-func add_collider_to_ship() -> void:
-	var collider : CollisionShape3D= find_children("*", "CollisionShape3D")[0]
-	var copiedCollider : CollisionShape3D= collider.duplicate()
-	ship.add_child.call_deferred(copiedCollider)
-	copiedCollider.global_position = collider.global_position

@@ -26,13 +26,13 @@ const JOINT_PREFAB = preload("res://prefabs/modules/joint.tscn")
 @export var choose_key_message: Control
 @export var confirm_finish_message: Control
 
-var outline: MeshInstance3D
+var outline: Array[MeshInstance3D]
 
 var state = State.NONE
 
 var active_module_ghost: Area3D = null
 var active_module: Module = null
-var attach_target: Node3D = null
+var attach_target: Module = null
 var legal: bool = false
 
 var attach_point_index: int = 0
@@ -82,9 +82,10 @@ func _update_attach_point_index(event: InputEvent) -> void:
 
 # ----------------raycasts hits ------------------------------------
 func _get_module_from_hit(hit:Dictionary) -> Module:
-	var rigid_body: RigidBody3D = hit.get("collider")
-	if rigid_body is Module:
-		return rigid_body
+	var rigid_body = hit.get("collider")
+	if rigid_body != null:
+		var module: Module = rigid_body.get_child(hit["shape"])
+		return module
 	return null
 
 func _get_raycast_hit(event: InputEvent) -> Dictionary:
@@ -97,7 +98,7 @@ func _get_raycast_hit(event: InputEvent) -> Dictionary:
 	return space_state.intersect_ray(query)
 
 # ---------------- proximity check ------------------------------------
-func _check_colliders_in_range(point: Vector3, radius: float) -> Array:
+func _check_colliders_in_range(point: Vector3, radius: float) -> Array[Module]:
 	var space_state = get_world_3d().direct_space_state
 
 	var query = PhysicsShapeQueryParameters3D.new()
@@ -108,27 +109,36 @@ func _check_colliders_in_range(point: Vector3, radius: float) -> Array:
 	query.transform.origin = point
 	query.collision_mask = collision_mask # Adjust mask as needed
 
-	var result = space_state.intersect_shape(query)
-	return result  # Returns an array of dictionaries with collider info
+	# creates an array of collisions (which contains rigidbody)
+	var rigid_body_intersections = space_state.intersect_shape(query)
+	
+	# so we need to convert it to get modules
+	var modules: Array[Module] = []
+	for intersection in rigid_body_intersections:
+		modules.append(
+			intersection["collider"].get_child(intersection["shape"])
+		)
+	
+	return modules  # Returns an array of dictionaries with collider info
 
 func _get_module_to_attach() -> Module:
-	var colliders = _check_colliders_in_range(mouse_position_3d, snap_range)
+	var modules = _check_colliders_in_range(mouse_position_3d, snap_range)
 	# remove held module and ghost from detected collisions
-	ArrayUtils.remove_by_field(colliders, "collider", active_module)
-	ArrayUtils.remove_by_field(colliders, "collider", active_module_ghost)
+	modules.erase(active_module)
+	#modules.erase(active_module_ghost)
 
-	if colliders.size() == 0:
+	if modules.size() == 0:
 		return null
 
 	# find closest module
 	var min_distance = INF
-	var closest_rigidbody = null
-	for coll in colliders:
-		var distance = coll.collider.global_position.distance_to(mouse_position_3d)
+	var closest_module = null
+	for module in modules:
+		var distance = module.global_position.distance_to(mouse_position_3d)
 		if distance < min_distance:
 			min_distance = distance
-			closest_rigidbody = coll.collider
-	return closest_rigidbody
+			closest_module = module
+	return closest_module
 
 # --------------------------------
 
@@ -162,9 +172,8 @@ func _on_module_clicked(clicked_module: Module) -> bool:
 	if clicked_module is Cockpit:
 		_flash_module(clicked_module)
 	elif clicked_module.has_child_module():
-		for child in clicked_module.get_children():
-			if child is Module:
-				_flash_module(child)
+		for child in clicked_module.child_modules:
+			_flash_module(child)
 	return false
 
 func _on_lmb_release() -> void:
@@ -176,9 +185,7 @@ func _on_lmb_release() -> void:
 		if attach_target != null:
 			_attach_module()
 		else:
-			active_module.reparent(get_tree().get_root())
-			active_module.set_ship_reference(null)
-			_remove_joint()
+			_dettach_module()
 		# if exist delete ghost
 		if active_module_ghost != null:
 			active_module_ghost.queue_free()
@@ -188,29 +195,35 @@ func _on_lmb_release() -> void:
 		active_module = null
 		print("new state = none")
 		state = State.NONE
-		outline.mesh = null
+		outline = []
 	else:
 		var overlapping = active_module_ghost.get_overlapping_bodies()
 		for module in overlapping:
 			_flash_module(module)
 
-func _remove_joint() -> void:
-	if active_module.joint != null:
-		active_module.joint.queue_free()
-		active_module.joint = null
-
-func _add_joint() -> void:
-	_remove_joint()
-	active_module.joint = JOINT_PREFAB.instantiate()
-	active_module.add_child(active_module.joint)
-	active_module.joint.name = "Joint"
-	active_module.joint.node_a = active_module.get_path()
-	active_module.joint.node_b = attach_target.get_path()
-
 func _attach_module() -> void:
-	active_module.reparent(attach_target)
+	if active_module.parent_module == null:
+		var area_parent = active_module.get_parent()
+		active_module.reparent(get_tree().root) # temporary
+		area_parent.queue_free()
+	active_module.reparent(attach_target.ship)
 	active_module.set_ship_reference(attach_target.ship)  # copy the reference to the ship
-	_add_joint()
+	attach_target.child_modules.append(active_module)
+	active_module.parent_module = attach_target
+
+func _dettach_module() -> void:
+	active_module.set_ship_reference(null)
+	if active_module.parent_module != null:
+		active_module.parent_module.child_modules.erase(active_module)
+		active_module.parent_module = null
+
+		# add some area3d as a root of the module, to allow clicking it
+		active_module.reparent(get_tree().get_root())
+		var area = Area3D.new() 
+		get_tree().root.add_child(area)
+		area.position=active_module.position
+		active_module.reparent(area)
+		
 
 func _input(event: InputEvent):
 	_update_lmb_state(event)
@@ -226,7 +239,7 @@ func _input(event: InputEvent):
 			if _lmb_just_pressed():
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
-					var clicked_module := _get_module_from_hit(hit)
+					var clicked_module : Module = _get_module_from_hit(hit)
 					if _on_module_clicked(clicked_module):
 						state = State.DRAGGING
 						outline = _create_outline(active_module_ghost)
@@ -265,9 +278,8 @@ func _get_intersection() -> Dictionary:
 	var query = PhysicsRayQueryParameters3D.create(
 		mouse_position_3d,
 		attach_target.global_position,
-		~0,  # collision mask: ~0 means 0xFFFFFFFF (full collision mask)
-		[active_module.get_rid()]
-	)  # ignore active_module
+		~0  # collision mask: ~0 means 0xFFFFFFFF (full collision mask)
+	)
 	var intersection = space_state.intersect_ray(query)
 
 	if intersection.size() == 0:
@@ -278,14 +290,14 @@ func _get_intersection() -> Dictionary:
 		mouse_position_3d,
 		mouse_position_3d - intersection.normal * 10,
 		~0,  # collision mask: ~0 means 0xFFFFFFFF (full collision mask)
-		[active_module.get_rid()]
-	)  # ignore active_module
+	)
 	var intersection2 = space_state.intersect_ray(query2)
 
 	if intersection2.size() == 0:
 		return intersection2
 
-	if intersection2.collider == attach_target:
+	var second_hit: Module = _get_module_from_hit(intersection2)
+	if second_hit == attach_target:
 		return intersection2
 	return {}
 
@@ -341,27 +353,29 @@ func _display_legal() -> void:
 func _display_illegal() -> void:
 	outline_mat.set_shader_parameter("Color", Color.RED)
 
-func _create_outline(parent: Node3D) -> MeshInstance3D:
-	var module_mesh: MeshInstance3D
-	for child in parent.get_children():
-		if child is MeshInstance3D:
-			module_mesh = child
+func _create_outline(parent: Node3D) -> Array[MeshInstance3D]:
+	var module_meshes = parent.find_children("*", "MeshInstance3D",true,false)
 
-	var out = MeshInstance3D.new()
-	parent.add_child(out)
-	out.material_override = outline_mat
-	out.mesh = module_mesh.mesh
+	var out : Array[MeshInstance3D] = []
+	for module_mesh in module_meshes:
+		var mesh = MeshInstance3D.new()
+		parent.add_child(mesh)
+		mesh.material_override = outline_mat
+		mesh.mesh = module_mesh.mesh
+		mesh.basis = module_mesh.basis
+		out.append(mesh)
 
 	return out
 
 func _flash_module(module: Module) -> void:
-	var flash = _create_outline(module)
-	flash.material_override = flash_mat
-	var tween =  get_tree().create_tween().bind_node(flash).set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property(flash, "material_override:shader_parameter/Color", Color.RED, flash_time/2)
-	tween.tween_property(flash, "material_override:shader_parameter/Color", Color.BLACK, flash_time/2)
-	tween.tween_callback(flash.queue_free)
-	tween.play()
+	var flashes = _create_outline(module)
+	for flash in flashes:
+		flash.material_override = flash_mat
+		var tween = get_tree().create_tween().bind_node(flash).set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(flash, "material_override:shader_parameter/Color", Color.RED, flash_time/2)
+		tween.tween_property(flash, "material_override:shader_parameter/Color", Color.BLACK, flash_time/2)
+		tween.tween_callback(flash.queue_free)
+		tween.play()
 
 
 func _on_finish_pressed() -> void:

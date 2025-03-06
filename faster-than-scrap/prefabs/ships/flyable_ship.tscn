@@ -9,59 +9,42 @@
 gravity_scale = 0.0
 script = ExtResource("1_keeht")
 cockpit = NodePath("Cockpit")
-modules = [NodePath("Cockpit"), null, null, null, null]
+modules = [null, null, null, null, null]
 
-[node name="Cockpit" parent="." node_paths=PackedStringArray("ship") instance=ExtResource("1_odfy5")]
-collision_layer = 2
-collision_mask = 2
+[node name="Cockpit" parent="." node_paths=PackedStringArray("ship", "child_modules") instance=ExtResource("1_odfy5")]
 ship = NodePath("..")
+child_modules = [NodePath("../BaseModule"), NodePath("../Thruster Backward")]
 
-[node name="Thruster Backward" parent="Cockpit" node_paths=PackedStringArray("ship") instance=ExtResource("3_ymjaj")]
+[node name="BaseModule" parent="." node_paths=PackedStringArray("parent_module", "child_modules") instance=ExtResource("2_eda7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0289251, 0, -1.25452)
+parent_module = NodePath("../Cockpit")
+child_modules = [NodePath("../Thruster Forward")]
+
+[node name="Thruster Backward" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("3_ymjaj")]
 transform = Transform3D(-1, 0, 7.54979e-08, 0, 1, 0, -7.54979e-08, 0, -1, -0.0145017, 0, 1.61053)
-collision_layer = 2
-collision_mask = 2
-recoil_force = 1000.0
+recoil_force = 300.0
 activation_key = 83
-ship = NodePath("../..")
+ship = NodePath("..")
+parent_module = NodePath("../Cockpit")
+child_modules = [NodePath("../Thruster Right"), NodePath("../Thruster Left")]
 
-[node name="Thruster Right" parent="Cockpit" node_paths=PackedStringArray("ship") instance=ExtResource("3_ymjaj")]
+[node name="Thruster Right" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("3_ymjaj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.56632, 0, 2.0007)
-collision_layer = 2
-collision_mask = 2
-recoil_force = 1000.0
+recoil_force = 300.0
 activation_key = 68
-ship = NodePath("../..")
+ship = NodePath("..")
+parent_module = NodePath("../Thruster Backward")
 
-[node name="Thruster Left" parent="Cockpit" node_paths=PackedStringArray("ship") instance=ExtResource("3_ymjaj")]
+[node name="Thruster Left" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("3_ymjaj")]
 transform = Transform3D(1.19209e-07, 0, 1, 0, 1, 0, -1, 0, 1.19209e-07, -1.66784, 0, 2.0007)
-collision_layer = 2
-collision_mask = 2
-recoil_force = 1000.0
+recoil_force = 300.0
 activation_key = 65
-ship = NodePath("../..")
+ship = NodePath("..")
+parent_module = NodePath("../Thruster Backward")
 
-[node name="RigidBody3D" parent="Cockpit" node_paths=PackedStringArray("ship") instance=ExtResource("2_eda7p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.39162)
-collision_layer = 2
-collision_mask = 2
-ship = NodePath("../..")
-
-[node name="Thruster Forward" parent="Cockpit/RigidBody3D" node_paths=PackedStringArray("ship") instance=ExtResource("3_ymjaj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.50827)
-collision_layer = 2
-collision_mask = 2
-recoil_force = 1000.0
+[node name="Thruster Forward" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("3_ymjaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.89989)
+recoil_force = 300.0
 activation_key = 87
-ship = NodePath("../../..")
-
-[node name="RigidBody3D2" parent="Cockpit/RigidBody3D" node_paths=PackedStringArray("ship") instance=ExtResource("2_eda7p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37863, 0, 0.01941)
-collision_layer = 2
-collision_mask = 2
-ship = NodePath("../../..")
-
-[node name="RigidBody3D3" parent="Cockpit/RigidBody3D" node_paths=PackedStringArray("ship") instance=ExtResource("2_eda7p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63062, 0, 0.0476401)
-collision_layer = 2
-collision_mask = 2
-ship = NodePath("../../..")
+ship = NodePath("..")
+parent_module = NodePath("../BaseModule")

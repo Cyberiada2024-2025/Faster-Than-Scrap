@@ -40,6 +40,7 @@ bg_color = Color(0, 0.0509804, 0.027451, 1)
 script = ExtResource("1_tic1n")
 outline_mat = ExtResource("2_q55sa")
 flash_mat = ExtResource("3_optqi")
+flash_time = 0.2
 choose_key_message = NodePath("Control/Choose_key")
 confirm_finish_message = NodePath("Control/Confirm finish")
 

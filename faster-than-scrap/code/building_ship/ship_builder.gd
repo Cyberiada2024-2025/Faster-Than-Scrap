@@ -111,14 +111,14 @@ func _check_colliders_in_range(point: Vector3, radius: float) -> Array[Module]:
 
 	# creates an array of collisions (which contains rigidbody)
 	var rigid_body_intersections = space_state.intersect_shape(query)
-	
+
 	# so we need to convert it to get modules
 	var modules: Array[Module] = []
 	for intersection in rigid_body_intersections:
 		modules.append(
 			intersection["collider"].get_child(intersection["shape"])
 		)
-	
+
 	return modules  # Returns an array of dictionaries with collider info
 
 func _get_module_to_attach() -> Module:
@@ -220,11 +220,11 @@ func _dettach_module() -> void:
 
 		# add some area3d as a root of the module, to allow clicking it
 		active_module.reparent(get_tree().get_root())
-		var area = Area3D.new() 
+		var area = Area3D.new()
 		get_tree().root.add_child(area)
 		area.position=active_module.position
 		active_module.reparent(area)
-		
+
 
 func _input(event: InputEvent):
 	_update_lmb_state(event)
@@ -305,7 +305,7 @@ func _get_intersection() -> Dictionary:
 # check whether the active module collides with other modules
 func _module_collides() -> bool:
 	# why both are always empty?????
-	var overlapping = active_module_ghost.get_overlapping_bodies() 
+	var overlapping = active_module_ghost.get_overlapping_bodies()
 	var try = active_module_ghost.get_overlapping_areas()
 	overlapping.erase(attach_target)
 	overlapping.erase(active_module)

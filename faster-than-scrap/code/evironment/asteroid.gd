@@ -2,8 +2,6 @@ extends RigidBody3D
 
 @export_category("Stats")
 @export var hp: int = 100
-@export var dealt_damage_multiplier: int = 1
-@export var self_damage_multiplier: int = 1
 @export_group("StartValues")
 @export var start_speed_range: float = 10.0
 

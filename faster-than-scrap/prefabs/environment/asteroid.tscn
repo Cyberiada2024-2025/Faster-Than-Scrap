@@ -19,7 +19,6 @@ contact_monitor = true
 max_contacts_reported = 5
 angular_damp_mode = 1
 script = ExtResource("1_dsopr")
-dealt_damage_multiplier = 100
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_keyhs")

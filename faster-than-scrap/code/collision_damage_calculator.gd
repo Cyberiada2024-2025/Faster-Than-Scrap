@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	pre_collision_velosity = calculated_body.linear_velocity
+	delta
 
 
 func _find_parent_collision(body: Node) -> void:

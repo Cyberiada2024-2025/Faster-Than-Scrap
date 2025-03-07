@@ -1,37 +1,63 @@
-extends Node3D
+extends Node
+
+@export_category("ColisionCalculator")
+@export var calculated_body: PhysicsBody3D
+@export_group("ColisionModifiers")
+@export var flat_damage_reduction: float = 10.0
+@export var self_damage_multiplier: float = 1.0
+@export var dealt_damage_multiplier: float = 1.0
+
+var pre_collision_velosity: Vector3
 
 
 func _ready() -> void:
-	get_parent().body_entered.connect(_find_parent_collision)
-	get_parent().contact_monitor = true
-	if get_parent().max_contacts_reported <= 0:
-		get_parent().max_contacts_reported = 10
+	calculated_body.set_meta("collision_damage_calculator", self)
+
+	calculated_body.body_entered.connect(_find_parent_collision)
+	calculated_body.contact_monitor = true
+	if calculated_body.max_contacts_reported <= 0:
+		calculated_body.max_contacts_reported = 10
+
+
+func _process(delta: float) -> void:
+	pre_collision_velosity = calculated_body.linear_velocity
 
 
 func _find_parent_collision(body: Node) -> void:
-	if body.is_in_group("deal damege by collisions"):
-		var damage: int = calculate_damage(get_parent(), body)
-		get_parent().take_damage(damage)
+	var damage: float = calculate_damage(calculated_body, body)
+	calculated_body.take_damage(damage)
 
 
-# from atribute nodes include:
-# 	dealt_damage_multiplier
-# 	self_damage_multiplier
-func calculate_damage(me: Node, oponent: Node) -> int:
+func calculate_damage(me: Node, oponent: Node) -> float:
+	var oponet_calculator: Node
+	if oponent.has_meta("collision_damage_calculator"):
+		oponet_calculator = oponent.get_meta("collision_damage_calculator")
+	else:
+		oponet_calculator = null
+
 	# calculate base damage
 	var direction: Vector3 = me.position.direction_to(oponent.position)
-	var base_damage: float = (me.linear_velocity + oponent.linear_velocity).dot(direction)
-	base_damage = abs(base_damage)
+	var v1: Vector3 = self.pre_collision_velosity
+	var v2: Vector3
+	if oponet_calculator == null:
+		v2 = Vector3(0, 0, 0)
+	else:
+		v2 = oponet_calculator.pre_collision_velosity
+	var base_damage: float = (v1 - v2).dot(direction)
+
 	# get multiplies
 	var self_dmg_mult: float = 1
-	if "self_damage_multiplier" in me:
-		self_dmg_mult *= me.self_damage_multiplier
-	if "dealt_damage_multiplier" in oponent:
-		self_dmg_mult *= oponent.dealt_damage_multiplier
+	self_dmg_mult *= self.self_damage_multiplier
+	if oponet_calculator != null:
+		self_dmg_mult *= oponet_calculator.dealt_damage_multiplier
 
 	# return result
 	var damage: float = base_damage * self_dmg_mult
 	if "mass" in oponent:
 		damage *= oponent.mass / (me.mass + oponent.mass)
 
-	return int(damage)
+	damage -= flat_damage_reduction
+	if damage <= 0:
+		damage = 0
+	print(damage)
+	return damage

@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://code/collision_damage_calculator.gd" id="1_ehkyb"]
 
-[node name="CollisionDamageCalculator" type="Node3D"]
+[node name="CollisionDamageCalculator" type="Node"]
 script = ExtResource("1_ehkyb")

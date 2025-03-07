@@ -10,7 +10,7 @@ bounce = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_ix2ef"]
 
-[node name="Asteroid" type="RigidBody3D" groups=["deal damege by collisions"]]
+[node name="Asteroid" type="RigidBody3D"]
 axis_lock_linear_y = true
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_gro5k")
@@ -27,4 +27,5 @@ shape = SubResource("SphereShape3D_keyhs")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_ix2ef")
 
-[node name="CollisionDamageCalculator" parent="." instance=ExtResource("2_wuo07")]
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("calculated_body") instance=ExtResource("2_wuo07")]
+calculated_body = NodePath("..")

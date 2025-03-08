@@ -7,7 +7,8 @@
 
 [node name="FlyFly" type="Node3D"]
 
-[node name="FlyableShip" parent="." instance=ExtResource("1_5iglw")]
+[node name="FlyableShip" parent="." node_paths=PackedStringArray("modules") instance=ExtResource("1_5iglw")]
+modules = [NodePath("Cockpit"), NodePath("Cockpit/RigidBody3D"), null, NodePath("Cockpit/RigidBody3D/RigidBody3D2"), NodePath("Cockpit/RigidBody3D/RigidBody3D3")]
 
 [node name="MainCamera" parent="." instance=ExtResource("2_um6rh")]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 10, 0)
@@ -15,3 +16,6 @@ transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.7422
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.50015, 0, 0)
 mesh = SubResource("BoxMesh_eetof")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 10, 6)

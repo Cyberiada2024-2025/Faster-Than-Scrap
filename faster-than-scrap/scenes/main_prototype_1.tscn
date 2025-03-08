@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cd6s2pahef4so"]
+[gd_scene load_steps=4 format=3 uid="uid://b0lisluawhnx5"]
 
-[ext_resource type="PackedScene" uid="uid://bi4ogldrq2xxc" path="res://prefabs/ships/flyable_ship.tscn" id="1_wy23v"]
+[ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="1_wy23v"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="2_cojxt"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_46x43"]
@@ -31,7 +31,8 @@ omni_range = 4096.0
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80378, 3.61269, 0)
 
-[node name="FlyableShip" parent="." instance=ExtResource("1_wy23v")]
+[node name="FlyableShip" parent="." node_paths=PackedStringArray("modules") instance=ExtResource("1_wy23v")]
+modules = [NodePath("Cockpit"), NodePath("Cockpit/RigidBody3D"), null, NodePath("Cockpit/RigidBody3D/RigidBody3D2"), NodePath("Cockpit/RigidBody3D/RigidBody3D3")]
 
 [node name="Camera3D" type="Camera3D" parent="FlyableShip"]
 transform = Transform3D(1, 0, 0, 0, 0.439986, 0.898005, 0, -0.898005, 0.439986, 0, 8.89242, 5.08122)

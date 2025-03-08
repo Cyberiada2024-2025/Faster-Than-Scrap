@@ -6,27 +6,34 @@ extends Node
 ## of the game game state
 ## Used as a helper node, so there can be multiple of scene managers in the same scene
 
-func load_main_menu_scene()->void:
+
+func load_main_menu_scene() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	GameManager.set_game_state(GameState.State.MAIN_MENU)
 
-func load_map_selector_scene()->void:
+
+func load_map_selector_scene() -> void:
 	_detach_ship()
 	get_tree().change_scene_to_file("res://scenes/map_selector.tscn")
 	GameManager.set_game_state(GameState.State.MAP_SELECTOR)
 	_attach_ship_with_hud()
 
-func load_fly_ship_scene()->void:
+
+func load_fly_ship_scene() -> void:
 	_detach_ship()
 	get_tree().change_scene_to_file("res://scenes/fly_ship.tscn")
 	GameManager.set_game_state(GameState.State.FLY)
 	_attach_ship_with_hud()
+	_detach_ship()
+	_attach_ship_without_hud()
 
-func load_build_ship_scene()->void:
+
+func load_build_ship_scene() -> void:
 	_detach_ship()
 	get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
 	GameManager.set_game_state(GameState.State.BUILD)
 	_attach_ship_without_hud()
+
 
 ## detach the ship from the scene tree, to preserve it, when it is changed
 func _detach_ship():
@@ -34,9 +41,7 @@ func _detach_ship():
 		return
 
 	# detach the ship
-	GameManager.player_ship.get_parent().remove_child(
-		GameManager.player_ship
-	)
+	GameManager.player_ship.get_parent().remove_child(GameManager.player_ship)
 	# hud is deleted as any node in the scene
 
 
@@ -51,8 +56,13 @@ func _attach_ship_with_hud():
 		var hud = hud_scene.instantiate()
 		GameManager.get_tree().root.add_child(hud)
 
+
 ## attach the ship to the scene tree
 func _attach_ship_without_hud():
 	if GameManager.player_ship != null:
 		# attach ship
 		GameManager.get_tree().root.add_child(GameManager.player_ship)
+
+
+func _on_button_pressed() -> void:
+	pass  # Replace with function body.

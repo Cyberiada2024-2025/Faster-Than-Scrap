@@ -1,22 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://beaivb4nm47co"]
+[gd_scene load_steps=7 format=3 uid="uid://beaivb4nm47co"]
 
 [ext_resource type="Script" path="res://code/ship/ship.gd" id="1_c6sek"]
-[ext_resource type="Script" path="res://code/ship/modules/weapons/weapon_module.gd" id="2_db42y"]
-[ext_resource type="Script" path="res://code/weapons/spawner_weapon.gd" id="3_hbd76"]
-[ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/test_projectile.tscn" id="4_scxmj"]
-[ext_resource type="Script" path="res://code/weapons/constant_fire_weapon.gd" id="5_h3vti"]
-[ext_resource type="PackedScene" uid="uid://bnvojbycskewd" path="res://prefabs/projectiles/test_beam.tscn" id="6_bglpm"]
+[ext_resource type="PackedScene" uid="uid://dohx5akrv2oq8" path="res://prefabs/modules/weapons/laser_weapon_module.tscn" id="2_fxmod"]
+[ext_resource type="PackedScene" uid="uid://67fftbosvmmt" path="res://prefabs/modules/weapons/beam_weapon_module.tscn" id="6_iruyl"]
 [ext_resource type="Script" path="res://code/damage/damageable.gd" id="7_7weoh"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_30wr0"]
-top_radius = 0.1
-bottom_radius = 0.1
-height = 1.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_puthi"]
-size = Vector3(0.2, 0.2, 0.2)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_rcb50"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xsxat"]
 
 [node name="weapon_demo" type="Node3D"]
 
@@ -31,95 +22,22 @@ transform = Transform3D(0.851304, 0.512229, 0.113591, -0.292392, 0.283404, 0.913
 [node name="Ship" type="RigidBody3D" parent="WeaponTesting"]
 script = ExtResource("1_c6sek")
 
-[node name="WeaponModule1" type="RigidBody3D" parent="WeaponTesting" node_paths=PackedStringArray("weapon", "ship")]
-transform = Transform3D(-0.12973, 0, -0.991549, 0, 1, 0, 0.991549, 0, -0.12973, 0, 2.40153, 0)
-gravity_scale = 0.0
-script = ExtResource("2_db42y")
-weapon = NodePath("SpawnerWeapon")
+[node name="LaserWeaponModule" parent="WeaponTesting" node_paths=PackedStringArray("ship") instance=ExtResource("2_fxmod")]
+transform = Transform3D(0.508206, 0.448513, -0.735229, -0.0884838, 0.876365, 0.473449, 0.856678, -0.175554, 0.485061, 0, 2, 0)
 activation_key = 81
 ship = NodePath("../Ship")
 
-[node name="SpawnerWeapon" type="Node3D" parent="WeaponTesting/WeaponModule1" node_paths=PackedStringArray("ship")]
-script = ExtResource("3_hbd76")
-ship = NodePath("")
-cooldown = 1.0
-projectile = ExtResource("4_scxmj")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/WeaponModule1/SpawnerWeapon"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("CylinderMesh_30wr0")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/WeaponModule1"]
-mesh = SubResource("BoxMesh_puthi")
-
-[node name="WeaponModule2" type="RigidBody3D" parent="WeaponTesting" node_paths=PackedStringArray("weapon", "ship")]
-transform = Transform3D(0.292605, 0, -0.956233, 0, 1, 0, 0.956233, 0, 0.292605, 0, -0.125692, 0)
-gravity_scale = 0.0
-script = ExtResource("2_db42y")
-weapon = NodePath("SpawnerWeapon")
-allow_auto_fire = true
-activation_key = 87
-ship = NodePath("../Ship")
-
-[node name="SpawnerWeapon" type="Node3D" parent="WeaponTesting/WeaponModule2" node_paths=PackedStringArray("ship")]
-script = ExtResource("3_hbd76")
-ship = NodePath("")
-cooldown = 1.0
-projectile = ExtResource("4_scxmj")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/WeaponModule2/SpawnerWeapon"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("CylinderMesh_30wr0")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/WeaponModule2"]
-mesh = SubResource("BoxMesh_puthi")
-
-[node name="WeaponModule3" type="RigidBody3D" parent="WeaponTesting" node_paths=PackedStringArray("weapon", "ship")]
-transform = Transform3D(0.478922, 0, -0.877858, 0, 1, 0, 0.877858, 0, 0.478922, 0, -1.93436, 0)
-gravity_scale = 0.0
-script = ExtResource("2_db42y")
-weapon = NodePath("ConstantFireWeapon")
+[node name="BeamWeaponModule" parent="WeaponTesting" node_paths=PackedStringArray("ship") instance=ExtResource("6_iruyl")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, -2, 0)
 activation_key = 69
 ship = NodePath("../Ship")
 
-[node name="ConstantFireWeapon" type="Node3D" parent="WeaponTesting/WeaponModule3" node_paths=PackedStringArray("ship")]
-script = ExtResource("5_h3vti")
-ship = NodePath("")
-cooldown = 1.0
-projectile = ExtResource("6_bglpm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/WeaponModule3/ConstantFireWeapon"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("CylinderMesh_30wr0")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/WeaponModule3"]
-mesh = SubResource("BoxMesh_puthi")
-
-[node name="WeaponModule4" type="RigidBody3D" parent="WeaponTesting" node_paths=PackedStringArray("weapon", "ship")]
-transform = Transform3D(-0.0610892, -0.532891, -0.843976, -0.0384714, 0.846184, -0.531501, 0.997391, 0, -0.0721938, 0, -3.67161, 0)
-gravity_scale = 0.0
-script = ExtResource("2_db42y")
-weapon = NodePath("ConstantFireWeapon")
-allow_auto_fire = true
-activation_key = 82
-ship = NodePath("../Ship")
-
-[node name="ConstantFireWeapon" type="Node3D" parent="WeaponTesting/WeaponModule4" node_paths=PackedStringArray("ship")]
-script = ExtResource("5_h3vti")
-ship = NodePath("")
-cooldown = 1.0
-projectile = ExtResource("6_bglpm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/WeaponModule4/ConstantFireWeapon"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("CylinderMesh_30wr0")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/WeaponModule4"]
-mesh = SubResource("BoxMesh_puthi")
-
 [node name="Damageable" type="Area3D" parent="WeaponTesting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74161, -1.80464, -0.853822)
+transform = Transform3D(0.784311, 0, 0.620368, 0, 1, 0, -0.620368, 0, 0.784311, 5.40441, -1.80464, -3.59536)
 script = ExtResource("7_7weoh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WeaponTesting/Damageable"]
 shape = SubResource("BoxShape3D_rcb50")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/Damageable"]
+mesh = SubResource("BoxMesh_xsxat")

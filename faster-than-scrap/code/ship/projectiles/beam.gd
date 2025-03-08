@@ -19,7 +19,9 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if _damage_raycast.is_colliding():
-		var ray_length = _damage_raycast.position.distance_to(_damage_raycast.get_collision_point())
+		var ray_length = _damage_raycast.global_position.distance_to(
+			_damage_raycast.get_collision_point()
+		)
 		beam_indicator.scale.z = ray_length
 	else:
 		beam_indicator.scale.z = _beam_length

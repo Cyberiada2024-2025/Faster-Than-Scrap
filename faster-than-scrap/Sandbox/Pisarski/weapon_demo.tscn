@@ -28,7 +28,7 @@ transform = Transform3D(0.851304, 0.512229, 0.113591, -0.292392, 0.283404, 0.913
 
 [node name="WeaponTesting" type="Node" parent="."]
 
-[node name="Ship" type="Node3D" parent="WeaponTesting"]
+[node name="Ship" type="RigidBody3D" parent="WeaponTesting"]
 script = ExtResource("1_c6sek")
 
 [node name="WeaponModule1" type="RigidBody3D" parent="WeaponTesting" node_paths=PackedStringArray("weapon", "ship")]
@@ -41,7 +41,7 @@ ship = NodePath("../Ship")
 
 [node name="SpawnerWeapon" type="Node3D" parent="WeaponTesting/WeaponModule1" node_paths=PackedStringArray("ship")]
 script = ExtResource("3_hbd76")
-ship = NodePath("../../Ship")
+ship = NodePath("")
 cooldown = 1.0
 projectile = ExtResource("4_scxmj")
 
@@ -63,7 +63,7 @@ ship = NodePath("../Ship")
 
 [node name="SpawnerWeapon" type="Node3D" parent="WeaponTesting/WeaponModule2" node_paths=PackedStringArray("ship")]
 script = ExtResource("3_hbd76")
-ship = NodePath("../../Ship")
+ship = NodePath("")
 cooldown = 1.0
 projectile = ExtResource("4_scxmj")
 
@@ -84,7 +84,7 @@ ship = NodePath("../Ship")
 
 [node name="ConstantFireWeapon" type="Node3D" parent="WeaponTesting/WeaponModule3" node_paths=PackedStringArray("ship")]
 script = ExtResource("5_h3vti")
-ship = NodePath("../../Ship")
+ship = NodePath("")
 cooldown = 1.0
 projectile = ExtResource("6_bglpm")
 
@@ -105,9 +105,8 @@ activation_key = 82
 ship = NodePath("../Ship")
 
 [node name="ConstantFireWeapon" type="Node3D" parent="WeaponTesting/WeaponModule4" node_paths=PackedStringArray("ship")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("5_h3vti")
-ship = NodePath("../../Ship")
+ship = NodePath("")
 cooldown = 1.0
 projectile = ExtResource("6_bglpm")
 

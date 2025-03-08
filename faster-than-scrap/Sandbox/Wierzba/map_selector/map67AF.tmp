@@ -1,0 +1,122 @@
+[gd_scene load_steps=5 format=3 uid="uid://eol251w0tnh0"]
+
+[ext_resource type="Script" path="res://code/map_select/map_selector.gd" id="1_hqa1d"]
+[ext_resource type="PackedScene" uid="uid://2oa2dvray5oq" path="res://prefabs/map_select/map_layer.tscn" id="2_chfeh"]
+[ext_resource type="PackedScene" uid="uid://ska6812npmde" path="res://prefabs/map_select/map_node.tscn" id="2_w4flx"]
+[ext_resource type="PackedScene" uid="uid://dko08cmdkba7m" path="res://prefabs/map_select/map_margin.tscn" id="4_15l3h"]
+
+[node name="MapSelectExample" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("1_hqa1d")
+
+[node name="MapLayer" parent="." instance=ExtResource("2_chfeh")]
+layout_mode = 2
+
+[node name="MapNode" parent="MapLayer" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("2_w4flx")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+next_map_nodes = [NodePath("../../MapLayer2/MapNode"), NodePath("../../MapLayer2/MapNode2")]
+
+[node name="MapMargin" parent="." instance=ExtResource("4_15l3h")]
+layout_mode = 2
+
+[node name="MapLayer2" parent="." instance=ExtResource("2_chfeh")]
+layout_mode = 2
+
+[node name="MapNode" parent="MapLayer2" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("2_w4flx")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+next_map_nodes = [NodePath("../../MapLayer3/MapNode"), NodePath("../../MapLayer3/MapNode2")]
+
+[node name="MapNode2" parent="MapLayer2" instance=ExtResource("2_w4flx")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+
+[node name="MapMargin2" parent="." instance=ExtResource("4_15l3h")]
+layout_mode = 2
+
+[node name="MapLayer3" parent="." instance=ExtResource("2_chfeh")]
+layout_mode = 2
+
+[node name="MapNode" parent="MapLayer3" instance=ExtResource("2_w4flx")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+
+[node name="MapNode2" parent="MapLayer3" instance=ExtResource("2_w4flx")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+
+[node name="MapNode3" parent="MapLayer3" instance=ExtResource("2_w4flx")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+
+[node name="MapMargin3" parent="." instance=ExtResource("4_15l3h")]
+layout_mode = 2
+
+[node name="MapLayer5" parent="." instance=ExtResource("2_chfeh")]
+layout_mode = 2
+
+[node name="MapNode" parent="MapLayer5" instance=ExtResource("2_w4flx")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+
+[node name="MapNode2" parent="MapLayer5" instance=ExtResource("2_w4flx")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+
+[node name="MapNode3" parent="MapLayer5" instance=ExtResource("2_w4flx")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+
+[node name="MapNode4" parent="MapLayer5" instance=ExtResource("2_w4flx")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+
+[node name="MapMargin4" parent="." instance=ExtResource("4_15l3h")]
+layout_mode = 2
+
+[node name="MapLayer6" parent="." instance=ExtResource("2_chfeh")]
+layout_mode = 2
+
+[node name="MapNode" parent="MapLayer6" instance=ExtResource("2_w4flx")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+
+[node name="MapNode2" parent="MapLayer6" instance=ExtResource("2_w4flx")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+
+[node name="MapNode3" parent="MapLayer6" instance=ExtResource("2_w4flx")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+
+[node name="MapMargin5" parent="." instance=ExtResource("4_15l3h")]
+layout_mode = 2
+
+[node name="MapLayer4" parent="." instance=ExtResource("2_chfeh")]
+layout_mode = 2
+
+[node name="MapNode" parent="MapLayer4" instance=ExtResource("2_w4flx")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+
+[node name="MapNode2" parent="MapLayer4" instance=ExtResource("2_w4flx")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+
+[node name="MapMargin6" parent="." instance=ExtResource("4_15l3h")]
+layout_mode = 2
+
+[node name="MapLayer7" parent="." instance=ExtResource("2_chfeh")]
+layout_mode = 2
+
+[node name="MapNode" parent="MapLayer7" instance=ExtResource("2_w4flx")]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2

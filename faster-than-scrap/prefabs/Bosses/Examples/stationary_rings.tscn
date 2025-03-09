@@ -99,13 +99,12 @@ mesh = SubResource("TorusMesh_237qa")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Inner Ring Rotatable/Inner Ring"]
 shape = SubResource("CylinderShape3D_2wa5n")
 
-[node name="WeakPoint" type="StaticBody3D" parent="Inner Ring Rotatable/Inner Ring" node_paths=PackedStringArray("damage_target", "ship")]
+[node name="WeakPoint" type="StaticBody3D" parent="Inner Ring Rotatable/Inner Ring" node_paths=PackedStringArray("damage_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 collision_layer = 2
 script = ExtResource("4_0fnq1")
 damage = SubResource("Resource_vsg63")
 damage_target = NodePath("..")
-ship = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Inner Ring Rotatable/Inner Ring/WeakPoint"]
 mesh = SubResource("BoxMesh_kmj8b")
@@ -113,13 +112,12 @@ mesh = SubResource("BoxMesh_kmj8b")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Inner Ring Rotatable/Inner Ring/WeakPoint"]
 shape = SubResource("BoxShape3D_j7unu")
 
-[node name="WeakPoint2" type="StaticBody3D" parent="Inner Ring Rotatable/Inner Ring" node_paths=PackedStringArray("damage_target", "ship")]
+[node name="WeakPoint2" type="StaticBody3D" parent="Inner Ring Rotatable/Inner Ring" node_paths=PackedStringArray("damage_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 collision_layer = 2
 script = ExtResource("4_0fnq1")
 damage = SubResource("Resource_vsg63")
 damage_target = NodePath("..")
-ship = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Inner Ring Rotatable/Inner Ring/WeakPoint2"]
 mesh = SubResource("BoxMesh_kmj8b")
@@ -145,13 +143,12 @@ skeleton = NodePath("../../../Inner Ring Rotatable/Inner Ring")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Middle Ring Rotatable/Middle Ring"]
 shape = SubResource("CylinderShape3D_4lpbx")
 
-[node name="WeakPoint3" type="StaticBody3D" parent="Middle Ring Rotatable/Middle Ring" node_paths=PackedStringArray("damage_target", "ship")]
+[node name="WeakPoint3" type="StaticBody3D" parent="Middle Ring Rotatable/Middle Ring" node_paths=PackedStringArray("damage_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 collision_layer = 2
 script = ExtResource("4_0fnq1")
 damage = SubResource("Resource_37qi3")
 damage_target = NodePath("..")
-ship = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Middle Ring Rotatable/Middle Ring/WeakPoint3"]
 mesh = SubResource("BoxMesh_kmj8b")
@@ -159,13 +156,12 @@ mesh = SubResource("BoxMesh_kmj8b")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Middle Ring Rotatable/Middle Ring/WeakPoint3"]
 shape = SubResource("BoxShape3D_j7unu")
 
-[node name="WeakPoint4" type="StaticBody3D" parent="Middle Ring Rotatable/Middle Ring" node_paths=PackedStringArray("damage_target", "ship")]
+[node name="WeakPoint4" type="StaticBody3D" parent="Middle Ring Rotatable/Middle Ring" node_paths=PackedStringArray("damage_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 collision_layer = 2
 script = ExtResource("4_0fnq1")
 damage = SubResource("Resource_37qi3")
 damage_target = NodePath("..")
-ship = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Middle Ring Rotatable/Middle Ring/WeakPoint4"]
 mesh = SubResource("BoxMesh_kmj8b")
@@ -190,13 +186,12 @@ skeleton = NodePath("../../../Inner Ring Rotatable/Inner Ring")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Outer Ring Rotatable/Outer Ring"]
 shape = SubResource("CylinderShape3D_iwr50")
 
-[node name="WeakPoint5" type="StaticBody3D" parent="Outer Ring Rotatable/Outer Ring" node_paths=PackedStringArray("damage_target", "ship")]
+[node name="WeakPoint5" type="StaticBody3D" parent="Outer Ring Rotatable/Outer Ring" node_paths=PackedStringArray("damage_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 collision_layer = 2
 script = ExtResource("4_0fnq1")
 damage = SubResource("Resource_7x3xq")
 damage_target = NodePath("..")
-ship = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Outer Ring Rotatable/Outer Ring/WeakPoint5"]
 mesh = SubResource("BoxMesh_kmj8b")
@@ -204,13 +199,12 @@ mesh = SubResource("BoxMesh_kmj8b")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Outer Ring Rotatable/Outer Ring/WeakPoint5"]
 shape = SubResource("BoxShape3D_j7unu")
 
-[node name="WeakPoint6" type="StaticBody3D" parent="Outer Ring Rotatable/Outer Ring" node_paths=PackedStringArray("damage_target", "ship")]
+[node name="WeakPoint6" type="StaticBody3D" parent="Outer Ring Rotatable/Outer Ring" node_paths=PackedStringArray("damage_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 collision_layer = 2
 script = ExtResource("4_0fnq1")
 damage = SubResource("Resource_7x3xq")
 damage_target = NodePath("..")
-ship = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Outer Ring Rotatable/Outer Ring/WeakPoint6"]
 mesh = SubResource("BoxMesh_kmj8b")

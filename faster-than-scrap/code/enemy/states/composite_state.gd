@@ -5,6 +5,7 @@ var child_states: Array[State] = []
 func _ready() -> void:
 	for state: State in find_children("*", "State"):
 		child_states.append(state)
+	super()
 
 ## Called by the state machine on the engine's main loop tick.
 func state_update(delta: float) -> void:

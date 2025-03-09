@@ -8,7 +8,6 @@ var start_rot: Quaternion
 var final_rot: Quaternion
 var time : float = 0
 
-
 func enter(_previous_state_path: String, _data := {}) -> void:
 	time = 0
 	start_rot = Quaternion(ship_controller.basis)
@@ -20,6 +19,9 @@ func state_update(delta: float) -> void:
 	time += delta
 	var percentage := time/duration
 	if percentage >= 1.0:
-		ship_controller.transform = final_rot
+		ship_controller.rotation = final_rot.get_euler()
 	else:
-		ship_controller.transform = start_rot.slerp(final_rot, percentage)
+		ship_controller.rotation += Vector3(0, deg_to_rad(y_rotation),0) * delta / duration
+
+func exit() -> void:
+	ship_controller.rotation = final_rot.get_euler()

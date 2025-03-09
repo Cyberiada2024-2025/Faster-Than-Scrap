@@ -65,7 +65,7 @@ radius = 5.8
 script = ExtResource("6_phxvv")
 value = 500.0
 
-[node name="StationaryRings" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
+[node name="Stationary Rings" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
 script = ExtResource("1_lbi4l")
 ship = NodePath("Boss")
 

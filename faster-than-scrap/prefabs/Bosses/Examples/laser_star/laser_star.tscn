@@ -18,7 +18,7 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
 
-[node name="StationaryRings" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
+[node name="LaserStar" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
 script = ExtResource("1_nesmw")
 ship = NodePath("Boss")
 

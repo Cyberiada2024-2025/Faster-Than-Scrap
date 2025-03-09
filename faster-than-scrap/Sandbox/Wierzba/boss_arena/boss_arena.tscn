@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://daiiwdcu1w6ie"]
+[gd_scene load_steps=6 format=3 uid="uid://daiiwdcu1w6ie"]
 
 [ext_resource type="Script" path="res://Sandbox/Wierzba/boss_arena/damage_clicker.gd" id="2_gnbx1"]
 [ext_resource type="Script" path="res://code/damage/damage.gd" id="3_13iag"]
-[ext_resource type="PackedScene" uid="uid://c3rsq4emlmuky" path="res://prefabs/Bosses/Examples/laser_star/laser_star.tscn" id="3_n18t1"]
+[ext_resource type="PackedScene" uid="uid://dkt55poxl1ki4" path="res://prefabs/Bosses/Examples/stationary_rings.tscn" id="4_0qvet"]
+[ext_resource type="PackedScene" uid="uid://d2oshlh57wf02" path="res://prefabs/Bosses/boss_ui.tscn" id="4_b1kn1"]
 
 [sub_resource type="Resource" id="Resource_l2brj"]
 script = ExtResource("3_13iag")
@@ -18,4 +19,6 @@ visible = false
 script = ExtResource("2_gnbx1")
 damage = SubResource("Resource_l2brj")
 
-[node name="StationaryRings" parent="." instance=ExtResource("3_n18t1")]
+[node name="BossUi" parent="." instance=ExtResource("4_b1kn1")]
+
+[node name="StationaryRings" parent="." instance=ExtResource("4_0qvet")]

@@ -10,7 +10,7 @@ var time : float = 0
 
 func enter(_previous_state_path: String, _data := {}) -> void:
 	time = 0
-	start_rot = Quaternion(ship_controller.basis)
+	start_rot = ship_controller.basis.get_rotation_quaternion()
 	var diff := Quaternion.from_euler(Vector3(0, deg_to_rad(y_rotation),0))
 	final_rot = start_rot * diff
 

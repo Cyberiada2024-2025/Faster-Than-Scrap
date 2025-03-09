@@ -1,6 +1,6 @@
 class_name Module
 
-extends RigidBody3D
+extends CollisionShape3D
 
 ## Base class for all modules
 ## The object should have scale 1 to work properly!
@@ -10,11 +10,8 @@ extends RigidBody3D
 @export var hp: float = 100
 @export var ship: Ship
 @export var attach_points: Array[Node3D] = []
-
-## joint for connecting two modules (rigidbodies).
-## It is not supposed to be added in prefab!
-## It should only be set in debug ships!
-@export var joint: Generic6DOFJoint3D
+@export var parent_module: Module
+@export var child_modules: Array[Module] = []
 
 @export var sprite: Sprite3D
 @export var label: Label3D
@@ -24,6 +21,7 @@ extends RigidBody3D
 
 var was_key_pressed: bool = false
 
+var module_rigidbody_prefab = preload("res://prefabs/modules/module_rigidbody.tscn")
 
 func _ready() -> void:
 	on_key_change(activation_key)
@@ -79,14 +77,22 @@ func update_sprite() -> void:
 
 ## Destroy self and detach children
 func _on_destroy() -> void:
+	if parent_module != null:
+		parent_module.child_modules.erase(self)
 	_explode()
-	for child in self.get_children():
-		if child is Module:
-			remove_child(child)  # detach from node tree
-			get_tree().get_root().add_child(child)  # attach to scene root
-			child.active = false
+	for child in child_modules:
+		var rb :RigidBody3D = module_rigidbody_prefab.instantiate()
+		var root = get_tree().get_root()
+		get_tree().get_root().add_child(rb)  # attach to scene root
+		child.reparent(rb)
+		rb.linear_velocity = ship.linear_velocity
+		child.deactivate()
 	queue_free()  # delete self as an object
 
+func deactivate() -> void:
+	activation_key = 0
+	for child in child_modules:
+		child.deactivate()
 
 func _explode() -> void:
 	# TODO create particles object,
@@ -113,10 +119,7 @@ func on_key_change(key: Key) -> void:
 
 
 func has_child_module() -> bool:
-	for child in get_children():
-		if child is Module:
-			return true
-	return false
+	return child_modules.size() > 0
 
 
 func set_ship_reference(ship: Ship) -> void:

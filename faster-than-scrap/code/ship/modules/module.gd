@@ -21,6 +21,7 @@ extends CollisionShape3D
 
 var was_key_pressed: bool = false
 
+var module_rigidbody_prefab = preload("res://prefabs/modules/module_rigidbody.tscn")
 
 func _ready() -> void:
 	on_key_change(activation_key)
@@ -76,14 +77,22 @@ func update_sprite() -> void:
 
 ## Destroy self and detach children
 func _on_destroy() -> void:
+	if parent_module != null:
+		parent_module.child_modules.erase(self)
 	_explode()
-	for child in self.get_children():
-		if child is Module:
-			remove_child(child)  # detach from node tree
-			get_tree().get_root().add_child(child)  # attach to scene root
-			child.active = false
+	for child in child_modules:
+		var rb :RigidBody3D = module_rigidbody_prefab.instantiate()
+		var root = get_tree().get_root()
+		get_tree().get_root().add_child(rb)  # attach to scene root
+		child.reparent(rb)
+		rb.linear_velocity = ship.linear_velocity
+		child.deactivate()
 	queue_free()  # delete self as an object
 
+func deactivate() -> void:
+	activation_key = 0
+	for child in child_modules:
+		child.deactivate()
 
 func _explode() -> void:
 	# TODO create particles object,

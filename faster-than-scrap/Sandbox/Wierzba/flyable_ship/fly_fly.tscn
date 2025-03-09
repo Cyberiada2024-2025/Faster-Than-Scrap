@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://3t2jbpldv75a"]
+[gd_scene load_steps=6 format=3 uid="uid://3t2jbpldv75a"]
 
 [ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="1_5iglw"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="2_um6rh"]
+[ext_resource type="Script" path="res://Sandbox/Wierzba/flyable_ship/damage_clicker.gd" id="3_p6uct"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_eetof"]
 
@@ -23,3 +24,6 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_l5alg")
+
+[node name="Node" type="Node3D" parent="."]
+script = ExtResource("3_p6uct")

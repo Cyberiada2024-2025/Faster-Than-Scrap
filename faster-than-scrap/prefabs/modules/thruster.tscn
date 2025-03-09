@@ -12,12 +12,11 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ly0db"]
 
-[node name="Thruster" type="RigidBody3D" node_paths=PackedStringArray("weapon", "attach_points", "sprite", "label")]
+[node name="Thruster" type="RigidBody3D" node_paths=PackedStringArray("weapon", "sprite", "label")]
 gravity_scale = 0.0
 script = ExtResource("1_18ma3")
 weapon = NodePath("ConstantFireWeapon")
-recoil_force = 5.0
-attach_points = [NodePath("AttachPoints/AttachPoint")]
+recoil_force = 100.0
 sprite = NodePath("Sprite3D")
 label = NodePath("Label3D")
 

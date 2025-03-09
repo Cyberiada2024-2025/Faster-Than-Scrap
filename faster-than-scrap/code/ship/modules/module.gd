@@ -1,6 +1,6 @@
 class_name Module
 
-extends RigidBody3D
+extends PhysicsBody3D
 
 ## Base class for all modules
 ## The object should have scale 1 to work properly!
@@ -84,7 +84,6 @@ func _on_destroy() -> void:
 		if child is Module:
 			remove_child(child)  # detach from node tree
 			get_tree().get_root().add_child(child)  # attach to scene root
-			child.active = false
 	queue_free()  # delete self as an object
 
 
@@ -142,3 +141,15 @@ func create_ghost() -> Area3D:
 		ghost.add_child(child_copy)
 	get_tree().root.add_child(ghost)
 	return ghost
+
+## Return all children (even indirect) modules of a given node.
+
+static func find_all_modules(node: Node) -> Array[Module]:
+	var result = []
+	for child in node.get_children():
+		if child is Module:
+			result.append(child)
+		result.append_array(find_all_modules(child))  # Recurse
+	var modules : Array[Module] = []
+	modules.assign(result) # create module typed array
+	return modules

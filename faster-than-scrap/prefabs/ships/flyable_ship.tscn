@@ -9,7 +9,7 @@
 gravity_scale = 0.0
 script = ExtResource("1_keeht")
 cockpit = NodePath("Cockpit")
-modules = [NodePath("Cockpit"), NodePath("Cockpit/RigidBody3D"), NodePath("Cockpit/RigidBody3D/Thruster Forward"), NodePath("Cockpit/RigidBody3D/RigidBody3D2"), NodePath("Cockpit/RigidBody3D/RigidBody3D3")]
+modules = [NodePath("Cockpit"), NodePath("Cockpit/RigidBody3D"), null, NodePath("Cockpit/RigidBody3D/RigidBody3D2"), NodePath("Cockpit/RigidBody3D/RigidBody3D3")]
 
 [node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="."]
 node_a = NodePath("..")

@@ -35,6 +35,9 @@ func _transition_to_next_state(target_state_path: String, data: Dictionary = {})
 	state.exit()
 	state = get_node(target_state_path)
 	state.enter(previous_state_path, data)
+	# start each transition
+	for t in state.transitions:
+		t.enter(previous_state_path, data)
 	print(owner.name + "Changed state to " + state.name)
 
 
@@ -45,4 +48,5 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	state.state_physics_update(delta)
 	for t in state.transitions:
+		t.state_physics_update(delta)
 		t.condition()

@@ -82,7 +82,7 @@ func _update_attach_point_index(event: InputEvent) -> void:
 
 # ----------------raycasts hits ------------------------------------
 func _get_module_from_hit(hit:Dictionary) -> Module:
-	var rigid_body: RigidBody3D = hit.get("collider")
+	var rigid_body: PhysicsBody3D = hit.get("collider")
 	if rigid_body is Module:
 		return rigid_body
 	return null

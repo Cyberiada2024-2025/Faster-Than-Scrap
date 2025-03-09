@@ -1,16 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://5lsgaj0hoqfu"]
+[gd_scene load_steps=5 format=3 uid="uid://5lsgaj0hoqfu"]
 
 [ext_resource type="Script" path="res://code/VFX/leave_animation.gd" id="1_ujjmg"]
 
 [sub_resource type="Curve" id="Curve_ssmuo"]
-_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+_data = [Vector2(0, 1), 0.0, -1.84998, 0, 0, Vector2(1, 0), -0.51471, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_kwshj"]
-_data = [Vector2(0, 0), 0.0, 3.03925, 0, 0, Vector2(1, 1), -1.77289, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_5thxb"]
+min_value = 1.0
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 3.17075, 0, 0, Vector2(1, 1.5), -8.16798, 0.0, 0, 0]
 point_count = 2
 
-[node name="leave_animation" type="Node3D"]
+[sub_resource type="Curve" id="Curve_hya1e"]
+min_value = 1.0
+max_value = 50.0
+_data = [Vector2(0, 1), 0.0, 39.0, 0, 1, Vector2(1, 40), 39.0, 0.0, 1, 0]
+point_count = 2
+
+[node name="leave_animation" type="Node"]
 script = ExtResource("1_ujjmg")
 rotation_curve = SubResource("Curve_ssmuo")
-scale_curve = SubResource("Curve_kwshj")
+velocity_curve = SubResource("Curve_ssmuo")
+scale_curve = SubResource("Curve_5thxb")
+position_curve = SubResource("Curve_hya1e")

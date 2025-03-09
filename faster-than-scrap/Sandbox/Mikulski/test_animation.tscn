@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://w5s1mevxg66f"]
+
+[ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="1_831d6"]
+[ext_resource type="Script" path="res://Sandbox/Mikulski/animation_player.gd" id="2_msc4l"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xo20u"]
+
+[sub_resource type="Animation" id="Animation_bk6lb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cockpit:linear_velocity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(10, 0, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_r0ceb"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cockpit:linear_velocity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(10, 0, 10), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ah4y6"]
+_data = {
+"RESET": SubResource("Animation_bk6lb"),
+"new_animation": SubResource("Animation_r0ceb")
+}
+
+[node name="test animation" type="Node3D"]
+
+[node name="Cockpit" parent="." instance=ExtResource("1_831d6")]
+transform = Transform3D(-0.999263, 0, -0.0383877, 0, 1, 0, 0.0383877, 0, -0.999263, 0, 0, 0)
+linear_velocity = Vector3(10, 0, 10)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cockpit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.752475)
+mesh = SubResource("SphereMesh_xo20u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ah4y6")
+}
+script = ExtResource("2_msc4l")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.035824, 0.999358, 0, -0.999358, 0.035824, 0, 13.8378, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, -2.97934e-08, 7.30735e-10, 0, 0.0245194, 0.999699, -2.98023e-08, -0.999699, 0.0245194, 0, 10.1046, 0)

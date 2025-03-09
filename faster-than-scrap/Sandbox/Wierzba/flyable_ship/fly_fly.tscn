@@ -25,5 +25,5 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_l5alg")
 
-[node name="Node" type="Node3D" parent="."]
+[node name="Damage Clicker" type="Node3D" parent="."]
 script = ExtResource("3_p6uct")

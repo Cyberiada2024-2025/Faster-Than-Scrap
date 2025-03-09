@@ -6,7 +6,7 @@ extends Node
 
 signal new_game_state
 
-@export var game_state :GameState.State = GameState.State.FLY
+@export var game_state: GameState.State = GameState.State.FLY
 @export var player_ship: PlayerShip
 
 
@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func set_game_state(new_state: GameState.State) -> void:
-	game_state=new_state
+	game_state = new_state
 	new_game_state.emit(new_state)
 	# future logic for changing state
 	match new_state:
@@ -31,8 +31,10 @@ func set_game_state(new_state: GameState.State) -> void:
 		GameState.State.MAIN_MENU:
 			_unpause_entities()
 
+
 func _pause_entities():
 	get_tree().paused = true
+
 
 func _unpause_entities():
 	get_tree().paused = false

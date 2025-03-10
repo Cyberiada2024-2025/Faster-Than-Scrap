@@ -7,7 +7,8 @@ extends Node
 signal new_game_state
 
 @export var game_state: GameState.State = GameState.State.FLY
-@export var player_ship: PlayerShip
+
+var player_ship: PlayerShip
 
 
 # Called when the node enters the scene tree for the first time.

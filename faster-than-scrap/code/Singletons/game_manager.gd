@@ -38,3 +38,9 @@ func _pause_entities():
 
 func _unpause_entities():
 	get_tree().paused = false
+
+
+func show_death_screen():
+	var death_screen_tscn = load("res://prefabs/death_screen.tscn")
+	var death_screen = death_screen_tscn.instantiate()
+	GameManager.get_tree().current_scene.add_child(death_screen)

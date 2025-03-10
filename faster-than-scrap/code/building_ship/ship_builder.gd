@@ -30,7 +30,7 @@ var outline: Array[MeshInstance3D]
 
 var state = State.NONE
 
-var active_module_ghost: Area3D = null
+var active_module_ghost: ModuleGhost = null
 var active_module: Module = null
 var attach_target: Module = null
 var legal: bool = false
@@ -140,6 +140,14 @@ func _get_module_to_attach() -> Module:
 			closest_module = module
 	return closest_module
 
+func _get_ghost_colliding_modules()-> Array[Module] :
+	var overlaping_bodies := active_module_ghost.collided_modules
+	# convert to modules
+	var modules = []
+	for body in overlaping_bodies:
+		modules.append(body)
+	return []
+
 # --------------------------------
 
 func _position_module(intersection_position: Vector3, intersection_normal: Vector3) -> void:
@@ -198,7 +206,7 @@ func _on_lmb_release() -> void:
 		state = State.NONE
 		outline = []
 	else:
-		var overlapping = active_module_ghost.get_overlapping_bodies()
+		var overlapping = _get_ghost_colliding_modules()
 		for module in overlapping:
 			_flash_module(module)
 
@@ -316,12 +324,7 @@ func _get_intersection() -> Dictionary:
 
 # check whether the active module collides with other modules
 func _module_collides() -> bool:
-	# why both are always empty?????
-	var overlapping = active_module_ghost.get_overlapping_bodies()
-	var try = active_module_ghost.get_overlapping_areas()
-	overlapping.erase(attach_target)
-	overlapping.erase(active_module)
-	return overlapping.size() > 0
+	return active_module_ghost.collided_modules.size() > 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

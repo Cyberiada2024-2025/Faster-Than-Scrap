@@ -5,7 +5,7 @@ extends BaseWeapon
 ## Weapon that can spawn multiple projectiles, such as bullets, laser bolts, etc.
 
 
-func try_activate() -> Projectile:
+func try_activate() -> Node3D:
 	if not can_activate():
 		return null
 

@@ -119,7 +119,7 @@ func _check_colliders_in_range(point: Vector3, radius: float) -> Array[Module]:
 			intersection["collider"].get_child(intersection["shape"])
 		)
 
-	return modules  # Returns an array of dictionaries with collider info
+	return modules
 
 func _get_module_to_attach() -> Module:
 	var modules = _check_colliders_in_range(mouse_position_3d, snap_range)
@@ -172,6 +172,7 @@ func _on_module_clicked(clicked_module: Module) -> bool:
 	if clicked_module is Cockpit:
 		_flash_module(clicked_module)
 	elif clicked_module.has_child_module():
+		# flash each child module
 		for child in clicked_module.child_modules:
 			_flash_module(child)
 	return false
@@ -201,8 +202,14 @@ func _on_lmb_release() -> void:
 		for module in overlapping:
 			_flash_module(module)
 
+
+## Function for setting up the module, when it is to be attached 
+## to the ship. It will remove an area3D if exists, and set module 
+## parameters.
 func _attach_module() -> void:
 	if active_module.parent_module == null:
+		# remove area above module. Ship already has rigidbody, 
+		# so module is clickable
 		var area_parent = active_module.get_parent()
 		active_module.reparent(attach_target.ship)
 		area_parent.queue_free()
@@ -212,6 +219,11 @@ func _attach_module() -> void:
 	attach_target.child_modules.append(active_module)
 	active_module.parent_module = attach_target
 
+
+## Function for setting up the module, when it is to be dettached 
+## from the ship or simply put anywhere "on the floor". 
+## It will add an area3D if needed to allow clicking the module, and set module 
+## parameters.
 func _dettach_module() -> void:
 	active_module.set_ship_reference(null)
 	if active_module.parent_module != null:

@@ -210,12 +210,12 @@ func _on_lmb_release() -> void:
 			_flash_module(module)
 
 
-## Function for setting up the module, when it is to be attached 
-## to the ship. It will remove an area3D if exists, and set module 
+## Function for setting up the module, when it is to be attached
+## to the ship. It will remove an area3D if exists, and set module
 ## parameters.
 func _attach_module() -> void:
 	if active_module.parent_module == null:
-		# remove area above module. Ship already has rigidbody, 
+		# remove area above module. Ship already has rigidbody,
 		# so module is clickable
 		var area_parent = active_module.get_parent()
 		active_module.reparent(attach_target.ship)
@@ -227,9 +227,9 @@ func _attach_module() -> void:
 	active_module.parent_module = attach_target
 
 
-## Function for setting up the module, when it is to be dettached 
-## from the ship or simply put anywhere "on the floor". 
-## It will add an area3D if needed to allow clicking the module, and set module 
+## Function for setting up the module, when it is to be dettached
+## from the ship or simply put anywhere "on the floor".
+## It will add an area3D if needed to allow clicking the module, and set module
 ## parameters.
 func _dettach_module() -> void:
 	active_module.set_ship_reference(null)

@@ -19,9 +19,8 @@ func _ready() -> void:
 		calculated_body.max_contacts_reported = 10
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pre_collision_velosity = calculated_body.linear_velocity
-	delta = delta
 
 
 func _find_parent_collision(body: Node) -> void:

@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bloo14wlnaa0x"]
+
+[node name="ModuleRigidbody" type="RigidBody3D"]
+gravity_scale = 0.0

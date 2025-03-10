@@ -9,7 +9,6 @@ extends Node3D
 enum State {NONE, DRAGGING, SETTING_BUTTON}
 
 const RAY_LENGTH = 1000.0
-const JOINT_PREFAB = preload("res://prefabs/modules/joint.tscn")
 
 ## the mask of checked colliders when checking if there are modules near the mouse
 @export var collision_mask: int = 1

@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://code/damage/damageable.gd" id="3_w4c6n"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1whwh"]
+radius = 0.45
 
 [sub_resource type="SphereMesh" id="SphereMesh_8rabm"]
 

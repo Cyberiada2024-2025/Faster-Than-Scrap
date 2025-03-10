@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="4_hly24"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lwypn"]
-size = Vector3(1, 1, 2.1)
+size = Vector3(1.05, 0.935, 1.835)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l4rl7"]
 

@@ -7,7 +7,9 @@ extends Node
 signal new_game_state
 
 @export var game_state: GameState.State = GameState.State.FLY
-@export var player_ship: PlayerShip
+@export var death_screen: PackedScene
+
+var player_ship: PlayerShip
 
 
 # Called when the node enters the scene tree for the first time.
@@ -41,6 +43,5 @@ func _unpause_entities():
 
 
 func show_death_screen():
-	var death_screen_tscn = load("res://prefabs/death_screen.tscn")
-	var death_screen = death_screen_tscn.instantiate()
-	GameManager.get_tree().current_scene.add_child(death_screen)
+	var death_screen_scene = death_screen.instantiate()
+	GameManager.get_tree().current_scene.add_child(death_screen_scene)

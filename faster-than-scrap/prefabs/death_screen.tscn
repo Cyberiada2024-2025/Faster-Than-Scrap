@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://code/scene_loader.gd" id="2_b8ji8"]
 
 [node name="DeathScreen" type="Control"]
+layout_direction = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

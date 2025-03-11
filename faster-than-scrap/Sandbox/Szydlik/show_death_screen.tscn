@@ -2,16 +2,9 @@
 
 [ext_resource type="Script" path="res://code/Player/player_ship.gd" id="1_shnvc"]
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Control" type="Node3D"]
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 0
 offset_left = 414.0
 offset_top = 326.0
 offset_right = 595.0
@@ -22,7 +15,7 @@ scale = Vector2(1.5, 1.5)
 layout_mode = 2
 text = "DESTROY PLAYER SHIP"
 
-[node name="Node" type="Node3D" parent="."]
+[node name="Node" type="RigidBody3D" parent="."]
 script = ExtResource("1_shnvc")
 
 [connection signal="pressed" from="CenterContainer/Button" to="Node" method="on_destroy"]

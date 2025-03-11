@@ -1,26 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://5lsgaj0hoqfu"]
+[gd_scene load_steps=3 format=3 uid="uid://5lsgaj0hoqfu"]
 
 [ext_resource type="Script" path="res://code/VFX/leave_animation.gd" id="1_ujjmg"]
 
-[sub_resource type="Curve" id="Curve_ssmuo"]
-_data = [Vector2(0, 1), 0.0, -1.84998, 0, 0, Vector2(1, 0), -0.51471, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="SphereMesh" id="SphereMesh_p71kw"]
+radius = 0.02
+height = 0.04
 
-[sub_resource type="Curve" id="Curve_5thxb"]
-min_value = 1.0
-max_value = 3.0
-_data = [Vector2(0, 1), 0.0, 3.17075, 0, 0, Vector2(1, 1.5), -8.16798, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_hya1e"]
-min_value = 1.0
-max_value = 50.0
-_data = [Vector2(0, 1), 0.0, 39.0, 0, 1, Vector2(1, 40), 39.0, 0.0, 1, 0]
-point_count = 2
-
-[node name="leave_animation" type="Node"]
+[node name="Leave Animation" type="Node" node_paths=PackedStringArray("particles")]
 script = ExtResource("1_ujjmg")
-rotation_curve = SubResource("Curve_ssmuo")
-velocity_curve = SubResource("Curve_ssmuo")
-scale_curve = SubResource("Curve_5thxb")
-position_curve = SubResource("Curve_hya1e")
+particles = NodePath("CPUParticles3D")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 1000
+lifetime = 0.5
+preprocess = 1.0
+local_coords = true
+mesh = SubResource("SphereMesh_p71kw")
+direction = Vector3(1, 1, 1)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0

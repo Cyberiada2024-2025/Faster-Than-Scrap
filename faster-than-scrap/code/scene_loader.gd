@@ -24,8 +24,6 @@ func load_fly_ship_scene() -> void:
 	get_tree().change_scene_to_file("res://scenes/fly_ship.tscn")
 	GameManager.set_game_state(GameState.State.FLY)
 	_attach_ship_with_hud()
-	_detach_ship()
-	_attach_ship_without_hud()
 
 
 func load_build_ship_scene() -> void:
@@ -62,7 +60,3 @@ func _attach_ship_without_hud():
 	if GameManager.player_ship != null:
 		# attach ship
 		GameManager.get_tree().root.add_child(GameManager.player_ship)
-
-
-func _on_button_pressed() -> void:
-	pass  # Replace with function body.

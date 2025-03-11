@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://5lsgaj0hoqfu"]
+[gd_scene load_steps=8 format=3 uid="uid://5lsgaj0hoqfu"]
 
 [ext_resource type="Script" path="res://code/VFX/leave_animation.gd" id="1_ujjmg"]
 
@@ -6,9 +6,67 @@
 radius = 0.02
 height = 0.04
 
-[node name="Leave Animation" type="Node" node_paths=PackedStringArray("prepare_particles")]
+[sub_resource type="Animation" id="Animation_n2c2i"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_i735s"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/MeshInstance3D:mesh:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.001, 20.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/MeshInstance3D:mesh:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.002, 40.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/MeshInstance3D:mesh:material:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_thigh"]
+_data = {
+"RESET": SubResource("Animation_n2c2i"),
+"jump": SubResource("Animation_i735s")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mhiq"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xsnu3"]
+material = SubResource("StandardMaterial3D_7mhiq")
+radius = 0.001
+height = 0.002
+
+[node name="Leave Animation" type="Node" node_paths=PackedStringArray("prepare_particles", "jump_player")]
 script = ExtResource("1_ujjmg")
 prepare_particles = NodePath("CPUParticles3D")
+jump_player = NodePath("AnimationPlayer")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 emitting = false
@@ -22,3 +80,12 @@ spread = 180.0
 gravity = Vector3(0, 0, 0)
 initial_velocity_min = 10.0
 initial_velocity_max = 10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_thigh")
+}
+playback_auto_capture = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimationPlayer"]
+mesh = SubResource("SphereMesh_xsnu3")

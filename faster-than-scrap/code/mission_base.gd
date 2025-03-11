@@ -7,11 +7,15 @@ var about: String = ""
 var type: MissionType
 var difficulty: int
 
+@export var leave_animation: Node
+@export var scene_loader: Node
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass  # Replace with function body.
+	pass
 
 
 func finish_mission() -> void:
 	is_finished = true
+	leave_animation.leaving_body = GameManager.player_ship
+	leave_animation.start_animation(scene_loader.load_map_selector_scene)

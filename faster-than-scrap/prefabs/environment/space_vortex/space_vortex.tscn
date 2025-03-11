@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dk1g8kstnrxxk"]
 
-[ext_resource type="Script" path="res://code/evironment/space_vortex/space_vortex.gd" id="1_8f7e2"]
+[ext_resource type="Script" uid="uid://cjk0k4u2kudy2" path="res://code/evironment/space_vortex/space_vortex.gd" id="1_8f7e2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1xu87"]
 size = Vector3(1, 1e+07, 1e+07)

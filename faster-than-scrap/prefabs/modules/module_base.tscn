@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://b66go7dtdv2m1"]
 
-[ext_resource type="Script" path="res://code/ship/modules/module.gd" id="1_if6ta"]
-[ext_resource type="Script" path="res://code/damage/damage_controller.gd" id="2_hf3tu"]
+[ext_resource type="Script" uid="uid://b13jwfdw8y1ma" path="res://code/ship/modules/module.gd" id="1_if6ta"]
+[ext_resource type="Script" uid="uid://duht2tyb2hi6l" path="res://code/damage/damage_controller.gd" id="2_hf3tu"]
 [ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/UI/Minimap/Placeholder/Enemy.png" id="2_xaq42"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="3_qv8fx"]
-[ext_resource type="Script" path="res://code/damage/damageable.gd" id="3_w4c6n"]
+[ext_resource type="Script" uid="uid://b21tdcy0uuftq" path="res://code/damage/damageable.gd" id="3_w4c6n"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1whwh"]
 radius = 0.45

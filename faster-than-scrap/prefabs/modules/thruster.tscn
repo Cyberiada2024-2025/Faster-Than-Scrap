@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://taxlqo87sp7s"]
 
-[ext_resource type="Script" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_18ma3"]
-[ext_resource type="Script" path="res://code/weapons/constant_fire_weapon.gd" id="2_5rd74"]
+[ext_resource type="Script" uid="uid://dbj13j5pg7k64" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_18ma3"]
+[ext_resource type="Script" uid="uid://c301gatodcdry" path="res://code/weapons/constant_fire_weapon.gd" id="2_5rd74"]
 [ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/UI/Minimap/Placeholder/Enemy.png" id="3_ogaox"]
 [ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/test_projectile.tscn" id="3_ywc6w"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="4_hly24"]

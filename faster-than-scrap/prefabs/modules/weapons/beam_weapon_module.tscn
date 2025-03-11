@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://67fftbosvmmt"]
+
+[ext_resource type="Script" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_by74g"]
+[ext_resource type="Script" path="res://code/weapons/constant_fire_weapon.gd" id="2_rsxp2"]
+[ext_resource type="PackedScene" uid="uid://bnvojbycskewd" path="res://prefabs/projectiles/test_beam.tscn" id="3_33xdp"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_30wr0"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_puthi"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="BeamWeaponModule" type="RigidBody3D" node_paths=PackedStringArray("weapon")]
+gravity_scale = 0.0
+script = ExtResource("1_by74g")
+weapon = NodePath("ConstantFireWeapon")
+allow_auto_fire = true
+recoil_force = 50.0
+
+[node name="ConstantFireWeapon" type="Node3D" parent="."]
+script = ExtResource("2_rsxp2")
+cooldown = 1.0
+projectile = ExtResource("3_33xdp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ConstantFireWeapon"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_30wr0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+mesh = SubResource("BoxMesh_puthi")

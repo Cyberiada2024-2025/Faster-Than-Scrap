@@ -1,26 +1,163 @@
-[gd_scene load_steps=6 format=3 uid="uid://1brryvr73lx3"]
+[gd_scene load_steps=18 format=3 uid="uid://1brryvr73lx3"]
 
 [ext_resource type="Script" path="res://code/building_ship/ship_builder.gd" id="1_tic1n"]
-[ext_resource type="PackedScene" uid="uid://cpxkxwkuyh6l2" path="res://prefabs/ships/player_ship_example.tscn" id="2_marle"]
+[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="2_11x22"]
+[ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/UI/ShipBuilder/outline.tres" id="2_q55sa"]
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="3_5rsdf"]
+[ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/UI/ShipBuilder/outline_flash.tres" id="3_optqi"]
 [ext_resource type="Script" path="res://code/scene_loader.gd" id="4_v00nt"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="5_abx51"]
+[ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="8_ly6ia"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l8o0y"]
+font = ExtResource("2_11x22")
+font_color = Color(0.105882, 1, 0.105882, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_88y4v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbr5n"]
+bg_color = Color(0, 0.2, 0.106667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6vg7"]
+bg_color = Color(0.105882, 1, 0.105882, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6yeo5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d7kfh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xglwl"]
+bg_color = Color(0, 0.23, 0.122667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ialw"]
+bg_color = Color(0.113725, 1, 0.113725, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37wvw"]
+bg_color = Color(0, 0.0509804, 0.027451, 1)
 
 [node name="BuildShip" type="Node3D"]
 
-[node name="ShipBuilder" type="Node3D" parent="."]
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("choose_key_message", "confirm_finish_message")]
 script = ExtResource("1_tic1n")
+outline_mat = ExtResource("2_q55sa")
+flash_mat = ExtResource("3_optqi")
+flash_time = 0.2
+choose_key_message = NodePath("Control/Choose_key")
+confirm_finish_message = NodePath("Control/Confirm finish")
 
 [node name="Camera3D" type="Camera3D" parent="ShipBuilder"]
 transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 0, 5.135, 0)
 
-[node name="PlayerShipExample" parent="." instance=ExtResource("2_marle")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99755, 0, 0)
+[node name="Control" type="Control" parent="ShipBuilder"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Thruster" parent="." instance=ExtResource("3_5rsdf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44763, 0, -1.99791)
-recoil_force = 500.0
-activation_key = 87
+[node name="Confirm finish" type="ColorRect" parent="ShipBuilder/Control"]
+visible = false
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 0.9)
+
+[node name="Color_Rect" type="ColorRect" parent="ShipBuilder/Control/Confirm finish"]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 242.0
+offset_right = 898.0
+offset_bottom = 392.0
+color = Color(0, 0.051, 0.027, 1)
+
+[node name="Label" type="Label" parent="ShipBuilder/Control/Confirm finish/Color_Rect"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 50.0
+text = "WARNING: Unattached modules will be lost"
+label_settings = SubResource("LabelSettings_l8o0y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Confirm" type="Button" parent="ShipBuilder/Control/Confirm finish/Color_Rect"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 76.0
+offset_right = 608.0
+offset_bottom = 114.0
+theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_fonts/font = ExtResource("2_11x22")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_88y4v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kbr5n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o6vg7")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6yeo5")
+text = "Proceed"
+
+[node name="Deny" type="Button" parent="ShipBuilder/Control/Confirm finish/Color_Rect"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 76.0
+offset_right = 238.0
+offset_bottom = 114.0
+theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_fonts/font = ExtResource("2_11x22")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_88y4v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kbr5n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o6vg7")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6yeo5")
+text = "Go Back"
+
+[node name="Choose_key" type="ColorRect" parent="ShipBuilder/Control"]
+visible = false
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 0.9)
+
+[node name="Color_Rect" type="ColorRect" parent="ShipBuilder/Control/Choose_key"]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 300.0
+offset_right = 675.0
+offset_bottom = 350.0
+color = Color(0, 0.051, 0.027, 1)
+
+[node name="Label" type="Label" parent="ShipBuilder/Control/Choose_key/Color_Rect"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 50.0
+text = "Choose a key"
+label_settings = SubResource("LabelSettings_l8o0y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Finish" type="Button" parent="ShipBuilder/Control"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 244.0
+offset_bottom = 18.0
+theme_override_colors/font_hover_pressed_color = Color(0.109804, 0.988235, 0.113725, 1)
+theme_override_colors/font_hover_color = Color(0.113725, 1, 0.113725, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
+theme_override_colors/font_focus_color = Color(0.113725, 1, 0.113725, 1)
+theme_override_colors/font_color = Color(0.113725, 1, 0.113725, 1)
+theme_override_fonts/font = ExtResource("2_11x22")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d7kfh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xglwl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1ialw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_37wvw")
+text = "Finish
+Building"
 
 [node name="Button" type="Button" parent="."]
 offset_right = 8.0
@@ -31,5 +168,16 @@ text = "Fly"
 script = ExtResource("4_v00nt")
 
 [node name="MainCamera" parent="." instance=ExtResource("5_abx51")]
+
+[node name="FlyableShip" parent="." instance=ExtResource("8_ly6ia")]
+contact_monitor = true
+max_contacts_reported = 5
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54414, 0, -1.96366)
+
+[node name="Thruster" parent="Area3D" instance=ExtResource("3_5rsdf")]
+recoil_force = 500.0
+activation_key = 87
 
 [connection signal="pressed" from="Button" to="Button/SceneLoader" method="load_fly_ship_scene"]

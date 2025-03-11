@@ -307,8 +307,13 @@ func _input(event: InputEvent):
 func _get_intersection() -> Dictionary:
 	# first find intersection with the attach target to find the face normal
 	var space_state = get_world_3d().direct_space_state
-	var query = PhysicsRayQueryParameters3D.create(
-		mouse_position_3d, attach_target.global_position, ~0  # collision mask: ~0 means 0xFFFFFFFF (full collision mask)
+	var query = (
+		PhysicsRayQueryParameters3D
+		. create(
+			mouse_position_3d,
+			attach_target.global_position,
+			~0,  # collision mask: ~0 means 0xFFFFFFFF (full collision mask)
+		)
 	)
 	var intersection = space_state.intersect_ray(query)
 

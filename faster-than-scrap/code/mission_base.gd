@@ -8,7 +8,7 @@ var type: MissionType
 var difficulty: int
 
 @export var leave_animation: Node
-@export var scene_loader: Node
+@export var scene_loader: SceneLoader
 
 
 func _ready() -> void:

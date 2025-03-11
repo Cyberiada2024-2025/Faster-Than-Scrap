@@ -1,9 +1,13 @@
-extends StateEnemy
+class_name EnemyDefensive
+extends StateNPC
+
+@export var min_range_to_player := 25
+
 
 func enter(_previous_state_path: String, _data := {}) -> void:
-	#set parameters
 	pass
 
-func physics_update(_delta: float) -> void:
-	# move in random direction, changeing every few seconds
-	pass
+
+func state_physics_update(_delta: float) -> void:
+	move_target_spotted(min_range_to_player, target)
+	ship_controller.ship.energy += 0.5

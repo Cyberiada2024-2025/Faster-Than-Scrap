@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjyrb2fperaxy"]
+
+[ext_resource type="PackedScene" uid="uid://kpc2w8wxljon" path="res://Sandbox/Surma/player.tscn" id="1_xdkxq"]
+[ext_resource type="PackedScene" uid="uid://rk0gm82fa8wn" path="res://Sandbox/Surma/prototype_enemy.tscn" id="2_ebm1s"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_61bff"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_4bkig"]
+sky_material = SubResource("ProceduralSkyMaterial_61bff")
+
+[sub_resource type="Environment" id="Environment_wg0w7"]
+background_mode = 2
+sky = SubResource("Sky_4bkig")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d0fo4"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bybxr"]
+
+[node name="Main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 1.34747, 2.81295, -2.73302)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wg0w7")
+
+[node name="PrototypeEnemy" parent="." instance=ExtResource("2_ebm1s")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -34.0862, 0, -30.0047)
+
+[node name="PlayerCharacterController" parent="." instance=ExtResource("1_xdkxq")]
+
+[node name="Camera3D" type="Camera3D" parent="PlayerCharacterController"]
+transform = Transform3D(1, 0, 0, 0, 0.541517, 0.84069, 0, -0.84069, 0.541517, 0, 27.6107, 17.9507)
+
+[node name="Station" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.9555, 0, 2.40049)
+use_collision = true
+inner_radius = 14.284
+outer_radius = 9.345
+sides = 7
+ring_sides = 3
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.8752, 0, -30.3291)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(15.242, 0, 0, 0, 15.242, 0, 0, 0, 15.242, 0.181769, -0.11172, -0.108109)
+shape = SubResource("CapsuleShape3D_d0fo4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(8.965, 0, 0, 0, -8.30126, -3.38532, 0, 3.38532, -8.30126, 0, 0, 0)
+mesh = SubResource("CylinderMesh_bybxr")
+skeleton = NodePath("")

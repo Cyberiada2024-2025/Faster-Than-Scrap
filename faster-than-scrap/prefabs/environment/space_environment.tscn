@@ -45,7 +45,7 @@ shadow_enabled = true
 [node name="WhiteNebulaLight" type="DirectionalLight3D" parent="NebulaLights"]
 transform = Transform3D(-0.911403, 0.210713, 0.353474, 0, 0.85896, -0.512043, -0.411514, -0.466678, -0.782859, 0, 0, 0)
 light_color = Color(0.854642, 0.845302, 0.842967, 1)
-light_energy = 20.0
+light_energy = 2.0
 shadow_enabled = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="NebulaLights"]

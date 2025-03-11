@@ -51,3 +51,8 @@ func use_energy(amount: float) -> bool:
 	if energy < amount:
 		energy_warning.emit()
 	return super(amount)
+
+
+func on_destroy() -> void:
+	super()
+	GameManager.show_death_screen()

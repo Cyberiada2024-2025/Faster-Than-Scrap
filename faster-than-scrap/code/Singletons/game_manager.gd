@@ -7,6 +7,7 @@ extends Node
 signal new_game_state
 
 @export var game_state: GameState.State = GameState.State.FLY
+@export var death_screen: PackedScene
 
 var player_ship: PlayerShip
 
@@ -39,3 +40,8 @@ func _pause_entities():
 
 func _unpause_entities():
 	get_tree().paused = false
+
+
+func show_death_screen():
+	var death_screen_scene = death_screen.instantiate()
+	GameManager.get_tree().current_scene.add_child(death_screen_scene)

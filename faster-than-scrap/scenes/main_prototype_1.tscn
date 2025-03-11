@@ -1,15 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0lisluawhnx5"]
+[gd_scene load_steps=7 format=3 uid="uid://b0lisluawhnx5"]
 
+[ext_resource type="Script" path="res://code/evironment/asteroid.gd" id="1_i51oj"]
 [ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="1_wy23v"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="2_cojxt"]
+[ext_resource type="PackedScene" uid="uid://rk0gm82fa8wn" path="res://Sandbox/Surma/prototype_enemy.tscn" id="3_2di0i"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_46x43"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ya06q"]
 
 [node name="MainPrototype1" type="Node"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.57914, 0, 5.50989)
 mesh = SubResource("CapsuleMesh_46x43")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="MeshInstance3D"]
+script = ExtResource("1_i51oj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/RigidBody3D"]
+shape = SubResource("CapsuleShape3D_ya06q")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.57914, 0, -15.151)
@@ -19,22 +29,16 @@ mesh = SubResource("CapsuleMesh_46x43")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.86164, 0, -8.27991)
 mesh = SubResource("CapsuleMesh_46x43")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.14882, 3.61269, 0)
-light_energy = 16.0
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="."]
-transform = Transform3D(0.999934, 0, -0.011484, 0, 1, 0, 0.011484, 0, 0.999934, 0.192242, 8.28659, 0)
-light_energy = 7.975
-omni_range = 4096.0
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80378, 3.61269, 0)
-
-[node name="FlyableShip" parent="." node_paths=PackedStringArray("modules") instance=ExtResource("1_wy23v")]
-modules = [NodePath("Cockpit"), NodePath("Cockpit/RigidBody3D"), null, NodePath("Cockpit/RigidBody3D/RigidBody3D2"), NodePath("Cockpit/RigidBody3D/RigidBody3D3")]
-
-[node name="Camera3D" type="Camera3D" parent="FlyableShip"]
-transform = Transform3D(1, 0, 0, 0, 0.439986, 0.898005, 0, -0.898005, 0.439986, 0, 8.89242, 5.08122)
+[node name="FlyableShip" parent="." instance=ExtResource("1_wy23v")]
 
 [node name="MainCamera" parent="." instance=ExtResource("2_cojxt")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20.2772, 1.23622)
+main_camera_offset = Vector3(0, 34.315, 0)
+module_camera_offset = Vector3(0, 12.595, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.42943, 0.87123, 0.237798, -0.340339, -0.0877777, 0.936197, 0.836516, -0.482963, 0.258819, -13.5993, 8, 0)
+
+[node name="PrototypeEnemy" parent="." instance=ExtResource("3_2di0i")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.66206, 0, -22.4742)
+speed = 6

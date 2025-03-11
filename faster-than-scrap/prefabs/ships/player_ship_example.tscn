@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dty8ie80qkfd5"]
+[gd_scene load_steps=5 format=3 uid="uid://cpxkxwkuyh6l2"]
 
-[ext_resource type="Script" uid="uid://4bdkrmfnwh7a" path="res://code/Player/player_ship.gd" id="1_ddodb"]
+[ext_resource type="Script" path="res://code/Player/player_ship.gd" id="1_ddodb"]
 [ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="2_4lw14"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="3_a4hie"]
 [ext_resource type="Texture2D" uid="uid://5sl7fehpl0rk" path="res://art/textures/UI/Minimap/Placeholder/player_mini.png" id="4_e655p"]
@@ -11,6 +11,7 @@ script = ExtResource("1_ddodb")
 cockpit = NodePath("Cockpit")
 
 [node name="Cockpit" parent="." instance=ExtResource("2_4lw14")]
+gravity_scale = 0.0
 activation_key = 66
 
 [node name="Sprite3D2" type="Sprite3D" parent="Cockpit"]
@@ -31,7 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.12175)
 activation_key = 65
 ship = NodePath("..")
 parent_module = NodePath("../Cockpit")
-child_modules = [NodePath("../ModuleBase"), NodePath("../ModuleBase3")]
+child_modules = [null, null]
 
 [node name="ModuleBase3" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("3_a4hie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05367, 0, 1.08632)

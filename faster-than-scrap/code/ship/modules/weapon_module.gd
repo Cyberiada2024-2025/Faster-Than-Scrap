@@ -10,29 +10,33 @@ extends Module
 @export var allow_auto_fire: bool
 @export var recoil_force: float = 0
 
+
 func _ready() -> void:
 	super()
 	weapon.recoil.connect(_recoil)
 	weapon.ship = ship
+
 
 func _on_key_press(_delta: float) -> void:
 	super(_delta)
 	if not allow_auto_fire:
 		weapon.try_activate()
 
+
 func _on_key(_delta: float) -> void:
 	super(_delta)
 	if allow_auto_fire:
 		weapon.try_activate()
 
+
 func _on_release(_delta: float) -> void:
 	super(_delta)
 	weapon.try_deactivate()
 
+
 func _recoil(force_multiplier: float) -> void:
-	ship.apply_force(weapon.global_basis.z * recoil_force * force_multiplier,
-	global_position - ship.global_position
-	)
+	apply_force(weapon.global_basis.z * recoil_force * force_multiplier)
+
 
 func set_ship_reference(ship: Ship) -> void:
 	super(ship)

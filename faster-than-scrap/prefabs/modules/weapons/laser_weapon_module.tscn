@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dohx5akrv2oq8"]
 
-[ext_resource type="Script" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_osv0f"]
+[ext_resource type="Script" path="res://code/ship/modules/weapon_module.gd" id="1_osv0f"]
 [ext_resource type="Script" path="res://code/weapons/spawner_weapon.gd" id="2_767f4"]
 [ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/test_projectile.tscn" id="3_hf1me"]
 
@@ -18,6 +18,11 @@ script = ExtResource("1_osv0f")
 weapon = NodePath("SpawnerWeapon")
 allow_auto_fire = true
 recoil_force = 50.0
+activation_key = null
+max_hp = null
+hp = null
+healthy_color = null
+dead_color = null
 
 [node name="SpawnerWeapon" type="Node3D" parent="."]
 script = ExtResource("2_767f4")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://67fftbosvmmt"]
 
-[ext_resource type="Script" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_by74g"]
+[ext_resource type="Script" path="res://code/ship/modules/weapon_module.gd" id="1_by74g"]
 [ext_resource type="Script" path="res://code/weapons/constant_fire_weapon.gd" id="2_rsxp2"]
-[ext_resource type="PackedScene" uid="uid://bnvojbycskewd" path="res://prefabs/projectiles/test_beam.tscn" id="3_33xdp"]
+[ext_resource type="PackedScene" path="res://prefabs/projectiles/test_beam.tscn" id="3_33xdp"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_30wr0"]
 top_radius = 0.1
@@ -18,6 +18,11 @@ script = ExtResource("1_by74g")
 weapon = NodePath("ConstantFireWeapon")
 allow_auto_fire = true
 recoil_force = 50.0
+activation_key = null
+max_hp = null
+hp = null
+healthy_color = null
+dead_color = null
 
 [node name="ConstantFireWeapon" type="Node3D" parent="."]
 script = ExtResource("2_rsxp2")

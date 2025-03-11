@@ -2,7 +2,7 @@ extends Node
 
 @export_category("Animation")
 @export var leaving_body: Node3D
-@export var particles: CPUParticles3D
+@export var prepare_particles: CPUParticles3D
 @export_group("Animation Fragments Times")
 @export var jump_preparation_time: float = 5.0
 @export var jump_time: float = 2.0
@@ -27,16 +27,14 @@ func start_animation(ending_method: Callable) -> void:
 
 
 func prepare_to_jump() -> void:
-	particles.reparent(leaving_body.cockpit)
-	particles.emitting = true
-	pass
+	prepare_particles.reparent(leaving_body.cockpit)
+	prepare_particles.emitting = true
 
 
 func jump() -> void:
-	particles.emitting = false
-	particles.reparent(self)
+	prepare_particles.emitting = false
+	prepare_particles.reparent(self)
 	leaving_body.visible = false
-	pass
 
 
 func end_animation() -> void:

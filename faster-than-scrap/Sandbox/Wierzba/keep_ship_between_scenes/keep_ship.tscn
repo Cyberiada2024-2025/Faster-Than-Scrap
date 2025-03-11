@@ -8,8 +8,7 @@
 
 [node name="MainCamera" parent="." instance=ExtResource("1_pjnld")]
 
-[node name="PlayerShipExample" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("1_2ekd7")]
-hud = NodePath("../MainCamera")
+[node name="PlayerShipExample" parent="." instance=ExtResource("1_2ekd7")]
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

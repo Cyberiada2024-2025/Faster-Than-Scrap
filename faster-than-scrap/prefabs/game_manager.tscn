@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpgm8wx8t3cxu"]
+[gd_scene load_steps=3 format=3 uid="uid://bx3dp3fd7y3dl"]
 
 [ext_resource type="Script" path="res://code/Singletons/game_manager.gd" id="1_vvpif"]
+[ext_resource type="PackedScene" uid="uid://co00lq4f26bp4" path="res://prefabs/death_screen.tscn" id="2_dl260"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_vvpif")
+death_screen = ExtResource("2_dl260")

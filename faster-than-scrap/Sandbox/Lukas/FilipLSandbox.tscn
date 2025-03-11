@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=5 format=3 uid="uid://2wj0k5c222sf"]
+
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_ibr8p"]
 [ext_resource type="Material" uid="uid://css7je76l8eb7" path="res://art/materials/cabin/cabin_material_3d.tres" id="2_ln5n7"]
@@ -16,6 +18,7 @@
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_ibr8p")]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+
 
 [node name="CommonGun" type="MeshInstance3D" parent="CharacterBody3D"]
 material_override = ExtResource("2_dbkgl")

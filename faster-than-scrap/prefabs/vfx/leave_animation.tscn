@@ -6,9 +6,9 @@
 radius = 0.02
 height = 0.04
 
-[node name="Leave Animation" type="Node" node_paths=PackedStringArray("particles")]
+[node name="Leave Animation" type="Node" node_paths=PackedStringArray("prepare_particles")]
 script = ExtResource("1_ujjmg")
-particles = NodePath("CPUParticles3D")
+prepare_particles = NodePath("CPUParticles3D")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 emitting = false

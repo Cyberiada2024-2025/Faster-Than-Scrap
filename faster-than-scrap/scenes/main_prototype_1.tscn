@@ -1,13 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0lisluawhnx5"]
+[gd_scene load_steps=10 format=3 uid="uid://b0lisluawhnx5"]
 
 [ext_resource type="Script" path="res://code/evironment/asteroid.gd" id="1_i51oj"]
 [ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="1_wy23v"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="2_cojxt"]
 [ext_resource type="PackedScene" uid="uid://rk0gm82fa8wn" path="res://Sandbox/Surma/prototype_enemy.tscn" id="3_2di0i"]
+[ext_resource type="Script" path="res://Sandbox/Wierzba/Mission_tests/dummy_mission_spawner.gd" id="5_xhan8"]
+[ext_resource type="Script" path="res://code/missions/Info/mission_info_escape.gd" id="6_0mkff"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_46x43"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ya06q"]
+
+[sub_resource type="Resource" id="Resource_ssxva"]
+script = ExtResource("6_0mkff")
+portal_position = Vector3(0, 0, 0)
+about = ""
+difficulty = 0
+priority = 0
 
 [node name="MainPrototype1" type="Node"]
 
@@ -21,15 +30,8 @@ script = ExtResource("1_i51oj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/RigidBody3D"]
 shape = SubResource("CapsuleShape3D_ya06q")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.57914, 0, -15.151)
-mesh = SubResource("CapsuleMesh_46x43")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.86164, 0, -8.27991)
-mesh = SubResource("CapsuleMesh_46x43")
-
 [node name="FlyableShip" parent="." instance=ExtResource("1_wy23v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0235717, -0.495184, 7.38132)
 
 [node name="MainCamera" parent="." instance=ExtResource("2_cojxt")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20.2772, 1.23622)
@@ -42,3 +44,7 @@ transform = Transform3D(0.42943, 0.87123, 0.237798, -0.340339, -0.0877777, 0.936
 [node name="PrototypeEnemy" parent="." instance=ExtResource("3_2di0i")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.66206, 0, -22.4742)
 speed = 6
+
+[node name="DummyMissionSpawner2" type="Node" parent="."]
+script = ExtResource("5_xhan8")
+mission_to_spawn = SubResource("Resource_ssxva")

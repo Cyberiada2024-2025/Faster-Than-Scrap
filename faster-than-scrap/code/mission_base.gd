@@ -2,13 +2,13 @@ extends Node
 
 enum MissionType { DEFEND, GET_ITEM, ESCAPE }
 
+@export var leave_animation: Node
+@export var scene_loader: SceneLoader
+
 var is_finished: bool = false
 var about: String = ""
 var type: MissionType
 var difficulty: int
-
-@export var leave_animation: Node
-@export var scene_loader: SceneLoader
 
 
 func _ready() -> void:

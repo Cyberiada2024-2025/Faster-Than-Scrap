@@ -6,7 +6,7 @@ extends Node3D
 ## it reacts to mouse clicking for grabbing the module
 ## and snapping it to the ship if close enough.
 
-enum State {NONE, DRAGGING, SETTING_BUTTON}
+enum State { NONE, DRAGGING, SETTING_BUTTON }
 
 const RAY_LENGTH = 1000.0
 
@@ -16,7 +16,7 @@ const RAY_LENGTH = 1000.0
 @export var snap_range: float = 1
 ## material of ghost outline
 
-@export_group('Visuals')
+@export_group("Visuals")
 @export var outline_mat: ShaderMaterial
 ## material for flashing modules
 @export var flash_mat: ShaderMaterial
@@ -42,23 +42,24 @@ var lmb_was_pressed: bool = false
 var lmb_is_pressed: bool = false
 var rmb_was_pressed: bool = false
 
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+
 
 # ---------------mouse ---------------------------------------------
 func _update_mouse_3d_position():
 	var camera = get_viewport().get_camera_3d()
 	var position_2d = get_viewport().get_mouse_position()
 	var drop_plane = Plane(Vector3(0, 1, 0), 0)
-	mouse_position_3d = (
-		drop_plane.intersects_ray(
-			camera.project_ray_origin(position_2d),
-			camera.project_ray_normal(position_2d)
-		)
-	)
+	mouse_position_3d = (drop_plane.intersects_ray(
+		camera.project_ray_origin(position_2d), camera.project_ray_normal(position_2d)
+	))
+
 
 func _lmb_just_pressed() -> bool:
 	return !lmb_was_pressed and lmb_is_pressed
+
 
 func _rmb_just_pressed(event: InputEvent) -> bool:
 	var pressed = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT
@@ -66,11 +67,13 @@ func _rmb_just_pressed(event: InputEvent) -> bool:
 	rmb_was_pressed = pressed
 	return just_pressed
 
+
 # custom function for detecting mouse lmb state
 func _update_lmb_state(event: InputEvent) -> void:
 	lmb_was_pressed = lmb_is_pressed
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		lmb_is_pressed = event.is_pressed()
+
 
 func _update_attach_point_index(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
@@ -79,13 +82,15 @@ func _update_attach_point_index(event: InputEvent) -> void:
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			attach_point_index -= 1
 
+
 # ----------------raycasts hits ------------------------------------
-func _get_module_from_hit(hit:Dictionary) -> Module:
+func _get_module_from_hit(hit: Dictionary) -> Module:
 	var rigid_body = hit.get("collider")
 	if rigid_body != null:
 		var module: Module = rigid_body.get_child(hit["shape"])
 		return module
 	return null
+
 
 func _get_raycast_hit(event: InputEvent) -> Dictionary:
 	var camera3d = get_viewport().get_camera_3d()
@@ -95,6 +100,7 @@ func _get_raycast_hit(event: InputEvent) -> Dictionary:
 	var query = PhysicsRayQueryParameters3D.create(from, to)
 	query.collide_with_areas = true
 	return space_state.intersect_ray(query)
+
 
 # ---------------- proximity check ------------------------------------
 func _check_colliders_in_range(point: Vector3, radius: float) -> Array[Module]:
@@ -106,7 +112,7 @@ func _check_colliders_in_range(point: Vector3, radius: float) -> Array[Module]:
 
 	query.shape = sphere
 	query.transform.origin = point
-	query.collision_mask = collision_mask # Adjust mask as needed
+	query.collision_mask = collision_mask  # Adjust mask as needed
 
 	# creates an array of collisions (which contains rigidbody)
 	var rigid_body_intersections = space_state.intersect_shape(query)
@@ -114,11 +120,10 @@ func _check_colliders_in_range(point: Vector3, radius: float) -> Array[Module]:
 	# so we need to convert it to get modules
 	var modules: Array[Module] = []
 	for intersection in rigid_body_intersections:
-		modules.append(
-			intersection["collider"].get_child(intersection["shape"])
-		)
+		modules.append(intersection["collider"].get_child(intersection["shape"]))
 
 	return modules
+
 
 func _get_module_to_attach() -> Module:
 	var modules = _check_colliders_in_range(mouse_position_3d, snap_range)
@@ -139,7 +144,8 @@ func _get_module_to_attach() -> Module:
 			closest_module = module
 	return closest_module
 
-func _get_ghost_colliding_modules()-> Array[Module] :
+
+func _get_ghost_colliding_modules() -> Array[Module]:
 	var overlaping_bodies := active_module_ghost.collided_modules
 	# convert to modules
 	var modules = []
@@ -147,7 +153,9 @@ func _get_ghost_colliding_modules()-> Array[Module] :
 		modules.append(body)
 	return []
 
+
 # --------------------------------
+
 
 func _position_module(intersection_position: Vector3, intersection_normal: Vector3) -> void:
 	var attach_point: Node3D = active_module.get_attach_point(attach_point_index)
@@ -155,20 +163,22 @@ func _position_module(intersection_position: Vector3, intersection_normal: Vecto
 	var angle = atan2(-intersection_normal.z, intersection_normal.x)
 
 	if local_space_offset != Vector3.ZERO:
-		active_module_ghost.rotation.y = angle + PI/2 - attach_point.rotation.y
+		active_module_ghost.rotation.y = angle + PI / 2 - attach_point.rotation.y
 	else:
-		active_module_ghost.rotation.y = angle + PI/2
+		active_module_ghost.rotation.y = angle + PI / 2
 	var global_space_offset = (
-		active_module_ghost.global_position -
-		active_module_ghost.to_global(local_space_offset)
+		active_module_ghost.global_position - active_module_ghost.to_global(local_space_offset)
 	)
 	active_module_ghost.global_position = intersection_position + global_space_offset
 
+
 ## return whether successfully grabed module
 func _on_module_clicked(clicked_module: Module) -> bool:
-	if (clicked_module != null
+	if (
+		clicked_module != null
 		and not clicked_module.has_child_module()
-		and clicked_module is not Cockpit): # cockpit is immovable
+		and clicked_module is not Cockpit
+	):  # cockpit is immovable
 		clicked_module.hide()
 
 		# set variables
@@ -183,6 +193,7 @@ func _on_module_clicked(clicked_module: Module) -> bool:
 		for child in clicked_module.child_modules:
 			_flash_module(child)
 	return false
+
 
 func _on_lmb_release() -> void:
 	# if legal position, set the module's position
@@ -241,7 +252,7 @@ func _dettach_module() -> void:
 		active_module.reparent(get_tree().get_root())
 		var area = Area3D.new()
 		get_tree().root.add_child(area)
-		area.position=active_module.position
+		area.position = active_module.position
 		active_module.reparent(area)
 
 
@@ -259,7 +270,7 @@ func _input(event: InputEvent):
 			if _lmb_just_pressed():
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
-					var clicked_module : Module = _get_module_from_hit(hit)
+					var clicked_module: Module = _get_module_from_hit(hit)
 					if _on_module_clicked(clicked_module):
 						state = State.DRAGGING
 						outline = _create_outline(active_module_ghost)
@@ -285,6 +296,7 @@ func _input(event: InputEvent):
 				choose_key_message.visible = false
 				print("new state = none")
 
+
 #        +------------+
 #        |     .      |
 #        +----/|------+
@@ -296,9 +308,7 @@ func _get_intersection() -> Dictionary:
 	# first find intersection with the attach target to find the face normal
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(
-		mouse_position_3d,
-		attach_target.global_position,
-		~0  # collision mask: ~0 means 0xFFFFFFFF (full collision mask)
+		mouse_position_3d, attach_target.global_position, ~0  # collision mask: ~0 means 0xFFFFFFFF (full collision mask)
 	)
 	var intersection = space_state.intersect_ray(query)
 
@@ -306,10 +316,13 @@ func _get_intersection() -> Dictionary:
 		return intersection
 
 	# now find the intersection using the face normal
-	var query2 = PhysicsRayQueryParameters3D.create(
-		mouse_position_3d,
-		mouse_position_3d - intersection.normal * 10,
-		~0,  # collision mask: ~0 means 0xFFFFFFFF (full collision mask)
+	var query2 = (
+		PhysicsRayQueryParameters3D
+		. create(
+			mouse_position_3d,
+			mouse_position_3d - intersection.normal * 10,
+			~0,  # collision mask: ~0 means 0xFFFFFFFF (full collision mask)
+		)
 	)
 	var intersection2 = space_state.intersect_ray(query2)
 
@@ -321,9 +334,11 @@ func _get_intersection() -> Dictionary:
 		return intersection2
 	return {}
 
+
 # check whether the active module collides with other modules
 func _module_collides() -> bool:
 	return active_module_ghost.collided_modules.size() > 0
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -360,20 +375,23 @@ func _process(_delta: float) -> void:
 				_display_legal()
 				legal = true
 
+
 # allow build
 # display in ui as legal
 func _display_legal() -> void:
 	outline_mat.set_shader_parameter("Color", Color.GREEN)
+
 
 # do not allow build
 # display in ui as illegal or invalid position
 func _display_illegal() -> void:
 	outline_mat.set_shader_parameter("Color", Color.RED)
 
-func _create_outline(parent: Node3D) -> Array[MeshInstance3D]:
-	var module_meshes = parent.find_children("*", "MeshInstance3D",true,false)
 
-	var out : Array[MeshInstance3D] = []
+func _create_outline(parent: Node3D) -> Array[MeshInstance3D]:
+	var module_meshes = parent.find_children("*", "MeshInstance3D", true, false)
+
+	var out: Array[MeshInstance3D] = []
 	for module_mesh in module_meshes:
 		var mesh = MeshInstance3D.new()
 		parent.add_child(mesh)
@@ -384,13 +402,18 @@ func _create_outline(parent: Node3D) -> Array[MeshInstance3D]:
 
 	return out
 
+
 func _flash_module(module: Module) -> void:
 	var flashes = _create_outline(module)
 	for flash in flashes:
 		flash.material_override = flash_mat
 		var tween = get_tree().create_tween().bind_node(flash).set_trans(Tween.TRANS_LINEAR)
-		tween.tween_property(flash, "material_override:shader_parameter/Color", Color.RED, flash_time/2)
-		tween.tween_property(flash, "material_override:shader_parameter/Color", Color.BLACK, flash_time/2)
+		tween.tween_property(
+			flash, "material_override:shader_parameter/Color", Color.RED, flash_time / 2
+		)
+		tween.tween_property(
+			flash, "material_override:shader_parameter/Color", Color.BLACK, flash_time / 2
+		)
 		tween.tween_callback(flash.queue_free)
 		tween.play()
 
@@ -398,9 +421,11 @@ func _flash_module(module: Module) -> void:
 func _on_finish_pressed() -> void:
 	confirm_finish_message.visible = true
 
+
 func _on_confirm_pressed() -> void:
 	# TODO: change scene to map
-	pass # Replace with function body.
+	pass  # Replace with function body.
+
 
 func _on_deny_pressed() -> void:
 	confirm_finish_message.visible = false

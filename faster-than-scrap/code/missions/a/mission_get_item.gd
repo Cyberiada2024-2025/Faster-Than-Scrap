@@ -8,11 +8,12 @@ var from: Node3D
 var to: Node3D
 var taken: bool = false
 
+
 func setup() -> void:
 	super()
 
 	# create item to take and its destinations
-	from = MeshInstance3D.new() # TODO swap to instantiating the item asset
+	from = MeshInstance3D.new()  # TODO swap to instantiating the item asset
 	to = MeshInstance3D.new()
 	from.mesh = BoxMesh.new()
 	to.mesh = BoxMesh.new()
@@ -22,6 +23,7 @@ func setup() -> void:
 
 	from.global_position = info.item_position
 	to.global_position = info.item_target_position
+
 
 func _process(_delta: float) -> void:
 	super(_delta)

@@ -2,8 +2,7 @@ class_name MissionInfoDefend
 
 extends MissionInfo
 
-
-@export var defendable_position: Vector3=Vector3.ZERO
+@export var defendable_position: Vector3 = Vector3.ZERO
 @export var time_to_defend: float = 60
 
 

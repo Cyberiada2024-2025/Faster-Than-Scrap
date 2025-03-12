@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://hs3ujnysju5o"]
 
-[ext_resource type="Script" path="res://code/collision_damage_calculator.gd" id="1_ehkyb"]
+[ext_resource type="Script" uid="uid://2mwxt5go71qn" path="res://code/collision_damage_calculator.gd" id="1_ehkyb"]
 
 [node name="CollisionDamageCalculator" type="Node"]
 script = ExtResource("1_ehkyb")

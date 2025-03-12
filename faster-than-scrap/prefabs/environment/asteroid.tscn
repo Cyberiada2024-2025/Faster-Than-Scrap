@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dn3mypfoixbpt"]
 
-[ext_resource type="Script" path="res://code/evironment/asteroid.gd" id="1_dsopr"]
+[ext_resource type="Script" uid="uid://brmjurpmutt40" path="res://code/evironment/asteroid.gd" id="1_dsopr"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="2_wuo07"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gro5k"]

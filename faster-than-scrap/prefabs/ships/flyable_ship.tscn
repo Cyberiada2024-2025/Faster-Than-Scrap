@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://creq1gbmemif6"]
 
-[ext_resource type="Script" path="res://code/Player/player_ship.gd" id="1_keeht"]
+[ext_resource type="Script" uid="uid://bfw7k5byjyq5o" path="res://code/Player/player_ship.gd" id="1_keeht"]
 [ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="1_odfy5"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="2_eda7p"]
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="3_ymjaj"]

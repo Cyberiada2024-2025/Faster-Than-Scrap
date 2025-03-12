@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://whj7or7t81c0"]
 
-[ext_resource type="Script" path="res://code/ship/projectiles/projectile.gd" id="1_viqtj"]
-[ext_resource type="Script" path="res://code/damage/damage_area_3d.gd" id="2_74tno"]
-[ext_resource type="Script" path="res://code/damage/damage.gd" id="3_nqrjy"]
+[ext_resource type="Script" uid="uid://1wa22s4vr87y" path="res://code/ship/projectiles/projectile.gd" id="1_viqtj"]
+[ext_resource type="Script" uid="uid://cxg0e2r81pvtf" path="res://code/damage/damage_area_3d.gd" id="2_74tno"]
+[ext_resource type="Script" uid="uid://b45kqln67j87t" path="res://code/damage/damage.gd" id="3_nqrjy"]
 
 [sub_resource type="Curve" id="Curve_4quhm"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=20 format=3 uid="uid://b5tykrvmiacry"]
 
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="1_ljsue"]
-[ext_resource type="Script" path="res://code/damage/damage.gd" id="3_8eh3n"]
-[ext_resource type="Script" path="res://code/damage/damage_raycast_3d.gd" id="3_jfjm2"]
-[ext_resource type="Script" path="res://code/damage/damage_area_3d.gd" id="3_vypfq"]
+[ext_resource type="Script" uid="uid://b45kqln67j87t" path="res://code/damage/damage.gd" id="3_8eh3n"]
+[ext_resource type="Script" uid="uid://b188a65ru3cwx" path="res://code/damage/damage_raycast_3d.gd" id="3_jfjm2"]
+[ext_resource type="Script" uid="uid://cxg0e2r81pvtf" path="res://code/damage/damage_area_3d.gd" id="3_vypfq"]
 
 [sub_resource type="Resource" id="Resource_jijk8"]
 script = ExtResource("3_8eh3n")

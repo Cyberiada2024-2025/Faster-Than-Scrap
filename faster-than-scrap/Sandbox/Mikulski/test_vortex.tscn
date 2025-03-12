@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://kvcjjkw5yif5"]
 
 [ext_resource type="PackedScene" uid="uid://dk1g8kstnrxxk" path="res://prefabs/environment/space_vortex/space_vortex.tscn" id="1_jj561"]
-[ext_resource type="Script" path="res://Sandbox/Mikulski/vortextest.gd" id="2_0se8q"]
+[ext_resource type="Script" uid="uid://gymlvt3xpw3j" path="res://Sandbox/Mikulski/vortextest.gd" id="2_0se8q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_asb27"]
 

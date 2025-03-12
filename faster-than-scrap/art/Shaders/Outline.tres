@@ -24,7 +24,7 @@ hint = 1
 code = "shader_type spatial;
 render_mode blend_add, depth_draw_always, cull_disabled, diffuse_lambert, specular_schlick_ggx, unshaded, shadows_disabled, ambient_light_disabled;
 
-uniform float Thickness : hint_range(0, 1);
+uniform float Thickness : hint_range(0.0, 1.0);
 uniform vec4 Color : source_color = vec4(0.000000, 1.000000, 0.000000, 1.000000);
 
 

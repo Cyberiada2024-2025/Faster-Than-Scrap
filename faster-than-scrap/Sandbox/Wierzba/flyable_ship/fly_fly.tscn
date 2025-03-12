@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="1_5iglw"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="2_um6rh"]
-[ext_resource type="Script" path="res://Sandbox/Wierzba/flyable_ship/damage_clicker.gd" id="3_p6uct"]
+[ext_resource type="Script" uid="uid://c7uthwtg6volg" path="res://Sandbox/Wierzba/flyable_ship/damage_clicker.gd" id="3_p6uct"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_eetof"]
 

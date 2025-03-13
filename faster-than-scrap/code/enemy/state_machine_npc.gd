@@ -1,6 +1,5 @@
 class_name StateMachineNPC extends Node
 
-
 ## The initial state of the state machine. If not set, the first child node is used.
 @export var initial_state: State = null
 
@@ -8,9 +7,11 @@ class_name StateMachineNPC extends Node
 #anonymous function to make sure starting state is set (with fallback)
 #call - invoke anonymous function
 ## The current state of the state machine.
-@onready var state: StateNPC = (func get_initial_state() -> State:
-	return initial_state if initial_state != null else get_child(0)
-).call()
+@onready var state: StateNPC = (
+	(func get_initial_state() -> State:
+		return initial_state if initial_state != null else get_child(0))
+	. call()
+)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,8 +29,14 @@ func _ready() -> void:
 
 func _transition_to_next_state(target_state_path: String, data: Dictionary = {}) -> void:
 	if not has_node(target_state_path):
-		printerr(owner.name + ": Trying to transition to state " + target_state_path
-		+ " but it does not exist.")
+		printerr(
+			(
+				owner.name
+				+ ": Trying to transition to state "
+				+ target_state_path
+				+ " but it does not exist."
+			)
+		)
 		return
 	var previous_state_path := state.name
 	state.exit()

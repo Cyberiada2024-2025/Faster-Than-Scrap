@@ -27,6 +27,7 @@ func setup() -> void:
 	# position it
 	defendable.global_position = info.defendable_position
 
+
 func _process(_delta: float) -> void:
 	super(_delta)
 	if _ended():
@@ -36,6 +37,7 @@ func _process(_delta: float) -> void:
 	# or removed from the tree (if the object wasn't removed from the memory)
 	if not is_instance_valid(defendable) or not defendable.is_inside_tree():
 		state = MissionState.FAILED
+
 
 ## called by the timer
 ## to signal the success of the mission

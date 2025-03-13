@@ -12,15 +12,17 @@ extends Node3D
 var on = false
 
 var anim_close = "Close"
-var anim_hit = "Hit";
+var anim_hit = "Hit"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass  # Replace with function body.
+
 
 func turn_on_off() -> void:
 	print(on)
-	if(on):
+	if on:
 		on = false
 		collider.disabled = true
 		animator.play_backwards(anim_close)
@@ -34,6 +36,7 @@ func turn_on_off() -> void:
 		audio_player.stream = sound_apply
 		audio_player.pitch_scale = randf_range(0.9, 1.1)
 		audio_player.play()
+
 
 func take_damage() -> void:
 	animator.play(anim_hit)

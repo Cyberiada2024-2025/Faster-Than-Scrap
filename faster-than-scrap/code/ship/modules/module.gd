@@ -19,6 +19,9 @@ extends CollisionShape3D
 @export var healthy_color: Color
 @export var dead_color: Color
 
+## Prize in shop
+@export_custom(PROPERTY_HINT_NONE, "suffix:$") var prize: int = 1
+
 var was_key_pressed: bool = false
 
 var module_rigidbody_prefab = preload("res://prefabs/modules/module_rigidbody.tscn")

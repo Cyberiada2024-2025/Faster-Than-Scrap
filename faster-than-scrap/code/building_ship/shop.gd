@@ -32,10 +32,10 @@ func _ready() -> void:
 		var clone = load(dir)
 		var mod = clone.instantiate()
 		add_child(mod)
-		mod.position = Vector3(size_x/columns/2 + i%columns*size_x/columns - size_x/2, 0, 
-			size_z/rows/2 + i/columns*size_z/rows - size_z/2)
+		var x: float = size_x/columns/2 + i%columns*size_x/columns - size_x/2
+		var z: float = size_z/rows/2 + i/columns*size_z/rows - size_z/2
+		mod.position = Vector3(x, 0, z)
 		i += 1
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

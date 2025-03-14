@@ -6,8 +6,10 @@ extends Node
 
 signal new_game_state
 
-@export var game_state :GameState.State = GameState.State.FLY
-@export var player_ship: PlayerShip
+@export var game_state: GameState.State = GameState.State.FLY
+@export var death_screen: PackedScene
+
+var player_ship: PlayerShip
 
 
 # Called when the node enters the scene tree for the first time.
@@ -16,7 +18,7 @@ func _ready() -> void:
 
 
 func set_game_state(new_state: GameState.State) -> void:
-	game_state=new_state
+	game_state = new_state
 	new_game_state.emit(new_state)
 	# future logic for changing state
 	match new_state:
@@ -31,8 +33,15 @@ func set_game_state(new_state: GameState.State) -> void:
 		GameState.State.MAIN_MENU:
 			_unpause_entities()
 
+
 func _pause_entities():
 	get_tree().paused = true
 
+
 func _unpause_entities():
 	get_tree().paused = false
+
+
+func show_death_screen():
+	var death_screen_scene = death_screen.instantiate()
+	GameManager.get_tree().current_scene.add_child(death_screen_scene)

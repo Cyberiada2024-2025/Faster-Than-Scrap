@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bijtikg2etao2"]
+
+[ext_resource type="Material" uid="uid://u2jcla7cl0d0" path="res://art/materials/frame/frame_material_3d.tres" id="1_vavoo"]
+[ext_resource type="ArrayMesh" uid="uid://dyggmpc21gmcw" path="res://art/models/frame/frame.obj" id="2_8nu0h"]
+
+[node name="Frame0Model" type="Node3D"]
+
+[node name="Frame0" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_vavoo")
+mesh = ExtResource("2_8nu0h")

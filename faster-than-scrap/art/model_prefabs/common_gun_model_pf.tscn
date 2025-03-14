@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwlfvellnrf75"]
+
+[ext_resource type="Material" uid="uid://ba5cisvxw5t1" path="res://art/materials/common_gun/common_gun_material_3d.tres" id="1_mqsuj"]
+[ext_resource type="ArrayMesh" uid="uid://lwlx588xi1eg" path="res://art/models/common_gun/common_gun.obj" id="2_srtb4"]
+
+[node name="CommonGunModel" type="Node3D"]
+
+[node name="CommonGun" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_mqsuj")
+mesh = ExtResource("2_srtb4")

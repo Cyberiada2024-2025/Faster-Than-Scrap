@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://b43ayffj45a0q"
-path="res://.godot/imported/bumper_collider.obj-7948bbf59b52a37cfa911a75fee60034.mesh"
+path="res://.godot/imported/bumper_collider.obj-3481e37b82eac4c260bde80e749456f5.mesh"
 
 [deps]
 
-files=["res://.godot/imported/bumper_collider.obj-7948bbf59b52a37cfa911a75fee60034.mesh"]
+files=["res://.godot/imported/bumper_collider.obj-3481e37b82eac4c260bde80e749456f5.mesh"]
 
-source_file="res://art/Models/bumper_wide/bumper_collider.obj"
-dest_files=["res://.godot/imported/bumper_collider.obj-7948bbf59b52a37cfa911a75fee60034.mesh", "res://.godot/imported/bumper_collider.obj-7948bbf59b52a37cfa911a75fee60034.mesh"]
+source_file="res://art/models/bumper_wide/bumper_collider.obj"
+dest_files=["res://.godot/imported/bumper_collider.obj-3481e37b82eac4c260bde80e749456f5.mesh", "res://.godot/imported/bumper_collider.obj-3481e37b82eac4c260bde80e749456f5.mesh"]
 
 [params]
 

@@ -8,8 +8,8 @@
 [ext_resource type="Script" path="res://code/ship/modules/module.gd" id="3_kgbhb"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/UI/ShipBuilder/outline_flash.tres" id="4_sra6p"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
-[ext_resource type="ArrayMesh" uid="uid://ilin5br3b8v2" path="res://art/Models/frame1/frame1.obj" id="8_2lyi2"]
-[ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/Models/thruster/thruster.obj" id="9_x0rib"]
+[ext_resource type="ArrayMesh" uid="uid://ilin5br3b8v2" path="res://art/models/frame1/frame1.obj" id="8_2lyi2"]
+[ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/models/thruster/thruster.obj" id="9_x0rib"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x5wpm"]
 font = ExtResource("6_au3vu")

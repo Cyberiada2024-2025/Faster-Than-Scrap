@@ -5,6 +5,7 @@ extends Node3D
 ## class used in the building ship
 ## it reacts to mouse clicking for grabbing the module
 ## and snapping it to the ship if close enough.
+signal on_module_select(module: Module)
 
 enum State {NONE, DRAGGING, SETTING_BUTTON}
 
@@ -43,8 +44,6 @@ var mouse_position_3d: Vector3 = Vector3.ZERO
 var lmb_was_pressed: bool = false
 var lmb_is_pressed: bool = false
 var rmb_was_pressed: bool = false
-
-signal on_module_select(module: Module)
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -179,7 +178,7 @@ func _on_module_clicked(clicked_module: Module) -> bool:
 		active_module = clicked_module
 		active_module_ghost = clicked_module.create_ghost()
 		attach_point_index = 0
-		
+
 		on_module_select.emit(clicked_module)
 		return true
 	if clicked_module is Cockpit:

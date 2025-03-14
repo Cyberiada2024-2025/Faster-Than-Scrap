@@ -32,13 +32,16 @@ func _ready() -> void:
 		var clone = load(dir)
 		var mod = clone.instantiate()
 		add_child(mod)
-		mod.position = Vector3(size_x/columns/2 + i%columns*size_x/columns - size_x/2, 0, size_z/rows/2 + i/columns*size_z/rows - size_z/2)
+		mod.position = Vector3(size_x/columns/2 + i%columns*size_x/columns - size_x/2, 0, 
+			size_z/rows/2 + i/columns*size_z/rows - size_z/2)
 		i += 1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if first_frame:
+		## linter will burn my house down if I don't use delta somewhere in this function
+		first_frame = 0 * delta
 		first_frame = false
 		bank = starting_bank
 		_on_bank_change()

@@ -11,6 +11,8 @@ enum State {NONE, DRAGGING, SETTING_BUTTON}
 const RAY_LENGTH = 1000.0
 const JOINT_PREFAB = preload("res://prefabs/modules/joint.tscn")
 
+## collider or ares ignored by raycast, might be empty
+@export var ignore: CollisionObject3D
 ## the mask of checked colliders when checking if there are modules near the mouse
 @export var collision_mask: int = 1
 ## the range of spherecast when checking if there are modules near the mouse
@@ -42,6 +44,8 @@ var mouse_position_3d: Vector3 = Vector3.ZERO
 var lmb_was_pressed: bool = false
 var lmb_is_pressed: bool = false
 var rmb_was_pressed: bool = false
+
+signal on_module_select(module: Module)
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -94,12 +98,12 @@ func _get_raycast_hit(event: InputEvent) -> Dictionary:
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(from, to)
 	query.collide_with_areas = true
+	query.exclude = [ignore]
 	return space_state.intersect_ray(query)
 
 # ---------------- proximity check ------------------------------------
 func _check_colliders_in_range(point: Vector3, radius: float) -> Array:
 	var space_state = get_world_3d().direct_space_state
-
 	var query = PhysicsShapeQueryParameters3D.new()
 	var sphere = SphereShape3D.new()
 	sphere.radius = radius
@@ -158,6 +162,8 @@ func _on_module_clicked(clicked_module: Module) -> bool:
 		active_module = clicked_module
 		active_module_ghost = clicked_module.create_ghost()
 		attach_point_index = 0
+		
+		on_module_select.emit(clicked_module)
 		return true
 	if clicked_module is Cockpit:
 		_flash_module(clicked_module)

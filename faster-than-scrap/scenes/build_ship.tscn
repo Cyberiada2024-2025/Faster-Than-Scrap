@@ -55,8 +55,7 @@ flash_time = 0.5
 choose_key_message = NodePath("Control/Choose_key")
 confirm_finish_message = NodePath("Control/Confirm finish")
 
-[node name="MainCamera" parent="ShipBuilder" node_paths=PackedStringArray("player_ship") instance=ExtResource("2_cy5mb")]
-player_ship = NodePath("../../PlayerShipExample")
+[node name="MainCamera" parent="ShipBuilder" instance=ExtResource("2_cy5mb")]
 
 [node name="Control" type="Control" parent="ShipBuilder"]
 layout_mode = 3
@@ -170,9 +169,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5jnae")
 text = "Finish
 Building"
 
-[node name="PlayerShipExample" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("3_gsuxg")]
+[node name="PlayerShipExample" parent="." instance=ExtResource("3_gsuxg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99755, 0, 0)
-hud = NodePath("../ShipBuilder/MainCamera")
 
 [node name="SquareMOdule" type="RigidBody3D" parent="." node_paths=PackedStringArray("attach_points")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.92008, 0, -0.365651)

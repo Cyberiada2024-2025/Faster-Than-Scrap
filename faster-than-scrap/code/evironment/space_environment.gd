@@ -25,3 +25,7 @@ func _process(delta: float) -> void:
 	# Bloom animation
 	var bloom_value = bloom_offset + bloom_amplitude * sin(time)
 	space_env.set_glow_bloom(bloom_value)
+
+
+func _on_area_3d_area_exited(area: Area3D) -> void:
+	pass # Replace with function body.

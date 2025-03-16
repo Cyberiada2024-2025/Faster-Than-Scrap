@@ -51,3 +51,4 @@ shape = SubResource("BoxShape3D_rcb50")
 mesh = SubResource("BoxMesh_xsxat")
 
 [editable path="WeaponTesting/LaserWeaponModule"]
+[editable path="WeaponTesting/BeamWeaponModule"]

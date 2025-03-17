@@ -6,7 +6,7 @@ extends MapNode
 @export var mission_info: MissionInfo
 
 func _set_color() -> void:
-	if Engine.is_editor_hint(): 
+	if Engine.is_editor_hint():
 		return
 	if mission_info != null:
 		# Totally don't know why this line prints error in tool

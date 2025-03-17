@@ -16,7 +16,10 @@ func _ready() -> void:
 			node.clicked.connect(on_node_clicked)
 
 func on_node_clicked(clicked_node: MapNode) -> void:
+	if selected_node != null:
+		selected_node.selected = false
 	selected_node = clicked_node
+	selected_node.selected = true
 	label.text = selected_node.get_description()
 
 func on_leave_button_clicked() -> void:

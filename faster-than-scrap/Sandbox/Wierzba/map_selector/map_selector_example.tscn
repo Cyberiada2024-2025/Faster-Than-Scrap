@@ -11,10 +11,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MapSelectExample" parent="." node_paths=PackedStringArray("label") instance=ExtResource("1_plhp1")]
+[node name="MapSelectExample" parent="." node_paths=PackedStringArray("label", "scene_loader") instance=ExtResource("1_plhp1")]
 layout_mode = 1
 offset_right = -239.0
 label = NodePath("../Label")
+scene_loader = NodePath("../SceneLoader")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1

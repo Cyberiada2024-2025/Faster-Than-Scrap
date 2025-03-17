@@ -6,14 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/test_projectile.tscn" id="3_ywc6w"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="4_hly24"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_lwypn"]
+size = Vector3(1.05, 0.935, 1.835)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l4rl7"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4o7rk"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ly0db"]
-
-[node name="Thruster" type="RigidBody3D" node_paths=PackedStringArray("weapon", "attach_points", "sprite", "label")]
-gravity_scale = 0.0
+[node name="Thruster" type="CollisionShape3D" node_paths=PackedStringArray("weapon", "attach_points", "sprite", "label")]
+shape = SubResource("BoxShape3D_lwypn")
 script = ExtResource("1_18ma3")
 weapon = NodePath("ConstantFireWeapon")
 recoil_force = 5.0
@@ -36,10 +37,6 @@ skeleton = NodePath("../..")
 [node name="ConstantFireWeapon" type="Node3D" parent="."]
 script = ExtResource("2_5rd74")
 projectile = ExtResource("3_ywc6w")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0114746)
-shape = SubResource("CapsuleShape3D_ly0db")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.45, 0, 0, 0, -1.96701e-08, 0.45, 0, -0.45, -1.96701e-08, 0, 0, 0)

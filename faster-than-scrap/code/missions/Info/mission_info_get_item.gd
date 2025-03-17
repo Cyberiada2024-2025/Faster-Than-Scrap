@@ -10,3 +10,10 @@ func start() -> void:
 	mission = MissionGetItem.new()
 	mission.info = self
 	super()
+
+
+func get_node_color() -> Color:
+	return Color.PURPLE
+
+func get_node_description() -> String:
+	return "Mission Type:\nGet item"

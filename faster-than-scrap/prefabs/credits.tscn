@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://ekkt3qlmp1gs"]
+
+[ext_resource type="Texture2D" uid="uid://nestbbq4mbpo" path="res://art/textures/environment/SpaceTexture.png" id="1_6r5y6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xcjtr"]
+font_size = 93
+font_color = Color(0, 0, 1, 1)
+outline_size = 10
+outline_color = Color(1, 1, 0, 1)
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1168.0
+offset_bottom = 665.0
+texture = ExtResource("1_6r5y6")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 1152.0
+offset_bottom = 830.0
+text = "Faster than Scrap
+
+Team:
+Leader:	
+	Jakub Wierzba
+Coders:	
+	Paweł Szczepański
+	Filip Mikulski
+	Jakub Wierzba
+	Łukasz Surma
+	Krzysztof Pisarski
+	Natalia Szydlik
+Design:	
+	Łukasz Surma
+	Krzysztof Pisarski
+Graphic:
+	Filip Lukas
+	Szymon Zadworny
+Sound:	
+	Justyna Koc
+	Filip Sobuń
+
+special thanks to mentor:
+	Alex Polin
+
+Thanks for playing!"
+label_settings = SubResource("LabelSettings_xcjtr")
+horizontal_alignment = 1

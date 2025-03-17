@@ -31,7 +31,7 @@ radius = 0.1
 [node name="TestProjectile" type="Node3D"]
 script = ExtResource("1_viqtj")
 velocity = SubResource("Curve_4quhm")
-velocity_multiplier = 5.0
+velocity_multiplier = 15.0
 lifetime = 2.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

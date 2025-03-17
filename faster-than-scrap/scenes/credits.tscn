@@ -37,7 +37,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 676), Vector2(0, -4079)]
+"values": [Vector2(0, 676), Vector2(0, -4220)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kr3mc"]
@@ -70,7 +70,7 @@ expand_mode = 1
 layout_mode = 0
 offset_top = -3155.0
 offset_right = 1151.0
-offset_bottom = 1296.0
+offset_bottom = 1427.0
 text = "Faster than Scrap
 
 
@@ -93,11 +93,12 @@ Krzysztof Pisarski
 
 Graphic:
 Filip Lukas
+Filip Sobuń
 Szymon Zadworny
 
-Sound:	
+Sound:
 Justyna Koc
-Filip Sobuń
+Filip Lukas
 
 
 special thanks to mentor:

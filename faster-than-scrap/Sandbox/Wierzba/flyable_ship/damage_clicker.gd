@@ -2,11 +2,13 @@ extends Node3D
 
 @export var damage: Damage = Damage.new(100)
 
-func _get_module_from_hit(hit:Dictionary) -> Module:
+
+func _get_module_from_hit(hit: Dictionary) -> Module:
 	var rigid_body: PhysicsBody3D = hit.get("collider")
 	if rigid_body != null:
 		return rigid_body.get_child(hit["shape"])
 	return null
+
 
 func _get_raycast_hit(event: InputEvent) -> Dictionary:
 	var camera3d = get_viewport().get_camera_3d()
@@ -17,10 +19,13 @@ func _get_raycast_hit(event: InputEvent) -> Dictionary:
 	query.collide_with_areas = true
 	return space_state.intersect_ray(query)
 
+
 func _input(event: InputEvent):
-	if (event is InputEventMouseButton and
-		event.button_index == MOUSE_BUTTON_LEFT and
-		event.is_pressed()):
+	if (
+		event is InputEventMouseButton
+		and event.button_index == MOUSE_BUTTON_LEFT
+		and event.is_pressed()
+	):
 		var hit := _get_raycast_hit(event)
 		var module := _get_module_from_hit(hit)
 		if module != null:

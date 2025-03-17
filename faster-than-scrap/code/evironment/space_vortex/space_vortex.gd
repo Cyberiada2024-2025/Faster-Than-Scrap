@@ -1,18 +1,14 @@
 extends Area3D
 
-
-const VORTEX_TIMER_PATH : String = "res://prefabs/environment/space_vortex/inside_vortex_timer.tscn"
-const TIMER_NAME : String = "VortexTimer926452"
-const ENLARGMENT_SPEED : float = 1.0   #units per seconds
-
-
-
+const VORTEX_TIMER_PATH: String = "res://prefabs/environment/space_vortex/inside_vortex_timer.tscn"
+const TIMER_NAME: String = "VortexTimer926452"
+const ENLARGMENT_SPEED: float = 1.0  #units per seconds
 
 
 func _process(delta: float) -> void:
-	self.scale.x += delta*ENLARGMENT_SPEED
-	self.scale.y += delta*ENLARGMENT_SPEED
-	self.scale.z += delta*ENLARGMENT_SPEED
+	self.scale.x += delta * ENLARGMENT_SPEED
+	self.scale.y += delta * ENLARGMENT_SPEED
+	self.scale.z += delta * ENLARGMENT_SPEED
 
 
 func _on_body_entered(body: Node3D) -> void:

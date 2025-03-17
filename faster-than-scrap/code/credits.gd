@@ -1,7 +1,7 @@
 extends Control
 
 @export var animationPlayer: AnimationPlayer
-@export var sceneLoader: Node
+@export var sceneLoader: SceneLoader
 
 
 func _ready() -> void:

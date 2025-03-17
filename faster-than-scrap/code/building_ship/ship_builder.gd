@@ -19,6 +19,8 @@ const RAY_LENGTH = 1000.0
 @export var snap_range: float = 1
 ## material of ghost outline
 
+@export var shop: Shop
+
 @export_group('Visuals')
 @export var outline_mat: ShaderMaterial
 ## material for flashing modules
@@ -223,6 +225,8 @@ func _attach_module() -> void:
 		# remove area above module. Ship already has rigidbody,
 		# so module is clickable
 		var area_parent = active_module.get_parent()
+		if shop != null:
+			shop._on_area_3d_area_exited(area_parent);
 		active_module.reparent(attach_target.ship)
 		area_parent.queue_free()
 	else:

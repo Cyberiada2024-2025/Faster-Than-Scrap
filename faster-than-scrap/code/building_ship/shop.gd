@@ -1,3 +1,5 @@
+class_name Shop
+
 extends Node3D
 
 ## modules in the shop. Don't place them in the editor! Place them here!
@@ -25,6 +27,8 @@ extends Node3D
 var bank: int = 0
 var first_frame: bool = true
 
+var areas: Array[Area3D] = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var i: int = 0
@@ -46,20 +50,6 @@ func _process(delta: float) -> void:
 		bank = starting_bank
 		_on_bank_change()
 
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is Module:
-		print("Module Entered")
-		var mod: Module = body
-		bank += mod.prize
-		_on_bank_change()
-
-
-func _on_area_3d_body_exited(body: Node3D) -> void:
-	if body is Module:
-		var mod: Module = body
-		bank -= mod.prize
-		_on_bank_change()
-
 func _on_bank_change() ->void:
 	bank_display.text = String.num(bank) + '$';
 
@@ -77,3 +67,31 @@ func _on_confirm_pressed() -> void:
 
 func _on_ship_builder_on_module_select(module: Module) -> void:
 	selected_module_prize_display.text = "Selected: " + String.num(module.prize) + '$'
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	for child in body.get_children():
+		if child is Module:
+			var mod: Module = child
+			bank += mod.prize
+			_on_bank_change()
+			if !areas.has(body):
+				areas.push_back(body)
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if areas.has(body):
+		for child in body.get_children():
+			if child is Module:
+				var mod: Module = child
+				bank -= mod.prize
+				_on_bank_change()
+				areas.remove_at(areas.find(body))
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	_on_area_3d_body_entered(area)
+
+
+func _on_area_3d_area_exited(area: Area3D) -> void:
+	_on_area_3d_body_exited(area)

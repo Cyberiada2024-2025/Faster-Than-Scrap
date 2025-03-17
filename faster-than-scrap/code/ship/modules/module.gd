@@ -141,8 +141,8 @@ func get_attach_point(index: int) -> Node3D:
 ## Create an Area3D object which is a copy of module tree
 ## with the only difference of a root not being a module (rigidbody3d).
 ## All children are copied!
-func create_ghost() -> Area3D:
-	var ghost := Area3D.new()
+func create_ghost() -> ModuleGhost:
+	var ghost := ModuleGhost.new()
 	for child in get_children():
 		var child_copy = child.duplicate()
 		ghost.add_child(child_copy)

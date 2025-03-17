@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://6nbs7s4q12jh"]
+
+[ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="1_4moh1"]
+
+[node name="Area3D" type="Area3D"]
+
+[node name="BaseModule" parent="." instance=ExtResource("1_4moh1")]

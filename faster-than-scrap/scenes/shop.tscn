@@ -56,9 +56,10 @@ size = Vector3(8.32263, 1, 12.5726)
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_kqinb")]
 
-[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "choose_key_message", "confirm_finish_message")]
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "shop", "choose_key_message", "confirm_finish_message")]
 script = ExtResource("2_jgpv1")
 ignore = NodePath("../Shop/Area3D")
+shop = NodePath("../Shop")
 outline_mat = ExtResource("3_tpphw")
 flash_mat = ExtResource("4_ead8n")
 flash_time = 0.5
@@ -246,7 +247,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62968, 0, 0)
 [node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("root", "bank_display", "deny_finish", "confirm_finish", "selected_module_prize_display")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.85019, 0, 0)
 script = ExtResource("12_bskm6")
-modules = Array[String](["res://prefabs/modules/module_base.tscn", "res://prefabs/modules/module_base.tscn", "res://prefabs/modules/module_base.tscn", "res://prefabs/modules/module_base.tscn", "res://prefabs/modules/module_base.tscn"])
+modules = Array[String](["res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn"])
 root = NodePath("../ShipBuilder")
 size_x = 8.323
 size_z = 12.573
@@ -288,7 +289,10 @@ shape = SubResource("BoxShape3D_e20u7")
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Confirm" to="ShipBuilder" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Deny" to="ShipBuilder" method="_on_deny_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Finish" to="Shop" method="_on_finish_pressed"]
+[connection signal="area_entered" from="Shop/Area3D" to="Shop" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Shop/Area3D" to="Shop" method="_on_area_3d_area_exited"]
 [connection signal="body_entered" from="Shop/Area3D" to="Shop" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Shop/Area3D" to="Shop" method="_on_area_3d_body_exited"]
 
 [editable path="PlayerShipExample"]
+[editable path="PlayerShipExample/ModuleBase"]

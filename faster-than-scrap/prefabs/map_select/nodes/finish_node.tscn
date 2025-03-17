@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://sxt04pfym7pt"]
+
+[ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/UI/MapSelect/circle.png" id="1_mu1p6"]
+[ext_resource type="Script" path="res://code/map_select/nodes/finish_node.gd" id="2_0wbme"]
+
+[node name="FinishNode" type="TextureButton"]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("1_mu1p6")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("2_0wbme")
+
+[connection signal="pressed" from="." to="." method="on_click"]

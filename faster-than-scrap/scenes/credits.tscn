@@ -46,7 +46,7 @@ _data = {
 "credits_text": SubResource("Animation_qxw8i")
 }
 
-[node name="Credits" type="Control" node_paths=PackedStringArray("animationPlayer", "sceneLoader")]
+[node name="Credits" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,8 +56,6 @@ offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vgts5")
-animationPlayer = NodePath("AnimationPlayer")
-sceneLoader = NodePath("SceneLoader")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0

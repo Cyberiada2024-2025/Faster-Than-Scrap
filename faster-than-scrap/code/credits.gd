@@ -1,15 +1,15 @@
 extends Control
 
-@export var animationPlayer: AnimationPlayer
-@export var sceneLoader: SceneLoader
+@export var animation_player: AnimationPlayer
+@export var scene_loader: SceneLoader
 
 
 func _ready() -> void:
-	animationPlayer.play("credits_text")
+	animation_player.play("credits_text")
 
 
 func exit_credits() -> void:
-	sceneLoader.load_main_menu_scene()
+	scene_loader.load_main_menu_scene()
 
 
 func _process(_delta: float) -> void:

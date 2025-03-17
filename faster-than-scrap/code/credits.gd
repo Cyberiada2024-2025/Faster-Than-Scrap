@@ -1,6 +1,7 @@
 extends Control
 
 @export var animationPlayer: AnimationPlayer
+@export var sceneLoader: Node
 
 
 func _ready() -> void:
@@ -9,4 +10,4 @@ func _ready() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "credits_text":
-		print("sfdsf")
+		sceneLoader.load_main_menu_scene()

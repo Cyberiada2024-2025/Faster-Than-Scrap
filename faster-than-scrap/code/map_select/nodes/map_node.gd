@@ -24,7 +24,7 @@ func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	angle += _delta
-	
+
 
 func _draw() -> void:
 	_set_color()
@@ -81,7 +81,7 @@ func draw_active():
 	var delta_angle = PI / arc_count
 	for i in range(arc_count):
 		var start_angle = 2 * PI * (i) /arc_count
-		
+
 		draw_arc(
 			local_start,
 			radius,
@@ -97,7 +97,7 @@ func draw_selected():
 	var radius = (get_rect().size.x / 2) * (3.0 / 4)
 
 	var delta_angle = PI / arc_count
-		
+
 	draw_arc(
 		local_start,
 		radius,

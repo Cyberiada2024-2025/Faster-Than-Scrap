@@ -6,7 +6,12 @@ extends MapNode
 @export var mission_info: MissionInfo
 
 func _set_color() -> void:
-	modulate = mission_info.get_node_color()
+	if Engine.is_editor_hint(): 
+		return
+	if mission_info != null:
+		# Totally don't know why this line prints error in tool
+		# (shows error Nonexistent function, even though it exists :/)
+		modulate = mission_info.get_node_color()
 	super()
 
 

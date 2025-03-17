@@ -15,14 +15,17 @@ var state: MissionState = MissionState.IN_PROGRESS
 func _ready() -> void:
 	setup()
 
+
 func setup() -> void:
 	# add self to manager
 	MissionManager.missions.append(self)
 
+
 func _process(_delta: float) -> void:
 	pass
 
+
 ## returns whether the missions ended.
 ## Either by success or failure
-func _ended() -> bool :
+func _ended() -> bool:
 	return state == MissionState.FINISHED or state == MissionState.FAILED

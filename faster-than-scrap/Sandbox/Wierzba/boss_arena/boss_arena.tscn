@@ -22,3 +22,6 @@ damage = SubResource("Resource_l2brj")
 [node name="BossUi" parent="." instance=ExtResource("4_b1kn1")]
 
 [node name="StationaryRings" parent="." instance=ExtResource("4_0qvet")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.00296707, 0.999996, 0, -0.999996, 0.00296707, -6.20547, -4.76837e-07, 11.1022)

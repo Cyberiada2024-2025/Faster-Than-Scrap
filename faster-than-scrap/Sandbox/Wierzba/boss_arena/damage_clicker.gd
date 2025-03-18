@@ -3,9 +3,10 @@ extends Node3D
 @export var damage: Damage = Damage.new(100)
 
 func _get_module_from_hit(hit:Dictionary) -> Module:
-	var rigid_body: PhysicsBody3D = hit.get("collider")
-	if rigid_body is Module:
-		return rigid_body
+	var rigid_body = hit.get("collider")
+	if rigid_body != null:
+		var module: Module = rigid_body.get_child(hit["shape"])
+		return module
 	return null
 
 func _get_raycast_hit(event: InputEvent) -> Dictionary:

@@ -11,7 +11,7 @@
 [node name="FlyFly" type="Node3D"]
 
 [node name="FlyableShip" parent="." node_paths=PackedStringArray("modules") instance=ExtResource("1_5iglw")]
-modules = [NodePath("Cockpit"), NodePath("Cockpit/RigidBody3D"), null, NodePath("Cockpit/RigidBody3D/RigidBody3D2"), NodePath("Cockpit/RigidBody3D/RigidBody3D3")]
+modules = [NodePath("Cockpit"), null, null, null, null]
 
 [node name="MainCamera" parent="." instance=ExtResource("2_um6rh")]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 10, 0)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://ckx4pgnacau0i"]
 
-[ext_resource type="Script" uid="uid://ditpfveu8ss0e" path="res://code/Player/hud.gd" id="1_x65cj"]
-[ext_resource type="Script" uid="uid://c3hndiqfyq56h" path="res://code/Player/resource_bar.gd" id="2_1s2ai"]
+[ext_resource type="Script" path="res://code/Player/hud.gd" id="1_x65cj"]
+[ext_resource type="Script" path="res://code/Player/resource_bar.gd" id="2_1s2ai"]
 [ext_resource type="Texture2D" uid="uid://b2wcjw2km4vjf" path="res://art/textures/UI/battery2.png" id="3_6m4ql"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="4_5fqad"]
 
@@ -81,8 +81,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_46h7k"]
 _data = {
-&"RESET": SubResource("Animation_lydnu"),
-&"warning": SubResource("Animation_yyh7t")
+"RESET": SubResource("Animation_lydnu"),
+"warning": SubResource("Animation_yyh7t")
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xdm3l"]

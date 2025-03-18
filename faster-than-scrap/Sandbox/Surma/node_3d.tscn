@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://tx8vl60viw86"]
 
-[ext_resource type="PackedScene" uid="uid://dty8ie80qkfd5" path="res://prefabs/ships/player_ship_example.tscn" id="1_23pgk"]
+[ext_resource type="PackedScene" uid="uid://cpxkxwkuyh6l2" path="res://prefabs/ships/player_ship_example.tscn" id="1_23pgk"]
 
 [node name="Node3D" type="Node3D"]
 

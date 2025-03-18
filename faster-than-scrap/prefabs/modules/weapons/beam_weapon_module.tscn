@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://67fftbosvmmt"]
 
-[ext_resource type="Script" uid="uid://dbj13j5pg7k64" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_by74g"]
-[ext_resource type="Script" uid="uid://c301gatodcdry" path="res://code/weapons/constant_fire_weapon.gd" id="2_rsxp2"]
+[ext_resource type="Script" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_by74g"]
+[ext_resource type="Script" path="res://code/weapons/constant_fire_weapon.gd" id="2_rsxp2"]
 [ext_resource type="PackedScene" uid="uid://bnvojbycskewd" path="res://prefabs/projectiles/test_beam.tscn" id="3_33xdp"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_30wr0"]

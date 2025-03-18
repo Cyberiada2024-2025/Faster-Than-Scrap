@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://dc0wplivf157h"]
 
-[ext_resource type="PackedScene" uid="uid://dty8ie80qkfd5" path="res://prefabs/ships/player_ship_example.tscn" id="1_2po3p"]
+[ext_resource type="PackedScene" uid="uid://cpxkxwkuyh6l2" path="res://prefabs/ships/player_ship_example.tscn" id="1_2po3p"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="2_ifg7j"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="3_qgcv5"]
-[ext_resource type="Script" uid="uid://pbbdkosxu7b0" path="res://Sandbox/Szczepański/UItest.gd" id="5_rbsty"]
+[ext_resource type="Script" path="res://Sandbox/Szczepański/UItest.gd" id="5_rbsty"]
 [ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/UI/Minimap/Placeholder/Enemy.png" id="7_c4c6l"]
 
 [node name="UiTest" type="Node3D"]

@@ -3,7 +3,6 @@ class_name ModuleGhost
 extends Area3D
 
 var collided_modules: Array[Module]
-var module_to_ignore: Module
 
 func _ready():
 	body_shape_entered.connect(_on_body_shape_entered)
@@ -15,9 +14,7 @@ func _on_body_shape_entered(
 	body_shape_index: int,
 	_local_shape_index: int):
 
-	var collided = body.get_child(body_shape_index)
-	if collided != module_to_ignore :
-		collided_modules.append(collided)
+	collided_modules.append(body.get_child(body_shape_index))
 
 func _on_body_shape_exited(
 	_body_rid: RID,

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c4rtlnyal6qo1"]
 
-[ext_resource type="Script" uid="uid://y4lxkrr6p3hj" path="res://code/ship/ship.gd" id="1_c4uj3"]
-[ext_resource type="PackedScene" uid="uid://b6fx656pcno7s" path="res://prefabs/modules/shield_module.tscn" id="2_8pru4"]
-[ext_resource type="Script" uid="uid://cxagynj3la0na" path="res://Sandbox/Szczepański/test_shield.gd" id="3_cnuig"]
+[ext_resource type="Script" path="res://code/ship/ship.gd" id="1_c4uj3"]
+[ext_resource type="PackedScene" uid="uid://deadls1gmho43" path="res://prefabs/modules/shield_module.tscn" id="2_8pru4"]
+[ext_resource type="Script" path="res://Sandbox/Szczepański/test_shield.gd" id="3_cnuig"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n5nxb"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

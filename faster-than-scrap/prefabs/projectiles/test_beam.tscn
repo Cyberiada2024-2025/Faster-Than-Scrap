@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnvojbycskewd"]
 
-[ext_resource type="Script" uid="uid://04pinhhvuxo8" path="res://code/ship/projectiles/beam.gd" id="1_mkgm7"]
-[ext_resource type="Script" uid="uid://b188a65ru3cwx" path="res://code/damage/damage_raycast_3d.gd" id="2_gxp61"]
-[ext_resource type="Script" uid="uid://b45kqln67j87t" path="res://code/damage/damage.gd" id="3_vpgp5"]
+[ext_resource type="Script" path="res://code/ship/projectiles/beam.gd" id="1_mkgm7"]
+[ext_resource type="Script" path="res://code/damage/damage_raycast_3d.gd" id="2_gxp61"]
+[ext_resource type="Script" path="res://code/damage/damage.gd" id="3_vpgp5"]
 
 [sub_resource type="Resource" id="Resource_7ctxp"]
 script = ExtResource("3_vpgp5")

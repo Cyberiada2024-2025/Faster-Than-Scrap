@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://kpc2w8wxljon"]
 
-[ext_resource type="Script" uid="uid://b2c6fn3beht28" path="res://Sandbox/Surma/player.gd" id="1_j12q1"]
-[ext_resource type="Script" uid="uid://cfln0b06wqv33" path="res://code/ship/ship_controller.gd" id="1_u0ry0"]
+[ext_resource type="Script" path="res://Sandbox/Surma/player.gd" id="1_j12q1"]
+[ext_resource type="Script" path="res://code/ship/ship_controller.gd" id="1_u0ry0"]
 
 [node name="PlayerCharacterController" type="CharacterBody3D" node_paths=PackedStringArray("ship") groups=["Player"]]
 floor_stop_on_slope = false

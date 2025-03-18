@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://b6fx656pcno7s"]
 
-[ext_resource type="Script" uid="uid://dmdm1pd421ab5" path="res://code/ship/modules/shield_module.gd" id="1_qfqke"]
-[ext_resource type="Script" uid="uid://bj6m3obqmvhdt" path="res://code/ship/modules/Shield.gd" id="2_yota5"]
-[ext_resource type="AudioStream" uid="uid://cfv8l5dmivhc5" path="res://art/audio/sounds/shield_applying_sound.wav" id="3_t2mx0"]
-[ext_resource type="AudioStream" uid="uid://bhtfb6630u1js" path="res://art/audio/sounds/shield_shattering_sound.wav" id="4_o2yw7"]
-[ext_resource type="AudioStream" uid="uid://bq3myi1evd56a" path="res://art/audio/sounds/shield_takingdmg_sound.wav" id="5_ul8cr"]
+[ext_resource type="Script" path="res://code/ship/modules/shield_module.gd" id="1_qfqke"]
+[ext_resource type="Script" path="res://code/ship/modules/Shield.gd" id="2_yota5"]
+[ext_resource type="AudioStream" uid="uid://17ix5e1eg6kr" path="res://art/audio/sounds/shield_applying_sound.wav" id="3_t2mx0"]
+[ext_resource type="AudioStream" uid="uid://s7031my73vmi" path="res://art/audio/sounds/shield_shattering_sound.wav" id="4_o2yw7"]
+[ext_resource type="AudioStream" uid="uid://6deuor6eyups" path="res://art/audio/sounds/shield_takingdmg_sound.wav" id="5_ul8cr"]
 [ext_resource type="PackedScene" uid="uid://3a5vwad6lsnu" path="res://prefabs/VFX/shield_vfx.tscn" id="6_gvryf"]
 [ext_resource type="Shader" uid="uid://ohokcopb2fdp" path="res://art/Shaders/Shield.tres" id="7_rwr3c"]
 
@@ -107,9 +107,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_22x73"]
 _data = {
-&"Close": SubResource("Animation_w1mnr"),
-&"Hit": SubResource("Animation_4e2hl"),
-&"RESET": SubResource("Animation_sg6jy")
+"Close": SubResource("Animation_w1mnr"),
+"Hit": SubResource("Animation_4e2hl"),
+"RESET": SubResource("Animation_sg6jy")
 }
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h2lat"]

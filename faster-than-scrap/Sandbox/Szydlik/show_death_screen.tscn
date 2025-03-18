@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bfvon3aogx24y"]
 
-[ext_resource type="Script" uid="uid://bfw7k5byjyq5o" path="res://code/Player/player_ship.gd" id="1_shnvc"]
+[ext_resource type="Script" path="res://code/Player/player_ship.gd" id="1_shnvc"]
 
 [node name="Control" type="Node3D"]
 

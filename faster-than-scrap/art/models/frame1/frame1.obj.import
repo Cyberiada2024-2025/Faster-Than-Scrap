@@ -16,10 +16,7 @@ dest_files=["res://.godot/imported/frame1.obj-b022aafb3705d7e43e7e25b755952d9e.m
 [params]
 
 generate_tangents=true
-generate_lods=true
-generate_shadow_mesh=true
-generate_lightmap_uv2=false
-generate_lightmap_uv2_texel_size=0.2
 scale_mesh=Vector3(1, 1, 1)
 offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
 force_disable_mesh_compression=false

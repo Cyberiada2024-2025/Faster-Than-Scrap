@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://beaivb4nm47co"]
 
-[ext_resource type="Script" path="res://code/ship/ship.gd" id="1_c6sek"]
+[ext_resource type="Script" uid="uid://dpubtuvds874u" path="res://code/ship/ship.gd" id="1_c6sek"]
 [ext_resource type="PackedScene" uid="uid://dohx5akrv2oq8" path="res://prefabs/modules/weapons/laser_weapon_module.tscn" id="2_fxmod"]
 [ext_resource type="PackedScene" uid="uid://67fftbosvmmt" path="res://prefabs/modules/weapons/beam_weapon_module.tscn" id="6_iruyl"]
-[ext_resource type="Script" path="res://code/damage/damageable.gd" id="7_7weoh"]
+[ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://code/damage/damageable.gd" id="7_7weoh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rcb50"]
 

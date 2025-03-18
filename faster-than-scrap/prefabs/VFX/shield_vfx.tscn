@@ -6,8 +6,12 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bbfm5"]
 render_priority = 0
 shader = ExtResource("1_mu0sc")
+shader_parameter/anim_hit = 1.0
 shader_parameter/AnimationDistance = 1.0
 shader_parameter/AnimationSpeed = 2.0
+shader_parameter/Offset = 0.5
+shader_parameter/anim_open_close = -2.0
+shader_parameter/Hit_Color = Color(1, 2, 1, 1)
 shader_parameter/MainColor = Color(0, 2, 1, 1)
 shader_parameter/RimColor = Color(0, 0.05, 2, 1)
 shader_parameter/RimSize = 0.16

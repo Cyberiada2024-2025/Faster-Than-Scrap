@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnr8e8annnar3"]
+
+[ext_resource type="PackedScene" uid="uid://eol251w0tnh0" path="res://Sandbox/Wierzba/map_selector/map_example.tscn" id="1_plhp1"]
+[ext_resource type="Script" path="res://code/scene_loader.gd" id="2_425mv"]
+
+[node name="MapSelectorExample" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapSelectExample" parent="." node_paths=PackedStringArray("label", "scene_loader") instance=ExtResource("1_plhp1")]
+layout_mode = 1
+offset_right = -239.0
+label = NodePath("../Label")
+scene_loader = NodePath("../SceneLoader")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1008.0
+offset_top = 298.0
+offset_right = -34.0
+offset_bottom = -276.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "FLY!"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 983.0
+offset_top = 82.0
+offset_bottom = -366.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Select Mission
+"
+
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource("2_425mv")
+
+[connection signal="pressed" from="Button" to="MapSelectExample" method="on_leave_button_clicked"]

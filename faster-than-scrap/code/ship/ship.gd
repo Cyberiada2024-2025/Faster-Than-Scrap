@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 	#print(global_position)
 
 
+
 ## Called when module wants to use the ship's energy [member Ship.energy].
 ## Returns true when it can afford that amount (and reduces the energy accordingly)
 ## otherwise returns false and doesn't change the energy amount.

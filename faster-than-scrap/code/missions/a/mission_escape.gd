@@ -6,16 +6,18 @@ var info: MissionInfoEscape
 
 var portal: Node3D
 
+
 func setup() -> void:
 	super()
 
 	# create escape object
-	portal = MeshInstance3D.new() # TODO swap to instantiating the portal asset
+	portal = MeshInstance3D.new()  # TODO swap to instantiating the portal asset
 	portal.mesh = BoxMesh.new()
 	MissionManager.add_child(portal)
 
 	# position it
 	portal.global_position = info.portal_position
+
 
 func _process(_delta: float) -> void:
 	super(_delta)

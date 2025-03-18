@@ -33,6 +33,11 @@ func load_build_ship_scene() -> void:
 	_attach_ship_without_hud()
 
 
+func load_credits_scene() -> void:
+	get_tree().change_scene_to_file("res://scenes/credits.tscn")
+	GameManager.set_game_state(GameState.State.MAIN_MENU)
+
+
 ## detach the ship from the scene tree, to preserve it, when it is changed
 func _detach_ship():
 	if GameManager.player_ship == null:

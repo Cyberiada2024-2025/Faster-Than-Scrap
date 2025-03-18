@@ -150,5 +150,5 @@ func create_ghost() -> ModuleGhost:
 	ghost.add_child(duplicate)
 	duplicate.position = Vector3.ZERO
 	ghost.module_to_ignore = self
-
+	
 	return ghost

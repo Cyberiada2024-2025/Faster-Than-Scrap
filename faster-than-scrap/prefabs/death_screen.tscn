@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://co00lq4f26bp4"]
+
+[ext_resource type="Texture2D" uid="uid://cp478xmty8tx6" path="res://art/textures/died_placeholder.png" id="1_katkj"]
+[ext_resource type="Script" path="res://code/scene_loader.gd" id="2_b8ji8"]
+
+[node name="DeathScreen" type="Control"]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(29, 16.28)
+color = Color(0, 0, 0, 0.752941)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SceneLoader" type="Node" parent="UI"]
+script = ExtResource("2_b8ji8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -267.5
+offset_right = 500.0
+offset_bottom = 267.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_katkj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+alignment = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "MAIN MENU"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="UI/SceneLoader" method="load_main_menu_scene"]

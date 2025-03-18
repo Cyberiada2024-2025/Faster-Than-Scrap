@@ -145,11 +145,11 @@ func create_ghost() -> ModuleGhost:
 	# create ghost in scene
 	var ghost := ModuleGhost.new()
 	get_tree().root.add_child(ghost)
-	ghost.name="ghost"
-	ghost.global_position=global_position
+	ghost.name = "ghost"
+	ghost.global_position = global_position
 
 	# duplicate module
-	var duplicate :Node= self.duplicate()
+	var duplicate: Node = self.duplicate()
 	ghost.add_child(duplicate)
 	duplicate.position = Vector3.ZERO
 	ghost.module_to_ignore = self

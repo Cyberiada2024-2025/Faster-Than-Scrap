@@ -14,78 +14,59 @@
 [ext_resource type="Script" path="res://code/enemy/states/restore_energy.gd" id="12_tiubj"]
 [ext_resource type="Script" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="13_dufb5"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_mj7ff"]
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_mj7ff"]
 
 [node name="LaserStar" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
 script = ExtResource("1_nesmw")
 ship = NodePath("Boss")
 
-[node name="Boss" type="RigidBody3D" parent="." node_paths=PackedStringArray("core")]
+[node name="Boss" type="RigidBody3D" parent="."]
 script = ExtResource("2_s6qyd")
-core = NodePath("../Core")
 
-[node name="Core" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Core" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_fe0g0")
 script = ExtResource("3_4c6o0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Core"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/Core"]
 transform = Transform3D(0.999998, 0.000325448, -0.00194442, -0.000327706, 0.999999, -0.00115764, 0.00194404, 0.00115827, 0.999997, 0, 0, 0)
 mesh = SubResource("SphereMesh_mj7ff")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Core"]
-shape = SubResource("SphereShape3D_fe0g0")
+[node name="Star Laser" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 
-[node name="Star Laser" parent="Core" instance=ExtResource("4_06rxb")]
+[node name="SpawnerWeapon" parent="StaticBody3D/Core/Star Laser/StaticBody3D3" index="2" node_paths=PackedStringArray("ship")]
+ship = NodePath("../../../../../Boss")
 
-[node name="SpawnerWeapon" parent="Core/Star Laser/StaticBody3D3" index="3" node_paths=PackedStringArray("ship")]
-ship = NodePath("../../../../Boss")
-
-[node name="Star Laser2" parent="Core" instance=ExtResource("4_06rxb")]
+[node name="Star Laser2" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="StaticBody3D3" parent="Core/Star Laser2" index="0" node_paths=PackedStringArray("ship")]
-ship = NodePath("../../../Boss")
-
-[node name="SpawnerWeapon" parent="Core/Star Laser2/StaticBody3D3" index="3" node_paths=PackedStringArray("ship")]
+[node name="StaticBody3D3" parent="StaticBody3D/Core/Star Laser2" index="0" node_paths=PackedStringArray("ship")]
 ship = NodePath("../../../../Boss")
 
-[node name="StaticBody3D" parent="Core/Star Laser2" index="1" node_paths=PackedStringArray("ship")]
-ship = NodePath("../../../Boss")
+[node name="SpawnerWeapon" parent="StaticBody3D/Core/Star Laser2/StaticBody3D3" index="2" node_paths=PackedStringArray("ship")]
+ship = NodePath("../../../../../Boss")
 
-[node name="StaticBody3D2" parent="Core/Star Laser2" index="2" node_paths=PackedStringArray("ship")]
-ship = NodePath("../../../Boss")
-
-[node name="Star Laser3" parent="Core" instance=ExtResource("4_06rxb")]
+[node name="Star Laser3" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="StaticBody3D3" parent="Core/Star Laser3" index="0" node_paths=PackedStringArray("ship")]
-ship = NodePath("../../../Boss")
-
-[node name="SpawnerWeapon" parent="Core/Star Laser3/StaticBody3D3" index="3" node_paths=PackedStringArray("ship")]
+[node name="StaticBody3D3" parent="StaticBody3D/Core/Star Laser3" index="0" node_paths=PackedStringArray("ship")]
 ship = NodePath("../../../../Boss")
 
-[node name="StaticBody3D" parent="Core/Star Laser3" index="1" node_paths=PackedStringArray("ship")]
-ship = NodePath("../../../Boss")
+[node name="SpawnerWeapon" parent="StaticBody3D/Core/Star Laser3/StaticBody3D3" index="2" node_paths=PackedStringArray("ship")]
+ship = NodePath("../../../../../Boss")
 
-[node name="StaticBody3D2" parent="Core/Star Laser3" index="2" node_paths=PackedStringArray("ship")]
-ship = NodePath("../../../Boss")
-
-[node name="Star Laser4" parent="Core" instance=ExtResource("4_06rxb")]
+[node name="Star Laser4" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
 
-[node name="StaticBody3D3" parent="Core/Star Laser4" index="0" node_paths=PackedStringArray("ship")]
-ship = NodePath("../../../Boss")
-
-[node name="SpawnerWeapon" parent="Core/Star Laser4/StaticBody3D3" index="3" node_paths=PackedStringArray("ship")]
+[node name="StaticBody3D3" parent="StaticBody3D/Core/Star Laser4" index="0" node_paths=PackedStringArray("ship")]
 ship = NodePath("../../../../Boss")
 
-[node name="StaticBody3D" parent="Core/Star Laser4" index="1" node_paths=PackedStringArray("ship")]
-ship = NodePath("../../../Boss")
-
-[node name="StaticBody3D2" parent="Core/Star Laser4" index="2" node_paths=PackedStringArray("ship")]
-ship = NodePath("../../../Boss")
+[node name="SpawnerWeapon" parent="StaticBody3D/Core/Star Laser4/StaticBody3D3" index="2" node_paths=PackedStringArray("ship")]
+ship = NodePath("../../../../../Boss")
 
 [node name="StateMachineNPC" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_jstny")
@@ -127,7 +108,7 @@ duration = 3.0
 
 [node name="Shooting" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("weapons")]
 script = ExtResource("6_vtp5i")
-weapons = [NodePath("../../Core/Star Laser/StaticBody3D3/SpawnerWeapon"), NodePath("../../Core/Star Laser2/StaticBody3D3/SpawnerWeapon"), NodePath("../../Core/Star Laser3/StaticBody3D3/SpawnerWeapon"), NodePath("../../Core/Star Laser4/StaticBody3D3/SpawnerWeapon")]
+weapons = [NodePath("../../StaticBody3D/Core/Star Laser/StaticBody3D3/SpawnerWeapon"), NodePath("../../StaticBody3D/Core/Star Laser2/StaticBody3D3/SpawnerWeapon"), NodePath("../../StaticBody3D/Core/Star Laser3/StaticBody3D3/SpawnerWeapon"), NodePath("../../StaticBody3D/Core/Star Laser4/StaticBody3D3/SpawnerWeapon")]
 
 [node name="TransitionLowEnergy" type="Node" parent="StateMachineNPC/Shooting" node_paths=PackedStringArray("new_state")]
 script = ExtResource("11_vp012")
@@ -141,7 +122,7 @@ script = ExtResource("12_tiubj")
 script = ExtResource("13_dufb5")
 new_state = NodePath("../../Composite Change Position")
 
-[editable path="Core/Star Laser"]
-[editable path="Core/Star Laser2"]
-[editable path="Core/Star Laser3"]
-[editable path="Core/Star Laser4"]
+[editable path="StaticBody3D/Core/Star Laser"]
+[editable path="StaticBody3D/Core/Star Laser2"]
+[editable path="StaticBody3D/Core/Star Laser3"]
+[editable path="StaticBody3D/Core/Star Laser4"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b66go7dtdv2m1"]
+[gd_scene load_steps=8 format=3 uid="uid://b66go7dtdv2m1"]
 
 [ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="1_if6ta"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="2_4crnk"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_bknuf"]
+[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="4_s0cg4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1whwh"]
 radius = 0.45
@@ -36,6 +37,10 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController2/Damageable" index="0"]
 shape = SubResource("SphereShape3D_e1j53")
+
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("4_s0cg4")]
+damageable = NodePath("../DamageController2/Damageable")
+shape = NodePath("..")
 
 [connection signal="damaged" from="DamageController2" to="." method="take_damage"]
 

@@ -1,11 +1,11 @@
 [gd_scene load_steps=18 format=3 uid="uid://1brryvr73lx3"]
 
-[ext_resource type="Script" path="res://code/building_ship/ship_builder.gd" id="1_tic1n"]
+[ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_tic1n"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="2_11x22"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/UI/ShipBuilder/outline.tres" id="2_q55sa"]
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="3_5rsdf"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/UI/ShipBuilder/outline_flash.tres" id="3_optqi"]
-[ext_resource type="Script" path="res://code/scene_loader.gd" id="4_v00nt"]
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="4_v00nt"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="5_abx51"]
 [ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="8_ly6ia"]
 

@@ -1,15 +1,15 @@
 [gd_scene load_steps=22 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
-[ext_resource type="Script" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
+[ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="2_cy5mb"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/UI/ShipBuilder/outline.tres" id="3_7x66o"]
 [ext_resource type="PackedScene" uid="uid://dty8ie80qkfd5" path="res://prefabs/ships/player_ship_example.tscn" id="3_gsuxg"]
-[ext_resource type="Script" path="res://code/ship/modules/module.gd" id="3_kgbhb"]
+[ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="3_kgbhb"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/UI/ShipBuilder/outline_flash.tres" id="4_sra6p"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
-[ext_resource type="ArrayMesh" uid="uid://ilin5br3b8v2" path="res://art/Models/frame1/frame1.obj" id="8_2lyi2"]
-[ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/Models/thruster/thruster.obj" id="9_x0rib"]
+[ext_resource type="ArrayMesh" uid="uid://ilin5br3b8v2" path="res://art/models/frame1/frame1.obj" id="8_2lyi2"]
+[ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/models/thruster/thruster.obj" id="9_x0rib"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x5wpm"]
 font = ExtResource("6_au3vu")

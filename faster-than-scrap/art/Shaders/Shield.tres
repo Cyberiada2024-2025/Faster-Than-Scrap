@@ -153,15 +153,15 @@ default_input_values = [0, 0.0, 1, 0.5, 2, 1.0]
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_disabled, unshaded, shadows_disabled, fog_disabled;
 
-uniform float anim_hit : hint_range(0, 1) = 1;
-uniform float AnimationDistance : hint_range(0, 2, 0.20000000298023) = 1;
-uniform float AnimationSpeed : hint_range(0, 5, 0.5) = 2;
-uniform float Offset : hint_range(0, 2) = 0.5;
-uniform float anim_open_close : hint_range(-2, 2) = -2;
+uniform float anim_hit : hint_range(0.0, 1.0) = 1.0;
+uniform float AnimationDistance : hint_range(0.0, 2.0, 0.20000000298023) = 1.0;
+uniform float AnimationSpeed : hint_range(0.0, 5.0, 0.5) = 2.0;
+uniform float Offset : hint_range(0.0, 2.0) = 0.5;
+uniform float anim_open_close : hint_range(-2.0, 2.0) = -2.0;
 uniform vec4 Hit_Color : source_color = vec4(1.000000, 2.000000, 1.000000, 1.000000);
 uniform vec4 MainColor : source_color = vec4(0.000000, 1.000000, 2.000000, 1.000000);
 uniform vec4 RimColor : source_color = vec4(0.000000, 0.050000, 2.000000, 1.000000);
-uniform float RimSize : hint_range(0, 0.52999997138977) = 0.17000000178814;
+uniform float RimSize : hint_range(0.0, 0.52999997138977) = 0.17000000178814;
 uniform vec4 BackColor : source_color = vec4(0.131000, 1.000000, 1.000000, 1.000000);
 
 

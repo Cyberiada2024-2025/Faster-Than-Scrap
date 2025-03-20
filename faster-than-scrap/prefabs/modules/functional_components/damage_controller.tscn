@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://0txf83d46q4j"]
+
+[ext_resource type="Script" uid="uid://k3n7j0mjfmxt" path="res://code/damage/damage_controller.gd" id="1_a5jg1"]
+[ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://code/damage/damageable.gd" id="2_ot1re"]
+
+[node name="DamageController" type="Node3D"]
+script = ExtResource("1_a5jg1")
+
+[node name="Damageable" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_ot1re")

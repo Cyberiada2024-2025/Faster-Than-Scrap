@@ -5,18 +5,23 @@ extends Node3D
 ## class used in the building ship
 ## it reacts to mouse clicking for grabbing the module
 ## and snapping it to the ship if close enough.
+signal on_module_select(module: Module)
 
 enum State { NONE, DRAGGING, SETTING_BUTTON }
 
 const RAY_LENGTH = 1000.0
 
+## collider or ares ignored by raycast, might be empty
+@export var ignore: CollisionObject3D
 ## the mask of checked colliders when checking if there are modules near the mouse
 @export var collision_mask: int = 1
 ## the range of spherecast when checking if there are modules near the mouse
 @export var snap_range: float = 1
 ## material of ghost outline
 
-@export_group("Visuals")
+@export var shop: Shop
+
+@export_group('Visuals')
 @export var outline_mat: ShaderMaterial
 ## material for flashing modules
 @export var flash_mat: ShaderMaterial
@@ -99,13 +104,13 @@ func _get_raycast_hit(event: InputEvent) -> Dictionary:
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(from, to)
 	query.collide_with_areas = true
+	query.exclude = [ignore]
 	return space_state.intersect_ray(query)
 
 
 # ---------------- proximity check ------------------------------------
 func _check_colliders_in_range(point: Vector3, radius: float) -> Array[Module]:
 	var space_state = get_world_3d().direct_space_state
-
 	var query = PhysicsShapeQueryParameters3D.new()
 	var sphere = SphereShape3D.new()
 	sphere.radius = radius
@@ -185,6 +190,8 @@ func _on_module_clicked(clicked_module: Module) -> bool:
 		active_module = clicked_module
 		active_module_ghost = clicked_module.create_ghost()
 		attach_point_index = 0
+
+		on_module_select.emit(clicked_module)
 		return true
 	if clicked_module is Cockpit:
 		_flash_module(clicked_module)
@@ -229,6 +236,8 @@ func _attach_module() -> void:
 		# remove area above module. Ship already has rigidbody,
 		# so module is clickable
 		var area_parent = active_module.get_parent()
+		if shop != null:
+			shop._on_area_3d_area_exited(area_parent);
 		active_module.reparent(attach_target.ship)
 		area_parent.queue_free()
 	else:

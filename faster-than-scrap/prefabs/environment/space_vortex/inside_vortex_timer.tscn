@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cv2kifmhmn3ht"]
 
-[ext_resource type="Script" path="res://code/evironment/space_vortex/vortex_timer.gd" id="1_cba3g"]
+[ext_resource type="Script" uid="uid://bmle503kcd8we" path="res://code/evironment/space_vortex/vortex_timer.gd" id="1_cba3g"]
 
 [node name="InsideVortex" type="Timer"]
 wait_time = 0.5

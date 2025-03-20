@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://otlsujtci37k"]
+[gd_scene load_steps=11 format=3 uid="uid://otlsujtci37k"]
 
 [ext_resource type="Script" path="res://code/weapons/spawner_weapon.gd" id="1_4d8f1"]
 [ext_resource type="Script" path="res://code/ship/modules/module.gd" id="1_llond"]
 [ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/test_projectile.tscn" id="2_yabaa"]
+[ext_resource type="Script" path="res://code/damage/damage_controller.gd" id="4_mw414"]
+[ext_resource type="Script" path="res://code/damage/damageable.gd" id="5_cutkj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n02ww"]
 size = Vector3(1, 1, 2.5)
@@ -59,3 +61,12 @@ script = ExtResource("1_llond")
 transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_ermlv")
 skeleton = NodePath("")
+
+[node name="DamageController" type="Node3D" parent="CollisionShape3D2"]
+script = ExtResource("4_mw414")
+
+[node name="Damageable" type="Area3D" parent="CollisionShape3D2/DamageController"]
+script = ExtResource("5_cutkj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionShape3D2/DamageController/Damageable"]
+shape = SubResource("BoxShape3D_hipsr")

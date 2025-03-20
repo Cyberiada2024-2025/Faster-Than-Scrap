@@ -38,35 +38,69 @@ skeleton = NodePath("")
 
 [node name="Star Laser" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 
+[node name="StaticBody3D3" parent="StaticBody3D/Core/Star Laser" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.17694)
+
 [node name="SpawnerWeapon" parent="StaticBody3D/Core/Star Laser/StaticBody3D3" index="2" node_paths=PackedStringArray("ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.49094)
 ship = NodePath("../../../../../Boss")
+
+[node name="MeshInstance3D3" parent="StaticBody3D/Core/Star Laser/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D4" parent="StaticBody3D/Core/Star Laser/CollisionShape3D2" index="0"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0)
 
 [node name="Star Laser2" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="StaticBody3D3" parent="StaticBody3D/Core/Star Laser2" index="0" node_paths=PackedStringArray("ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.17694)
 ship = NodePath("../../../../Boss")
 
 [node name="SpawnerWeapon" parent="StaticBody3D/Core/Star Laser2/StaticBody3D3" index="2" node_paths=PackedStringArray("ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.49094)
 ship = NodePath("../../../../../Boss")
+
+[node name="MeshInstance3D3" parent="StaticBody3D/Core/Star Laser2/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D4" parent="StaticBody3D/Core/Star Laser2/CollisionShape3D2" index="0"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0)
 
 [node name="Star Laser3" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="StaticBody3D3" parent="StaticBody3D/Core/Star Laser3" index="0" node_paths=PackedStringArray("ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.17694)
 ship = NodePath("../../../../Boss")
 
 [node name="SpawnerWeapon" parent="StaticBody3D/Core/Star Laser3/StaticBody3D3" index="2" node_paths=PackedStringArray("ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.49094)
 ship = NodePath("../../../../../Boss")
+
+[node name="MeshInstance3D3" parent="StaticBody3D/Core/Star Laser3/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D4" parent="StaticBody3D/Core/Star Laser3/CollisionShape3D2" index="0"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0)
 
 [node name="Star Laser4" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
 
 [node name="StaticBody3D3" parent="StaticBody3D/Core/Star Laser4" index="0" node_paths=PackedStringArray("ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.17694)
 ship = NodePath("../../../../Boss")
 
 [node name="SpawnerWeapon" parent="StaticBody3D/Core/Star Laser4/StaticBody3D3" index="2" node_paths=PackedStringArray("ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.49094)
 ship = NodePath("../../../../../Boss")
+
+[node name="MeshInstance3D3" parent="StaticBody3D/Core/Star Laser4/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D4" parent="StaticBody3D/Core/Star Laser4/CollisionShape3D2" index="0"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0)
 
 [node name="StateMachineNPC" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_jstny")

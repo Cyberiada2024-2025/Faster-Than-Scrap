@@ -21,6 +21,8 @@ recoil_force = 5.0
 attach_points = [NodePath("AttachPoints/AttachPoint")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
+prize = 2
+
 
 [node name="Mesh" type="Node3D" parent="."]
 

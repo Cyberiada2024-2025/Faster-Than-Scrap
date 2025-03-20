@@ -22,6 +22,6 @@ func _process(delta: float) -> void:
 	if timer <= 0 && Input.is_key_pressed(KEY_SPACE):
 		ship.use_energy(40)
 		timer = wait
-	elif timer <= 0 && Input.is_key_pressed(KEY_Q):
-		module.take_damage(10)
+	elif(timer <= 0 && Input.is_key_pressed(KEY_Q)):
+		#module.take_damage(10)
 		timer = wait

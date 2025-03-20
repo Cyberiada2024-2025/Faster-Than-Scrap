@@ -141,10 +141,17 @@ func get_attach_point(index: int) -> Node3D:
 ## Create an Area3D object which is a copy of module tree
 ## with the only difference of a root not being a module (rigidbody3d).
 ## All children are copied!
-func create_ghost() -> Area3D:
-	var ghost := Area3D.new()
-	for child in get_children():
-		var child_copy = child.duplicate()
-		ghost.add_child(child_copy)
+func create_ghost() -> ModuleGhost:
+	# create ghost in scene
+	var ghost := ModuleGhost.new()
 	get_tree().root.add_child(ghost)
+	ghost.name = "ghost"
+	ghost.global_position = global_position
+
+	# duplicate module
+	var duplicate: Node = self.duplicate()
+	ghost.add_child(duplicate)
+	duplicate.position = Vector3.ZERO
+	ghost.module_to_ignore = self
+
 	return ghost

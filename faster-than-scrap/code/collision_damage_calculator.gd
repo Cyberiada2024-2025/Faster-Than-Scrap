@@ -34,7 +34,7 @@ func _process(_delta: float) -> void:
 
 
 func _find_parent_collision(
-	body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int
+	_body_rid: RID, body: Node, _body_shape_index: int, local_shape_index: int
 ) -> void:
 	if not include_other_shapes and calculated_body.get_child(local_shape_index) != shape:
 		return

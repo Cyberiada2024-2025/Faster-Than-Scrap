@@ -29,4 +29,6 @@ texture = ExtResource("2_mk35a")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController2/Damageable" index="0"]
 shape = SubResource("BoxShape3D_4r7dq")
 
+[connection signal="damaged" from="DamageController2" to="." method="take_damage"]
+
 [editable path="DamageController2"]

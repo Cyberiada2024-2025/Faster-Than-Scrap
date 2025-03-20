@@ -168,5 +168,7 @@ shape = SubResource("BoxShape3D_x6hs4")
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("9_sdq7t")]
 
+[connection signal="damaged" from="DamageController" to="." method="take_damage"]
+
 [editable path="DamageController"]
 [editable path="ModuleDisplay"]

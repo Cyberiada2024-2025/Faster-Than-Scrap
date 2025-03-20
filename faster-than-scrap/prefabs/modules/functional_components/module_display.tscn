@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ri43mxkksdw"]
+
+[ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/UI/Minimap/Placeholder/Enemy.png" id="1_5j84t"]
+[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="2_rgwxi"]
+
+[node name="ModuleDisplay" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.45, 0, 0, 0, -1.96701e-08, 0.45, 0, -0.45, -1.96701e-08, 0, 0, 0)
+layers = 2
+modulate = Color(0, 1, 0, 1)
+double_sided = false
+texture = ExtResource("1_5j84t")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0209912, 0)
+layers = 2
+double_sided = false
+texture_filter = 0
+modulate = Color(0, 0, 0, 1)
+text = "KEY"
+font = ExtResource("2_rgwxi")
+font_size = 80
+outline_size = 0
+uppercase = true
+autowrap_mode = 3
+justification_flags = 161
+width = 200.0

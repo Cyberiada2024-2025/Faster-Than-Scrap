@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://guayngc6j11s"]
+
+[ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/Player/player_ship.gd" id="1_2nsub"]
+[ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="2_i6mc8"]
+[ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="3_a7hvd"]
+[ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="4_0sbjm"]
+[ext_resource type="PackedScene" uid="uid://b6fx656pcno7s" path="res://prefabs/modules/shield_module.tscn" id="5_i6mc8"]
+
+[node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "modules")]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+gravity_scale = 0.0
+script = ExtResource("1_2nsub")
+cockpit = NodePath("Cockpit")
+modules = [null, null, null, null, null]
+
+[node name="Cockpit" parent="." node_paths=PackedStringArray("ship", "child_modules") instance=ExtResource("2_i6mc8")]
+ship = NodePath("..")
+child_modules = [NodePath("../BaseModule"), NodePath("../Thruster Backward")]
+
+[node name="BaseModule" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("3_a7hvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0289251, 0, -1.25452)
+ship = NodePath("..")
+parent_module = NodePath("../Cockpit")
+child_modules = [NodePath("../Thruster Forward")]
+
+[node name="Thruster Backward" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("4_0sbjm")]
+transform = Transform3D(-1, 0, 7.54979e-08, 0, 1, 0, -7.54979e-08, 0, -1, -0.0145017, 0, 1.61053)
+recoil_force = 300.0
+activation_key = 83
+ship = NodePath("..")
+parent_module = NodePath("../Cockpit")
+child_modules = [NodePath("../Thruster Right"), NodePath("../Thruster Left"), NodePath("../ShieldModule")]
+
+[node name="Thruster Right" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("4_0sbjm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.56632, 0, 2.0007)
+recoil_force = 300.0
+activation_key = 68
+ship = NodePath("..")
+parent_module = NodePath("../Thruster Backward")
+
+[node name="Thruster Left" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("4_0sbjm")]
+transform = Transform3D(1.19209e-07, 0, 1, 0, 1, 0, -1, 0, 1.19209e-07, -1.66784, 0, 2.0007)
+recoil_force = 300.0
+activation_key = 65
+ship = NodePath("..")
+parent_module = NodePath("../Thruster Backward")
+
+[node name="Thruster Forward" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("4_0sbjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.89989)
+recoil_force = 300.0
+activation_key = 87
+ship = NodePath("..")
+parent_module = NodePath("../BaseModule")
+
+[node name="ShieldModule" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("5_i6mc8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.37573)
+activation_key = 69
+ship = NodePath("..")
+parent_module = NodePath("../Thruster Backward")

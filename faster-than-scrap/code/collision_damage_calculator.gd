@@ -36,6 +36,8 @@ func _process(_delta: float) -> void:
 func _find_parent_collision(
 	body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int
 ) -> void:
+	if not include_other_shapes and calculated_body.get_child(local_shape_index) != shape:
+		return
 	var damage: Damage = calculate_damage(calculated_body, body)
 	damageable.take_damage(damage, body)
 

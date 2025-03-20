@@ -57,6 +57,7 @@ shape = SubResource("BoxShape3D_lwypn")
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("6_24upk")]
 damageable = NodePath("../DamageController/Damageable")
 shape = NodePath("..")
+self_damage_multiplier = 10.0
 
 [connection signal="damaged" from="DamageController" to="." method="take_damage"]
 

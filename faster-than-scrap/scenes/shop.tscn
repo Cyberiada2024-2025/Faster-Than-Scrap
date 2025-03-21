@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://1qlyg8ghombp"]
+[gd_scene load_steps=22 format=3 uid="uid://bbrx5cjobljb4"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_kqinb"]
 [ext_resource type="Script" path="res://code/building_ship/ship_builder.gd" id="2_jgpv1"]
@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/UI/ShipBuilder/outline_flash.tres" id="4_ead8n"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="5_awixo"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="6_7bqcw"]
-[ext_resource type="PackedScene" uid="uid://cpxkxwkuyh6l2" path="res://prefabs/ships/player_ship_example.tscn" id="7_qmxef"]
+[ext_resource type="PackedScene" uid="uid://dty8ie80qkfd5" path="res://prefabs/ships/player_ship_example.tscn" id="7_qmxef"]
 [ext_resource type="Script" path="res://code/building_ship/shop.gd" id="12_bskm6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x5wpm"]
@@ -56,8 +56,10 @@ size = Vector3(8.32263, 1, 12.5726)
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_kqinb")]
 
-[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("choose_key_message", "confirm_finish_message")]
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "shop", "choose_key_message", "confirm_finish_message")]
 script = ExtResource("2_jgpv1")
+ignore = NodePath("../Shop/Area3D")
+shop = NodePath("../Shop")
 outline_mat = ExtResource("3_tpphw")
 flash_mat = ExtResource("4_ead8n")
 flash_time = 0.5
@@ -282,6 +284,7 @@ input_ray_pickable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0455933, 0, 0.0821714)
 shape = SubResource("BoxShape3D_e20u7")
 
+[connection signal="on_module_select" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_select"]
 [connection signal="pressed" from="ShipBuilder/Control/Deny finish/Color_Rect/Confirm" to="Shop" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Confirm" to="ShipBuilder" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Deny" to="ShipBuilder" method="_on_deny_pressed"]

@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Faster Than Scrap"
-run/main_scene="res://scenes/main_prototype_1.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="res://prefabs/environment/space_environment.tscn"
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -71,6 +71,8 @@ ui_down={
 
 3d_render/layer_2="Player Ship Sprite"
 3d_render/layer_3="Minimap Sprite"
+3d_physics/layer_1="Physics Collisions"
+3d_physics/layer_2="Damage Layer"
 
 [rendering]
 

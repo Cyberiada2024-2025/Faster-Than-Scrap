@@ -4,19 +4,22 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://bfla2gv2cw50c"
-path="res://.godot/imported/thruster.obj-d086e2d68d69dcec490dc31e91cfd5cb.mesh"
+path="res://.godot/imported/thruster.obj-34ee02ae57537c74038c86b8f04a860e.mesh"
 
 [deps]
 
-files=["res://.godot/imported/thruster.obj-d086e2d68d69dcec490dc31e91cfd5cb.mesh"]
+files=["res://.godot/imported/thruster.obj-34ee02ae57537c74038c86b8f04a860e.mesh"]
 
-source_file="res://art/Models/thruster/thruster.obj"
-dest_files=["res://.godot/imported/thruster.obj-d086e2d68d69dcec490dc31e91cfd5cb.mesh", "res://.godot/imported/thruster.obj-d086e2d68d69dcec490dc31e91cfd5cb.mesh"]
+source_file="res://art/models/thruster/thruster.obj"
+dest_files=["res://.godot/imported/thruster.obj-34ee02ae57537c74038c86b8f04a860e.mesh", "res://.godot/imported/thruster.obj-34ee02ae57537c74038c86b8f04a860e.mesh"]
 
 [params]
 
 generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
 scale_mesh=Vector3(1, 1, 1)
 offset_mesh=Vector3(0, 0, 0)
-optimize_mesh=true
 force_disable_mesh_compression=false

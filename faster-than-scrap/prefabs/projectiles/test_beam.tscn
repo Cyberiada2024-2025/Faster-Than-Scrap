@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cemosypetoq1p"]
+[gd_scene load_steps=7 format=3 uid="uid://bnvojbycskewd"]
 
 [ext_resource type="Script" path="res://code/ship/projectiles/beam.gd" id="1_mkgm7"]
 [ext_resource type="Script" path="res://code/damage/damage_raycast_3d.gd" id="2_gxp61"]

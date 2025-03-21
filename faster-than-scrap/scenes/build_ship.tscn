@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="2_cy5mb"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/UI/ShipBuilder/outline.tres" id="3_7x66o"]
-[ext_resource type="PackedScene" uid="uid://dty8ie80qkfd5" path="res://prefabs/ships/player_ship_example.tscn" id="3_gsuxg"]
+[ext_resource type="PackedScene" uid="uid://cpxkxwkuyh6l2" path="res://prefabs/ships/player_ship_example.tscn" id="3_gsuxg"]
 [ext_resource type="Script" path="res://code/ship/modules/module.gd" id="3_kgbhb"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/UI/ShipBuilder/outline_flash.tres" id="4_sra6p"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="6_au3vu"]

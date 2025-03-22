@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dsdbrxhbn35w7" path="res://code/ship/modules/shield_module.gd" id="1_qfqke"]
 [ext_resource type="Script" uid="uid://c47vgfakrvoxf" path="res://code/ship/modules/Shield.gd" id="2_yota5"]
-[ext_resource type="AudioStream" uid="uid://cfv8l5dmivhc5" path="res://art/audio/sounds/shield_applying_sound.wav" id="3_t2mx0"]
+[ext_resource type="AudioStream" uid="uid://c7e1p4aepud3d" path="res://art/audio/sounds/shield_applying_sound.wav" id="3_t2mx0"]
 [ext_resource type="AudioStream" uid="uid://bhtfb6630u1js" path="res://art/audio/sounds/shield_shattering_sound.wav" id="4_o2yw7"]
 [ext_resource type="AudioStream" uid="uid://bq3myi1evd56a" path="res://art/audio/sounds/shield_takingdmg_sound.wav" id="5_ul8cr"]
 [ext_resource type="PackedScene" uid="uid://3a5vwad6lsnu" path="res://prefabs/VFX/shield_vfx.tscn" id="6_gvryf"]
@@ -119,11 +119,12 @@ _data = {
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h2lat"]
 points = PackedVector3Array(-0.951058, -0.000195742, -0.011405, 0.850515, -0.525842, -1.97636e-05, -0.000186205, -1, -1.97636e-05, -0.5258, -0.850822, -1.97636e-05, -0.894456, -0.447338, -1.97636e-05, -0.951058, -0.000195742, 0.308966, -0.850702, 0.525646, -1.97636e-05, -0.425444, 0.850626, -0.00239581, -0.000186205, 1, -1.97636e-05, 0.525614, 0.850626, -1.97636e-05, 0.89427, 0.447142, -1.97636e-05, 0.723534, -0.447338, 0.525681, 0.425258, -0.850822, 0.308966, 0.425258, -0.850822, 0.00968244, 0.951058, -0.000195742, 0.00572236, 0.951058, -0.000195742, 0.308966, -0.162544, -0.850822, 0.499941, -0.688344, -0.525842, 0.499941, -0.587801, -0.000195742, 0.808926, -0.72372, 0.447142, 0.525681, -0.425444, 0.850626, 0.308966, 0.162358, 0.850626, 0.499941, 0.688158, 0.525646, 0.499941, 0.587615, -0.000195742, 0.808926, 0.262714, -0.525842, 0.808926, -0.276492, -0.447338, 0.850606, -0.000186205, -0.000195742, 1, -0.2629, 0.525646, 0.808926, 0.276306, 0.447142, 0.850606)
 
-[node name="ShieldModule" type="CollisionShape3D" node_paths=PackedStringArray("shield", "collider", "sprite", "label")]
+[node name="ShieldModule" type="CollisionShape3D" node_paths=PackedStringArray("shield", "collider", "attach_points", "sprite", "label")]
 shape = SubResource("BoxShape3D_x6hs4")
 script = ExtResource("1_qfqke")
 shield = NodePath("Shield2")
 collider = NodePath("Shield2/Shield_Collision/CollisionShape3D")
+attach_points = [NodePath("AttachPoints/AttachPoint1")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 metadata/_custom_type_script = "uid://dsdbrxhbn35w7"
@@ -167,6 +168,12 @@ disabled = true
 shape = SubResource("BoxShape3D_x6hs4")
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("9_sdq7t")]
+
+[node name="AttachPoints" type="Node3D" parent="."]
+
+[node name="AttachPoint1" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.03911e-08, 0, -0.533954)
+metadata/_edit_group_ = true
 
 [connection signal="damaged" from="DamageController" to="." method="take_damage"]
 

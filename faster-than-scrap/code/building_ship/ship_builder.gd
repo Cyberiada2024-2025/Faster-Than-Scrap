@@ -21,7 +21,7 @@ const RAY_LENGTH = 1000.0
 
 @export var shop: Shop
 
-@export_group('Visuals')
+@export_group("Visuals")
 @export var outline_mat: ShaderMaterial
 ## material for flashing modules
 @export var flash_mat: ShaderMaterial
@@ -47,9 +47,12 @@ var lmb_was_pressed: bool = false
 var lmb_is_pressed: bool = false
 var rmb_was_pressed: bool = false
 
+var scene_loader: SceneLoader
+
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	scene_loader = $SceneLoader
 
 
 # ---------------mouse ---------------------------------------------
@@ -102,7 +105,7 @@ func _get_raycast_hit(event: InputEvent) -> Dictionary:
 	var from = camera3d.project_ray_origin(event.position)
 	var to = from + camera3d.project_ray_normal(event.position) * RAY_LENGTH
 	var space_state = get_world_3d().direct_space_state
-	var query = PhysicsRayQueryParameters3D.create(from, to)
+	var query = PhysicsRayQueryParameters3D.create(from, to, 1)  # only first layer (to avoid clicking damageable)
 	query.collide_with_areas = true
 	query.exclude = [ignore]
 	return space_state.intersect_ray(query)
@@ -237,7 +240,7 @@ func _attach_module() -> void:
 		# so module is clickable
 		var area_parent = active_module.get_parent()
 		if shop != null:
-			shop._on_area_3d_area_exited(area_parent);
+			shop._on_area_3d_area_exited(area_parent)
 		active_module.reparent(attach_target.ship)
 		area_parent.queue_free()
 	else:
@@ -438,6 +441,7 @@ func _on_finish_pressed() -> void:
 
 func _on_confirm_pressed() -> void:
 	# TODO: change scene to map
+	scene_loader.load_fly_ship_scene()
 	pass  # Replace with function body.
 
 

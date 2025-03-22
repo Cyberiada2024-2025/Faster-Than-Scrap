@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://bpr65ttaqujar"]
+[gd_scene load_steps=2 format=3 uid="uid://bpr65ttaqujar"]
+
+[ext_resource type="PackedScene" uid="uid://dnr8e8annnar3" path="res://Sandbox/Wierzba/map_selector/map_selector_example.tscn" id="1_rfkhd"]
 
 [node name="MapSelector" type="Node3D"]
+
+[node name="MapSelectorExample" parent="." instance=ExtResource("1_rfkhd")]

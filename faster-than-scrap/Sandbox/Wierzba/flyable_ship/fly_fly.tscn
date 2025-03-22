@@ -44,7 +44,7 @@ script = ExtResource("3_p6uct")
 [node name="FlyableShip2" parent="." instance=ExtResource("3_uvdhe")]
 
 [node name="DamageArea3D_Stay" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.78209, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.50583, 0, 0)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("4_0oqmj")

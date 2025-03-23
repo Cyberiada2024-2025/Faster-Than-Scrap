@@ -46,7 +46,7 @@ priority = 0
 [sub_resource type="Resource" id="Resource_us445"]
 script = ExtResource("6_8u5ix")
 defendable_position = Vector3(0, 0, 0)
-time_to_defend = 60.0
+time_to_defend = 5.0
 about = ""
 difficulty = 0
 priority = 0

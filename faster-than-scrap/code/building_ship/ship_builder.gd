@@ -98,8 +98,11 @@ func _update_attach_point_index(event: InputEvent) -> void:
 func _get_module_from_hit(hit: Dictionary) -> Module:
 	var rigid_body = hit.get("collider")
 	if rigid_body != null:
-		var module: Module = rigid_body.get_child(hit["shape"])
-		return module
+		# may click shop area
+		var clicked_shape = rigid_body.get_child(hit["shape"])
+		if clicked_shape is Module:
+			return clicked_shape
+		return null
 	return null
 
 
@@ -186,11 +189,10 @@ func _position_module(intersection_position: Vector3, intersection_normal: Vecto
 
 ## return whether successfully grabed module
 func _on_module_clicked(clicked_module: Module) -> bool:
-	if (
-		clicked_module != null
-		and not clicked_module.has_child_module()
-		and clicked_module is not Cockpit
-	):  # cockpit is immovable
+	if clicked_module == null:
+		return false
+
+	if not clicked_module.has_child_module() and clicked_module is not Cockpit:  # cockpit is immovable
 		clicked_module.hide()
 
 		# set variables

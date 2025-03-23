@@ -20,13 +20,18 @@ var pre_collision_velosity: Vector3
 
 
 func _ready() -> void:
-	calculated_body = shape.get_parent_node_3d()
-	calculated_body.set_meta("collision_damage_calculator", self)
+	# check if parent is PB, to make it work with module ghosts
+	if shape.get_parent_node_3d() is not PhysicsBody3D:
+		# destroy self, cause you are in ghost
+		queue_free()
+	else:
+		calculated_body = shape.get_parent_node_3d()
+		calculated_body.set_meta("collision_damage_calculator", self)
 
-	calculated_body.body_shape_entered.connect(_find_parent_collision)
-	calculated_body.contact_monitor = true
-	if calculated_body.max_contacts_reported <= 0:
-		calculated_body.max_contacts_reported = 10
+		calculated_body.body_shape_entered.connect(_find_parent_collision)
+		calculated_body.contact_monitor = true
+		if calculated_body.max_contacts_reported <= 0:
+			calculated_body.max_contacts_reported = 10
 
 
 func _process(_delta: float) -> void:

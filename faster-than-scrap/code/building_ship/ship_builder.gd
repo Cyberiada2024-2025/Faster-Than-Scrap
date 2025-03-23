@@ -21,7 +21,7 @@ const RAY_LENGTH = 1000.0
 
 @export var shop: Shop
 
-@export_group('Visuals')
+@export_group("Visuals")
 @export var outline_mat: ShaderMaterial
 ## material for flashing modules
 @export var flash_mat: ShaderMaterial
@@ -47,9 +47,12 @@ var lmb_was_pressed: bool = false
 var lmb_is_pressed: bool = false
 var rmb_was_pressed: bool = false
 
+var scene_loarder: SceneLoader
+
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	scene_loarder = $"../SceneLoader"
 
 
 # ---------------mouse ---------------------------------------------
@@ -237,7 +240,7 @@ func _attach_module() -> void:
 		# so module is clickable
 		var area_parent = active_module.get_parent()
 		if shop != null:
-			shop._on_area_3d_area_exited(area_parent);
+			shop._on_area_3d_area_exited(area_parent)
 		active_module.reparent(attach_target.ship)
 		area_parent.queue_free()
 	else:
@@ -438,6 +441,7 @@ func _on_finish_pressed() -> void:
 
 func _on_confirm_pressed() -> void:
 	# TODO: change scene to map
+	scene_loarder.load_fly_ship_scene()
 	pass  # Replace with function body.
 
 

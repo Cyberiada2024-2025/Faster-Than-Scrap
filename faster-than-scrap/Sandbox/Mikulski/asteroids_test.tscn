@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkn8atkk3qg3d"]
+[gd_scene load_steps=10 format=3 uid="uid://bkn8atkk3qg3d"]
 
 [ext_resource type="PackedScene" uid="uid://dn3mypfoixbpt" path="res://prefabs/environment/asteroid.tscn" id="2_jtlwr"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="2_jusb2"]
-[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="3_rgp7d"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6b47d"]
 
@@ -135,8 +134,12 @@ mesh = SubResource("BoxMesh_t8gxn")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="border4"]
 shape = SubResource("BoxShape3D_uijbs")
 
-[node name="BaseModule" parent="." instance=ExtResource("2_jusb2")]
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.30498, 2.38419e-07, 4.52976)
+gravity_scale = 0.0
 
-[node name="CollisionDamageCalculator" parent="BaseModule" node_paths=PackedStringArray("calculated_body") instance=ExtResource("3_rgp7d")]
-calculated_body = NodePath("..")
+[node name="BaseModule" parent="RigidBody3D" instance=ExtResource("2_jusb2")]
+
+[editable path="RigidBody3D/BaseModule"]
+[editable path="RigidBody3D/BaseModule/ModuleDisplay"]
+[editable path="RigidBody3D/BaseModule/DamageController2"]

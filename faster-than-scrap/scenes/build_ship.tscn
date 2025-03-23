@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=22 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_jtm63"]
 [ext_resource type="ArrayMesh" uid="uid://ilin5br3b8v2" path="res://art/Models/frame1/frame1.obj" id="8_2lyi2"]
 [ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/Models/thruster/thruster.obj" id="9_x0rib"]
+[ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="10_xqadh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x5wpm"]
 font = ExtResource("6_au3vu")
@@ -51,6 +52,10 @@ flash_mat = ExtResource("4_sra6p")
 flash_time = 0.5
 choose_key_message = NodePath("Control/Choose_key")
 confirm_finish_message = NodePath("Control/Confirm finish")
+
+[node name="HudSpawner" type="Node" parent="ShipBuilder"]
+script = ExtResource("10_xqadh")
+metadata/_custom_type_script = "uid://ckk7d55t1hi01"
 
 [node name="Control" type="Control" parent="ShipBuilder"]
 layout_mode = 3
@@ -167,9 +172,6 @@ Building"
 [node name="SceneLoader" type="Node" parent="ShipBuilder"]
 script = ExtResource("7_jtm63")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
-
-[node name="Camera3D" type="Camera3D" parent="ShipBuilder"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 14.3061, -4.77685e-07)
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.31877, 0, 1.9035)

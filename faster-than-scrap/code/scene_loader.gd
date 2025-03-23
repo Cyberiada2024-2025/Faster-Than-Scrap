@@ -6,8 +6,6 @@ extends Node
 ## of the game game state
 ## Used as a helper node, so there can be multiple of scene managers in the same scene
 
-var hud: Hud
-
 
 func load_main_menu_scene() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
@@ -50,10 +48,7 @@ func _detach_ship():
 	# detach the ship
 	GameManager.player_ship.get_parent().remove_child(GameManager.player_ship)
 
-	# delete hud
-	if hud != null:
-		hud.queue_free()
-		hud = null
+	## hud will be destroyed automaticaly
 
 
 ## attach the ship to the scene tree
@@ -68,13 +63,6 @@ func _attach_ship_with_hud():
 	# zero velocity
 	GameManager.player_ship.linear_velocity = Vector3.ZERO
 	GameManager.player_ship.angular_velocity = Vector3.ZERO
-
-	# restore hud
-	var hud_scene = load("res://prefabs/hud.tscn")
-	var hud = hud_scene.instantiate()
-	## TODO somehow swapp to this!
-	## GameManager.get_tree().root.current_scene.add_child(hud)
-	GameManager.get_tree().root.add_child(hud)
 
 
 ## attach the ship to the scene tree

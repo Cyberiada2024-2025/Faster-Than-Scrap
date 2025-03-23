@@ -45,7 +45,8 @@ func _unpause_entities():
 
 func turn_player_modules(on: bool):
 	if GameManager.player_ship != null:
-		for module in GameManager.player_ship.find_children("*", "Module"):
+		var modules = GameManager.player_ship.find_children("*", "Module", false, false)
+		for module in modules:
 			module.active = on
 
 

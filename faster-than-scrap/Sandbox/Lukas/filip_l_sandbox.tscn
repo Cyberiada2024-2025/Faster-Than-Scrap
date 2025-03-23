@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://cxk4lnel5f1yq"]
+[gd_scene load_steps=2 format=3 uid="uid://cxk4lnel5f1yq"]
+
+[ext_resource type="PackedScene" uid="uid://diw1t40pjk68x" path="res://art/model_prefabs/laser_beam_gun_pf.tscn" id="1_n0bts"]
 
 [node name="FilipLSandbox" type="Node3D"]
+
+[node name="LaserBeamGun" parent="." instance=ExtResource("1_n0bts")]

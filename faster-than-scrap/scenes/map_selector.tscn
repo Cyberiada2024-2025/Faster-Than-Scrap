@@ -1,7 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpr65ttaqujar"]
+[gd_scene load_steps=3 format=3 uid="uid://bpr65ttaqujar"]
 
-[ext_resource type="PackedScene" uid="uid://dnr8e8annnar3" path="res://Sandbox/Wierzba/map_selector/map_selector_example.tscn" id="1_rfkhd"]
+[ext_resource type="Script" uid="uid://n3n525xrpgvs" path="res://code/map_select/map_manager.gd" id="1_0byna"]
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_0byna"]
 
-[node name="MapSelector" type="Node3D"]
+[node name="MapSelector" type="Node" node_paths=PackedStringArray("map_container", "button", "label", "scene_loader")]
+script = ExtResource("1_0byna")
+map_container = NodePath("MapContainer")
+button = NodePath("Button")
+label = NodePath("Label")
+scene_loader = NodePath("SceneLoader")
+metadata/_custom_type_script = "uid://n3n525xrpgvs"
 
-[node name="MapSelectorExample" parent="." instance=ExtResource("1_rfkhd")]
+[node name="MapContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 958.0
+offset_bottom = 647.0
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1008.0
+offset_top = 298.0
+offset_right = -34.0
+offset_bottom = -276.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "FLY!"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 983.0
+offset_top = 82.0
+offset_bottom = -366.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Select Mission
+"
+
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource("2_0byna")

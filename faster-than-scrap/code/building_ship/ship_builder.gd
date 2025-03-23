@@ -54,6 +54,9 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	scene_loader = $SceneLoader
 
+	GameManager.player_ship.position = Vector3.ZERO
+	GameManager.player_ship.rotation = Vector3.ZERO
+
 
 # ---------------mouse ---------------------------------------------
 func _update_mouse_3d_position():

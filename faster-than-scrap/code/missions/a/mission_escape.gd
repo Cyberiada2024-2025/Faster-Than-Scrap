@@ -13,7 +13,7 @@ func setup() -> void:
 	# create escape object
 	portal = MeshInstance3D.new()  # TODO swap to instantiating the portal asset
 	portal.mesh = BoxMesh.new()
-	MissionManager.add_child(portal)
+	MissionManager.get_tree().current_scene.add_child(portal)
 	MissionManager.add_mission(self)
 
 	# position it

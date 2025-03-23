@@ -6,6 +6,8 @@ extends Node
 ## of the game game state
 ## Used as a helper node, so there can be multiple of scene managers in the same scene
 
+var hud: Hud
+
 
 func load_main_menu_scene() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
@@ -22,14 +24,14 @@ func load_fly_ship_scene() -> void:
 	_detach_ship()
 	get_tree().change_scene_to_file("res://scenes/fly_ship.tscn")
 	GameManager.set_game_state(GameState.State.FLY)
-	_attach_ship_with_hud()
+	_attach_ship_with_hud.call_deferred()
 
 
 func load_build_ship_scene() -> void:
 	_detach_ship()
 	get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
 	GameManager.set_game_state(GameState.State.BUILD)
-	_attach_ship_without_hud.call_deferred()
+	_attach_ship_with_hud.call_deferred()
 
 
 func load_credits_scene() -> void:
@@ -47,25 +49,43 @@ func _detach_ship():
 
 	# detach the ship
 	GameManager.player_ship.get_parent().remove_child(GameManager.player_ship)
-	# hud is deleted as any node in the scene
+
+	# delete hud
+	if hud != null:
+		hud.queue_free()
+		hud = null
 
 
 ## attach the ship to the scene tree
 func _attach_ship_with_hud():
-	if GameManager.player_ship != null:
-		# attach ship
-		GameManager.get_tree().root.add_child(GameManager.player_ship)
+	if GameManager.player_ship == null:
+		GameManager.player_ship = (
+			load("res://prefabs/ships/flyable_ship_with_shield.tscn").instantiate()
+		)
+	# attach ship
+	GameManager.get_tree().root.add_child(GameManager.player_ship)
 
-		# restore hud
-		var hud_scene = load("res://prefabs/hud.tscn")
-		var hud = hud_scene.instantiate()
-		## TODO somehow swapp to this!
-		## GameManager.get_tree().root.current_scene.add_child(hud)
-		GameManager.get_tree().root.add_child(hud)
+	# zero velocity
+	GameManager.player_ship.linear_velocity = Vector3.ZERO
+	GameManager.player_ship.angular_velocity = Vector3.ZERO
+
+	# restore hud
+	var hud_scene = load("res://prefabs/hud.tscn")
+	var hud = hud_scene.instantiate()
+	## TODO somehow swapp to this!
+	## GameManager.get_tree().root.current_scene.add_child(hud)
+	GameManager.get_tree().root.add_child(hud)
 
 
 ## attach the ship to the scene tree
 func _attach_ship_without_hud():
-	if GameManager.player_ship != null:
-		# attach ship
-		GameManager.get_tree().root.add_child(GameManager.player_ship)
+	if GameManager.player_ship == null:
+		GameManager.player_ship = (
+			load("res://prefabs/ships/flyable_ship_with_shield.tscn").instantiate()
+		)
+	# attach ship
+	GameManager.get_tree().root.add_child(GameManager.player_ship)
+
+	# zero velocity
+	GameManager.player_ship.linear_velocity = Vector3.ZERO
+	GameManager.player_ship.angular_velocity = Vector3.ZERO

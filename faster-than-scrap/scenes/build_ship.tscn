@@ -1,8 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=21 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
-[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="2_cy5mb"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/UI/ShipBuilder/outline.tres" id="3_7x66o"]
 [ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="3_kgbhb"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/UI/ShipBuilder/outline_flash.tres" id="4_sra6p"]
@@ -10,7 +9,6 @@
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_jtm63"]
 [ext_resource type="ArrayMesh" uid="uid://ilin5br3b8v2" path="res://art/Models/frame1/frame1.obj" id="8_2lyi2"]
 [ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/Models/thruster/thruster.obj" id="9_x0rib"]
-[ext_resource type="PackedScene" uid="uid://guayngc6j11s" path="res://prefabs/ships/flyable_ship_with_shield.tscn" id="11_jtm63"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x5wpm"]
 font = ExtResource("6_au3vu")
@@ -53,8 +51,6 @@ flash_mat = ExtResource("4_sra6p")
 flash_time = 0.5
 choose_key_message = NodePath("Control/Choose_key")
 confirm_finish_message = NodePath("Control/Confirm finish")
-
-[node name="MainCamera" parent="ShipBuilder" instance=ExtResource("2_cy5mb")]
 
 [node name="Control" type="Control" parent="ShipBuilder"]
 layout_mode = 3
@@ -172,6 +168,9 @@ Building"
 script = ExtResource("7_jtm63")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
+[node name="Camera3D" type="Camera3D" parent="ShipBuilder"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 14.3061, -4.77685e-07)
+
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.31877, 0, 1.9035)
 
@@ -228,8 +227,6 @@ transform = Transform3D(-0.0369751, 0, -0.999316, 0, 1, 0, 0.999316, 0, -0.03697
 
 [node name="AttachPoint2" type="Node3D" parent="Area3D2/SquareMOdule3/AttachPoints"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 0)
-
-[node name="FlyableShip" parent="." instance=ExtResource("11_jtm63")]
 
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Confirm" to="ShipBuilder" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Deny" to="ShipBuilder" method="_on_deny_pressed"]

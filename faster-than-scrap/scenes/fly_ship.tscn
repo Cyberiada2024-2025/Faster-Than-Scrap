@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://bnnvqogplwfqa"]
+[gd_scene load_steps=2 format=3 uid="uid://bnnvqogplwfqa"]
+
+[ext_resource type="Script" uid="uid://dtqvp1s2omow6" path="res://code/evironment/setup_fly_scene.gd" id="1_nuays"]
 
 [node name="Space" type="Node3D"]
+
+[node name="SetupFlyScene" type="Node" parent="."]
+script = ExtResource("1_nuays")
+metadata/_custom_type_script = "uid://dtqvp1s2omow6"

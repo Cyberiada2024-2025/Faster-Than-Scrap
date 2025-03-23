@@ -23,14 +23,13 @@ func load_fly_ship_scene() -> void:
 	get_tree().change_scene_to_file("res://scenes/fly_ship.tscn")
 	GameManager.set_game_state(GameState.State.FLY)
 	_attach_ship_with_hud()
-	MapGenerator.generate_map()
 
 
 func load_build_ship_scene() -> void:
 	_detach_ship()
 	get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
 	GameManager.set_game_state(GameState.State.BUILD)
-	_attach_ship_without_hud()
+	_attach_ship_without_hud.call_deferred()
 
 
 func load_credits_scene() -> void:

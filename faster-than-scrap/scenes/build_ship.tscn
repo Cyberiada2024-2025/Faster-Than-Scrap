@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=33 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -11,6 +11,20 @@
 [ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/Models/thruster/thruster.obj" id="9_x0rib"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="10_xqadh"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
+font = ExtResource("6_au3vu")
+font_color = Color(0.105882, 1, 0.105882, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bwh47"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cv5l0"]
+bg_color = Color(0, 0.2, 0.106667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbg4l"]
+bg_color = Color(0.105882, 1, 0.105882, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q6ms4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x5wpm"]
 font = ExtResource("6_au3vu")
@@ -89,6 +103,48 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Deny finish" type="ColorRect" parent="ShipBuilder/Control"]
+visible = false
+offset_right = 1150.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 0.9)
+
+[node name="Color_Rect" type="ColorRect" parent="ShipBuilder/Control/Deny finish"]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 242.0
+offset_right = 898.0
+offset_bottom = 392.0
+color = Color(0, 0.051, 0.027, 1)
+
+[node name="Label" type="Label" parent="ShipBuilder/Control/Deny finish/Color_Rect"]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 643.0
+offset_bottom = 59.0
+text = "You cannot leave without paying for modules!"
+label_settings = SubResource("LabelSettings_d8di0")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Confirm" type="Button" parent="ShipBuilder/Control/Deny finish/Color_Rect"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 76.0
+offset_right = 394.0
+offset_bottom = 114.0
+theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
+theme_override_fonts/font = ExtResource("6_au3vu")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bwh47")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cv5l0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hbg4l")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q6ms4")
+text = "OK"
 
 [node name="Confirm finish" type="ColorRect" parent="ShipBuilder/Control"]
 visible = false
@@ -255,7 +311,7 @@ transform = Transform3D(-0.0369751, 0, -0.999316, 0, 1, 0, 0.999316, 0, -0.03697
 [node name="AttachPoint2" type="Node3D" parent="Area3D2/SquareMOdule4/AttachPoints"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 0)
 
-[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display")]
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish", "selected_module_prize_display")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.85019, 0, 0)
 script = ExtResource("11_jtm63")
 modules = Array[String](["res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn"])
@@ -265,6 +321,9 @@ size_z = 12.573
 columns = 4
 rows = 5
 bank_display = NodePath("Label3D")
+deny_finish = NodePath("../ShipBuilder/Control/Deny finish")
+confirm_finish = NodePath("../ShipBuilder/Control/Confirm finish")
+selected_module_prize_display = NodePath("../ShipBuilder/Control/Prize_display/Label")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Shop"]
 transform = Transform3D(8.28, 0, 0, 0, 0.083, 0, 0, 0, 12.42, 0, 0, 0)
@@ -292,9 +351,10 @@ input_ray_pickable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0455933, 0, 0.0821714)
 shape = SubResource("BoxShape3D_cv5l0")
 
+[connection signal="pressed" from="ShipBuilder/Control/Deny finish/Color_Rect/Confirm" to="Shop" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Confirm" to="ShipBuilder" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Deny" to="ShipBuilder" method="_on_deny_pressed"]
-[connection signal="pressed" from="ShipBuilder/Control/Finish" to="ShipBuilder" method="_on_finish_pressed"]
+[connection signal="pressed" from="ShipBuilder/Control/Finish" to="Shop" method="_on_finish_pressed"]
 [connection signal="area_entered" from="Shop/Area3D" to="Shop" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Shop/Area3D" to="Shop" method="_on_area_3d_area_exited"]
 [connection signal="body_entered" from="Shop/Area3D" to="Shop" method="_on_area_3d_body_entered"]

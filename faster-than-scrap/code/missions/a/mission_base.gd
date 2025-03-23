@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func setup() -> void:
 	# add self to manager
-	MissionManager.missions.append(self)
+	MissionManager.add_mission(self)
 
 
 func _process(_delta: float) -> void:

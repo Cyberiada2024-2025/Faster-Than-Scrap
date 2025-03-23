@@ -14,7 +14,6 @@ func setup() -> void:
 	portal = MeshInstance3D.new()  # TODO swap to instantiating the portal asset
 	portal.mesh = BoxMesh.new()
 	MissionManager.get_tree().current_scene.add_child(portal)
-	MissionManager.add_mission(self)
 
 	# position it
 	portal.global_position = info.portal_position

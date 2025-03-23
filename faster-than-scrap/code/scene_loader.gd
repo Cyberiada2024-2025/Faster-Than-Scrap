@@ -16,7 +16,6 @@ func load_map_selector_scene() -> void:
 	_detach_ship()
 	get_tree().change_scene_to_file("res://scenes/map_selector.tscn")
 	GameManager.set_game_state(GameState.State.MAP_SELECTOR)
-	_attach_ship_with_hud()
 
 
 func load_fly_ship_scene() -> void:
@@ -24,6 +23,7 @@ func load_fly_ship_scene() -> void:
 	get_tree().change_scene_to_file("res://scenes/fly_ship.tscn")
 	GameManager.set_game_state(GameState.State.FLY)
 	_attach_ship_with_hud()
+	MapGenerator.generate_map()
 
 
 func load_build_ship_scene() -> void:
@@ -43,6 +43,9 @@ func _detach_ship():
 	if GameManager.player_ship == null:
 		return
 
+	if GameManager.player_ship.get_parent() == null:
+		return
+
 	# detach the ship
 	GameManager.player_ship.get_parent().remove_child(GameManager.player_ship)
 	# hud is deleted as any node in the scene
@@ -57,6 +60,8 @@ func _attach_ship_with_hud():
 		# restore hud
 		var hud_scene = load("res://prefabs/hud.tscn")
 		var hud = hud_scene.instantiate()
+		## TODO somehow swapp to this!
+		## GameManager.get_tree().root.current_scene.add_child(hud)
 		GameManager.get_tree().root.add_child(hud)
 
 

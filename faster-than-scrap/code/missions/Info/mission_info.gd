@@ -15,11 +15,13 @@ enum Priority { MAIN_QUEST, SIDE_QUEST }
 var mission: Mission
 
 
-func start() -> void:
-	MissionManager.get_tree().root.add_child.call_deferred(mission)
+func start(scene_root: Node) -> void:
+	scene_root.add_child.call_deferred(mission)
+
 
 func get_node_color() -> Color:
 	return Color.BLACK
+
 
 func get_node_description() -> String:
 	return ""

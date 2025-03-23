@@ -18,11 +18,11 @@ func load_map_selector_scene() -> void:
 	GameManager.set_game_state(GameState.State.MAP_SELECTOR)
 
 
-func load_fly_ship_scene() -> void:
+func load_fly_ship_scene(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO) -> void:
 	_detach_ship()
 	get_tree().change_scene_to_file("res://scenes/fly_ship.tscn")
 	GameManager.set_game_state(GameState.State.FLY)
-	_attach_ship_with_hud.call_deferred()
+	_attach_ship_with_hud.call_deferred(pos, rot)
 
 
 func load_build_ship_scene() -> void:
@@ -52,7 +52,7 @@ func _detach_ship():
 
 
 ## attach the ship to the scene tree
-func _attach_ship_with_hud():
+func _attach_ship_with_hud(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO):
 	if GameManager.player_ship == null:
 		GameManager.player_ship = (
 			load("res://prefabs/ships/flyable_ship_with_shield.tscn").instantiate()
@@ -63,6 +63,10 @@ func _attach_ship_with_hud():
 	# zero velocity
 	GameManager.player_ship.linear_velocity = Vector3.ZERO
 	GameManager.player_ship.angular_velocity = Vector3.ZERO
+
+	# set pos and rot
+	GameManager.player_ship.position = pos
+	GameManager.player_ship.rotation = rot
 
 
 ## attach the ship to the scene tree

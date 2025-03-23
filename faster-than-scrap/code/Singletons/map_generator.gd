@@ -8,7 +8,7 @@ extends Node
 var _map_node: MapNode
 var _scene: Node
 
-var shop_prefab = preload("res://prefabs/environment/shop_miniature.tscn")
+var _shop_prefab = preload("res://prefabs/environment/shop_miniature.tscn")
 
 
 ## Called whenever the scene should be procedurally generated (
@@ -35,11 +35,10 @@ func generate_map_from_node() -> void:
 		var mission_node: MissionNode = _map_node
 		mission_node.mission_info.start(_scene)
 		return
-	pass
 
 
 func _spawn_shop() -> void:
-	var shop = shop_prefab.instantiate()
+	var shop = _shop_prefab.instantiate()
 	_scene.add_child.call_deferred(shop)
 	shop.position = Vector3(10, 0, 0)
 

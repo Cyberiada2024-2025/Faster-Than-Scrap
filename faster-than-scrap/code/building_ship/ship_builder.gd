@@ -108,7 +108,8 @@ func _get_raycast_hit(event: InputEvent) -> Dictionary:
 	var from = camera3d.project_ray_origin(event.position)
 	var to = from + camera3d.project_ray_normal(event.position) * RAY_LENGTH
 	var space_state = get_world_3d().direct_space_state
-	var query = PhysicsRayQueryParameters3D.create(from, to, 1)  # only first layer (to avoid clicking damageable)
+	# only first layer (to avoid clicking damageable)
+	var query = PhysicsRayQueryParameters3D.create(from, to, 1)
 	query.collide_with_areas = true
 	query.exclude = [ignore]
 	return space_state.intersect_ray(query)
@@ -443,9 +444,7 @@ func _on_finish_pressed() -> void:
 
 
 func _on_confirm_pressed() -> void:
-	# TODO: change scene to map
 	scene_loader.load_fly_ship_scene()
-	pass  # Replace with function body.
 
 
 func _on_deny_pressed() -> void:

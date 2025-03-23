@@ -6,6 +6,8 @@ extends Node
 ## of the game game state
 ## Used as a helper node, so there can be multiple of scene managers in the same scene
 
+var default_ship_prefab = preload("res://prefabs/ships/flyable_ship_with_shield.tscn")
+
 
 func load_main_menu_scene() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
@@ -54,9 +56,7 @@ func _detach_ship():
 ## attach the ship to the scene tree
 func _attach_ship_with_hud(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO):
 	if GameManager.player_ship == null:
-		GameManager.player_ship = (
-			load("res://prefabs/ships/flyable_ship_with_shield.tscn").instantiate()
-		)
+		GameManager.player_ship = (default_ship_prefab.instantiate())
 	# attach ship
 	GameManager.get_tree().root.add_child(GameManager.player_ship)
 
@@ -72,9 +72,7 @@ func _attach_ship_with_hud(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.Z
 ## attach the ship to the scene tree
 func _attach_ship_without_hud():
 	if GameManager.player_ship == null:
-		GameManager.player_ship = (
-			load("res://prefabs/ships/flyable_ship_with_shield.tscn").instantiate()
-		)
+		GameManager.player_ship = (default_ship_prefab.instantiate())
 	# attach ship
 	GameManager.get_tree().root.add_child(GameManager.player_ship)
 

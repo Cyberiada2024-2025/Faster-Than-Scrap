@@ -2,18 +2,18 @@ class_name MapManager
 
 extends Node
 
+const DEFAULT_MAP_SELECT = preload("res://Sandbox/Wierzba/map_selector/map_example.tscn")
+
 @export var map_container: Control
 @export var button: Button
 @export var label: Label
 @export var scene_loader: SceneLoader
 
-const default_map_select = preload("res://Sandbox/Wierzba/map_selector/map_example.tscn")
-
 
 func _ready() -> void:
 	print(MapSaver.map_select)
 	if MapSaver.map_select == null:
-		MapSaver.map_select = default_map_select.instantiate()
+		MapSaver.map_select = DEFAULT_MAP_SELECT.instantiate()
 	var map := MapSaver.map_select
 	map_container.add_child(map)
 

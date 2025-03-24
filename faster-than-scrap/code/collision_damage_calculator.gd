@@ -35,7 +35,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	pre_collision_velosity = calculated_body.linear_velocity
+	if calculated_body != null:
+		pre_collision_velosity = calculated_body.linear_velocity
 
 
 func _find_parent_collision(

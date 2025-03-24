@@ -26,7 +26,7 @@ var was_key_pressed: bool = false
 
 var module_rigidbody_prefab = preload("res://prefabs/modules/module_rigidbody.tscn")
 
-var active = true
+var activation_key_saved: Key = 0
 
 
 func _ready() -> void:
@@ -35,18 +35,17 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if active:
-		if was_key_pressed:
-			if Input.is_key_pressed(activation_key):
-				_on_key(_delta)
-			else:
-				was_key_pressed = false
-				_on_release(_delta)
+	if was_key_pressed:
+		if Input.is_key_pressed(activation_key):
+			_on_key(_delta)
 		else:
-			if Input.is_key_pressed(activation_key):
-				_on_key_press(_delta)
-				_on_key(_delta)
-				was_key_pressed = true
+			was_key_pressed = false
+			_on_release(_delta)
+	else:
+		if Input.is_key_pressed(activation_key):
+			_on_key_press(_delta)
+			_on_key(_delta)
+			was_key_pressed = true
 
 	if label != null:
 		label.rotation.y = -global_rotation.y
@@ -98,9 +97,12 @@ func _on_destroy() -> void:
 
 
 func deactivate() -> void:
+	activation_key_saved = activation_key
 	activation_key = 0
-	for child in child_modules:
-		child.deactivate()
+
+
+func activate() -> void:
+	activation_key = activation_key_saved
 
 
 func _explode() -> void:

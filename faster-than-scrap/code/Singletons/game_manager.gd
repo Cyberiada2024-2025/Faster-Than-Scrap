@@ -47,7 +47,10 @@ func turn_player_modules(on: bool):
 	if GameManager.player_ship != null:
 		var modules = GameManager.player_ship.find_children("*", "Module", false, false)
 		for module in modules:
-			module.active = on
+			if on:
+				module.activate()
+			else:
+				module.deactivate()
 
 
 func show_death_screen():

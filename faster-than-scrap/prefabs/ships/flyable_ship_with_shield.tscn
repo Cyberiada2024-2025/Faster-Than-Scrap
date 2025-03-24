@@ -12,7 +12,7 @@ axis_lock_angular_z = true
 gravity_scale = 0.0
 script = ExtResource("1_2nsub")
 cockpit = NodePath("Cockpit")
-modules = [null, null, null, null, null]
+modules = [NodePath("Cockpit"), NodePath("BaseModule"), NodePath("Thruster Backward"), NodePath("Thruster Right"), NodePath("Thruster Left"), NodePath("Thruster Forward"), NodePath("ShieldModule")]
 
 [node name="Cockpit" parent="." node_paths=PackedStringArray("ship", "child_modules") instance=ExtResource("2_i6mc8")]
 ship = NodePath("..")

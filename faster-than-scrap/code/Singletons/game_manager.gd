@@ -15,6 +15,7 @@ var player_ship: PlayerShip
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
+	player_ship = preload("res://prefabs/ships/flyable_ship_with_shield.tscn").instantiate()
 
 
 func set_game_state(new_state: GameState.State) -> void:
@@ -23,15 +24,15 @@ func set_game_state(new_state: GameState.State) -> void:
 	# future logic for changing state
 	match new_state:
 		GameState.State.FLY:
-			_unpause_entities()
+			turn_player_modules(true)
 		GameState.State.PAUSE:
-			_pause_entities()
+			turn_player_modules(false)
 		GameState.State.CUTSCENE:
-			_unpause_entities()
+			turn_player_modules(true)
 		GameState.State.BUILD:
-			_pause_entities()
+			turn_player_modules(false)
 		GameState.State.MAIN_MENU:
-			_unpause_entities()
+			turn_player_modules(true)
 
 
 func _pause_entities():
@@ -40,6 +41,16 @@ func _pause_entities():
 
 func _unpause_entities():
 	get_tree().paused = false
+
+
+func turn_player_modules(on: bool):
+	if GameManager.player_ship != null:
+		var modules = GameManager.player_ship.find_children("*", "Module", false, false)
+		for module in modules:
+			if on:
+				module.activate()
+			else:
+				module.deactivate()
 
 
 func show_death_screen():

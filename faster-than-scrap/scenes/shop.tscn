@@ -1,13 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://bbrx5cjobljb4"]
+[gd_scene load_steps=22 format=3 uid="uid://dlpop1npsx4v4"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_kqinb"]
-[ext_resource type="Script" path="res://code/building_ship/ship_builder.gd" id="2_jgpv1"]
+[ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="2_jgpv1"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/UI/ShipBuilder/outline.tres" id="3_tpphw"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/UI/ShipBuilder/outline_flash.tres" id="4_ead8n"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="5_awixo"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="6_7bqcw"]
 [ext_resource type="PackedScene" uid="uid://dty8ie80qkfd5" path="res://prefabs/ships/player_ship_example.tscn" id="7_qmxef"]
-[ext_resource type="Script" path="res://code/building_ship/shop.gd" id="12_bskm6"]
+[ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="12_bskm6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x5wpm"]
 font = ExtResource("6_7bqcw")
@@ -109,9 +109,9 @@ offset_top = 76.0
 offset_right = 394.0
 offset_bottom = 114.0
 theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
 theme_override_fonts/font = ExtResource("6_7bqcw")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
@@ -151,9 +151,9 @@ offset_top = 76.0
 offset_right = 608.0
 offset_bottom = 114.0
 theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
 theme_override_fonts/font = ExtResource("6_7bqcw")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
@@ -169,9 +169,9 @@ offset_top = 76.0
 offset_right = 238.0
 offset_bottom = 114.0
 theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
 theme_override_fonts/font = ExtResource("6_7bqcw")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
@@ -212,9 +212,9 @@ offset_right = 244.0
 offset_bottom = 18.0
 theme_override_colors/font_hover_pressed_color = Color(0.109804, 0.988235, 0.113725, 1)
 theme_override_colors/font_hover_color = Color(0.113725, 1, 0.113725, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_colors/font_focus_color = Color(0.113725, 1, 0.113725, 1)
 theme_override_colors/font_color = Color(0.113725, 1, 0.113725, 1)
+theme_override_colors/font_focus_color = Color(0.113725, 1, 0.113725, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
 theme_override_fonts/font = ExtResource("6_7bqcw")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxEmpty_w40mu")
@@ -296,3 +296,5 @@ shape = SubResource("BoxShape3D_e20u7")
 
 [editable path="PlayerShipExample"]
 [editable path="PlayerShipExample/ModuleBase"]
+[editable path="PlayerShipExample/ModuleBase/ModuleDisplay"]
+[editable path="PlayerShipExample/ModuleBase/DamageController2"]

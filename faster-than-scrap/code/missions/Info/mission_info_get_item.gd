@@ -6,14 +6,15 @@ extends MissionInfo
 @export var item_target_position: Vector3 = Vector3.ZERO
 
 
-func start() -> void:
+func start(scene_root: Node) -> void:
 	mission = MissionGetItem.new()
 	mission.info = self
-	super()
+	super(scene_root)
 
 
 func get_node_color() -> Color:
 	return Color.PURPLE
+
 
 func get_node_description() -> String:
 	return "Mission Type:\nGet item"

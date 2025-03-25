@@ -15,13 +15,13 @@ func setup() -> void:
 	# TODO swap to instantiating the defendable asset f.e.: ally ship
 	defendable = MeshInstance3D.new()
 	defendable.mesh = BoxMesh.new()
-	MissionManager.add_child(defendable)
+	MissionManager.get_tree().current_scene.add_child(defendable)
 
 	# add timer
 	var timer := Timer.new()
 	# add to tree
 	timer.timeout.connect(success)
-	MissionManager.add_child(timer)
+	MissionManager.get_tree().current_scene.add_child(timer)
 	timer.start(info.time_to_defend)
 
 	# position it
@@ -44,4 +44,4 @@ func _process(_delta: float) -> void:
 func success() -> void:
 	print("succesfuly defended!")
 	state = MissionState.FINISHED
-	finished.emit()
+	finished.emit(self)

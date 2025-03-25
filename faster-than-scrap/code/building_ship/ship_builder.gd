@@ -47,12 +47,15 @@ var lmb_was_pressed: bool = false
 var lmb_is_pressed: bool = false
 var rmb_was_pressed: bool = false
 
-var scene_loarder: SceneLoader
+var scene_loader: SceneLoader
 
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	scene_loarder = $"../SceneLoader"
+	scene_loader = $SceneLoader
+
+	GameManager.player_ship.position = Vector3.ZERO
+	GameManager.player_ship.rotation = Vector3.ZERO
 
 
 # ---------------mouse ---------------------------------------------
@@ -95,8 +98,11 @@ func _update_attach_point_index(event: InputEvent) -> void:
 func _get_module_from_hit(hit: Dictionary) -> Module:
 	var rigid_body = hit.get("collider")
 	if rigid_body != null:
-		var module: Module = rigid_body.get_child(hit["shape"])
-		return module
+		# may click shop area
+		var clicked_shape = rigid_body.get_child(hit["shape"])
+		if clicked_shape is Module:
+			return clicked_shape
+		return null
 	return null
 
 
@@ -105,7 +111,8 @@ func _get_raycast_hit(event: InputEvent) -> Dictionary:
 	var from = camera3d.project_ray_origin(event.position)
 	var to = from + camera3d.project_ray_normal(event.position) * RAY_LENGTH
 	var space_state = get_world_3d().direct_space_state
-	var query = PhysicsRayQueryParameters3D.create(from, to)
+	# only first layer (to avoid clicking damageable)
+	var query = PhysicsRayQueryParameters3D.create(from, to, 1)
 	query.collide_with_areas = true
 	query.exclude = [ignore]
 	return space_state.intersect_ray(query)
@@ -182,11 +189,10 @@ func _position_module(intersection_position: Vector3, intersection_normal: Vecto
 
 ## return whether successfully grabed module
 func _on_module_clicked(clicked_module: Module) -> bool:
-	if (
-		clicked_module != null
-		and not clicked_module.has_child_module()
-		and clicked_module is not Cockpit
-	):  # cockpit is immovable
+	if clicked_module == null:
+		return false
+
+	if not clicked_module.has_child_module() and clicked_module is not Cockpit:  # cockpit is immovable
 		clicked_module.hide()
 
 		# set variables
@@ -303,7 +309,7 @@ func _input(event: InputEvent):
 			## check if keyboard pressed
 			if event is InputEventKey and event.pressed:
 				var key_event: InputEventKey = event
-				active_module.on_key_change(key_event.keycode)
+				active_module.change_key(key_event.keycode)
 				state = State.NONE
 				choose_key_message.visible = false
 				print("new state = none")
@@ -440,9 +446,7 @@ func _on_finish_pressed() -> void:
 
 
 func _on_confirm_pressed() -> void:
-	# TODO: change scene to map
-	scene_loarder.load_fly_ship_scene()
-	pass  # Replace with function body.
+	scene_loader.load_fly_ship_scene()
 
 
 func _on_deny_pressed() -> void:

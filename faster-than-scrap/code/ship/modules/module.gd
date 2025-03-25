@@ -26,9 +26,11 @@ var was_key_pressed: bool = false
 
 var module_rigidbody_prefab = preload("res://prefabs/modules/module_rigidbody.tscn")
 
+var activation_key_saved: Key = 0
+
 
 func _ready() -> void:
-	on_key_change(activation_key)
+	_on_key_change()
 	update_sprite()
 
 
@@ -95,9 +97,12 @@ func _on_destroy() -> void:
 
 
 func deactivate() -> void:
+	activation_key_saved = activation_key
 	activation_key = 0
-	for child in child_modules:
-		child.deactivate()
+
+
+func activate() -> void:
+	activation_key = activation_key_saved
 
 
 func _explode() -> void:
@@ -110,9 +115,16 @@ func detachable() -> bool:
 	return true
 
 
-func on_key_change(key: Key) -> void:
-	activation_key = key
-	var text: String = OS.get_keycode_string(activation_key)
+func change_key(key: Key) -> void:
+	if activation_key == 0:
+		activation_key_saved = key
+	else:
+		activation_key = key
+	_on_key_change()
+
+
+func _on_key_change() -> void:
+	var text: String = OS.get_keycode_string(activation_key_saved)
 	if label != null:
 		label.text = text
 		## one line text up to 3 characters

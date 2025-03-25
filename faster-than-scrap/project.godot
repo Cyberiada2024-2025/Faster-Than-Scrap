@@ -17,8 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://prefabs/game_manager.tscn"
-MissionManager="*res://code/Singletons/mission_manager.gd"
+GameManager="*res://prefabs/singletons/game_manager.tscn"
+MissionManager="*res://prefabs/singletons/mission_manager.tscn"
+MapGenerator="*res://code/Singletons/map_generator.gd"
+MapSaver="*res://code/Singletons/map_saver.gd"
 
 [display]
 

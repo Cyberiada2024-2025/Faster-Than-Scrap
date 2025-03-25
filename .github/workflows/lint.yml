@@ -46,4 +46,31 @@ jobs:
               echo "All files passed linting."
               exit 0  # Exit with success if no errors were found
           fi
+  directory:
+    name: check directory case name
+    runs-on: ubuntu-latest
           
+    steps:
+      # Check out the repository
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Lint the godot-xr-tools addon
+      - name: Check directories names
+        run: |
+          all_fine=True
+
+          for dir_path in $(find . -type d); do
+            dir_name=$(basename $dir_path)
+            if [[ $dir_name =~ [A-Z] ]] then
+              echo "Directory on path: ${dir_path} contains capital letters"
+              all_fine=False
+            fi
+          done
+
+          if [[ $all_fine = False ]] ; then
+              echo "Found wrongly named directory"
+              exit 1
+          fi
+
+          exit 0

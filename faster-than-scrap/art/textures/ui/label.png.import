@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5u20iwlukjgs"
-path.s3tc="res://.godot/imported/label.png-e94ec02b04857341d1b5b0e7c3278778.s3tc.ctex"
+path.s3tc="res://.godot/imported/label.png-dfb9e0c3aea05912d00ef0b05b6bf591.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://art/textures/UI/label.png"
-dest_files=["res://.godot/imported/label.png-e94ec02b04857341d1b5b0e7c3278778.s3tc.ctex"]
+source_file="res://art/textures/ui/label.png"
+dest_files=["res://.godot/imported/label.png-dfb9e0c3aea05912d00ef0b05b6bf591.s3tc.ctex"]
 
 [params]
 

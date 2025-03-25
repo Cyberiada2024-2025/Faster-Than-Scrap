@@ -6,7 +6,7 @@ def find_folders(path: str) -> list[str]:
     for path in list(subfolders):
         if "." in path:
             continue
-        new_path = path + "O"
+        new_path = path[:-1]
         os.rename(path, new_path)
         find_folders(new_path)
         

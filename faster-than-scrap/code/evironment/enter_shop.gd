@@ -18,5 +18,3 @@ func _show_ui() -> void:
 
 func _enter_shop() -> void:
 	scene_loader.load_build_ship_scene()
-	GameManager.player_ship.get_tree().current_scene.paused = true
-	PhysicsServer3D.set_active(true)

@@ -247,7 +247,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62968, 0, 0)
 [node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("root", "bank_display", "deny_finish", "confirm_finish", "selected_module_prize_display")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.85019, 0, 0)
 script = ExtResource("12_bskm6")
-modules = Array[String](["res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn"])
+modules = Array[String](["res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "uid://6nbs7s4q12jh"])
 root = NodePath("../ShipBuilder")
 size_x = 8.323
 size_z = 12.573

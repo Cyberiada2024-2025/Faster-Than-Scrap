@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://creq1gbmemif6"]
+[gd_scene load_steps=14 format=3 uid="uid://creq1gbmemif6"]
 
 [ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/Player/player_ship.gd" id="1_keeht"]
 [ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="1_odfy5"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="2_eda7p"]
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="3_ymjaj"]
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="5_7n2dd"]
+[ext_resource type="PackedScene" uid="uid://dbajfkkhivhl0" path="res://prefabs/modules/weapons/beam_module.tscn" id="5_pnfn2"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="6_mj205"]
 [ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/test_projectile.tscn" id="7_kawsr"]
 [ext_resource type="PackedScene" uid="uid://bnvojbycskewd" path="res://prefabs/projectiles/test_beam.tscn" id="8_3b6dl"]
@@ -62,24 +63,8 @@ activation_key = 87
 ship = NodePath("..")
 parent_module = NodePath("../BaseModule")
 
-[node name="WeaponModule" type="CollisionShape3D" parent="." node_paths=PackedStringArray("weapon", "ship")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.67073, 0, 2.75352)
-shape = SubResource("BoxShape3D_yf3ku")
-script = ExtResource("5_7n2dd")
-weapon = NodePath("SpawnerWeapon")
-allow_auto_fire = true
-activation_key = 81
-ship = NodePath("..")
-
-[node name="SpawnerWeapon" type="Node3D" parent="WeaponModule" node_paths=PackedStringArray("ship")]
-script = ExtResource("6_mj205")
-ship = NodePath("../..")
-cooldown = 0.5
-projectile = ExtResource("7_kawsr")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponModule"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.00262642)
-mesh = SubResource("CylinderMesh_quigi")
+[node name="WeaponModule" parent="." instance=ExtResource("5_pnfn2")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 1.67073, 0, 2.75352)
 
 [node name="WeaponModule3" type="CollisionShape3D" parent="." node_paths=PackedStringArray("weapon", "ship")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.95885, 0, 2.75352)
@@ -87,7 +72,7 @@ shape = SubResource("BoxShape3D_yf3ku")
 script = ExtResource("5_7n2dd")
 weapon = NodePath("Constant")
 allow_auto_fire = true
-activation_key = 69
+activation_key = 82
 ship = NodePath("..")
 
 [node name="Constant" type="Node3D" parent="WeaponModule3" node_paths=PackedStringArray("ship")]

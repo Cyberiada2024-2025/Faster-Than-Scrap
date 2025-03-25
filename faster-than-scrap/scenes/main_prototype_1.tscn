@@ -1,23 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://bydmhqsjgh5rq"]
+[gd_scene load_steps=9 format=3 uid="uid://bydmhqsjgh5rq"]
 
-[ext_resource type="Script" path="res://code/evironment/asteroid.gd" id="1_i51oj"]
+[ext_resource type="Script" uid="uid://chekqae75l00d" path="res://code/evironment/asteroid.gd" id="1_i51oj"]
 [ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="1_wy23v"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="2_cojxt"]
 [ext_resource type="PackedScene" uid="uid://rk0gm82fa8wn" path="res://Sandbox/Surma/prototype_enemy.tscn" id="3_2di0i"]
-[ext_resource type="Script" path="res://Sandbox/Wierzba/Mission_tests/dummy_mission_spawner.gd" id="5_xhan8"]
-[ext_resource type="Script" path="res://code/missions/Info/mission_info_escape.gd" id="6_0mkff"]
-[ext_resource type="Script" path="res://code/scene_loader.gd" id="7_b60qm"]
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_b60qm"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_46x43"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ya06q"]
-
-[sub_resource type="Resource" id="Resource_ssxva"]
-script = ExtResource("6_0mkff")
-portal_position = Vector3(0, 0, 0)
-about = ""
-difficulty = 0
-priority = 0
 
 [sub_resource type="TorusMesh" id="TorusMesh_htxkh"]
 
@@ -47,8 +38,6 @@ speed = 6
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.64637, 0, -6.685)
 
 [node name="DummyMissionSpawner2" type="Node" parent="Node3D"]
-script = ExtResource("5_xhan8")
-mission_to_spawn = SubResource("Resource_ssxva")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(-0.495458, 2.91437, 7.02882, 8.64, 0.425004, 0, 0.615455, -3.62022, 5.65839, 0, 0, 0)

@@ -172,7 +172,6 @@ shape = SubResource("BoxShape3D_x6hs4")
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("9_sdq7t")]
 
-
 [node name="AttachPoints" type="Node3D" parent="."]
 
 [node name="AttachPoint1" type="Node3D" parent="AttachPoints"]
@@ -182,7 +181,6 @@ metadata/_edit_group_ = true
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("10_sdq7t")]
 damageable = NodePath("../DamageController/Damageable")
 shape = NodePath("..")
-
 
 [connection signal="damaged" from="DamageController" to="." method="take_damage"]
 

@@ -6,7 +6,7 @@ extends Node3D
 
 @export var main_camera_offset: Vector3 = Vector3(0, 40, 0)
 @export var module_camera_offset: Vector3 = Vector3(0, 10, 0)
-@export var minimap_camera_offset: Vector3 = Vector3(0, 30, 0)
+@export var minimap_camera_offset: Vector3= Vector3(0, 30, 0)
 
 var _main_camera: Camera3D
 var _module_camera: Camera3D

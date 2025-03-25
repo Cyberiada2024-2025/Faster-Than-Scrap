@@ -79,3 +79,7 @@ func _attach_ship_without_hud():
 	# zero velocity
 	GameManager.player_ship.linear_velocity = Vector3.ZERO
 	GameManager.player_ship.angular_velocity = Vector3.ZERO
+
+
+func _on_button_pressed() -> void:
+	pass  # Replace with function body.

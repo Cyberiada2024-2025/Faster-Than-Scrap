@@ -9,5 +9,4 @@ static func rotate_towards(a: Quaternion, b: Quaternion, angle: float) -> Quater
 	print(angle_to)
 	if angle_to > angle:
 		return a.slerp(b, angle / angle_to)
-	else:
-		return b
+	return b

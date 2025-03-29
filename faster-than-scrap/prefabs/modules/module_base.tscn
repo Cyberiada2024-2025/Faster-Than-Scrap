@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b66go7dtdv2m1"]
+[gd_scene load_steps=8 format=3 uid="uid://b66go7dtdv2m1"]
 
-[ext_resource type="Script" path="res://code/ship/modules/module.gd" id="1_if6ta"]
-[ext_resource type="Script" path="res://code/damage/damage_controller.gd" id="2_hf3tu"]
-[ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/UI/Minimap/Placeholder/Enemy.png" id="2_xaq42"]
-[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="3_qv8fx"]
-[ext_resource type="Script" path="res://code/damage/damageable.gd" id="3_w4c6n"]
+[ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="1_if6ta"]
+[ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="2_4crnk"]
+[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_bknuf"]
+[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="4_s0cg4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1whwh"]
 radius = 0.45
@@ -17,8 +16,8 @@ radius = 0.45
 shape = SubResource("SphereShape3D_1whwh")
 script = ExtResource("1_if6ta")
 attach_points = [NodePath("AttachPoints/AttachPoint1")]
-sprite = NodePath("Sprite3D")
-label = NodePath("Label3D")
+sprite = NodePath("ModuleDisplay/Sprite3D")
+label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 
@@ -32,35 +31,19 @@ skeleton = NodePath("")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.5)
 metadata/_edit_group_ = true
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.45, 0, 0, 0, -1.96701e-08, 0.45, 0, -0.45, -1.96701e-08, 0, 0, 0)
-layers = 2
-modulate = Color(0, 1, 0, 1)
-double_sided = false
-texture = ExtResource("2_xaq42")
+[node name="ModuleDisplay" parent="." instance=ExtResource("2_4crnk")]
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0209912, 0)
-layers = 2
-double_sided = false
-texture_filter = 0
-modulate = Color(0, 0, 0, 1)
-text = "SPACE"
-font = ExtResource("3_qv8fx")
-font_size = 80
-outline_size = 0
-uppercase = true
-autowrap_mode = 3
-justification_flags = 161
-width = 200.0
+[node name="DamageController2" parent="." instance=ExtResource("4_bknuf")]
 
-[node name="DamageController" type="Node" parent="."]
-script = ExtResource("2_hf3tu")
-
-[node name="Damageable" type="Area3D" parent="DamageController"]
-script = ExtResource("3_w4c6n")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController2/Damageable" index="0"]
 shape = SubResource("SphereShape3D_e1j53")
 
-[connection signal="damaged" from="DamageController" to="." method="take_damage"]
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("4_s0cg4")]
+damageable = NodePath("../DamageController2/Damageable")
+shape = NodePath("..")
+self_damage_multiplier = 5.0
+
+[connection signal="damaged" from="DamageController2" to="." method="take_damage"]
+
+[editable path="ModuleDisplay"]
+[editable path="DamageController2"]

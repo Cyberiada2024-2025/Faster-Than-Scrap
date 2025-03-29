@@ -1,0 +1,300 @@
+[gd_scene load_steps=22 format=3 uid="uid://dlpop1npsx4v4"]
+
+[ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_kqinb"]
+[ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="2_jgpv1"]
+[ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/UI/ShipBuilder/outline.tres" id="3_tpphw"]
+[ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/UI/ShipBuilder/outline_flash.tres" id="4_ead8n"]
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="5_awixo"]
+[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="6_7bqcw"]
+[ext_resource type="PackedScene" uid="uid://dty8ie80qkfd5" path="res://prefabs/ships/player_ship_example.tscn" id="7_qmxef"]
+[ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="12_bskm6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x5wpm"]
+font = ExtResource("6_7bqcw")
+font_color = Color(0.105882, 1, 0.105882, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ukoue"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppglm"]
+bg_color = Color(0, 0.2, 0.106667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_istkh"]
+bg_color = Color(0.105882, 1, 0.105882, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xrmp7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w40mu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vun1v"]
+bg_color = Color(0, 0.23, 0.122667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5v62e"]
+bg_color = Color(0.113725, 1, 0.113725, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jnae"]
+bg_color = Color(0, 0.0509804, 0.027451, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dg7d6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bb5xo"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.313726)
+emission_enabled = true
+emission = Color(0.19841, 0.491958, 0.131993, 1)
+emission_energy_multiplier = 1.39
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wy25e"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.111572, 0.616094, 1.92523e-07, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e20u7"]
+size = Vector3(8.32263, 1, 12.5726)
+
+[node name="BuildShip" type="Node3D"]
+
+[node name="SpaceEnvironment" parent="." instance=ExtResource("1_kqinb")]
+
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "shop", "choose_key_message", "confirm_finish_message")]
+script = ExtResource("2_jgpv1")
+ignore = NodePath("../Shop/Area3D")
+shop = NodePath("../Shop")
+outline_mat = ExtResource("3_tpphw")
+flash_mat = ExtResource("4_ead8n")
+flash_time = 0.5
+choose_key_message = NodePath("Control/Choose_key")
+confirm_finish_message = NodePath("Control/Confirm finish")
+
+[node name="MainCamera" parent="ShipBuilder" instance=ExtResource("5_awixo")]
+main_camera_offset = Vector3(5, 10, 0)
+
+[node name="Control" type="Control" parent="ShipBuilder"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Deny finish" type="ColorRect" parent="ShipBuilder/Control"]
+visible = false
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 0.9)
+
+[node name="Color_Rect" type="ColorRect" parent="ShipBuilder/Control/Deny finish"]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 242.0
+offset_right = 898.0
+offset_bottom = 392.0
+color = Color(0, 0.051, 0.027, 1)
+
+[node name="Label" type="Label" parent="ShipBuilder/Control/Deny finish/Color_Rect"]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 643.0
+offset_bottom = 59.0
+text = "You cannot leave without paying for modules!"
+label_settings = SubResource("LabelSettings_x5wpm")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Confirm" type="Button" parent="ShipBuilder/Control/Deny finish/Color_Rect"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 76.0
+offset_right = 394.0
+offset_bottom = 114.0
+theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
+theme_override_fonts/font = ExtResource("6_7bqcw")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ppglm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_istkh")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xrmp7")
+text = "OK"
+
+[node name="Confirm finish" type="ColorRect" parent="ShipBuilder/Control"]
+visible = false
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 0.9)
+
+[node name="Color_Rect" type="ColorRect" parent="ShipBuilder/Control/Confirm finish"]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 242.0
+offset_right = 898.0
+offset_bottom = 392.0
+color = Color(0, 0.051, 0.027, 1)
+
+[node name="Label" type="Label" parent="ShipBuilder/Control/Confirm finish/Color_Rect"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 50.0
+text = "WARNING: Unattached modules will be lost"
+label_settings = SubResource("LabelSettings_x5wpm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Confirm" type="Button" parent="ShipBuilder/Control/Confirm finish/Color_Rect"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 76.0
+offset_right = 608.0
+offset_bottom = 114.0
+theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
+theme_override_fonts/font = ExtResource("6_7bqcw")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ppglm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_istkh")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xrmp7")
+text = "Proceed"
+
+[node name="Deny" type="Button" parent="ShipBuilder/Control/Confirm finish/Color_Rect"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 76.0
+offset_right = 238.0
+offset_bottom = 114.0
+theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
+theme_override_fonts/font = ExtResource("6_7bqcw")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ppglm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_istkh")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xrmp7")
+text = "Go Back"
+
+[node name="Choose_key" type="ColorRect" parent="ShipBuilder/Control"]
+visible = false
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 0.9)
+
+[node name="Color_Rect" type="ColorRect" parent="ShipBuilder/Control/Choose_key"]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 300.0
+offset_right = 675.0
+offset_bottom = 350.0
+color = Color(0, 0.051, 0.027, 1)
+
+[node name="Label" type="Label" parent="ShipBuilder/Control/Choose_key/Color_Rect"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 50.0
+text = "Choose a key"
+label_settings = SubResource("LabelSettings_x5wpm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Finish" type="Button" parent="ShipBuilder/Control"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 244.0
+offset_bottom = 18.0
+theme_override_colors/font_hover_pressed_color = Color(0.109804, 0.988235, 0.113725, 1)
+theme_override_colors/font_hover_color = Color(0.113725, 1, 0.113725, 1)
+theme_override_colors/font_color = Color(0.113725, 1, 0.113725, 1)
+theme_override_colors/font_focus_color = Color(0.113725, 1, 0.113725, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
+theme_override_fonts/font = ExtResource("6_7bqcw")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_w40mu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vun1v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5v62e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5jnae")
+text = "Finish
+Building"
+
+[node name="Prize_display" type="ColorRect" parent="ShipBuilder/Control"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 55.0
+offset_right = 251.0
+offset_bottom = 105.0
+color = Color(0, 0.051, 0.027, 1)
+
+[node name="Label" type="Label" parent="ShipBuilder/Control/Prize_display"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 50.0
+text = "Selected: 0$"
+label_settings = SubResource("LabelSettings_x5wpm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerShipExample" parent="." instance=ExtResource("7_qmxef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62968, 0, 0)
+
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("root", "bank_display", "deny_finish", "confirm_finish", "selected_module_prize_display")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.85019, 0, 0)
+script = ExtResource("12_bskm6")
+modules = Array[String](["res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn"])
+root = NodePath("../ShipBuilder")
+size_x = 8.323
+size_z = 12.573
+columns = 4
+rows = 5
+bank_display = NodePath("Label3D")
+deny_finish = NodePath("../ShipBuilder/Control/Deny finish")
+confirm_finish = NodePath("../ShipBuilder/Control/Confirm finish")
+selected_module_prize_display = NodePath("../ShipBuilder/Control/Prize_display/Label")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Shop"]
+transform = Transform3D(8.28, 0, 0, 0, 0.083, 0, 0, 0, 12.42, 0, 0, 0)
+mesh = SubResource("BoxMesh_dg7d6")
+material = SubResource("StandardMaterial3D_bb5xo")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Shop/CSGMesh3D"]
+transform = Transform3D(1.01, 0, 0, 0, 0.5, 0, 0, 0, 1.01, 0, 0, 0)
+mesh = SubResource("BoxMesh_dg7d6")
+material = SubResource("StandardMaterial3D_wy25e")
+
+[node name="Label3D" type="Label3D" parent="Shop"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.88895, 5.0121e-08, -6.75637)
+modulate = Color(0.1, 3, 0, 1)
+text = "0$"
+font = ExtResource("6_7bqcw")
+font_size = 128
+outline_size = 0
+horizontal_alignment = 2
+
+[node name="Area3D" type="Area3D" parent="Shop"]
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0455933, 0, 0.0821714)
+shape = SubResource("BoxShape3D_e20u7")
+
+[connection signal="on_module_select" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_select"]
+[connection signal="pressed" from="ShipBuilder/Control/Deny finish/Color_Rect/Confirm" to="Shop" method="_on_confirm_pressed"]
+[connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Confirm" to="ShipBuilder" method="_on_confirm_pressed"]
+[connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Deny" to="ShipBuilder" method="_on_deny_pressed"]
+[connection signal="pressed" from="ShipBuilder/Control/Finish" to="Shop" method="_on_finish_pressed"]
+[connection signal="area_entered" from="Shop/Area3D" to="Shop" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Shop/Area3D" to="Shop" method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="Shop/Area3D" to="Shop" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Shop/Area3D" to="Shop" method="_on_area_3d_body_exited"]
+
+[editable path="PlayerShipExample"]
+[editable path="PlayerShipExample/ModuleBase"]
+[editable path="PlayerShipExample/ModuleBase/ModuleDisplay"]
+[editable path="PlayerShipExample/ModuleBase/DamageController2"]

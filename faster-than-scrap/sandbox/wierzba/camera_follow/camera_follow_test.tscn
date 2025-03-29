@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhce4swpinjsd"]
+
+[ext_resource type="Script" uid="uid://ddty3aldichpj" path="res://Sandbox/Wierzba/camera_follow/move_on_press.gd" id="1_t3v2k"]
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="2_gibu4"]
+[ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="2_ig3gf"]
+[ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="3_koici"]
+[ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/UI/Minimap/Placeholder/Enemy.png" id="4_7afsy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_r16sr"]
+
+[node name="CameraFollowTest" type="Node3D"]
+
+[node name="MoveOnPress" type="Node3D" parent="."]
+script = ExtResource("1_t3v2k")
+
+[node name="RigidBody3D" parent="MoveOnPress" instance=ExtResource("2_ig3gf")]
+
+[node name="Cockpit" parent="MoveOnPress" instance=ExtResource("3_koici")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.69122)
+
+[node name="MainCamera" parent="." instance=ExtResource("2_gibu4")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22573, 0, 0)
+mesh = SubResource("BoxMesh_r16sr")
+
+[node name="EnemySprite2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.73354, 0, 3.05026)
+layers = 4
+modulate = Color(1, 0, 0, 1)
+pixel_size = 0.007
+double_sided = false
+texture = ExtResource("4_7afsy")

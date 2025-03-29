@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://7oc3uq20gdnv"]
+
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="1_1pn4x"]
+
+[node name="SceneLoadTest" type="Node3D"]
+script = ExtResource("1_1pn4x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Main menu"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Fly ship"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Build ship"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="load_main_menu_scene"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="load_fly_ship_scene"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="load_build_ship_scene"]

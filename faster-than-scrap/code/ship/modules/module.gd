@@ -19,13 +19,18 @@ extends CollisionShape3D
 @export var healthy_color: Color
 @export var dead_color: Color
 
+## Prize in shop
+@export_custom(PROPERTY_HINT_NONE, "suffix:$") var prize: int = 1
+
 var was_key_pressed: bool = false
 
 var module_rigidbody_prefab = preload("res://prefabs/modules/module_rigidbody.tscn")
 
+var activation_key_saved: Key = 0
+
 
 func _ready() -> void:
-	on_key_change(activation_key)
+	_on_key_change()
 	update_sprite()
 
 
@@ -92,9 +97,12 @@ func _on_destroy() -> void:
 
 
 func deactivate() -> void:
+	activation_key_saved = activation_key
 	activation_key = 0
-	for child in child_modules:
-		child.deactivate()
+
+
+func activate() -> void:
+	activation_key = activation_key_saved
 
 
 func _explode() -> void:
@@ -107,9 +115,16 @@ func detachable() -> bool:
 	return true
 
 
-func on_key_change(key: Key) -> void:
-	activation_key = key
-	var text: String = OS.get_keycode_string(activation_key)
+func change_key(key: Key) -> void:
+	if activation_key == 0:
+		activation_key_saved = key
+	else:
+		activation_key = key
+	_on_key_change()
+
+
+func _on_key_change() -> void:
+	var text: String = OS.get_keycode_string(activation_key_saved)
 	if label != null:
 		label.text = text
 		## one line text up to 3 characters
@@ -141,12 +156,19 @@ func get_attach_point(index: int) -> Node3D:
 ## Create an Area3D object which is a copy of module tree
 ## with the only difference of a root not being a module (rigidbody3d).
 ## All children are copied!
-func create_ghost() -> Area3D:
-	var ghost := Area3D.new()
-	for child in get_children():
-		var child_copy = child.duplicate()
-		ghost.add_child(child_copy)
+func create_ghost() -> ModuleGhost:
+	# create ghost in scene
+	var ghost := ModuleGhost.new()
 	get_tree().root.add_child(ghost)
+	ghost.name = "ghost"
+	ghost.global_position = global_position
+
+	# duplicate module
+	var duplicate: Node = self.duplicate()
+	ghost.add_child(duplicate)
+	duplicate.position = Vector3.ZERO
+	ghost.module_to_ignore = self
+
 	return ghost
 
 ## Return all children (even indirect) modules of a given node.

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://taxlqo87sp7s"]
+[gd_scene load_steps=10 format=3 uid="uid://taxlqo87sp7s"]
 
-[ext_resource type="Script" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_18ma3"]
-[ext_resource type="Script" path="res://code/weapons/constant_fire_weapon.gd" id="2_5rd74"]
-[ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/UI/Minimap/Placeholder/Enemy.png" id="3_ogaox"]
+[ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_18ma3"]
+[ext_resource type="Script" uid="uid://crmxerc164n6q" path="res://code/weapons/constant_fire_weapon.gd" id="2_5rd74"]
 [ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/test_projectile.tscn" id="3_ywc6w"]
-[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="4_hly24"]
+[ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="4_putpi"]
+[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="5_24upk"]
+[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="6_24upk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lwypn"]
 size = Vector3(1.05, 0.935, 1.835)
@@ -19,8 +20,11 @@ script = ExtResource("1_18ma3")
 weapon = NodePath("ConstantFireWeapon")
 recoil_force = 5.0
 attach_points = [NodePath("AttachPoints/AttachPoint")]
-sprite = NodePath("Sprite3D")
-label = NodePath("Label3D")
+sprite = NodePath("ModuleDisplay/Sprite3D")
+label = NodePath("ModuleDisplay/Label3D")
+healthy_color = Color(0, 1, 0, 1)
+dead_color = Color(1, 0, 0, 1)
+prize = 2
 
 [node name="Mesh" type="Node3D" parent="."]
 
@@ -38,28 +42,24 @@ skeleton = NodePath("../..")
 script = ExtResource("2_5rd74")
 projectile = ExtResource("3_ywc6w")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.45, 0, 0, 0, -1.96701e-08, 0.45, 0, -0.45, -1.96701e-08, 0, 0, 0)
-layers = 2
-modulate = Color(0, 0, 0, 1)
-double_sided = false
-texture = ExtResource("3_ogaox")
-
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0209912, 0)
-layers = 2
-double_sided = false
-texture_filter = 0
-modulate = Color(0, 0, 0, 1)
-font = ExtResource("4_hly24")
-font_size = 64
-outline_size = 0
-uppercase = true
-autowrap_mode = 3
-justification_flags = 161
-width = 200.0
-
 [node name="AttachPoints" type="Node3D" parent="."]
 
 [node name="AttachPoint" type="Node3D" parent="AttachPoints"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.985704)
+
+[node name="ModuleDisplay" parent="." instance=ExtResource("4_putpi")]
+
+[node name="DamageController" parent="." instance=ExtResource("5_24upk")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
+shape = SubResource("BoxShape3D_lwypn")
+
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("6_24upk")]
+damageable = NodePath("../DamageController/Damageable")
+shape = NodePath("..")
+self_damage_multiplier = 10.0
+
+[connection signal="damaged" from="DamageController" to="." method="take_damage"]
+
+[editable path="ModuleDisplay"]
+[editable path="DamageController"]

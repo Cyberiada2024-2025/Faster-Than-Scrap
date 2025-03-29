@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://3a5vwad6lsnu"]
+
+[ext_resource type="Shader" uid="uid://ohokcopb2fdp" path="res://art/Shaders/Shield.tres" id="1_mu0sc"]
+[ext_resource type="ArrayMesh" uid="uid://cadsh5rgfnp6t" path="res://art/models/Shield.obj" id="2_bgmlk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bbfm5"]
+render_priority = 0
+shader = ExtResource("1_mu0sc")
+shader_parameter/anim_hit = 1.0
+shader_parameter/AnimationDistance = 1.0
+shader_parameter/AnimationSpeed = 2.0
+shader_parameter/Offset = 0.5
+shader_parameter/anim_open_close = -2.0
+shader_parameter/Hit_Color = Color(1, 2, 1, 1)
+shader_parameter/MainColor = Color(0, 2, 1, 1)
+shader_parameter/RimColor = Color(0, 0.05, 2, 1)
+shader_parameter/RimSize = 0.16
+shader_parameter/BackColor = Color(0.131, 1, 2, 1)
+
+[node name="Shield_VFX" type="MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_bbfm5")
+gi_mode = 0
+mesh = ExtResource("2_bgmlk")

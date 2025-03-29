@@ -12,13 +12,15 @@ config_version=5
 
 config/name="Faster Than Scrap"
 run/main_scene="res://prefabs/environment/space_environment.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://prefabs/game_manager.tscn"
-MissionManager="*res://code/Singletons/mission_manager.gd"
+GameManager="*res://prefabs/singletons/game_manager.tscn"
+MissionManager="*res://prefabs/singletons/mission_manager.tscn"
+MapGenerator="*res://code/Singletons/map_generator.gd"
+MapSaver="*res://code/Singletons/map_saver.gd"
 
 [display]
 
@@ -71,6 +73,8 @@ ui_down={
 
 3d_render/layer_2="Player Ship Sprite"
 3d_render/layer_3="Minimap Sprite"
+3d_physics/layer_1="Physics Collisions"
+3d_physics/layer_2="Damage Layer"
 
 [rendering]
 

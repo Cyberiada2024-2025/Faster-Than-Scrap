@@ -1,18 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://c3rsq4emlmuky"]
+[gd_scene load_steps=17 format=3 uid="uid://c3rsq4emlmuky"]
 
-[ext_resource type="Script" path="res://code/ship/ship_controller.gd" id="1_nesmw"]
-[ext_resource type="Script" path="res://code/boss/boss.gd" id="2_s6qyd"]
-[ext_resource type="Script" path="res://code/ship/modules/module.gd" id="3_4c6o0"]
+[ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_nesmw"]
+[ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_s6qyd"]
+[ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="3_4c6o0"]
 [ext_resource type="PackedScene" uid="uid://otlsujtci37k" path="res://prefabs/Bosses/Examples/laser_star/star_quarter.tscn" id="4_06rxb"]
-[ext_resource type="Script" path="res://code/enemy/states/rotate.gd" id="5_ssdl0"]
-[ext_resource type="Script" path="res://code/enemy/states/shooting.gd" id="6_vtp5i"]
-[ext_resource type="Script" path="res://code/enemy/states/composite_state.gd" id="7_xvv2n"]
-[ext_resource type="Script" path="res://code/enemy/states/change_position.gd" id="8_5u1yc"]
-[ext_resource type="Script" path="res://code/enemy/state_machine_npc.gd" id="8_jstny"]
-[ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="9_k4714"]
-[ext_resource type="Script" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="11_vp012"]
-[ext_resource type="Script" path="res://code/enemy/states/restore_energy.gd" id="12_tiubj"]
-[ext_resource type="Script" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="13_dufb5"]
+[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_f6ca3"]
+[ext_resource type="Script" uid="uid://ylaka7vn7784" path="res://code/enemy/states/rotate.gd" id="5_ssdl0"]
+[ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shooting.gd" id="6_vtp5i"]
+[ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="7_xvv2n"]
+[ext_resource type="Script" uid="uid://3y6n471w4m3e" path="res://code/enemy/states/change_position.gd" id="8_5u1yc"]
+[ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="8_jstny"]
+[ext_resource type="Script" uid="uid://p2tfapf0egxl" path="res://code/enemy/transitions/timed_transition.gd" id="9_k4714"]
+[ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="11_vp012"]
+[ext_resource type="Script" uid="uid://dig16nwffnibt" path="res://code/enemy/states/restore_energy.gd" id="12_tiubj"]
+[ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="13_dufb5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
 
@@ -36,71 +37,58 @@ transform = Transform3D(0.999998, 0.000325448, -0.00194442, -0.000327706, 0.9999
 mesh = SubResource("SphereMesh_mj7ff")
 skeleton = NodePath("")
 
+[node name="DamageController" parent="StaticBody3D/Core" instance=ExtResource("4_f6ca3")]
+transform = Transform3D(0.999998, 0.000325448, -0.00194442, -0.000327706, 0.999999, -0.00115764, 0.00194404, 0.00115827, 0.999997, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Core/DamageController/Damageable" index="0"]
+shape = SubResource("SphereShape3D_fe0g0")
+
 [node name="Star Laser" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 
-[node name="StaticBody3D3" parent="StaticBody3D/Core/Star Laser" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.17694)
-
-[node name="SpawnerWeapon" parent="StaticBody3D/Core/Star Laser/StaticBody3D3" index="2" node_paths=PackedStringArray("ship")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.49094)
-ship = NodePath("../../../../../Boss")
-
-[node name="MeshInstance3D3" parent="StaticBody3D/Core/Star Laser/CollisionShape3D" index="0"]
+[node name="CollisionShape3D" parent="StaticBody3D/Core/Star Laser/Right/DamageController/Damageable" index="0"]
 transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
 
-[node name="MeshInstance3D4" parent="StaticBody3D/Core/Star Laser/CollisionShape3D2" index="0"]
-transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0)
+[node name="DamageController" parent="StaticBody3D/Core/Star Laser/Left" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="StaticBody3D/Core/Star Laser/Left/DamageController/Damageable" index="0"]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
 
 [node name="Star Laser2" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="StaticBody3D3" parent="StaticBody3D/Core/Star Laser2" index="0" node_paths=PackedStringArray("ship")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.17694)
-ship = NodePath("../../../../Boss")
-
-[node name="SpawnerWeapon" parent="StaticBody3D/Core/Star Laser2/StaticBody3D3" index="2" node_paths=PackedStringArray("ship")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.49094)
-ship = NodePath("../../../../../Boss")
-
-[node name="MeshInstance3D3" parent="StaticBody3D/Core/Star Laser2/CollisionShape3D" index="0"]
+[node name="CollisionShape3D" parent="StaticBody3D/Core/Star Laser2/Right/DamageController/Damageable" index="0"]
 transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
 
-[node name="MeshInstance3D4" parent="StaticBody3D/Core/Star Laser2/CollisionShape3D2" index="0"]
-transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0)
+[node name="DamageController" parent="StaticBody3D/Core/Star Laser2/Left" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="StaticBody3D/Core/Star Laser2/Left/DamageController/Damageable" index="0"]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
 
 [node name="Star Laser3" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="StaticBody3D3" parent="StaticBody3D/Core/Star Laser3" index="0" node_paths=PackedStringArray("ship")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.17694)
-ship = NodePath("../../../../Boss")
-
-[node name="SpawnerWeapon" parent="StaticBody3D/Core/Star Laser3/StaticBody3D3" index="2" node_paths=PackedStringArray("ship")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.49094)
-ship = NodePath("../../../../../Boss")
-
-[node name="MeshInstance3D3" parent="StaticBody3D/Core/Star Laser3/CollisionShape3D" index="0"]
+[node name="CollisionShape3D" parent="StaticBody3D/Core/Star Laser3/Right/DamageController/Damageable" index="0"]
 transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
 
-[node name="MeshInstance3D4" parent="StaticBody3D/Core/Star Laser3/CollisionShape3D2" index="0"]
-transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0)
+[node name="DamageController" parent="StaticBody3D/Core/Star Laser3/Left" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="StaticBody3D/Core/Star Laser3/Left/DamageController/Damageable" index="0"]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
 
 [node name="Star Laser4" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
 
-[node name="StaticBody3D3" parent="StaticBody3D/Core/Star Laser4" index="0" node_paths=PackedStringArray("ship")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.17694)
-ship = NodePath("../../../../Boss")
-
-[node name="SpawnerWeapon" parent="StaticBody3D/Core/Star Laser4/StaticBody3D3" index="2" node_paths=PackedStringArray("ship")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.49094)
-ship = NodePath("../../../../../Boss")
-
-[node name="MeshInstance3D3" parent="StaticBody3D/Core/Star Laser4/CollisionShape3D" index="0"]
+[node name="CollisionShape3D" parent="StaticBody3D/Core/Star Laser4/Right/DamageController/Damageable" index="0"]
 transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
 
-[node name="MeshInstance3D4" parent="StaticBody3D/Core/Star Laser4/CollisionShape3D2" index="0"]
-transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0)
+[node name="DamageController" parent="StaticBody3D/Core/Star Laser4/Left" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="StaticBody3D/Core/Star Laser4/Left/DamageController/Damageable" index="0"]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
 
 [node name="StateMachineNPC" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_jstny")
@@ -142,7 +130,7 @@ duration = 3.0
 
 [node name="Shooting" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("weapons")]
 script = ExtResource("6_vtp5i")
-weapons = [NodePath("../../StaticBody3D/Core/Star Laser/StaticBody3D3/SpawnerWeapon"), NodePath("../../StaticBody3D/Core/Star Laser2/StaticBody3D3/SpawnerWeapon"), NodePath("../../StaticBody3D/Core/Star Laser3/StaticBody3D3/SpawnerWeapon"), NodePath("../../StaticBody3D/Core/Star Laser4/StaticBody3D3/SpawnerWeapon")]
+weapons = [null, null, null, null]
 
 [node name="TransitionLowEnergy" type="Node" parent="StateMachineNPC/Shooting" node_paths=PackedStringArray("new_state")]
 script = ExtResource("11_vp012")
@@ -156,7 +144,22 @@ script = ExtResource("12_tiubj")
 script = ExtResource("13_dufb5")
 new_state = NodePath("../../Composite Change Position")
 
+[connection signal="damaged" from="StaticBody3D/Core/DamageController" to="StaticBody3D/Core" method="take_damage"]
+
+[editable path="StaticBody3D/Core/DamageController"]
 [editable path="StaticBody3D/Core/Star Laser"]
+[editable path="StaticBody3D/Core/Star Laser/Laser/DamageController"]
+[editable path="StaticBody3D/Core/Star Laser/Right/DamageController"]
+[editable path="StaticBody3D/Core/Star Laser/Left/DamageController"]
 [editable path="StaticBody3D/Core/Star Laser2"]
+[editable path="StaticBody3D/Core/Star Laser2/Laser/DamageController"]
+[editable path="StaticBody3D/Core/Star Laser2/Right/DamageController"]
+[editable path="StaticBody3D/Core/Star Laser2/Left/DamageController"]
 [editable path="StaticBody3D/Core/Star Laser3"]
+[editable path="StaticBody3D/Core/Star Laser3/Laser/DamageController"]
+[editable path="StaticBody3D/Core/Star Laser3/Right/DamageController"]
+[editable path="StaticBody3D/Core/Star Laser3/Left/DamageController"]
 [editable path="StaticBody3D/Core/Star Laser4"]
+[editable path="StaticBody3D/Core/Star Laser4/Laser/DamageController"]
+[editable path="StaticBody3D/Core/Star Laser4/Right/DamageController"]
+[editable path="StaticBody3D/Core/Star Laser4/Left/DamageController"]

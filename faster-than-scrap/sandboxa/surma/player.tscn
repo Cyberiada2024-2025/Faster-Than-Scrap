@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://kpc2w8wxljon"]
 
-[ext_resource type="Script" uid="uid://b5cq8v6tfjv2s" path="res://sandbox/surma/player.gd" id="1_j12q1"]
+[ext_resource type="Script" uid="uid://b5cq8v6tfjv2s" path="res://sandboxa/surma/player.gd" id="1_j12q1"]
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_u0ry0"]
 
 [node name="PlayerCharacterController" type="CharacterBody3D" node_paths=PackedStringArray("ship") groups=["Player"]]

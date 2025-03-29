@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_nesmw"]
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_s6qyd"]
 [ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="3_4c6o0"]
-[ext_resource type="PackedScene" uid="uid://otlsujtci37k" path="res://prefabs/bosses/Examples/laser_star/star_quarter.tscn" id="4_06rxb"]
+[ext_resource type="PackedScene" uid="uid://otlsujtci37k" path="res://prefabs/bossesa/Examples/laser_star/star_quarter.tscn" id="4_06rxb"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_f6ca3"]
 [ext_resource type="Script" uid="uid://ylaka7vn7784" path="res://code/enemy/states/rotate.gd" id="5_ssdl0"]
 [ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shooting.gd" id="6_vtp5i"]

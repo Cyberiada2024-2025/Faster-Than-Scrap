@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="1_4d8f1"]
 [ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="1_llond"]
-[ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/test_projectile.tscn" id="2_yabaa"]
+[ext_resource type="PackedScene" uid="uid://csls7imysojta" path="res://prefabs/projectiles/enemy_beam.tscn" id="3_tv4j7"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_kh1b3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n02ww"]
@@ -37,10 +37,10 @@ mesh = SubResource("CylinderMesh_k1r3x")
 skeleton = NodePath("../MeshInstance3D")
 
 [node name="SpawnerWeapon" type="Node3D" parent="Laser"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.49094)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.49094)
 script = ExtResource("1_4d8f1")
 energy_cost = 10.0
-projectile = ExtResource("2_yabaa")
+projectile = ExtResource("3_tv4j7")
 
 [node name="DamageController" parent="Laser" instance=ExtResource("4_kh1b3")]
 

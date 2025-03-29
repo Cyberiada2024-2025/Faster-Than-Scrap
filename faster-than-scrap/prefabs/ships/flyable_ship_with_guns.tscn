@@ -63,10 +63,12 @@ parent_module = NodePath("../Thruster Backward")
 
 [node name="LaserWeaponModule" parent="." node_paths=PackedStringArray("ship") instance=ExtResource("6_5kypi")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.68215, -9.53674e-07, 2.96215)
+recoil_force = 0.0
 activation_key = 81
 ship = NodePath("..")
 
 [node name="LaserWeaponModule2" parent="." node_paths=PackedStringArray("ship") instance=ExtResource("6_5kypi")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.62376, -9.53674e-07, 2.96215)
+recoil_force = 0.0
 activation_key = 81
 ship = NodePath("..")

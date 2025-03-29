@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cjyrb2fperaxy"]
 
-[ext_resource type="PackedScene" uid="uid://kpc2w8wxljon" path="res://sandboxa/surma/player.tscn" id="1_xdkxq"]
-[ext_resource type="PackedScene" uid="uid://rk0gm82fa8wn" path="res://sandboxa/surma/prototype_enemy.tscn" id="2_ebm1s"]
+[ext_resource type="PackedScene" uid="uid://kpc2w8wxljon" path="res://sandbox/surma/player.tscn" id="1_xdkxq"]
+[ext_resource type="PackedScene" uid="uid://rk0gm82fa8wn" path="res://sandbox/surma/prototype_enemy.tscn" id="2_ebm1s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_61bff"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bxyqsbjvm4pln"]
 
-[ext_resource type="Script" uid="uid://bbnanjjlsrxul" path="res://sandboxa/wierzbaa/mission_tests/dummy_ship_mouse_follower.gd" id="1_31dff"]
-[ext_resource type="Script" uid="uid://bte3fy0seuioe" path="res://sandboxa/wierzbaa/mission_tests/dummy_mission_spawner.gd" id="2_u6mjj"]
+[ext_resource type="Script" uid="uid://bbnanjjlsrxul" path="res://sandbox/wierzba/mission_tests/dummy_ship_mouse_follower.gd" id="1_31dff"]
+[ext_resource type="Script" uid="uid://bte3fy0seuioe" path="res://sandbox/wierzba/mission_tests/dummy_mission_spawner.gd" id="2_u6mjj"]
 [ext_resource type="Script" uid="uid://dvt7f3cg71bb" path="res://code/missions/info/mission_info_get_item.gd" id="3_mxg06"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_s04pl"]

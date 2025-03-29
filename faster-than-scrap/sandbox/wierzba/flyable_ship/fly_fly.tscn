@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://3t2jbpldv75a"]
 
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="2_um6rh"]
-[ext_resource type="Script" uid="uid://trd2x5agu75m" path="res://sandboxa/wierzbaa/flyable_ship/damage_clicker.gd" id="3_p6uct"]
+[ext_resource type="Script" uid="uid://trd2x5agu75m" path="res://sandbox/wierzba/flyable_ship/damage_clicker.gd" id="3_p6uct"]
 [ext_resource type="PackedScene" uid="uid://guayngc6j11s" path="res://prefabs/ships/flyable_ship_with_shield.tscn" id="3_uvdhe"]
 [ext_resource type="Script" uid="uid://7rxxtodxpx1d" path="res://code/damage/damage_area_3d.gd" id="4_0oqmj"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="5_r0jux"]

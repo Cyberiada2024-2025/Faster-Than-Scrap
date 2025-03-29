@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c36cenluxoqgk" path="res://sandbox/wierzba/boss_arena/damage_clicker.gd" id="2_gnbx1"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_13iag"]
 [ext_resource type="PackedScene" uid="uid://d2oshlh57wf02" path="res://prefabs/bosses/boss_ui.tscn" id="4_b1kn1"]
-[ext_resource type="PackedScene" uid="uid://dkt55poxl1ki4" path="res://prefabs/bosses/Examples/stationary_rings.tscn" id="4_pnxne"]
+[ext_resource type="PackedScene" uid="uid://dkt55poxl1ki4" path="res://prefabs/bosses/examplesa/stationary_rings.tscn" id="4_pnxne"]
 [ext_resource type="Script" uid="uid://cmf2qyea7g403" path="res://sandbox/wierzba/boss_arena/dummy_boss_node.gd" id="5_igk63"]
 [ext_resource type="PackedScene" uid="uid://c3v1bk85mx7p3" path="res://prefabs/ships/flyable_ship_with_guns.tscn" id="8_es6mq"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="8_lsvnc"]

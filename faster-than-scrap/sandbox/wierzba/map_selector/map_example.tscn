@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://sxt04pfym7pt" path="res://prefabs/map_select/nodes/finish_node.tscn" id="8_dg2fp"]
 [ext_resource type="Script" uid="uid://dupp04gxdeha5" path="res://code/missions/info/mission_info_escape.gd" id="8_yb7my"]
 [ext_resource type="Script" uid="uid://dvt7f3cg71bb" path="res://code/missions/info/mission_info_get_item.gd" id="9_gq7c2"]
-[ext_resource type="PackedScene" uid="uid://dkt55poxl1ki4" path="res://prefabs/bosses/Examples/stationary_rings.tscn" id="10_gb11j"]
+[ext_resource type="PackedScene" uid="uid://dkt55poxl1ki4" path="res://prefabs/bosses/examplesa/stationary_rings.tscn" id="10_gb11j"]
 
 [sub_resource type="Resource" id="Resource_f7iju"]
 script = ExtResource("6_8u5ix")

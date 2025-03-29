@@ -39,5 +39,6 @@ func _spawn_boss(boss_prefab: PackedScene) -> void:
 
 func _all_bosses_dead() -> bool:
 	for boss in _bosses:
-		return false
+		if boss.get_health_percentage() != 0:
+			return false
 	return true

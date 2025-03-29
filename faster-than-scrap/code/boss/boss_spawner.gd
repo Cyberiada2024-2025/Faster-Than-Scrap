@@ -23,7 +23,7 @@ func _ready() -> void:
 		_spawn_boss(boss_prefab)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _all_bosses_dead():
 		if BossManager.is_miniboss:
 			_scene_loader.load_map_selector_scene()

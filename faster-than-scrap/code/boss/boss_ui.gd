@@ -12,7 +12,7 @@ func _ready() -> void:
 	_get_boss_name.call_deferred()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if boss != null:
 		healh_bar.value = boss.get_health_percentage()
 

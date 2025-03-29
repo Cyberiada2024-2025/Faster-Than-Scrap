@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Faster Than Scrap"
-run/main_scene="res://prefabs/environment/space_environment.tscn"
+run/main_scene="uid://dyj46rbaohfnw"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,6 +21,7 @@ GameManager="*res://prefabs/singletons/game_manager.tscn"
 MissionManager="*res://prefabs/singletons/mission_manager.tscn"
 MapGenerator="*res://code/Singletons/map_generator.gd"
 MapSaver="*res://code/Singletons/map_saver.gd"
+BossManager="*res://code/singletons/boss_manager.gd"
 
 [display]
 

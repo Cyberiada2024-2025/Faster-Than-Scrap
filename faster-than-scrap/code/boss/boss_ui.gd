@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 		healh_bar.value = boss.get_health_percentage()
 
 
+# TODO change for displaying all bosses
 func _get_boss_name() -> void:
 	var bosses = BossSpawner.boss_spawner._bosses
 	boss = bosses[0]

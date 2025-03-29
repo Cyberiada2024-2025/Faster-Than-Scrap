@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://rk0gm82fa8wn"]
 
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="1_6juta"]
-[ext_resource type="Script" uid="uid://840fiyaanxsl" path="res://Sandbox/Surma/prototype_enemy.gd" id="1_soqmw"]
+[ext_resource type="Script" uid="uid://840fiyaanxsl" path="res://sandbox/surma/prototype_enemy.gd" id="1_soqmw"]
 [ext_resource type="Script" uid="uid://dpubtuvds874u" path="res://code/ship/ship.gd" id="2_lvanf"]
 [ext_resource type="Script" uid="uid://4cghdv6buscd" path="res://code/enemy/states/aggressive.gd" id="2_ptaw0"]
 [ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="3_824ij"]

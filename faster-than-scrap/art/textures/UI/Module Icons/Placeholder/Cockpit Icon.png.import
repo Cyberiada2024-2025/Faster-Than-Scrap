@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmggh2ftab7ht"
-path.s3tc="res://.godot/imported/Cockpit Icon.png-ab5e099c86d151da89a7241ed46c9a01.s3tc.ctex"
+path.s3tc="res://.godot/imported/Cockpit Icon.png-b7aca6c621dd911dd852e829ce64c438.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://art/textures/UI/Module Icons/Placeholder/Cockpit Icon.png"
-dest_files=["res://.godot/imported/Cockpit Icon.png-ab5e099c86d151da89a7241ed46c9a01.s3tc.ctex"]
+source_file="res://art/textures/ui/module icons/placeholder/Cockpit Icon.png"
+dest_files=["res://.godot/imported/Cockpit Icon.png-b7aca6c621dd911dd852e829ce64c438.s3tc.ctex"]
 
 [params]
 

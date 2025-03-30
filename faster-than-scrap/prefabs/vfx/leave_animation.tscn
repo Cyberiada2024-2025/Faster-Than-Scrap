@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://5lsgaj0hoqfu"]
 
-[ext_resource type="Script" uid="uid://dkfb7ly7buswj" path="res://code/leave_animation.gd" id="1_ujjmg"]
+[ext_resource type="Script" uid="uid://dkfb7ly7buswj" path="res://code/vfx/leave_animation.gd" id="1_ujjmg"]
 
 [sub_resource type="Animation" id="Animation_n2c2i"]
 resource_name = "RESET"

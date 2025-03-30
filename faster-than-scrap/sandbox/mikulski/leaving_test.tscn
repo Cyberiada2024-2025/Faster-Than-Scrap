@@ -1,15 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://8lces1k2x05k"]
+[gd_scene load_steps=10 format=3 uid="uid://8lces1k2x05k"]
 
-[ext_resource type="PackedScene" uid="uid://cwbpti8g8rw2f" path="res://prefabs/mission_base.tscn" id="2_3c1pj"]
-[ext_resource type="PackedScene" uid="uid://cvhtby50lwoe4" path="res://Sandbox/Mikulski/set_player_for_test.tscn" id="3_17rlt"]
+[ext_resource type="Script" uid="uid://djte30tpgvnkf" path="res://sandbox/mikulski/leaving_test.gd" id="1_vwaq7"]
+[ext_resource type="PackedScene" uid="uid://cvhtby50lwoe4" path="res://sandbox/mikulski/set_player_for_test.tscn" id="3_17rlt"]
 [ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="3_guilh"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="4_61pl8"]
+[ext_resource type="Script" uid="uid://4w17qx65voq6" path="res://code/missions/a/mission_defend.gd" id="5_vwaq7"]
+[ext_resource type="Script" uid="uid://b6oaocatti460" path="res://code/missions/info/mission_info_defend.gd" id="6_51o16"]
+[ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="7_d4ou2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cbc55"]
 
-[node name="Leaving test" type="Node3D"]
+[sub_resource type="Resource" id="Resource_d4ou2"]
+script = ExtResource("6_51o16")
+defendable_position = Vector3(0, 0, 0)
+time_to_defend = 60.0
+about = ""
+difficulty = 0
+priority = 0
+metadata/_custom_type_script = "uid://b6oaocatti460"
 
-[node name="MissionBase" parent="." instance=ExtResource("2_3c1pj")]
+[node name="Leaving test" type="Node3D" node_paths=PackedStringArray("mission")]
+script = ExtResource("1_vwaq7")
+mission = NodePath("MissionTimedDefend")
 
 [node name="env" type="Node3D" parent="."]
 
@@ -51,10 +63,16 @@ skeleton = NodePath("../..")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
 transform = Transform3D(1, 0, 0, 0, 0.035824, 0.999358, 0, -0.999358, 0.035824, 0, 13.8378, 0)
 
-[node name="set player for test" parent="." node_paths=PackedStringArray("player", "mission") instance=ExtResource("3_17rlt")]
+[node name="set player" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_17rlt")]
 player = NodePath("../FlyableShip")
-mission = NodePath("../MissionBase")
+
+[node name="MainCamera" parent="." instance=ExtResource("4_61pl8")]
 
 [node name="FlyableShip" parent="." instance=ExtResource("3_guilh")]
 
-[node name="MainCamera" parent="." instance=ExtResource("4_61pl8")]
+[node name="MissionTimedDefend" type="Node" parent="."]
+script = ExtResource("5_vwaq7")
+info = SubResource("Resource_d4ou2")
+metadata/_custom_type_script = "uid://4w17qx65voq6"
+
+[node name="SpaceEnvironment" parent="." instance=ExtResource("7_d4ou2")]

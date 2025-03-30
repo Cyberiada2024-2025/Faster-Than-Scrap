@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dty8ie80qkfd5"]
+[gd_scene load_steps=6 format=3 uid="uid://dty8ie80qkfd5"]
 
-[ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/Player/player_ship.gd" id="1_ddodb"]
+[ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/player/player_ship.gd" id="1_ddodb"]
 [ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="2_4lw14"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="3_a4hie"]
-[ext_resource type="Texture2D" uid="uid://5sl7fehpl0rk" path="res://art/textures/UI/Minimap/Placeholder/player_mini.png" id="4_e655p"]
+[ext_resource type="Texture2D" uid="uid://5sl7fehpl0rk" path="res://art/textures/ui/minimap/placeholder/player_mini.png" id="4_e655p"]
+[ext_resource type="PackedScene" uid="uid://5lsgaj0hoqfu" path="res://prefabs/vfx/leave_animation.tscn" id="5_oo5nn"]
 
-[node name="PlayerShipExample" type="RigidBody3D" node_paths=PackedStringArray("cockpit")]
+[node name="PlayerShipExample" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "leave_animation")]
 gravity_scale = 0.0
 script = ExtResource("1_ddodb")
 cockpit = NodePath("Cockpit")
+leave_animation = NodePath("AnimationPlayer")
 
 [node name="Cockpit" parent="." node_paths=PackedStringArray("ship") instance=ExtResource("2_4lw14")]
 activation_key = 66
@@ -39,3 +41,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05367, 0, 1.08632)
 activation_key = 32
 ship = NodePath("..")
 parent_module = NodePath("../ModuleBase2")
+
+[node name="AnimationPlayer" parent="." node_paths=PackedStringArray("leaving_body") instance=ExtResource("5_oo5nn")]
+leaving_body = NodePath("..")

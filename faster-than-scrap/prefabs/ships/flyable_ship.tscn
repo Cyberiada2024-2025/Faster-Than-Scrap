@@ -1,15 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://creq1gbmemif6"]
+[gd_scene load_steps=6 format=3 uid="uid://creq1gbmemif6"]
 
-[ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/Player/player_ship.gd" id="1_keeht"]
+[ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/player/player_ship.gd" id="1_keeht"]
 [ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="1_odfy5"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="2_eda7p"]
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="3_ymjaj"]
+[ext_resource type="PackedScene" uid="uid://5lsgaj0hoqfu" path="res://prefabs/vfx/leave_animation.tscn" id="5_oqsi0"]
 
-[node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "modules")]
+[node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "modules", "leave_animation")]
 gravity_scale = 0.0
 script = ExtResource("1_keeht")
 cockpit = NodePath("Cockpit")
 modules = [null, null, null, null, null]
+leave_animation = NodePath("AnimationPlayer")
 
 [node name="Cockpit" parent="." node_paths=PackedStringArray("ship", "child_modules") instance=ExtResource("1_odfy5")]
 ship = NodePath("..")
@@ -49,3 +51,6 @@ recoil_force = 300.0
 activation_key = 87
 ship = NodePath("..")
 parent_module = NodePath("../BaseModule")
+
+[node name="AnimationPlayer" parent="." node_paths=PackedStringArray("leaving_body") instance=ExtResource("5_oqsi0")]
+leaving_body = NodePath("..")

@@ -12,8 +12,7 @@ height = 1.0
 [sub_resource type="BoxMesh" id="BoxMesh_puthi"]
 size = Vector3(0.2, 0.2, 0.2)
 
-[node name="LaserWeaponModule" type="RigidBody3D" node_paths=PackedStringArray("weapon")]
-gravity_scale = 0.0
+[node name="LaserWeaponModule" type="CollisionShape3D" node_paths=PackedStringArray("weapon")]
 script = ExtResource("1_osv0f")
 weapon = NodePath("SpawnerWeapon")
 allow_auto_fire = true

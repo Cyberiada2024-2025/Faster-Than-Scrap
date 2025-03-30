@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 func start_animation(ending_method: Callable) -> void:
 	if callable:
 		callable = false
-		self.ending = ending_method
+		ending = ending_method
 		anim_player.play(prepere_anim_name, -1, 1 / prepere_time)
 
 
@@ -35,4 +35,4 @@ func _on_animation_finished(anim_name: StringName) -> void:
 		anim_player.play(jump_anim_name, -1, 1 / jump_time)
 	elif anim_name == jump_anim_name:
 		callable = true
-		self.ending.call()
+		ending.call()

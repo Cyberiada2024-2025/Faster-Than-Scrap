@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://de18yreyuomu1"
-path="res://.godot/imported/thruster_collider.obj-6fcce49277aec0a7614043135d3db9ca.mesh"
+path="res://.godot/imported/thruster_collider.obj-7829c16bf7cac3a062ca032bc6ad89fa.mesh"
 
 [deps]
 
-files=["res://.godot/imported/thruster_collider.obj-6fcce49277aec0a7614043135d3db9ca.mesh"]
+files=["res://.godot/imported/thruster_collider.obj-7829c16bf7cac3a062ca032bc6ad89fa.mesh"]
 
-source_file="res://art/models/thruster/thruster_collider.obj"
-dest_files=["res://.godot/imported/thruster_collider.obj-6fcce49277aec0a7614043135d3db9ca.mesh", "res://.godot/imported/thruster_collider.obj-6fcce49277aec0a7614043135d3db9ca.mesh"]
+source_file="res://art/Models/thruster/thruster_collider.obj"
+dest_files=["res://.godot/imported/thruster_collider.obj-7829c16bf7cac3a062ca032bc6ad89fa.mesh", "res://.godot/imported/thruster_collider.obj-7829c16bf7cac3a062ca032bc6ad89fa.mesh"]
 
 [params]
 

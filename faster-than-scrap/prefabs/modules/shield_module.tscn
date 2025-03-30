@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dsdbrxhbn35w7" path="res://code/ship/modules/shield_module.gd" id="1_qfqke"]
 [ext_resource type="Script" uid="uid://c47vgfakrvoxf" path="res://code/ship/modules/Shield.gd" id="2_yota5"]
-[ext_resource type="AudioStream" uid="uid://cfv8l5dmivhc5" path="res://art/audio/sounds/shield_applying_sound.wav" id="3_t2mx0"]
+[ext_resource type="AudioStream" uid="uid://c7e1p4aepud3d" path="res://art/audio/sounds/shield_applying_sound.wav" id="3_t2mx0"]
 [ext_resource type="AudioStream" uid="uid://bhtfb6630u1js" path="res://art/audio/sounds/shield_shattering_sound.wav" id="4_o2yw7"]
 [ext_resource type="AudioStream" uid="uid://bq3myi1evd56a" path="res://art/audio/sounds/shield_takingdmg_sound.wav" id="5_ul8cr"]
 [ext_resource type="PackedScene" uid="uid://3a5vwad6lsnu" path="res://prefabs/VFX/shield_vfx.tscn" id="6_gvryf"]

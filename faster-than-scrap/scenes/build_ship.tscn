@@ -8,8 +8,8 @@
 [ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="3_kgbhb"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/UI/ShipBuilder/outline_flash.tres" id="4_sra6p"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
-[ext_resource type="ArrayMesh" uid="uid://ilin5br3b8v2" path="res://art/models/frame1/frame1.obj" id="8_2lyi2"]
-[ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/models/thruster/thruster.obj" id="9_x0rib"]
+[ext_resource type="ArrayMesh" uid="uid://ilin5br3b8v2" path="res://art/Models/frame1/frame1.obj" id="8_2lyi2"]
+[ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/Models/thruster/thruster.obj" id="9_x0rib"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x5wpm"]
 font = ExtResource("6_au3vu")
@@ -94,9 +94,9 @@ offset_top = 76.0
 offset_right = 608.0
 offset_bottom = 114.0
 theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
 theme_override_fonts/font = ExtResource("6_au3vu")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
@@ -112,9 +112,9 @@ offset_top = 76.0
 offset_right = 238.0
 offset_bottom = 114.0
 theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
 theme_override_fonts/font = ExtResource("6_au3vu")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
@@ -155,9 +155,9 @@ offset_right = 244.0
 offset_bottom = 18.0
 theme_override_colors/font_hover_pressed_color = Color(0.109804, 0.988235, 0.113725, 1)
 theme_override_colors/font_hover_color = Color(0.113725, 1, 0.113725, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_colors/font_focus_color = Color(0.113725, 1, 0.113725, 1)
 theme_override_colors/font_color = Color(0.113725, 1, 0.113725, 1)
+theme_override_colors/font_focus_color = Color(0.113725, 1, 0.113725, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
 theme_override_fonts/font = ExtResource("6_au3vu")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxEmpty_w40mu")

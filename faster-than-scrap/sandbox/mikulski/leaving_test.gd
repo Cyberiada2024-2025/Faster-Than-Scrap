@@ -1,7 +1,7 @@
 extends Node3D
 
-var time: float = 0
 @export var mission: Mission
+var time: float = 0
 
 
 func _process(delta: float) -> void:

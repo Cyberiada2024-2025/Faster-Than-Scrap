@@ -29,17 +29,22 @@ var first_frame: bool = true
 
 var areas: Array[Area3D] = []
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var i: int = 0
 	for dir in modules:
 		var clone = load(dir)
 		var mod = clone.instantiate()
-		add_child(mod)
-		var x: float = size_x/columns/2 + i%columns*size_x/columns - size_x/2
-		var z: float = size_z/rows/2 + i/columns*size_z/rows - size_z/2
-		mod.position = Vector3(x, 0, z)
+		var area = Area3D.new()
+		add_child(area)
+		area.add_child(mod)
+		mod.position = Vector3.ZERO
+		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2
+		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
+		area.position = Vector3(x, 0, z)
 		i += 1
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -50,13 +55,14 @@ func _process(delta: float) -> void:
 		bank = starting_bank
 		_on_bank_change()
 
-func _on_bank_change() ->void:
-	bank_display.text = String.num(bank) + '$';
+
+func _on_bank_change() -> void:
+	bank_display.text = String.num(bank) + "$"
 
 
 func _on_finish_pressed() -> void:
-	if(bank < 0):
-		deny_finish.visible = true;
+	if bank < 0:
+		deny_finish.visible = true
 	else:
 		confirm_finish.visible = true
 
@@ -66,7 +72,7 @@ func _on_confirm_pressed() -> void:
 
 
 func _on_ship_builder_on_module_select(module: Module) -> void:
-	selected_module_prize_display.text = "Selected: " + String.num(module.prize) + '$'
+	selected_module_prize_display.text = "Selected: " + String.num(module.prize) + "$"
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

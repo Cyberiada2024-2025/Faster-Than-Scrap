@@ -39,4 +39,4 @@ func _process(_delta: float) -> void:
 		if to.position.distance_to(GameManager.player_ship.position) < 2:
 			print("item take finished")
 			state = MissionState.FINISHED
-			finished.emit()
+			finished.emit(self)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dtqvp1s2omow6" path="res://code/evironment/setup_fly_scene.gd" id="1_nuays"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="2_g53x4"]
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="3_jnhio"]
-[ext_resource type="PackedScene" uid="uid://rk0gm82fa8wn" path="res://Sandbox/Surma/prototype_enemy.tscn" id="4_nnjch"]
+[ext_resource type="PackedScene" uid="uid://rk0gm82fa8wn" path="res://sandbox/surma/prototype_enemy.tscn" id="4_nnjch"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="5_gcgjm"]
 
 [node name="Space" type="Node3D"]
@@ -22,7 +22,11 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.262
 [node name="SpaceEnvironment" parent="." instance=ExtResource("3_jnhio")]
 
 [node name="PrototypeEnemy" parent="." instance=ExtResource("4_nnjch")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.66206, 0, -22.4742)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.43904, 0, -17.6433)
+speed = 6
+
+[node name="PrototypeEnemy2" parent="." instance=ExtResource("4_nnjch")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.43904, 0, 20.0325)
 speed = 6
 
 [node name="SceneLoader" type="Node" parent="."]

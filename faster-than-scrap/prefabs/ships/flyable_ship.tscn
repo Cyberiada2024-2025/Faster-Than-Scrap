@@ -1,12 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://creq1gbmemif6"]
 
-[ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/Player/player_ship.gd" id="1_keeht"]
+[ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/player/player_ship.gd" id="1_keeht"]
 [ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="1_odfy5"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="2_eda7p"]
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="3_ymjaj"]
 [ext_resource type="PackedScene" uid="uid://b6fx656pcno7s" path="res://prefabs/modules/shield_module.tscn" id="10_rybhy"]
 
 [node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "modules")]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 gravity_scale = 0.0
 script = ExtResource("1_keeht")
 cockpit = NodePath("Cockpit")

@@ -1,12 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbajfkkhivhl0"]
+[gd_scene load_steps=13 format=3 uid="uid://cqkj1jovh07cf"]
 
-[ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_akoi3"]
-[ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_nlg4d"]
-[ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/test_projectile.tscn" id="3_ts8di"]
-[ext_resource type="Script" uid="uid://co5ltw8t12p5p" path="res://code/damage/damage_controller.gd" id="4_kru4r"]
-[ext_resource type="Script" uid="uid://2ftv2rr2lasy" path="res://code/damage/damageable.gd" id="5_w1vj3"]
-[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="6_cxsht"]
-[ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="7_fkld4"]
+[ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_da12c"]
+[ext_resource type="Script" uid="uid://crmxerc164n6q" path="res://code/weapons/constant_fire_weapon.gd" id="2_7ulne"]
+[ext_resource type="PackedScene" uid="uid://bnvojbycskewd" path="res://prefabs/projectiles/test_beam.tscn" id="3_da12c"]
+[ext_resource type="Script" uid="uid://co5ltw8t12p5p" path="res://code/damage/damage_controller.gd" id="4_nosfs"]
+[ext_resource type="Script" uid="uid://2ftv2rr2lasy" path="res://code/damage/damageable.gd" id="5_j1wmj"]
+[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="6_5nrh6"]
+[ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="7_a44b7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yf3ku"]
 
@@ -14,7 +14,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_miefn"]
 next_pass = SubResource("PlaceholderMaterial_da12c")
-albedo_color = Color(1, 0.415686, 0.14902, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_quigi"]
 top_radius = 0.1
@@ -24,20 +23,19 @@ height = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_recg5"]
 size = Vector3(0.182556, 0.165771, 0.972778)
 
-[node name="LaserModule" type="CollisionShape3D" node_paths=PackedStringArray("weapon", "attach_points", "sprite", "label")]
+[node name="BeamModule" type="CollisionShape3D" node_paths=PackedStringArray("weapon", "attach_points", "sprite", "label")]
 shape = SubResource("BoxShape3D_yf3ku")
-script = ExtResource("1_akoi3")
-weapon = NodePath("SpawnerWeapon")
+script = ExtResource("1_da12c")
+weapon = NodePath("Constant")
 allow_auto_fire = true
 attach_points = [NodePath("AttachPoints/AttachPoint")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 
-[node name="SpawnerWeapon" type="Node3D" parent="."]
+[node name="Constant" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.610518)
-script = ExtResource("2_nlg4d")
-cooldown = 0.5
-projectile = ExtResource("3_ts8di")
+script = ExtResource("2_7ulne")
+projectile = ExtResource("3_da12c")
 metadata/_custom_type_script = "uid://crmxerc164n6q"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -51,19 +49,19 @@ mesh = SubResource("CylinderMesh_quigi")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4399e-08, 0, 0.506178)
 
 [node name="DamageController" type="Node" parent="."]
-script = ExtResource("4_kru4r")
+script = ExtResource("4_nosfs")
 
 [node name="Damageable" type="Area3D" parent="DamageController"]
-script = ExtResource("5_w1vj3")
+script = ExtResource("5_j1wmj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00500476, -0.00528124, -0.00144887)
 shape = SubResource("BoxShape3D_recg5")
 
-[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("6_cxsht")]
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("6_5nrh6")]
 damageable = NodePath("../DamageController/Damageable")
 shape = NodePath("../DamageController/Damageable/CollisionShape3D")
 
-[node name="ModuleDisplay" parent="." instance=ExtResource("7_fkld4")]
+[node name="ModuleDisplay" parent="." instance=ExtResource("7_a44b7")]
 
 [editable path="ModuleDisplay"]

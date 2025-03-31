@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://l0jfcjl2yoei"]
 
-[ext_resource type="Script" uid="uid://kitk2b15e8wh" path="res://code/Singletons/mission_manager.gd" id="1_itu4s"]
+[ext_resource type="Script" uid="uid://kitk2b15e8wh" path="res://code/singletons/mission_manager.gd" id="1_itu4s"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_4awt5"]
 
 [node name="MissionManager" type="Node"]

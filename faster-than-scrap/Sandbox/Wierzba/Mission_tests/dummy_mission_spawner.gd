@@ -6,4 +6,4 @@ extends Node
 
 
 func _ready() -> void:
-	mission_to_spawn.start()
+	mission_to_spawn.start(get_tree().current_scene)

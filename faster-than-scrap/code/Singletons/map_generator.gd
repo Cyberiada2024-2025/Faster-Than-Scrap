@@ -22,7 +22,7 @@ func generate_map() -> void:
 			# create default escape node
 			_map_node = MissionNode.new()
 			_map_node.mission_info = MissionInfoEscape.new()
-			_map_node.mission_info.portal_position = Vector3(0, 0, 5)
+			_map_node.mission_info.portal_position = Vector3(0, 0, 15)
 		generate_map_from_node()
 	get_tree().current_scene.add_child.call_deferred(_scene)
 	## TODO SET player position
@@ -40,7 +40,7 @@ func generate_map_from_node() -> void:
 func _spawn_shop() -> void:
 	var shop = _shop_prefab.instantiate()
 	_scene.add_child.call_deferred(shop)
-	shop.position = Vector3(10, 0, 0)
+	shop.position = Vector3(12, 0, 0)
 
 
 func save_fly_scene() -> void:
@@ -50,3 +50,12 @@ func save_fly_scene() -> void:
 func set_node(new_node: MapNode) -> void:
 	_map_node = new_node
 	_scene = null
+
+
+func create_label(text: String, pos: Vector3) -> Label3D:
+	var label := Label3D.new()
+	label.text = text
+	label.font_size = 180
+	label.position = pos
+	label.rotation_degrees = Vector3(270, 0, 0)
+	return label

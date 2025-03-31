@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://beaivb4nm47co"]
+[gd_scene load_steps=10 format=3 uid="uid://beaivb4nm47co"]
 
 [ext_resource type="Script" uid="uid://dpubtuvds874u" path="res://code/ship/ship.gd" id="1_c6sek"]
 [ext_resource type="PackedScene" uid="uid://dohx5akrv2oq8" path="res://prefabs/modules/weapons/laser_weapon_module.tscn" id="2_fxmod"]
+[ext_resource type="PackedScene" uid="uid://8ymwibuv3ccw" path="res://prefabs/modules/weapons/missile_weapon_module.tscn" id="5_fb2m2"]
 [ext_resource type="PackedScene" uid="uid://67fftbosvmmt" path="res://prefabs/modules/weapons/beam_weapon_module.tscn" id="6_iruyl"]
 [ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://code/damage/damageable.gd" id="7_7weoh"]
 
@@ -9,15 +10,23 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_xsxat"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1lic5"]
+transparency = 1
+albedo_color = Color(0.14902, 1, 1, 0.321569)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qmq0u"]
+material = SubResource("StandardMaterial3D_1lic5")
+
 [node name="weapon_demo" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.96321, 0.268752, 0, -0.268752, 0.96321, 2.64744, 1.54382, 5.36035)
+transform = Transform3D(1, 0, 0, 0, 0.963209, 0.268752, 0, -0.268752, 0.963209, 2.64744, 1.54382, 5.36035)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.851304, 0.512229, 0.113591, -0.292392, 0.283404, 0.91334, 0.435647, -0.810742, 0.391035, 0, 4.85017, -0.000734568)
+transform = Transform3D(0.851304, 0.512229, 0.11359, -0.292392, 0.283404, 0.913339, 0.435647, -0.810743, 0.391035, 0, 4.85017, -0.000734568)
 
-[node name="WeaponTesting" type="Node" parent="."]
+[node name="WeaponTesting" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Ship" type="RigidBody3D" parent="WeaponTesting"]
 script = ExtResource("1_c6sek")
@@ -32,7 +41,12 @@ transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, -2, 0)
 activation_key = 69
 ship = NodePath("../Ship")
 
-[node name="Damageable" type="Area3D" parent="WeaponTesting"]
+[node name="MissileWeaponModule" parent="WeaponTesting" node_paths=PackedStringArray("ship") instance=ExtResource("5_fb2m2")]
+transform = Transform3D(-0.125605, -0.552448, -0.824029, -0.118415, 0.833018, -0.540425, 0.984988, 0.0296971, -0.170049, 0.016171, -2.98023e-08, -0.0894495)
+activation_key = 87
+ship = NodePath("../Ship")
+
+[node name="Damageable" type="Area3D" parent="WeaponTesting" groups=["affected by vortex"]]
 transform = Transform3D(0.784311, 0, 0.620368, 0, 1, 0, -0.620368, 0, 0.784311, 5.40441, -1.80464, -3.59536)
 script = ExtResource("7_7weoh")
 
@@ -41,3 +55,7 @@ shape = SubResource("BoxShape3D_rcb50")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponTesting/Damageable"]
 mesh = SubResource("BoxMesh_xsxat")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["affected by vortex"]]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.515727, -0.578066, -0.65898)
+mesh = SubResource("BoxMesh_qmq0u")

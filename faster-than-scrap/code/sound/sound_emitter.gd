@@ -4,7 +4,7 @@ extends AudioStreamPlayer3D
 
 ## Controls whether or not this emmitter allows multiple sounds to be played at the same time.
 ## If set to true, all [method start_playing] calls
-## will be ignored if the emitter is the emitter already playing. [br][br]
+## will be ignored if the emitter is already playing. [br][br]
 ##
 ## For more control over the number of sounds played at once, see:
 ## [member AudioStreamPlayer3D.max_polyphony]
@@ -12,15 +12,31 @@ extends AudioStreamPlayer3D
 
 ## When the sound emitter starts playing the sound, the [member AudioStreamPlayer3D.pitch_scale]
 ## will be set to a random value between [member min_pitch_scale] and [member max_pitch_scale].
+## [br][br]
+##
+## [b]Note:[/b] For some reason (bug in Godot?), changing pitch scale doesn't work with
+## sub-streamable audio streams (such as [AudioStreamInteractive], [AudioStreamPlaylist],
+## [AudioStreamSynchronized]).
 @export var min_pitch_scale: float = 1
 
-## When the sound emitter starts playing the sound, the [member AudioStreamPlayer3D.pitch_scale]
-## will be set to a random value between [member min_pitch_scale] and [member max_pitch_scale].
+## See: [member min_pitch_scale]
 @export var max_pitch_scale: float = 1
 
-## [TODO] doesn't work very well yet
-@export var sound_start_delay: float = 0
-@export var sound_end_delay: float = 0
+## Specifies behaviour of sound emitter when [method stop_playing] is called.
+@export var stop_behaviour: StopBehaviour = StopBehaviour.STOP_IMMEDIATELY
+
+## If [member stop_behaviour] is set to [code]TRANSITION[/code], and the audio stream is of type
+## [AudioStreamInteractive], specifies the name of the clip the playback transitions to
+## when [method stop_playing] is called. Otherwise, it is ignored.
+@export var transition_clip_name: StringName = ""
+
+enum StopBehaviour {
+	## When [method stop_playing] is called, the audio is immediately stopped.
+	STOP_IMMEDIATELY,
+	## When [method stop_playing] is called, if audio stream is of type [AudioStreamInteractive],
+	## the played audio clip is transitioned to one specified in [member transition_clip_name].
+	TRANSITION
+}
 
 
 func _can_play() -> bool:
@@ -30,15 +46,11 @@ func _can_play() -> bool:
 	return true
 
 
-func _wait(time: float) -> void:
-	await get_tree().create_timer(time).timeout
-
-
 func _set_random_pitch_scale() -> void:
 	pitch_scale = randf_range(min_pitch_scale, max_pitch_scale)
 
 
-## [TODO] Starts playing the sound. [br][br]
+## Starts playing the sound, if it's allowed (see [member allow_multiple_sounds_at_once]). [br][br]
 ##
 ## [b]Note:[/b] This function accepts a lot of arguments, with default [code]null[/code] values.
 ## All of them are ignored. The arguments are needed to make Godot recognize it as a legal function
@@ -47,8 +59,6 @@ func _set_random_pitch_scale() -> void:
 ## them here explicitly (similar to [method @GlobalScope.print]),
 ## but GDScript does not support these yet.
 func start_playing(_arg1 = null, _arg2 = null, _arg3 = null, _arg4 = null) -> void:
-	await _wait(sound_start_delay)
-
 	if not _can_play():
 		return
 
@@ -56,7 +66,7 @@ func start_playing(_arg1 = null, _arg2 = null, _arg3 = null, _arg4 = null) -> vo
 	play()
 
 
-## [TODO] Stops playing the sound. [br][br]
+## Stops playing the sound. The exact behaviour is controlled by [member stop_behaviour]. [br][br]
 ##
 ## [b]Note:[/b] This function accepts a lot of arguments, with default [code]null[/code] values.
 ## All of them are ignored. The arguments are needed to make Godot recognize it as a legal function
@@ -65,6 +75,8 @@ func start_playing(_arg1 = null, _arg2 = null, _arg3 = null, _arg4 = null) -> vo
 ## them here explicitly (similar to [method @GlobalScope.print]),
 ## but GDScript does not support these yet.
 func stop_playing(_arg1 = null, _arg2 = null, _arg3 = null, _arg4 = null) -> void:
-	await _wait(sound_end_delay)
-
-	stop()
+	if stop_behaviour == StopBehaviour.TRANSITION:
+		var playback = get_stream_playback() as AudioStreamPlaybackInteractive
+		playback.switch_to_clip_by_name(transition_clip_name)
+	else:
+		stop()

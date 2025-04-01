@@ -26,7 +26,7 @@ var was_key_pressed: bool = false
 
 var module_rigidbody_prefab = preload("res://prefabs/modules/module_rigidbody.tscn")
 
-var activation_key_saved: Key = 0
+var activation_key_saved: Key = KEY_NONE
 
 signal activated
 signal deactivated
@@ -94,7 +94,6 @@ func _on_destroy() -> void:
 	_explode()
 	for child in child_modules:
 		var rb: RigidBody3D = module_rigidbody_prefab.instantiate()
-		var root = get_tree().get_root()
 		get_tree().get_root().add_child(rb)  # attach to scene root
 		child.reparent(rb)
 		rb.linear_velocity = ship.linear_velocity
@@ -105,7 +104,7 @@ func _on_destroy() -> void:
 
 func deactivate() -> void:
 	activation_key_saved = activation_key
-	activation_key = 0
+	activation_key = KEY_NONE
 
 
 func activate() -> void:
@@ -138,17 +137,17 @@ func _on_key_change() -> void:
 		if text.length() <= 0:
 			return
 		if text.length() <= 3:
-			label.font_size = 160 / text.length()
+			label.font_size = int(160.0 / text.length())
 		else:
-			label.font_size = 160 / text.length() * 2
+			label.font_size = int(160.0 / text.length() * 2)
 
 
 func has_child_module() -> bool:
 	return child_modules.size() > 0
 
 
-func set_ship_reference(ship: Ship) -> void:
-	self.ship = ship
+func set_ship_reference(ship_ref: Ship) -> void:
+	ship = ship_ref
 
 
 ## Returns the node3D which is the center of the attach point.
@@ -171,9 +170,9 @@ func create_ghost() -> ModuleGhost:
 	ghost.global_position = global_position
 
 	# duplicate module
-	var duplicate: Node = self.duplicate()
-	ghost.add_child(duplicate)
-	duplicate.position = Vector3.ZERO
+	var duplicate_node: Node = self.duplicate()
+	ghost.add_child(duplicate_node)
+	duplicate_node.position = Vector3.ZERO
 	ghost.module_to_ignore = self
 
 	return ghost

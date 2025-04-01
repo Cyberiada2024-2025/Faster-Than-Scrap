@@ -47,6 +47,6 @@ func _recoil(force_multiplier: float) -> void:
 	)
 
 
-func set_ship_reference(ship: Ship) -> void:
-	super(ship)
-	weapon.ship = ship
+func set_ship_reference(ship_ref: Ship) -> void:
+	super(ship_ref)
+	weapon.ship = ship_ref

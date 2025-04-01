@@ -1,15 +1,15 @@
 [gd_scene load_steps=12 format=3 uid="uid://rk0gm82fa8wn"]
 
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="1_6juta"]
-[ext_resource type="Script" uid="uid://840fiyaanxsl" path="res://Sandbox/Surma/prototype_enemy.gd" id="1_soqmw"]
+[ext_resource type="Script" uid="uid://d3bc6mduda561" path="res://Sandbox/Surma/prototype_enemy.gd" id="1_soqmw"]
 [ext_resource type="Script" uid="uid://dpubtuvds874u" path="res://code/ship/ship.gd" id="2_lvanf"]
-[ext_resource type="Script" uid="uid://4cghdv6buscd" path="res://code/enemy/states/aggressive.gd" id="2_ptaw0"]
-[ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="3_824ij"]
-[ext_resource type="Script" uid="uid://co8l81epe742x" path="res://code/enemy/states/defensive.gd" id="3_qoxwt"]
-[ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/idle.gd" id="4_1i4bi"]
-[ext_resource type="Script" uid="uid://cjvpeo4f2tmj1" path="res://code/enemy/transitions/outOfRange.gd" id="4_hcry6"]
-[ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="5_3j72n"]
-[ext_resource type="Script" uid="uid://dugu022f8k6tr" path="res://code/enemy/transitions/inRange.gd" id="7_usy60"]
+[ext_resource type="Script" uid="uid://b3051ns4cwsbh" path="res://code/enemy/states/aggressive.gd" id="2_ptaw0"]
+[ext_resource type="Script" uid="uid://b4u2okuaejm7p" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="3_824ij"]
+[ext_resource type="Script" uid="uid://d0a55p12idkw8" path="res://code/enemy/states/defensive.gd" id="3_qoxwt"]
+[ext_resource type="Script" uid="uid://bu6aqd7tvo7wf" path="res://code/enemy/states/idle.gd" id="4_1i4bi"]
+[ext_resource type="Script" uid="uid://eptxlf1e3vj6" path="res://code/enemy/transitions/outOfRange.gd" id="4_hcry6"]
+[ext_resource type="Script" uid="uid://c8ctfblk4bjfr" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="5_3j72n"]
+[ext_resource type="Script" uid="uid://cx30w4kl5k8gy" path="res://code/enemy/transitions/inRange.gd" id="7_usy60"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qicyb"]
 size = Vector3(2.14648, 1, 2.06055)

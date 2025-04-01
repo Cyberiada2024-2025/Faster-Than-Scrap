@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5ri43mxkksdw"]
 
-[ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/UI/Minimap/Placeholder/Enemy.png" id="1_5j84t"]
-[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="2_rgwxi"]
+[ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/ui/minimap/placeholder/Enemy.png" id="1_5j84t"]
+[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="2_rgwxi"]
 
 [node name="ModuleDisplay" type="Node3D"]
 

@@ -52,5 +52,4 @@ activation_key = 87
 ship = NodePath("..")
 parent_module = NodePath("../BaseModule")
 
-[node name="AnimationPlayer" parent="." node_paths=PackedStringArray("leaving_body") instance=ExtResource("5_oqsi0")]
-leaving_body = NodePath("..")
+[node name="AnimationPlayer" parent="." instance=ExtResource("5_oqsi0")]

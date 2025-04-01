@@ -12,8 +12,8 @@ extends Node3D
 @export var prepare_time: float = 4.0
 @export var jump_time: float = 2.0
 
-## variable that block multiple activation of this animation
 var ending: Callable
+## variable that block multiple activation of this animation
 var callable: bool = true
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://5idoso7tu4th"]
+[gd_scene load_steps=9 format=3 uid="uid://dhusyhgo5nvnn"]
 
 [ext_resource type="Script" uid="uid://dtqvp1s2omow6" path="res://code/evironment/setup_fly_scene.gd" id="1_m7irr"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="2_rl7ii"]

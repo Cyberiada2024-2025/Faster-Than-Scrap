@@ -17,8 +17,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	energy += restore * delta
-	#print(global_position)
-
 
 
 ## Called when module wants to use the ship's energy [member Ship.energy].

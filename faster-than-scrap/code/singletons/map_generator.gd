@@ -50,12 +50,3 @@ func save_fly_scene() -> void:
 func set_node(new_node: MapNode) -> void:
 	_map_node = new_node
 	_scene = null
-
-
-func create_label(text: String, pos: Vector3) -> Label3D:
-	var label := Label3D.new()
-	label.text = text
-	label.font_size = 180
-	label.position = pos
-	label.rotation_degrees = Vector3(270, 0, 0)
-	return label

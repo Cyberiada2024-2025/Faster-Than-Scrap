@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cejxkr8qd2e17"]
 
 [ext_resource type="Script" uid="uid://cntqnnyriiru2" path="res://code/pause_menu.gd" id="1_hf53u"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_8vm25"]
-font_size = 26
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_iyb4f"]
 
 [node name="PauseMenu" type="Control"]
+process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,61 +29,30 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -83.0
-offset_right = 83.0
+offset_left = -135.0
+offset_right = 135.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="ResumeText" type="Label" parent="ColorRect/VBoxContainer"]
+[node name="Resume" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-text = " RESUME "
-label_settings = SubResource("LabelSettings_8vm25")
-horizontal_alignment = 1
-vertical_alignment = 1
+focus_neighbor_top = NodePath("../Exit")
+focus_neighbor_bottom = NodePath("../Exit")
+theme_override_font_sizes/font_size = 30
+text = "RESUME
+"
 
-[node name="Resume" type="Button" parent="ColorRect/VBoxContainer/ResumeText"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ResumeBack" type="Panel" parent="ColorRect/VBoxContainer/ResumeText"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ExitText" type="Label" parent="ColorRect/VBoxContainer"]
+[node name="Exit" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-text = " EXIT TO MAIN MENU "
-label_settings = SubResource("LabelSettings_8vm25")
-horizontal_alignment = 1
-vertical_alignment = 1
+focus_neighbor_top = NodePath("../Resume")
+focus_neighbor_bottom = NodePath("../Resume")
+theme_override_font_sizes/font_size = 30
+text = "EXIT TO MAIN MENU
+"
 
-[node name="Exit" type="Button" parent="ColorRect/VBoxContainer/ExitText"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource("2_iyb4f")
 
-[node name="ExitBack" type="Panel" parent="ColorRect/VBoxContainer/ExitText"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[connection signal="pressed" from="ColorRect/VBoxContainer/ResumeText/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/ExitText/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

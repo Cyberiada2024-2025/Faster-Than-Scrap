@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnnvqogplwfqa"]
+[gd_scene load_steps=5 format=3 uid="uid://bnnvqogplwfqa"]
 
 [ext_resource type="Script" uid="uid://dtqvp1s2omow6" path="res://code/evironment/setup_fly_scene.gd" id="1_nuays"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="2_g53x4"]
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="3_jnhio"]
+[ext_resource type="PackedScene" uid="uid://cejxkr8qd2e17" path="res://prefabs/pause_menu.tscn" id="4_nnjch"]
 
 [node name="Space" type="Node3D"]
 
@@ -18,3 +19,5 @@ metadata/_custom_type_script = "uid://ckk7d55t1hi01"
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.26226, 2.66942, -2.54272)
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("3_jnhio")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_nnjch")]

@@ -15,7 +15,7 @@ extends Node3D
 var _main_camera: Camera3D
 var _module_camera: Camera3D
 var _minimap_camera: Camera3D
-var tween: Tween
+var _tween: Tween
 
 
 func _ready() -> void:
@@ -42,5 +42,5 @@ func _process(_delta: float) -> void:
 
 func zoom_camera(strength: int) -> void:
 	var fov = clampf(_main_camera.fov + strength, min_zoom, max_zoom)
-	tween = create_tween()
-	tween.tween_property(_main_camera, "fov", fov, zoom_time)
+	_tween = create_tween()
+	_tween.tween_property(_main_camera, "fov", fov, zoom_time)

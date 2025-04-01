@@ -119,7 +119,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_ojbcp"]
-resource_name = "prepere_to_jump"
+resource_name = "prepare_to_jump"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -137,7 +137,7 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_n2c2i"),
 &"jump": SubResource("Animation_i735s"),
-&"prepere_to_jump": SubResource("Animation_ojbcp")
+&"prepare_to_jump": SubResource("Animation_ojbcp")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojbcp"]

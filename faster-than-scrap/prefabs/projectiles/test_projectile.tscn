@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://whj7or7t81c0"]
 
-[ext_resource type="Script" path="res://code/ship/projectiles/projectile.gd" id="1_viqtj"]
+[ext_resource type="Script" uid="uid://dg1bfkpdfdcjt" path="res://code/ship/projectiles/projectile.gd" id="1_viqtj"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_386xi"]
 

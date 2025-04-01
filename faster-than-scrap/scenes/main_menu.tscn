@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dyj46rbaohfnw"]
 
-[ext_resource type="Script" path="res://code/main_menu.gd" id="1_4xnjd"]
+[ext_resource type="Script" uid="uid://bdlylhyalw83" path="res://code/main_menu.gd" id="1_4xnjd"]
 [ext_resource type="Texture2D" uid="uid://ckvfh4pwc78ge" path="res://art/textures/title_placeholder.png" id="1_kjdh4"]
-[ext_resource type="Script" path="res://code/scene_loader.gd" id="3_0uprt"]
+[ext_resource type="Script" uid="uid://bwcxo1cfxum1d" path="res://code/scene_loader.gd" id="3_0uprt"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b670jj7lnajsd"]
+[gd_scene load_steps=10 format=3 uid="uid://b670jj7lnajsd"]
 
-[ext_resource type="Shader" path="res://art/materials/environment/SpaceTexture.gdshader" id="1_8c7b8"]
+[ext_resource type="Shader" uid="uid://bhkhtqnawsg3c" path="res://art/materials/environment/SpaceTexture.gdshader" id="1_8c7b8"]
 [ext_resource type="Texture2D" uid="uid://kqv7cdehidxy" path="res://art/textures/environment/SpaceTexture2.png" id="2_270j1"]
-[ext_resource type="Script" path="res://code/evironment/space_environment.gd" id="3_2xw8w"]
+[ext_resource type="Script" uid="uid://cbp0bbnhepff0" path="res://code/evironment/space_environment.gd" id="3_2xw8w"]
+[ext_resource type="PackedScene" uid="uid://qdf65v51l847" path="res://art/Models/asteroids/asteroid_3/asteroid_3.glb" id="4_sxofs"]
+[ext_resource type="PackedScene" uid="uid://drt0rod4vx4jk" path="res://art/Models/asteroids/asteroid_2/asteroid_2.glb" id="5_4frsm"]
+[ext_resource type="PackedScene" uid="uid://n2t3xcv14gm8" path="res://art/Models/asteroids/asteroid_1/asteroid_1.glb" id="6_p8n2o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_phh7h"]
 shader = ExtResource("1_8c7b8")
@@ -53,3 +56,12 @@ transform = Transform3D(0.978704, 0.0383074, -0.201673, 0.192606, -0.511209, 0.8
 light_color = Color(0.915499, 0.985235, 0.977985, 1)
 light_energy = 1.6
 shadow_enabled = true
+
+[node name="asteroid_3" parent="." instance=ExtResource("4_sxofs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0870443, 0, -3.46728)
+
+[node name="asteroid_2" parent="." instance=ExtResource("5_4frsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90995, 0, -4.50071)
+
+[node name="asteroid_1" parent="." instance=ExtResource("6_p8n2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.07182, 0, -2.79975)

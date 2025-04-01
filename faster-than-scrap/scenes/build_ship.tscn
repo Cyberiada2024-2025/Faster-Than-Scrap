@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dtjixr3e113vw"]
 
-[ext_resource type="Script" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
+[ext_resource type="Script" uid="uid://5vh0vmjbeny1" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
 [ext_resource type="PackedScene" uid="uid://cpxkxwkuyh6l2" path="res://prefabs/ships/player_ship_example.tscn" id="3_gsuxg"]
-[ext_resource type="Script" path="res://code/ship/modules/module.gd" id="3_kgbhb"]
+[ext_resource type="Script" uid="uid://nw7ym0ll60y0" path="res://code/ship/modules/module.gd" id="3_kgbhb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ka4ql"]
 size = Vector3(1, 1, 4)

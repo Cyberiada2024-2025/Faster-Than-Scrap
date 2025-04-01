@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqaprpym1uev"]
 
-[ext_resource type="Script" path="res://code/ship/modules/cockpit.gd" id="1_q5512"]
+[ext_resource type="Script" uid="uid://cxdni2dn4a1un" path="res://code/ship/modules/cockpit.gd" id="1_q5512"]
 [ext_resource type="Texture2D" uid="uid://dmggh2ftab7ht" path="res://art/textures/UI/Module Icons/Placeholder/Cockpit Icon.png" id="2_mk35a"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6fvvx"]

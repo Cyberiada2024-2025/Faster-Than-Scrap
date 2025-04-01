@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://1brryvr73lx3"]
 
-[ext_resource type="Script" path="res://code/building_ship/ship_builder.gd" id="1_tic1n"]
+[ext_resource type="Script" uid="uid://5vh0vmjbeny1" path="res://code/building_ship/ship_builder.gd" id="1_tic1n"]
 [ext_resource type="PackedScene" uid="uid://cpxkxwkuyh6l2" path="res://prefabs/ships/player_ship_example.tscn" id="2_marle"]
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="3_5rsdf"]
-[ext_resource type="Script" path="res://code/scene_loader.gd" id="4_v00nt"]
-[ext_resource type="PackedScene" path="res://prefabs/hud.tscn" id="5_abx51"]
+[ext_resource type="Script" uid="uid://bwcxo1cfxum1d" path="res://code/scene_loader.gd" id="4_v00nt"]
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="5_abx51"]
 
 [node name="BuildShip" type="Node3D"]
 

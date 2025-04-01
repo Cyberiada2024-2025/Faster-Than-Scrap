@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://cv74m3sbgs278"]
+
+[ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_2shb0"]
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="1_cqaxs"]
+[ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="1_ifny6"]
+[ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/enemies/fast_enemy.tscn" id="4_2shb0"]
+[ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/enemies/heavy_enemy.tscn" id="5_eqgwe"]
+[ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/enemies/stationary_enemy.tscn" id="6_e40t7"]
+
+[node name="EnemyTest" type="Node2D"]
+
+[node name="SpaceEnvironment" parent="." instance=ExtResource("1_2shb0")]
+
+[node name="MainCamera" parent="." instance=ExtResource("1_cqaxs")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 30, 0)
+main_camera_offset = Vector3(0, 30, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.35939, 4.43541, 0)
+
+[node name="FlyableShip" parent="." instance=ExtResource("1_ifny6")]
+
+[node name="HeavyEnemy" parent="." instance=ExtResource("5_eqgwe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.36375e-07, 0, 19.134)
+
+[node name="StationaryEnemy" parent="." instance=ExtResource("6_e40t7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.4593, 3.8147e-06, -12.51)
+
+[node name="FastEnemy" parent="." instance=ExtResource("4_2shb0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.438, 0, 9.07627)

@@ -2,14 +2,14 @@ class_name ShieldModule
 
 extends Module
 
+signal shield_damaged
+signal shield_broken
+
 @export var energy_per_turning: float
 @export var energy_per_sec: float
 @export var energy_per_dmg: float
 @export var shield: Shield
 @export var collider: CollisionShape3D
-
-signal shield_damaged
-signal shield_broken
 
 
 func _process(delta: float) -> void:

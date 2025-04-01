@@ -10,9 +10,6 @@ extends Module
 @export var allow_auto_fire: bool
 @export var recoil_force: float = 0
 
-signal activated
-signal deactivated
-
 
 func _ready() -> void:
 	super()

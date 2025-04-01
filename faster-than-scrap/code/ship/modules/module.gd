@@ -28,6 +28,11 @@ var module_rigidbody_prefab = preload("res://prefabs/modules/module_rigidbody.ts
 
 var activation_key_saved: Key = 0
 
+signal activated
+signal deactivated
+signal damaged
+signal destroyed
+
 
 func _ready() -> void:
 	_on_key_change()
@@ -74,6 +79,7 @@ func take_damage(damage: Damage) -> void:
 	update_sprite()
 	if hp <= 0:
 		_on_destroy()
+	damaged.emit()
 
 
 func update_sprite() -> void:
@@ -94,6 +100,7 @@ func _on_destroy() -> void:
 		rb.linear_velocity = ship.linear_velocity
 		child.deactivate()
 	queue_free()  # delete self as an object
+	destroyed.emit()
 
 
 func deactivate() -> void:

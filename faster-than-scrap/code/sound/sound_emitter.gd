@@ -8,7 +8,7 @@ extends AudioStreamPlayer3D
 ##
 ## For more control over the number of sounds played at once, see:
 ## [member AudioStreamPlayer3D.max_polyphony]
-@export var allow_multiple_sounds_at_once: bool = false
+@export var allow_multiple_sounds_at_once: bool = true
 
 ## When the sound emitter starts playing the sound, the [member AudioStreamPlayer3D.pitch_scale]
 ## will be set to a random value between [member min_pitch_scale] and [member max_pitch_scale].

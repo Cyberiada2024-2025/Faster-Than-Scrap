@@ -22,7 +22,8 @@ func move_target_spotted(min_range_to_player: int, target: Ship) -> void:
 		ship_controller.velocity = ship_controller.speed * ship_controller.basis.z * -1
 	elif !circle_target:
 		ship_controller.velocity = ship_controller.velocity.lerp(Vector3.ZERO, 0.04)
-		ship_controller.basis = ship_controller.basis.slerp(Basis.looking_at(direction), ship_controller.rotation_speed)
+		target_basis = Basis.looking_at(direction)
+		ship_controller.basis = ship_controller.basis.slerp(target_basis, ship_controller.rotation_speed)
 	else:
 		ship_controller.velocity = ship_controller.speed * ship_controller.basis.z * -1
 	ship_controller.move_and_slide()

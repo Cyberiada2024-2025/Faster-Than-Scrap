@@ -22,7 +22,6 @@ radius = 2.1533
 size = Vector3(2.21362, 1, 4.16486)
 
 [node name="StationaryEnemy" type="CharacterBody3D" node_paths=PackedStringArray("weapon", "ship")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_a1lma")
 speed = 0
 rotation_speed = 0.02

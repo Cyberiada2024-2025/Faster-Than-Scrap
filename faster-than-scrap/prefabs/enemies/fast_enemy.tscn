@@ -23,7 +23,6 @@ radius = 1.636
 size = Vector3(2.86816, 1, 2.90552)
 
 [node name="FastEnemy" type="CharacterBody3D" node_paths=PackedStringArray("weapon", "ship")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_j84c1")
 weapon = NodePath("Weapon")
 ship = NodePath("Ship")

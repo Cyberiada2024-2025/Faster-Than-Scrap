@@ -33,6 +33,8 @@ func use_energy(amount: float) -> bool:
 	if energy < amount:
 		return false
 	energy -= amount
+	if energy > max_energy:
+		energy = max_energy
 	_on_energy_change()
 	return true
 
@@ -42,6 +44,8 @@ func _on_energy_change() -> void:
 	pass
 
 func _on_take_damage(damage: Damage, source: Node) -> void:
+	# damage seems to not be processed unless function takes ALL the arguments given by signal
+	var fuckinglinter: Node = source
 	hp -= damage.value
 	if hp <= 0:
 		on_destroy()

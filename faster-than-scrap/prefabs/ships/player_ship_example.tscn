@@ -12,9 +12,9 @@ script = ExtResource("1_ddodb")
 cockpit = NodePath("Cockpit")
 leave_animation = NodePath("AnimationPlayer")
 
-[node name="Cockpit" parent="." node_paths=PackedStringArray("ship") instance=ExtResource("2_4lw14")]
+[node name="Cockpit" parent="." instance=ExtResource("2_4lw14")]
+gravity_scale = 0.0
 activation_key = 66
-ship = NodePath("..")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Cockpit"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -34,7 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.12175)
 activation_key = 65
 ship = NodePath("..")
 parent_module = NodePath("../Cockpit")
-child_modules = [NodePath("../ModuleBase"), NodePath("../ModuleBase3")]
+child_modules = [null, null]
 
 [node name="ModuleBase3" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("3_a4hie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05367, 0, 1.08632)

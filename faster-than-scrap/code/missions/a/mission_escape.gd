@@ -13,6 +13,7 @@ func setup() -> void:
 	# create escape object
 	portal = MeshInstance3D.new()  # TODO swap to instantiating the portal asset
 	portal.mesh = BoxMesh.new()
+	portal.add_child(create_label("EXIT"))
 	MissionManager.get_tree().current_scene.add_child(portal)
 
 	# position it
@@ -23,7 +24,7 @@ func _process(_delta: float) -> void:
 	super(_delta)
 	if _ended():
 		return
-	if portal.position.distance_to(GameManager.player_ship.position) < 2:
+	if portal.position.distance_to(GameManager.player_ship.position) < 4:
 		print("ESCAPE SUCCESS")
 		state = MissionState.FINISHED
 		finished.emit(self)

@@ -40,7 +40,7 @@ projectile = ExtResource("3_ok4vr")
 [node name="Ship" type="RigidBody3D" parent="."]
 gravity_scale = 0.0
 script = ExtResource("4_s1yp8")
-max_hp = 1.0
+max_hp = 20.0
 
 [node name="StateMachineEnemy" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_q0blx")

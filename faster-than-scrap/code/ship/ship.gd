@@ -17,7 +17,6 @@ var hp: float = 10
 
 func _ready() -> void:
 	hp = max_hp
-	pass
 
 
 func _process(delta: float) -> void:

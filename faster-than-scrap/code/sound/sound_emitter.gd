@@ -2,6 +2,14 @@ class_name SoundEmitter
 
 extends AudioStreamPlayer3D
 
+enum StopBehaviour {
+	## When [method stop_playing] is called, the audio is immediately stopped.
+	STOP_IMMEDIATELY,
+	## When [method stop_playing] is called, if audio stream is of type [AudioStreamInteractive],
+	## the played audio clip is transitioned to one specified in [member transition_clip_name].
+	TRANSITION
+}
+
 ## Controls whether or not this emmitter allows multiple sounds to be played at the same time.
 ## If set to true, all [method start_playing] calls
 ## will be ignored if the emitter is already playing. [br][br]
@@ -29,14 +37,6 @@ extends AudioStreamPlayer3D
 ## [AudioStreamInteractive], specifies the name of the clip the playback transitions to
 ## when [method stop_playing] is called. Otherwise, it is ignored.
 @export var transition_clip_name: StringName = ""
-
-enum StopBehaviour {
-	## When [method stop_playing] is called, the audio is immediately stopped.
-	STOP_IMMEDIATELY,
-	## When [method stop_playing] is called, if audio stream is of type [AudioStreamInteractive],
-	## the played audio clip is transitioned to one specified in [member transition_clip_name].
-	TRANSITION
-}
 
 
 func _can_play() -> bool:

@@ -5,6 +5,11 @@ extends CollisionShape3D
 ## Base class for all modules
 ## The object should have scale 1 to work properly!
 
+signal activated
+signal deactivated
+signal damaged
+signal destroyed
+
 @export var activation_key: Key = KEY_NONE
 @export var max_hp: float = 100
 @export var hp: float = 100
@@ -27,11 +32,6 @@ var was_key_pressed: bool = false
 var module_rigidbody_prefab = preload("res://prefabs/modules/module_rigidbody.tscn")
 
 var activation_key_saved: Key = KEY_NONE
-
-signal activated
-signal deactivated
-signal damaged
-signal destroyed
 
 
 func _ready() -> void:

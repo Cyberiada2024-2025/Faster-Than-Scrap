@@ -29,3 +29,12 @@ func _process(_delta: float) -> void:
 ## Either by success or failure
 func _ended() -> bool:
 	return state == MissionState.FINISHED or state == MissionState.FAILED
+
+
+func create_label(text: String) -> Label3D:
+	var label := Label3D.new()
+	label.text = text
+	label.font_size = 180
+	label.position = Vector3(0, 0, 2)
+	label.rotation_degrees = Vector3(270, 0, 0)
+	return label

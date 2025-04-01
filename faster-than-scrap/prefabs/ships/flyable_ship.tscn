@@ -4,9 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="1_odfy5"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="2_eda7p"]
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="3_ymjaj"]
+
 [ext_resource type="Texture2D" uid="uid://5sl7fehpl0rk" path="res://art/textures/ui/minimap/placeholder/player_mini.png" id="5_oqsi0"]
 
+
 [node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "modules")]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 gravity_scale = 0.0
 script = ExtResource("1_keeht")
 cockpit = NodePath("Cockpit")
@@ -14,21 +18,20 @@ modules = [null, null, null, null, null]
 
 [node name="Cockpit" parent="." node_paths=PackedStringArray("ship", "child_modules") instance=ExtResource("1_odfy5")]
 ship = NodePath("..")
-child_modules = [NodePath("../BaseModule"), NodePath("../Thruster Backward")]
+child_modules = [null, null]
 
 [node name="BaseModule" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("2_eda7p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0289251, 0, -1.25452)
 ship = NodePath("..")
 parent_module = NodePath("../Cockpit")
-child_modules = [NodePath("../Thruster Forward")]
+child_modules = [null]
 
-[node name="Thruster Backward" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("3_ymjaj")]
-transform = Transform3D(-1, 0, 7.54979e-08, 0, 1, 0, -7.54979e-08, 0, -1, -0.0145017, 0, 1.61053)
+[node name="Thruster Backward" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("3_ymjaj")]
+transform = Transform3D(-1, 0, 7.54979e-08, 0, 1, 0, -7.54979e-08, 0, -1, -0.0145017, 0, 2.46471)
 recoil_force = 300.0
 activation_key = 83
 ship = NodePath("..")
 parent_module = NodePath("../Cockpit")
-child_modules = [NodePath("../Thruster Right"), NodePath("../Thruster Left")]
 
 [node name="Thruster Right" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("3_ymjaj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.56632, 0, 2.0007)
@@ -51,6 +54,7 @@ activation_key = 87
 ship = NodePath("..")
 parent_module = NodePath("../BaseModule")
 
+
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-5, 4.37114e-07, 0, 1.91069e-14, 2.18557e-07, 5, 4.37114e-07, 5, -2.18557e-07, 0, 0, 0)
 layers = 4
@@ -58,3 +62,4 @@ modulate = Color(0, 1.25, 0.43, 1)
 double_sided = false
 no_depth_test = true
 texture = ExtResource("5_oqsi0")
+

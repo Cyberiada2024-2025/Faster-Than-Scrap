@@ -1,8 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://whj7or7t81c0"]
 
+
 [ext_resource type="Script" uid="uid://2uexqgp76p1n" path="res://code/ship/projectiles/projectile.gd" id="1_nnrsk"]
 [ext_resource type="Script" uid="uid://7rxxtodxpx1d" path="res://code/damage/damage_area_3d.gd" id="2_dbj64"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_dpdsj"]
+
 
 [sub_resource type="Curve" id="Curve_4quhm"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -31,6 +33,7 @@ radius = 0.1
 [node name="TestProjectile" type="Node3D"]
 script = ExtResource("1_nnrsk")
 velocity = SubResource("Curve_4quhm")
+
 velocity_multiplier = 50.0
 lifetime = 2.0
 
@@ -39,7 +42,9 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 mesh = SubResource("CylinderMesh_386xi")
 
 [node name="DamageArea3D" type="Area3D" parent="."]
+
 collision_layer = 2
+
 collision_mask = 2
 input_ray_pickable = false
 monitorable = false

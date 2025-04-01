@@ -108,10 +108,9 @@ viewport_path = NodePath("MinimapViewport")
 
 [node name="MainCamera" type="Camera3D" node_paths=PackedStringArray("energy_bar")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
-cull_mask = 1048569
-current = true
 script = ExtResource("1_x65cj")
 energy_bar = NodePath("HUD/Energy Bar")
+main_camera_offset = Vector3(0, 25, 0)
 
 [node name="ModuleViewport" type="SubViewport" parent="."]
 use_hdr_2d = true
@@ -122,6 +121,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10,
 cull_mask = 2
 environment = SubResource("Environment_s7i6o")
 projection = 1
+current = true
 fov = 37.8493
 size = 10.0
 
@@ -134,6 +134,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10,
 cull_mask = 4
 environment = SubResource("Environment_s7i6o")
 projection = 1
+current = true
 fov = 37.8493
 size = 200.0
 

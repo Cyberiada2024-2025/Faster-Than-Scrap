@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://5lsgaj0hoqfu" path="res://prefabs/vfx/leave_animation.tscn" id="6_a7hvd"]
 
 [node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "modules", "leave_animation")]
+axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 gravity_scale = 0.0
@@ -61,5 +62,4 @@ activation_key = 69
 ship = NodePath("..")
 parent_module = NodePath("../Thruster Backward")
 
-[node name="AnimationPlayer" parent="." node_paths=PackedStringArray("leaving_body") instance=ExtResource("6_a7hvd")]
-leaving_body = NodePath("..")
+[node name="AnimationPlayer" parent="." instance=ExtResource("6_a7hvd")]

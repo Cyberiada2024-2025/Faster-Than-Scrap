@@ -21,6 +21,7 @@ GameManager="*res://prefabs/singletons/game_manager.tscn"
 MissionManager="*res://prefabs/singletons/mission_manager.tscn"
 MapGenerator="*res://code/Singletons/map_generator.gd"
 MapSaver="*res://code/Singletons/map_saver.gd"
+BossManager="*res://code/singletons/boss_manager.gd"
 
 [display]
 

@@ -10,6 +10,8 @@ extends Node3D
 
 @export var restore: float = 10
 
+@export var leave_animation: LeavingAnimation
+
 
 func _ready() -> void:
 	pass
@@ -36,4 +38,8 @@ func _on_energy_change() -> void:
 
 
 func on_destroy() -> void:
+	pass
+
+
+func leave_map() -> void:
 	pass

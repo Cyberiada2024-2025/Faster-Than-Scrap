@@ -15,7 +15,7 @@ var player_ship: PlayerShip
 # Called when the node enters the scene tree for the first time.
 func _enter_tree() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
-	player_ship = preload("res://prefabs/ships/flyable_ship_with_guns.tscn").instantiate()
+	player_ship = preload("res://prefabs/ships/flyable_ship.tscn").instantiate()
 
 
 func set_game_state(new_state: GameState.State) -> void:

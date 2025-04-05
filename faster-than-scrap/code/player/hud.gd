@@ -2,6 +2,8 @@ class_name Hud
 
 extends Node3D
 
+static var instance: Hud
+
 @export var energy_bar: ResourceBar
 
 @export var main_camera_offset: Vector3 = Vector3(0, 40, 0)
@@ -11,8 +13,6 @@ extends Node3D
 @export var zoom_time := 0.2
 @export var max_zoom := 100
 @export var min_zoom := 50
-
-static var instance: Hud
 
 var _main_camera: Camera3D
 var _module_camera: Camera3D

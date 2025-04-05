@@ -13,14 +13,14 @@
 [ext_resource type="Script" uid="uid://co8l81epe742x" path="res://code/enemy/states/defensive.gd" id="9_3xej7"]
 [ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="10_va4ao"]
 [ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/idle.gd" id="11_r287w"]
-[ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://code/damage/damageable.gd" id="14_j3n44"]
+[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="14_sjc04"]
 [ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/ui/minimap/placeholder/Enemy.png" id="15_sjc04"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sjc04"]
 radius = 1.636
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_td73x"]
-size = Vector3(2.86816, 1, 2.90552)
+[sub_resource type="BoxShape3D" id="BoxShape3D_sjc04"]
+size = Vector3(2.25854, 1, 2.0509)
 
 [node name="FastEnemy" type="CharacterBody3D" node_paths=PackedStringArray("weapon", "ship")]
 script = ExtResource("1_j84c1")
@@ -28,7 +28,7 @@ weapon = NodePath("Weapon")
 ship = NodePath("Ship")
 
 [node name="Weapon" type="Node3D" parent="." node_paths=PackedStringArray("ship")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.11178)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.85814)
 script = ExtResource("2_urbfc")
 ship = NodePath("../Ship")
 energy_cost = 20.0
@@ -94,6 +94,7 @@ script = ExtResource("11_r287w")
 
 [node name="InRange" type="Node" parent="StateMachineEnemy/Idle" node_paths=PackedStringArray("new_state")]
 script = ExtResource("8_1nwwr")
+range_treshold = 50
 new_state = NodePath("../../Aggressive")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
@@ -117,12 +118,11 @@ smooth_faces = false
 transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, 0.385817)
 shape = SubResource("SphereShape3D_sjc04")
 
-[node name="Damageable" type="Area3D" parent="."]
-script = ExtResource("14_j3n44")
+[node name="DamageController" parent="." instance=ExtResource("14_sjc04")]
 
-[node name="DamageCollider" type="CollisionShape3D" parent="Damageable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0463867, 0, 0.61145)
-shape = SubResource("BoxShape3D_td73x")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00402832, 0, 0.0523071)
+shape = SubResource("BoxShape3D_sjc04")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-1.5, 2.26494e-07, 9.90035e-15, 0, -6.55671e-08, 1.5, 2.26494e-07, 1.5, 6.55671e-08, 0, 0, 0)
@@ -132,4 +132,6 @@ double_sided = false
 no_depth_test = true
 texture = ExtResource("15_sjc04")
 
-[connection signal="damaged" from="Damageable" to="Ship" method="_on_take_damage"]
+[connection signal="damaged" from="DamageController" to="Ship" method="_on_take_damage"]
+
+[editable path="DamageController"]

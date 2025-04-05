@@ -39,6 +39,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 mesh = SubResource("CylinderMesh_386xi")
 
 [node name="DamageArea3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
 input_ray_pickable = false
 monitorable = false
 script = ExtResource("2_alik2")

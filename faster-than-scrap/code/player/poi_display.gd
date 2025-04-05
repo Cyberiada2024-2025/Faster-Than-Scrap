@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 
 ## Whether POI should be visible in any way
 func _poi_in_range() -> bool:
-	return GameManager.player_ship.global_position.distance_to(global_position) > max_range
+	return GameManager.player_ship.global_position.distance_to(global_position) <= max_range
 
 
 func _poi_visible_on_minimap() -> bool:

@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfsha0ojxf28b"]
+
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="1_3iupj"]
+[ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/player/player_ship.gd" id="2_7ywwf"]
+[ext_resource type="Script" uid="uid://bcapkc4tl2hrc" path="res://code/player/poi_display.gd" id="3_ynwq3"]
+[ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/ui/minimap/placeholder/Enemy.png" id="4_ewl3i"]
+[ext_resource type="Texture2D" uid="uid://5sl7fehpl0rk" path="res://art/textures/ui/minimap/placeholder/player_mini.png" id="5_yxbfi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ywwf"]
+
+[node name="PoiArrowTest" type="Node3D"]
+
+[node name="MainCamera" parent="." instance=ExtResource("1_3iupj")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_7ywwf")
+
+[node name="PlayerShip" type="Node3D" parent="."]
+script = ExtResource("2_7ywwf")
+metadata/_custom_type_script = "uid://dlssaqrdqhvay"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="POIDisplay" type="Node3D" parent="." node_paths=PackedStringArray("sprite", "arrow")]
+script = ExtResource("3_ynwq3")
+max_range = 5.0
+sprite = NodePath("Sprite3D")
+arrow = NodePath("Sprite3D2")
+metadata/_custom_type_script = "uid://bcapkc4tl2hrc"
+
+[node name="Sprite3D" type="Sprite3D" parent="POIDisplay"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+layers = 4
+texture = ExtResource("4_ewl3i")
+
+[node name="Sprite3D2" type="Sprite3D" parent="POIDisplay"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0)
+layers = 4
+texture = ExtResource("5_yxbfi")

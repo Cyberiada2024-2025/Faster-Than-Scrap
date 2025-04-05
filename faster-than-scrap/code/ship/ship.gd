@@ -13,10 +13,10 @@ signal destroyed()
 
 
 @export var max_hp: float = 10
-var hp: float = 10
 
 @export var leave_animation: LeavingAnimation
 
+var hp: float = 10
 
 
 func _ready() -> void:
@@ -54,9 +54,7 @@ func _on_take_damage(damage: Damage) -> void:
 func on_destroy() -> void:
 	destroyed.emit()
 	owner.queue_free()
-	pass
 
 
 func leave_map() -> void:
 	pass
-

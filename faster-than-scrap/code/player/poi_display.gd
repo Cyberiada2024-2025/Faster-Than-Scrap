@@ -13,7 +13,7 @@ func _ready() -> void:
 	_hide_arrow()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# prevent errors when there is no hud
 	if Hud.instance == null:
 		return
@@ -43,11 +43,11 @@ func _poi_visible_on_minimap() -> bool:
 	var map_camera = Hud.instance._minimap_camera
 	var radius = _get_camera_radius()
 
-	var cameraCenter = Vector2(map_camera.global_position.x, map_camera.global_position.z)
-	var poiCenter = Vector2(global_position.x, global_position.z)
+	var camera_center = Vector2(map_camera.global_position.x, map_camera.global_position.z)
+	var poi_center = Vector2(global_position.x, global_position.z)
 
 	# calculated on square minimap
-	var distance_from_camera = _chebyshev_distance(cameraCenter, poiCenter)
+	var distance_from_camera = _chebyshev_distance(camera_center, poi_center)
 	return distance_from_camera <= radius
 
 
@@ -77,16 +77,16 @@ func _set_arrow_transform() -> void:
 	var map_camera = Hud.instance._minimap_camera
 	var radius = _get_camera_radius()
 
-	var cameraCenter = Vector2(map_camera.global_position.x, map_camera.global_position.z)
-	var poiCenter = Vector2(global_position.x, global_position.z)
+	var camera_center = Vector2(map_camera.global_position.x, map_camera.global_position.z)
+	var poi_center = Vector2(global_position.x, global_position.z)
 
-	var direction = (poiCenter - cameraCenter).normalized()
+	var direction = (poi_center - camera_center).normalized()
 
 	# set arrow position
 	_clamp_arrow_position(direction, radius)
 
 	# set rotation
-	arrow.look_at(Vector3(poiCenter.x, 0, poiCenter.y))
+	arrow.look_at(Vector3(poi_center.x, 0, poi_center.y))
 	arrow.rotate_object_local(Vector3.RIGHT, -PI / 2)
 
 	# set scale

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_osv0f"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_767f4"]
+
 [ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/test_projectile.tscn" id="3_hf1me"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="4_302g4"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="5_rmfax"]
@@ -12,6 +13,7 @@ size = Vector3(0.385, 0.335, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_puthi"]
 size = Vector3(0.2, 0.2, 0.2)
+
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_30wr0"]
 top_radius = 0.1

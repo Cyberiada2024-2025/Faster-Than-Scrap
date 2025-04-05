@@ -6,7 +6,7 @@ extends Node3D
 @export_dir var modules: Array[String] = []
 ## set starting cash here
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var starting_bank: int = 0
-@export var root: Node3D
+#@export var root: Node3D
 
 @export_category("Visuals")
 ## shop size X

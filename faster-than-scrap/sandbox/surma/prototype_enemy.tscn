@@ -1,7 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://rk0gm82fa8wn"]
 
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="1_6juta"]
+
 [ext_resource type="Script" uid="uid://840fiyaanxsl" path="res://sandbox/surma/prototype_enemy.gd" id="1_soqmw"]
+
 [ext_resource type="Script" uid="uid://dpubtuvds874u" path="res://code/ship/ship.gd" id="2_lvanf"]
 [ext_resource type="Script" uid="uid://b3051ns4cwsbh" path="res://code/enemy/states/aggressive.gd" id="2_ptaw0"]
 [ext_resource type="Script" uid="uid://b4u2okuaejm7p" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="3_824ij"]
@@ -40,6 +42,7 @@ new_state = NodePath("../../Idle")
 
 [node name="Defensive" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("3_qoxwt")
+extra_energy_cost = 0.5
 
 [node name="HighEnergy" type="Node" parent="StateMachineEnemy/Defensive" node_paths=PackedStringArray("new_state")]
 script = ExtResource("5_3j72n")
@@ -51,7 +54,6 @@ new_state = NodePath("../../Idle")
 
 [node name="Idle" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("4_1i4bi")
-min_range_to_player = 30
 
 [node name="InRange" type="Node" parent="StateMachineEnemy/Idle" node_paths=PackedStringArray("new_state")]
 script = ExtResource("7_usy60")

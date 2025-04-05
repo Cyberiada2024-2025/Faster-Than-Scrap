@@ -9,11 +9,9 @@ const border_offset = 10
 @export var arrow: Sprite3D
 
 var arrow_shown: bool = false
-var initial_scale: float
 
 
 func _ready() -> void:
-	initial_scale = arrow.scale.x
 	_hide_arrow()
 
 
@@ -95,7 +93,8 @@ func _set_arrow_transform() -> void:
 
 	# set scale
 	var distance = cameraCenter.distance_to(poiCenter)
-	arrow.scale = Vector3.ONE * initial_scale * (1.0 - (distance - radius) / (max_range - radius))
+	var arrow_size_max = Vector3.ONE * map_camera.size / 50
+	arrow.scale = arrow_size_max * (1.0 - (distance - radius) / (max_range - radius))
 
 
 func _clamp_arrow_position(direction: Vector2, radius: float) -> void:

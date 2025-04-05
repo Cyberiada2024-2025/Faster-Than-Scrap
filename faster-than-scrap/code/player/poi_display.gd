@@ -90,7 +90,7 @@ func _set_arrow_transform() -> void:
 	arrow.rotate_object_local(Vector3.RIGHT, -PI / 2)
 
 	# set scale
-	var distance = cameraCenter.distance_to(poiCenter)
+	var distance = camera_center.distance_to(poi_center)
 	var arrow_size_max = Vector3.ONE * map_camera.size / 50
 	arrow.scale = arrow_size_max * (1.0 - (distance - radius) / (max_range - radius))
 

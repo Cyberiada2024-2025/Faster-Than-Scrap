@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://diw1t40pjk68x"]
+
+[ext_resource type="Material" uid="uid://cd26awjqmtnkj" path="res://art/materials/laser_beam_gun/laser_beam_gun_material_3d.tres" id="1_o0ulr"]
+[ext_resource type="ArrayMesh" uid="uid://bx5hm251eojcq" path="res://art/models/laser_beam_gun/laser_beam_gun.obj" id="2_rgtds"]
+
+[node name="LaserBeamGun" type="MeshInstance3D"]
+material_override = ExtResource("1_o0ulr")
+mesh = ExtResource("2_rgtds")

@@ -45,8 +45,8 @@ func _poi_visible_on_minimap() -> bool:
 	var map_camera = Hud.instance._minimap_camera
 	var radius = _get_camera_radius()
 
-	var cameraCenter = Vector2(map_camera.position.x, map_camera.position.z)
-	var poiCenter = Vector2(position.x, position.z)
+	var cameraCenter = Vector2(map_camera.global_position.x, map_camera.global_position.z)
+	var poiCenter = Vector2(global_position.x, global_position.z)
 
 	# calculated on square minimap
 	var distance_from_camera = _chebyshev_distance(cameraCenter, poiCenter)
@@ -79,8 +79,8 @@ func _set_arrow_position() -> void:
 	var map_camera = Hud.instance._minimap_camera
 	var radius = _get_camera_radius()
 
-	var cameraCenter = Vector2(map_camera.position.x, map_camera.position.z)
-	var poiCenter = Vector2(position.x, position.z)
+	var cameraCenter = Vector2(map_camera.global_position.x, map_camera.global_position.z)
+	var poiCenter = Vector2(global_position.x, global_position.z)
 
 	var direction = (poiCenter - cameraCenter).normalized()
 	## find bigger vector component, to cast it on the square
@@ -95,7 +95,7 @@ func _set_arrow_position() -> void:
 		else:
 			direction *= radius / abs(direction.y)
 
-	var new_position: Vector3 = map_camera.position
+	var new_position: Vector3 = map_camera.global_position
 	new_position.y = 0
 	new_position += Vector3(direction.x, 0, direction.y)
 	arrow.global_position = new_position

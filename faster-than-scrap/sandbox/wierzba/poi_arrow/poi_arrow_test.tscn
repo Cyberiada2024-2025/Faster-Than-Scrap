@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="1_3iupj"]
 [ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/player/player_ship.gd" id="2_7ywwf"]
-[ext_resource type="Script" uid="uid://bcapkc4tl2hrc" path="res://code/player/poi_display.gd" id="3_ynwq3"]
-[ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/ui/minimap/placeholder/Enemy.png" id="4_ewl3i"]
-[ext_resource type="Texture2D" uid="uid://5sl7fehpl0rk" path="res://art/textures/ui/minimap/placeholder/player_mini.png" id="5_yxbfi"]
+[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/poi/enemy_poi.tscn" id="4_586to"]
+[ext_resource type="PackedScene" uid="uid://dms6n6r5fyo4o" path="res://prefabs/poi/shop_poi.tscn" id="5_ewl3i"]
 [ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="6_ewl3i"]
+[ext_resource type="PackedScene" uid="uid://c7gr12rhsysjx" path="res://prefabs/poi/mission_poi.tscn" id="6_yxbfi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7ywwf"]
 
@@ -22,21 +22,12 @@ metadata/_custom_type_script = "uid://dlssaqrdqhvay"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
-[node name="POIDisplay" type="Node3D" parent="." node_paths=PackedStringArray("sprite", "arrow")]
-script = ExtResource("3_ynwq3")
-max_range = 5.0
-sprite = NodePath("Sprite3D")
-arrow = NodePath("Sprite3D2")
-metadata/_custom_type_script = "uid://bcapkc4tl2hrc"
-
-[node name="Sprite3D" type="Sprite3D" parent="POIDisplay"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-layers = 4
-texture = ExtResource("4_ewl3i")
-
-[node name="Sprite3D2" type="Sprite3D" parent="POIDisplay"]
-transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0)
-layers = 4
-texture = ExtResource("5_yxbfi")
-
 [node name="FlyableShip" parent="." instance=ExtResource("6_ewl3i")]
+
+[node name="EnemyPoi" parent="." instance=ExtResource("4_586to")]
+
+[node name="ShopPoi" parent="." instance=ExtResource("5_ewl3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7672, 0, 0)
+
+[node name="MissionPoi" parent="." instance=ExtResource("6_yxbfi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2496, 0, 0)

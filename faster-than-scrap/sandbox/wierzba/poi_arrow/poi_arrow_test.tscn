@@ -25,9 +25,19 @@ metadata/_custom_type_script = "uid://dlssaqrdqhvay"
 [node name="FlyableShip" parent="." instance=ExtResource("6_ewl3i")]
 
 [node name="EnemyPoi" parent="." instance=ExtResource("4_586to")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 4, 24)
+
+[node name="EnemyPoi2" parent="." instance=ExtResource("4_586to")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.81051, 7.26349, 24)
+
+[node name="EnemyPoi3" parent="." instance=ExtResource("4_586to")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7642, 4, 9.45114)
 
 [node name="ShopPoi" parent="." instance=ExtResource("5_ewl3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7672, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.7363, 0, -28.4188)
 
 [node name="MissionPoi" parent="." instance=ExtResource("6_yxbfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2496, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0045, -7.62939e-06, -41.1875)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7, 0)

@@ -13,7 +13,8 @@ var player_ship: PlayerShip
 
 
 # Called when the node enters the scene tree for the first time.
-func on_enter_tree() -> void:
+
+func _enter_tree() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	player_ship = preload("res://prefabs/ships/flyable_ship.tscn").instantiate()
 

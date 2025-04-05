@@ -1,18 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://creq1gbmemif6"]
+[gd_scene load_steps=7 format=3 uid="uid://creq1gbmemif6"]
 
 [ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/player/player_ship.gd" id="1_keeht"]
 [ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="1_odfy5"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="2_eda7p"]
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="3_ymjaj"]
-[ext_resource type="Texture2D" uid="uid://5sl7fehpl0rk" path="res://art/textures/ui/minimap/placeholder/player_mini.png" id="5_oqsi0"]
 
-[node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "modules")]
+[ext_resource type="PackedScene" uid="uid://5lsgaj0hoqfu" path="res://prefabs/vfx/leave_animation.tscn" id="5_oqsi0"]
+[ext_resource type="PackedScene" uid="uid://b6fx656pcno7s" path="res://prefabs/modules/shield_module.tscn" id="10_rybhy"]
+
+[node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "modules", "leave_animation")]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 gravity_scale = 0.0
 script = ExtResource("1_keeht")
 cockpit = NodePath("Cockpit")
 modules = [null, null, null, null, null]
+leave_animation = NodePath("AnimationPlayer")
 
 [node name="Cockpit" parent="." node_paths=PackedStringArray("ship", "child_modules") instance=ExtResource("1_odfy5")]
 ship = NodePath("..")
@@ -52,6 +55,7 @@ activation_key = 87
 ship = NodePath("..")
 parent_module = NodePath("../BaseModule")
 
+
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-5, 4.37114e-07, 0, 1.91069e-14, 2.18557e-07, 5, 4.37114e-07, 5, -2.18557e-07, 0, 0, 0)
 layers = 4
@@ -59,3 +63,10 @@ modulate = Color(0, 1.25, 0.43, 1)
 double_sided = false
 no_depth_test = true
 texture = ExtResource("5_oqsi0")
+
+[node name="AnimationPlayer" parent="." instance=ExtResource("5_oqsi0")]
+[node name="ShieldModule" parent="." node_paths=PackedStringArray("ship") instance=ExtResource("10_rybhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.00606)
+activation_key = 69
+ship = NodePath("..")
+

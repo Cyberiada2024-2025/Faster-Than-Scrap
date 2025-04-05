@@ -169,3 +169,17 @@ func create_ghost() -> ModuleGhost:
 	ghost.module_to_ignore = self
 
 	return ghost
+
+
+## Return all children (even indirect) modules of a given node.
+
+
+static func find_all_modules(node: Node) -> Array[Module]:
+	var result = []
+	for child in node.get_children():
+		if child is Module:
+			result.append(child)
+		result.append_array(find_all_modules(child))  # Recurse
+	var modules: Array[Module] = []
+	modules.assign(result)  # create module typed array
+	return modules

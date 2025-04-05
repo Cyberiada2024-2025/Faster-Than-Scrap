@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxvfp7amvdy7k"]
+
+[ext_resource type="Material" uid="uid://bclf31yedddut" path="res://art/materials/shield_module/shield_module_material_3d.tres" id="1_0og2d"]
+[ext_resource type="ArrayMesh" uid="uid://bw56fq0igxqg5" path="res://art/models/shield_module/shield_module.obj" id="2_oynld"]
+
+[node name="ShieldModuleModel" type="Node3D"]
+
+[node name="ShieldModule" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_0og2d")
+mesh = ExtResource("2_oynld")

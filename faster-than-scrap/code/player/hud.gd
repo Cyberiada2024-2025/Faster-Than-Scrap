@@ -2,6 +2,8 @@ class_name Hud
 
 extends Node3D
 
+static var instance: Hud
+
 @export var energy_bar: ResourceBar
 
 @export var main_camera_offset: Vector3 = Vector3(0, 40, 0)
@@ -16,6 +18,10 @@ var _main_camera: Camera3D
 var _module_camera: Camera3D
 var _minimap_camera: Camera3D
 var _tween: Tween
+
+
+func _enter_tree() -> void:
+	instance = self
 
 
 func _ready() -> void:

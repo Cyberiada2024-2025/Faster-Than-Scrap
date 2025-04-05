@@ -12,10 +12,16 @@ extends Node3D
 @export var max_zoom := 100
 @export var min_zoom := 50
 
+static var instance: Hud
+
 var _main_camera: Camera3D
 var _module_camera: Camera3D
 var _minimap_camera: Camera3D
 var _tween: Tween
+
+
+func _enter_tree() -> void:
+	instance = self
 
 
 func _ready() -> void:

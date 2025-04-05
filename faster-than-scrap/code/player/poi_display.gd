@@ -1,8 +1,6 @@
 class_name POIDisplay
 extends Node3D
 
-const border_offset = 10
-
 ## max distance of visibility. Outside of the poi will not be visible.
 @export var max_range: float
 @export var sprite: Sprite3D
@@ -133,4 +131,5 @@ func _get_camera_radius_circular() -> float:
 
 
 func _get_camera_radius() -> float:
+	var border_offset = Hud.instance._minimap_camera.size / 20
 	return Hud.instance._minimap_camera.size / 2 - border_offset

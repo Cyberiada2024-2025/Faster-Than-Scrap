@@ -95,7 +95,7 @@ func _set_arrow_transform() -> void:
 
 	# set scale
 	var distance = cameraCenter.distance_to(poiCenter)
-	arrow.scale = Vector3.ONE * initial_scale * (1.0 - distance / (max_range - radius))
+	arrow.scale = Vector3.ONE * initial_scale * (1.0 - (distance - radius) / (max_range - radius))
 
 
 func _clamp_arrow_position(direction: Vector2, radius: float) -> void:

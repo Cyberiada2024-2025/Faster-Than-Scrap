@@ -90,8 +90,8 @@ func _set_arrow_transform() -> void:
 	_clamp_arrow_position(direction, radius)
 
 	# set rotation
-	var angle = Vector2(0, -1).angle_to(direction)
-	arrow.global_rotation.y = -angle
+	arrow.look_at(Vector3(poiCenter.x, 0, poiCenter.y))
+	arrow.rotate_object_local(Vector3.RIGHT, -PI / 2)
 
 	# set scale
 	var distance = cameraCenter.distance_to(poiCenter)

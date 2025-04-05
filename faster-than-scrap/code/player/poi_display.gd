@@ -9,9 +9,11 @@ const border_offset = 10
 @export var arrow: Sprite3D
 
 var arrow_shown: bool = false
+var initial_scale: float
 
 
 func _ready() -> void:
+	initial_scale = arrow.scale.x
 	_hide_arrow()
 
 
@@ -29,7 +31,7 @@ func _process(delta: float) -> void:
 			if not arrow_shown:
 				_show_arrow()
 				arrow_shown = true
-			_set_arrow_position()
+			_set_arrow_transform()
 	else:
 		if arrow_shown:
 			_hide_arrow()
@@ -75,7 +77,7 @@ func _show_arrow() -> void:
 
 ## set arrow position to minimap edge.
 ## would be much simpler on a circle :P.
-func _set_arrow_position() -> void:
+func _set_arrow_transform() -> void:
 	var map_camera = Hud.instance._minimap_camera
 	var radius = _get_camera_radius()
 
@@ -83,6 +85,20 @@ func _set_arrow_position() -> void:
 	var poiCenter = Vector2(global_position.x, global_position.z)
 
 	var direction = (poiCenter - cameraCenter).normalized()
+
+	# set arrow position
+	_clamp_arrow_position(direction, radius)
+
+	# set rotation
+	var angle = Vector2(0, -1).angle_to(direction)
+	arrow.global_rotation.y = -angle
+
+	# set scale
+	var distance = cameraCenter.distance_to(poiCenter)
+	arrow.scale = Vector3.ONE * initial_scale * (1.0 - distance / (max_range - radius))
+
+
+func _clamp_arrow_position(direction: Vector2, radius: float) -> void:
 	## find bigger vector component, to cast it on the square
 	if abs(direction.x) > abs(direction.y):
 		if direction.x == 0:
@@ -95,14 +111,11 @@ func _set_arrow_position() -> void:
 		else:
 			direction *= radius / abs(direction.y)
 
+	var map_camera = Hud.instance._minimap_camera
 	var new_position: Vector3 = map_camera.global_position
 	new_position.y = 0
 	new_position += Vector3(direction.x, 0, direction.y)
 	arrow.global_position = new_position
-
-	# set rotation
-	var angle = Vector2(0, -1).angle_to(direction)
-	arrow.global_rotation.y = -angle
 
 
 ## camera looking downwards with certain angle view

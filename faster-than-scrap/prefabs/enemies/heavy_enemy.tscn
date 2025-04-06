@@ -1,11 +1,11 @@
 [gd_scene load_steps=18 format=3 uid="uid://tw5ceddtulbf"]
 
-[ext_resource type="Script" uid="uid://do6r4sdoiglip" path="res://code/enemy/NPC.gd" id="1_ok4vr"]
+[ext_resource type="Script" path="res://code/enemy/NPC.gd" id="1_ok4vr"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_yc3bl"]
 [ext_resource type="PackedScene" uid="uid://dqr2x28shkw41" path="res://prefabs/projectiles/enemy projectiles/test_shotgun.tscn" id="3_ok4vr"]
 [ext_resource type="Script" uid="uid://dpubtuvds874u" path="res://code/ship/ship.gd" id="4_s1yp8"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="5_q0blx"]
-[ext_resource type="Script" uid="uid://b1evvkbdec4yo" path="res://code/enemy/states/agressive_shooting.gd" id="6_xxpwe"]
+[ext_resource type="Script" path="res://code/enemy/states/agressive_shooting.gd" id="6_xxpwe"]
 [ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="7_n13x3"]
 [ext_resource type="Script" uid="uid://cjvpeo4f2tmj1" path="res://code/enemy/transitions/outOfRange.gd" id="8_fi2gh"]
 [ext_resource type="Script" uid="uid://4cghdv6buscd" path="res://code/enemy/states/aggressive.gd" id="9_skqe0"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="12_a4thn"]
 [ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/idle.gd" id="13_nle6o"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="14_rj4bm"]
-[ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/ui/minimap/placeholder/Enemy.png" id="15_rj4bm"]
+[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/poi/enemy_poi.tscn" id="15_rj4bm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rj4bm"]
 radius = 1.636
@@ -132,13 +132,7 @@ shape = SubResource("SphereShape3D_rj4bm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0171585, 0, 0.426331)
 shape = SubResource("BoxShape3D_rj4bm")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-1.5, 2.26494e-07, 9.90035e-15, 0, -6.55671e-08, 1.5, 2.26494e-07, 1.5, 6.55671e-08, 0, 0, 0)
-layers = 4
-modulate = Color(1.5, 0.151, 0.25, 1)
-double_sided = false
-no_depth_test = true
-texture = ExtResource("15_rj4bm")
+[node name="EnemyPoi" parent="." instance=ExtResource("15_rj4bm")]
 
 [connection signal="damaged" from="DamageController" to="Ship" method="_on_take_damage"]
 

@@ -6,13 +6,14 @@ var info: MissionInfoEscape
 
 var portal: Node3D
 
+var portal_prefab = preload("res://prefabs/environment/portal.tscn")
+
 
 func setup() -> void:
 	super()
 
 	# create escape object
-	portal = MeshInstance3D.new()  # TODO swap to instantiating the portal asset
-	portal.mesh = BoxMesh.new()
+	portal = portal_prefab.instantiate()
 	portal.add_child(create_label("EXIT"))
 	MissionManager.get_tree().current_scene.add_child(portal)
 

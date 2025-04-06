@@ -93,8 +93,6 @@ speed = 0.5
 [node name="Inner Ring" type="CollisionShape3D" parent="Inner Ring Rotatable" node_paths=PackedStringArray("child_modules")]
 shape = SubResource("CylinderShape3D_2wa5n")
 script = ExtResource("4_7g5pv")
-max_hp = 1000.0
-hp = 1000.0
 child_modules = [NodePath("../WeakPoint"), NodePath("../WeakPoint2")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Inner Ring Rotatable/Inner Ring"]
@@ -112,6 +110,8 @@ shape = SubResource("BoxShape3D_j7unu")
 script = ExtResource("4_0fnq1")
 damage = SubResource("Resource_vsg63")
 damage_target = NodePath("../Inner Ring")
+max_hp = 10.0
+hp = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Inner Ring Rotatable/WeakPoint"]
 mesh = SubResource("BoxMesh_kmj8b")
@@ -127,6 +127,8 @@ shape = SubResource("BoxShape3D_j7unu")
 script = ExtResource("4_0fnq1")
 damage = SubResource("Resource_vsg63")
 damage_target = NodePath("../Inner Ring")
+max_hp = 10.0
+hp = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Inner Ring Rotatable/WeakPoint2"]
 mesh = SubResource("BoxMesh_kmj8b")
@@ -143,8 +145,6 @@ speed = -0.75
 [node name="Middle Ring" type="CollisionShape3D" parent="Middle Ring Rotatable" node_paths=PackedStringArray("child_modules")]
 shape = SubResource("CylinderShape3D_4lpbx")
 script = ExtResource("4_7g5pv")
-max_hp = 1000.0
-hp = 1000.0
 child_modules = [NodePath("../WeakPoint3"), NodePath("../WeakPoint4")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Middle Ring Rotatable/Middle Ring"]
@@ -163,6 +163,8 @@ shape = SubResource("BoxShape3D_j7unu")
 script = ExtResource("4_0fnq1")
 damage = SubResource("Resource_37qi3")
 damage_target = NodePath("../Middle Ring")
+max_hp = 10.0
+hp = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Middle Ring Rotatable/WeakPoint3"]
 mesh = SubResource("BoxMesh_kmj8b")
@@ -180,6 +182,8 @@ shape = SubResource("BoxShape3D_j7unu")
 script = ExtResource("4_0fnq1")
 damage = SubResource("Resource_37qi3")
 damage_target = NodePath("../Middle Ring")
+max_hp = 10.0
+hp = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Middle Ring Rotatable/WeakPoint4"]
 mesh = SubResource("BoxMesh_kmj8b")
@@ -196,8 +200,6 @@ speed = 1.0
 [node name="Outer Ring" type="CollisionShape3D" parent="Outer Ring Rotatable" node_paths=PackedStringArray("child_modules")]
 shape = SubResource("CylinderShape3D_iwr50")
 script = ExtResource("4_7g5pv")
-max_hp = 1000.0
-hp = 1000.0
 child_modules = [NodePath("../WeakPoint5"), NodePath("../WeakPoint6")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Outer Ring Rotatable/Outer Ring"]
@@ -216,6 +218,8 @@ shape = SubResource("BoxShape3D_j7unu")
 script = ExtResource("4_0fnq1")
 damage = SubResource("Resource_7x3xq")
 damage_target = NodePath("../Outer Ring")
+max_hp = 10.0
+hp = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Outer Ring Rotatable/WeakPoint5"]
 mesh = SubResource("BoxMesh_kmj8b")
@@ -231,6 +235,8 @@ shape = SubResource("BoxShape3D_j7unu")
 script = ExtResource("4_0fnq1")
 damage = SubResource("Resource_7x3xq")
 damage_target = NodePath("../Outer Ring")
+max_hp = 10.0
+hp = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Outer Ring Rotatable/WeakPoint6"]
 mesh = SubResource("BoxMesh_kmj8b")

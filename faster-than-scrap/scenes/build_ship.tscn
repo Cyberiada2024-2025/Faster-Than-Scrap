@@ -1,14 +1,13 @@
-[gd_scene load_steps=33 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=31 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="3_7x66o"]
-[ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="3_kgbhb"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_sra6p"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_jtm63"]
-[ext_resource type="ArrayMesh" uid="uid://ilin5br3b8v2" path="res://art/models/frame1/frame1.obj" id="8_2lyi2"]
-[ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/models/thruster/thruster.obj" id="9_x0rib"]
+[ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="9_xqadh"]
+[ext_resource type="PackedScene" uid="uid://cujiw86wtjlp8" path="res://prefabs/modules/frame1.tscn" id="10_jtm63"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="10_xqadh"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
 
@@ -55,11 +54,6 @@ bg_color = Color(0, 0.0509804, 0.027451, 1)
 font = ExtResource("6_au3vu")
 font_color = Color(0.105882, 1, 0.105882, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gx1xx"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_26pev"]
-size = Vector3(2.19, 1, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_jtm63"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8di0"]
@@ -78,14 +72,16 @@ emission_energy_multiplier = 2.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_cv5l0"]
 size = Vector3(8.32263, 1, 12.5726)
 
+[sub_resource type="LabelSettings" id="LabelSettings_xqadh"]
+font_color = Color(0.105882, 1, 0.105882, 1)
+
 [node name="BuildShip" type="Node3D"]
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_8ccmg")]
 
-[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "shop", "choose_key_message", "confirm_finish_message")]
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "choose_key_message", "confirm_finish_message")]
 script = ExtResource("1_d5jmr")
 ignore = NodePath("../Shop/Area3D")
-shop = NodePath("")
 outline_mat = ExtResource("3_7x66o")
 flash_mat = ExtResource("4_sra6p")
 flash_time = 0.5
@@ -272,50 +268,10 @@ vertical_alignment = 1
 script = ExtResource("7_jtm63")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.57239, 0, 3.31371)
-
-[node name="SquareMOdule2" type="CollisionShape3D" parent="Area3D" node_paths=PackedStringArray("attach_points")]
-shape = SubResource("BoxShape3D_gx1xx")
-script = ExtResource("3_kgbhb")
-attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2")]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/SquareMOdule2"]
-mesh = ExtResource("8_2lyi2")
-
-[node name="AttachPoints" type="Node3D" parent="Area3D/SquareMOdule2"]
-
-[node name="AttachPoint1" type="Node3D" parent="Area3D/SquareMOdule2/AttachPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
-
-[node name="AttachPoint2" type="Node3D" parent="Area3D/SquareMOdule2/AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 0)
-
-[node name="Area3D2" type="Area3D" parent="."]
-transform = Transform3D(0.194817, 0, -0.980839, 0, 1, 0, 0.980839, 0, 0.194817, -2.02764, 0, 4.90251)
-
-[node name="SquareMOdule4" type="CollisionShape3D" parent="Area3D2" node_paths=PackedStringArray("attach_points")]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -4.06323e-08, 0, 1.36339)
-shape = SubResource("BoxShape3D_26pev")
-script = ExtResource("3_kgbhb")
-attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2")]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D2/SquareMOdule4"]
-mesh = ExtResource("9_x0rib")
-skeleton = NodePath("../../SquareMOdule4")
-
-[node name="AttachPoints" type="Node3D" parent="Area3D2/SquareMOdule4"]
-
-[node name="AttachPoint1" type="Node3D" parent="Area3D2/SquareMOdule4/AttachPoints"]
-transform = Transform3D(-0.0369751, 0, -0.999316, 0, 1, 0, 0.999316, 0, -0.0369751, 0.768349, 0, -0.0950341)
-
-[node name="AttachPoint2" type="Node3D" parent="Area3D2/SquareMOdule4/AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 0)
-
 [node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish", "selected_module_prize_display")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.85019, 0, 0)
 script = ExtResource("11_jtm63")
-modules = Array[String](["res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "uid://dbajfkkhivhl0", "uid://dbajfkkhivhl0", "uid://cqkj1jovh07cf", "uid://cqkj1jovh07cf", "uid://taxlqo87sp7s"])
+modules = Array[String](["uid://cujiw86wtjlp8", "uid://cujiw86wtjlp8", "uid://cujiw86wtjlp8", "uid://gngfqbur01ep", "uid://gngfqbur01ep", "uid://dbajfkkhivhl0", "uid://dbajfkkhivhl0", "uid://cqkj1jovh07cf", "uid://cqkj1jovh07cf", "uid://taxlqo87sp7s"])
 starting_bank = 3
 size_x = 8.323
 size_z = 12.573
@@ -352,6 +308,41 @@ input_ray_pickable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0455933, 0, 0.0821714)
 shape = SubResource("BoxShape3D_cv5l0")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.57239, 0, 3.31371)
+
+[node name="Thruster" parent="Area3D" instance=ExtResource("9_xqadh")]
+
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56951, 0, 8.0293)
+
+[node name="Frame" parent="Area3D2" instance=ExtResource("10_jtm63")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Prize_display" type="ColorRect" parent="Control"]
+offset_left = 5.0
+offset_top = 241.0
+offset_right = 255.0
+offset_bottom = 342.69
+color = Color(0, 0.051, 0.027, 1)
+
+[node name="Label" type="Label" parent="Control/Prize_display"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 50.0
+text = "Controls:
+LMB: attach/dettach module
+RMB: set activation key
+Scroll: zoom camera"
+label_settings = SubResource("LabelSettings_xqadh")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="ShipBuilder/Control/Deny finish/Color_Rect/Confirm" to="Shop" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Confirm" to="ShipBuilder" method="_on_confirm_pressed"]

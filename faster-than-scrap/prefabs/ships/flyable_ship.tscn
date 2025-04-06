@@ -22,7 +22,7 @@ ship = NodePath("..")
 child_modules = [NodePath("../BaseModule"), NodePath("../ShieldModule")]
 
 [node name="Sprite3D2" type="Sprite3D" parent="Cockpit"]
-transform = Transform3D(-5, 4.37114e-07, 0, 1.91069e-14, 2.18557e-07, 5, 4.37114e-07, 5, -2.18557e-07, 0, 0, 0)
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, 5, 0, -5, -2.18557e-07, 0, 0, 0)
 layers = 4
 modulate = Color(0, 1.25, 0.43, 1)
 double_sided = false
@@ -38,7 +38,6 @@ child_modules = [NodePath("../Thruster Forward")]
 
 [node name="Thruster Backward" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("3_ymjaj")]
 transform = Transform3D(1, 0, -1.62921e-07, 0, 1, 0, 1.62921e-07, 0, 1, -0.0103829, 0, -2.51678)
-recoil_force = 300.0
 activation_key = 83
 ship = NodePath("..")
 parent_module = NodePath("../ShieldModule")
@@ -46,21 +45,18 @@ child_modules = [NodePath("../Thruster Right"), NodePath("../Thruster Left")]
 
 [node name="Thruster Right" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("3_ymjaj")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -1.5912, 0, -2.05277)
-recoil_force = 300.0
 activation_key = 68
 ship = NodePath("..")
 parent_module = NodePath("../Thruster Backward")
 
 [node name="Thruster Left" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("3_ymjaj")]
 transform = Transform3D(-2.06632e-07, 0, -1, 0, 1, 0, 1, 0, -2.06632e-07, 1.64296, 0, -2.05277)
-recoil_force = 300.0
 activation_key = 65
 ship = NodePath("..")
 parent_module = NodePath("../Thruster Backward")
 
 [node name="Thruster Forward" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("3_ymjaj")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0248851, 0, 2.84782)
-recoil_force = 300.0
 activation_key = 87
 ship = NodePath("..")
 parent_module = NodePath("../BaseModule")

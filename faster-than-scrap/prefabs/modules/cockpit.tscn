@@ -27,7 +27,7 @@ modulate = Color(0, 1, 0, 1)
 texture = ExtResource("2_mk35a")
 
 [node name="Minimap" type="Sprite3D" parent="."]
-transform = Transform3D(-2, -3.01992e-07, 1.32005e-14, 0, -8.74228e-08, -2, 3.01992e-07, -2, 8.74228e-08, 0, 0, 0)
+transform = Transform3D(2, 4.76838e-07, 1.32005e-14, -7.64273e-15, 8.74228e-08, -2, -4.76838e-07, 2, 8.74228e-08, 0, 0, 0)
 layers = 4
 texture = ExtResource("3_185cg")
 

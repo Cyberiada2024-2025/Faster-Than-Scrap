@@ -85,7 +85,7 @@ size = Vector3(8.32263, 1, 12.5726)
 [node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "shop", "choose_key_message", "confirm_finish_message")]
 script = ExtResource("1_d5jmr")
 ignore = NodePath("../Shop/Area3D")
-shop = NodePath("../Shop")
+shop = NodePath("")
 outline_mat = ExtResource("3_7x66o")
 flash_mat = ExtResource("4_sra6p")
 flash_time = 0.5
@@ -325,6 +325,7 @@ bank_display = NodePath("Label3D")
 deny_finish = NodePath("../ShipBuilder/Control/Deny finish")
 confirm_finish = NodePath("../ShipBuilder/Control/Confirm finish")
 selected_module_prize_display = NodePath("../ShipBuilder/Control/Prize_display/Label")
+metadata/_custom_type_script = "uid://dsebh10ryevl"
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Shop"]
 transform = Transform3D(8.28, 0, 0, 0, 0.083, 0, 0, 0, 12.42, 0, 0, 0)

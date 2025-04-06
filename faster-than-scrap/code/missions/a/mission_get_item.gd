@@ -18,8 +18,8 @@ func setup() -> void:
 	from = get_item_prefab.instantiate()
 	to = get_item_prefab.instantiate()
 
-	MissionManager.add_child(from)
-	MissionManager.add_child(to)
+	MissionManager.get_tree().current_scene.add_child(from)
+	MissionManager.get_tree().current_scene.add_child(to)
 
 	from.global_position = info.item_position
 	to.global_position = info.item_target_position

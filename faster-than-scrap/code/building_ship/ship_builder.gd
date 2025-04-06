@@ -270,7 +270,7 @@ func _dettach_module() -> void:
 		# add some area3d as a root of the module, to allow clicking it
 		active_module.reparent(get_tree().get_root())
 		var area = Area3D.new()
-		get_tree().root.add_child(area)
+		get_tree().current_scene.add_child(area)
 		area.position = active_module.position
 		active_module.reparent(area)
 

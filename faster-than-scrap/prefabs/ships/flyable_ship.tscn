@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b6fx656pcno7s" path="res://prefabs/modules/shield_module.tscn" id="10_rybhy"]
 
 [node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "modules", "leave_animation")]
+axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 gravity_scale = 0.0

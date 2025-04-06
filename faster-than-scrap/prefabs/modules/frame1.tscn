@@ -26,7 +26,7 @@ transform = Transform3D(0.645, 0, 0, 0, 0.645, 0, 0, 0, 0.645, 0, 0, 0)
 [node name="AttachPoints" type="Node3D" parent="."]
 
 [node name="AttachPoint1" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.85682e-09, 0, 0.566994)
 metadata/_edit_group_ = true
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("2_8i8s5")]

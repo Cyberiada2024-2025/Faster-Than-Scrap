@@ -251,6 +251,7 @@ func _attach_module() -> void:
 		area_parent.queue_free()
 	else:
 		active_module.reparent(attach_target.ship)
+		active_module.parent_module.child_modules.erase(active_module)
 	active_module.set_ship_reference(attach_target.ship)  # copy the reference to the ship
 	attach_target.child_modules.append(active_module)
 	active_module.parent_module = attach_target

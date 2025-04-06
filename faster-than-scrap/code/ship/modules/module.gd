@@ -163,9 +163,10 @@ func create_ghost() -> ModuleGhost:
 	ghost.global_position = global_position
 
 	# duplicate module
-	var duplicate_node: Node = self.duplicate()
+	var duplicate_node: Node3D = self.duplicate()
 	ghost.add_child(duplicate_node)
 	duplicate_node.position = Vector3.ZERO
+	duplicate_node.rotation = Vector3.ZERO
 	ghost.module_to_ignore = self
 
 	return ghost

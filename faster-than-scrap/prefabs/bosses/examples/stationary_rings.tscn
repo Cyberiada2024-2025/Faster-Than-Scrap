@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dkt55poxl1ki4"]
+[gd_scene load_steps=27 format=3 uid="uid://dkt55poxl1ki4"]
 
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="1_37kkp"]
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_lbi4l"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shooting.gd" id="9_x6flm"]
 [ext_resource type="Script" uid="uid://cloxstqh8taic" path="res://code/enemy/transitions/module_destroyed.gd" id="10_3jdo5"]
 [ext_resource type="Script" uid="uid://ct1o07sjgv31b" path="res://code/enemy/state.gd" id="11_3sux5"]
+[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/poi/enemy_poi.tscn" id="13_m10ps"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
 
@@ -272,6 +273,9 @@ new_state = NodePath("../../State")
 
 [node name="State" type="Node" parent="StateMachineNPC"]
 script = ExtResource("11_3sux5")
+
+[node name="EnemyPoi" parent="." instance=ExtResource("13_m10ps")]
+max_range = 10000.0
 
 [connection signal="damaged" from="Core/DamageController" to="Core" method="take_damage"]
 [connection signal="damaged" from="Inner Ring Rotatable/Inner Ring/DamageController" to="Inner Ring Rotatable/Inner Ring" method="take_damage"]

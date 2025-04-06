@@ -18,7 +18,7 @@ leave_animation = NodePath("Cockpit/AnimationPlayer")
 
 [node name="Cockpit" parent="." node_paths=PackedStringArray("ship", "child_modules") instance=ExtResource("1_odfy5")]
 ship = NodePath("..")
-child_modules = [null, null]
+child_modules = [NodePath("../BaseModule"), NodePath("../ShieldModule")]
 
 [node name="Sprite3D2" type="Sprite3D" parent="Cockpit"]
 transform = Transform3D(-5, 4.37114e-07, 0, 1.91069e-14, 2.18557e-07, 5, 4.37114e-07, 5, -2.18557e-07, 0, 0, 0)
@@ -33,14 +33,15 @@ no_depth_test = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0289251, 0, -1.25452)
 ship = NodePath("..")
 parent_module = NodePath("../Cockpit")
-child_modules = [null]
+child_modules = [NodePath("../Thruster Forward")]
 
-[node name="Thruster Backward" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("3_ymjaj")]
+[node name="Thruster Backward" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("3_ymjaj")]
 transform = Transform3D(-1, 0, 7.54979e-08, 0, 1, 0, -7.54979e-08, 0, -1, -0.0145017, 0, 2.46471)
 recoil_force = 300.0
 activation_key = 83
 ship = NodePath("..")
-parent_module = NodePath("../Cockpit")
+parent_module = NodePath("../ShieldModule")
+child_modules = [NodePath("../Thruster Right"), NodePath("../Thruster Left")]
 
 [node name="Thruster Right" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("3_ymjaj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.56632, 0, 2.0007)
@@ -63,7 +64,9 @@ activation_key = 87
 ship = NodePath("..")
 parent_module = NodePath("../BaseModule")
 
-[node name="ShieldModule" parent="." node_paths=PackedStringArray("ship") instance=ExtResource("10_rybhy")]
+[node name="ShieldModule" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("10_rybhy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.00606)
 activation_key = 69
 ship = NodePath("..")
+parent_module = NodePath("../Cockpit")
+child_modules = [NodePath("../Thruster Backward")]

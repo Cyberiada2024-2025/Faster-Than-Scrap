@@ -9,5 +9,6 @@ func enter(_previous_state_path: String, _data := {}) -> void:
 
 
 func state_physics_update(_delta: float) -> void:
-	move_target_spotted(min_range_to_player, target)
+	check_target(_delta)
+	move_target_spotted(min_range_to_player)
 	ship_controller.ship.use_energy(extra_energy_cost * _delta)

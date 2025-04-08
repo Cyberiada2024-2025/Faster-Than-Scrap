@@ -10,12 +10,13 @@ signal new_game_state
 @export var death_screen: PackedScene
 
 var player_ship: PlayerShip
-
+var ships: Array[Ship] = [];
 
 # Called when the node enters the scene tree for the first time.
 
 func _enter_tree() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
+	ships = []
 	player_ship = preload("res://prefabs/ships/flyable_ship.tscn").instantiate()
 
 
@@ -57,3 +58,23 @@ func turn_player_modules(on: bool):
 func show_death_screen():
 	var death_screen_scene = death_screen.instantiate()
 	GameManager.get_tree().current_scene.add_child(death_screen_scene)
+
+func _on_ship_born(ship: Ship):
+	ships.append(ship)
+	ship.destroyed.connect(_on_ship_death)
+
+func _on_ship_death(ship: Ship):
+	ships.erase(ship)
+
+## return the closest ship
+## if no ship is found returns input ship
+func find_closest_ship(ship: Ship) -> Ship:
+	var closest: Ship = ship
+	var position: Vector3 = ship.global_position
+	var distance_sqr: float = 9999999999999999
+	for s in ships:
+		if TeamManager.hate(ship, s):
+			if s != ship && (s.global_position - position).length_squared() < distance_sqr:
+				distance_sqr = (s.global_position - position).length_squared()
+				closest = s
+	return closest

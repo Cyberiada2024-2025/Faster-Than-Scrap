@@ -5,7 +5,22 @@ class_name movementState extends StateNPC
 ## in dead_zone do we stop in place [false] or keep circling [true]
 @export var circle_target: bool = false
 
-func move_target_spotted(min_range_to_player: int, target: Ship) -> void:
+## we will check for new target every X ms
+@export var recheck_time: float = 5
+var _recheck_timer: float = 999999;
+
+func check_target(_delta: float):
+	_recheck_timer += _delta
+	if _recheck_timer >= recheck_time:
+		_recheck_timer = 0
+		target = GameManager.find_closest_ship(ship_controller.ship)
+
+
+func move_target_spotted(min_range_to_player: int) -> void:
+	if !is_instance_valid(target):
+		#force target recheck if target is not valid
+		check_target(9999999)
+		return
 	var vector_to_target = target.global_position - ship_controller.global_position
 	var direction = vector_to_target.normalized()
 	var target_basis: Basis

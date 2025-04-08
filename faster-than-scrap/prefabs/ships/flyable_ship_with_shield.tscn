@@ -15,6 +15,7 @@ gravity_scale = 0.0
 script = ExtResource("1_2nsub")
 cockpit = NodePath("Cockpit")
 modules = [NodePath("Cockpit"), NodePath("BaseModule"), NodePath("Thruster Backward"), NodePath("Thruster Right"), NodePath("Thruster Left"), NodePath("Thruster Forward"), NodePath("ShieldModule")]
+team = 0
 leave_animation = NodePath("AnimationPlayer")
 
 [node name="Cockpit" parent="." node_paths=PackedStringArray("ship", "child_modules") instance=ExtResource("2_i6mc8")]

@@ -13,6 +13,6 @@ func _ready() -> void:
 
 	for transition: baseTransition in find_children("*", "baseTransition"):
 		transitions.append(transition)
-
-	# Change for closest target once we have allied NPC
-	target = GameManager.player_ship
+	
+	# code for no target found
+	target = ship_controller.ship

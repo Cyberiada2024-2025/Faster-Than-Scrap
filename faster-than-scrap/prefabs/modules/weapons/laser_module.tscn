@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_akoi3"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_nlg4d"]
-[ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/test_projectile.tscn" id="3_ts8di"]
-[ext_resource type="Script" uid="uid://co5ltw8t12p5p" path="res://code/damage/damage_controller.gd" id="4_kru4r"]
-[ext_resource type="Script" uid="uid://2ftv2rr2lasy" path="res://code/damage/damageable.gd" id="5_w1vj3"]
+[ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/enemy projectiles/test_projectile.tscn" id="3_ts8di"]
+[ext_resource type="Script" uid="uid://k3n7j0mjfmxt" path="res://code/damage/damage_controller.gd" id="4_kru4r"]
+[ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://code/damage/damageable.gd" id="5_w1vj3"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="6_cxsht"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="7_fkld4"]
 
@@ -32,6 +32,8 @@ allow_auto_fire = true
 attach_points = [NodePath("AttachPoints/AttachPoint")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
+healthy_color = Color(0, 1, 0, 1)
+dead_color = Color(1, 0, 0, 1)
 
 [node name="SpawnerWeapon" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.610518)

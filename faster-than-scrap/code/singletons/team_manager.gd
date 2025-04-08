@@ -1,5 +1,5 @@
-extends Node
 class_name TeamManager
+extends Node
 
 enum Team { PLAYER, ENEMY, FRIEND, KILL_ALL }
 ## shows which teams are aggressive to which teams

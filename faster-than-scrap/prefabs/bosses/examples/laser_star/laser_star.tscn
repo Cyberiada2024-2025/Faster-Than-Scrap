@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c3rsq4emlmuky"]
+[gd_scene load_steps=18 format=3 uid="uid://c3rsq4emlmuky"]
 
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_nesmw"]
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_s6qyd"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="11_vp012"]
 [ext_resource type="Script" uid="uid://dig16nwffnibt" path="res://code/enemy/states/restore_energy.gd" id="12_tiubj"]
 [ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="13_dufb5"]
+[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/poi/enemy_poi.tscn" id="15_vhk6y"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
 
@@ -131,6 +132,9 @@ script = ExtResource("12_tiubj")
 [node name="TransitionHighEnergy" type="Node" parent="StateMachineNPC/Loading" node_paths=PackedStringArray("new_state")]
 script = ExtResource("13_dufb5")
 new_state = NodePath("../../Composite Change Position")
+
+[node name="EnemyPoi" parent="." instance=ExtResource("15_vhk6y")]
+max_range = 10000.0
 
 [connection signal="damaged" from="StaticBody3D/Core/DamageController" to="StaticBody3D/Core" method="take_damage"]
 

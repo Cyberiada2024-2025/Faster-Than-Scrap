@@ -26,9 +26,13 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if _all_bosses_dead():
 		if BossManager.is_miniboss:
-			_scene_loader.load_map_selector_scene()
+			GameManager.player_ship.leave_animation.start_animation(
+				_scene_loader.load_map_selector_scene
+			)
 		else:
-			_scene_loader.load_credits_scene()
+			GameManager.player_ship.leave_animation.start_animation(
+				_scene_loader.load_credits_scene
+			)
 
 
 func _spawn_boss(boss_prefab: PackedScene) -> void:

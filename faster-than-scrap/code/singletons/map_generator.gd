@@ -5,8 +5,8 @@ extends Node
 ## Additionaly it stores the scene tree of that phase,
 ## to allow restoring it when returning from the shop.
 
-var _map_node: MapNode
-var _scene: Node
+var _map_node: MapNode = null
+var _scene: Node = null
 
 var _shop_prefab = preload("res://prefabs/environment/shop_miniature.tscn")
 
@@ -49,4 +49,10 @@ func save_fly_scene() -> void:
 
 func set_node(new_node: MapNode) -> void:
 	_map_node = new_node
+	_scene = null
+
+
+## called when the game's ended
+func reset() -> void:
+	_map_node = null
 	_scene = null

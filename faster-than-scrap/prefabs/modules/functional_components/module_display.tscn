@@ -18,7 +18,6 @@ layers = 2
 double_sided = false
 texture_filter = 0
 modulate = Color(0, 0, 0, 1)
-text = "KEY"
 font = ExtResource("2_rgwxi")
 font_size = 80
 outline_size = 0

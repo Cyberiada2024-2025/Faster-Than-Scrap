@@ -33,6 +33,8 @@ script = ExtResource("1_k0muw")
 transform = Transform3D(0.508206, 0.448513, -0.735229, -0.0884838, 0.876365, 0.473449, 0.856678, -0.175554, 0.485061, 0, 2, 0)
 activation_key = 81
 ship = NodePath("../Ship")
+healthy_color = Color(0, 0, 0, 1)
+dead_color = Color(0, 0, 0, 1)
 
 [node name="BeamWeaponModule" parent="WeaponTesting" node_paths=PackedStringArray("ship") instance=ExtResource("3_vo5i3")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, -2, 0)

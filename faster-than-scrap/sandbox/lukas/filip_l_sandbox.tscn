@@ -1,8 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxk4lnel5f1yq"]
-
-[ext_resource type="ArrayMesh" uid="uid://ck4gqd8vg7qxw" path="res://art/models/bumper/bumper.obj" id="1_n0bts"]
+[gd_scene format=3 uid="uid://cxk4lnel5f1yq"]
 
 [node name="FilipLSandbox" type="Node3D"]
-
-[node name="Bumper" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_n0bts")

@@ -27,6 +27,13 @@ func load_fly_ship_scene(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZER
 	_attach_ship_with_hud.call_deferred(pos, rot)
 
 
+func load_boss_scene(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO) -> void:
+	_detach_ship()
+	get_tree().change_scene_to_file("res://scenes/boss_scene.tscn")
+	GameManager.set_game_state(GameState.State.FLY)
+	_attach_ship_with_hud.call_deferred(pos, rot)
+
+
 func load_build_ship_scene() -> void:
 	_detach_ship()
 	get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
@@ -37,6 +44,7 @@ func load_build_ship_scene() -> void:
 func load_credits_scene() -> void:
 	get_tree().change_scene_to_file("res://scenes/credits.tscn")
 	GameManager.set_game_state(GameState.State.MAIN_MENU)
+	MapGenerator.reset()
 
 
 ## detach the ship from the scene tree, to preserve it, when it is changed

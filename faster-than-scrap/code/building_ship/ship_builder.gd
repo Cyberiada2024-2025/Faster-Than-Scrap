@@ -251,6 +251,7 @@ func _attach_module() -> void:
 		area_parent.queue_free()
 	else:
 		active_module.reparent(attach_target.ship)
+		active_module.parent_module.child_modules.erase(active_module)
 	active_module.set_ship_reference(attach_target.ship)  # copy the reference to the ship
 	attach_target.child_modules.append(active_module)
 	active_module.parent_module = attach_target
@@ -269,7 +270,7 @@ func _dettach_module() -> void:
 		# add some area3d as a root of the module, to allow clicking it
 		active_module.reparent(get_tree().get_root())
 		var area = Area3D.new()
-		get_tree().root.add_child(area)
+		get_tree().current_scene.add_child(area)
 		area.position = active_module.position
 		active_module.reparent(area)
 
@@ -416,11 +417,12 @@ func _create_outline(parent: Node3D) -> Array[MeshInstance3D]:
 
 	var out: Array[MeshInstance3D] = []
 	for module_mesh in module_meshes:
-		var mesh = MeshInstance3D.new()
+		#var mesh = MeshInstance3D.new()
+		var mesh: MeshInstance3D = module_mesh.duplicate()
 		parent.add_child(mesh)
 		mesh.material_override = outline_mat
-		mesh.mesh = module_mesh.mesh
-		mesh.basis = module_mesh.basis
+		mesh.global_rotation = module_mesh.global_rotation
+		mesh.global_scale(module_mesh.global_transform.basis.get_scale())
 		out.append(mesh)
 
 	return out

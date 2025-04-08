@@ -170,9 +170,24 @@ func create_ghost() -> ModuleGhost:
 	ghost.global_position = global_position
 
 	# duplicate module
-	var duplicate_node: Node = self.duplicate()
+	var duplicate_node: Node3D = self.duplicate()
 	ghost.add_child(duplicate_node)
 	duplicate_node.position = Vector3.ZERO
+	duplicate_node.rotation = Vector3.ZERO
 	ghost.module_to_ignore = self
 
 	return ghost
+
+
+## Return all children (even indirect) modules of a given node.
+
+
+static func find_all_modules(node: Node) -> Array[Module]:
+	var result = []
+	for child in node.get_children():
+		if child is Module:
+			result.append(child)
+		result.append_array(find_all_modules(child))  # Recurse
+	var modules: Array[Module] = []
+	modules.assign(result)  # create module typed array
+	return modules

@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://cd26awjqmtnkj"]
+
+[ext_resource type="Texture2D" uid="uid://cgujr2pv3hgca" path="res://art/textures/laser_beam_gun/laser_beam_gun_Albedo.png" id="1_yksoq"]
+[ext_resource type="Texture2D" uid="uid://08nsexgrxk2v" path="res://art/textures/laser_beam_gun/laser_beam_gun_AO.png" id="2_eglro"]
+[ext_resource type="Texture2D" uid="uid://dr3t5mfmnfuvy" path="res://art/textures/laser_beam_gun/laser_beam_gun_Metalness.png" id="3_w3jbp"]
+[ext_resource type="Texture2D" uid="uid://duh7286lkhrlb" path="res://art/textures/laser_beam_gun/laser_beam_gun_Normal.png" id="4_oj0kt"]
+[ext_resource type="Texture2D" uid="uid://b5r4basfnjaoc" path="res://art/textures/laser_beam_gun/laser_beam_gun_Roughness.png" id="5_65ddv"]
+
+[resource]
+albedo_texture = ExtResource("1_yksoq")
+metallic = 1.0
+metallic_texture = ExtResource("3_w3jbp")
+roughness_texture = ExtResource("5_65ddv")
+normal_enabled = true
+normal_texture = ExtResource("4_oj0kt")
+ao_enabled = true
+ao_texture = ExtResource("2_eglro")

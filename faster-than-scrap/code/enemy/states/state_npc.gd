@@ -13,6 +13,6 @@ func _ready() -> void:
 
 	for transition: baseTransition in find_children("*", "baseTransition"):
 		transitions.append(transition)
-	
+
 	# code for no target found
 	target = ship_controller.ship

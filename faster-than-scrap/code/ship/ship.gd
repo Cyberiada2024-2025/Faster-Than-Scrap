@@ -10,7 +10,7 @@ signal destroyed(ship)
 @export var restore: float = 10
 @export var max_hp: float = 10
 
-@export var team = TeamManager.Team.enemy
+@export var team = TeamManager.Team.ENEMY
 
 @export var leave_animation: LeavingAnimation
 

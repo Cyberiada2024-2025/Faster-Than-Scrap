@@ -1,7 +1,7 @@
 @tool
 class_name DamageController
 
-extends Node
+extends Node3D
 
 ## Controls the damage applied to a node with multiple [Damageable] nodes
 ## (for example, an enemy with multiple damageable areas, a module with a weak point, etc.) [br]

@@ -8,7 +8,6 @@ extends Module
 ## Otherwise, the player may hold the activation key to shoot automatically,
 ## whenever the conditions, such as cooldown or energy requirement, are met.
 @export var allow_auto_fire: bool
-@export var recoil_force: float = 0
 
 
 func _ready() -> void:
@@ -20,24 +19,29 @@ func _ready() -> void:
 func _on_key_press(_delta: float) -> void:
 	super(_delta)
 	if not allow_auto_fire:
-		weapon.try_activate()
+		var result = weapon.try_activate()
+		if result != null:
+			activated.emit()
 
 
 func _on_key(_delta: float) -> void:
 	super(_delta)
 	if allow_auto_fire:
-		weapon.try_activate()
+		var result = weapon.try_activate()
+		if result != null:
+			activated.emit()
 
 
 func _on_release(_delta: float) -> void:
 	super(_delta)
-	weapon.try_deactivate()
+	var result = weapon.try_deactivate()
+	if result != null:
+		deactivated.emit()
 
 
 func _recoil(force_multiplier: float) -> void:
 	ship.apply_force(
-		weapon.global_basis.z * recoil_force * force_multiplier,
-		global_position - ship.global_position
+		weapon.global_basis.z * force_multiplier, global_position - ship.global_position
 	)
 
 

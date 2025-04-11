@@ -1,13 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://b6fx656pcno7s"]
+[gd_scene load_steps=19 format=3 uid="uid://b6fx656pcno7s"]
 
 [ext_resource type="Script" uid="uid://dsdbrxhbn35w7" path="res://code/ship/modules/shield_module.gd" id="1_qfqke"]
-[ext_resource type="Script" uid="uid://c47vgfakrvoxf" path="res://code/ship/modules/Shield.gd" id="2_yota5"]
+[ext_resource type="Script" uid="uid://c47vgfakrvoxf" path="res://code/ship/modules/shield.gd" id="2_yota5"]
 [ext_resource type="AudioStream" uid="uid://c7e1p4aepud3d" path="res://art/audio/sounds/shield_applying_sound.wav" id="3_t2mx0"]
 [ext_resource type="AudioStream" uid="uid://bhtfb6630u1js" path="res://art/audio/sounds/shield_shattering_sound.wav" id="4_o2yw7"]
 [ext_resource type="AudioStream" uid="uid://bq3myi1evd56a" path="res://art/audio/sounds/shield_takingdmg_sound.wav" id="5_ul8cr"]
-[ext_resource type="PackedScene" uid="uid://3a5vwad6lsnu" path="res://prefabs/VFX/shield_vfx.tscn" id="6_gvryf"]
-[ext_resource type="Shader" uid="uid://ohokcopb2fdp" path="res://art/Shaders/Shield.tres" id="7_rwr3c"]
+[ext_resource type="PackedScene" uid="uid://3a5vwad6lsnu" path="res://prefabs/vfx/shield_vfx.tscn" id="6_gvryf"]
+[ext_resource type="Shader" uid="uid://ohokcopb2fdp" path="res://art/shaders/Shield.tres" id="7_rwr3c"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="8_e18hx"]
+[ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="9_12yfa"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="9_sdq7t"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="10_sdq7t"]
 
@@ -132,14 +133,10 @@ healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://dsdbrxhbn35w7"
 
-[node name="Shield2" type="Node3D" parent="." node_paths=PackedStringArray("animator", "audio_player", "collider")]
+[node name="Shield2" type="Node3D" parent="." node_paths=PackedStringArray("animator", "collider")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("2_yota5")
 animator = NodePath("Shield_VFX/AnimationPlayer")
-audio_player = NodePath("Shield_VFX/AudioStreamPlayer3D")
-sound_apply = ExtResource("3_t2mx0")
-sound_break = ExtResource("4_o2yw7")
-sound_hit = ExtResource("5_ul8cr")
 collider = NodePath("Shield_Collision/CollisionShape3D")
 
 [node name="Shield_VFX" parent="Shield2" instance=ExtResource("6_gvryf")]
@@ -151,8 +148,6 @@ skeleton = NodePath("../../..")
 libraries = {
 &"": SubResource("AnimationLibrary_22x73")
 }
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Shield2/Shield_VFX"]
 
 [node name="Shield_Collision" type="StaticBody3D" parent="Shield2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -182,6 +177,44 @@ metadata/_edit_group_ = true
 damageable = NodePath("../DamageController/Damageable")
 shape = NodePath("..")
 
+[node name="Sounds" type="Node3D" parent="."]
+
+[node name="SoundEmitterActivated" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("3_t2mx0")
+max_polyphony = 5
+script = ExtResource("9_12yfa")
+min_pitch_scale = 0.9
+max_pitch_scale = 1.1
+metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
+
+[node name="SoundEmitterDeactivated" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("4_o2yw7")
+max_polyphony = 5
+script = ExtResource("9_12yfa")
+min_pitch_scale = 0.9
+max_pitch_scale = 1.1
+metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
+
+[node name="SoundEmitterBroken" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("4_o2yw7")
+max_polyphony = 5
+script = ExtResource("9_12yfa")
+min_pitch_scale = 0.9
+max_pitch_scale = 1.1
+metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
+
+[node name="SoundEmitterDamaged" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("5_ul8cr")
+max_polyphony = 20
+script = ExtResource("9_12yfa")
+min_pitch_scale = 0.8
+max_pitch_scale = 1.2
+metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
+
+[connection signal="activated" from="." to="Sounds/SoundEmitterActivated" method="start_playing"]
+[connection signal="deactivated" from="." to="Sounds/SoundEmitterDeactivated" method="start_playing"]
+[connection signal="shield_broken" from="." to="Sounds/SoundEmitterBroken" method="start_playing"]
+[connection signal="shield_damaged" from="." to="Sounds/SoundEmitterDamaged" method="start_playing"]
 [connection signal="damaged" from="DamageController" to="." method="take_damage"]
 
 [editable path="DamageController"]

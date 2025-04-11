@@ -36,10 +36,10 @@ text = "Build
 autowrap_mode = 3
 
 [node name="FastEnemy" parent="." instance=ExtResource("5_3xk4m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.13256, 0, -3.88455)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.969, 0, -10.7901)
 
 [node name="HeavyEnemy" parent="." instance=ExtResource("6_ibgta")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5242, 0, -3.58749)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0436, 0, -4.66169)
 
 [node name="StationaryEnemy" parent="." instance=ExtResource("7_fphmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5242, 0, 7.27022)

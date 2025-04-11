@@ -15,10 +15,8 @@ gravity_scale = 0.0
 script = ExtResource("1_keeht")
 cockpit = NodePath("Cockpit")
 modules = [null, null, null, null, null]
-
 team = 0
 leave_animation = NodePath("Cockpit/AnimationPlayer")
-
 
 [node name="Cockpit" parent="." node_paths=PackedStringArray("ship", "child_modules") instance=ExtResource("1_odfy5")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0248848, 0, -0.0520686)

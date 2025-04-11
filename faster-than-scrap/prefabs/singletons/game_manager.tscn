@@ -5,5 +5,4 @@
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_vvpif")
-game_state = null
 death_screen = ExtResource("2_dl260")

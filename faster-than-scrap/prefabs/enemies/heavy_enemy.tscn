@@ -48,7 +48,6 @@ initial_state = NodePath("Idle")
 
 [node name="AggressiveShooting" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("6_xxpwe")
-min_range_to_player = 5
 dead_zone = 1.0
 
 [node name="LowEnergy" type="Node" parent="StateMachineEnemy/AggressiveShooting" node_paths=PackedStringArray("new_state")]
@@ -63,7 +62,6 @@ new_state = NodePath("../../Aggressive")
 
 [node name="Aggressive" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("9_skqe0")
-min_range_to_player = 5
 dead_zone = 1.0
 
 [node name="LowEnergy" type="Node" parent="StateMachineEnemy/Aggressive" node_paths=PackedStringArray("new_state")]
@@ -81,7 +79,6 @@ new_state = NodePath("../../AggressiveShooting")
 
 [node name="Defensive" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("11_1eplk")
-min_range_to_player = 15
 extra_energy_cost = -10.0
 circle_target = true
 

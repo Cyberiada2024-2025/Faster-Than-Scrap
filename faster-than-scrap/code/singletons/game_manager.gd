@@ -16,10 +16,11 @@ var ships: Array[Ship] = [];
 
 func _enter_tree() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
-	ships = []
 	player_ship = preload("res://prefabs/ships/flyable_ship.tscn").instantiate()
 
-
+func on_scene_exit() -> void:
+	ships = []
+	
 func set_game_state(new_state: GameState.State) -> void:
 	game_state = new_state
 	new_game_state.emit(new_state)
@@ -71,7 +72,7 @@ func _on_ship_death(ship: Ship):
 func find_closest_ship(ship: Ship) -> Ship:
 	var closest: Ship = ship
 	var position: Vector3 = ship.global_position
-	var distance_sqr: float = 9999999999999999
+	var distance_sqr: float = INF
 	for s in ships:
 		if TeamManager.hate(ship, s):
 			if s != ship && (s.global_position - position).length_squared() < distance_sqr:

@@ -35,7 +35,7 @@ velocity_multiplier = 50.0
 lifetime = 2.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.75)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.748067)
 mesh = SubResource("CylinderMesh_386xi")
 
 [node name="DamageArea3D" type="Area3D" parent="."]
@@ -49,5 +49,5 @@ _damage = SubResource("Resource_x6y5o")
 _die_on_hit = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.75)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_2fpck")

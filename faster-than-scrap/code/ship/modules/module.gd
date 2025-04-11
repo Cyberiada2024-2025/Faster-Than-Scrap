@@ -5,11 +5,6 @@ extends CollisionShape3D
 ## Base class for all modules
 ## The object should have scale 1 to work properly!
 
-signal activated
-signal deactivated
-signal damaged
-signal destroyed
-
 @export var activation_key: Key = KEY_NONE
 @export var max_hp: float = 100
 @export var hp: float = 100
@@ -79,7 +74,6 @@ func take_damage(damage: Damage) -> void:
 	update_sprite()
 	if hp <= 0:
 		_on_destroy()
-	damaged.emit()
 
 
 func update_sprite() -> void:
@@ -99,7 +93,6 @@ func _on_destroy() -> void:
 		rb.linear_velocity = ship.linear_velocity
 		child.deactivate()
 	queue_free()  # delete self as an object
-	destroyed.emit()
 
 
 func deactivate() -> void:

@@ -2,9 +2,6 @@ class_name ShieldModule
 
 extends Module
 
-signal shield_damaged
-signal shield_broken
-
 @export var energy_per_turning: float
 @export var energy_per_sec: float
 @export var energy_per_dmg: float
@@ -12,27 +9,23 @@ signal shield_broken
 @export var collider: CollisionShape3D
 
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if shield.on && !ship.use_energy(delta * energy_per_sec):
-		shield.deactivate()
-		deactivated.emit()
+		shield.turn_on_off()
 	super._process(delta)
 
 
 func take_shield_damage(dmg: int) -> void:
 	if shield.on && !ship.use_energy(dmg * energy_per_dmg):
-		shield.deactivate()
+		shield.turn_on_off()
 		ship.use_energy(ship.energy - 1)
-		shield_broken.emit()
 	elif shield.on:
 		shield.take_damage()
-		shield_damaged.emit()
 
 
 func _on_key_press(_delta: float) -> void:
 	if shield.on:
-		shield.deactivate()
-		deactivated.emit()
+		shield.turn_on_off()
 	elif ship.use_energy(energy_per_turning):
-		shield.activate()
-		activated.emit()
+		shield.turn_on_off()

@@ -1,6 +1,6 @@
 extends Node
 
-@export_category("CollisionCalculator")
+@export_category("ColisionCalculator")
 ## Target to which the damage will be dealt
 @export var damageable: Damageable
 ## Primary shape that will be taken into account
@@ -9,7 +9,7 @@ extends Node
 ## calculating damage
 @export var include_other_shapes: bool = false
 
-@export_group("CollisionModifiers")
+@export_group("ColisionModifiers")
 @export var flat_damage_reduction: float = 10.0
 @export var self_damage_multiplier: float = 1.0
 @export var dealt_damage_multiplier: float = 1.0
@@ -20,22 +20,23 @@ var pre_collision_velosity: Vector3
 
 
 func _ready() -> void:
-	# check if parent is PhysicsBody3D, to make it work with module ghosts
+	# check if parent is PB, to make it work with module ghosts
 	if shape.get_parent_node_3d() is not PhysicsBody3D:
-		set_process(false)
-		return
+		# destroy self, cause you are in ghost
+		queue_free()
+	else:
+		calculated_body = shape.get_parent_node_3d()
+		calculated_body.set_meta("collision_damage_calculator", self)
 
-	calculated_body = shape.get_parent_node_3d()
-	calculated_body.set_meta("collision_damage_calculator", self)
-
-	calculated_body.body_shape_entered.connect(_find_parent_collision)
-	calculated_body.contact_monitor = true
-	if calculated_body.max_contacts_reported <= 0:
-		calculated_body.max_contacts_reported = 10
+		calculated_body.body_shape_entered.connect(_find_parent_collision)
+		calculated_body.contact_monitor = true
+		if calculated_body.max_contacts_reported <= 0:
+			calculated_body.max_contacts_reported = 10
 
 
 func _process(_delta: float) -> void:
-	pre_collision_velosity = calculated_body.linear_velocity
+	if calculated_body != null:
+		pre_collision_velosity = calculated_body.linear_velocity
 
 
 func _find_parent_collision(

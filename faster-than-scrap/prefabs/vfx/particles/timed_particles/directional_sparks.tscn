@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3mc1twhji6o7"]
+
+[ext_resource type="Script" uid="uid://65m4xcjhtor5" path="res://code/effects/timed_gpu_particles_3d.gd" id="1_depj3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6jcs"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="Curve" id="Curve_5n7gc"]
+_data = [Vector2(0, 0.993215), 0.0, -0.993215, 0, 1, Vector2(1, 0), -0.993215, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1or7c"]
+curve = SubResource("Curve_5n7gc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o6jcs"]
+particle_flag_align_y = true
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+spread = 180.0
+initial_velocity_min = 102.19
+initial_velocity_max = 118.74
+gravity = Vector3(0, 0, 0)
+scale_min = 0.4
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_1or7c")
+color = Color(1, 1, 0, 1)
+anim_speed_min = 2.43
+anim_speed_max = 2.73
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_c2e1b"]
+top_radius = 0.25
+bottom_radius = 0.25
+
+[sub_resource type="Skin" id="Skin_c2e1b"]
+
+[node name="Sparks" type="GPUParticles3D"]
+material_override = SubResource("StandardMaterial3D_o6jcs")
+lifetime = 0.1
+trail_lifetime = 0.01
+process_material = SubResource("ParticleProcessMaterial_o6jcs")
+draw_pass_1 = SubResource("CylinderMesh_c2e1b")
+draw_skin = SubResource("Skin_c2e1b")
+script = ExtResource("1_depj3")
+metadata/_custom_type_script = "uid://65m4xcjhtor5"

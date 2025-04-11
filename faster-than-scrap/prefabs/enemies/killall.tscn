@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="12_y23ls"]
 [ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/idle.gd" id="13_f40cc"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="14_a5qea"]
-[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/poi/enemy_poi.tscn" id="15_p4jja"]
+[ext_resource type="PackedScene" uid="uid://8fgrucotq3xq" path="res://prefabs/poi/kill-all_poi.tscn" id="15_ugfhb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugfhb"]
 albedo_color = Color(1, 0, 0, 1)
@@ -137,7 +137,7 @@ shape = SubResource("SphereShape3D_rj4bm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0171585, 0, 0.426331)
 shape = SubResource("BoxShape3D_rj4bm")
 
-[node name="EnemyPoi" parent="." instance=ExtResource("15_p4jja")]
+[node name="KillAllPoi" parent="." instance=ExtResource("15_ugfhb")]
 
 [connection signal="damaged" from="DamageController" to="Ship" method="_on_take_damage"]
 

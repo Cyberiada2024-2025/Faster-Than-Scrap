@@ -20,7 +20,7 @@ func _enter_tree() -> void:
 
 func on_scene_exit() -> void:
 	ships = []
-	
+
 func set_game_state(new_state: GameState.State) -> void:
 	game_state = new_state
 	new_game_state.emit(new_state)

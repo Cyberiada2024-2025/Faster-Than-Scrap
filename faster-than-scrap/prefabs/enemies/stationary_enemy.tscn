@@ -28,10 +28,9 @@ rotation_speed = 0.02
 weapon = NodePath("Weapon")
 ship = NodePath("Ship")
 
-[node name="Weapon" type="Node3D" parent="." node_paths=PackedStringArray("ship")]
+[node name="Weapon" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.28412)
 script = ExtResource("2_s16g2")
-ship = NodePath("../Ship")
 energy_cost = 20.0
 cooldown = 10.0
 projectile = ExtResource("3_a1lma")
@@ -48,7 +47,6 @@ initial_state = NodePath("Idle")
 
 [node name="AggressiveShooting" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("6_pqmbm")
-min_range_to_player = 0
 extra_energy_cost = 0.0
 dead_zone = 1.0
 
@@ -63,7 +61,6 @@ new_state = NodePath("../../Idle")
 
 [node name="Defensive" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("11_e27e5")
-min_range_to_player = 0
 extra_energy_cost = -10.0
 circle_target = true
 

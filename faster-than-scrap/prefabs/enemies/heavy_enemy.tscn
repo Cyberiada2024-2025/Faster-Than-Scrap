@@ -29,10 +29,9 @@ rotation_speed = 0.03
 weapon = NodePath("Weapon")
 ship = NodePath("Ship")
 
-[node name="Weapon" type="Node3D" parent="." node_paths=PackedStringArray("ship")]
+[node name="Weapon" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.87369)
 script = ExtResource("2_yc3bl")
-ship = NodePath("../Ship")
 energy_cost = 30.0
 cooldown = 2.0
 projectile = ExtResource("3_ok4vr")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cxhrds3h4vmvl"]
+[gd_scene load_steps=19 format=3 uid="uid://2d27nuwt86j3"]
 
 [ext_resource type="Script" uid="uid://do6r4sdoiglip" path="res://code/enemy/NPC.gd" id="1_ugfhb"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_x6esf"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="12_y23ls"]
 [ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/idle.gd" id="13_f40cc"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="14_a5qea"]
-[ext_resource type="PackedScene" uid="uid://8fgrucotq3xq" path="res://prefabs/poi/kill-all_poi.tscn" id="15_ugfhb"]
+[ext_resource type="PackedScene" path="res://prefabs/poi/kill-all_poi.tscn" id="15_ugfhb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugfhb"]
 albedo_color = Color(1, 0, 0, 1)
@@ -32,10 +32,9 @@ rotation_speed = 0.03
 weapon = NodePath("Weapon")
 ship = NodePath("Ship")
 
-[node name="Weapon" type="Node3D" parent="." node_paths=PackedStringArray("ship")]
+[node name="Weapon" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.87369)
 script = ExtResource("2_x6esf")
-ship = NodePath("../Ship")
 energy_cost = 30.0
 cooldown = 2.0
 projectile = ExtResource("3_bt7gj")

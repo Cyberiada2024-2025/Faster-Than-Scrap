@@ -25,3 +25,13 @@ func get_node_color() -> Color:
 
 func get_node_description() -> String:
 	return ""
+
+
+func get_spawner() -> BaseEntitySpawner:
+	var spawner: CircleEntitySpawner = (
+		preload("res://prefabs/spawners/circle_enemy_spawner.tscn").instantiate()
+	)
+	spawner.point = GameManager.player_ship.position
+	spawner.max_position_change = 100.0
+	spawner.entities_count = 5
+	return spawner

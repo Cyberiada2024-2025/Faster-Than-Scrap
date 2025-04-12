@@ -1,0 +1,10 @@
+[gd_scene load_steps=5 format=3 uid="uid://qmroj5befgan"]
+
+[ext_resource type="Script" uid="uid://dec7tvft2iqco" path="res://code/spawners/circle_entity_spawner.gd" id="1_fpgf4"]
+[ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/enemies/fast_enemy.tscn" id="2_2k1tf"]
+[ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/enemies/heavy_enemy.tscn" id="3_43v37"]
+[ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/enemies/stationary_enemy.tscn" id="4_rllba"]
+
+[node name="CircleEntitySpawner" type="Node"]
+script = ExtResource("1_fpgf4")
+spawned_entities = Array[PackedScene]([ExtResource("2_2k1tf"), ExtResource("3_43v37"), ExtResource("4_rllba")])

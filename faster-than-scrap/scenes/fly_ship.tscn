@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnnvqogplwfqa"]
+[gd_scene load_steps=9 format=3 uid="uid://bnnvqogplwfqa"]
 
 [ext_resource type="Script" uid="uid://dtqvp1s2omow6" path="res://code/evironment/setup_fly_scene.gd" id="1_nuays"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="2_g53x4"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="5_gcgjm"]
 [ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/enemies/heavy_enemy.tscn" id="6_ibgta"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/enemies/stationary_enemy.tscn" id="7_fphmu"]
+[ext_resource type="Script" uid="uid://42162eaw1s2a" path="res://scenes/reset.gd" id="8_ibgta"]
 
 [node name="Space" type="Node3D"]
 
@@ -27,10 +28,10 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.262
 script = ExtResource("5_gcgjm")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
-[node name="Button" type="Button" parent="."]
+[node name="BackToBuild" type="Button" parent="."]
 modulate = Color(0.254902, 1, 0.278431, 1)
-offset_right = 133.0
-offset_bottom = 54.0
+offset_right = 128.0
+offset_bottom = 56.0
 text = "Build 
 (dev purposes)"
 autowrap_mode = 3
@@ -44,4 +45,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5242, 0, -3.58749)
 [node name="StationaryEnemy" parent="." instance=ExtResource("7_fphmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5242, 0, 7.27022)
 
-[connection signal="pressed" from="Button" to="SceneLoader" method="load_build_ship_scene"]
+[node name="Reset" type="Button" parent="."]
+offset_top = 56.0
+offset_right = 128.0
+offset_bottom = 88.0
+text = "Reset"
+script = ExtResource("8_ibgta")
+
+[connection signal="pressed" from="BackToBuild" to="SceneLoader" method="load_build_ship_scene"]
+[connection signal="pressed" from="Reset" to="SceneLoader" method="load_main_menu_scene"]

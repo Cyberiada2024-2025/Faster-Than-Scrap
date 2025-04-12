@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bnnvqogplwfqa"]
 
-[ext_resource type="Script" uid="uid://dtqvp1s2omow6" path="res://code/evironment/setup_fly_scene.gd" id="1_nuays"]
+[ext_resource type="Script" uid="uid://dlhtkrvllhbjm" path="res://code/evironment/setup_fly_scene_with_generator.gd" id="1_ibgta"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="2_g53x4"]
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="3_jnhio"]
 [ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/enemies/fast_enemy.tscn" id="5_3xk4m"]
@@ -14,7 +14,7 @@
 [node name="Space" type="Node3D"]
 
 [node name="SetupFlyScene" type="Node" parent="."]
-script = ExtResource("1_nuays")
+script = ExtResource("1_ibgta")
 metadata/_custom_type_script = "uid://dtqvp1s2omow6"
 
 [node name="HudSpawner" type="Node" parent="."]
@@ -38,13 +38,15 @@ text = "Build
 (dev purposes)"
 autowrap_mode = 3
 
-[node name="FastEnemy" parent="." instance=ExtResource("5_3xk4m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.969, 0, -10.7901)
+[node name="Enemies" type="Node" parent="."]
 
-[node name="HeavyEnemy" parent="." instance=ExtResource("6_ibgta")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0436, 0, -4.66169)
+[node name="FastEnemy" parent="Enemies" instance=ExtResource("5_3xk4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.13256, 0, -3.88455)
 
-[node name="StationaryEnemy" parent="." instance=ExtResource("7_fphmu")]
+[node name="HeavyEnemy" parent="Enemies" instance=ExtResource("6_ibgta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5242, 0, -3.58749)
+
+[node name="StationaryEnemy" parent="Enemies" instance=ExtResource("7_fphmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5242, 0, 7.27022)
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_ibgta")]

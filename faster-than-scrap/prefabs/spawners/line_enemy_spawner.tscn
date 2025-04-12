@@ -1,0 +1,10 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjuk5a3y1a8c2"]
+
+[ext_resource type="Script" uid="uid://x0pvwr2edbg3" path="res://code/spawners/line_entity_spawner.gd" id="1_c4vyv"]
+[ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/enemies/fast_enemy.tscn" id="2_r744t"]
+[ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/enemies/heavy_enemy.tscn" id="3_01i36"]
+[ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/enemies/stationary_enemy.tscn" id="4_u55hw"]
+
+[node name="LineEntitySpawner" type="Node"]
+script = ExtResource("1_c4vyv")
+spawned_entities = Array[PackedScene]([ExtResource("2_r744t"), ExtResource("3_01i36"), ExtResource("4_u55hw")])

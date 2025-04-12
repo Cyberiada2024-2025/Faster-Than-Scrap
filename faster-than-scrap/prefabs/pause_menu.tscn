@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cejxkr8qd2e17"]
+[gd_scene load_steps=5 format=3 uid="uid://cejxkr8qd2e17"]
 
 [ext_resource type="Script" uid="uid://cntqnnyriiru2" path="res://code/pause_menu.gd" id="1_hf53u"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_iyb4f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iyb4f"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntkjb"]
+bg_color = Color(0.133196, 0.133196, 0.133196, 1)
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -40,6 +46,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../Exit")
 focus_neighbor_bottom = NodePath("../Exit")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_iyb4f")
 text = "RESUME
 "
 
@@ -48,6 +55,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../Resume")
 focus_neighbor_bottom = NodePath("../Resume")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ntkjb")
 text = "EXIT TO MAIN MENU
 "
 

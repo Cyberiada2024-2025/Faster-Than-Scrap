@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=33 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -68,6 +68,22 @@ emission_energy_multiplier = 2.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_cv5l0"]
 size = Vector3(8.32263, 1, 12.5726)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqadh"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.313726)
+emission_enabled = true
+emission = Color(0.699653, 0.699653, 0.699653, 1)
+emission_energy_multiplier = 1.39
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtm63"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xqadh"]
+size = Vector3(0.41153, 1, 20.8868)
+
 [sub_resource type="LabelSettings" id="LabelSettings_xqadh"]
 font_color = Color(0.105882, 1, 0.105882, 1)
 
@@ -75,9 +91,10 @@ font_color = Color(0.105882, 1, 0.105882, 1)
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_8ccmg")]
 
-[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "choose_key_message", "confirm_finish_message")]
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "confirm_finish_message")]
 script = ExtResource("1_d5jmr")
-ignore = NodePath("../Shop/Area3D")
+ignore = [NodePath("../Shop/Area3D"), NodePath("../Ship Max Size/Area3D")]
+ship_borders = NodePath("../Ship Max Size/Area3D")
 outline_mat = ExtResource("3_7x66o")
 flash_mat = ExtResource("4_sra6p")
 flash_time = 0.5
@@ -292,7 +309,7 @@ script = ExtResource("7_jtm63")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
 [node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish", "selected_module_display", "selected_module_description")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.85019, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2428, 0, 0)
 script = ExtResource("11_jtm63")
 modules = Array[String](["uid://cujiw86wtjlp8", "uid://cujiw86wtjlp8", "uid://cujiw86wtjlp8", "uid://gngfqbur01ep", "uid://gngfqbur01ep", "uid://dbajfkkhivhl0", "uid://dbajfkkhivhl0", "uid://cqkj1jovh07cf", "uid://cqkj1jovh07cf", "uid://taxlqo87sp7s"])
 starting_bank = 3
@@ -332,6 +349,37 @@ input_ray_pickable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0455933, 0, 0.0821714)
 shape = SubResource("BoxShape3D_cv5l0")
+
+[node name="Ship Max Size" type="Node3D" parent="."]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Ship Max Size"]
+transform = Transform3D(20, 0, 0, 0, 0.2, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("BoxMesh_jtm63")
+material = SubResource("StandardMaterial3D_xqadh")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Ship Max Size/CSGMesh3D"]
+transform = Transform3D(1.01, 0, 0, 0, 0.5, 0, 0, 0, 1.01, 0, 0, 0)
+mesh = SubResource("BoxMesh_jtm63")
+material = SubResource("StandardMaterial3D_jtm63")
+
+[node name="Area3D" type="Area3D" parent="Ship Max Size"]
+input_ray_pickable = false
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Ship Max Size/Area3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0340881, 0, 0.525291)
+shape = SubResource("BoxShape3D_xqadh")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Ship Max Size/Area3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.151688, 0, 10.3096)
+shape = SubResource("BoxShape3D_xqadh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Ship Max Size/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2751, 0, 0.131323)
+shape = SubResource("BoxShape3D_xqadh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship Max Size/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3246, 0, 0.0656614)
+shape = SubResource("BoxShape3D_xqadh")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.57239, 0, 3.31371)

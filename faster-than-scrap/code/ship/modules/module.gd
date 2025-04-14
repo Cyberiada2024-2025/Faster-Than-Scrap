@@ -38,7 +38,6 @@ var module_rigidbody_prefab = preload("res://prefabs/modules/module_rigidbody.ts
 
 var activation_key_saved: Key = KEY_NONE
 
-
 func _ready() -> void:
 	_on_key_change()
 	update_sprite()

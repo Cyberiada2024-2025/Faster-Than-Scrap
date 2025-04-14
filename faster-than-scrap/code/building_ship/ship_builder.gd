@@ -13,12 +13,15 @@ enum State { NONE, DRAGGING, SETTING_BUTTON }
 const RAY_LENGTH = 1000.0
 
 ## collider or ares ignored by raycast, might be empty
-@export var ignore: CollisionObject3D
+@export var ignore: Array[CollisionObject3D]
 ## the mask of checked colliders when checking if there are modules near the mouse
 @export var collision_mask: int = 1
 ## the range of spherecast when checking if there are modules near the mouse
 @export var snap_range: float = 1
 ## material of ghost outline
+
+## borders limiting max size of the ship
+@export var ship_borders: Area3D
 
 @export_group("Visuals")
 @export var outline_mat: ShaderMaterial
@@ -48,6 +51,7 @@ var rmb_was_pressed: bool = false
 
 var scene_loader: SceneLoader
 
+var ignore_RID: Array[RID]
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -55,6 +59,9 @@ func _ready() -> void:
 
 	GameManager.player_ship.position = Vector3.ZERO
 	GameManager.player_ship.rotation = Vector3.ZERO
+	
+	for ig in ignore:
+		ignore_RID.push_back(ig.get_rid())
 
 
 # ---------------mouse ---------------------------------------------
@@ -113,7 +120,7 @@ func _get_raycast_hit(event: InputEvent) -> Dictionary:
 	# only first layer (to avoid clicking damageable)
 	var query = PhysicsRayQueryParameters3D.create(from, to, 1)
 	query.collide_with_areas = true
-	query.exclude = [ignore]
+	query.exclude = ignore_RID
 	return space_state.intersect_ray(query)
 
 
@@ -391,6 +398,9 @@ func _process(_delta: float) -> void:
 			_position_module(intersection.position, intersection.normal)
 			if _module_collides():
 				# Module colliding with other module
+				_display_illegal()
+				legal = false
+			elif ship_borders.overlaps_area(active_module_ghost):
 				_display_illegal()
 				legal = false
 			else:

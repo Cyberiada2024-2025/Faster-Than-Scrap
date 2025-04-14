@@ -48,7 +48,7 @@ var mouse_position_3d: Vector3 = Vector3.ZERO
 var lmb_was_pressed: bool = false
 var lmb_is_pressed: bool = false
 var rmb_was_pressed: bool = false
-var ignore_RID: Array[RID]
+var ignore_rid: Array[RID]
 var scene_loader: SceneLoader
 
 
@@ -61,7 +61,7 @@ func _ready() -> void:
 	GameManager.player_ship.rotation = Vector3.ZERO
 
 	for ig in ignore:
-		ignore_RID.push_back(ig.get_rid())
+		ignore_rid.push_back(ig.get_rid())
 
 
 # ---------------mouse ---------------------------------------------
@@ -120,7 +120,7 @@ func _get_raycast_hit(event: InputEvent) -> Dictionary:
 	# only first layer (to avoid clicking damageable)
 	var query = PhysicsRayQueryParameters3D.create(from, to, 1)
 	query.collide_with_areas = true
-	query.exclude = ignore_RID
+	query.exclude = ignore_rid
 	return space_state.intersect_ray(query)
 
 

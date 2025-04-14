@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnnvqogplwfqa"]
+[gd_scene load_steps=10 format=3 uid="uid://bnnvqogplwfqa"]
 
 [ext_resource type="Script" uid="uid://dtqvp1s2omow6" path="res://code/evironment/setup_fly_scene.gd" id="1_nuays"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="2_g53x4"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="5_gcgjm"]
 [ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/enemies/heavy_enemy.tscn" id="6_ibgta"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/enemies/stationary_enemy.tscn" id="7_fphmu"]
+[ext_resource type="Texture2D" uid="uid://d14cg4v1ms715" path="res://art/textures/environment/layers/Nebula.png" id="8_ibgta"]
+[ext_resource type="Texture2D" uid="uid://dvi2q0xrcpl6r" path="res://art/textures/environment/layers/Stars0exp.png" id="9_fphmu"]
 
 [node name="Space" type="Node3D"]
 
@@ -43,5 +45,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5242, 0, -3.58749)
 
 [node name="StationaryEnemy" parent="." instance=ExtResource("7_fphmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5242, 0, 7.27022)
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Background"]
+transform = Transform3D(40, 0, 0, 0, -1.74846e-06, -40, 0, 40, -1.74846e-06, 0, -266.245, 0)
+texture = ExtResource("8_ibgta")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Background"]
+transform = Transform3D(40, 0, 0, 0, -1.74846e-06, -40, 0, 40, -1.74846e-06, 0, -266.245, 800)
+texture = ExtResource("8_ibgta")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Background"]
+transform = Transform3D(40, 0, 0, 0, -1.74846e-06, -40, 0, 40, -1.74846e-06, 0, -266.245, -833.774)
+texture = ExtResource("8_ibgta")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Background"]
+transform = Transform3D(40, 0, 0, 0, -1.74846e-06, -40, 0, 40, -1.74846e-06, 1520, -266.245, 0)
+texture = ExtResource("8_ibgta")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Background"]
+transform = Transform3D(40, 0, 0, 0, -1.74846e-06, -40, 0, 40, -1.74846e-06, 1520, -266.245, 800)
+texture = ExtResource("8_ibgta")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Background"]
+transform = Transform3D(40, 0, 0, 0, -1.74846e-06, -40, 0, 40, -1.74846e-06, 1520, -266.245, -833.774)
+texture = ExtResource("8_ibgta")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Background"]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, -100, 0, 100, -4.37114e-06, 0, -2672.77, 0)
+texture = ExtResource("9_fphmu")
 
 [connection signal="pressed" from="Button" to="SceneLoader" method="load_build_ship_scene"]

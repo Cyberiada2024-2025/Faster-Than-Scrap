@@ -174,6 +174,7 @@ func create_ghost() -> ModuleGhost:
 	ghost.add_child(duplicate_node)
 	duplicate_node.position = Vector3.ZERO
 	duplicate_node.rotation = Vector3.ZERO
+	duplicate_node.prize = 0;
 	ghost.module_to_ignore = self
 
 	return ghost

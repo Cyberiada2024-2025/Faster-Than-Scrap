@@ -79,9 +79,10 @@ font_color = Color(0.105882, 1, 0.105882, 1)
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_8ccmg")]
 
-[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "choose_key_message", "confirm_finish_message")]
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "shop", "choose_key_message", "confirm_finish_message")]
 script = ExtResource("1_d5jmr")
 ignore = NodePath("../Shop/Area3D")
+shop = NodePath("../Shop")
 outline_mat = ExtResource("3_7x66o")
 flash_mat = ExtResource("4_sra6p")
 flash_time = 0.5
@@ -326,6 +327,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Prize_display" type="ColorRect" parent="Control"]
+layout_mode = 0
 offset_left = 5.0
 offset_top = 241.0
 offset_right = 255.0

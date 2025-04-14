@@ -1,5 +1,8 @@
 class_name EnemyIdle
-extends movementState
+extends StateNPC
+
+@export var min_range_to_player := 50
+
 
 func enter(_previous_state_path: String, _data := {}) -> void:
 	print("enemy is idle [zzz...]")

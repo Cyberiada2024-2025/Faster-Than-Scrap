@@ -1,7 +1,5 @@
 extends Node
 
-## Singleton for saving the map used for selecting next nodes (map_select).
-
 var map_select: MapSelector
 
 

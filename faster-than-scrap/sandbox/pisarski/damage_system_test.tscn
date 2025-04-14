@@ -61,7 +61,6 @@ value = 15.0
 
 [node name="ModuleBase" parent="." instance=ExtResource("1_ljsue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11, 0, 0)
-gravity_scale = 0.0
 
 [node name="DamageArea3D_Enter" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.115, 0, 0)

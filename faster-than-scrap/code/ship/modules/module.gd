@@ -5,11 +5,6 @@ extends CollisionShape3D
 ## Base class for all modules
 ## The object should have scale 1 to work properly!
 
-signal activated
-signal deactivated
-signal damaged
-signal destroyed
-
 @export var activation_key: Key = KEY_NONE
 @export var max_hp: float = 100
 @export var hp: float = 100
@@ -31,7 +26,7 @@ var was_key_pressed: bool = false
 
 var module_rigidbody_prefab = preload("res://prefabs/modules/module_rigidbody.tscn")
 
-var activation_key_saved: Key = KEY_NONE
+var activation_key_saved: Key = 0
 
 
 func _ready() -> void:
@@ -79,7 +74,6 @@ func take_damage(damage: Damage) -> void:
 	update_sprite()
 	if hp <= 0:
 		_on_destroy()
-	damaged.emit()
 
 
 func update_sprite() -> void:
@@ -94,17 +88,17 @@ func _on_destroy() -> void:
 	_explode()
 	for child in child_modules:
 		var rb: RigidBody3D = module_rigidbody_prefab.instantiate()
+		var root = get_tree().get_root()
 		get_tree().get_root().add_child(rb)  # attach to scene root
 		child.reparent(rb)
 		rb.linear_velocity = ship.linear_velocity
 		child.deactivate()
 	queue_free()  # delete self as an object
-	destroyed.emit()
 
 
 func deactivate() -> void:
 	activation_key_saved = activation_key
-	activation_key = KEY_NONE
+	activation_key = 0
 
 
 func activate() -> void:
@@ -137,17 +131,17 @@ func _on_key_change() -> void:
 		if text.length() <= 0:
 			return
 		if text.length() <= 3:
-			label.font_size = int(160.0 / text.length())
+			label.font_size = 160 / text.length()
 		else:
-			label.font_size = int(160.0 / text.length() * 2)
+			label.font_size = 160 / text.length() * 2
 
 
 func has_child_module() -> bool:
 	return child_modules.size() > 0
 
 
-func set_ship_reference(ship_ref: Ship) -> void:
-	ship = ship_ref
+func set_ship_reference(ship: Ship) -> void:
+	self.ship = ship
 
 
 ## Returns the node3D which is the center of the attach point.
@@ -170,24 +164,9 @@ func create_ghost() -> ModuleGhost:
 	ghost.global_position = global_position
 
 	# duplicate module
-	var duplicate_node: Node3D = self.duplicate()
-	ghost.add_child(duplicate_node)
-	duplicate_node.position = Vector3.ZERO
-	duplicate_node.rotation = Vector3.ZERO
+	var duplicate: Node = self.duplicate()
+	ghost.add_child(duplicate)
+	duplicate.position = Vector3.ZERO
 	ghost.module_to_ignore = self
 
 	return ghost
-
-
-## Return all children (even indirect) modules of a given node.
-
-
-static func find_all_modules(node: Node) -> Array[Module]:
-	var result = []
-	for child in node.get_children():
-		if child is Module:
-			result.append(child)
-		result.append_array(find_all_modules(child))  # Recurse
-	var modules: Array[Module] = []
-	modules.assign(result)  # create module typed array
-	return modules

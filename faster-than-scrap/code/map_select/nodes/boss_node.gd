@@ -4,10 +4,6 @@ class_name BossNode
 
 extends MapNode
 
-@export var boss_prefabs: Array[PackedScene] = []
-@export var is_miniboss = false
-
-
 func _set_color() -> void:
 	modulate = Color.RED
 	super()
@@ -19,6 +15,4 @@ func get_description() -> String:
 
 func change_scene(scene_loader: SceneLoader) -> void:
 	super(scene_loader)
-	BossManager.bosses_to_spawn = boss_prefabs
-	BossManager.is_miniboss = is_miniboss
-	scene_loader.load_boss_scene(Vector3(0, 0, 15))
+	scene_loader.load_fly_ship_scene() # TODO change to boss scene?

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvhtby50lwoe4"]
-
-[ext_resource type="Script" path="res://Sandbox/Mikulski/set_player_for_test.gd" id="1_ovlgn"]
-
-[node name="set player for test" type="Node"]
-script = ExtResource("1_ovlgn")

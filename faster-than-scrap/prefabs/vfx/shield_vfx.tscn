@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://3a5vwad6lsnu"]
 
-[ext_resource type="Shader" uid="uid://ohokcopb2fdp" path="res://art/shaders/Shield.tres" id="1_mu0sc"]
+[ext_resource type="Shader" uid="uid://ohokcopb2fdp" path="res://art/Shaders/Shield.tres" id="1_mu0sc"]
 [ext_resource type="ArrayMesh" uid="uid://cadsh5rgfnp6t" path="res://art/models/Shield.obj" id="2_bgmlk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bbfm5"]

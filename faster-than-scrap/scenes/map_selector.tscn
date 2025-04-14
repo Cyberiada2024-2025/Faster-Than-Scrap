@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpr65ttaqujar"]
+[gd_scene load_steps=4 format=3 uid="uid://bpr65ttaqujar"]
 
 [ext_resource type="Script" uid="uid://n3n525xrpgvs" path="res://code/map_select/map_manager.gd" id="1_0byna"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_0byna"]
+[ext_resource type="PackedScene" uid="uid://cejxkr8qd2e17" path="res://prefabs/pause_menu.tscn" id="3_0byna"]
 
 [node name="MapSelector" type="Node" node_paths=PackedStringArray("map_container", "button", "label", "scene_loader")]
 script = ExtResource("1_0byna")
@@ -43,3 +44,5 @@ text = "Select Mission
 
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("2_0byna")
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_0byna")]

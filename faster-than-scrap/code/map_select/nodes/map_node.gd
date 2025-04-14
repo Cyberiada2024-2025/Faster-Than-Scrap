@@ -104,6 +104,8 @@ func draw_selected():
 	var local_start = get_rect().get_center() - get_rect().position
 	var radius = (get_rect().size.x / 2) * (3.0 / 4)
 
+	var delta_angle = PI / arc_count
+
 	draw_arc(local_start, radius, angle, 2 * PI + angle, 5, Color.GRAY, 8)
 
 

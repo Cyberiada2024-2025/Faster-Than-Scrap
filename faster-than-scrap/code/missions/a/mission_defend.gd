@@ -2,12 +2,10 @@ class_name MissionTimedDefend
 
 extends Mission
 
-@export var info: MissionInfoDefend
+var info: MissionInfoDefend
 
 var defendable: Node3D
 var failed = false
-
-var defend_prefab = preload("res://prefabs/environment/defend_target.tscn")
 
 
 func setup() -> void:
@@ -15,7 +13,8 @@ func setup() -> void:
 
 	# create defendable object
 	# TODO swap to instantiating the defendable asset f.e.: ally ship
-	defendable = defend_prefab.instantiate()
+	defendable = MeshInstance3D.new()
+	defendable.mesh = BoxMesh.new()
 	MissionManager.get_tree().current_scene.add_child(defendable)
 
 	# add timer

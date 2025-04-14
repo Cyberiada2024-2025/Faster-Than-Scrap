@@ -8,9 +8,9 @@ extends RayCast3D
 ## Signal emitted everytime this node applies damage to a [Damageable] node.
 signal damage_applied(damage: Damage, target: Damageable)
 
-## If set to [code]false[/code], this node will be destroyed immediately after applying damage. [br]
-## If set to [code]true[/code], the damage will be applied constantly.
-@export var _constant_fire: bool = true
+## If set to [code]true[/code], this node will be destroyed immediately after applying damage. [br]
+## If set to [code]false[/code], the damage will be applied constantly.
+@export var _constant_fire: bool
 
 ## How much damage does the ray deal to [Damageable] nodes.
 ## If [member _constant_fire] is set to [code]true[/code], specifies damage per second.

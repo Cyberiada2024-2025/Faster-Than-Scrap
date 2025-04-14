@@ -8,22 +8,21 @@ var from: Node3D
 var to: Node3D
 var taken: bool = false
 
-var get_item_prefab = preload("res://prefabs/environment/get_item_target.tscn")
-
 
 func setup() -> void:
 	super()
 
 	# create item to take and its destinations
-	from = get_item_prefab.instantiate()
-	to = get_item_prefab.instantiate()
+	from = MeshInstance3D.new()  # TODO swap to instantiating the item asset
+	to = MeshInstance3D.new()
+	from.mesh = BoxMesh.new()
+	to.mesh = BoxMesh.new()
 
-	MissionManager.get_tree().current_scene.add_child(from)
-	MissionManager.get_tree().current_scene.add_child(to)
+	MissionManager.add_child(from)
+	MissionManager.add_child(to)
 
 	from.global_position = info.item_position
 	to.global_position = info.item_target_position
-	to.hide()
 
 
 func _process(_delta: float) -> void:
@@ -35,8 +34,6 @@ func _process(_delta: float) -> void:
 		if from.position.distance_to(GameManager.player_ship.position) < 2:
 			print("caught item")
 			taken = true
-			to.show()
-			from.hide()
 	else:
 		# check if in desired destination
 		if to.position.distance_to(GameManager.player_ship.position) < 2:

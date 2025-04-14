@@ -81,7 +81,11 @@ func _change_value(input: float) -> void:
 	bar_main.value = value_main
 
 	var temp: int = int(value_main)
-	numbers.text = String.num_int64(temp)
+	var str: String = ""
+	for i in 4:
+		str += String.num(temp % 10)
+		temp /= 10
+	numbers.text = str.reverse()
 
 	if value_main > value_under:
 		value_under = value_main

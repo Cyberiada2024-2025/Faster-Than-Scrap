@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqr2x28shkw41"]
+
+[ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/enemy projectiles/test_projectile.tscn" id="1_4lutw"]
+
+[node name="test_shotgun" type="Node3D"]
+
+[node name="TestProjectile5" parent="." instance=ExtResource("1_4lutw")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0, 0)
+
+[node name="TestProjectile6" parent="." instance=ExtResource("1_4lutw")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0)
+
+[node name="TestProjectile7" parent="." instance=ExtResource("1_4lutw")]
+
+[node name="TestProjectile8" parent="." instance=ExtResource("1_4lutw")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 0, 0)
+
+[node name="TestProjectile3" parent="." instance=ExtResource("1_4lutw")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 0, 0, 0)

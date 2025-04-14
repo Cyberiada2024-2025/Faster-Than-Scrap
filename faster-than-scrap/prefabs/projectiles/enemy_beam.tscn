@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://csls7imysojta"]
+
+[ext_resource type="Script" uid="uid://b86vmkhkjsh2k" path="res://code/ship/projectiles/beam.gd" id="1_xdvip"]
+[ext_resource type="Script" uid="uid://buwehho3rx3g0" path="res://code/damage/damage_raycast_3d.gd" id="2_rexpx"]
+[ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_ein6c"]
+
+[sub_resource type="Resource" id="Resource_7ctxp"]
+script = ExtResource("3_ein6c")
+value = 100.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2p3g"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j55a4"]
+material = SubResource("StandardMaterial3D_l2p3g")
+top_radius = 0.05
+bottom_radius = 0.1
+height = 1.0
+
+[node name="EnemyBeam" type="Node3D" node_paths=PackedStringArray("beam_indicator")]
+script = ExtResource("1_xdvip")
+beam_indicator = NodePath("Node3D")
+
+[node name="DamageRaycast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -50)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("2_rexpx")
+_constant_fire = true
+_damage = SubResource("Resource_7ctxp")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.5)
+mesh = SubResource("CylinderMesh_j55a4")
+skeleton = NodePath("../..")

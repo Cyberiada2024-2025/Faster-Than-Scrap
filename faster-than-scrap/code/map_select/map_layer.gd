@@ -1,4 +1,9 @@
 class_name MapLayer
 extends VBoxContainer
 
-@export var nodes: Array[MapNode] = []
+var nodes: Array[MapNode] = []
+
+
+func _enter_tree() -> void:
+	for node in get_children():
+		nodes.append(node)

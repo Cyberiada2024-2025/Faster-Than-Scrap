@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgx7bdd0f2rhg"]
+[gd_scene load_steps=5 format=3 uid="uid://cgx7bdd0f2rhg"]
 
 [ext_resource type="Script" uid="uid://ddvifutgxb0el" path="res://code/evironment/enter_shop.gd" id="1_hgafx"]
+[ext_resource type="PackedScene" uid="uid://dms6n6r5fyo4o" path="res://prefabs/poi/shop_poi.tscn" id="2_hgafx"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_m1twc"]
 
@@ -12,9 +13,16 @@ radius = 1.0
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PrismMesh_m1twc")
 
+[node name="Label" type="Label3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 2)
+text = "WORKSHOP"
+font_size = 180
+
 [node name="PlayerDetector" type="Area3D" parent="."]
 script = ExtResource("1_hgafx")
 metadata/_custom_type_script = "uid://bceg4vylbdwdr"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetector"]
 shape = SubResource("SphereShape3D_seei7")
+
+[node name="ShopPoi" parent="." instance=ExtResource("2_hgafx")]

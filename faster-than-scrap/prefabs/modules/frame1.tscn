@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://cujiw86wtjlp8"]
+
+[ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="1_l0bw6"]
+[ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="2_8i8s5"]
+[ext_resource type="PackedScene" uid="uid://bijtikg2etao2" path="res://art/model_prefabs/frame_0_model_pf.tscn" id="2_pgbm5"]
+[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="3_pgbm5"]
+[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="4_jnq3k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jnq3k"]
+size = Vector3(1, 1, 1.075)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e1j53"]
+
+[node name="Frame" type="CollisionShape3D" node_paths=PackedStringArray("attach_points", "sprite", "label")]
+shape = SubResource("BoxShape3D_jnq3k")
+script = ExtResource("1_l0bw6")
+attach_points = [NodePath("AttachPoints/AttachPoint1")]
+sprite = NodePath("ModuleDisplay/Sprite3D")
+label = NodePath("ModuleDisplay/Label3D")
+healthy_color = Color(0, 1, 0, 1)
+dead_color = Color(1, 0, 0, 1)
+
+[node name="Frame0Model" parent="." instance=ExtResource("2_pgbm5")]
+transform = Transform3D(0.645, 0, 0, 0, 0.645, 0, 0, 0, 0.645, 0, 0, 0)
+
+[node name="AttachPoints" type="Node3D" parent="."]
+
+[node name="AttachPoint1" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.85682e-09, 0, 0.566994)
+metadata/_edit_group_ = true
+
+[node name="ModuleDisplay" parent="." instance=ExtResource("2_8i8s5")]
+
+[node name="DamageController2" parent="." instance=ExtResource("3_pgbm5")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController2/Damageable" index="0"]
+shape = SubResource("SphereShape3D_e1j53")
+
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("4_jnq3k")]
+damageable = NodePath("../DamageController2/Damageable")
+shape = NodePath("..")
+self_damage_multiplier = 5.0
+
+[connection signal="damaged" from="DamageController2" to="." method="take_damage"]
+
+[editable path="ModuleDisplay"]
+[editable path="DamageController2"]

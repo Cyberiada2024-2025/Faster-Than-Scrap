@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://wcegjmvpftp8"]
+[gd_scene load_steps=4 format=3 uid="uid://b8vq1jqmowcwf"]
 
-[ext_resource type="Script" path="res://code/pause_menu.gd" id="1_hf53u"]
+[ext_resource type="Script" uid="uid://cntqnnyriiru2" path="res://code/pause_menu.gd" id="1_hf53u"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_iyb4f"]
+[ext_resource type="Script" uid="uid://bpibk0iyedtwk" path="res://code/evironment/reset.gd" id="2_ntkjb"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -50,6 +51,7 @@ focus_neighbor_bottom = NodePath("../Resume")
 theme_override_font_sizes/font_size = 30
 text = "EXIT TO MAIN MENU
 "
+script = ExtResource("2_ntkjb")
 
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("2_iyb4f")

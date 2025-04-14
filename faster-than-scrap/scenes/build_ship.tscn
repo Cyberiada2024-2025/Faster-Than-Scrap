@@ -1,5 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://dtjixr3e113vw"]
 
+
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="3_7x66o"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="9_xqadh"]
 [ext_resource type="PackedScene" uid="uid://cujiw86wtjlp8" path="res://prefabs/modules/frame1.tscn" id="10_jtm63"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="10_xqadh"]
+[ext_resource type="PackedScene" uid="uid://wcegjmvpftp8" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
@@ -416,6 +418,7 @@ Scroll: zoom camera"
 label_settings = SubResource("LabelSettings_xqadh")
 horizontal_alignment = 1
 vertical_alignment = 1
+[node name="PauseMenu" parent="." instance=ExtResource("11_d8di0")]
 
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]
 [connection signal="on_module_select" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_select"]

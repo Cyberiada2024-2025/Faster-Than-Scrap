@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnnvqogplwfqa"]
+[gd_scene load_steps=8 format=3 uid="uid://bnnvqogplwfqa"]
 
 [ext_resource type="Script" uid="uid://dtqvp1s2omow6" path="res://code/evironment/setup_fly_scene.gd" id="1_nuays"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="2_g53x4"]
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="3_jnhio"]
-[ext_resource type="PackedScene" uid="uid://cejxkr8qd2e17" path="res://prefabs/pause_menu.tscn" id="4_nnjch"]
+[ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/enemies/fast_enemy.tscn" id="5_3xk4m"]
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="5_gcgjm"]
+[ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/enemies/heavy_enemy.tscn" id="6_ibgta"]
+[ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/enemies/stationary_enemy.tscn" id="7_fphmu"]
 
 [node name="Space" type="Node3D"]
 
@@ -20,4 +23,25 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.262
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("3_jnhio")]
 
-[node name="PauseMenu" parent="." instance=ExtResource("4_nnjch")]
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource("5_gcgjm")
+metadata/_custom_type_script = "uid://16i5n2yxnlsr"
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(0.254902, 1, 0.278431, 1)
+offset_right = 133.0
+offset_bottom = 54.0
+text = "Build 
+(dev purposes)"
+autowrap_mode = 3
+
+[node name="FastEnemy" parent="." instance=ExtResource("5_3xk4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.969, 0, -10.7901)
+
+[node name="HeavyEnemy" parent="." instance=ExtResource("6_ibgta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0436, 0, -4.66169)
+
+[node name="StationaryEnemy" parent="." instance=ExtResource("7_fphmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5242, 0, 7.27022)
+
+[connection signal="pressed" from="Button" to="SceneLoader" method="load_build_ship_scene"]

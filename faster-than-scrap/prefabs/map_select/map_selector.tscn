@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c5xg3xp2pf4fn"]
 
-[ext_resource type="Script" path="res://code/map_select/map_selector.gd" id="1_tdbkc"]
+[ext_resource type="Script" uid="uid://o52uw8n1ufdc" path="res://code/map_select/map_selector.gd" id="1_tdbkc"]
 
 [node name="MapSelector" type="HBoxContainer"]
 anchors_preset = 15

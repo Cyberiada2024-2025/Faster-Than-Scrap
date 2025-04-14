@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhusyhgo5nvnn"]
+[gd_scene load_steps=10 format=3 uid="uid://dhusyhgo5nvnn"]
 
 [ext_resource type="Script" uid="uid://dtqvp1s2omow6" path="res://code/evironment/setup_fly_scene.gd" id="1_m7irr"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="2_rl7ii"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="5_gv0mc"]
 [ext_resource type="Script" uid="uid://b6oaocatti460" path="res://code/missions/info/mission_info_defend.gd" id="7_n4ck2"]
 [ext_resource type="Script" uid="uid://bte3fy0seuioe" path="res://sandbox/wierzba/mission_tests/dummy_mission_spawner.gd" id="8_4p1in"]
+[ext_resource type="PackedScene" uid="uid://wcegjmvpftp8" path="res://prefabs/pause_menu.tscn" id="8_gv0mc"]
 
 [sub_resource type="Resource" id="Resource_n4ck2"]
 script = ExtResource("7_n4ck2")
@@ -59,5 +60,7 @@ mission_to_spawn = SubResource("Resource_n4ck2")
 [node name="dummy_mission_spawner2" type="Node" parent="."]
 script = ExtResource("8_4p1in")
 mission_to_spawn = SubResource("Resource_n4ck2")
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_gv0mc")]
 
 [connection signal="pressed" from="Button" to="SceneLoader" method="load_build_ship_scene"]

@@ -11,9 +11,9 @@ func try_activate() -> Node3D:
 
 	_current_cooldown = cooldown
 	ship.use_energy(energy_cost)
-	recoil.emit(1)
+	recoil.emit(recoil_force)
 
 	var new_projectile = _spawn_projectile()
 	new_projectile.transform = global_transform
-	get_tree().get_root().add_child(new_projectile)
+	get_tree().current_scene.add_child(new_projectile)
 	return new_projectile

@@ -1,0 +1,143 @@
+[gd_scene load_steps=19 format=3 uid="uid://goh62nkboyy1"]
+
+[ext_resource type="Script" uid="uid://do6r4sdoiglip" path="res://code/enemy/NPC.gd" id="1_uy1x0"]
+[ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_rjd4k"]
+[ext_resource type="PackedScene" uid="uid://dqr2x28shkw41" path="res://prefabs/projectiles/enemy projectiles/test_shotgun.tscn" id="3_oln5v"]
+[ext_resource type="Script" uid="uid://dpubtuvds874u" path="res://code/ship/ship.gd" id="4_n7qog"]
+[ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="5_i17jo"]
+[ext_resource type="Script" uid="uid://b1evvkbdec4yo" path="res://code/enemy/states/agressive_shooting.gd" id="6_ayvvl"]
+[ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="7_ugg45"]
+[ext_resource type="Script" uid="uid://cjvpeo4f2tmj1" path="res://code/enemy/transitions/outOfRange.gd" id="8_nsyvj"]
+[ext_resource type="Script" uid="uid://4cghdv6buscd" path="res://code/enemy/states/aggressive.gd" id="9_opwcl"]
+[ext_resource type="Script" uid="uid://dugu022f8k6tr" path="res://code/enemy/transitions/inRange.gd" id="10_xp2wu"]
+[ext_resource type="Script" uid="uid://co8l81epe742x" path="res://code/enemy/states/defensive.gd" id="11_75ti7"]
+[ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="12_us5j7"]
+[ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/idle.gd" id="13_fdvrf"]
+[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="14_lh6is"]
+[ext_resource type="PackedScene" path="res://prefabs/poi/friend_poi.tscn" id="15_uy1x0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uy1x0"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rj4bm"]
+radius = 1.636
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rj4bm"]
+size = Vector3(2.92049, 1, 2.84192)
+
+[node name="HeavyEnemy" type="CharacterBody3D" node_paths=PackedStringArray("weapon", "ship")]
+script = ExtResource("1_uy1x0")
+speed = 6
+rotation_speed = 0.03
+weapon = NodePath("Weapon")
+ship = NodePath("Ship")
+
+[node name="Weapon" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.87369)
+script = ExtResource("2_rjd4k")
+energy_cost = 30.0
+cooldown = 2.0
+projectile = ExtResource("3_oln5v")
+
+[node name="Ship" type="RigidBody3D" parent="."]
+gravity_scale = 0.0
+script = ExtResource("4_n7qog")
+max_hp = 20.0
+team = 2
+
+[node name="StateMachineEnemy" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_i17jo")
+initial_state = NodePath("Idle")
+
+[node name="AggressiveShooting" type="Node" parent="StateMachineEnemy"]
+script = ExtResource("6_ayvvl")
+dead_zone = 1.0
+
+[node name="LowEnergy" type="Node" parent="StateMachineEnemy/AggressiveShooting" node_paths=PackedStringArray("new_state")]
+script = ExtResource("7_ugg45")
+low_energy_treshold = 25
+new_state = NodePath("../../Defensive")
+
+[node name="OutOfRange" type="Node" parent="StateMachineEnemy/AggressiveShooting" node_paths=PackedStringArray("new_state")]
+script = ExtResource("8_nsyvj")
+range_treshold = 12
+new_state = NodePath("../../Aggressive")
+
+[node name="Aggressive" type="Node" parent="StateMachineEnemy"]
+script = ExtResource("9_opwcl")
+dead_zone = 1.0
+
+[node name="LowEnergy" type="Node" parent="StateMachineEnemy/Aggressive" node_paths=PackedStringArray("new_state")]
+script = ExtResource("7_ugg45")
+new_state = NodePath("../../Defensive")
+
+[node name="OutOfRange" type="Node" parent="StateMachineEnemy/Aggressive" node_paths=PackedStringArray("new_state")]
+script = ExtResource("8_nsyvj")
+new_state = NodePath("../../Idle")
+
+[node name="InRange" type="Node" parent="StateMachineEnemy/Aggressive" node_paths=PackedStringArray("new_state")]
+script = ExtResource("10_xp2wu")
+range_treshold = 10
+new_state = NodePath("../../AggressiveShooting")
+
+[node name="Defensive" type="Node" parent="StateMachineEnemy"]
+script = ExtResource("11_75ti7")
+extra_energy_cost = -10.0
+circle_target = true
+
+[node name="HighEnergy" type="Node" parent="StateMachineEnemy/Defensive" node_paths=PackedStringArray("new_state")]
+script = ExtResource("12_us5j7")
+new_state = NodePath("../../Aggressive")
+
+[node name="OutOfRange" type="Node" parent="StateMachineEnemy/Defensive" node_paths=PackedStringArray("new_state")]
+script = ExtResource("8_nsyvj")
+new_state = NodePath("../../Idle")
+
+[node name="Idle" type="Node" parent="StateMachineEnemy"]
+script = ExtResource("13_fdvrf")
+
+[node name="InRange" type="Node" parent="StateMachineEnemy/Idle" node_paths=PackedStringArray("new_state")]
+script = ExtResource("10_xp2wu")
+range_treshold = 50
+new_state = NodePath("../../Aggressive")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-0.00774911, 0, -0.99997, 0, 1, 0, 0.99997, 0, -0.00774911, -0.00273251, 0, -0.110556)
+use_collision = true
+size = Vector3(1, 1, 2)
+material = SubResource("StandardMaterial3D_uy1x0")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0.779423, 0, 0.9, 0, -1.73205, 0, 0.45, -0.572081, 0, 0.734754)
+use_collision = true
+material = SubResource("StandardMaterial3D_uy1x0")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, -0.779423, 0, 0.9, 0, 1.73205, 0, 0.45, 0.54928, -0.0602491, 0.705121)
+use_collision = true
+material = SubResource("StandardMaterial3D_uy1x0")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D"]
+transform = Transform3D(-0.00774911, 0, -0.99997, 0, 1, 0, 0.99997, 0, -0.00774911, 0.029978, 0, -0.509085)
+use_collision = true
+rings = 10
+smooth_faces = false
+material = SubResource("StandardMaterial3D_uy1x0")
+
+[node name="ControlerCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, 0.385817)
+shape = SubResource("SphereShape3D_rj4bm")
+
+[node name="DamageController" parent="." instance=ExtResource("14_lh6is")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0171585, 0, 0.426331)
+shape = SubResource("BoxShape3D_rj4bm")
+
+[node name="FriendPoi" parent="." instance=ExtResource("15_uy1x0")]
+
+[connection signal="damaged" from="DamageController" to="Ship" method="_on_take_damage"]
+
+[editable path="DamageController"]

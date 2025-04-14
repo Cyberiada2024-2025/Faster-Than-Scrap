@@ -21,7 +21,8 @@ extends Node3D
 @export var deny_finish: Control
 @export var confirm_finish: Control
 
-@export var selected_module_prize_display: Label
+@export var selected_module_display: RichTextLabel
+@export var selected_module_description: RichTextLabel
 
 ## actual cash balance
 var bank: int = 0
@@ -57,7 +58,7 @@ func _process(delta: float) -> void:
 
 
 func _on_bank_change() -> void:
-	bank_display.text = String.num(bank) + "$"
+	bank_display.text = String.num_int64(bank) + "$"
 
 
 func _on_finish_pressed() -> void:
@@ -72,7 +73,8 @@ func _on_confirm_pressed() -> void:
 
 
 func _on_ship_builder_on_module_select(module: Module) -> void:
-	selected_module_prize_display.text = "Selected: " + String.num(module.prize) + "$"
+	selected_module_display.text = "[b]" + module.module_name +":[/b] " + String.num_int64(module.prize) + "$"
+	selected_module_description.text = module.description
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

@@ -51,7 +51,9 @@ sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
+module_name = "Thruster"
 prize = 2
+description = "Basic movement module. Activate to push ship forward (relative to thruster)."
 
 [node name="ConstantFireWeapon" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.26313)

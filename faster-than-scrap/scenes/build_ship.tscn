@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=30 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -49,10 +49,6 @@ bg_color = Color(0.113725, 1, 0.113725, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jnae"]
 bg_color = Color(0, 0.0509804, 0.027451, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_jtm63"]
-font = ExtResource("6_au3vu")
-font_color = Color(0.105882, 1, 0.105882, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jtm63"]
 
@@ -247,28 +243,55 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5jnae")
 text = "Finish
 Building"
 
+[node name="Description_display" type="ColorRect" parent="ShipBuilder/Control"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 83.0
+offset_right = 256.0
+offset_bottom = 224.0
+color = Color(0, 0.051, 0.027, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ShipBuilder/Control/Description_display"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 247.0
+offset_bottom = 137.0
+theme_override_colors/default_color = Color(0.101961, 0.964706, 0.101961, 1)
+theme_override_font_sizes/bold_italics_font_size = 0
+theme_override_font_sizes/italics_font_size = 0
+theme_override_font_sizes/mono_font_size = 0
+theme_override_font_sizes/normal_font_size = 0
+theme_override_font_sizes/bold_font_size = 0
+bbcode_enabled = true
+
 [node name="Prize_display" type="ColorRect" parent="ShipBuilder/Control"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 57.0
 offset_right = 255.0
-offset_bottom = 107.0
+offset_bottom = 81.0
 color = Color(0, 0.051, 0.027, 1)
 
-[node name="Label" type="Label" parent="ShipBuilder/Control/Prize_display"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ShipBuilder/Control/Prize_display"]
 layout_mode = 0
-offset_right = 250.0
-offset_bottom = 50.0
-text = "Selected: 0$"
-label_settings = SubResource("LabelSettings_jtm63")
+offset_left = 4.0
+offset_right = 247.0
+offset_bottom = 23.0
+theme_override_colors/default_color = Color(0.101961, 0.964706, 0.101961, 1)
+theme_override_font_sizes/bold_italics_font_size = 0
+theme_override_font_sizes/italics_font_size = 0
+theme_override_font_sizes/mono_font_size = 0
+theme_override_font_sizes/normal_font_size = 0
+theme_override_font_sizes/bold_font_size = 0
+bbcode_enabled = true
+text = "[b]FRAME:[/b]  2$"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="SceneLoader" type="Node" parent="ShipBuilder"]
 script = ExtResource("7_jtm63")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
-[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish", "selected_module_prize_display")]
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish", "selected_module_display", "selected_module_description")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.85019, 0, 0)
 script = ExtResource("11_jtm63")
 modules = Array[String](["uid://cujiw86wtjlp8", "uid://cujiw86wtjlp8", "uid://cujiw86wtjlp8", "uid://gngfqbur01ep", "uid://gngfqbur01ep", "uid://dbajfkkhivhl0", "uid://dbajfkkhivhl0", "uid://cqkj1jovh07cf", "uid://cqkj1jovh07cf", "uid://taxlqo87sp7s"])
@@ -280,7 +303,8 @@ rows = 5
 bank_display = NodePath("Label3D")
 deny_finish = NodePath("../ShipBuilder/Control/Deny finish")
 confirm_finish = NodePath("../ShipBuilder/Control/Confirm finish")
-selected_module_prize_display = NodePath("../ShipBuilder/Control/Prize_display/Label")
+selected_module_display = NodePath("../ShipBuilder/Control/Prize_display/RichTextLabel")
+selected_module_description = NodePath("../ShipBuilder/Control/Description_display/RichTextLabel")
 metadata/_custom_type_script = "uid://dsebh10ryevl"
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Shop"]

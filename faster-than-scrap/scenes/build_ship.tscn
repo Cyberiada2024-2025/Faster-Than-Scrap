@@ -79,10 +79,9 @@ font_color = Color(0.105882, 1, 0.105882, 1)
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_8ccmg")]
 
-[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "shop", "choose_key_message", "confirm_finish_message")]
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "choose_key_message", "confirm_finish_message")]
 script = ExtResource("1_d5jmr")
 ignore = NodePath("../Shop/Area3D")
-shop = NodePath("../Shop")
 outline_mat = ExtResource("3_7x66o")
 flash_mat = ExtResource("4_sra6p")
 flash_time = 0.5
@@ -346,6 +345,8 @@ label_settings = SubResource("LabelSettings_xqadh")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]
+[connection signal="on_module_select" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_select"]
 [connection signal="pressed" from="ShipBuilder/Control/Deny finish/Color_Rect/Confirm" to="Shop" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Confirm" to="ShipBuilder" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Deny" to="ShipBuilder" method="_on_deny_pressed"]

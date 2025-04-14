@@ -6,6 +6,7 @@ extends Node3D
 ## it reacts to mouse clicking for grabbing the module
 ## and snapping it to the ship if close enough.
 signal on_module_select(module: Module)
+signal on_module_attach(module: Module)
 
 enum State { NONE, DRAGGING, SETTING_BUTTON }
 
@@ -18,8 +19,6 @@ const RAY_LENGTH = 1000.0
 ## the range of spherecast when checking if there are modules near the mouse
 @export var snap_range: float = 1
 ## material of ghost outline
-
-@export var shop: Shop
 
 @export_group("Visuals")
 @export var outline_mat: ShaderMaterial
@@ -245,8 +244,7 @@ func _attach_module() -> void:
 		# remove area above module. Ship already has rigidbody,
 		# so module is clickable
 		var area_parent = active_module.get_parent()
-		if shop != null:
-			shop._on_area_3d_area_exited(area_parent)
+		on_module_attach.emit(active_module)
 		active_module.reparent(attach_target.ship)
 		area_parent.queue_free()
 	else:

@@ -1,5 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dtjixr3e113vw"]
-
+[gd_scene load_steps=34 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -303,7 +302,6 @@ theme_override_font_sizes/mono_font_size = 0
 theme_override_font_sizes/normal_font_size = 0
 theme_override_font_sizes/bold_font_size = 0
 bbcode_enabled = true
-text = "[b]FRAME:[/b]  2$"
 horizontal_alignment = 1
 
 [node name="SceneLoader" type="Node" parent="ShipBuilder"]
@@ -418,6 +416,7 @@ Scroll: zoom camera"
 label_settings = SubResource("LabelSettings_xqadh")
 horizontal_alignment = 1
 vertical_alignment = 1
+
 [node name="PauseMenu" parent="." instance=ExtResource("11_d8di0")]
 
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]

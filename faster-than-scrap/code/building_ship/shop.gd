@@ -73,7 +73,9 @@ func _on_confirm_pressed() -> void:
 
 
 func _on_ship_builder_on_module_select(module: Module) -> void:
-	selected_module_display.text = "[b]" + module.module_name +":[/b] " + String.num_int64(module.prize) + "$"
+	selected_module_display.text = "[b]" + module.module_name +":[/b] "
+	selected_module_display.text += String.num_int64(module.prize) + "$"
+
 	selected_module_description.text = module.description
 
 

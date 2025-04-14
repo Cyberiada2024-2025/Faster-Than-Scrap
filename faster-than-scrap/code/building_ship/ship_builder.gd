@@ -48,10 +48,10 @@ var mouse_position_3d: Vector3 = Vector3.ZERO
 var lmb_was_pressed: bool = false
 var lmb_is_pressed: bool = false
 var rmb_was_pressed: bool = false
-
+var ignore_RID: Array[RID]
 var scene_loader: SceneLoader
 
-var ignore_RID: Array[RID]
+
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -59,7 +59,7 @@ func _ready() -> void:
 
 	GameManager.player_ship.position = Vector3.ZERO
 	GameManager.player_ship.rotation = Vector3.ZERO
-	
+
 	for ig in ignore:
 		ignore_RID.push_back(ig.get_rid())
 

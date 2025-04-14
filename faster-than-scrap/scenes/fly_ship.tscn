@@ -72,8 +72,8 @@ texture = ExtResource("8_ibgta")
 transform = Transform3D(40, 0, 0, 0, -1.74846e-06, -40, 0, 40, -1.74846e-06, 1520, -266.245, -833.774)
 texture = ExtResource("8_ibgta")
 
-[node name="Sprite3D7" type="Sprite3D" parent="Background"]
-transform = Transform3D(100, 0, 0, 0, -4.37114e-06, -100, 0, 100, -4.37114e-06, 0, -2672.77, 0)
+[node name="Stars" type="Sprite3D" parent="Background"]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, -100, 0, 100, -4.37114e-06, 0, -1896.76, 0)
 texture = ExtResource("9_fphmu")
 
 [connection signal="pressed" from="Button" to="SceneLoader" method="load_build_ship_scene"]

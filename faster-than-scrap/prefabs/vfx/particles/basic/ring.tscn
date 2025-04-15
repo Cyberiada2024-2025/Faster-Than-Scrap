@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2e7wfu0rjxuf"]
+
+[ext_resource type="Material" uid="uid://di7mqbgkq8hwm" path="res://art/materials/particles/ring.tres" id="1_14nmt"]
+
+[sub_resource type="Gradient" id="Gradient_14nmt"]
+offsets = PackedFloat32Array(0.0771429, 1)
+colors = PackedColorArray(0.133196, 0.133196, 0.133196, 0, 0.973535, 0.973535, 0.973535, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_308ir"]
+gradient = SubResource("Gradient_14nmt")
+
+[sub_resource type="Curve" id="Curve_7al6c"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(0.406915, 0.865564), 0.665106, 0.665106, 0, 0, Vector2(1, 1), 0.188829, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_14nmt"]
+curve = SubResource("Curve_7al6c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kaf57"]
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_14nmt")
+color_ramp = SubResource("GradientTexture1D_308ir")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jqic4"]
+
+[node name="Ring" type="GPUParticles3D"]
+material_override = ExtResource("1_14nmt")
+emitting = false
+amount = 1
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_kaf57")
+draw_pass_1 = SubResource("PlaneMesh_jqic4")

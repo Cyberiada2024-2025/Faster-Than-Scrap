@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c3nrs56wqfmvy"]
+
+[ext_resource type="Shader" uid="uid://ln1vxbkmg5kl" path="res://art/shaders/particles/explosion.gdshader" id="1_o6rcg"]
+
+[resource]
+shader = ExtResource("1_o6rcg")
+shader_parameter/scale = 5.0
+shader_parameter/strength = 0.5
+shader_parameter/direction = Vector3(0, 1, 0)
+shader_parameter/speed = 5.0
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/color_strength = 10.0
+shader_parameter/explosion_amount = 0.0
+shader_parameter/transparency = 1.0

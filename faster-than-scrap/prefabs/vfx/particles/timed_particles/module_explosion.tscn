@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://die5pokw441qb"]
+
+[ext_resource type="Script" uid="uid://65m4xcjhtor5" path="res://code/effects/timed_particle.gd" id="1_0rd5x"]
+[ext_resource type="PackedScene" uid="uid://daogfwc0qnibq" path="res://prefabs/vfx/particles/basic/small_explosion_particle.tscn" id="2_35vfw"]
+
+[node name="ModuleExplosion" type="Node3D"]
+script = ExtResource("1_0rd5x")
+_lifetime = 5.0
+metadata/_custom_type_script = "uid://65m4xcjhtor5"
+
+[node name="ExplosionParticle" parent="." instance=ExtResource("2_35vfw")]
+emitting = false

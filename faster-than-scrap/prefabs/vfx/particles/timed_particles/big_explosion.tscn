@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bspuecqmblf6i"]
+
+[ext_resource type="Script" uid="uid://65m4xcjhtor5" path="res://code/effects/timed_particle.gd" id="1_je4ji"]
+[ext_resource type="PackedScene" uid="uid://cjkr5arof37uk" path="res://prefabs/vfx/particles/basic/big_explosion_particle.tscn" id="2_ur5mo"]
+[ext_resource type="PackedScene" uid="uid://c2e7wfu0rjxuf" path="res://prefabs/vfx/particles/basic/ring.tscn" id="3_5c8nh"]
+
+[node name="BigExplosion" type="Node3D"]
+script = ExtResource("1_je4ji")
+_lifetime = 5.0
+metadata/_custom_type_script = "uid://65m4xcjhtor5"
+
+[node name="ExplosionParticle" parent="." instance=ExtResource("2_ur5mo")]
+
+[node name="Ring" parent="." instance=ExtResource("3_5c8nh")]

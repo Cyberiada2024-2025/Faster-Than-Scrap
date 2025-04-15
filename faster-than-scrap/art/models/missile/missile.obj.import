@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://dgcyhaqmlmgwh"
-path="res://.godot/imported/missile.obj-e0bc2ac2b2bb029294d2891e29dc2e01.mesh"
+path="res://.godot/imported/missile.obj-d8f6a74f1a3cb5abbe0be9b02275c889.mesh"
 
 [deps]
 
-files=["res://.godot/imported/missile.obj-e0bc2ac2b2bb029294d2891e29dc2e01.mesh"]
+files=["res://.godot/imported/missile.obj-d8f6a74f1a3cb5abbe0be9b02275c889.mesh"]
 
-source_file="res://art/models/missile/missile.obj"
-dest_files=["res://.godot/imported/missile.obj-e0bc2ac2b2bb029294d2891e29dc2e01.mesh", "res://.godot/imported/missile.obj-e0bc2ac2b2bb029294d2891e29dc2e01.mesh"]
+source_file="res://art/Models/missile/missile.obj"
+dest_files=["res://.godot/imported/missile.obj-d8f6a74f1a3cb5abbe0be9b02275c889.mesh", "res://.godot/imported/missile.obj-d8f6a74f1a3cb5abbe0be9b02275c889.mesh"]
 
 [params]
 

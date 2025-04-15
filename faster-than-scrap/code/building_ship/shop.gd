@@ -13,6 +13,8 @@ extends Node3D
 @export_custom(PROPERTY_HINT_NONE, "suffix:m") var size_x: float = 10
 ## shop size Y
 @export_custom(PROPERTY_HINT_NONE, "suffix:m") var size_z: float = 15
+## distance X between shop and inventory
+@export_custom(PROPERTY_HINT_NONE, "suffix:m") var distance: float = 12
 @export var columns: int
 @export var rows: int
 ## display of cash balance
@@ -43,6 +45,14 @@ func _ready() -> void:
 		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2
 		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
 		area.position = Vector3(x, 0, z)
+		i += 1
+	i = 0
+	for obj in InventoryManager.inventory:
+		add_child(obj)
+		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2 + distance
+		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
+		obj.position = Vector3(x, 0, z)
+		obj.get_child(0).position = Vector3(0, 0, 0)
 		i += 1
 
 
@@ -101,3 +111,11 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 
 func _on_area_3d_area_exited(area: Area3D) -> void:
 	_on_area_3d_body_exited(area)
+
+
+func _on_inventory_entered(body: Area3D) -> void:
+	InventoryManager.add_item(body)
+
+
+func _on_inventory_exited(body: Area3D) -> void:
+	InventoryManager.remove_item(body)

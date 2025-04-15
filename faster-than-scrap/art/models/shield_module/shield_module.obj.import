@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://bw56fq0igxqg5"
-path="res://.godot/imported/shield_module.obj-d08e7bb2658ee42595bce650888d7052.mesh"
+path="res://.godot/imported/shield_module.obj-826118bf95c4b331d5880282c4405753.mesh"
 
 [deps]
 
-files=["res://.godot/imported/shield_module.obj-d08e7bb2658ee42595bce650888d7052.mesh"]
+files=["res://.godot/imported/shield_module.obj-826118bf95c4b331d5880282c4405753.mesh"]
 
-source_file="res://art/models/shield_module/shield_module.obj"
-dest_files=["res://.godot/imported/shield_module.obj-d08e7bb2658ee42595bce650888d7052.mesh", "res://.godot/imported/shield_module.obj-d08e7bb2658ee42595bce650888d7052.mesh"]
+source_file="res://art/Models/shield_module/shield_module.obj"
+dest_files=["res://.godot/imported/shield_module.obj-826118bf95c4b331d5880282c4405753.mesh", "res://.godot/imported/shield_module.obj-826118bf95c4b331d5880282c4405753.mesh"]
 
 [params]
 

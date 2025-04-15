@@ -5,6 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/enemies/heavy_enemy.tscn" id="3_43v37"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/enemies/stationary_enemy.tscn" id="4_rllba"]
 
-[node name="CircleEntitySpawner" type="Node"]
+[node name="CircleEnemySpawner" type="Node"]
 script = ExtResource("1_fpgf4")
 spawned_entities = Array[PackedScene]([ExtResource("2_2k1tf"), ExtResource("3_43v37"), ExtResource("4_rllba")])

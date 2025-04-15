@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1omxt6jff0ak"]
+
+[ext_resource type="Script" uid="uid://c60x1qqlkpsu4" path="res://code/spawners/triangle_entity_spawner.gd" id="1_2g6lv"]
+[ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/enemies/fast_enemy.tscn" id="2_8briy"]
+[ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/enemies/heavy_enemy.tscn" id="3_sqydt"]
+[ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/enemies/stationary_enemy.tscn" id="4_kly4i"]
+
+[node name="TriangleEnemySpawner" type="Node"]
+script = ExtResource("1_2g6lv")
+B_point = Vector3(0, 0, 100)
+C_point = Vector3(100, 0, 0)
+spawned_entities = Array[PackedScene]([ExtResource("2_8briy"), ExtResource("3_sqydt"), ExtResource("4_kly4i")])
+entities_count = 10
+max_position_change = 5.0

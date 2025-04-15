@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dk7rdb3ut1ua1"]
 
-[ext_resource type="Script" uid="uid://y1w8wopsy8fn" path="res://prefabs/singletons/inventory_manager.gd" id="1_maifa"]
+[ext_resource type="Script" uid="uid://y1w8wopsy8fn" path="res://code/singletons/inventory_manager.gd" id="1_maifa"]
 
 [node name="InventoryManager" type="Node"]
 script = ExtResource("1_maifa")

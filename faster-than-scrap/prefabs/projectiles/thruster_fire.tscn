@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://4ct5vtkfetun"]
 
-[ext_resource type="Script" uid="uid://b86vmkhkjsh2k" path="res://code/ship/projectiles/beam.gd" id="1_h4jk0"]
+[ext_resource type="Script" path="res://code/ship/projectiles/beam.gd" id="1_h4jk0"]
 [ext_resource type="Script" uid="uid://buwehho3rx3g0" path="res://code/damage/damage_raycast_3d.gd" id="2_728c8"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_nqy7r"]
 [ext_resource type="PackedScene" uid="uid://cfjkjqh4besqo" path="res://prefabs/vfx/particles/basic/thruster_fire.tscn" id="4_728c8"]
@@ -18,7 +18,6 @@ target_position = Vector3(0, 0, -1)
 collide_with_areas = true
 collide_with_bodies = false
 script = ExtResource("2_728c8")
-_constant_fire = true
 _damage = SubResource("Resource_7ctxp")
 
 [node name="Fire" parent="." instance=ExtResource("4_728c8")]

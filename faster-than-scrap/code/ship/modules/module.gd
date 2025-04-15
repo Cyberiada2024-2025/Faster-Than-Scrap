@@ -98,7 +98,7 @@ func _on_destroy() -> void:
 	_explode()
 	for child in child_modules:
 		var rb: RigidBody3D = module_rigidbody_prefab.instantiate()
-		get_tree().get_root().add_child(rb)  # attach to scene root
+		get_tree().current_scene.add_child(rb)  # attach floating modules to scene
 		child.reparent(rb)
 		rb.linear_velocity = ship.linear_velocity
 		child.deactivate()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8s7l1ii2n8ir"]
+[gd_scene load_steps=6 format=3 uid="uid://b8s7l1ii2n8ir"]
 
 [ext_resource type="Script" uid="uid://iii7qu2px6lf" path="res://code/boss/boss_spawner.gd" id="1_3tnet"]
 [ext_resource type="PackedScene" uid="uid://d2oshlh57wf02" path="res://prefabs/bosses/boss_ui.tscn" id="1_j87ic"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="3_eglc8"]
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="4_lg3fv"]
+[ext_resource type="PackedScene" uid="uid://wcegjmvpftp8" path="res://prefabs/pause_menu.tscn" id="5_xnu4p"]
 
 [node name="BossScene" type="Node3D"]
 script = ExtResource("1_3tnet")
@@ -18,3 +19,5 @@ script = ExtResource("3_eglc8")
 metadata/_custom_type_script = "uid://ckk7d55t1hi01"
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("4_lg3fv")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_xnu4p")]

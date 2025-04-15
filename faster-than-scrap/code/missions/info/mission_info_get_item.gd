@@ -34,9 +34,9 @@ func get_spawner() -> BaseEntitySpawner:
 			* abs(
 				(
 					(
-						spawner.A_point.x * (spawner.B_point.z - spawner.C_point.z)
-						+ spawner.B_point.x * (spawner.C_point.z - spawner.A_point.z)
-						+ spawner.C_point.x * (spawner.A_point.z - spawner.B_point.z)
+						spawner.a_point.x * (spawner.b_point.z - spawner.c_point.z)
+						+ spawner.b_point.x * (spawner.c_point.z - spawner.a_point.z)
+						+ spawner.c_point.x * (spawner.a_point.z - spawner.b_point.z)
 					)
 					/ 400
 				)

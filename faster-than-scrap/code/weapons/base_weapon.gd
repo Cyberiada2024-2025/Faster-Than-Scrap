@@ -6,15 +6,14 @@ extends Node3D
 
 signal recoil(force_multiplier: float)
 
-@export var ship: Ship
-
-@export var energy_cost: float
-@export var cooldown: float
-@export var recoil_force: float
+@export var energy_cost: float = 0
+@export var cooldown: float = 0
+@export var recoil_force: float = 0
 
 ## Prefab of the projectile that will be spawned when shooting.
 @export var projectile: PackedScene
 
+var ship: Ship
 var _current_cooldown: float = 0
 
 

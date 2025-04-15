@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://dhusyhgo5nvnn"]
+
+[ext_resource type="Script" uid="uid://dtqvp1s2omow6" path="res://code/evironment/setup_fly_scene.gd" id="1_m7irr"]
+[ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="2_rl7ii"]
+[ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="3_n4ck2"]
+[ext_resource type="PackedScene" uid="uid://rk0gm82fa8wn" path="res://sandbox/surma/prototype_enemy.tscn" id="4_4p1in"]
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="5_gv0mc"]
+[ext_resource type="Script" uid="uid://b6oaocatti460" path="res://code/missions/info/mission_info_defend.gd" id="7_n4ck2"]
+[ext_resource type="Script" uid="uid://bte3fy0seuioe" path="res://sandbox/wierzba/mission_tests/dummy_mission_spawner.gd" id="8_4p1in"]
+[ext_resource type="PackedScene" uid="uid://wcegjmvpftp8" path="res://prefabs/pause_menu.tscn" id="8_gv0mc"]
+
+[sub_resource type="Resource" id="Resource_n4ck2"]
+script = ExtResource("7_n4ck2")
+defendable_position = Vector3(0, 0, 0)
+time_to_defend = 60.0
+about = ""
+difficulty = 0
+priority = 0
+metadata/_custom_type_script = "uid://b6oaocatti460"
+
+[node name="Space" type="Node3D"]
+
+[node name="SetupFlyScene" type="Node" parent="."]
+script = ExtResource("1_m7irr")
+metadata/_custom_type_script = "uid://dtqvp1s2omow6"
+
+[node name="HudSpawner" type="Node" parent="."]
+script = ExtResource("2_rl7ii")
+metadata/_custom_type_script = "uid://ckk7d55t1hi01"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.26226, 2.66942, -2.54272)
+
+[node name="SpaceEnvironment" parent="." instance=ExtResource("3_n4ck2")]
+
+[node name="PrototypeEnemy" parent="." instance=ExtResource("4_4p1in")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.66206, 0, -22.4742)
+speed = 6
+
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource("5_gv0mc")
+metadata/_custom_type_script = "uid://16i5n2yxnlsr"
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(0.254902, 1, 0.278431, 1)
+offset_right = 133.0
+offset_bottom = 54.0
+text = "Build 
+(dev purposes)"
+autowrap_mode = 3
+
+[node name="Missions" type="Node" parent="."]
+
+[node name="Escape" type="Node" parent="Missions"]
+
+[node name="dummy_mission_spawner" type="Node" parent="."]
+script = ExtResource("8_4p1in")
+mission_to_spawn = SubResource("Resource_n4ck2")
+
+[node name="dummy_mission_spawner2" type="Node" parent="."]
+script = ExtResource("8_4p1in")
+mission_to_spawn = SubResource("Resource_n4ck2")
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_gv0mc")]
+
+[connection signal="pressed" from="Button" to="SceneLoader" method="load_build_ship_scene"]

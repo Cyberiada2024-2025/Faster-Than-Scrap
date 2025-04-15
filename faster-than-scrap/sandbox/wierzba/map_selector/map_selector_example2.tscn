@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://byfyyeghr21al"]
 
-[ext_resource type="PackedScene" uid="uid://co8amd24ukyhu" path="res://Sandbox/Wierzba/map_selector/map_example2.tscn" id="1_wvfnn"]
-[ext_resource type="Script" path="res://code/scene_loader.gd" id="2_hwerf"]
+[ext_resource type="PackedScene" uid="uid://co8amd24ukyhu" path="res://sandbox/wierzba/map_selector/map_example2.tscn" id="1_wvfnn"]
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_hwerf"]
 
 [node name="MapSelectorExample" type="Control"]
 layout_mode = 3

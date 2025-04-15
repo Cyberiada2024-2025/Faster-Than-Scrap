@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b0pw7kj2amwi5"
-path="res://.godot/imported/rockyplanetnormal.glb-92ff4a2ba60aacf8b65ca43de117b89c.scn"
+path="res://.godot/imported/rockyplanetnormal.glb-7c652bfd3def0811b16f4553c21f4ddb.scn"
 
 [deps]
 
-source_file="res://art/models/Planets/planet1/rockyplanetnormal.glb"
-dest_files=["res://.godot/imported/rockyplanetnormal.glb-92ff4a2ba60aacf8b65ca43de117b89c.scn"]
+source_file="res://art/models/planetsa/planet1/rockyplanetnormal.glb"
+dest_files=["res://.godot/imported/rockyplanetnormal.glb-7c652bfd3def0811b16f4553c21f4ddb.scn"]
 
 [params]
 

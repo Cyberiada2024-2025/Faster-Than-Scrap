@@ -1,6 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c65awwxkggh41"]
-
-[ext_resource type="Script" uid="uid://65m4xcjhtor5" path="res://code/effects/timed_particle.gd" id="1_depj3"]
+[gd_scene load_steps=7 format=3 uid="uid://b3mc1twhji6o7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6jcs"]
 shading_mode = 0
@@ -18,7 +16,8 @@ curve = SubResource("Curve_5n7gc")
 particle_flag_align_y = true
 angle_min = 1.07288e-05
 angle_max = 1.07288e-05
-spread = 60.299
+direction = Vector3(0, 0, -1)
+spread = 75.0
 initial_velocity_min = 102.19
 initial_velocity_max = 118.74
 gravity = Vector3(0, 0, 0)
@@ -46,5 +45,3 @@ trail_lifetime = 0.01
 process_material = SubResource("ParticleProcessMaterial_o6jcs")
 draw_pass_1 = SubResource("CylinderMesh_c2e1b")
 draw_skin = SubResource("Skin_c2e1b")
-script = ExtResource("1_depj3")
-metadata/_custom_type_script = "uid://65m4xcjhtor5"

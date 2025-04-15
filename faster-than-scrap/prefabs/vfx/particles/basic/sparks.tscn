@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://djmpbx7fbhnd1"]
 
-[ext_resource type="Script" uid="uid://65m4xcjhtor5" path="res://code/effects/timed_gpu_particles_3d.gd" id="1_o6jcs"]
+[ext_resource type="Script" uid="uid://65m4xcjhtor5" path="res://code/effects/timed_particle.gd" id="1_o6jcs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6jcs"]
 shading_mode = 0

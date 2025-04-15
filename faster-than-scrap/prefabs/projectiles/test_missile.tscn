@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvxiueiai3x0u"]
+[gd_scene load_steps=11 format=3 uid="uid://dyn1ks7ebosel"]
 
 [ext_resource type="Script" uid="uid://c7b8vg6a5y45v" path="res://code/weapons/projectiles/missile.gd" id="1_r34wv"]
 [ext_resource type="Script" uid="uid://7rxxtodxpx1d" path="res://code/damage/damage_area_3d.gd" id="2_xnu3b"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_31ug8"]
 
 [sub_resource type="Curve" id="Curve_2fpxk"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.147059, 0), 0.0, 0.0, 0, 0, Vector2(0.252101, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0526316, 0), 0.0, 0.0, 0, 0, Vector2(0.101754, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_qxyfj"]
@@ -23,12 +23,12 @@ size = Vector3(0.1, 0.1, 0.4)
 [sub_resource type="BoxMesh" id="BoxMesh_jgp4f"]
 size = Vector3(0.1, 0.1, 0.4)
 
-[sub_resource type="Resource" id="Resource_x6y5o"]
+[sub_resource type="Resource" id="Resource_43gyh"]
 script = ExtResource("3_31ug8")
-value = 10.0
+value = 15.0
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_2fpck"]
-height = 1.0
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jac8t"]
+height = 1.5
 radius = 0.1
 
 [node name="TestMissile" type="Node3D"]
@@ -36,28 +36,33 @@ script = ExtResource("1_r34wv")
 turn_rate = SubResource("Curve_2fpxk")
 turn_rate_multiplier = 90.0
 velocity = SubResource("Curve_qxyfj")
-velocity_multiplier = 2.0
+velocity_multiplier = 15.0
 lifetime = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.76784e-09, -0.559557)
 mesh = SubResource("CylinderMesh_386xi")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.5)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -2.18557e-08)
 mesh = SubResource("BoxMesh_mwyvo")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0.5)
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, -8.74228e-08, -1, 4.37114e-08, 1, -8.74228e-08, 1.91069e-15, 0, -0.5, -2.18557e-08)
 mesh = SubResource("BoxMesh_jgp4f")
+skeleton = NodePath("../..")
 
 [node name="DamageArea3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
 input_ray_pickable = false
 monitorable = false
 script = ExtResource("2_xnu3b")
 _damage_type = 0
-_damage = SubResource("Resource_x6y5o")
+_damage = SubResource("Resource_43gyh")
+_die_on_hit = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-shape = SubResource("CylinderShape3D_2fpck")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.75)
+shape = SubResource("CylinderShape3D_jac8t")

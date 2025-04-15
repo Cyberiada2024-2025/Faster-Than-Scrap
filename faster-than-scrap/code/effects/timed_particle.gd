@@ -21,7 +21,7 @@ func _ready() -> void:
 		child.emitting = true
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		if preview:
 			preview = false

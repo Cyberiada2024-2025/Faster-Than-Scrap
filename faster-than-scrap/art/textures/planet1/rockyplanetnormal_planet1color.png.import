@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6gbpchqr2jns"
-path.s3tc="res://.godot/imported/rockyplanetnormal_planet1textbak.png-ad1d5e5c6fd194190edc9757361f94d8.s3tc.ctex"
+uid="uid://duvy8m6g8lgx7"
+path.s3tc="res://.godot/imported/rockyplanetnormal_planet1color.png-f30b07ecf219c7e91fc15971d5bd2ed5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "7b6d8d603d96158f0ee24ae34e26c3a2"
+"md5": "5597ffe1d3c83dfc346cb0fd055fc56a"
 }
 
 [deps]
 
-source_file="res://art/models/planets/planet1/rockyplanetnormal_planet1textbak.png"
-dest_files=["res://.godot/imported/rockyplanetnormal_planet1textbak.png-ad1d5e5c6fd194190edc9757361f94d8.s3tc.ctex"]
+source_file="res://art/textures/planet1/rockyplanetnormal_planet1color.png"
+dest_files=["res://.godot/imported/rockyplanetnormal_planet1color.png-f30b07ecf219c7e91fc15971d5bd2ed5.s3tc.ctex"]
 
 [params]
 
@@ -23,12 +23,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://art/models/Planets/planet1/rockyplanetnormal_planet1textbak.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

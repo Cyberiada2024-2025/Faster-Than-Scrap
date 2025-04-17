@@ -7,7 +7,7 @@ extends Node3D
 ## and snapping it to the ship if close enough.
 signal on_module_select(module: Module)
 signal on_module_attach(module: Module)
-signal on_module_hover(module:Module)
+signal on_module_hover(module: Module)
 
 enum State { NONE, DRAGGING, SETTING_BUTTON }
 
@@ -51,7 +51,6 @@ var lmb_is_pressed: bool = false
 var rmb_was_pressed: bool = false
 var ignore_rid: Array[RID]
 var scene_loader: SceneLoader
-
 
 
 func _ready() -> void:
@@ -311,8 +310,9 @@ func _input(event: InputEvent):
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
 					var hovered_module: Module = _get_module_from_hit(hit)
-					if hovered_module != null:
-						on_module_hover.emit(hovered_module)
+					on_module_hover.emit(hovered_module)
+				else:
+					on_module_hover.emit(null)
 		State.DRAGGING:
 			if confirm_finish_message.visible || choose_key_message.visible:
 				return

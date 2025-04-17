@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://ymmjkrxvfgwu"]
+
+[ext_resource type="Script" uid="uid://2uexqgp76p1n" path="res://code/ship/projectiles/projectile.gd" id="1_6fcri"]
+[ext_resource type="Script" uid="uid://7rxxtodxpx1d" path="res://code/damage/damage_area_3d.gd" id="2_47qli"]
+[ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_xoudu"]
+
+[sub_resource type="Curve" id="Curve_4quhm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ld4gu"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_6fcri"]
+material = SubResource("StandardMaterial3D_ld4gu")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="Resource" id="Resource_x6y5o"]
+script = ExtResource("3_xoudu")
+value = 50.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_47qli"]
+radius = 1.0
+
+[node name="TestProjectile" type="Node3D"]
+script = ExtResource("1_6fcri")
+velocity = SubResource("Curve_4quhm")
+velocity_multiplier = 10.0
+lifetime = 10.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00634766, 0.0161133, -1.00366)
+mesh = SubResource("SphereMesh_6fcri")
+
+[node name="DamageArea3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+input_ray_pickable = false
+monitorable = false
+script = ExtResource("2_47qli")
+_damage_type = 0
+_damage = SubResource("Resource_x6y5o")
+_die_on_hit = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1)
+shape = SubResource("SphereShape3D_47qli")

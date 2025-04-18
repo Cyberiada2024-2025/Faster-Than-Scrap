@@ -10,29 +10,33 @@ signal deactivated
 signal damaged
 signal destroyed
 
+@export_category("Settings")
 @export var activation_key: Key = KEY_NONE
 @export var max_hp: float = 100
 @export var hp: float = 100
+@export_category("References")
 @export var ship: Ship
 @export var attach_points: Array[Node3D] = []
 @export var parent_module: Module
 @export var child_modules: Array[Module] = []
-
+@export_category("Graphics")
 @export var sprite: Sprite3D
 @export var label: Label3D
 
 @export var healthy_color: Color
 @export var dead_color: Color
 
+@export_category("Shop")
 ## Prize in shop
+@export var module_name: String
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var prize: int = 1
+@export_multiline var description: String
 
 var was_key_pressed: bool = false
 
 var module_rigidbody_prefab = preload("res://prefabs/modules/module_rigidbody.tscn")
 
 var activation_key_saved: Key = KEY_NONE
-
 
 func _ready() -> void:
 	_on_key_change()
@@ -174,6 +178,7 @@ func create_ghost() -> ModuleGhost:
 	ghost.add_child(duplicate_node)
 	duplicate_node.position = Vector3.ZERO
 	duplicate_node.rotation = Vector3.ZERO
+	duplicate_node.prize = 0;
 	ghost.module_to_ignore = self
 
 	return ghost

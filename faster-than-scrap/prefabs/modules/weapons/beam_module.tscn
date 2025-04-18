@@ -63,6 +63,8 @@ sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
+module_name = "Beam"
+description = "One of basic weapons. Hold activation to shoot continous beam."
 
 [node name="Constant" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.610518)
@@ -87,8 +89,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4399
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00500476, -0.00528124, -0.00144887)
 shape = SubResource("BoxShape3D_recg5")
 
-[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("6_5nrh6")]
-damageable = NodePath("")
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("shape") instance=ExtResource("6_5nrh6")]
 shape = NodePath("../DamageController/Damageable/CollisionShape3D")
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("7_a44b7")]

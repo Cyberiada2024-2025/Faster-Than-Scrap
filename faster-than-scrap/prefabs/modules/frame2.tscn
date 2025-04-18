@@ -19,6 +19,8 @@ sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
+module_name = "Frame var. 2"
+description = "One of the available variants of basic frame. Holds more important pieces together and withstands [i]some[/i] fire."
 
 [node name="Frame1Model" parent="." instance=ExtResource("2_ajn0b")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)

@@ -59,7 +59,7 @@ func _find_target() -> Node3D:
 
 	quaternion = original_quaternion
 
-	return enemies.pick_random()
+	return chosen_enemy
 
 
 func _process_rotation(delta: float) -> void:

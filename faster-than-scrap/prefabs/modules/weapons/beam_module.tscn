@@ -1,12 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqkj1jovh07cf"]
+[gd_scene load_steps=17 format=3 uid="uid://cqkj1jovh07cf"]
 
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_da12c"]
 [ext_resource type="Script" uid="uid://crmxerc164n6q" path="res://code/weapons/constant_fire_weapon.gd" id="2_7ulne"]
 [ext_resource type="PackedScene" uid="uid://bnvojbycskewd" path="res://prefabs/projectiles/test_beam.tscn" id="3_da12c"]
-[ext_resource type="Script" uid="uid://co5ltw8t12p5p" path="res://code/damage/damage_controller.gd" id="4_nosfs"]
-[ext_resource type="Script" uid="uid://2ftv2rr2lasy" path="res://code/damage/damageable.gd" id="5_j1wmj"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="6_5nrh6"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="7_a44b7"]
+[ext_resource type="AudioStream" uid="uid://d1psa84etuesc" path="res://sandbox/pisarski/beam_start_tmp.wav" id="8_j1wmj"]
+[ext_resource type="AudioStream" uid="uid://cl30vhv1agqcr" path="res://sandbox/pisarski/beam_loop_tmp.wav" id="9_5nrh6"]
+[ext_resource type="AudioStream" uid="uid://bq3myi1evd56a" path="res://art/audio/sounds/shield_takingdmg_sound.wav" id="10_a44b7"]
+[ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="11_3d6pv"]
+[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="12_5nrh6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yf3ku"]
 
@@ -23,6 +26,33 @@ height = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_recg5"]
 size = Vector3(0.182556, 0.165771, 0.972778)
 
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_j1wmj"]
+clip_count = 3
+clip_0/name = &"start"
+clip_0/stream = ExtResource("8_j1wmj")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"loop"
+clip_1/stream = ExtResource("9_5nrh6")
+clip_1/auto_advance = 0
+clip_2/name = &"end"
+clip_2/stream = ExtResource("10_a44b7")
+clip_2/auto_advance = 0
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 8.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(1, 2): {
+"fade_beats": 0.5,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+}
+}
+
 [node name="BeamModule" type="CollisionShape3D" node_paths=PackedStringArray("weapon", "attach_points", "sprite", "label")]
 shape = SubResource("BoxShape3D_yf3ku")
 script = ExtResource("1_da12c")
@@ -31,10 +61,15 @@ allow_auto_fire = true
 attach_points = [NodePath("AttachPoints/AttachPoint")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
+healthy_color = Color(0, 1, 0, 1)
+dead_color = Color(1, 0, 0, 1)
+module_name = "Beam"
+description = "One of basic weapons. Hold activation to shoot continous beam."
 
 [node name="Constant" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.610518)
 script = ExtResource("2_7ulne")
+recoil_force = 50.0
 projectile = ExtResource("3_da12c")
 metadata/_custom_type_script = "uid://crmxerc164n6q"
 
@@ -48,20 +83,27 @@ mesh = SubResource("CylinderMesh_quigi")
 [node name="AttachPoint" type="Node3D" parent="AttachPoints"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4399e-08, 0, 0.506178)
 
-[node name="DamageController" type="Node" parent="."]
-script = ExtResource("4_nosfs")
+[node name="DamageController" parent="." instance=ExtResource("12_5nrh6")]
 
-[node name="Damageable" type="Area3D" parent="DamageController"]
-script = ExtResource("5_j1wmj")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00500476, -0.00528124, -0.00144887)
 shape = SubResource("BoxShape3D_recg5")
 
-[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("6_5nrh6")]
-damageable = NodePath("../DamageController/Damageable")
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("shape") instance=ExtResource("6_5nrh6")]
 shape = NodePath("../DamageController/Damageable/CollisionShape3D")
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("7_a44b7")]
 
+[node name="SoundEmitter" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamInteractive_j1wmj")
+script = ExtResource("11_3d6pv")
+stop_behaviour = 1
+transition_clip_name = &"end"
+metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
+
+[connection signal="activated" from="." to="SoundEmitter" method="start_playing"]
+[connection signal="deactivated" from="." to="SoundEmitter" method="stop_playing"]
+[connection signal="damaged" from="DamageController" to="." method="take_damage"]
+
+[editable path="DamageController"]
 [editable path="ModuleDisplay"]

@@ -5,29 +5,38 @@ extends CollisionShape3D
 ## Base class for all modules
 ## The object should have scale 1 to work properly!
 
+signal activated
+signal deactivated
+signal damaged
+signal destroyed
+
+@export_category("Settings")
 @export var activation_key: Key = KEY_NONE
 @export var max_hp: float = 100
 @export var hp: float = 100
+@export_category("References")
 @export var ship: Ship
 @export var attach_points: Array[Node3D] = []
 @export var parent_module: Module
 @export var child_modules: Array[Module] = []
-
+@export_category("Graphics")
 @export var sprite: Sprite3D
 @export var label: Label3D
 
 @export var healthy_color: Color
 @export var dead_color: Color
 
+@export_category("Shop")
 ## Prize in shop
+@export var module_name: String
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var prize: int = 1
+@export_multiline var description: String
 
 var was_key_pressed: bool = false
 
 var module_rigidbody_prefab = preload("res://prefabs/modules/module_rigidbody.tscn")
 
 var activation_key_saved: Key = KEY_NONE
-
 
 func _ready() -> void:
 	_on_key_change()
@@ -74,6 +83,7 @@ func take_damage(damage: Damage) -> void:
 	update_sprite()
 	if hp <= 0:
 		_on_destroy()
+	damaged.emit()
 
 
 func update_sprite() -> void:
@@ -88,11 +98,12 @@ func _on_destroy() -> void:
 	_explode()
 	for child in child_modules:
 		var rb: RigidBody3D = module_rigidbody_prefab.instantiate()
-		get_tree().get_root().add_child(rb)  # attach to scene root
+		get_tree().current_scene.add_child(rb)  # attach floating modules to scene
 		child.reparent(rb)
 		rb.linear_velocity = ship.linear_velocity
 		child.deactivate()
 	queue_free()  # delete self as an object
+	destroyed.emit()
 
 
 func deactivate() -> void:
@@ -163,9 +174,25 @@ func create_ghost() -> ModuleGhost:
 	ghost.global_position = global_position
 
 	# duplicate module
-	var duplicate_node: Node = self.duplicate()
+	var duplicate_node: Node3D = self.duplicate()
 	ghost.add_child(duplicate_node)
 	duplicate_node.position = Vector3.ZERO
+	duplicate_node.rotation = Vector3.ZERO
+	duplicate_node.prize = 0;
 	ghost.module_to_ignore = self
 
 	return ghost
+
+
+## Return all children (even indirect) modules of a given node.
+
+
+static func find_all_modules(node: Node) -> Array[Module]:
+	var result = []
+	for child in node.get_children():
+		if child is Module:
+			result.append(child)
+		result.append_array(find_all_modules(child))  # Recurse
+	var modules: Array[Module] = []
+	modules.assign(result)  # create module typed array
+	return modules

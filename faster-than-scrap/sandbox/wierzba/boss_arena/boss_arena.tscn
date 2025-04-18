@@ -1,0 +1,40 @@
+[gd_scene load_steps=10 format=3 uid="uid://daiiwdcu1w6ie"]
+
+[ext_resource type="Script" uid="uid://iii7qu2px6lf" path="res://code/boss/boss_spawner.gd" id="1_pnxne"]
+[ext_resource type="Script" uid="uid://c36cenluxoqgk" path="res://sandbox/wierzba/boss_arena/damage_clicker.gd" id="2_gnbx1"]
+[ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_13iag"]
+[ext_resource type="PackedScene" uid="uid://d2oshlh57wf02" path="res://prefabs/bosses/boss_ui.tscn" id="4_b1kn1"]
+[ext_resource type="Script" uid="uid://cmf2qyea7g403" path="res://sandbox/wierzba/boss_arena/dummy_boss_node.gd" id="5_igk63"]
+[ext_resource type="PackedScene" uid="uid://c3rsq4emlmuky" path="res://prefabs/bosses/examples/laser_star/laser_star.tscn" id="6_es6mq"]
+[ext_resource type="PackedScene" uid="uid://c3v1bk85mx7p3" path="res://prefabs/ships/flyable_ship_with_guns.tscn" id="8_es6mq"]
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="8_lsvnc"]
+
+[sub_resource type="Resource" id="Resource_l2brj"]
+script = ExtResource("3_13iag")
+value = 100.0
+
+[node name="BossArena" type="Node3D"]
+script = ExtResource("1_pnxne")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 17.044, 0)
+visible = false
+
+[node name="DamageClicker" type="Node3D" parent="."]
+script = ExtResource("2_gnbx1")
+damage = SubResource("Resource_l2brj")
+
+[node name="BossUi" parent="." instance=ExtResource("4_b1kn1")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.00296707, 0.999996, 0, -0.999996, 0.00296707, -6.20547, -4.76837e-07, 11.1022)
+
+[node name="DummyBossNodeSetter" type="Node" parent="."]
+script = ExtResource("5_igk63")
+boss_prefab = ExtResource("6_es6mq")
+
+[node name="MainCamera" parent="." instance=ExtResource("8_lsvnc")]
+
+[node name="FlyableShip" parent="." node_paths=PackedStringArray("modules") instance=ExtResource("8_es6mq")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.055, 0, 10.895)
+modules = [NodePath("Cockpit"), NodePath("BaseModule"), NodePath("Thruster Backward"), NodePath("Thruster Right"), NodePath("Thruster Left"), NodePath("Thruster Forward"), NodePath("ShieldModule"), null]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://bhce4swpinjsd"]
 
-[ext_resource type="Script" uid="uid://ddty3aldichpj" path="res://Sandbox/Wierzba/camera_follow/move_on_press.gd" id="1_t3v2k"]
+[ext_resource type="Script" uid="uid://ddty3aldichpj" path="res://sandbox/wierzba/camera_follow/move_on_press.gd" id="1_t3v2k"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="2_gibu4"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="2_ig3gf"]
 [ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="3_koici"]
-[ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/UI/Minimap/Placeholder/Enemy.png" id="4_7afsy"]
+[ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/ui/minimap/placeholder/Enemy.png" id="4_7afsy"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_r16sr"]
 

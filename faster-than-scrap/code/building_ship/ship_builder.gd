@@ -6,20 +6,23 @@ extends Node3D
 ## it reacts to mouse clicking for grabbing the module
 ## and snapping it to the ship if close enough.
 signal on_module_select(module: Module)
+signal on_module_attach(module: Module)
+signal on_module_hover(module: Module)
 
 enum State { NONE, DRAGGING, SETTING_BUTTON }
 
 const RAY_LENGTH = 1000.0
 
 ## collider or ares ignored by raycast, might be empty
-@export var ignore: CollisionObject3D
+@export var ignore: Array[CollisionObject3D]
 ## the mask of checked colliders when checking if there are modules near the mouse
 @export var collision_mask: int = 1
 ## the range of spherecast when checking if there are modules near the mouse
 @export var snap_range: float = 1
 ## material of ghost outline
 
-@export var shop: Shop
+## borders limiting max size of the ship
+@export var ship_borders: Area3D
 
 @export_group("Visuals")
 @export var outline_mat: ShaderMaterial
@@ -46,7 +49,7 @@ var mouse_position_3d: Vector3 = Vector3.ZERO
 var lmb_was_pressed: bool = false
 var lmb_is_pressed: bool = false
 var rmb_was_pressed: bool = false
-
+var ignore_rid: Array[RID]
 var scene_loader: SceneLoader
 
 
@@ -56,6 +59,9 @@ func _ready() -> void:
 
 	GameManager.player_ship.position = Vector3.ZERO
 	GameManager.player_ship.rotation = Vector3.ZERO
+
+	for ig in ignore:
+		ignore_rid.push_back(ig.get_rid())
 
 
 # ---------------mouse ---------------------------------------------
@@ -114,7 +120,7 @@ func _get_raycast_hit(event: InputEvent) -> Dictionary:
 	# only first layer (to avoid clicking damageable)
 	var query = PhysicsRayQueryParameters3D.create(from, to, 1)
 	query.collide_with_areas = true
-	query.exclude = [ignore]
+	query.exclude = ignore_rid
 	return space_state.intersect_ray(query)
 
 
@@ -245,12 +251,12 @@ func _attach_module() -> void:
 		# remove area above module. Ship already has rigidbody,
 		# so module is clickable
 		var area_parent = active_module.get_parent()
-		if shop != null:
-			shop._on_area_3d_area_exited(area_parent)
+		on_module_attach.emit(active_module)
 		active_module.reparent(attach_target.ship)
 		area_parent.queue_free()
 	else:
 		active_module.reparent(attach_target.ship)
+		active_module.parent_module.child_modules.erase(active_module)
 	active_module.set_ship_reference(attach_target.ship)  # copy the reference to the ship
 	attach_target.child_modules.append(active_module)
 	active_module.parent_module = attach_target
@@ -269,7 +275,7 @@ func _dettach_module() -> void:
 		# add some area3d as a root of the module, to allow clicking it
 		active_module.reparent(get_tree().get_root())
 		var area = Area3D.new()
-		get_tree().root.add_child(area)
+		get_tree().current_scene.add_child(area)
 		area.position = active_module.position
 		active_module.reparent(area)
 
@@ -300,6 +306,13 @@ func _input(event: InputEvent):
 					state = State.SETTING_BUTTON
 					choose_key_message.visible = true
 					print("new state = setting button")
+			else:
+				var hit := _get_raycast_hit(event)
+				if hit.size() > 0:
+					var hovered_module: Module = _get_module_from_hit(hit)
+					on_module_hover.emit(hovered_module)
+				else:
+					on_module_hover.emit(null)
 		State.DRAGGING:
 			if confirm_finish_message.visible || choose_key_message.visible:
 				return
@@ -394,6 +407,9 @@ func _process(_delta: float) -> void:
 				# Module colliding with other module
 				_display_illegal()
 				legal = false
+			elif ship_borders.overlaps_area(active_module_ghost):
+				_display_illegal()
+				legal = false
 			else:
 				_display_legal()
 				legal = true
@@ -416,11 +432,12 @@ func _create_outline(parent: Node3D) -> Array[MeshInstance3D]:
 
 	var out: Array[MeshInstance3D] = []
 	for module_mesh in module_meshes:
-		var mesh = MeshInstance3D.new()
+		#var mesh = MeshInstance3D.new()
+		var mesh: MeshInstance3D = module_mesh.duplicate()
 		parent.add_child(mesh)
 		mesh.material_override = outline_mat
-		mesh.mesh = module_mesh.mesh
-		mesh.basis = module_mesh.basis
+		mesh.global_rotation = module_mesh.global_rotation
+		mesh.global_scale(module_mesh.global_transform.basis.get_scale())
 		out.append(mesh)
 
 	return out

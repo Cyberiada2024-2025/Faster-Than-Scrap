@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://ckx4pgnacau0i"]
 
-[ext_resource type="Script" uid="uid://y01yp5jqupge" path="res://code/Player/hud.gd" id="1_x65cj"]
-[ext_resource type="Script" uid="uid://hpmnb8n3f0n" path="res://code/Player/resource_bar.gd" id="2_1s2ai"]
-[ext_resource type="Texture2D" uid="uid://b2wcjw2km4vjf" path="res://art/textures/UI/battery2.png" id="3_6m4ql"]
-[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="4_5fqad"]
+[ext_resource type="Script" uid="uid://y01yp5jqupge" path="res://code/player/hud.gd" id="1_x65cj"]
+[ext_resource type="Script" uid="uid://hpmnb8n3f0n" path="res://code/player/resource_bar.gd" id="2_1s2ai"]
+[ext_resource type="Texture2D" uid="uid://b2wcjw2km4vjf" path="res://art/textures/ui/battery2.png" id="3_6m4ql"]
+[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="4_5fqad"]
 
 [sub_resource type="Environment" id="Environment_s7i6o"]
 background_mode = 1
@@ -108,6 +108,7 @@ viewport_path = NodePath("MinimapViewport")
 
 [node name="MainCamera" type="Camera3D" node_paths=PackedStringArray("energy_bar")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+cull_mask = 1048569
 script = ExtResource("1_x65cj")
 energy_bar = NodePath("HUD/Energy Bar")
 main_camera_offset = Vector3(0, 25, 0)
@@ -123,7 +124,7 @@ environment = SubResource("Environment_s7i6o")
 projection = 1
 current = true
 fov = 37.8493
-size = 10.0
+size = 20.0
 
 [node name="MinimapViewport" type="SubViewport" parent="."]
 use_hdr_2d = true

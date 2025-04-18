@@ -24,4 +24,6 @@ func on_mission_finished(mission: Mission) -> void:
 	if mission.info.priority == MissionInfo.Priority.MAIN_QUEST:
 		main_mission_finished = true
 		print("MissionManager: FINISHED MAIN QUEST")
-		scene_loader.load_map_selector_scene()
+		GameManager.player_ship.leave_animation.start_animation(
+			scene_loader.load_map_selector_scene
+		)

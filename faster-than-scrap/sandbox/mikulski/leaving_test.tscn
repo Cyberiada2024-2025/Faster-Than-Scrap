@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://8lces1k2x05k"]
+
+[ext_resource type="Script" uid="uid://djte30tpgvnkf" path="res://sandbox/mikulski/leaving_test.gd" id="1_vwaq7"]
+[ext_resource type="PackedScene" uid="uid://cvhtby50lwoe4" path="res://sandbox/mikulski/set_player_for_test.tscn" id="3_17rlt"]
+[ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="3_guilh"]
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="4_61pl8"]
+[ext_resource type="Script" uid="uid://4w17qx65voq6" path="res://code/missions/a/mission_defend.gd" id="5_vwaq7"]
+[ext_resource type="Script" uid="uid://b6oaocatti460" path="res://code/missions/info/mission_info_defend.gd" id="6_51o16"]
+[ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="7_d4ou2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cbc55"]
+
+[sub_resource type="Resource" id="Resource_d4ou2"]
+script = ExtResource("6_51o16")
+defendable_position = Vector3(0, 0, 0)
+time_to_defend = 60.0
+about = ""
+difficulty = 0
+priority = 0
+metadata/_custom_type_script = "uid://b6oaocatti460"
+
+[node name="Leaving test" type="Node3D" node_paths=PackedStringArray("mission")]
+script = ExtResource("1_vwaq7")
+mission = NodePath("MissionTimedDefend")
+
+[node name="env" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.18378, 3.09416, -7.92436)
+mesh = SubResource("BoxMesh_cbc55")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43104, 0, 6.07274)
+mesh = SubResource("BoxMesh_cbc55")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.48225, 0, -6.23019)
+mesh = SubResource("BoxMesh_cbc55")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.34392, -5.28101, 7.24185)
+mesh = SubResource("BoxMesh_cbc55")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.62524, 0, 6.15391)
+mesh = SubResource("BoxMesh_cbc55")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4679, 0, 0)
+mesh = SubResource("BoxMesh_cbc55")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.743, 0, 0)
+mesh = SubResource("BoxMesh_cbc55")
+skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
+transform = Transform3D(1, 0, 0, 0, 0.035824, 0.999358, 0, -0.999358, 0.035824, 0, 13.8378, 0)
+
+[node name="set player" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_17rlt")]
+player = NodePath("../FlyableShip")
+
+[node name="MainCamera" parent="." instance=ExtResource("4_61pl8")]
+
+[node name="FlyableShip" parent="." instance=ExtResource("3_guilh")]
+
+[node name="MissionTimedDefend" type="Node" parent="."]
+script = ExtResource("5_vwaq7")
+info = SubResource("Resource_d4ou2")
+metadata/_custom_type_script = "uid://4w17qx65voq6"
+
+[node name="SpaceEnvironment" parent="." instance=ExtResource("7_d4ou2")]

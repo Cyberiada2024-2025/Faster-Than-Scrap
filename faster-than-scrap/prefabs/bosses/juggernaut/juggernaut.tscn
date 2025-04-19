@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_byxk3"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="3_5ov2f"]
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="3_a8moe"]
-[ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="3_qln4k"]
+[ext_resource type="Script" uid="uid://dc42aagfm4o0o" path="res://code/ship/modules/explodable.gd" id="3_qln4k"]
 [ext_resource type="Script" uid="uid://crmxerc164n6q" path="res://code/weapons/constant_fire_weapon.gd" id="4_1irkd"]
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="4_clgev"]
 [ext_resource type="Script" uid="uid://befj25g2qfhr7" path="res://code/enemy/states/move/orbit.gd" id="5_5ov2f"]
@@ -40,10 +40,12 @@ script = ExtResource("2_byxk3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="Body" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="Body" type="CollisionShape3D" parent="StaticBody3D" node_paths=PackedStringArray("child_modules")]
 shape = SubResource("BoxShape3D_km21v")
 script = ExtResource("3_qln4k")
 max_hp = 20.0
+hp = 20.0
+child_modules = [NodePath("../Weapons/Heavy Weapon Module"), NodePath("../Weapons/Basic Weapon Module"), NodePath("../Weapons/Basic Weapon Module2"), NodePath("../Weapons/Laser Module"), NodePath("../Weapons/Shotgun Module"), NodePath("../Weapons/Shotgun Module2")]
 metadata/_custom_type_script = "uid://cs6qd5cf3gviv"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/Body"]
@@ -66,12 +68,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -2, 0, 0)
 mesh = SubResource("BoxMesh_byxk3")
 skeleton = NodePath("")
 
+[node name="DamageController" parent="StaticBody3D/Body" instance=ExtResource("10_6fxl0")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="0"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("BoxShape3D_qln4k")
+
 [node name="Weapons" type="Node3D" parent="StaticBody3D"]
 
 [node name="Heavy Weapon Module" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.63088)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.21984)
 script = ExtResource("3_a8moe")
 weapon = NodePath("Basic Weapon")
+max_hp = 0.0
+hp = 0.0
 ship = NodePath("../../../Boss")
 metadata/_custom_type_script = "uid://6f2yjn6wgcun"
 
@@ -84,6 +94,8 @@ projectile = ExtResource("5_8rvwn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97444, 0, -2.63407)
 script = ExtResource("3_a8moe")
 weapon = NodePath("Basic Weapon")
+max_hp = 0.0
+hp = 0.0
 ship = NodePath("../../../Boss")
 metadata/_custom_type_script = "uid://6f2yjn6wgcun"
 
@@ -96,6 +108,8 @@ projectile = ExtResource("6_6fxl0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9361, 0, -2.63407)
 script = ExtResource("3_a8moe")
 weapon = NodePath("Basic Weapon")
+max_hp = 0.0
+hp = 0.0
 ship = NodePath("../../../Boss")
 metadata/_custom_type_script = "uid://6f2yjn6wgcun"
 
@@ -108,6 +122,8 @@ projectile = ExtResource("6_6fxl0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.89683)
 script = ExtResource("3_a8moe")
 weapon = NodePath("LaserBeam")
+max_hp = 0.0
+hp = 0.0
 ship = NodePath("../../../Boss")
 metadata/_custom_type_script = "uid://6f2yjn6wgcun"
 
@@ -120,6 +136,8 @@ projectile = ExtResource("5_ion51")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00526, 0, -2.58012)
 script = ExtResource("3_a8moe")
 weapon = NodePath("Shotgun")
+max_hp = 0.0
+hp = 0.0
 ship = NodePath("../../../Boss")
 metadata/_custom_type_script = "uid://6f2yjn6wgcun"
 
@@ -133,6 +151,8 @@ projectile = ExtResource("7_a23ns")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00471, 0, -2.61206)
 script = ExtResource("3_a8moe")
 weapon = NodePath("Shotgun")
+max_hp = 0.0
+hp = 0.0
 ship = NodePath("../../../Boss")
 metadata/_custom_type_script = "uid://6f2yjn6wgcun"
 
@@ -142,15 +162,26 @@ energy_cost = 50.0
 cooldown = 5.0
 projectile = ExtResource("7_a23ns")
 
-[node name="DamageController" parent="StaticBody3D" instance=ExtResource("10_6fxl0")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/DamageController/Damageable" index="0"]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
-shape = SubResource("BoxShape3D_qln4k")
-
 [node name="StateMachineNPC" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_5ov2f")
-initial_state = NodePath("OrbitComposite")
+initial_state = NodePath("Move To Orbit")
+
+[node name="Move To Orbit" type="Node" parent="StateMachineNPC"]
+script = ExtResource("4_clgev")
+
+[node name="MoveToOrbit" type="Node" parent="StateMachineNPC/Move To Orbit"]
+script = ExtResource("10_clgev")
+orbit_radius = 20.0
+lerp_strength = 0.8
+
+[node name="LookAt" type="Node" parent="StateMachineNPC/Move To Orbit"]
+script = ExtResource("6_xr00f")
+lerp_strength = 0.1
+
+[node name="TimedTransition" type="Node" parent="StateMachineNPC/Move To Orbit" node_paths=PackedStringArray("new_state")]
+script = ExtResource("6_cla4x")
+duration = 1.0
+new_state = NodePath("../../OrbitComposite")
 
 [node name="OrbitComposite" type="Node" parent="StateMachineNPC"]
 script = ExtResource("4_clgev")
@@ -229,7 +260,7 @@ weapons = [NodePath("../../../StaticBody3D/Weapons/Laser Module/LaserBeam")]
 
 [node name="LookAt" type="Node" parent="StateMachineNPC/ShootLaserComposite"]
 script = ExtResource("6_xr00f")
-lerp_strength = 0.001
+lerp_strength = 0.01
 
 [node name="TransitionLowEnergy" type="Node" parent="StateMachineNPC/ShootLaserComposite" node_paths=PackedStringArray("new_state")]
 script = ExtResource("8_1irkd")
@@ -239,6 +270,6 @@ new_state = NodePath("../../OrbitComposite")
 [node name="EnemyPoi" parent="." instance=ExtResource("11_clgev")]
 max_range = 10000.0
 
-[connection signal="damaged" from="StaticBody3D/DamageController" to="StaticBody3D/Body" method="take_damage"]
+[connection signal="damaged" from="StaticBody3D/Body/DamageController" to="StaticBody3D/Body" method="take_damage"]
 
-[editable path="StaticBody3D/DamageController"]
+[editable path="StaticBody3D/Body/DamageController"]

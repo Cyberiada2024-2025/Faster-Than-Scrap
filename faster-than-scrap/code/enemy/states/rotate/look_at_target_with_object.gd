@@ -41,7 +41,6 @@ func _select_look_object() -> Node3D:
 
 		if angle < smallest_angle:
 			smallest_angle = angle
-			rotation_offset
 			best_index = index
 		index += 1
 
@@ -52,8 +51,12 @@ func _select_look_object() -> Node3D:
 	# calculate rotation offset from look object
 	var rotation_offset = 0
 	if look_object != null:
-		var ship_forward = -ship_controller.global_transform.basis.z  # in godot forward is [0,0,-1]
-		var look_foward = -look_object.global_transform.basis.z  # in godot forward is [0,0,-1]
-		rotation_offset = ship_forward.angle_to(look_foward)
+		_set_rotation_offset(look_object)
 
 	return objects[best_index]
+
+
+func _set_rotation_offset(look_object: Node3D) -> void:
+	var ship_forward = -ship_controller.global_transform.basis.z  # in godot forward is [0,0,-1]
+	var look_foward = -look_object.global_transform.basis.z  # in godot forward is [0,0,-1]
+	rotation_offset = ship_forward.angle_to(look_foward)

@@ -18,3 +18,30 @@ func get_node_color() -> Color:
 
 func get_node_description() -> String:
 	return "Mission Type:\nGet item"
+
+
+func get_spawner() -> BaseEntitySpawner:
+	var spawner: TriangleEntitySpawner = (
+		preload("res://prefabs/spawners/triangle_enemy_spawner.tscn").instantiate()
+	)
+	spawner.A_point = GameManager.player_ship.position
+	spawner.B_point = item_position
+	spawner.C_point = item_target_position
+	spawner.max_position_change = 10.0
+	spawner.entities_count = (
+		(
+			(2 + difficulty)
+			* abs(
+				(
+					(
+						spawner.a_point.x * (spawner.b_point.z - spawner.c_point.z)
+						+ spawner.b_point.x * (spawner.c_point.z - spawner.a_point.z)
+						+ spawner.c_point.x * (spawner.a_point.z - spawner.b_point.z)
+					)
+					/ 400
+				)
+			)
+		)
+		+ 5
+	)
+	return spawner

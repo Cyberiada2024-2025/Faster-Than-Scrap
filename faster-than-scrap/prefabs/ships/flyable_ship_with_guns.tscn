@@ -33,6 +33,7 @@ gravity_scale = 0.0
 script = ExtResource("1_k3yb4")
 cockpit = NodePath("Cockpit")
 modules = [NodePath("Cockpit"), NodePath("BaseModule"), NodePath("Thruster Backward"), NodePath("Thruster Right"), NodePath("Thruster Left"), NodePath("Thruster Forward"), NodePath("ShieldModule"), null]
+team = 0
 
 [node name="Cockpit" parent="." node_paths=PackedStringArray("ship", "child_modules") instance=ExtResource("2_5kypi")]
 ship = NodePath("..")

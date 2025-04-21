@@ -25,6 +25,12 @@ func _process(_delta: float) -> void:
 	pass
 
 
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("use_fuel"):
+		state = MissionState.FINISHED
+		finished.emit(self)
+
+
 ## returns whether the missions ended.
 ## Either by success or failure
 func _ended() -> bool:

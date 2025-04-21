@@ -9,8 +9,8 @@ extends Node3D
 @export var prepare_anim_name: StringName = "prepare_to_jump"
 @export var jump_anim_name: StringName = "jump"
 @export_group("animation times")
-@export var prepare_time: float = 4.0
-@export var jump_time: float = 2.0
+@export var prepare_time: float = 1.0
+@export var jump_time: float = 1.0
 
 var ending: Callable
 ## variable that block multiple activation of this animation

@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="11_vp012"]
 [ext_resource type="Script" uid="uid://dig16nwffnibt" path="res://code/enemy/states/restore_energy.gd" id="12_tiubj"]
 [ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="13_dufb5"]
-[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/poi/enemy_poi.tscn" id="15_vhk6y"]
+[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="15_vhk6y"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
 

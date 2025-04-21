@@ -5,16 +5,16 @@ extends Control
 ## of a selection as index of an options passed as argument while creating the popup.
 ## To obtain the result 'await' call should be used.
 
+static var popup_radio_prefab: PackedScene = preload("res://prefabs/ui/popup/popup_radio.tscn")
+static var popup_radio_button_prefab: PackedScene = preload(
+	"res://prefabs/ui/popup/popup_elements/popup_radio_button.tscn"
+)
+
 @export_color_no_alpha var selected_color: Color
 @export_color_no_alpha var unselected_color: Color
 
 var selection: int = 0
 var buttons: Array[Button] = []
-
-static var popup_radio_prefab: PackedScene = preload("res://prefabs/ui/popup/popup_radio.tscn")
-static var popup_radio_button_prefab: PackedScene = preload(
-	"res://prefabs/ui/popup/popup_elements/popup_radio_button.tscn"
-)
 
 
 static func show_popup(title: String, content: String, options: Array[String]) -> int:
@@ -47,7 +47,12 @@ func _setup(title: String, content: String, options: Array[String]) -> void:
 	content_label.text = content
 
 	# add button
-	var buttons_container: Control = $"HBoxContainer/VBoxContainer/PopupContent/VBoxContainer/Radio Container/Padding/Buttons container"
+	var buttons_container: Control = get_node(
+		(
+			"HBoxContainer/VBoxContainer/PopupContent/VBoxContainer/Radio "
+			+ "Container/Padding/Buttons container"
+		)
+	)
 	var index = 0
 	for option: String in options:
 		var button: Button = popup_radio_button_prefab.instantiate()
@@ -57,7 +62,6 @@ func _setup(title: String, content: String, options: Array[String]) -> void:
 		buttons_container.add_child(button)
 		if index == 0:
 			button.set_pressed_no_signal(true)
-			pass
 		index += 1
 
 

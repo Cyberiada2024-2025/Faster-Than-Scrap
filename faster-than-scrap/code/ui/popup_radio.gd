@@ -1,0 +1,58 @@
+class_name PopupRadio
+extends Control
+
+signal selected(index: int)
+
+var selection: int = 0
+var buttons: Array[Button] = []
+
+static var popup_radio_prefab: PackedScene = preload("res://prefabs/ui/popup/popup_radio.tscn")
+static var popup_radio_button_prefab: PackedScene = preload(
+	"res://prefabs/ui/popup/popup_elements/popup_confirm_button.tscn"
+)
+
+
+## virtual constructor of popup
+static func _show_popup(title: String, content: String, options: Array[String]) -> int:
+	var popup: Control = popup_radio_prefab.instantiate()
+	popup._setup(title, content, options)
+	popup.process_mode = Node.PROCESS_MODE_ALWAYS
+
+	# add to the scene
+	GameManager.get_tree().current_scene.add_child(popup)
+	# pause the game
+	GameManager._pause_entities()
+
+	# await confirm
+	var confirm_button: Button = popup.get_node("PopupConfirmButton")
+	await confirm_button.pressed
+
+	# unpause the game
+	GameManager._unpause_entities()
+	popup.queue_free()
+	return popup.selection
+
+
+func _setup(title: String, content: String, options: Array[String]) -> void:
+	# set title
+	var title_label: Label = $HBoxContainer/VBoxContainer/Title
+	title_label.text = title
+
+	# set content
+	var content_label: Label = $HBoxContainer/VBoxContainer/PopupContent/VBoxContainer/Label
+	content_label.text = content
+
+	# add button
+	var buttons_container: Control = $"HBoxContainer/VBoxContainer/PopupContent/VBoxContainer/Radio Container/Padding/Buttons container"
+	var index = 0
+	for option: String in options:
+		var button: Button = popup_radio_button_prefab.instantiate()
+		buttons.append(button)
+		button.pressed.connect(func(): on_radio_change(index))
+		button.text = options[index]
+		buttons_container.add_child(button)
+		index += 1
+
+
+func on_radio_change(new_selection: int) -> void:
+	selection = new_selection

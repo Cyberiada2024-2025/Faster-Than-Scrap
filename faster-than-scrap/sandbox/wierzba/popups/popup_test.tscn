@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://busv7mmoo36gy"]
+
+[ext_resource type="Script" uid="uid://xowoefdynlnq" path="res://sandbox/wierzba/popups/popup_spawner.gd" id="1_sgq4l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sgq4l"]
+
+[node name="PopupTest" type="Node3D"]
+script = ExtResource("1_sgq4l")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.57551)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.371, 0, 0)
+gravity_scale = 0.05
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69089, 0)
+mesh = SubResource("BoxMesh_sgq4l")

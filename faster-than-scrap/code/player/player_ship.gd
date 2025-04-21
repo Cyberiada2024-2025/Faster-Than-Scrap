@@ -8,6 +8,7 @@ extends Ship
 signal energy_change
 signal energy_max_change
 signal energy_warning
+var current_fuel: int = 1
 
 @export var cockpit: Cockpit
 

@@ -27,8 +27,12 @@ func _process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("use_fuel"):
-		state = MissionState.FINISHED
-		finished.emit(self)
+		if GameManager.player_ship.current_fuel > 0:
+			state = MissionState.FINISHED
+			finished.emit(self)
+			GameManager.player_ship.current_fuel -= 1
+		else:
+			print("No hyperspace fuel!")
 
 
 ## returns whether the missions ended.

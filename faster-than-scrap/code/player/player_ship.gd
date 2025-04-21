@@ -8,13 +8,13 @@ extends Ship
 signal energy_change
 signal energy_max_change
 signal energy_warning
-var current_fuel: int = 1
 
 @export var cockpit: Cockpit
 
 ## All modules of the ship (to prevent checking the tree hierarchy).
 ## Mostly used for building phase
 @export var modules: Array[Module] = []
+var current_fuel: int = 1
 
 
 func _enter_tree() -> void:

@@ -1,6 +1,10 @@
 class_name PopupRadio
 extends Control
 
+## Popup with title, description and radio buttons. It can also return a result
+## of a selection as index of an options passed as argument while creating the popup.
+## To obtain the result 'await' call should be used.
+
 signal selected(index: int)
 
 var selection: int = 0
@@ -12,8 +16,7 @@ static var popup_radio_button_prefab: PackedScene = preload(
 )
 
 
-## virtual constructor of popup
-static func _show_popup(title: String, content: String, options: Array[String]) -> int:
+static func show_popup(title: String, content: String, options: Array[String]) -> int:
 	var popup: Control = popup_radio_prefab.instantiate()
 	popup._setup(title, content, options)
 	popup.process_mode = Node.PROCESS_MODE_ALWAYS

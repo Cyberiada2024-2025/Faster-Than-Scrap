@@ -5,14 +5,15 @@ extends Control
 ## of a selection as index of an options passed as argument while creating the popup.
 ## To obtain the result 'await' call should be used.
 
-signal selected(index: int)
+@export_color_no_alpha var selected_color: Color
+@export_color_no_alpha var unselected_color: Color
 
 var selection: int = 0
 var buttons: Array[Button] = []
 
 static var popup_radio_prefab: PackedScene = preload("res://prefabs/ui/popup/popup_radio.tscn")
 static var popup_radio_button_prefab: PackedScene = preload(
-	"res://prefabs/ui/popup/popup_elements/popup_confirm_button.tscn"
+	"res://prefabs/ui/popup/popup_elements/popup_radio_button.tscn"
 )
 
 
@@ -54,8 +55,12 @@ func _setup(title: String, content: String, options: Array[String]) -> void:
 		button.pressed.connect(func(): on_radio_change(index))
 		button.text = options[index]
 		buttons_container.add_child(button)
+		if index == 0:
+			button.set_pressed_no_signal(true)
+			pass
 		index += 1
 
 
 func on_radio_change(new_selection: int) -> void:
+	buttons[selection].set_pressed_no_signal(false)
 	selection = new_selection

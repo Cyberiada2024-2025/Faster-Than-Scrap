@@ -1,0 +1,28 @@
+[gd_scene load_steps=9 format=3 uid="uid://d24ijsj7ctes7"]
+
+[ext_resource type="Material" uid="uid://b8keu47disj17" path="res://art/materials/scrap_shop/base/scrap_shop_base_material_3d.tres" id="1_xqh0m"]
+[ext_resource type="ArrayMesh" uid="uid://cfj7df0phfn4y" path="res://art/models/scrap_shop/base/base.obj" id="2_n863w"]
+[ext_resource type="Material" uid="uid://dogh1i6liu8ne" path="res://art/materials/scrap_shop/panels/scrap_shop_panel_material_3d.tres" id="3_535e4"]
+[ext_resource type="ArrayMesh" uid="uid://cu676oynk1ufv" path="res://art/models/scrap_shop/panel/panel.obj" id="4_sotrp"]
+[ext_resource type="Material" uid="uid://wtpedtbjj7qh" path="res://art/materials/scrap_shop/screen/scrap_shop_screen_material_3d.tres" id="5_nu0s8"]
+[ext_resource type="ArrayMesh" uid="uid://cck4auw0ne108" path="res://art/models/scrap_shop/screen/screen.obj" id="6_ltvg6"]
+[ext_resource type="Material" uid="uid://6haesgdu5a71" path="res://art/materials/scrap_shop/tower/scrap_shop_tower_material_3d.tres" id="7_yy6yo"]
+[ext_resource type="ArrayMesh" uid="uid://cxeeeobnlhg6" path="res://art/models/scrap_shop/tower/tower.obj" id="8_lwvi0"]
+
+[node name="ScrapShop" type="Node3D"]
+
+[node name="Base" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_xqh0m")
+mesh = ExtResource("2_n863w")
+
+[node name="Panel" type="MeshInstance3D" parent="."]
+material_override = ExtResource("3_535e4")
+mesh = ExtResource("4_sotrp")
+
+[node name="Screen" type="MeshInstance3D" parent="."]
+material_override = ExtResource("5_nu0s8")
+mesh = ExtResource("6_ltvg6")
+
+[node name="Tower" type="MeshInstance3D" parent="."]
+material_override = ExtResource("7_yy6yo")
+mesh = ExtResource("8_lwvi0")

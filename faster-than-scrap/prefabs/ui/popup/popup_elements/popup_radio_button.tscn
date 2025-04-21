@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bu0wp68rf1fem"]
 
 [node name="PopupRadioButton" type="Button"]
+custom_minimum_size = Vector2(50, 0)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

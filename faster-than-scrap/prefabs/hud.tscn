@@ -124,7 +124,7 @@ environment = SubResource("Environment_s7i6o")
 projection = 1
 current = true
 fov = 37.8493
-size = 10.0
+size = 20.0
 
 [node name="MinimapViewport" type="SubViewport" parent="."]
 use_hdr_2d = true

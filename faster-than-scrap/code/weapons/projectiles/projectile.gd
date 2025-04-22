@@ -6,13 +6,12 @@ extends Node3D
 ## a certain amount of time has passed.
 
 ## Curve representing the projectile's velocity in time.
-## [code]X = 1[/code] on the curve represents the end of
-## the projectile's lifetime.
+## [code]X = 1[/code] on the curve represents the end of the projectile's lifetime.
 @export var velocity: Curve
 
 ## Velocity from the [param velocity] curve will be multiplied by this number.
 ## This makes it easier to quickly adjust the projectile's speed.
-@export var velocity_multiplier: float
+@export var velocity_multiplier: float = 1
 
 ## How much time passes before the projectile dies on it's own.
 @export var lifetime: float
@@ -32,16 +31,19 @@ func _ready():
 
 
 func _process(delta: float) -> void:
-	var speed = velocity.sample_baked(_current_lifetime / lifetime)
-	speed *= velocity_multiplier
-	translate_object_local(Vector3.FORWARD * speed * delta)
+	_process_movement(delta)
 
 	_current_lifetime += delta
-
 	if _current_lifetime >= lifetime:
 		queue_free()
 
 
-func _on_damage_applied(_damage: Damage, _target: Damageable):
+func _process_movement(delta: float) -> void:
+	var speed = velocity.sample_baked(_current_lifetime / lifetime)
+	speed *= velocity_multiplier
+	translate_object_local(Vector3.FORWARD * speed * delta)
+
+
+func _on_damage_applied(_damage: Damage, _target: Damageable) -> void:
 	if die_on_hit:
 		queue_free()

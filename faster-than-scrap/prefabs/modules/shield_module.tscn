@@ -131,6 +131,8 @@ sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
+module_name = "Shield"
+description = "Activate to project protective energy field. Drains energy on activation, slowly over time, and per absorbed damage."
 metadata/_custom_type_script = "uid://dsdbrxhbn35w7"
 
 [node name="Shield2" type="Node3D" parent="." node_paths=PackedStringArray("animator", "collider")]

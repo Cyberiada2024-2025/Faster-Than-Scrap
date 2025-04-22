@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxi2anschc8rk"
-path.s3tc="res://.godot/imported/rockyplanetnormal_planet1roughnes.png-a28b68ee1808f8a8f2a3e9a7d41a72b2.s3tc.ctex"
+uid="uid://rqunxqvwpul7"
+path.s3tc="res://.godot/imported/rockyplanetnormal_planet1roughnes.png-0cf03637131d87238187af3bc26dc48f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://art/textures/planet1/rockyplanetnormal_planet1roughnes.png"
-dest_files=["res://.godot/imported/rockyplanetnormal_planet1roughnes.png-a28b68ee1808f8a8f2a3e9a7d41a72b2.s3tc.ctex"]
+source_file="res://art/model_prefabs/environment/planets/planet1/rockyplanetnormal_planet1roughnes.png"
+dest_files=["res://.godot/imported/rockyplanetnormal_planet1roughnes.png-0cf03637131d87238187af3bc26dc48f.s3tc.ctex"]
 
 [params]
 

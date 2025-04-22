@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6gbpchqr2jns"
-path.s3tc="res://.godot/imported/rockyplanetnormal_planet1textbak.png-d1edceb7b62a81d90b17eab05646b229.s3tc.ctex"
+uid="uid://cnf5is18a24nx"
+path.s3tc="res://.godot/imported/rockyplanetnormal_planet1textbak.png-6a5f6456bc2499d8eb7c358490cf74c1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://art/textures/planet1/rockyplanetnormal_planet1textbak.png"
-dest_files=["res://.godot/imported/rockyplanetnormal_planet1textbak.png-d1edceb7b62a81d90b17eab05646b229.s3tc.ctex"]
+source_file="res://art/model_prefabs/environment/planets/planet1/rockyplanetnormal_planet1textbak.png"
+dest_files=["res://.godot/imported/rockyplanetnormal_planet1textbak.png-6a5f6456bc2499d8eb7c358490cf74c1.s3tc.ctex"]
 
 [params]
 
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://art/models/Planets/planet1/rockyplanetnormal_planet1textbak.png"
+roughness/src_normal="res://art/model_prefabs/environment/planets/planet1/rockyplanetnormal_planet1textbak.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

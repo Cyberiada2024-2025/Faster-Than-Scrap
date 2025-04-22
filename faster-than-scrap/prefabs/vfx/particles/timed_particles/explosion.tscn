@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cloxwhygax06u"]
 
-[ext_resource type="Script" uid="uid://65m4xcjhtor5" path="res://code/effects/timed_gpu_particles_3d.gd" id="1_r6oit"]
+[ext_resource type="Script" uid="uid://65m4xcjhtor5" path="res://code/effects/timed_particle.gd" id="1_r6oit"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3xl1"]
 vertex_color_use_as_albedo = true

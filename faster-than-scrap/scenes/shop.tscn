@@ -1,16 +1,16 @@
-[gd_scene load_steps=22 format=3 uid="uid://dlpop1npsx4v4"]
+[gd_scene load_steps=23 format=3 uid="uid://dlpop1npsx4v4"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_kqinb"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="2_jgpv1"]
-[ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/UI/ShipBuilder/outline.tres" id="3_tpphw"]
-[ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/UI/ShipBuilder/outline_flash.tres" id="4_ead8n"]
+[ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="3_tpphw"]
+[ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_ead8n"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="5_awixo"]
-[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/Fonts/PressStart2P-Regular.ttf" id="6_7bqcw"]
+[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="6_7bqcw"]
+[ext_resource type="PackedScene" uid="uid://dty8ie80qkfd5" path="res://prefabs/ships/player_ship_example.tscn" id="7_qmxef"]
 
-[ext_resource type="PackedScene" uid="uid://cpxkxwkuyh6l2" path="res://prefabs/ships/player_ship_example.tscn" id="7_qmxef"]
+[ext_resource type="PackedScene" uid="uid://wcegjmvpftp8" path="res://prefabs/pause_menu.tscn" id="9_m4ofw"]
 
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="12_bskm6"]
-
 
 [sub_resource type="LabelSettings" id="LabelSettings_x5wpm"]
 font = ExtResource("6_7bqcw")
@@ -250,10 +250,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62968, 0, 0)
 [node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish", "selected_module_prize_display")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.85019, 0, 0)
 script = ExtResource("12_bskm6")
-
 modules = Array[String](["res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "uid://6nbs7s4q12jh"])
-root = NodePath("../ShipBuilder")
-
 size_x = 8.323
 size_z = 12.573
 columns = 4
@@ -288,6 +285,8 @@ input_ray_pickable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0455933, 0, 0.0821714)
 shape = SubResource("BoxShape3D_e20u7")
+
+[node name="PauseMenu" parent="." instance=ExtResource("9_m4ofw")]
 
 [connection signal="on_module_select" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_select"]
 [connection signal="pressed" from="ShipBuilder/Control/Deny finish/Color_Rect/Confirm" to="Shop" method="_on_confirm_pressed"]

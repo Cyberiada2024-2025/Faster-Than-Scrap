@@ -1,11 +1,11 @@
 [gd_scene load_steps=18 format=3 uid="uid://tw5ceddtulbf"]
 
-[ext_resource type="Script" path="res://code/enemy/NPC.gd" id="1_ok4vr"]
+[ext_resource type="Script" uid="uid://do6r4sdoiglip" path="res://code/enemy/NPC.gd" id="1_ok4vr"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_yc3bl"]
 [ext_resource type="PackedScene" uid="uid://dqr2x28shkw41" path="res://prefabs/projectiles/enemy projectiles/test_shotgun.tscn" id="3_ok4vr"]
 [ext_resource type="Script" uid="uid://dpubtuvds874u" path="res://code/ship/ship.gd" id="4_s1yp8"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="5_q0blx"]
-[ext_resource type="Script" path="res://code/enemy/states/agressive_shooting.gd" id="6_xxpwe"]
+[ext_resource type="Script" uid="uid://b1evvkbdec4yo" path="res://code/enemy/states/agressive_shooting.gd" id="6_xxpwe"]
 [ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="7_n13x3"]
 [ext_resource type="Script" uid="uid://cjvpeo4f2tmj1" path="res://code/enemy/transitions/outOfRange.gd" id="8_fi2gh"]
 [ext_resource type="Script" uid="uid://4cghdv6buscd" path="res://code/enemy/states/aggressive.gd" id="9_skqe0"]
@@ -29,10 +29,9 @@ rotation_speed = 0.03
 weapon = NodePath("Weapon")
 ship = NodePath("Ship")
 
-[node name="Weapon" type="Node3D" parent="." node_paths=PackedStringArray("ship")]
+[node name="Weapon" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.87369)
 script = ExtResource("2_yc3bl")
-ship = NodePath("../Ship")
 energy_cost = 30.0
 cooldown = 2.0
 projectile = ExtResource("3_ok4vr")
@@ -48,7 +47,6 @@ initial_state = NodePath("Idle")
 
 [node name="AggressiveShooting" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("6_xxpwe")
-min_range_to_player = 5
 dead_zone = 1.0
 
 [node name="LowEnergy" type="Node" parent="StateMachineEnemy/AggressiveShooting" node_paths=PackedStringArray("new_state")]
@@ -63,7 +61,6 @@ new_state = NodePath("../../Aggressive")
 
 [node name="Aggressive" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("9_skqe0")
-min_range_to_player = 5
 dead_zone = 1.0
 
 [node name="LowEnergy" type="Node" parent="StateMachineEnemy/Aggressive" node_paths=PackedStringArray("new_state")]
@@ -81,7 +78,6 @@ new_state = NodePath("../../AggressiveShooting")
 
 [node name="Defensive" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("11_1eplk")
-min_range_to_player = 15
 extra_energy_cost = -10.0
 circle_target = true
 

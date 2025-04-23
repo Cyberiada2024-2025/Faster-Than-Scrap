@@ -1,18 +1,16 @@
 class_name Ship
 extends Node3D
 
-signal destroyed()
+signal destroyed(ship)
 
 ## Base class for player and enemy
 
 @export var energy: float = 100
-
 @export var max_energy: float = 100
-
 @export var restore: float = 10
-
-
 @export var max_hp: float = 10
+
+@export var team = TeamManager.Team.ENEMY
 
 @export var leave_animation: LeavingAnimation
 
@@ -21,6 +19,7 @@ var hp: float = 10
 
 func _ready() -> void:
 	hp = max_hp
+	GameManager._on_ship_born(self)
 
 
 func _process(delta: float) -> void:
@@ -52,7 +51,7 @@ func _on_take_damage(damage: Damage) -> void:
 
 
 func on_destroy() -> void:
-	destroyed.emit()
+	destroyed.emit(self)
 	owner.queue_free()
 
 

@@ -15,6 +15,8 @@ script = ExtResource("1_q5512")
 sprite = NodePath("Sprite3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
+module_name = "Cockpit"
+description = "Thin metal box standing between you and blood-boiling void."
 
 [node name="CabinModel" parent="." instance=ExtResource("2_bb6ao")]
 transform = Transform3D(-1.55175e-08, 0, -0.355, 0, 0.355, 0, 0.355, 0, -1.55175e-08, 0, 0, 0)

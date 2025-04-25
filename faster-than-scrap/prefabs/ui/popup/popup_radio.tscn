@@ -68,12 +68,17 @@ anchor_top = 0.1
 anchor_right = 0.95
 anchor_bottom = 0.9
 
-[node name="Buttons container" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/PopupContent/VBoxContainer/Radio Container/Padding"]
+[node name="Hbox" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/PopupContent/VBoxContainer/Radio Container/Padding"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 31.0
 grow_horizontal = 2
+alignment = 1
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/PopupContent/VBoxContainer/Radio Container/Padding/Hbox"]
+unique_name_in_owner = true
+layout_mode = 2
 alignment = 1
 
 [node name="PopupConfirmButton" parent="." instance=ExtResource("2_6p76h")]

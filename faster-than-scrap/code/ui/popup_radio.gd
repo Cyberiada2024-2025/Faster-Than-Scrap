@@ -47,12 +47,8 @@ func _setup(title: String, content: String, options: Array[String]) -> void:
 	content_label.text = content
 
 	# add button
-	var buttons_container: Control = get_node(
-		(
-			"HBoxContainer/VBoxContainer/PopupContent/VBoxContainer/Radio "
-			+ "Container/Padding/Buttons container"
-		)
-	)
+	var buttons_container: Control = $%ButtonsContainer
+
 	var index = 0
 	for option: String in options:
 		var button: Button = popup_radio_button_prefab.instantiate()

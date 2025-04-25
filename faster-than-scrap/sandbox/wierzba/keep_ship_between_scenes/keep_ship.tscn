@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c3k0jg21c3exo"]
 
-[ext_resource type="PackedScene" uid="uid://cpxkxwkuyh6l2" path="res://prefabs/ships/player_ship_example.tscn" id="1_2ekd7"]
-[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="1_pjnld"]
-[ext_resource type="Script" path="res://code/scene_loader.gd" id="2_bi6b7"]
+[ext_resource type="PackedScene" uid="uid://dty8ie80qkfd5" path="res://prefabs/ships/player_ship_example.tscn" id="1_2ekd7"]
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/ui/hud.tscn" id="1_pjnld"]
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_bi6b7"]
 
 [node name="KeepShip" type="Node3D"]
 

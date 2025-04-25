@@ -20,7 +20,7 @@ font_size = 180
 
 [node name="EnterShop" type="Area3D" parent="."]
 script = ExtResource("1_hgafx")
-instantiated_cooldown = 2.0
+instantiated_cooldown = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnterShop"]
 shape = SubResource("SphereShape3D_seei7")

@@ -22,7 +22,9 @@ func load_map_selector_scene() -> void:
 	GameManager.set_game_state(GameState.State.MAP_SELECTOR)
 
 
-func load_fly_ship_scene(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO) -> void:
+func load_fly_ship_scene(
+	pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO, use_saved_pos_rot: bool = true
+) -> void:
 	_detach_ship()
 	GameManager.on_scene_exit()
 
@@ -32,9 +34,10 @@ func load_fly_ship_scene(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZER
 			get_tree().change_scene_to_file("res://scenes/fly_ship.tscn")
 
 	GameManager.set_game_state(GameState.State.FLY)
-	var ship_pos = GameManager.player_ship.get_saved_position()
-	var ship_rot = GameManager.player_ship.get_saved_rotation()
-	_attach_ship_with_hud.call_deferred(ship_pos, ship_rot)
+	if use_saved_pos_rot:
+		pos = GameManager.player_ship.get_saved_position()
+		rot = GameManager.player_ship.get_saved_rotation()
+	_attach_ship_with_hud.call_deferred(pos, rot)
 
 
 func load_boss_scene(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO) -> void:

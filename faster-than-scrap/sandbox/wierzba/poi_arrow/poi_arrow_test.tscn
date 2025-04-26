@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://cfsha0ojxf28b"]
 
-[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="1_3iupj"]
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/ui/hud.tscn" id="1_3iupj"]
 [ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/player/player_ship.gd" id="2_7ywwf"]
-[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/poi/enemy_poi.tscn" id="4_586to"]
-[ext_resource type="PackedScene" uid="uid://dms6n6r5fyo4o" path="res://prefabs/poi/shop_poi.tscn" id="5_ewl3i"]
+[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="4_586to"]
+[ext_resource type="PackedScene" uid="uid://dms6n6r5fyo4o" path="res://prefabs/ui/poi/shop_poi.tscn" id="5_ewl3i"]
 [ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="6_ewl3i"]
-[ext_resource type="PackedScene" uid="uid://c7gr12rhsysjx" path="res://prefabs/poi/mission_poi.tscn" id="6_yxbfi"]
+[ext_resource type="PackedScene" uid="uid://c7gr12rhsysjx" path="res://prefabs/ui/poi/mission_poi.tscn" id="6_yxbfi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7ywwf"]
 

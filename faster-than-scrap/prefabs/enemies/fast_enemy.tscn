@@ -14,8 +14,10 @@
 [ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="10_va4ao"]
 [ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/idle.gd" id="11_r287w"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="14_sjc04"]
+
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/poi/enemy_poi.tscn" id="15_sjc04"]
 [ext_resource type="PackedScene" uid="uid://bgrypc1sb6dk" path="res://art/models/enemies/enemy_1/fast_enemy_unpacked.tscn" id="16_td73x"]
+
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sjc04"]
 radius = 1.801

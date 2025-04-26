@@ -10,7 +10,7 @@ var materials: Array[ShaderMaterial]
 func _ready() -> void:
 	for mesh in meshes:
 		materials.append(mesh.material_override)
-	_on_ship_damage(1)
+	_on_ship_damage(INF)
 
 func _on_ship_damage(hp_percent) -> void:
 	var param: float = 1 - hp_percent;

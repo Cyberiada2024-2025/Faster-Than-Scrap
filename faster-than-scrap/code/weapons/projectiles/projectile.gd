@@ -21,6 +21,12 @@ extends Node3D
 ## Note: In both cases, die_on_hit in the child [DamageArea3D] should be set to false.
 @export var die_on_hit: bool = true
 
+@export_group("Particles")
+## Particles spawned after Projectile die
+@export var death_particles: PackedScene = "res://prefabs/vfx/base_projectile_death_particles.tscn"
+## Particles spawned after Projectile hits if it doesnt die
+@export var hit_particles: PackedScene = "res://prefabs/vfx/base_projectil_hit_particles.tscn"
+
 var _current_lifetime: float = 0
 
 @onready var _damage_area: DamageArea3D = $DamageArea3D

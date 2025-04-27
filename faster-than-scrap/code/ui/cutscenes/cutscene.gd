@@ -1,0 +1,38 @@
+class_name Cutscene
+extends ColorRect
+
+## Cutscene stops the game to show itself and unpauses the game when finished.
+## It consists of slides (each slide is a node), which are children of this object.
+## It reveals them one by one.
+
+var slides: Array[Slide]
+
+const black_transparent = Color(0, 0, 0, 0)
+const black_non_transparent = Color(0, 0, 0, 1)
+
+
+func _enter_tree() -> void:
+	slides.assign(find_children("*", "Slide"))
+	color = black_transparent
+
+	play()
+
+
+func play() -> void:
+	await _shine_bright()
+
+	GameManager._pause_entities()
+
+	# play all slides
+	for slide in slides:
+		await slide.start_slide()
+
+	GameManager._unpause_entities()
+
+
+## before pausing the game shine the screen bright
+func _shine_bright() -> void:  # like a diamond
+	var tween = get_tree().create_tween()
+	# Tween color over 1 second
+	tween.tween_property(self, "color", black_non_transparent, 1.0)
+	await tween.finished

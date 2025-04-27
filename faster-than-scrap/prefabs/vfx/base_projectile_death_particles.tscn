@@ -39,11 +39,9 @@ alpha_curve = SubResource("CurveTexture_8whst")
 [sub_resource type="SphereMesh" id="SphereMesh_uw4d0"]
 
 [node name="BaseProjectilDeathParticles" type="GPUParticles3D"]
-emitting = false
 amount = 10
-lifetime = 3.0
-one_shot = true
 explosiveness = 0.9
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_8whst")
 draw_pass_1 = SubResource("SphereMesh_uw4d0")
 script = ExtResource("1_japwa")

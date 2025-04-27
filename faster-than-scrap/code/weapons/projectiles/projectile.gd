@@ -23,9 +23,11 @@ extends Node3D
 
 @export_group("Particles")
 ## Particles spawned after Projectile die
-@export var death_particles: PackedScene = "res://prefabs/vfx/base_projectile_death_particles.tscn"
+@export
+var death_particles: PackedScene = preload("res://prefabs/vfx/base_projectile_death_particles.tscn")
 ## Particles spawned after Projectile hits if it doesnt die
-@export var hit_particles: PackedScene = "res://prefabs/vfx/base_projectil_hit_particles.tscn"
+@export
+var hit_particles: PackedScene = preload("res://prefabs/vfx/base_projectil_hit_particles.tscn")
 
 var _current_lifetime: float = 0
 
@@ -52,4 +54,11 @@ func _process_movement(delta: float) -> void:
 
 func _on_damage_applied(_damage: Damage, _target: Damageable) -> void:
 	if die_on_hit:
+		var particle: GPUParticles3D = death_particles.instantiate()
+		particle.position = position
+		GameManager.add_child(particle)
 		queue_free()
+	else:
+		var particle: GPUParticles3D = hit_particles.instantiate()
+		particle.position = position
+		GameManager.add_child(particle)

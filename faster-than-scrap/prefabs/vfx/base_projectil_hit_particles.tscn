@@ -41,13 +41,11 @@ radius = 0.2
 height = 0.4
 
 [node name="BaseProjectilHitParticles" type="GPUParticles3D"]
-emitting = false
 amount = 10
-lifetime = 3.0
-one_shot = true
 explosiveness = 0.9
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_8whst")
 draw_pass_1 = SubResource("SphereMesh_uw4d0")
 script = ExtResource("1_k7kc2")
-_lifetime = 0.2
+_lifetime = 1.0
 metadata/_custom_type_script = "uid://65m4xcjhtor5"

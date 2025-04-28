@@ -44,7 +44,7 @@ func _get_weighted_entity() -> Node:
 
 
 func _get_entity() -> Node:
-	return spawned_entities[randi_range(0, len(spawned_entities) - 1)].instantiate()
+	return spawned_entities.pick_random().instantiate()
 
 
 func _get_base_position() -> Vector3:

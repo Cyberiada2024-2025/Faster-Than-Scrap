@@ -1,4 +1,4 @@
-class_name SetupFlySceneWithLineSpawner
+class_name SetupFlySceneWithSpawner
 
 extends SetupFlyScene
 

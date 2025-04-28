@@ -28,10 +28,12 @@ func load_fly_ship_scene(
 	_detach_ship()
 	GameManager.on_scene_exit()
 
+	var attached_fly_scene: bool = false
 	if GameManager.game_state == GameState.State.BUILD:
-		var attached_fly_scene = MapGenerator.try_attach_saved_scene()
-		if not attached_fly_scene:
-			get_tree().change_scene_to_file("res://scenes/fly_ship.tscn")
+		attached_fly_scene = MapGenerator.try_attach_saved_scene()
+
+	if not attached_fly_scene:
+		get_tree().change_scene_to_file("res://scenes/fly_ship.tscn")
 
 	GameManager.set_game_state(GameState.State.FLY)
 	if use_saved_pos_rot:

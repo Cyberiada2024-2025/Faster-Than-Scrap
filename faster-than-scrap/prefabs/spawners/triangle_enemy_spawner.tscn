@@ -7,8 +7,5 @@
 
 [node name="TriangleEnemySpawner" type="Node"]
 script = ExtResource("1_2g6lv")
-B_point = Vector3(0, 0, 100)
-C_point = Vector3(100, 0, 0)
 spawned_entities = Array[PackedScene]([ExtResource("2_8briy"), ExtResource("3_sqydt"), ExtResource("4_kly4i")])
-entities_count = 10
 max_position_change = 5.0

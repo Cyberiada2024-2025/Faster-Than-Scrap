@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dddwy3hs5k7dp"]
 
-[ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/UI/MapSelect/circle.png" id="1_wvb6r"]
-[ext_resource type="Script" path="res://code/map_select/nodes/mission_node.gd" id="2_488uq"]
+[ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_wvb6r"]
+[ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_488uq"]
 
 [node name="MissionNode" type="TextureButton"]
 modulate = Color(0, 0, 1, 1)

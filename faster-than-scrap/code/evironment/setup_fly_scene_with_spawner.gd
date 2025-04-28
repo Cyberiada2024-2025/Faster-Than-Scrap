@@ -1,4 +1,4 @@
-class_name SetupFlySceneWithLineGenerator
+class_name SetupFlySceneWithLineSpawner
 
 extends SetupFlyScene
 
@@ -6,7 +6,7 @@ var spawner: BaseEntitySpawner
 
 
 func _ready() -> void:
-	MapGenerator.generate_map()
+	super()
 	spawner = MapGenerator._map_node.mission_info.get_spawner()
 	spawner.nodes_location_in_tree = $"../Enemies"
 	add_child(spawner)

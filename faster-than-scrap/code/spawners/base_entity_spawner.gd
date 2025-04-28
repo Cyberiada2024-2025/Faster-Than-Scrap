@@ -6,8 +6,11 @@ extends Node
 @export var spawned_entities: Array[PackedScene]
 ## weights of entities, if there are none then all have equal weight
 @export var entities_weights: Array[float]
+## how much units position change in random direction
 @export var max_position_change: float = 0
+## node to which spawned entity will be added as a child
 @export var nodes_location_in_tree: Node = self
+## limits of random y position
 @export_group("y spawn")
 @export var min_y: float = 0
 @export var max_y: float = 0

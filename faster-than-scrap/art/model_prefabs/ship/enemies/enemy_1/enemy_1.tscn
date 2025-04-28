@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7ooac466mpss"]
+
+[ext_resource type="Texture2D" uid="uid://d0a2bygbg4bmw" path="res://art/textures/enemies/enemy_1/enemy_1_albedo.png" id="1_3crjd"]
+[ext_resource type="Texture2D" uid="uid://b0iruiaoebeec" path="res://art/textures/enemies/enemy_1/enemy_1_metal_and_roughness.png" id="2_e6kac"]
+[ext_resource type="ArrayMesh" uid="uid://bkfdwx35sa5pd" path="res://art/models/enemies/enemy1/enemy1.obj" id="3_ntyiq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2usrs"]
+albedo_texture = ExtResource("1_3crjd")
+metallic = 1.0
+metallic_texture = ExtResource("2_e6kac")
+roughness_texture = ExtResource("2_e6kac")
+roughness_texture_channel = 1
+
+[node name="Enemy1" type="Node3D"]
+
+[node name="Enemy1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.917491, 9.53674e-07, -0.634937)
+material_override = SubResource("StandardMaterial3D_2usrs")
+mesh = ExtResource("3_ntyiq")

@@ -18,7 +18,7 @@ func play_slide() -> void:
 	await _reveal()
 	for rect: ColorRect in rects:
 		_reveal_comic_part(rect)
-		await get_tree().create_timer(time_per_comic, true).timeout
+		await _wait_or_skip(time_per_comic)
 	await _hide_tween()
 
 

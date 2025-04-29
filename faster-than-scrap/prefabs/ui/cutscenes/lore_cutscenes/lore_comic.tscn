@@ -22,7 +22,7 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0)
 script = ExtResource("2_yafkt")
 rects = [NodePath("Rects/VBoxContainer/HBoxContainer/ColorRect"), NodePath("Rects/VBoxContainer/HBoxContainer/ColorRect2"), NodePath("Rects/VBoxContainer/HBoxContainer/ColorRect3"), NodePath("Rects/VBoxContainer/HBoxContainer/ColorRect4"), NodePath("Rects/VBoxContainer/HBoxContainer2/ColorRect"), NodePath("Rects/VBoxContainer/HBoxContainer2/ColorRect2"), NodePath("Rects/VBoxContainer/HBoxContainer2/ColorRect3"), NodePath("Rects/VBoxContainer/HBoxContainer2/ColorRect4")]
-duration = 5.0
+duration = 10.0
 metadata/_custom_type_script = "uid://4y8nts6ke7i"
 
 [node name="ColorRect" type="ColorRect" parent="Slide"]

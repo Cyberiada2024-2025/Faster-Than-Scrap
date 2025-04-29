@@ -31,13 +31,13 @@ func _input(event: InputEvent) -> void:
 func play_slide() -> void:
 	started.emit()
 	await _reveal()
-	await _wait_or_skip()
+	await _wait_or_skip(duration)
 	await _hide_tween()
 
 
-func _wait_or_skip():
+func _wait_or_skip(wait_time: float):
 	## default timer
-	get_tree().create_timer(duration, true).timeout.connect(func(): _skip_or_timer.emit())
+	get_tree().create_timer(wait_time, true).timeout.connect(func(): _skip_or_timer.emit())
 	## emiting enter is in input
 
 	await _skip_or_timer

@@ -4,7 +4,10 @@ extends ColorRect
 ## Base class for all slides.
 
 signal started
+signal _skip_or_timer
+
 @export var duration: float = 1
+@export var slide_speed: Curve
 
 const black_transparent = Color(0, 0, 0, 0)
 const black_non_transparent = Color(0, 0, 0, 1)
@@ -19,11 +22,25 @@ func _enter_tree() -> void:
 	hide()
 
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_ENTER:
+			_skip_or_timer.emit()
+
+
 func play_slide() -> void:
 	started.emit()
 	await _reveal()
-	await get_tree().create_timer(duration, true).timeout
+	await _wait_or_skip()
 	await _hide_tween()
+
+
+func _wait_or_skip():
+	## default timer
+	get_tree().create_timer(duration, true).timeout.connect(func(): _skip_or_timer.emit())
+	## emiting enter is in input
+
+	await _skip_or_timer
 
 
 func _reveal() -> void:

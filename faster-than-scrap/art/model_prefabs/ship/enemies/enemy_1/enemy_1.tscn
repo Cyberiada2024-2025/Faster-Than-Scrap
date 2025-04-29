@@ -12,6 +12,7 @@ roughness_texture = ExtResource("2_e6kac")
 roughness_texture_channel = 1
 
 [node name="Enemy1" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="Enemy1" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_2usrs")

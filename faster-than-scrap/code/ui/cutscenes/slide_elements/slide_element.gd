@@ -1,7 +1,11 @@
 class_name SlideElement
 extends Control
 
+## curve determining the speed over time
+@export var element_speed: Curve
+
 var slide_on := false
+var time_counter: float = 0
 
 
 func _ready() -> void:
@@ -21,7 +25,11 @@ func _find_parent_slide(control: Control) -> Slide:
 
 func _process(delta: float) -> void:
 	if slide_on:
-		_slide_process(delta)
+		if element_speed != null:
+			_slide_process(element_speed.sample(time_counter) * delta)
+		else:
+			_slide_process(delta)
+		time_counter += delta
 
 
 # virtual function to override the slide element behaviour

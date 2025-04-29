@@ -7,7 +7,6 @@ signal started
 signal _skip_or_timer
 
 @export var duration: float = 1
-@export var slide_speed: Curve
 
 const black_transparent = Color(0, 0, 0, 0)
 const black_non_transparent = Color(0, 0, 0, 1)

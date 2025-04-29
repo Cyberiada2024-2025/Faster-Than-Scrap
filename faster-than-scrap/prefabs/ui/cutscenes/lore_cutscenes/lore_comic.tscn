@@ -1,0 +1,171 @@
+[gd_scene load_steps=3 format=3 uid="uid://uxb4t3wfttgq"]
+
+[ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_yafkt"]
+[ext_resource type="Script" uid="uid://4y8nts6ke7i" path="res://code/ui/cutscenes/comic_slide.gd" id="2_yafkt"]
+
+[node name="StartGameCutscene" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yafkt")
+metadata/_custom_type_script = "uid://bn8cfyemp6axl"
+
+[node name="Slide" type="ColorRect" parent="." node_paths=PackedStringArray("rects")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_yafkt")
+rects = [NodePath("Rects/VBoxContainer/HBoxContainer/ColorRect"), NodePath("Rects/VBoxContainer/HBoxContainer/ColorRect2"), NodePath("Rects/VBoxContainer/HBoxContainer/ColorRect3"), NodePath("Rects/VBoxContainer/HBoxContainer/ColorRect4"), NodePath("Rects/VBoxContainer/HBoxContainer2/ColorRect"), NodePath("Rects/VBoxContainer/HBoxContainer2/ColorRect2"), NodePath("Rects/VBoxContainer/HBoxContainer2/ColorRect3"), NodePath("Rects/VBoxContainer/HBoxContainer2/ColorRect4")]
+duration = 5.0
+metadata/_custom_type_script = "uid://4y8nts6ke7i"
+
+[node name="ColorRect" type="ColorRect" parent="Slide"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="Label" type="Label" parent="Slide/ColorRect"]
+layout_mode = 1
+offset_left = 51.0
+offset_top = 72.0
+offset_right = 159.0
+offset_bottom = 95.0
+text = "LOREM START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Slide/ColorRect"]
+layout_mode = 1
+offset_left = 332.0
+offset_top = 87.0
+offset_right = 440.0
+offset_bottom = 110.0
+text = "LOREM START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Slide/ColorRect"]
+layout_mode = 1
+offset_left = 727.0
+offset_top = 96.0
+offset_right = 835.0
+offset_bottom = 119.0
+text = "LOREM START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Slide/ColorRect"]
+layout_mode = 1
+offset_left = 111.0
+offset_top = 434.0
+offset_right = 219.0
+offset_bottom = 457.0
+text = "LOREM START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Slide/ColorRect"]
+layout_mode = 1
+offset_left = 332.0
+offset_top = 427.0
+offset_right = 440.0
+offset_bottom = 450.0
+text = "LOREM START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Slide/ColorRect"]
+layout_mode = 1
+offset_left = 644.0
+offset_top = 453.0
+offset_right = 752.0
+offset_bottom = 476.0
+text = "LOREM START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="Slide/ColorRect"]
+layout_mode = 1
+offset_left = 906.0
+offset_top = 450.0
+offset_right = 1014.0
+offset_bottom = 473.0
+text = "LOREM START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="Slide/ColorRect"]
+layout_mode = 1
+offset_left = 992.0
+offset_top = 99.0
+offset_right = 1100.0
+offset_bottom = 122.0
+text = "LOREM START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rects" type="Control" parent="Slide"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Slide/Rects"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Slide/Rects/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Slide/Rects/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect2" type="ColorRect" parent="Slide/Rects/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect3" type="ColorRect" parent="Slide/Rects/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect4" type="ColorRect" parent="Slide/Rects/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Slide/Rects/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Slide/Rects/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect2" type="ColorRect" parent="Slide/Rects/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect3" type="ColorRect" parent="Slide/Rects/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect4" type="ColorRect" parent="Slide/Rects/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3

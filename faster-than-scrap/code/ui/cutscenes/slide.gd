@@ -24,7 +24,7 @@ func _enter_tree() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_ENTER:
+		if Input.is_action_just_pressed("Skip Cutscene"):
 			_skip_or_timer.emit()
 
 

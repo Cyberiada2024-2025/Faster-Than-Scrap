@@ -1,0 +1,123 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq0b36pd5v3ew"]
+
+[ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_uch67"]
+[ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_ldtpa"]
+
+[node name="StartGameCutscene" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uch67")
+metadata/_custom_type_script = "uid://bn8cfyemp6axl"
+
+[node name="Slide" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_ldtpa")
+duration = 10.0
+metadata/_custom_type_script = "uid://c8potv0p1705d"
+
+[node name="ColorRect" type="ColorRect" parent="Slide"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="Label" type="Label" parent="Slide/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "LOREM START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slide2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_ldtpa")
+duration = 10.0
+metadata/_custom_type_script = "uid://c8potv0p1705d"
+
+[node name="ColorRect" type="ColorRect" parent="Slide2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.6
+offset_left = -120.8
+offset_top = -84.2
+offset_right = -120.8
+offset_bottom = -84.2
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="Label" type="Label" parent="Slide2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLOT IPSUM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slide3" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_ldtpa")
+duration = 10.0
+metadata/_custom_type_script = "uid://c8potv0p1705d"
+
+[node name="ColorRect" type="ColorRect" parent="Slide3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.6
+offset_left = 277.2
+offset_top = -127.2
+offset_right = 277.2
+offset_bottom = -127.2
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="Label" type="Label" parent="Slide3/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "FINITO OPPOSSUM"
+horizontal_alignment = 1
+vertical_alignment = 1

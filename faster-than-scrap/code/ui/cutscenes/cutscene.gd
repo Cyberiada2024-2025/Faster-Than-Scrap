@@ -15,7 +15,6 @@ func _enter_tree() -> void:
 	slides.assign(find_children("*", "Slide"))
 	color = black_transparent
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	play()
 
 
 func play() -> void:

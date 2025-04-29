@@ -5,15 +5,15 @@ extends ColorRect
 ## It consists of slides (each slide is a node), which are children of this object.
 ## It reveals them one by one.
 
-var slides: Array[Slide]
+const BLACK_TRANSPARENT = Color(0, 0, 0, 0)
+const BLACK_NON_TRANSPARENT = Color(0, 0, 0, 1)
 
-const black_transparent = Color(0, 0, 0, 0)
-const black_non_transparent = Color(0, 0, 0, 1)
+var slides: Array[Slide]
 
 
 func _enter_tree() -> void:
 	slides.assign(find_children("*", "Slide"))
-	color = black_transparent
+	color = BLACK_TRANSPARENT
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
@@ -32,5 +32,5 @@ func play() -> void:
 func _shine_bright() -> void:  # like a diamond
 	var tween = get_tree().create_tween().bind_node(self)
 	# Tween color over 1 second
-	tween.tween_property(self, "color", black_non_transparent, 1.0)
+	tween.tween_property(self, "color", BLACK_NON_TRANSPARENT, 1.0)
 	await tween.finished

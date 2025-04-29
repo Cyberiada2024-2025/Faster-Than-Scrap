@@ -2,7 +2,8 @@ class_name ComicSlide
 extends Slide
 
 @export var rects: Array[ColorRect] = []
-
+## how long  a comic part will be revealed
+@export_range(0, 1) var reveal_time: float
 var time_per_comic: float
 
 
@@ -26,5 +27,5 @@ func _reveal_comic_part(rect: ColorRect) -> void:
 	show()
 	var tween := get_tree().create_tween().bind_node(self)
 	# Tween color over 1 second
-	tween.tween_property(rect, "color", black_transparent, time_per_comic / 2)
+	tween.tween_property(rect, "color", black_transparent, time_per_comic * reveal_time)
 	await tween.finished

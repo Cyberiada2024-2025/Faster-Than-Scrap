@@ -14,9 +14,6 @@ var playing: bool = false
 
 func _enter_tree() -> void:
 	modulate = Cutscene.WHITE_TRANSPARENT
-	z_index = 1  # make sure it's in front
-	for child: CanvasItem in get_children():
-		child.z_index = -1  # make sure it's behind
 	#process_mode = Node.PROCESS_MODE_ALWAYS
 	hide()
 

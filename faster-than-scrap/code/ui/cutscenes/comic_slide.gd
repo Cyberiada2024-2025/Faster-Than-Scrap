@@ -11,10 +11,12 @@ func _enter_tree() -> void:
 	super()
 	time_per_comic = duration / rects.size()
 	for rect: ColorRect in rects:
-		rect.color = BLACK_NON_TRANSPARENT
+		rect.color = Cutscene.WHITE_TRANSPARENT
+		rect.modulate = Cutscene.WHITE_TRANSPARENT
 
 
 func play_slide() -> void:
+	playing = true
 	started.emit()
 	await _reveal()
 	for rect: ColorRect in rects:
@@ -29,5 +31,7 @@ func _reveal_comic_part(rect: ColorRect) -> void:
 	show()
 	var tween := get_tree().create_tween().bind_node(self)
 	# Tween color over 1 second
-	tween.tween_property(rect, "color", BLACK_TRANSPARENT, time_per_comic * reveal_time)
+	tween.tween_property(
+		rect, "modulate", Cutscene.WHITE_NON_TRANSPARENT, time_per_comic * reveal_time
+	)
 	await tween.finished

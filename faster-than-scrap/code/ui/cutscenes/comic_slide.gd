@@ -15,6 +15,13 @@ func _enter_tree() -> void:
 		rect.modulate = Cutscene.WHITE_TRANSPARENT
 
 
+## override to only skip single panel on enter press
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if Input.is_action_just_pressed("Skip Cutscene") and playing:
+			skip_or_timer.emit()
+
+
 func play_slide() -> void:
 	playing = true
 	started.emit()

@@ -5,16 +5,39 @@ extends ColorRect
 ## It consists of slides (each slide is a node), which are children of this object.
 ## It reveals them one by one.
 
+signal skip_or_slide_finished
+
 const BLACK_TRANSPARENT = Color(0, 0, 0, 0)
 const BLACK_NON_TRANSPARENT = Color(0, 0, 0, 1)
 
 var slides: Array[Slide]
+var skipping: bool = false
+var skip_timer: float = 0
+var skip_held: bool = false
 
 
 func _enter_tree() -> void:
 	slides.assign(find_children("*", "Slide"))
 	color = BLACK_TRANSPARENT
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	skip_timer = 2
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if Input.is_action_pressed("Skip Cutscene"):
+			skip_held = true
+		else:
+			skip_held = false
+			skip_timer = 2
+
+
+func _process(delta: float) -> void:
+	if skip_held:
+		skip_timer -= delta
+	if skip_timer <= 0:
+		skip_or_slide_finished.emit()
+		skipping = true
 
 
 func play() -> void:
@@ -23,7 +46,9 @@ func play() -> void:
 
 	# play all slides
 	for slide in slides:
-		await slide.play_slide()
+		if skipping:
+			break
+		await _wait_or_skip(slide)
 
 	GameManager._unpause_entities()
 
@@ -34,3 +59,15 @@ func _shine_bright() -> void:  # like a diamond
 	# Tween color over 1 second
 	tween.tween_property(self, "color", BLACK_NON_TRANSPARENT, 1.0)
 	await tween.finished
+
+
+func _wait_or_skip(slide: Slide):
+	## wait for slide to finish
+	var wait_slide = func(slide_to_wait: Slide):
+		await slide_to_wait.play_slide()
+		skip_or_slide_finished.emit()
+	wait_slide.call(slide)
+
+	## Or for enter hold (already in _process and input methods)
+
+	await skip_or_slide_finished

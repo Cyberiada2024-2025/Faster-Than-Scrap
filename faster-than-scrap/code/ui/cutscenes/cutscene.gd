@@ -36,12 +36,12 @@ func _process(delta: float) -> void:
 	if skip_held:
 		skip_timer -= delta
 	if skip_timer <= 0:
-		skip_or_slide_finished.emit()
 		skipping = true
+		skip_or_slide_finished.emit()
 
 
 func play() -> void:
-	await _shine_bright()
+	await _darken_screen()
 	GameManager._pause_entities()
 
 	# play all slides
@@ -50,20 +50,34 @@ func play() -> void:
 			break
 		await _wait_or_skip(slide)
 
+	await _lighten_screen()
 	GameManager._unpause_entities()
 
 
-## before pausing the game shine the screen bright
-func _shine_bright() -> void:  # like a diamond
+## before pausing the game darken the screen
+func _darken_screen() -> void:  # like a diamond
 	var tween = get_tree().create_tween().bind_node(self)
 	# Tween color over 1 second
 	tween.tween_property(self, "color", BLACK_NON_TRANSPARENT, 1.0)
 	await tween.finished
 
 
+## when the cutscene has finished return the camera view
+func _lighten_screen() -> void:  # like a diamond
+	var tween = get_tree().create_tween().bind_node(self)
+	# Tween color over 1 second
+	tween.tween_property(self, "color", BLACK_TRANSPARENT, 1.0)
+	await tween.finished
+
+
+## Wait for the slide to finish, or the enter hold to skip.
+## Addidtionaly turn off the current slide if skipping cutscene
 func _wait_or_skip(slide: Slide):
 	## wait for slide to finish
 	var wait_slide = func(slide_to_wait: Slide):
+		# turn off slide with cutscene
+		skip_or_slide_finished.connect(func(): slide_to_wait.skip())
+		# and normally wait for it to finish
 		await slide_to_wait.play_slide()
 		skip_or_slide_finished.emit()
 	wait_slide.call(slide)

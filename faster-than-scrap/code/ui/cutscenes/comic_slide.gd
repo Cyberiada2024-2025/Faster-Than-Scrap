@@ -18,6 +18,8 @@ func play_slide() -> void:
 	started.emit()
 	await _reveal()
 	for rect: ColorRect in rects:
+		if skipped:
+			break
 		_reveal_comic_part(rect)
 		await _wait_or_skip(time_per_comic)
 	await _hide_tween()

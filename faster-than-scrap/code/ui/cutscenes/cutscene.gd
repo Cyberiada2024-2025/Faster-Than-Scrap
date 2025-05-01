@@ -10,10 +10,16 @@ signal skip_or_slide_finished
 const WHITE_TRANSPARENT = Color(1, 1, 1, 0)
 const WHITE_NON_TRANSPARENT = Color(1, 1, 1, 1)
 
+const circle_radius: float = 25
+const circle_offset: float = 50
+
+const max_hold_time: float = 2
+
 var slides: Array[Slide]
 var skipping: bool = false
 var skip_timer: float = 0
 var skip_held: bool = false
+var skip_circle: CircleProgressBar
 
 
 func _enter_tree() -> void:
@@ -21,6 +27,14 @@ func _enter_tree() -> void:
 	modulate = WHITE_TRANSPARENT
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	skip_timer = 2
+	_create_skip_circle()
+
+
+func _create_skip_circle():
+	var circle_center: Vector2 = get_rect().size - Vector2.ONE * circle_offset
+	skip_circle = CircleProgressBar.new()
+	add_child(skip_circle)
+	skip_circle.position = circle_center
 
 
 func _input(event: InputEvent) -> void:
@@ -30,13 +44,16 @@ func _input(event: InputEvent) -> void:
 		else:
 			skip_held = false
 			skip_timer = max_hold_time
+			skip_circle.set_percentage(0)
 
 
 func _process(delta: float) -> void:
 	if skip_held:
 		skip_timer -= delta
+		skip_circle.set_percentage(1.0 - skip_timer / max_hold_time)
 	if skip_timer <= 0:
 		skipping = true
+		skip_circle.set_percentage(1)
 		skip_or_slide_finished.emit()
 
 

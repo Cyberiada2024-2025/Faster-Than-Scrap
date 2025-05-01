@@ -7,8 +7,8 @@ extends ColorRect
 
 signal skip_or_slide_finished
 
-const BLACK_TRANSPARENT = Color(0, 0, 0, 0)
-const BLACK_NON_TRANSPARENT = Color(0, 0, 0, 1)
+const WHITE_TRANSPARENT = Color(1, 1, 1, 0)
+const WHITE_NON_TRANSPARENT = Color(1, 1, 1, 1)
 
 var slides: Array[Slide]
 var skipping: bool = false
@@ -18,7 +18,7 @@ var skip_held: bool = false
 
 func _enter_tree() -> void:
 	slides.assign(find_children("*", "Slide"))
-	color = BLACK_TRANSPARENT
+	modulate = WHITE_TRANSPARENT
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	skip_timer = 2
 
@@ -29,7 +29,7 @@ func _input(event: InputEvent) -> void:
 			skip_held = true
 		else:
 			skip_held = false
-			skip_timer = 2
+			skip_timer = max_hold_time
 
 
 func _process(delta: float) -> void:
@@ -58,7 +58,7 @@ func play() -> void:
 func _darken_screen() -> void:  # like a diamond
 	var tween = get_tree().create_tween().bind_node(self)
 	# Tween color over 1 second
-	tween.tween_property(self, "color", BLACK_NON_TRANSPARENT, 1.0)
+	tween.tween_property(self, "modulate", WHITE_NON_TRANSPARENT, 1.0)
 	await tween.finished
 
 
@@ -66,7 +66,7 @@ func _darken_screen() -> void:  # like a diamond
 func _lighten_screen() -> void:  # like a diamond
 	var tween = get_tree().create_tween().bind_node(self)
 	# Tween color over 1 second
-	tween.tween_property(self, "color", BLACK_TRANSPARENT, 1.0)
+	tween.tween_property(self, "modulate", WHITE_TRANSPARENT, 1.0)
 	await tween.finished
 
 

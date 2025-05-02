@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4asihbfpofor"]
+
+[ext_resource type="Shader" uid="uid://bbfaydb1e78xh" path="res://art/shaders/graphs/engine_exhaust.tres" id="1_26cs5"]
+[ext_resource type="Texture2D" uid="uid://ditdai7w78iji" path="res://art/textures/VFX/fire_gradient.png" id="2_1kckd"]
+[ext_resource type="Texture2D" uid="uid://brgjvlvgmigyf" path="res://art/textures/VFX/fire_voronoi.png" id="2_6dl7e"]
+[ext_resource type="PackedScene" uid="uid://cfjkjqh4besqo" path="res://prefabs/vfx/particles/basic/thruster_fire.tscn" id="2_nhrox"]
+[ext_resource type="Texture2D" uid="uid://bb24thwd52doi" path="res://art/textures/VFX/2DNoise.png" id="3_tkj1b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nhrox"]
+render_priority = 0
+shader = ExtResource("1_26cs5")
+shader_parameter/Noise_Scale = Vector2(1, 2)
+shader_parameter/ScrollingSpeed = Vector2(0.25, 0.5)
+shader_parameter/Warp_Noise = ExtResource("3_tkj1b")
+shader_parameter/Warp_Strength = 0.05
+shader_parameter/Noise = ExtResource("2_6dl7e")
+shader_parameter/Gradient = ExtResource("2_1kckd")
+shader_parameter/Glow_Strength = 3.0
+
+[node name="VfxTest" type="Node3D"]
+transform = Transform3D(0.999999, -0.000842549, -0.000593105, 0.000843873, 0.999997, 0.0022282, 0.000591228, -0.0022287, 0.999997, -0.0012207, 0.00463867, 0.00527954)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-6.61657e-11, -4.36557e-08, -1, -1, -4.37722e-08, 3.18323e-12, -4.4005e-08, 1, -4.3714e-08, -0.000116781, 0.0061876, -1.604)
+height = 4.0
+material = SubResource("ShaderMaterial_nhrox")
+
+[node name="Fire" parent="." instance=ExtResource("2_nhrox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62543, 0)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.9147)

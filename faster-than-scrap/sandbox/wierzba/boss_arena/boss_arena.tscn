@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cmf2qyea7g403" path="res://sandbox/wierzba/boss_arena/dummy_boss_node.gd" id="5_igk63"]
 [ext_resource type="PackedScene" uid="uid://c3rsq4emlmuky" path="res://prefabs/bosses/examples/laser_star/laser_star.tscn" id="6_es6mq"]
 [ext_resource type="PackedScene" uid="uid://c3v1bk85mx7p3" path="res://prefabs/ships/flyable_ship_with_guns.tscn" id="8_es6mq"]
-[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="8_lsvnc"]
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/ui/hud.tscn" id="8_lsvnc"]
 
 [sub_resource type="Resource" id="Resource_l2brj"]
 script = ExtResource("3_13iag")

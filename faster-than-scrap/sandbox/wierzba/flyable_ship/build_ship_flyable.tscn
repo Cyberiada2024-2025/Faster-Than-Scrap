@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="3_5rsdf"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="3_optqi"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="4_v00nt"]
-[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="5_abx51"]
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/ui/hud.tscn" id="5_abx51"]
 [ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="8_ly6ia"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l8o0y"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkdilbsdwigdf"]
+
+[ext_resource type="Material" uid="uid://dwb3vte80n530" path="res://art/materials/bumper_wide/bumper_wide_material_3d.tres" id="1_a81ot"]
+[ext_resource type="ArrayMesh" uid="uid://bg4jdtf51j1tf" path="res://art/models/modules/bumper_wide/bumper.obj" id="2_6sosr"]
+
+[node name="BumperWideModel" type="Node3D"]
+
+[node name="BumperWide" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_a81ot")
+mesh = ExtResource("2_6sosr")

@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpx2cwvtxj267"]
+
+[ext_resource type="Script" uid="uid://lypfa7baldfj" path="res://code/ui/popup/popup_info.gd" id="1_qs8af"]
+[ext_resource type="PackedScene" uid="uid://dci5wihr026i8" path="res://prefabs/ui/popup/popup_elements/popup_confirm_button.tscn" id="1_rxbw1"]
+
+[node name="Popup Info" type="Control"]
+layout_mode = 3
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qs8af")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(9.14484e-07, 0.439466, 0.439466, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.85
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "AAAAAAAAAAAAAAAAAA"
+horizontal_alignment = 1
+
+[node name="PopupContent" type="ScrollContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/PopupContent"]
+layout_mode = 2
+text = "SAMPLE TEXT"
+
+[node name="PopupConfirmButton" parent="." instance=ExtResource("1_rxbw1")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -37.5
+offset_top = -31.0
+offset_right = 37.5
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0

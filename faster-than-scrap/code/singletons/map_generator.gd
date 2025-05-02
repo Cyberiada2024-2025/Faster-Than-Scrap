@@ -43,8 +43,19 @@ func _spawn_shop() -> void:
 	shop.position = Vector3(12, 0, 0)
 
 
-func save_fly_scene() -> void:
+func detach_and_save_current_scene() -> void:
 	_scene = get_tree().current_scene
+	_scene.get_parent().remove_child(_scene)
+
+
+func try_attach_saved_scene() -> bool:
+	if _scene == null:
+		return false
+	get_tree().current_scene.queue_free()
+	get_tree().get_root().add_child(_scene)
+	get_tree().current_scene = _scene
+	_scene = null
+	return true
 
 
 func set_node(new_node: MapNode) -> void:

@@ -6,7 +6,7 @@ extends Node
 
 signal new_game_state
 
-@export var game_state: GameState.State = GameState.State.FLY
+@export var game_state: GameState.State = GameState.State.MAIN_MENU
 @export var death_screen: PackedScene
 
 var player_ship: PlayerShip

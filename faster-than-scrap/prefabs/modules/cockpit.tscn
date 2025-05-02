@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dqaprpym1uev"]
 
 [ext_resource type="Script" uid="uid://csi36bbd5ji87" path="res://code/ship/modules/cockpit.gd" id="1_q5512"]
-[ext_resource type="PackedScene" uid="uid://dtvhl0ltls65a" path="res://art/model_prefabs/cabin_model_pf.tscn" id="2_bb6ao"]
+[ext_resource type="PackedScene" uid="uid://dtvhl0ltls65a" path="res://art/model_prefabs/ship/modules/cabin_model_pf.tscn" id="2_bb6ao"]
 [ext_resource type="Texture2D" uid="uid://dmggh2ftab7ht" path="res://art/textures/ui/module icons/placeholder/Cockpit Icon.png" id="2_mk35a"]
 [ext_resource type="Texture2D" uid="uid://5sl7fehpl0rk" path="res://art/textures/ui/minimap/placeholder/player_mini.png" id="3_185cg"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="3_ttrqs"]

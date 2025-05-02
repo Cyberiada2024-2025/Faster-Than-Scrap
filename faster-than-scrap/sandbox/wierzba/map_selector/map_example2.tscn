@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://2oa2dvray5oq" path="res://prefabs/map_select/map_layer.tscn" id="2_dmfdt"]
 [ext_resource type="PackedScene" uid="uid://ska6812npmde" path="res://prefabs/map_select/nodes/templates/map_node.tscn" id="3_ir7v3"]
 [ext_resource type="PackedScene" uid="uid://dko08cmdkba7m" path="res://prefabs/map_select/map_margin.tscn" id="4_1ak0v"]
-[ext_resource type="PackedScene" uid="uid://dddwy3hs5k7dp" path="res://prefabs/map_select/nodes/templates/mission_node.tscn" id="5_1fwnn"]
+[ext_resource type="PackedScene" uid="uid://dddwy3hs5k7dp" path="res://prefabs/map_select/nodes/templates/missions/mission_node.tscn" id="5_1fwnn"]
 [ext_resource type="Script" uid="uid://b6oaocatti460" path="res://code/missions/info/mission_info_defend.gd" id="6_d61sr"]
 [ext_resource type="PackedScene" uid="uid://cfmyvpn5fgos0" path="res://prefabs/map_select/nodes/templates/shop_node.tscn" id="6_w1mka"]
 [ext_resource type="PackedScene" uid="uid://ci7ns2p5tsax6" path="res://prefabs/map_select/nodes/templates/boss_node.tscn" id="7_s6xfn"]

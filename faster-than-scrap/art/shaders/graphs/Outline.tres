@@ -67,6 +67,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-708.758, 88.7559)
 modes/blend = 1
 modes/depth_draw = 1
 modes/cull = 2
@@ -85,7 +86,7 @@ nodes/vertex/5/position = Vector2(-840, 540)
 nodes/vertex/6/node = SubResource("VisualShaderNodeVectorOp_tfh6w")
 nodes/vertex/6/position = Vector2(179.721, 246.948)
 nodes/vertex/connections = PackedInt32Array(3, 0, 4, 0, 5, 0, 4, 1, 2, 0, 6, 0, 4, 0, 6, 1, 6, 0, 0, 0)
-nodes/fragment/0/position = Vector2(700, 140)
+nodes/fragment/0/position = Vector2(280, 260)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_x00ks")
 nodes/fragment/2/position = Vector2(-60, 120)
 nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)

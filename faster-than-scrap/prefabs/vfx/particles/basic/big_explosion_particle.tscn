@@ -1,0 +1,46 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjkr5arof37uk"]
+
+[ext_resource type="Material" uid="uid://c7fob3qr4hbts" path="res://art/materials/particles/explosion.tres" id="1_m2k8q"]
+[ext_resource type="Curve" uid="uid://bkb8agwsatd8s" path="res://art/materials/particles/curves/explosion_curve.tres" id="2_8whst"]
+
+[sub_resource type="Curve" id="Curve_m2k8q"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.175532, 1), -0.532085, -0.532085, 0, 0, Vector2(0.574468, 0), -5.59318, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8whst"]
+curve = SubResource("Curve_m2k8q")
+
+[sub_resource type="Gradient" id="Gradient_m2k8q"]
+offsets = PackedFloat32Array(0, 0.571429)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8whst"]
+gradient = SubResource("Gradient_m2k8q")
+
+[sub_resource type="CurveTexture" id="CurveTexture_uw4d0"]
+curve = ExtResource("2_8whst")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8whst"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 1.07288e-05
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_uw4d0")
+color_ramp = SubResource("GradientTexture1D_8whst")
+alpha_curve = SubResource("CurveTexture_8whst")
+
+[sub_resource type="SphereMesh" id="SphereMesh_uw4d0"]
+
+[node name="BigExplosionParticle" type="GPUParticles3D"]
+material_override = ExtResource("1_m2k8q")
+emitting = false
+amount = 10
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_8whst")
+draw_pass_1 = SubResource("SphereMesh_uw4d0")

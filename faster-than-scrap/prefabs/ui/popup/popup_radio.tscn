@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bl3vdybqj1r6y"]
 
-[ext_resource type="Script" uid="uid://cqla0v7b6h85b" path="res://code/ui/popup_radio.gd" id="1_h366s"]
+[ext_resource type="Script" uid="uid://cqla0v7b6h85b" path="res://code/ui/popup/popup_radio.gd" id="1_h366s"]
 [ext_resource type="PackedScene" uid="uid://dci5wihr026i8" path="res://prefabs/ui/popup/popup_elements/popup_confirm_button.tscn" id="2_6p76h"]
 
 [node name="Popup Radio" type="Control"]

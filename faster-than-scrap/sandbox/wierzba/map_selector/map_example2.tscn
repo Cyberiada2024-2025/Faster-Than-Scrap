@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" uid="uid://o52uw8n1ufdc" path="res://code/map_select/map_selector.gd" id="1_uw4p4"]
 [ext_resource type="PackedScene" uid="uid://2oa2dvray5oq" path="res://prefabs/map_select/map_layer.tscn" id="2_dmfdt"]
-[ext_resource type="PackedScene" uid="uid://ska6812npmde" path="res://prefabs/map_select/nodes/map_node.tscn" id="3_ir7v3"]
+[ext_resource type="PackedScene" uid="uid://ska6812npmde" path="res://prefabs/map_select/nodes/templates/map_node.tscn" id="3_ir7v3"]
 [ext_resource type="PackedScene" uid="uid://dko08cmdkba7m" path="res://prefabs/map_select/map_margin.tscn" id="4_1ak0v"]
-[ext_resource type="PackedScene" uid="uid://dddwy3hs5k7dp" path="res://prefabs/map_select/nodes/mission_node.tscn" id="5_1fwnn"]
-[ext_resource type="Script" uid="uid://b6oaocatti460" path="res://code/missions/Info/mission_info_defend.gd" id="6_d61sr"]
-[ext_resource type="PackedScene" uid="uid://cfmyvpn5fgos0" path="res://prefabs/map_select/nodes/shop_node.tscn" id="6_w1mka"]
-[ext_resource type="PackedScene" uid="uid://ci7ns2p5tsax6" path="res://prefabs/map_select/nodes/boss_node.tscn" id="7_s6xfn"]
-[ext_resource type="Script" uid="uid://dupp04gxdeha5" path="res://code/missions/Info/mission_info_escape.gd" id="8_pr0o4"]
-[ext_resource type="PackedScene" uid="uid://sxt04pfym7pt" path="res://prefabs/map_select/nodes/finish_node.tscn" id="8_ut67q"]
-[ext_resource type="Script" uid="uid://dvt7f3cg71bb" path="res://code/missions/Info/mission_info_get_item.gd" id="9_jgjae"]
+[ext_resource type="PackedScene" uid="uid://dddwy3hs5k7dp" path="res://prefabs/map_select/nodes/templates/mission_node.tscn" id="5_1fwnn"]
+[ext_resource type="Script" uid="uid://b6oaocatti460" path="res://code/missions/info/mission_info_defend.gd" id="6_d61sr"]
+[ext_resource type="PackedScene" uid="uid://cfmyvpn5fgos0" path="res://prefabs/map_select/nodes/templates/shop_node.tscn" id="6_w1mka"]
+[ext_resource type="PackedScene" uid="uid://ci7ns2p5tsax6" path="res://prefabs/map_select/nodes/templates/boss_node.tscn" id="7_s6xfn"]
+[ext_resource type="Script" uid="uid://dupp04gxdeha5" path="res://code/missions/info/mission_info_escape.gd" id="8_pr0o4"]
+[ext_resource type="PackedScene" uid="uid://sxt04pfym7pt" path="res://prefabs/map_select/nodes/templates/finish_node.tscn" id="8_ut67q"]
+[ext_resource type="Script" uid="uid://dvt7f3cg71bb" path="res://code/missions/info/mission_info_get_item.gd" id="9_jgjae"]
 
 [sub_resource type="Resource" id="Resource_ac0n8"]
 script = ExtResource("6_d61sr")
@@ -69,9 +69,8 @@ script = ExtResource("1_uw4p4")
 layers = [NodePath("MapLayer"), NodePath("MapLayer2"), NodePath("MapLayer3"), NodePath("MapLayer4"), NodePath("MapLayer5"), NodePath("MapLayer6"), NodePath("MapLayer7"), NodePath("MapLayer8")]
 active_node = NodePath("MapLayer5/ShopNode")
 
-[node name="MapLayer" parent="." node_paths=PackedStringArray("nodes") instance=ExtResource("2_dmfdt")]
+[node name="MapLayer" parent="." instance=ExtResource("2_dmfdt")]
 layout_mode = 2
-nodes = [NodePath("MapNode")]
 
 [node name="MapNode" parent="MapLayer" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("3_ir7v3")]
 modulate = Color(0.745098, 0.745098, 0.745098, 1)
@@ -82,9 +81,8 @@ finished = true
 [node name="MapMargin" parent="." instance=ExtResource("4_1ak0v")]
 layout_mode = 2
 
-[node name="MapLayer2" parent="." node_paths=PackedStringArray("nodes") instance=ExtResource("2_dmfdt")]
+[node name="MapLayer2" parent="." instance=ExtResource("2_dmfdt")]
 layout_mode = 2
-nodes = [NodePath("MissionNode"), NodePath("ShopNode")]
 
 [node name="MissionNode" parent="MapLayer2" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_1fwnn")]
 modulate = Color(0.745098, 0.745098, 0.745098, 1)
@@ -100,9 +98,8 @@ next_map_nodes = [NodePath("../../MapLayer3/MissionNode3")]
 [node name="MapMargin2" parent="." instance=ExtResource("4_1ak0v")]
 layout_mode = 2
 
-[node name="MapLayer3" parent="." node_paths=PackedStringArray("nodes") instance=ExtResource("2_dmfdt")]
+[node name="MapLayer3" parent="." instance=ExtResource("2_dmfdt")]
 layout_mode = 2
-nodes = [NodePath("MissionNode"), NodePath("MissionNode2"), NodePath("MissionNode3")]
 
 [node name="MissionNode" parent="MapLayer3" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_1fwnn")]
 layout_mode = 2
@@ -124,9 +121,8 @@ next_map_nodes = [NodePath("../../MapLayer4/BossNode")]
 [node name="MapMargin3" parent="." instance=ExtResource("4_1ak0v")]
 layout_mode = 2
 
-[node name="MapLayer4" parent="." node_paths=PackedStringArray("nodes") instance=ExtResource("2_dmfdt")]
+[node name="MapLayer4" parent="." instance=ExtResource("2_dmfdt")]
 layout_mode = 2
-nodes = [NodePath("BossNode")]
 
 [node name="BossNode" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("7_s6xfn")]
 modulate = Color(0.745098, 0.745098, 0.745098, 1)
@@ -137,9 +133,8 @@ finished = true
 [node name="MapMargin4" parent="." instance=ExtResource("4_1ak0v")]
 layout_mode = 2
 
-[node name="MapLayer5" parent="." node_paths=PackedStringArray("nodes") instance=ExtResource("2_dmfdt")]
+[node name="MapLayer5" parent="." instance=ExtResource("2_dmfdt")]
 layout_mode = 2
-nodes = [NodePath("ShopNode")]
 
 [node name="ShopNode" parent="MapLayer5" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_w1mka")]
 modulate = Color(1, 1, 1, 1)
@@ -150,9 +145,8 @@ active = true
 [node name="MapMargin5" parent="." instance=ExtResource("4_1ak0v")]
 layout_mode = 2
 
-[node name="MapLayer6" parent="." node_paths=PackedStringArray("nodes") instance=ExtResource("2_dmfdt")]
+[node name="MapLayer6" parent="." instance=ExtResource("2_dmfdt")]
 layout_mode = 2
-nodes = [NodePath("MissionNode"), NodePath("MissionNode2")]
 
 [node name="MissionNode" parent="MapLayer6" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_1fwnn")]
 layout_mode = 2
@@ -167,9 +161,8 @@ next_map_nodes = [NodePath("../../MapLayer7/BossNode")]
 [node name="MapMargin6" parent="." instance=ExtResource("4_1ak0v")]
 layout_mode = 2
 
-[node name="MapLayer7" parent="." node_paths=PackedStringArray("nodes") instance=ExtResource("2_dmfdt")]
+[node name="MapLayer7" parent="." instance=ExtResource("2_dmfdt")]
 layout_mode = 2
-nodes = [NodePath("BossNode")]
 
 [node name="BossNode" parent="MapLayer7" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("7_s6xfn")]
 layout_mode = 2
@@ -178,9 +171,8 @@ next_map_nodes = [NodePath("../../MapLayer8/FinnishNode")]
 [node name="MapMargin7" parent="." instance=ExtResource("4_1ak0v")]
 layout_mode = 2
 
-[node name="MapLayer8" parent="." node_paths=PackedStringArray("nodes") instance=ExtResource("2_dmfdt")]
+[node name="MapLayer8" parent="." instance=ExtResource("2_dmfdt")]
 layout_mode = 2
-nodes = [NodePath("FinnishNode")]
 
 [node name="FinnishNode" parent="MapLayer8" instance=ExtResource("8_ut67q")]
 layout_mode = 2

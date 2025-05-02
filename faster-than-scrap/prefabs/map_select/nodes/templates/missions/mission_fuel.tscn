@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_6x8tk"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_awgas"]
 [ext_resource type="Script" uid="uid://b6oaocatti460" path="res://code/missions/info/mission_info_defend.gd" id="3_i4g8m"]
-[ext_resource type="Texture2D" uid="uid://g3rub1aaciib" path="res://art/textures/ui/mapselect/Shield.png" id="4_1r10r"]
+[ext_resource type="Texture2D" uid="uid://bmw35cwms6w7t" path="res://art/textures/ui/mapselect/Canister.png" id="4_6x8tk"]
 
 [sub_resource type="Resource" id="Resource_h6nkk"]
 script = ExtResource("3_i4g8m")
@@ -14,8 +14,8 @@ difficulty = 0
 priority = 0
 metadata/_custom_type_script = "uid://b6oaocatti460"
 
-[node name="MissionDefend" type="TextureButton"]
-modulate = Color(0, 1, 0, 1)
+[node name="MissionFuel" type="TextureButton"]
+modulate = Color(1, 1, 0, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -31,12 +31,14 @@ mission_info = SubResource("Resource_h6nkk")
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.462291, 0.462291, 0.462291, 1)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_1r10r")
+texture = ExtResource("4_6x8tk")
 expand_mode = 1
 stretch_mode = 5
 

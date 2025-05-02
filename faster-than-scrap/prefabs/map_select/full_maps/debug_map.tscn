@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://dfxvsky4n11h8"]
+
+[ext_resource type="Script" uid="uid://o52uw8n1ufdc" path="res://code/map_select/map_selector.gd" id="1_wgkwx"]
+[ext_resource type="PackedScene" uid="uid://2oa2dvray5oq" path="res://prefabs/map_select/map_layer.tscn" id="2_lkpm1"]
+[ext_resource type="PackedScene" uid="uid://ska6812npmde" path="res://prefabs/map_select/nodes/templates/map_node.tscn" id="3_1nqog"]
+[ext_resource type="PackedScene" uid="uid://dko08cmdkba7m" path="res://prefabs/map_select/map_margin.tscn" id="4_0m3vg"]
+[ext_resource type="PackedScene" uid="uid://dhnli7a3skvdj" path="res://prefabs/map_select/nodes/templates/missions/mission_defend.tscn" id="7_kq35t"]
+[ext_resource type="PackedScene" uid="uid://c03u0pmq5d36y" path="res://prefabs/map_select/nodes/templates/missions/mission_fuel.tscn" id="8_7ncou"]
+[ext_resource type="PackedScene" uid="uid://c6sug4hxemhdp" path="res://prefabs/map_select/nodes/templates/missions/mission_escape.tscn" id="8_jpuf1"]
+[ext_resource type="PackedScene" uid="uid://dvyn8fb23heo" path="res://prefabs/map_select/nodes/templates/missions/mission_get_item.tscn" id="9_7ncou"]
+[ext_resource type="PackedScene" uid="uid://ci7ns2p5tsax6" path="res://prefabs/map_select/nodes/templates/boss_node.tscn" id="9_owjm2"]
+[ext_resource type="PackedScene" uid="uid://dkt55poxl1ki4" path="res://prefabs/bosses/examples/stationary_rings.tscn" id="10_nvckc"]
+[ext_resource type="PackedScene" uid="uid://c3rsq4emlmuky" path="res://prefabs/bosses/examples/laser_star/laser_star.tscn" id="11_vadmq"]
+
+[node name="MapSelectExample" type="HBoxContainer" node_paths=PackedStringArray("active_node")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("1_wgkwx")
+active_node = NodePath("MapLayer/MapNode")
+
+[node name="MapLayer" parent="." instance=ExtResource("2_lkpm1")]
+layout_mode = 2
+
+[node name="MapNode" parent="MapLayer" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("3_1nqog")]
+layout_mode = 2
+next_map_nodes = [NodePath("../../MapLayer4/MissionNode"), NodePath("../../MapLayer4/MissionNode2"), NodePath("../../MapLayer4/MissionNode3"), NodePath("../../MapLayer4/BossNode"), NodePath("../../MapLayer4/MissionFuel")]
+active = true
+
+[node name="MapMargin" parent="." instance=ExtResource("4_0m3vg")]
+layout_mode = 2
+
+[node name="MapLayer4" parent="." instance=ExtResource("2_lkpm1")]
+layout_mode = 2
+
+[node name="MissionNode" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("7_kq35t")]
+layout_mode = 2
+next_map_nodes = [NodePath("../../MapLayer5/BossNode")]
+
+[node name="MissionNode2" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_jpuf1")]
+layout_mode = 2
+next_map_nodes = [NodePath("../../MapLayer5/BossNode")]
+
+[node name="MissionNode3" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("9_7ncou")]
+layout_mode = 2
+next_map_nodes = [NodePath("../../MapLayer5/BossNode")]
+
+[node name="MissionFuel" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_7ncou")]
+layout_mode = 2
+next_map_nodes = [NodePath("../../MapLayer5/BossNode")]
+
+[node name="BossNode" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("9_owjm2")]
+layout_mode = 2
+boss_prefabs = Array[PackedScene]([ExtResource("11_vadmq")])
+is_miniboss = true
+next_map_nodes = [NodePath("../../MapLayer5/BossNode")]
+
+[node name="MapMargin4" parent="." instance=ExtResource("4_0m3vg")]
+layout_mode = 2
+
+[node name="MapLayer5" parent="." instance=ExtResource("2_lkpm1")]
+layout_mode = 2
+
+[node name="BossNode" parent="MapLayer5" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("9_owjm2")]
+layout_mode = 2
+boss_prefabs = Array[PackedScene]([ExtResource("10_nvckc")])
+next_map_nodes = [null]

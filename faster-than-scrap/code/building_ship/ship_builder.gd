@@ -306,7 +306,7 @@ func _input(event: InputEvent):
 					state = State.SETTING_BUTTON
 					choose_key_message.visible = true
 					print("new state = setting button")
-			else:
+			elif event is InputEventMouse:
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
 					var hovered_module: Module = _get_module_from_hit(hit)

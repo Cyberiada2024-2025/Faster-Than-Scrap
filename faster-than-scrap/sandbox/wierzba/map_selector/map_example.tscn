@@ -85,7 +85,7 @@ layout_mode = 2
 
 [node name="MapNode" parent="MapLayer" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("2_w4flx")]
 layout_mode = 2
-next_map_nodes = [NodePath("../../MapLayer2/MissionNode"), NodePath("../../MapLayer2/MissionNode2")]
+next_map_nodes = [NodePath("../../MapLayer2/MissionNode"), NodePath("../../MapLayer2/MissionNode2"), NodePath("../../MapLayer7/BossNode")]
 active = true
 
 [node name="MapMargin" parent="." instance=ExtResource("4_15l3h")]

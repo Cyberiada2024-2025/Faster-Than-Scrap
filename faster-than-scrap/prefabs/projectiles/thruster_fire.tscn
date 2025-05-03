@@ -1,10 +1,14 @@
+
 [gd_scene load_steps=43 format=3 uid="uid://4ct5vtkfetun"]
+
 
 [ext_resource type="Script" uid="uid://dmd8jtmxpdaw0" path="res://code/vfx/beam_vfx_logic.gd" id="1_728c8"]
 [ext_resource type="Script" uid="uid://buwehho3rx3g0" path="res://code/damage/damage_raycast_3d.gd" id="2_728c8"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_nqy7r"]
 [ext_resource type="PackedScene" uid="uid://cfjkjqh4besqo" path="res://prefabs/vfx/particles/basic/thruster_fire.tscn" id="4_728c8"]
+
 [ext_resource type="Script" uid="uid://2p7oc4a3141y" path="res://code/utilities/wait_free.gd" id="5_nqy7r"]
+
 
 [sub_resource type="Resource" id="Resource_7ctxp"]
 script = ExtResource("3_nqy7r")
@@ -388,6 +392,7 @@ script = ExtResource("1_728c8")
 player = NodePath("exhaust fire2/AnimationPlayer")
 holder = NodePath("exhaust fire2")
 
+
 [node name="DamageRaycast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -1)
 collide_with_areas = true
@@ -396,6 +401,7 @@ script = ExtResource("2_728c8")
 _damage = SubResource("Resource_7ctxp")
 
 [node name="Fire" parent="." instance=ExtResource("4_728c8")]
+
 visible = false
 
 [node name="exhaust fire2" type="CSGCylinder3D" parent="."]

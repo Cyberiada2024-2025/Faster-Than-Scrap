@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://ohokcopb2fdp" path="res://art/shaders/graphs/Shield.tres" id="1_mu0sc"]
 [ext_resource type="ArrayMesh" uid="uid://cadsh5rgfnp6t" path="res://art/models/vfx/Shield.obj" id="2_bgmlk"]
 
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bbfm5"]
 render_priority = 0
 shader = ExtResource("1_mu0sc")

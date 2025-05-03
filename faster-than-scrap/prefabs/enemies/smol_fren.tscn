@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="12_k06dn"]
 [ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/idle.gd" id="13_xng4n"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="14_h0gk3"]
-[ext_resource type="PackedScene" path="res://prefabs/poi/friend_poi.tscn" id="15_io5a8"]
+[ext_resource type="PackedScene" uid="uid://7n6k2ve3l3pm" path="res://prefabs/ui/poi/friend_poi.tscn" id="15_io5a8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_io5a8"]
 albedo_color = Color(0, 1, 0, 1)

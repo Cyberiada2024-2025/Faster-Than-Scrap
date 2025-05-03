@@ -45,7 +45,7 @@ func _process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("zoom_out"):
 		zoom_camera(zoom_strength)
-		
+
 	position.y = y_pos
 
 

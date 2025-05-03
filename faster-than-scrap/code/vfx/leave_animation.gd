@@ -31,7 +31,8 @@ func _process(_delta: float) -> void:
 	if animating:
 		anim_timer += _delta
 		player.transform = saved_transform
-		player.position += Vector3.UP * minimum_y * downwards_curve.sample(anim_timer/(jump_time + prepare_time))
+		var sample = downwards_curve.sample(anim_timer/(jump_time + prepare_time))
+		player.position += Vector3.UP * minimum_y * sample
 
 
 func start_animation(ending_method: Callable) -> void:

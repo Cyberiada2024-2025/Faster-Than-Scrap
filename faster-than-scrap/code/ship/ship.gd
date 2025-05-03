@@ -9,8 +9,6 @@ signal destroyed(ship)
 @export var max_energy: float = 100
 @export var restore: float = 10
 
-
-
 @export var max_hp: float = 10
 
 @export var team = TeamManager.Team.ENEMY
@@ -59,7 +57,9 @@ func _on_take_damage(damage: Damage) -> void:
 func on_destroy() -> void:
 	_explode()
 	destroyed.emit(self)
-	owner.queue_free()
+	# if enemy delete yourself, player should be kept
+	if owner != null:
+		owner.queue_free()
 
 
 func _explode() -> void:

@@ -48,7 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5242, 0, 7.27022)
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_ibgta")]
 
-[node name="Node" type="Node3D" parent="."]
+[node name="Background" type="Node3D" parent="."]
 script = ExtResource("9_fphmu")
 
 [connection signal="pressed" from="Button" to="SceneLoader" method="load_build_ship_scene"]

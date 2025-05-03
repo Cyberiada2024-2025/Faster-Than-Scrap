@@ -1,7 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://5lsgaj0hoqfu"]
+[gd_scene load_steps=18 format=3 uid="uid://5lsgaj0hoqfu"]
 
 [ext_resource type="Script" uid="uid://dkfb7ly7buswj" path="res://code/vfx/leave_animation.gd" id="1_ujjmg"]
 [ext_resource type="Shader" uid="uid://c6crxix4ih0oh" path="res://art/shaders/Jump Wave.tres" id="2_ak7dd"]
+
+[sub_resource type="Curve" id="Curve_ak7dd"]
+_data = [Vector2(0, 0), 0.0, 1.45567, 0, 0, Vector2(1e-05, 0.0177095), 0.0, 0.0, 0, 0, Vector2(0.988095, 1), -0.0339276, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Animation" id="Animation_n2c2i"]
 resource_name = "RESET"
@@ -113,10 +117,10 @@ tracks/3/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/Albedo")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(-0.2, 0.4, 1),
-"transitions": PackedFloat32Array(1, 1, 2.4623),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 11.7127),
 "update": 0,
-"values": [Color(0.858824, 0.827451, 0.0823529, 0.882353), Color(0.858824, 0.827451, 0.0823529, 0.882353), Color(0.858824, 0.827451, 0.0823529, 0)]
+"values": [Color(1, 0.784314, 0.0980392, 1), Color(1, 0.784314, 0.0980392, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ojbcp"]
@@ -145,7 +149,7 @@ _data = {
 render_priority = 0
 shader = ExtResource("2_ak7dd")
 shader_parameter/Albedo = Color(0, 0, 0, 1)
-shader_parameter/Fresnel_Power = 20.0
+shader_parameter/Fresnel_Power = 5.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_ak7dd"]
 material = SubResource("ShaderMaterial_6qbpo")
@@ -168,19 +172,20 @@ gradient = SubResource("Gradient_ojbcp")
 use_hdr = true
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ojbcp"]
-spread = 180.0
-initial_velocity_min = 10.0
-initial_velocity_max = 15.0
+direction = Vector3(0, -1, 0)
+spread = 10.0
+initial_velocity_min = 30.0
+initial_velocity_max = 60.0
 gravity = Vector3(0, 0, 0)
 radial_accel_min = -15.0
 radial_accel_max = -10.0
-tangential_accel_min = -12.0
-tangential_accel_max = -8.0
-damping_min = 5.0
-damping_max = 10.0
+tangential_accel_min = -10.0
+tangential_accel_max = -5.0
+damping_min = 10.0
+damping_max = 15.0
 attractor_interaction_enabled = false
-scale_min = 0.1
-scale_over_velocity_max = 1.0
+scale_min = 0.2
+scale_max = 1.5
 color_initial_ramp = SubResource("GradientTexture1D_ak7dd")
 alpha_curve = SubResource("CurveTexture_ak7dd")
 hue_variation_min = -2.23517e-08
@@ -209,6 +214,7 @@ curve = SubResource("Curve_6qbpo")
 script = ExtResource("1_ujjmg")
 prepare_particles = NodePath("GPUParticles3D")
 anim_player = NodePath("AnimationPlayer")
+downwards_curve = SubResource("Curve_ak7dd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -223,13 +229,13 @@ skeleton = NodePath("../AnimationPlayer")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 emitting = false
-amount = 1000
+amount = 10000
 lifetime = 6.0
 explosiveness = 1.0
 collision_base_size = 0.0
-local_coords = true
 transform_align = 3
 trail_enabled = true
+trail_lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_ojbcp")
 draw_pass_1 = SubResource("RibbonTrailMesh_gyg23")
 

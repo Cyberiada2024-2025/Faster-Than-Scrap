@@ -13,6 +13,7 @@ static var instance: Hud
 @export var zoom_time := 0.2
 @export var max_zoom := 100
 @export var min_zoom := 50
+@export var y_pos: float = 25
 
 var _main_camera: Camera3D
 var _module_camera: Camera3D
@@ -44,6 +45,8 @@ func _process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("zoom_out"):
 		zoom_camera(zoom_strength)
+		
+	position.y = y_pos
 
 
 func zoom_camera(strength: int) -> void:

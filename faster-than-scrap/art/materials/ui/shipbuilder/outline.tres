@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://blyd1atn5pkii"]
 
-[ext_resource type="Shader" uid="uid://5ijjeoh7hw1b" path="res://art/Shaders/Outline.tres" id="1_rbsor"]
+[ext_resource type="Shader" uid="uid://5ijjeoh7hw1b" path="res://art/shaders/graphs/Outline.tres" id="1_rbsor"]
 
 [resource]
 render_priority = -1

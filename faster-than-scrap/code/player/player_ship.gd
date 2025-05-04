@@ -14,7 +14,7 @@ signal energy_warning
 ## All modules of the ship (to prevent checking the tree hierarchy).
 ## Mostly used for building phase
 @export var modules: Array[Module] = []
-var current_fuel: int = 1
+var current_fuel: int = 3
 
 
 func _enter_tree() -> void:

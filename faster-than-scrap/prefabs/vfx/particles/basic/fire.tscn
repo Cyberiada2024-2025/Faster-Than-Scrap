@@ -1,13 +1,6 @@
-[gd_scene load_steps=42 format=3 uid="uid://4ct5vtkfetun"]
+[gd_scene load_steps=34 format=3 uid="uid://cslkg7x0muy4u"]
 
-[ext_resource type="Script" uid="uid://dmd8jtmxpdaw0" path="res://code/vfx/beam_vfx_logic.gd" id="1_728c8"]
-[ext_resource type="Script" uid="uid://buwehho3rx3g0" path="res://code/damage/damage_raycast_3d.gd" id="2_728c8"]
-[ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_nqy7r"]
-[ext_resource type="Script" uid="uid://2p7oc4a3141y" path="res://code/utilities/wait_free.gd" id="5_nqy7r"]
-
-[sub_resource type="Resource" id="Resource_7ctxp"]
-script = ExtResource("3_nqy7r")
-value = 10.0
+[ext_resource type="Script" uid="uid://2p7oc4a3141y" path="res://code/utilities/wait_free.gd" id="1_dgnnc"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_728c8"]
 source = 5
@@ -243,6 +236,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-172.951, -222.17)
 modes/blend = 1
 modes/specular = 2
 flags/unshaded = true
@@ -256,7 +250,7 @@ nodes/fragment/9/position = Vector2(440, 880)
 nodes/fragment/10/node = SubResource("VisualShaderNodeTexture_728c8")
 nodes/fragment/10/position = Vector2(860, 640)
 nodes/fragment/20/node = SubResource("VisualShaderNodeInput_li7ik")
-nodes/fragment/20/position = Vector2(-940, 0)
+nodes/fragment/20/position = Vector2(-920, -40)
 nodes/fragment/22/node = SubResource("VisualShaderNodeRemap_at7tk")
 nodes/fragment/22/position = Vector2(560, -400)
 nodes/fragment/23/node = SubResource("VisualShaderNodeInput_p2joe")
@@ -303,7 +297,7 @@ nodes/fragment/59/node = SubResource("VisualShaderNodeFloatOp_nqy7r")
 nodes/fragment/59/position = Vector2(840, -40)
 nodes/fragment/61/node = SubResource("VisualShaderNodeStep_dhf0v")
 nodes/fragment/61/position = Vector2(400, -100)
-nodes/fragment/connections = PackedInt32Array(9, 0, 10, 2, 29, 0, 28, 1, 23, 0, 30, 0, 25, 0, 30, 1, 35, 0, 38, 2, 30, 0, 42, 0, 38, 0, 42, 1, 42, 0, 10, 0, 43, 0, 42, 2, 8, 0, 45, 0, 44, 0, 45, 1, 45, 0, 30, 2, 27, 0, 29, 0, 27, 0, 28, 0, 10, 0, 49, 1, 10, 0, 28, 2, 50, 0, 51, 2, 49, 0, 52, 0, 28, 0, 0, 1, 52, 0, 51, 0, 51, 0, 53, 0, 53, 0, 0, 0, 54, 0, 53, 1, 58, 0, 22, 0, 55, 0, 58, 0, 58, 0, 49, 0, 22, 0, 59, 0, 59, 0, 27, 0, 61, 0, 59, 1, 58, 0, 61, 1, 20, 2, 58, 1)
+nodes/fragment/connections = PackedInt32Array(9, 0, 10, 2, 29, 0, 28, 1, 23, 0, 30, 0, 25, 0, 30, 1, 35, 0, 38, 2, 30, 0, 42, 0, 38, 0, 42, 1, 42, 0, 10, 0, 43, 0, 42, 2, 8, 0, 45, 0, 44, 0, 45, 1, 45, 0, 30, 2, 27, 0, 29, 0, 27, 0, 28, 0, 10, 0, 49, 1, 10, 0, 28, 2, 50, 0, 51, 2, 49, 0, 52, 0, 28, 0, 0, 1, 52, 0, 51, 0, 51, 0, 53, 0, 53, 0, 0, 0, 54, 0, 53, 1, 20, 2, 58, 1, 58, 0, 22, 0, 55, 0, 58, 0, 58, 0, 49, 0, 22, 0, 59, 0, 59, 0, 27, 0, 61, 0, 59, 1, 58, 0, 61, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g1423"]
 load_path = "res://.godot/imported/fire_gradient.png-2029c56e9cd799652f695b28681ec4cc.s3tc.ctex"
@@ -318,7 +312,7 @@ load_path = "res://.godot/imported/2DNoise.png-076611061caa8f25c831cab87227f14b.
 resource_local_to_scene = true
 render_priority = 0
 shader = SubResource("VisualShader_adqk0")
-shader_parameter/On = 0.0
+shader_parameter/On = 1.0
 shader_parameter/Noise_Scale = Vector2(1, 2)
 shader_parameter/ScrollingSpeed = Vector2(0.25, 1)
 shader_parameter/Warp_Noise = SubResource("CompressedTexture2D_ivgdy")
@@ -327,81 +321,9 @@ shader_parameter/Noise = SubResource("CompressedTexture2D_a51ss")
 shader_parameter/Gradient = SubResource("CompressedTexture2D_g1423")
 shader_parameter/Glow_Strength = 3.0
 
-[sub_resource type="Animation" id="Animation_6ipff"]
-resource_name = "Off"
-length = 0.35
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/On")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.35),
-"transitions": PackedFloat32Array(1, 0.353553),
-"update": 0,
-"values": [1.0, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_nqy7r"]
-resource_name = "On"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/On")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 0.784584),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_dhf0v"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/On")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ipff"]
-_data = {
-&"Off": SubResource("Animation_6ipff"),
-&"On": SubResource("Animation_nqy7r"),
-&"RESET": SubResource("Animation_dhf0v")
-}
-
-[node name="TestBeam" type="Node3D" node_paths=PackedStringArray("player", "holder")]
-script = ExtResource("1_728c8")
-player = NodePath("exhaust fire/AnimationPlayer")
-holder = NodePath("exhaust fire")
-
-[node name="DamageRaycast3D" type="RayCast3D" parent="."]
-target_position = Vector3(0, 0, -1)
-collide_with_areas = true
-collide_with_bodies = false
-script = ExtResource("2_728c8")
-_damage = SubResource("Resource_7ctxp")
-
-[node name="exhaust fire" type="CSGCylinder3D" parent="."]
-transform = Transform3D(-6.61657e-11, -4.36557e-08, -1, -1, -4.37722e-08, 3.18323e-12, -4.4005e-08, 1, -4.3714e-08, -0.000116827, 0.00618755, -0.550639)
+[node name="exhaust fire2" type="CSGCylinder3D"]
+transform = Transform3D(-6.61657e-11, -4.36557e-08, -1, -1, -4.37722e-08, 3.18323e-12, -4.4005e-08, 1, -4.3714e-08, 0, 0, 0)
 radius = 0.25
 smooth_faces = false
 material = SubResource("ShaderMaterial_3vcep")
-script = ExtResource("5_nqy7r")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="exhaust fire"]
-libraries = {
-&"": SubResource("AnimationLibrary_6ipff")
-}
-movie_quit_on_finish = true
+script = ExtResource("1_dgnnc")

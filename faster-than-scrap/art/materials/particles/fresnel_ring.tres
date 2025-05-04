@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://lfgi38gk4lew"]
+
+[ext_resource type="Shader" uid="uid://dn3wxypekbr1v" path="res://art/shaders/graphs/fresnel_ring.tres" id="1_k4wvq"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_k4wvq")
+shader_parameter/Color = Color(1, 1, 0, 1)
+shader_parameter/FresnelPower = 2.0
+shader_parameter/FresnelRing = 0.3
+shader_parameter/EmmisionStrength = 50.0

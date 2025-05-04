@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnnvqogplwfqa"]
+[gd_scene load_steps=16 format=3 uid="uid://bnnvqogplwfqa"]
 
 [ext_resource type="Script" uid="uid://dtqvp1s2omow6" path="res://code/evironment/setup_fly_scene.gd" id="1_nuays"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="2_g53x4"]
@@ -7,8 +7,57 @@
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="5_gcgjm"]
 [ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/enemies/heavy_enemy.tscn" id="6_ibgta"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/enemies/stationary_enemy.tscn" id="7_fphmu"]
-[ext_resource type="PackedScene" path="res://prefabs/pause_menu.tscn" id="8_ibgta"]
+[ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="8_ibgta"]
 [ext_resource type="Script" uid="uid://f6d84uyul237" path="res://code/evironment/generate_nebulas.gd" id="9_fphmu"]
+[ext_resource type="Shader" uid="uid://1vfrvfc70gbo" path="res://art/shaders/graphs/vortex.tres" id="10_4i6js"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pxj1u"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("10_4i6js")
+shader_parameter/ColorParameter = Color(0.396972, 2.31028e-05, 0.32369, 1)
+shader_parameter/Safe_Radius = 250.0
+shader_parameter/Plane_Size = 1000.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a3mw"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_b47vo"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dchl5"]
+resource_name = "plane_Plane"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_8a3mw"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_b47vo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4i6js"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("10_4i6js")
+shader_parameter/ColorParameter = Color(0.137539, 0.308379, 0.132472, 1)
+shader_parameter/Safe_Radius = 250.0
+shader_parameter/Plane_Size = 1000.0
 
 [node name="Space" type="Node3D"]
 
@@ -50,5 +99,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5242, 0, 7.27022)
 
 [node name="Background" type="Node3D" parent="."]
 script = ExtResource("9_fphmu")
+
+[node name="Vortex" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Vortex"]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_pxj1u")
+mesh = SubResource("ArrayMesh_dchl5")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Vortex"]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -100, 0)
+material_override = SubResource("ShaderMaterial_4i6js")
+mesh = SubResource("ArrayMesh_dchl5")
+skeleton = NodePath("")
 
 [connection signal="pressed" from="Button" to="SceneLoader" method="load_build_ship_scene"]

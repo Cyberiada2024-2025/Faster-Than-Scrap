@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1m8dg3ed47u8"]
+[gd_scene load_steps=18 format=3 uid="uid://b1m8dg3ed47u8"]
 
 [ext_resource type="Script" uid="uid://do6r4sdoiglip" path="res://code/enemy/NPC.gd" id="1_a1lma"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_s16g2"]
@@ -13,13 +13,16 @@
 [ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="12_8kjct"]
 [ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/idle.gd" id="13_klon8"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="13_s16g2"]
-[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="14_s16g2"]
+
+[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/poi/enemy_poi.tscn" id="14_s16g2"]
+[ext_resource type="PackedScene" uid="uid://ens8pls3jn8x" path="res://art/models/enemies/enemy_3/turret_enemy_unpacked.tscn" id="15_wbbhx"]
+
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s16g2"]
 radius = 2.1533
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s16g2"]
-size = Vector3(2.26404, 1, 4.29959)
+size = Vector3(2.68118, 1, 6.808)
 
 [node name="StationaryEnemy" type="CharacterBody3D" node_paths=PackedStringArray("weapon", "ship")]
 script = ExtResource("1_a1lma")
@@ -29,7 +32,7 @@ weapon = NodePath("Weapon")
 ship = NodePath("Ship")
 
 [node name="Weapon" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.28412)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.71706)
 script = ExtResource("2_s16g2")
 energy_cost = 20.0
 cooldown = 10.0
@@ -80,35 +83,22 @@ script = ExtResource("10_5enou")
 range_treshold = 50
 new_state = NodePath("../../AggressiveShooting")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(-0.00774911, 0, -0.99997, 0, 1, 0, 0.99997, 0, -0.00774911, -0.00273251, 0, -0.110556)
-use_collision = true
-size = Vector3(1, 1, 2)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(-0.0232475, 0, -0.99997, 0, 1, 0, 2.99991, 0, -0.00774917, -0.0368636, 0, 1.08313)
-use_collision = true
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D"]
-transform = Transform3D(-0.0154983, 0, -1.99994, 0, 2, 0, 1.99994, 0, -0.0154983, 0.0306749, 0.414903, -0.599013)
-use_collision = true
-rings = 10
-smooth_faces = false
-
 [node name="ControlerCollider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, 0.385817)
+transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, -0.287834)
 shape = SubResource("SphereShape3D_s16g2")
 
 [node name="DamageController" parent="." instance=ExtResource("13_s16g2")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00408936, 0, 0.538803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00712562, 0, -1.51618)
 shape = SubResource("BoxShape3D_s16g2")
 
 [node name="EnemyPoi" parent="." instance=ExtResource("14_s16g2")]
 
+[node name="enemy_model_3" parent="." instance=ExtResource("15_wbbhx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[connection signal="damaged" from="Ship" to="enemy_model_3" method="_on_ship_damage"]
 [connection signal="damaged" from="DamageController" to="Ship" method="_on_take_damage"]
 
 [editable path="DamageController"]

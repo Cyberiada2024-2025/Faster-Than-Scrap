@@ -6,7 +6,7 @@ extends Node3D
 
 
 func _ready() -> void:
-	scale = Vector3.ZERO
+	scale = Vector3.ONE / 1000  # godot hates scale 0
 
 	# set grow animation
 	var tween = get_tree().create_tween()
@@ -18,7 +18,7 @@ func _ready() -> void:
 
 	# shrink
 	tween = get_tree().create_tween()
-	tween.tween_property(self, "scale", Vector3.ZERO, grow_time).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self, "scale", Vector3.ONE / 1000, grow_time).set_trans(Tween.TRANS_SINE)
 	await tween.finished
 
 	# delete self

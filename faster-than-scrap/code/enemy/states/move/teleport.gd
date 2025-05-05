@@ -32,8 +32,11 @@ func enter(_previous_state_path: String, _data := {}) -> void:
 
 	# shrink
 	var tween = get_tree().create_tween()
-	tween.tween_property(node_to_scale, "scale", Vector3.ZERO, scale_animation_time).set_trans(
-		Tween.TRANS_SINE
+	(
+		tween
+		# godot hates scale 0
+		. tween_property(node_to_scale, "scale", Vector3.ONE / 1000, scale_animation_time)
+		. set_trans(Tween.TRANS_SINE)
 	)
 	await tween.finished
 

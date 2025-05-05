@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxlsr82xkj688"]
+
+[ext_resource type="Script" uid="uid://7rxxtodxpx1d" path="res://code/damage/damage_area_3d.gd" id="1_klv2c"]
+[ext_resource type="Script" uid="uid://dhqxa3bvfn8gj" path="res://code/weapons/projectiles/spike.gd" id="1_s55wj"]
+[ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="2_s55wj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5k44y"]
+
+[sub_resource type="Resource" id="Resource_tl6w7"]
+script = ExtResource("2_s55wj")
+value = 30.0
+metadata/_custom_type_script = "uid://cukcjob61wwp7"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d74el"]
+size = Vector3(1, 0.001, 1)
+
+[node name="VortexCloud" type="Node3D"]
+script = ExtResource("1_s55wj")
+max_scale = Vector3(10, 1, 10)
+stay_time = 10.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_5k44y")
+skeleton = NodePath("../..")
+
+[node name="DamageArea3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_klv2c")
+_damage = SubResource("Resource_tl6w7")
+metadata/_custom_type_script = "uid://7rxxtodxpx1d"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02928, 0)
+shape = SubResource("BoxShape3D_d74el")

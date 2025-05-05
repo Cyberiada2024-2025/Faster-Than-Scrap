@@ -6,7 +6,9 @@
 [ext_resource type="AudioStream" uid="uid://bhtfb6630u1js" path="res://art/audio/sounds/shield_shattering_sound.wav" id="4_o2yw7"]
 [ext_resource type="AudioStream" uid="uid://bq3myi1evd56a" path="res://art/audio/sounds/shield_takingdmg_sound.wav" id="5_ul8cr"]
 [ext_resource type="PackedScene" uid="uid://3a5vwad6lsnu" path="res://prefabs/vfx/shield_vfx.tscn" id="6_gvryf"]
-[ext_resource type="Shader" uid="uid://ohokcopb2fdp" path="res://art/Shaders/Shield.tres" id="7_rwr3c"]
+
+[ext_resource type="Shader" uid="uid://ohokcopb2fdp" path="res://art/shaders/Shield.tres" id="7_rwr3c"]
+
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="8_e18hx"]
 [ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="9_12yfa"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="9_sdq7t"]

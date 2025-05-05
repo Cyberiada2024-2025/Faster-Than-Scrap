@@ -22,11 +22,23 @@ func load_map_selector_scene() -> void:
 	GameManager.set_game_state(GameState.State.MAP_SELECTOR)
 
 
-func load_fly_ship_scene(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO) -> void:
+func load_fly_ship_scene(
+	pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO, use_saved_pos_rot: bool = true
+) -> void:
 	_detach_ship()
 	GameManager.on_scene_exit()
-	get_tree().change_scene_to_file("res://scenes/fly_ship.tscn")
+
+	var attached_fly_scene: bool = false
+	if GameManager.game_state == GameState.State.BUILD:
+		attached_fly_scene = MapGenerator.try_attach_saved_scene()
+
+	if not attached_fly_scene:
+		get_tree().change_scene_to_file("res://scenes/fly_ship.tscn")
+
 	GameManager.set_game_state(GameState.State.FLY)
+	if use_saved_pos_rot:
+		pos = GameManager.player_ship.get_saved_position()
+		rot = GameManager.player_ship.get_saved_rotation()
 	_attach_ship_with_hud.call_deferred(pos, rot)
 
 
@@ -39,9 +51,15 @@ func load_boss_scene(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO) -
 
 
 func load_build_ship_scene() -> void:
+	GameManager.player_ship.save_position()
+	GameManager.player_ship.save_rotation()
 	_detach_ship()
+
+	if GameManager.game_state == GameState.State.FLY:
+		MapGenerator.detach_and_save_current_scene()
+
 	GameManager.on_scene_exit()
-	get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
+	GameManager.get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
 	GameManager.set_game_state(GameState.State.BUILD)
 	_attach_ship_with_hud.call_deferred()
 
@@ -64,13 +82,13 @@ func _detach_ship():
 	# detach the ship
 	GameManager.player_ship.get_parent().remove_child(GameManager.player_ship)
 
-	## hud will be destroyed automaticaly
+	# hud will be destroyed automaticaly
 
 
 ## attach the ship to the scene tree
 func _attach_ship_with_hud(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO):
 	if GameManager.player_ship == null:
-		GameManager.player_ship = (default_ship_prefab.instantiate())
+		GameManager.player_ship = default_ship_prefab.instantiate()
 	# attach ship
 	GameManager.get_tree().root.add_child(GameManager.player_ship)
 	GameManager.ships.push_back(GameManager.player_ship)
@@ -87,7 +105,7 @@ func _attach_ship_with_hud(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.Z
 ## attach the ship to the scene tree
 func _attach_ship_without_hud():
 	if GameManager.player_ship == null:
-		GameManager.player_ship = (default_ship_prefab.instantiate())
+		GameManager.player_ship = default_ship_prefab.instantiate()
 	# attach ship
 	GameManager.get_tree().root.add_child(GameManager.player_ship)
 	GameManager.ships.push_back(GameManager.player_ship)

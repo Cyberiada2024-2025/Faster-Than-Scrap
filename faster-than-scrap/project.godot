@@ -22,6 +22,7 @@ MissionManager="*res://prefabs/singletons/mission_manager.tscn"
 BossManager="*res://code/singletons/boss_manager.gd"
 MapGenerator="*res://code/singletons/map_generator.gd"
 MapSaver="*res://code/singletons/map_saver.gd"
+CutsceneManager="*res://code/singletons/cutscene_manager.gd"
 
 [display]
 
@@ -34,6 +35,10 @@ enabled=PackedStringArray("res://addons/format_on_save/plugin.cfg")
 [global_group]
 
 "affected by vortex"=""
+
+[gui]
+
+theme/custom="uid://d37mji7qf4y73"
 
 [input]
 
@@ -88,6 +93,11 @@ pause_menu={
 use_fuel={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+"Skip Cutscene"={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 

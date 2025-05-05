@@ -2,16 +2,18 @@ class_name MapSelector
 
 extends HBoxContainer
 
-@export var layers: Array[MapLayer] = []
 @export var active_node: MapNode
 
 @export var label: Label
 @export var scene_loader: SceneLoader
 
+var layers: Array[MapLayer] = []
 var selected_node: MapNode = null
 
 
 func _ready() -> void:
+	layers.assign(find_children("*", "MapLayer"))
+
 	for layer in layers:
 		for node in layer.nodes:
 			node.clicked.connect(on_node_clicked)

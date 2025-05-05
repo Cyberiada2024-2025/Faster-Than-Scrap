@@ -1,0 +1,115 @@
+[gd_scene load_steps=13 format=3 uid="uid://bap2jlajn7wvh"]
+
+[ext_resource type="Script" uid="uid://o52uw8n1ufdc" path="res://code/map_select/map_selector.gd" id="1_ufmyd"]
+[ext_resource type="PackedScene" uid="uid://2oa2dvray5oq" path="res://prefabs/map_select/map_layer.tscn" id="2_e15ri"]
+[ext_resource type="PackedScene" uid="uid://ska6812npmde" path="res://prefabs/map_select/nodes/templates/map_node.tscn" id="3_62f8o"]
+[ext_resource type="PackedScene" uid="uid://dko08cmdkba7m" path="res://prefabs/map_select/map_margin.tscn" id="4_83oip"]
+[ext_resource type="PackedScene" uid="uid://dhnli7a3skvdj" path="res://prefabs/map_select/nodes/templates/missions/mission_defend.tscn" id="5_axfvs"]
+[ext_resource type="PackedScene" uid="uid://c6sug4hxemhdp" path="res://prefabs/map_select/nodes/templates/missions/mission_escape.tscn" id="6_vstsd"]
+[ext_resource type="PackedScene" uid="uid://dvyn8fb23heo" path="res://prefabs/map_select/nodes/templates/missions/mission_get_item.tscn" id="7_5f65k"]
+[ext_resource type="PackedScene" uid="uid://c03u0pmq5d36y" path="res://prefabs/map_select/nodes/templates/missions/mission_fuel.tscn" id="8_tl3nk"]
+[ext_resource type="PackedScene" uid="uid://ci7ns2p5tsax6" path="res://prefabs/map_select/nodes/templates/boss_node.tscn" id="9_18jqo"]
+[ext_resource type="PackedScene" uid="uid://c3rsq4emlmuky" path="res://prefabs/bosses/examples/laser_star/laser_star.tscn" id="10_dxror"]
+[ext_resource type="PackedScene" uid="uid://dkt55poxl1ki4" path="res://prefabs/bosses/examples/stationary_rings.tscn" id="11_lfxbk"]
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="12_oe75j"]
+
+[node name="DebugMapSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DebugMap" type="HBoxContainer" parent="." node_paths=PackedStringArray("active_node", "label", "scene_loader")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.816
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("1_ufmyd")
+active_node = NodePath("MapLayer/MapNode")
+label = NodePath("../Label")
+scene_loader = NodePath("../SceneLoader")
+
+[node name="MapLayer" parent="DebugMap" instance=ExtResource("2_e15ri")]
+layout_mode = 2
+
+[node name="MapNode" parent="DebugMap/MapLayer" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("3_62f8o")]
+layout_mode = 2
+next_map_nodes = [NodePath("../../MapLayer4/MissionNode"), NodePath("../../MapLayer4/MissionNode2"), NodePath("../../MapLayer4/MissionNode3"), NodePath("../../MapLayer4/BossNode"), NodePath("../../MapLayer4/MissionFuel")]
+active = true
+
+[node name="MapMargin" parent="DebugMap" instance=ExtResource("4_83oip")]
+layout_mode = 2
+
+[node name="MapLayer4" parent="DebugMap" instance=ExtResource("2_e15ri")]
+layout_mode = 2
+
+[node name="MissionNode" parent="DebugMap/MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_axfvs")]
+layout_mode = 2
+next_map_nodes = [NodePath("../../MapLayer5/BossNode")]
+
+[node name="MissionNode2" parent="DebugMap/MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_vstsd")]
+layout_mode = 2
+next_map_nodes = [NodePath("../../MapLayer5/BossNode")]
+
+[node name="MissionNode3" parent="DebugMap/MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("7_5f65k")]
+layout_mode = 2
+next_map_nodes = [NodePath("../../MapLayer5/BossNode")]
+
+[node name="MissionFuel" parent="DebugMap/MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_tl3nk")]
+layout_mode = 2
+next_map_nodes = [NodePath("../../MapLayer5/BossNode")]
+
+[node name="BossNode" parent="DebugMap/MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("9_18jqo")]
+layout_mode = 2
+boss_prefabs = Array[PackedScene]([ExtResource("10_dxror")])
+is_miniboss = true
+next_map_nodes = [NodePath("../../MapLayer5/BossNode")]
+
+[node name="MapMargin4" parent="DebugMap" instance=ExtResource("4_83oip")]
+layout_mode = 2
+
+[node name="MapLayer5" parent="DebugMap" instance=ExtResource("2_e15ri")]
+layout_mode = 2
+
+[node name="BossNode" parent="DebugMap/MapLayer5" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("9_18jqo")]
+layout_mode = 2
+boss_prefabs = Array[PackedScene]([ExtResource("11_lfxbk")])
+next_map_nodes = [null]
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1008.0
+offset_top = 298.0
+offset_right = -34.0
+offset_bottom = -276.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "FLY!"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 983.0
+offset_top = 82.0
+offset_bottom = -366.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Select Mission
+"
+
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource("12_oe75j")
+
+[connection signal="pressed" from="Button" to="DebugMap" method="on_leave_button_clicked"]

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://di7mqbgkq8hwm"]
+
+[ext_resource type="Shader" uid="uid://cia4v4y21vicw" path="res://art/shaders/spatial/ring.gdshader" id="1_fwy1u"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_fwy1u")
+shader_parameter/color = Color(1, 0.270588, 0.145098, 1)
+shader_parameter/emmision_strength = 14.555

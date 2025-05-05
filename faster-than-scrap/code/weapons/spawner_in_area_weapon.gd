@@ -15,7 +15,6 @@ func try_activate() -> Node3D:
 	if target == null:
 		return null
 
-	var random = RandomNumberGenerator.new()
 	created_projectile.position += get_random_point_in_donut()
 
 	# spawn multiple if needed

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ctfx6tr78pfdl"]
 
-[ext_resource type="Script" uid="uid://2uexqgp76p1n" path="res://code/ship/projectiles/projectile.gd" id="1_a31ig"]
+[ext_resource type="Script" uid="uid://2uexqgp76p1n" path="res://code/weapons/projectiles/projectile.gd" id="1_a31ig"]
 [ext_resource type="Script" uid="uid://7rxxtodxpx1d" path="res://code/damage/damage_area_3d.gd" id="2_mnrad"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_8c3mm"]
 

@@ -24,11 +24,7 @@ func setup() -> void:
 	MissionManager.add_mission(self)
 
 
-func _process(_delta: float) -> void:
-	pass
-
-
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("use_fuel"):
 		if GameManager.player_ship.current_fuel > 0:
 			var timer := Timer.new()
@@ -38,15 +34,9 @@ func _input(event: InputEvent) -> void:
 			timer.timeout.connect(_use_fuel)
 			timer.name = "hyperdrive"
 			timer.start()
-
-			var bar := Hud.instance.jump_bar
-			#bar.fill_mode = bar.FILL_CLOCKWISE
-			bar.max_value = timer.wait_time
-			bar.value = timer.time_left
-			bar.name = "progress"
-
 		else:
 			print("No hyperspace fuel")
+
 	if Input.is_action_just_released("use_fuel"):
 		for child in get_children():
 			if child.name == "hyperdrive":
@@ -57,7 +47,6 @@ func _use_fuel() -> void:
 	state = MissionState.FINISHED
 	finished.emit(self)
 	GameManager.player_ship.current_fuel -= 1
-	charged = true
 
 
 ## returns whether the missions ended.

@@ -9,6 +9,10 @@ func try_activate() -> Node3D:
 	if projectile == null:
 		return null
 
+	var target = GameManager.find_closest_ship(ship)
+	if target == null:
+		return null
+	projectile.global_position = target.global_position
 	projectile.position.y += y_offset
 
 	return projectile

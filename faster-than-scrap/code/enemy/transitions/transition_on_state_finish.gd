@@ -8,5 +8,5 @@ extends baseTransition
 ## Thus, for this instances this transition could be used.
 
 
-func _relay() -> void:
-	finished.emit()
+func relay() -> void:
+	finished.emit(new_state.name)

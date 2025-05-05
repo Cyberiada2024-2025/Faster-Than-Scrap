@@ -7,11 +7,16 @@ extends StateNPC
 ## right after the state has finished it's action, but it's hard determine from
 ## transition when does it happen.
 
-@export var transition_to_call: TransitionOnStateFinish
+@export var _transition_to_call: TransitionOnStateFinish
 
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings = []
-	if transition_to_call == null or not is_instance_valid(transition_to_call):
+	if _transition_to_call == null or not is_instance_valid(_transition_to_call):
 		warnings.append("TransitionToCall not set")
 	return warnings
+
+
+## function to end the state
+func _finish_state() -> void:
+	_transition_to_call.relay()

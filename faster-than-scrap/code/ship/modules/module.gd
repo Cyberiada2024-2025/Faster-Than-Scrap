@@ -38,6 +38,11 @@ var module_rigidbody_prefab = preload("res://prefabs/modules/module_rigidbody.ts
 
 var activation_key_saved: Key = KEY_NONE
 
+var module_explosion_prefab = preload(
+	"res://prefabs/vfx/particles/timed_particles/module_explosion.tscn"
+)
+
+
 func _ready() -> void:
 	_on_key_change()
 	update_sprite()
@@ -116,9 +121,10 @@ func activate() -> void:
 
 
 func _explode() -> void:
-	# TODO create particles object,
-	# which will die after some die by itself
-	pass
+	# create particles object
+	var explosion: TimedParticle = module_explosion_prefab.instantiate()
+	get_tree().current_scene.add_child(explosion)
+	explosion.global_position = global_position
 
 
 func detachable() -> bool:

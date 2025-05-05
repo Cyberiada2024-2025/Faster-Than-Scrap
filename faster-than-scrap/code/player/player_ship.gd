@@ -14,6 +14,10 @@ signal energy_warning
 ## All modules of the ship (to prevent checking the tree hierarchy).
 ## Mostly used for building phase
 @export var modules: Array[Module] = []
+var current_fuel: int = 3
+
+var _saved_position: Vector3 = Vector3.ZERO
+var _saved_rotation: Vector3 = Vector3.ZERO
 
 
 func _enter_tree() -> void:
@@ -39,6 +43,22 @@ func on_game_change_state(new_state: GameState.State) -> void:
 			pass
 		GameState.State.MAIN_MENU:
 			pass
+
+
+func save_position():
+	_saved_position = position
+
+
+func save_rotation():
+	_saved_rotation = rotation
+
+
+func get_saved_position():
+	return _saved_position
+
+
+func get_saved_rotation():
+	return _saved_rotation
 
 
 ## Called whenever the energy amount changes.

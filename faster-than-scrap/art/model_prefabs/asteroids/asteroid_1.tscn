@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cj7j6pmi068fm"]
+
+[ext_resource type="Texture2D" uid="uid://cx0r6ktqrkxdw" path="res://art/textures/asteroids/asteroid_1/asteroid_1_1_asteroid_color.png" id="1_c7lx2"]
+[ext_resource type="Texture2D" uid="uid://ctilkqmi3vt5y" path="res://art/textures/asteroids/asteroid_1/asteroid_1_1_asteroid_normal.png" id="2_5mbdt"]
+[ext_resource type="ArrayMesh" uid="uid://dl5jy44rkjgrr" path="res://art/models/asteroids/asteroid_1/asteroid1.obj" id="3_s7mof"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1dyhg"]
+albedo_texture = ExtResource("1_c7lx2")
+roughness_texture = ExtResource("1_c7lx2")
+normal_enabled = true
+normal_texture = ExtResource("2_5mbdt")
+
+[node name="Asteroid1" type="Node3D"]
+
+[node name="Asteroid1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.238269, 0, 0.0853207)
+material_override = SubResource("StandardMaterial3D_1dyhg")
+mesh = ExtResource("3_s7mof")

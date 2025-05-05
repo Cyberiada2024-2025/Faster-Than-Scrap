@@ -1,0 +1,6 @@
+[gd_resource type="Curve" format=3 uid="uid://ckfbcwspulxjs"]
+
+[resource]
+_limits = [0.0, 10.0, 0.0, 4.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.417323, 0), 0.0, 0.0, 0, 0, Vector2(0.779528, 7.13867), 0.0, 0.0, 0, 0, Vector2(1.0315, 0.947909), 0.0, 0.0, 0, 0]
+point_count = 4

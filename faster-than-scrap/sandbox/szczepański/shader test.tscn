@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba4ihn6mj56yu"]
+
+[ext_resource type="PackedScene" uid="uid://dre33esgq52yw" path="res://art/models/enemies/enemy_1/enemy_1.glb" id="1_4t8up"]
+[ext_resource type="PackedScene" uid="uid://cowcty76iul6i" path="res://art/models/enemies/enemy_2/enemy_model_2.glb" id="2_gf87u"]
+[ext_resource type="PackedScene" uid="uid://dq3jc5dp1dyq6" path="res://art/models/enemies/enemy_3/enemy_model_3.glb" id="3_6pps0"]
+
+[node name="ShaderTest" type="Node3D"]
+
+[node name="enemy_1" parent="." instance=ExtResource("1_4t8up")]
+
+[node name="enemy_model_2" parent="." instance=ExtResource("2_gf87u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.08999, 0, 0)
+
+[node name="enemy_model_3" parent="." instance=ExtResource("3_6pps0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.83171)

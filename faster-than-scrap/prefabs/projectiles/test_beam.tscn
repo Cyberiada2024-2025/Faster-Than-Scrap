@@ -1,6 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnvojbycskewd"]
 
-[ext_resource type="Script" uid="uid://b86vmkhkjsh2k" path="res://code/weapons/projectiles/beam.gd" id="1_mkgm7"]
+
+[ext_resource type="Script" uid="uid://b86vmkhkjsh2k" path="res://code/weapons/projectiles/beam.gd" id="1_8vidk"]
+
 [ext_resource type="Script" uid="uid://buwehho3rx3g0" path="res://code/damage/damage_raycast_3d.gd" id="2_gxp61"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_vpgp5"]
 
@@ -20,7 +22,7 @@ bottom_radius = 0.1
 height = 1.0
 
 [node name="TestBeam" type="Node3D" node_paths=PackedStringArray("beam_indicator")]
-script = ExtResource("1_mkgm7")
+script = ExtResource("1_8vidk")
 beam_indicator = NodePath("Node3D")
 
 [node name="DamageRaycast3D" type="RayCast3D" parent="."]

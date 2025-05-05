@@ -39,11 +39,20 @@ func play_slide() -> void:
 
 
 func _wait_or_skip(wait_time: float):
+	# dictionary instead of bool, because it will be passed by reference
+	var state := {"skipped": false}
 	## default timer
-	get_tree().create_timer(wait_time, true).timeout.connect(func(): skip_or_timer.emit())
+	get_tree().create_timer(wait_time, true).timeout.connect(
+		func():
+			if not state.skipped:
+				skip_or_timer.emit()
+			else:
+				print("ALREADY")
+	)
 	## emiting enter is in input
 
 	await skip_or_timer
+	state.skipped = true
 
 
 func _get_tween_time():

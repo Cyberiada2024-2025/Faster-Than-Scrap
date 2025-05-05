@@ -2,14 +2,13 @@ class_name Ship
 extends Node3D
 
 signal destroyed(ship)
+signal damaged(hp_percent)
 
 ## Base class for player and enemy
 
 @export var energy: float = 100
 @export var max_energy: float = 100
 @export var restore: float = 10
-
-
 
 @export var max_hp: float = 10
 
@@ -52,6 +51,7 @@ func _on_energy_change() -> void:
 
 func _on_take_damage(damage: Damage) -> void:
 	hp -= damage.value
+	damaged.emit(hp/max_hp)
 	if hp <= 0:
 		on_destroy()
 
@@ -59,7 +59,9 @@ func _on_take_damage(damage: Damage) -> void:
 func on_destroy() -> void:
 	_explode()
 	destroyed.emit(self)
-	owner.queue_free()
+	# if enemy delete yourself, player should be kept
+	if owner != null:
+		owner.queue_free()
 
 
 func _explode() -> void:

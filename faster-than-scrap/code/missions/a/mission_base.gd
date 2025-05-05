@@ -9,8 +9,8 @@ signal finished(mission: Mission)
 
 enum MissionState { IN_PROGRESS, FINISHED, FAILED }
 
-var state: MissionState = MissionState.IN_PROGRESS
 @export var time_to_hold: float = 2
+var state: MissionState = MissionState.IN_PROGRESS
 
 
 func _ready() -> void:
@@ -22,7 +22,7 @@ func setup() -> void:
 	MissionManager.add_mission(self)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 

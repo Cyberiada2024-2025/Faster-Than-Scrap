@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://d4asihbfpofor"]
+[gd_scene load_steps=62 format=3 uid="uid://d4asihbfpofor"]
 
 [ext_resource type="PackedScene" uid="uid://cfjkjqh4besqo" path="res://prefabs/vfx/particles/basic/thruster_fire.tscn" id="2_nhrox"]
 [ext_resource type="Texture2D" uid="uid://7itl3wshrqoq" path="res://art/textures/VFX/smoke_alpha.png" id="3_tkj1b"]
@@ -477,54 +477,41 @@ alpha_curve = SubResource("CurveTexture_fi7lm")
 [sub_resource type="PlaneMesh" id="PlaneMesh_wm7jd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dl7e"]
-transparency = 1
-vertex_color_use_as_albedo = true
-normal_scale = 0.4
-normal_texture = ExtResource("4_1kckd")
-billboard_keep_scale = true
+blend_mode = 1
+use_particle_trails = true
 
-[sub_resource type="Curve" id="Curve_tkj1b"]
-_data = [Vector2(0, 0.536328), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="Curve" id="Curve_6dl7e"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.215805, 0.315375), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_1kckd"]
-curve = SubResource("Curve_tkj1b")
+[sub_resource type="CurveTexture" id="CurveTexture_tkj1b"]
+curve = SubResource("Curve_6dl7e")
 
-[sub_resource type="Gradient" id="Gradient_y1u24"]
-offsets = PackedFloat32Array(0, 0.635714)
-colors = PackedColorArray(0.446777, 0.446777, 0.446777, 1, 0, 0, 0, 1)
+[sub_resource type="Curve" id="Curve_1kckd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.115502, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_fxo5y"]
-gradient = SubResource("Gradient_y1u24")
+[sub_resource type="CurveTexture" id="CurveTexture_y1u24"]
+curve = SubResource("Curve_1kckd")
 
-[sub_resource type="Curve" id="Curve_pbbhr"]
-_data = [Vector2(0, 0.304491), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_wm7jd"]
-curve = SubResource("Curve_pbbhr")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8hljy"]
-emission_shape_scale = Vector3(0, 0, 0)
-spread = 5.0
-initial_velocity_min = 1.0
-initial_velocity_max = 5.0
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tkj1b"]
+direction = Vector3(0, 0, 1)
+spread = 1.0
+initial_velocity_max = 1.0
 gravity = Vector3(0, 0, 0)
-damping_min = 2.0
-damping_max = 3.0
-scale_min = 0.2
-scale_max = 0.5
-scale_curve = SubResource("CurveTexture_wm7jd")
-color_ramp = SubResource("GradientTexture1D_fxo5y")
-alpha_curve = SubResource("CurveTexture_1kckd")
+scale_min = 0.1
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_y1u24")
+alpha_curve = SubResource("CurveTexture_tkj1b")
 
-[sub_resource type="QuadMesh" id="QuadMesh_i2dob"]
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_1kckd"]
 
 [node name="VfxTest" type="Node3D"]
 transform = Transform3D(0.999999, -0.000842549, -0.000593105, 0.000843873, 0.999997, 0.0022282, 0.000591228, -0.0022287, 0.999997, -0.0012207, 0.00463867, 0.00527954)
 
 [node name="Fire" parent="." instance=ExtResource("2_nhrox")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52992, 1.62543, 2.32831e-10)
+visible = false
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.9147)
@@ -555,12 +542,16 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_pbbhr")
 draw_pass_1 = SubResource("PlaneMesh_wm7jd")
 
-[node name="CPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(-0.999502, 0, -0.0315503, 0, 1, 0, 0.0315503, 0, -0.999502, 0.00377405, -4.65661e-10, 0)
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 3.85398e-11, 5.82077e-11, -2.33058e-11, 1, 0, -5.82077e-11, -2.32831e-10, 1, -0.0762207, 0.0199672, 2.27348)
+visible = false
 material_override = SubResource("StandardMaterial3D_6dl7e")
 amount = 1000
-fixed_fps = 0
+lifetime = 0.6
 transform_align = 3
-trail_lifetime = 1.0
-process_material = SubResource("ParticleProcessMaterial_8hljy")
-draw_pass_1 = SubResource("QuadMesh_i2dob")
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_tkj1b")
+draw_pass_1 = SubResource("RibbonTrailMesh_1kckd")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)

@@ -325,7 +325,7 @@ shader_parameter/Warp_Noise = SubResource("CompressedTexture2D_ivgdy")
 shader_parameter/Warp_Strength = 0.05
 shader_parameter/Noise = SubResource("CompressedTexture2D_a51ss")
 shader_parameter/Gradient = SubResource("CompressedTexture2D_g1423")
-shader_parameter/Glow_Strength = 3.0
+shader_parameter/Glow_Strength = 5.0
 
 [sub_resource type="Animation" id="Animation_6ipff"]
 resource_name = "Off"

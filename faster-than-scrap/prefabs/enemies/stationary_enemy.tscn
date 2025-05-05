@@ -13,10 +13,8 @@
 [ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="12_8kjct"]
 [ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/idle.gd" id="13_klon8"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="13_s16g2"]
-
-[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/poi/enemy_poi.tscn" id="14_s16g2"]
+[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="14_s16g2"]
 [ext_resource type="PackedScene" uid="uid://ens8pls3jn8x" path="res://art/models/enemies/enemy_3/turret_enemy_unpacked.tscn" id="15_wbbhx"]
-
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s16g2"]
 radius = 2.1533

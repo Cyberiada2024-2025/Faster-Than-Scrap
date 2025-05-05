@@ -10,9 +10,7 @@ signal finished(mission: Mission)
 enum MissionState { IN_PROGRESS, FINISHED, FAILED }
 
 var state: MissionState = MissionState.IN_PROGRESS
-var charged := false
-var timeHolding: float = 0
-@export var timeToHold: float = 2
+@export var time_to_hold: float = 2
 
 
 func _ready() -> void:
@@ -24,13 +22,17 @@ func setup() -> void:
 	MissionManager.add_mission(self)
 
 
+func _process(delta: float) -> void:
+	pass
+
+
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("use_fuel"):
 		if GameManager.player_ship.current_fuel > 0:
 			var timer := Timer.new()
 			add_child(timer)
 			timer.one_shot = true
-			timer.wait_time = 2
+			timer.wait_time = time_to_hold
 			timer.timeout.connect(_use_fuel)
 			timer.name = "hyperdrive"
 			timer.start()

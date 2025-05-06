@@ -23,11 +23,13 @@ extends Node3D
 
 @export_group("Particles")
 ## Particles spawned after Projectile die
-@export
-var death_particles: PackedScene = preload("res://prefabs/vfx/base_projectile_death_particles.tscn")
+@export var death_particles: PackedScene = preload(
+	"res://prefabs/vfx/particles/base_projectile_death_particles.tscn"
+)
 ## Particles spawned after Projectile hits if it doesnt die
-@export
-var hit_particles: PackedScene = preload("res://prefabs/vfx/base_projectil_hit_particles.tscn")
+@export var hit_particles: PackedScene = preload(
+	"res://prefabs/vfx/particles/base_projectile_hit_particles.tscn"
+)
 
 var _current_lifetime: float = 0
 

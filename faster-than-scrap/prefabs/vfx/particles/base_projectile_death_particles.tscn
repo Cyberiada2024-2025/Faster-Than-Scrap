@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3ghj1vtgkc8"]
+
+[ext_resource type="PackedScene" uid="uid://cloxwhygax06u" path="res://prefabs/vfx/particles/timed_particles/explosion.tscn" id="1_t18r7"]
+
+[node name="BaseProjectilDeathParticles" type="Node3D"]
+
+[node name="Explosion" parent="." instance=ExtResource("1_t18r7")]
+_lifetime = 0.5

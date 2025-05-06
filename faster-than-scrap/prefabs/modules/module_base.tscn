@@ -15,6 +15,7 @@ radius = 0.45
 [node name="BaseModule" type="CollisionShape3D" node_paths=PackedStringArray("attach_points", "sprite", "label")]
 shape = SubResource("SphereShape3D_1whwh")
 script = ExtResource("1_if6ta")
+is_activable = false
 attach_points = [NodePath("AttachPoints/AttachPoint1")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")

@@ -22,8 +22,9 @@ text = "there is no emotion there is peace"
 title = "Jedi Code"
 metadata/_custom_type_script = "uid://b848rqn71fgir"
 
-[node name="No" type="Node" parent="."]
+[node name="No" type="Node" parent="." node_paths=PackedStringArray("next_dialogue")]
 script = ExtResource("1_jwyou")
 text = "so you have chosen death"
 title = "Saruman the White"
+next_dialogue = NodePath("..")
 metadata/_custom_type_script = "uid://b848rqn71fgir"

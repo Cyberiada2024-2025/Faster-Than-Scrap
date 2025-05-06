@@ -54,11 +54,11 @@ func _process_movement(delta: float) -> void:
 
 func _on_damage_applied(_damage: Damage, _target: Damageable) -> void:
 	if die_on_hit:
-		var particle: GPUParticles3D = death_particles.instantiate()
+		var particle = death_particles.instantiate()
 		particle.position = position
-		GameManager.add_child(particle)
+		get_tree().current_scene.add_child(particle)
 		queue_free()
 	else:
-		var particle: GPUParticles3D = hit_particles.instantiate()
+		var particle = hit_particles.instantiate()
 		particle.position = position
-		GameManager.add_child(particle)
+		get_tree().current_scene.add_child(particle)

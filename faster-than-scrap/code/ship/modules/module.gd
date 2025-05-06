@@ -10,10 +10,11 @@ signal deactivated
 signal damaged
 signal destroyed
 
+const not_activable_keys: Array[Key] = [KEY_ENTER, KEY_ESCAPE]
+
 @export_category("Settings")
 @export var activation_key: Key = KEY_NONE
 @export var is_activable: bool = true
-@export var not_activable_keys: Array[Key] = [KEY_ENTER, KEY_ESCAPE]
 @export var max_hp: float = 100
 @export var hp: float = 100
 @export_category("References")

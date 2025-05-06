@@ -2,24 +2,17 @@
 
 [ext_resource type="Script" uid="uid://b848rqn71fgir" path="res://sandbox/surma/dialogue.gd" id="1_jwyou"]
 
-[node name="DialogueTree" type="Node3D" node_paths=PackedStringArray("nextDialogue")]
+[node name="DialogueTree" type="Node3D" node_paths=PackedStringArray("next_dialogue")]
 script = ExtResource("1_jwyou")
-text = "1"
-title = "1"
-nextDialogue = NodePath("Dialogue")
+title = "oh you're finally awake"
+next_dialogue = NodePath("Dialogue2")
 
-[node name="Dialogue" type="Node" parent="." node_paths=PackedStringArray("nextDialogue")]
-script = ExtResource("1_jwyou")
-text = "2"
-title = "2"
-nextDialogue = NodePath("Dialogue")
-metadata/_custom_type_script = "uid://b848rqn71fgir"
-
-[node name="Dialogue" type="Node" parent="Dialogue"]
+[node name="Dialogue2" type="Node" parent="." node_paths=PackedStringArray("radio_results")]
 script = ExtResource("1_jwyou")
 text = "Do you fear death?"
 title = "Davy Jones"
-radioChoices = Array[String](["yes", "no"])
+radio_choices = Array[String](["yes", "no"])
+radio_results = [NodePath("../Yes"), NodePath("../No")]
 type = 1
 metadata/_custom_type_script = "uid://b848rqn71fgir"
 

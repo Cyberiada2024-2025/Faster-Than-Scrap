@@ -62,6 +62,10 @@ func _get_position_y() -> float:
 	return randf_range(min_y, max_y)
 
 
+func set_spawner(points: Array[Vector3], difficulty: int):
+	pass
+
+
 func spawn_entities():
 	for i in range(entities_count):
 		var ent: Node = random_entity_function.call()

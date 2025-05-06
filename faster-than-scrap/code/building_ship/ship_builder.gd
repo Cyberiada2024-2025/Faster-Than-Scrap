@@ -323,7 +323,7 @@ func _input(event: InputEvent):
 			## check if keyboard pressed
 			if event is InputEventKey and event.pressed:
 				var key_event: InputEventKey = event
-				if not key_event.keycode in active_module.not_activable_keys:
+				if not key_event.keycode in active_module.NOT_ACTIVABLE_KEYS:
 					active_module.change_key(key_event.keycode)
 					state = State.NONE
 					choose_key_message.visible = false

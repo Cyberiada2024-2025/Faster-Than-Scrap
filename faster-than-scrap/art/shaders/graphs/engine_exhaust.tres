@@ -115,7 +115,7 @@ parameter_name = "Noise"
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_add, depth_draw_opaque, cull_back, diffuse_lambert, specular_disabled, unshaded, world_vertex_coords, shadows_disabled;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_disabled, unshaded, world_vertex_coords, shadows_disabled;
 
 uniform float On : hint_range(0.0, 1.0) = 1.0;
 uniform vec2 Noise_Scale = vec2(1.000000, 1.000000);
@@ -267,8 +267,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-1071.99, -393.989)
-modes/blend = 1
 modes/specular = 2
 flags/unshaded = true
 flags/world_vertex_coords = true

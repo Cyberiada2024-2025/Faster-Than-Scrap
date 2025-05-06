@@ -349,7 +349,7 @@ weapon = NodePath("Weapon")
 ship = NodePath("Ship")
 
 [node name="Weapon" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.55962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.75564)
 script = ExtResource("2_yc3bl")
 energy_cost = 30.0
 cooldown = 2.0

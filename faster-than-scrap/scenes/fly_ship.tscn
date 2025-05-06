@@ -44,7 +44,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.969, 0, -10.7901)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0436, 0, -4.66169)
 
 [node name="StationaryEnemy" parent="." instance=ExtResource("7_fphmu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5242, 0, 7.27022)
+transform = Transform3D(0.337309, 0, 0.941394, 0, 1, 0, -0.941394, 0, 0.337309, -7.5242, 0, 7.27022)
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_ibgta")]
 

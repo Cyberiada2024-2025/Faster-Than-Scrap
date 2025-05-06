@@ -343,6 +343,7 @@ shader_parameter/Glow_Strength = 3.0
 
 [node name="FastEnemy" type="CharacterBody3D" node_paths=PackedStringArray("weapon", "ship")]
 script = ExtResource("1_j84c1")
+rotation_speed = 0.035
 weapon = NodePath("Weapon")
 ship = NodePath("Ship")
 
@@ -429,7 +430,7 @@ shape = SubResource("BoxShape3D_sjc04")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0487721, 0, -2.32095)
 
 [node name="exhaust fire2" parent="." instance=ExtResource("17_bocjr")]
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 2.22413e-08, 0.085, 2.16566)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -0.0446548, 0.085, 2.16566)
 radius = 0.3
 material = SubResource("ShaderMaterial_1nwwr")
 

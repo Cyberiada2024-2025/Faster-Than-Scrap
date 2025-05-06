@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://kljbsmhkutax"]
 
-[ext_resource type="Script" uid="uid://dhqxa3bvfn8gj" path="res://code/ship/projectiles/spike.gd" id="1_b8qmk"]
+[ext_resource type="Script" uid="uid://dhqxa3bvfn8gj" path="res://code/weapons/projectiles/spike.gd" id="1_b8qmk"]
 [ext_resource type="Script" uid="uid://7rxxtodxpx1d" path="res://code/damage/damage_area_3d.gd" id="2_xhgwa"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_ne3qg"]
 
@@ -19,6 +19,7 @@ metadata/_custom_type_script = "uid://cukcjob61wwp7"
 
 [node name="VortexSpike" type="StaticBody3D"]
 script = ExtResource("1_b8qmk")
+grow_time = 2.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

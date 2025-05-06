@@ -44,5 +44,5 @@ func get_spawner() -> BaseEntitySpawner:
 	if spawner == null:
 		spawner = _get_default_spawner()
 	unpacked_spawner = spawner.instantiate()
-	spawner.set_spawner(_get_spawner_points(), difficulty)
+	unpacked_spawner.set_spawner(_get_spawner_points(), difficulty)
 	return unpacked_spawner

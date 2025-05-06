@@ -43,8 +43,6 @@ script = ExtResource("2_byxk3")
 [node name="Body" type="CollisionShape3D" parent="StaticBody3D" node_paths=PackedStringArray("child_modules")]
 shape = SubResource("BoxShape3D_km21v")
 script = ExtResource("3_qln4k")
-max_hp = 20.0
-hp = 20.0
 child_modules = [NodePath("../Weapons/Heavy Weapon Module"), NodePath("../Weapons/Basic Weapon Module"), NodePath("../Weapons/Basic Weapon Module2"), NodePath("../Weapons/Laser Module"), NodePath("../Weapons/Shotgun Module"), NodePath("../Weapons/Shotgun Module2")]
 metadata/_custom_type_script = "uid://cs6qd5cf3gviv"
 
@@ -190,7 +188,7 @@ script = ExtResource("4_clgev")
 script = ExtResource("5_5ov2f")
 orbit_radius = 20.0
 lerp_strength = 0.8
-orbit_angular_speed = 15.0
+orbit_angular_speed = 45.0
 
 [node name="LookAt" type="Node" parent="StateMachineNPC/OrbitComposite"]
 script = ExtResource("6_xr00f")

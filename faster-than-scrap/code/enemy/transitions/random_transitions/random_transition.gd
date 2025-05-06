@@ -12,9 +12,9 @@ class StatePropability:
 	var state: State
 	var propability: float
 
-	func _init(state: State, propability: float) -> void:
-		self.state = state
-		self.propability = propability
+	func _init(new_state: State, state_propability: float) -> void:
+		self.state = new_state
+		self.propability = state_propability
 
 
 var new_states: Array[WeighedState]

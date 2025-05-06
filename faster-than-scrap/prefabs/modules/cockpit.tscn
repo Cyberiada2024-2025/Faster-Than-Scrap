@@ -12,6 +12,7 @@
 [node name="Cockpit" type="CollisionShape3D" node_paths=PackedStringArray("sprite")]
 shape = SubResource("BoxShape3D_4r7dq")
 script = ExtResource("1_q5512")
+is_activable = false
 sprite = NodePath("Sprite3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)

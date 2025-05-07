@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyj46rbaohfnw"]
+[gd_scene load_steps=4 format=3 uid="uid://dyj46rbaohfnw"]
 
 [ext_resource type="Script" uid="uid://bk270qnughqkv" path="res://code/main_menu.gd" id="1_4xnjd"]
 [ext_resource type="Texture2D" uid="uid://ckvfh4pwc78ge" path="res://art/textures/title_placeholder.png" id="1_kjdh4"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="3_0uprt"]
-[ext_resource type="Script" uid="uid://bs05vbm6vu8h6" path="res://code/dialogues/dialogue_start.gd" id="4_8ln24"]
-[ext_resource type="PackedScene" uid="uid://k2fy6gletmi3" path="res://scenes/dialogue.tscn" id="5_rtw2f"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -65,12 +63,6 @@ text = "EXIT"
 
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("3_0uprt")
-
-[node name="Node" type="Node" parent="." node_paths=PackedStringArray("d")]
-script = ExtResource("4_8ln24")
-d = NodePath("DialogueTree")
-
-[node name="DialogueTree" parent="Node" instance=ExtResource("5_rtw2f")]
 
 [connection signal="pressed" from="Buttons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -4,9 +4,11 @@ extends Area3D
 const VORTEX_PREFAB: PackedScene = preload(
 	"res://prefabs/environment/space_vortex/space_vortex.tscn"
 )
-const VORTEX_TIMER_PATH: String = "res://prefabs/environment/space_vortex/inside_vortex_timer.tscn"
-const TIMER_NAME: String = "VortexTimer926452"
 
+const DAMAGE: float = 5  # damage per second
+var damageables_in_vortex: Array[Damageable] = []
+
+# vortex parameters
 var start_scale: float = 400
 var min_scale: float = 0.001
 var shrinking_time: float = 3 * 60  # in seconds
@@ -40,18 +42,25 @@ func _process(delta: float) -> void:
 	if scale.x < min_scale:
 		scale.x = min_scale
 	scale.z = scale.x
+	_damage_objects(delta)
+
+
+func _damage_objects(delta: float) -> void:
+	# iterate over list backwards to allow removing elements
+	for i in range(damageables_in_vortex.size() - 1, -1, -1):
+		var damageable = damageables_in_vortex[i]
+		if not is_instance_valid(damageable):
+			damageables_in_vortex.remove_at(i)
+			continue
+		damageable.take_damage(Damage.new(DAMAGE * delta), self)
 
 
 func _on_body_exited(body: Node3D) -> void:
 	if body.is_in_group("affected by vortex"):
-		var timer = preload(VORTEX_TIMER_PATH).instantiate()
-		timer.name = TIMER_NAME
-		body.add_child(timer)
+		damageables_in_vortex.append(body)
 
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("affected by vortex"):
 		for child in body.get_children():
-			if child.name == TIMER_NAME:
-				child.queue_free()
-				break
+			damageables_in_vortex.erase(body)

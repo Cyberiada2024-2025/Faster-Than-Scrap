@@ -1,10 +1,21 @@
 [gd_scene load_steps=2 format=3 uid="uid://cv2kifmhmn3ht"]
 
-[ext_resource type="Script" uid="uid://bmle503kcd8we" path="res://code/evironment/space_vortex/vortex_timer.gd" id="1_cba3g"]
+[sub_resource type="GDScript" id="GDScript_s8fqr"]
+script/source = "extends Timer
+
+const DAMAGE: float = 5  #DAMEGE_PER_TIMEOUT
+
+
+func _on_timeout() -> void:
+	if GameManager.game_state == GameState.State.FLY:
+		var damageable: Damageable = self.get_parent()
+		damageable.take_damage(Damage.new(DAMAGE), self)
+		return
+"
 
 [node name="InsideVortex" type="Timer"]
 wait_time = 0.5
 autostart = true
-script = ExtResource("1_cba3g")
+script = SubResource("GDScript_s8fqr")
 
 [connection signal="timeout" from="." to="." method="_on_timeout"]

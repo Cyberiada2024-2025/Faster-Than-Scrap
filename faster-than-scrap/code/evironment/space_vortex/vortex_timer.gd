@@ -1,6 +1,6 @@
 extends Timer
 
-const DAMAGE: float = 10  #DAMEGE_PER_TIMEOUT
+const DAMAGE: float = 5  #DAMEGE_PER_TIMEOUT
 
 
 func _on_timeout() -> void:

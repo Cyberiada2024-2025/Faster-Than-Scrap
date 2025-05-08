@@ -62,5 +62,4 @@ func _on_body_exited(body: Node3D) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("affected by vortex"):
-		for child in body.get_children():
-			damageables_in_vortex.erase(body)
+		damageables_in_vortex.erase(body)

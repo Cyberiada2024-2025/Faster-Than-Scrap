@@ -18,3 +18,7 @@ func get_node_color() -> Color:
 
 func get_node_description() -> String:
 	return "Mission Type:\nGet item"
+
+
+func get_mission_final_target_position() -> Vector3:
+	return item_target_position

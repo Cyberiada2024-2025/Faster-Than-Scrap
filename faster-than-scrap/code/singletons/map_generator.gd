@@ -33,6 +33,7 @@ func generate_map_from_node() -> void:
 	_spawn_shop()
 	if _map_node is MissionNode:
 		var mission_node: MissionNode = _map_node
+		_spawn_vortex(mission_node.mission_info)
 		mission_node.mission_info.start(_scene)
 		return
 
@@ -41,6 +42,10 @@ func _spawn_shop() -> void:
 	var shop = _shop_prefab.instantiate()
 	_scene.add_child.call_deferred(shop)
 	shop.position = Vector3(12, 0, 0)
+
+
+func _spawn_vortex(mission_info: MissionInfo) -> void:
+	SpaceVortex.spawn_vortex(mission_info.get_mission_final_target_position())
 
 
 func detach_and_save_current_scene() -> void:

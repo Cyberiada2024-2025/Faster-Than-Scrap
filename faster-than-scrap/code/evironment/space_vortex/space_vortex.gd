@@ -5,7 +5,7 @@ const VORTEX_PREFAB: PackedScene = preload(
 	"res://prefabs/environment/space_vortex/space_vortex.tscn"
 )
 
-const DAMAGE: float = 5  # damage per second
+const DAMAGE: float = 10  # damage per second
 var damageables_in_vortex: Array[Damageable] = []
 
 # vortex parameters

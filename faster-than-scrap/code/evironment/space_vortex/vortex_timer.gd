@@ -1,7 +1,8 @@
 extends Timer
 
-const DAMAGE: int = 1  #DAMEGE_PER_TIMEOUT
+const DAMAGE: float = 10  #DAMEGE_PER_TIMEOUT
 
 
 func _on_timeout() -> void:
-	self.get_parent().take_damage(DAMAGE)
+	var damageable: Damageable = self.get_parent()
+	damageable.take_damage(Damage.new(DAMAGE), self)

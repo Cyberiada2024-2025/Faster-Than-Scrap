@@ -1,5 +1,9 @@
+class_name SpaceVortex
 extends Area3D
 
+const VORTEX_PREFAB: PackedScene = preload(
+	"res://prefabs/environment/space_vortex/space_vortex.tscn"
+)
 const VORTEX_TIMER_PATH: String = "res://prefabs/environment/space_vortex/inside_vortex_timer.tscn"
 const TIMER_NAME: String = "VortexTimer926452"
 
@@ -10,7 +14,9 @@ const SHRINK_SPEED: float = (START_SCALE - MIN_SCALE) / SHRINKING_TIME  # units 
 
 
 static func spawn_vortex(start_position: Vector3) -> void:
-	pass
+	var vortex = VORTEX_PREFAB.instantiate()
+	vortex.position = start_position
+	GameManager.get_tree().current_scene.add_child.call_deferred(vortex)
 
 
 func _ready() -> void:

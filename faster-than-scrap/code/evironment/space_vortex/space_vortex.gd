@@ -12,9 +12,11 @@ var damageables_in_vortex: Array[Damageable] = []
 var start_scale: float = 400
 var min_scale: float = 0.001
 var shrinking_time: float = 3 * 60  # in seconds
-var shrink_speed: float  # units per seconds
+
+var _shrink_speed: float  # units per seconds
 
 
+## static spawner of vortex with paramateres deciding its behaviour
 static func spawn_vortex(
 	start_position: Vector3,
 	start_scale: float = 400,
@@ -32,17 +34,21 @@ static func spawn_vortex(
 
 
 func _ready() -> void:
-	shrink_speed = (start_scale - min_scale) / shrinking_time
+	_shrink_speed = (start_scale - min_scale) / shrinking_time
 	scale.x = start_scale
 	scale.z = start_scale
 
 
 func _process(delta: float) -> void:
-	scale.x -= delta * shrink_speed
+	_scale_self(delta)
+	_damage_objects(delta)
+
+
+func _scale_self(delta: float) -> void:
+	scale.x -= delta * _shrink_speed
 	if scale.x < min_scale:
 		scale.x = min_scale
 	scale.z = scale.x
-	_damage_objects(delta)
 
 
 func _damage_objects(delta: float) -> void:

@@ -38,9 +38,10 @@ dead_color = Color(1, 0, 0, 1)
 module_name = "Laser"
 description = "One of basic weapons. Activate to shoot long-range laser projectile."
 
-[node name="SpawnerWeapon" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.610518)
+[node name="SpawnerWeapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.694184)
 script = ExtResource("2_nlg4d")
+muzzle_flash = NodePath("")
 cooldown = 0.5
 recoil_force = 50.0
 projectile = ExtResource("3_nlg4d")

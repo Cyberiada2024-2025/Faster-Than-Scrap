@@ -67,7 +67,7 @@ material = SubResource("StandardMaterial3D_1cn7k")
 script = ExtResource("1_qoroq")
 velocity = SubResource("Curve_4quhm")
 velocity_multiplier = 30.0
-lifetime = 2.0
+lifetime = 1.0
 particle_holder = NodePath("ParticleHolder")
 particles = [NodePath("ParticleHolder/Trail")]
 

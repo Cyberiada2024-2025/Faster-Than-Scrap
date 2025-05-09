@@ -31,8 +31,10 @@ var _current_lifetime: float = 0
 @onready var _damage_area: DamageArea3D = $DamageArea3D
 
 
-func _ready():
+func _ready() -> void:
 	_damage_area.damage_applied.connect(_on_damage_applied)
+	for part in particles:
+				part.emitting = true
 
 
 func _process(delta: float) -> void:

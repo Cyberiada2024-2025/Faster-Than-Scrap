@@ -11,7 +11,7 @@ var max_health: float = 0
 func _ready() -> void:
 	modules = Module.find_all_modules(self.get_parent_node_3d())
 	for module: Module in modules:
-		max_health += module.hp
+		max_health += module.max_hp
 
 
 ## returns a number between 0 and 1

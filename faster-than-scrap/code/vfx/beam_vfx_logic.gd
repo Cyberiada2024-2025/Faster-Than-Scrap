@@ -8,9 +8,10 @@ extends Node
 
 func _ready() -> void:
 	player.play(start_anim)
+	self.remove_child(holder)
+	self.get_parent().add_child(holder)
 
 func _notification(notification):
 	if (notification == NOTIFICATION_PREDELETE):
-		holder.reparent(get_parent())
 		player.play(end_anim)
 		holder.wait_free(end_time)

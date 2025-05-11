@@ -57,5 +57,6 @@ func _on_damage_applied(_damage: Damage, _target: Damageable) -> void:
 			for part in particles:
 				part.emitting = false
 			particle_holder.wait_free(particle_die_time)
-			particle_holder.reparent(get_tree().current_scene)
+			self.remove_child(particle_holder)
+			get_tree().current_scene.add_child(particle_holder)
 		queue_free()

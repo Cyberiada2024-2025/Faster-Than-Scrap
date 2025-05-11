@@ -9,5 +9,5 @@ extends Node
 func _ready() -> void:
 	player.play("RESET")
 
-func Off() -> void:
+func off() -> void:
 	player.play(off_anim)

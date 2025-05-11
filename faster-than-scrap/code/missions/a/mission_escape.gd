@@ -29,4 +29,4 @@ func _process(_delta: float) -> void:
 		print("ESCAPE SUCCESS")
 		state = MissionState.FINISHED
 		finished.emit(self)
-		portal.Off()
+		portal.off()

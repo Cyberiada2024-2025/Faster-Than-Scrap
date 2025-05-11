@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2owfjnsrnw7a"]
+
+[ext_resource type="Script" uid="uid://dqy7gw65vbc5s" path="res://code/spawners/polygon_entity_spawner.gd" id="1_yhwui"]
+
+[node name="PolygonEnemySpawner" type="Node"]
+script = ExtResource("1_yhwui")

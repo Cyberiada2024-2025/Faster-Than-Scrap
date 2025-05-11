@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://crdbktw1laehs"]
+
+[ext_resource type="Script" uid="uid://caj6iun0eahjj" path="res://sandbox/mikulski/spawner_test.gd" id="1_tcqcf"]
+[ext_resource type="PackedScene" uid="uid://c2owfjnsrnw7a" path="res://prefabs/spawners/polygon_enemy_spawner.tscn" id="2_o2ny3"]
+[ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/enemies/fast_enemy.tscn" id="3_42pev"]
+[ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/enemies/heavy_enemy.tscn" id="4_ar0dd"]
+[ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/enemies/stationary_enemy.tscn" id="5_tgoo4"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_q2ser"]
+radius = 1.0
+height = 2.0
+
+[node name="spawner test" type="Node3D" node_paths=PackedStringArray("spawner", "points")]
+script = ExtResource("1_tcqcf")
+spawner = NodePath("PolygonEnemySpawner")
+points = [NodePath("MeshInstance3D"), NodePath("MeshInstance3D2"), NodePath("MeshInstance3D3"), NodePath("MeshInstance3D4"), NodePath("MeshInstance3D5"), NodePath("MeshInstance3D6")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8967, 0, 19.5769)
+mesh = SubResource("SphereMesh_q2ser")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.9124, 0, 0)
+mesh = SubResource("SphereMesh_q2ser")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.0112, 0, -26.2466)
+mesh = SubResource("SphereMesh_q2ser")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3846, 0, -31.9948)
+mesh = SubResource("SphereMesh_q2ser")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6377, 0, -5.96404)
+mesh = SubResource("SphereMesh_q2ser")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, -7.27596e-12, -1.08048e-09, 7.27596e-12, 1, 0, 7.82109e-10, -4.65661e-10, 1, 11.7068, 3.8147e-06, 13.0303)
+mesh = SubResource("SphereMesh_q2ser")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999732, -0.0231576, 0.000117211, -5.50214e-12, 0.00506144, 0.999987, -0.0231579, -0.999719, 0.00506008, 0, 56.742, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.6065, 0)
+light_energy = 16.0
+omni_range = 4096.0
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="PolygonEnemySpawner" parent="." instance=ExtResource("2_o2ny3")]
+spawned_entities = Array[PackedScene]([ExtResource("3_42pev"), ExtResource("4_ar0dd"), ExtResource("5_tgoo4")])
+entities_distane = 5.0
+min_entities = 20

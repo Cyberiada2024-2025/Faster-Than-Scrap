@@ -19,9 +19,7 @@ func _set_spawn_points() -> void:
 	_add_points(center)
 
 
-func set_spawner(points: Array[Vector3], difficulty: int):
+func set_points(points: Array[Vector3]) -> void:
 	while len(points) < 1:
 		points.append(Vector3.ZERO)
 	center = points[0]
-	_set_spawn_points()
-	entities_count = min_entities + difficulty

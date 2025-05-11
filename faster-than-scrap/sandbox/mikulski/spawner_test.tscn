@@ -7,26 +7,13 @@
 radius = 1.0
 height = 2.0
 
-[node name="spawner test" type="Node3D" node_paths=PackedStringArray("spawner", "point1", "point2", "point3")]
+[node name="spawner test" type="Node3D" node_paths=PackedStringArray("spawner", "points")]
 script = ExtResource("1_jdtqq")
 spawner = NodePath("CircleEnemySpawner")
-point1 = NodePath("MeshInstance3D")
-point2 = NodePath("MeshInstance3D2")
-point3 = NodePath("MeshInstance3D3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 15)
-visible = false
-mesh = SubResource("SphereMesh_q2ser")
+points = [NodePath("MeshInstance3D2")]
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_q2ser")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 15.4118)
-visible = false
-mesh = SubResource("SphereMesh_q2ser")
-skeleton = NodePath("../MeshInstance3D2")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.999568, 0.0294038, -0.000148827, -2.26076e-11, 0.00506144, 0.999987, 0.0294041, 0.999555, -0.00505925, 0, 56.742, 0)

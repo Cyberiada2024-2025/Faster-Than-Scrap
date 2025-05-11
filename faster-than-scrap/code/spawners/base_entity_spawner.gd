@@ -98,9 +98,6 @@ func _ready() -> void:
 		entities_distribuant[0] = entities_weights[0] / weight_sum
 		for i in range(1, entities_count):
 			entities_distribuant[i] = entities_distribuant[i - 1] + entities_weights[i] / weight_sum
-	_set_spawn_points()
-	entities_count = min_entities + int(len(spawn_points) / points_per_entitie)
-	print(entities_count)
 
 
 func _get_weighted_entity() -> Node:
@@ -120,15 +117,24 @@ func _get_position_y() -> float:
 	return randf_range(min_y, max_y)
 
 
-func set_spawner(_points: Array[Vector3], _difficulty: int):
+func set_points(_points: Array[Vector3]) -> void:
 	pass
 
 
+func start_spawner(difficulty: int) -> void:
+	_set_spawn_points()
+	entities_count = (min_entities + int(difficulty * len(spawn_points) / points_per_entitie))
+
+
+func set_spawner(points: Array[Vector3], difficulty: int):
+	set_points(points)
+	start_spawner(difficulty)
+
+
 func spawn_entities():
-	print(spawn_points)
 	var positions: Array[Vector3] = spawn_points.duplicate(true)
 	positions.shuffle()
-	print(len(positions))
+	#print(len(positions))
 	for i in range(entities_count):
 		var point = positions.pop_back()
 		while point != null and _is_point_in_baned_area(point):

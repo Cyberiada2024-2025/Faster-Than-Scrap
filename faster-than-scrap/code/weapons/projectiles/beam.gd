@@ -7,6 +7,16 @@ extends Node3D
 
 ## Node that will be scaled so that it's Z size is the same as the beam's length.
 @export var beam_indicator: Node3D
+@export var max_length: float = 20
+
+@export var player: AnimationPlayer
+@export var start_anim: String = "On"
+@export var end_anim: String = "Off"
+@export var holder: WaitFree
+@export var end_time: float = 1.0
+
+@export var mesh: MeshInstance3D
+@export var length_name: String = "current_length"
 
 var _beam_length: float
 
@@ -14,6 +24,8 @@ var _beam_length: float
 
 
 func _ready() -> void:
+	player.play(start_anim)
+	_damage_raycast.target_position = Vector3.FORWARD * max_length
 	_beam_length = _damage_raycast.target_position.length()
 
 
@@ -23,5 +35,15 @@ func _process(_delta: float) -> void:
 			_damage_raycast.get_collision_point()
 		)
 		beam_indicator.scale.z = ray_length
+		if mesh != null:
+			mesh.material_override.set_shader_parameter(length_name, ray_length)
 	else:
 		beam_indicator.scale.z = _beam_length
+		if mesh != null:
+			mesh.material_override.set_shader_parameter(length_name, _beam_length)
+
+func _notification(notification):
+	if (notification == NOTIFICATION_PREDELETE):
+		holder.reparent(get_parent())
+		player.play(end_anim)
+		holder.wait_free(end_time)

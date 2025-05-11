@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 ## Returns whether or not the weapon can be activated.
 ## Takes into account [member Ship.energy] and the current [member cooldown]
 func can_activate() -> bool:
+	print(self)
 	if _current_cooldown > 0 or ship.energy < energy_cost:
 		return false
 	return true

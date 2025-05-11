@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d2oshlh57wf02" path="res://prefabs/bosses/boss_ui.tscn" id="1_j87ic"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="3_eglc8"]
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="4_lg3fv"]
-[ext_resource type="PackedScene" uid="uid://wcegjmvpftp8" path="res://prefabs/pause_menu.tscn" id="5_xnu4p"]
+[ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="5_xnu4p"]
 
 [node name="BossScene" type="Node3D"]
 script = ExtResource("1_3tnet")

@@ -10,8 +10,11 @@ signal deactivated
 signal damaged
 signal destroyed
 
+const NOT_ACTIVABLE_KEYS: Array[Key] = [KEY_ENTER, KEY_ESCAPE]
+
 @export_category("Settings")
 @export var activation_key: Key = KEY_NONE
+@export var is_activable: bool = true
 @export var max_hp: float = 100
 @export var hp: float = 100
 @export_category("References")
@@ -184,7 +187,7 @@ func create_ghost() -> ModuleGhost:
 	ghost.add_child(duplicate_node)
 	duplicate_node.position = Vector3.ZERO
 	duplicate_node.rotation = Vector3.ZERO
-	duplicate_node.prize = 0;
+	duplicate_node.prize = 0
 	ghost.module_to_ignore = self
 
 	return ghost

@@ -7,7 +7,9 @@
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="5_gcgjm"]
 [ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/enemies/heavy_enemy.tscn" id="6_ibgta"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/enemies/stationary_enemy.tscn" id="7_fphmu"]
+
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="8_ibgta"]
+
 [ext_resource type="Script" uid="uid://f6d84uyul237" path="res://code/evironment/generate_nebulas.gd" id="9_fphmu"]
 
 [node name="Space" type="Node3D"]

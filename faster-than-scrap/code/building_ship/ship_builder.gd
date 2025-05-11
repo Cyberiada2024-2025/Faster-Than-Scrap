@@ -303,9 +303,10 @@ func _input(event: InputEvent):
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
 					active_module = _get_module_from_hit(hit)
-					state = State.SETTING_BUTTON
-					choose_key_message.visible = true
-					print("new state = setting button")
+					if active_module.is_activable:
+						state = State.SETTING_BUTTON
+						choose_key_message.visible = true
+						print("new state = setting button")
 			elif event is InputEventMouse:
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
@@ -322,10 +323,11 @@ func _input(event: InputEvent):
 			## check if keyboard pressed
 			if event is InputEventKey and event.pressed:
 				var key_event: InputEventKey = event
-				active_module.change_key(key_event.keycode)
-				state = State.NONE
-				choose_key_message.visible = false
-				print("new state = none")
+				if not key_event.keycode in active_module.NOT_ACTIVABLE_KEYS:
+					active_module.change_key(key_event.keycode)
+					state = State.NONE
+					choose_key_message.visible = false
+					print("new state = none")
 
 
 #        +------------+

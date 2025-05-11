@@ -14,6 +14,7 @@ size = Vector3(1, 1, 1.075)
 [node name="Frame" type="CollisionShape3D" node_paths=PackedStringArray("attach_points", "sprite", "label")]
 shape = SubResource("BoxShape3D_jnq3k")
 script = ExtResource("1_ajn0b")
+is_activable = false
 attach_points = [NodePath("AttachPoints/AttachPoint1")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")

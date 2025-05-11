@@ -1,6 +1,5 @@
-[gd_scene load_steps=17 format=3 uid="uid://otlsujtci37k"]
+[gd_scene load_steps=16 format=3 uid="uid://otlsujtci37k"]
 
-[ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_2btrf"]
 [ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="1_llond"]
 [ext_resource type="Script" uid="uid://crmxerc164n6q" path="res://code/weapons/constant_fire_weapon.gd" id="2_tv4j7"]
 [ext_resource type="PackedScene" uid="uid://bvqxhp4ueiwju" path="res://prefabs/projectiles/star_beam.tscn" id="3_tv4j7"]
@@ -60,11 +59,10 @@ size = Vector3(1, 1, 5)
 
 [node name="Star Laser" type="StaticBody3D"]
 
-[node name="Laser" type="CollisionShape3D" parent="." node_paths=PackedStringArray("weapon")]
+[node name="Laser" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.17694)
 shape = SubResource("BoxShape3D_n02ww")
-script = ExtResource("1_2btrf")
-weapon = NodePath("LaserBeam")
+script = ExtResource("1_llond")
 max_hp = 20.0
 hp = 20.0
 metadata/_custom_type_script = "uid://cs6qd5cf3gviv"

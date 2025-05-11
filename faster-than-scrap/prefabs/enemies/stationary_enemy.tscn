@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="14_s16g2"]
 [ext_resource type="PackedScene" uid="uid://ens8pls3jn8x" path="res://art/models/enemies/enemy_3/turret_enemy_unpacked.tscn" id="15_wbbhx"]
 [ext_resource type="PackedScene" uid="uid://cslkg7x0muy4u" path="res://prefabs/vfx/particles/basic/fire.tscn" id="16_rqyho"]
-[ext_resource type="Texture2D" uid="uid://2c1a1ogf3sa1" path="res://art/textures/VFX/fire_gradient_weird.png" id="17_pqmbm"]
+[ext_resource type="Texture2D" uid="uid://2c1a1ogf3sa1" path="res://art/textures/vfx/fire_gradient_weird.png" id="17_pqmbm"]
 
 [sub_resource type="Curve" id="Curve_qoroq"]
 _data = [Vector2(0.256619, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwn2a8yi0618d"
-path.s3tc="res://.godot/imported/mix_noise.png-713d538ffd4ae87ea4ab0c1c9d9c5858.s3tc.ctex"
+path.s3tc="res://.godot/imported/mix_noise.png-f062d3538b73fb8325a185e2b504fc49.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://art/textures/VFX/mix_noise.png"
-dest_files=["res://.godot/imported/mix_noise.png-713d538ffd4ae87ea4ab0c1c9d9c5858.s3tc.ctex"]
+source_file="res://art/textures/vfx/mix_noise.png"
+dest_files=["res://.godot/imported/mix_noise.png-f062d3538b73fb8325a185e2b504fc49.s3tc.ctex"]
 
 [params]
 

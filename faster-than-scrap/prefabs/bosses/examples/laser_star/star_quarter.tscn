@@ -78,6 +78,7 @@ metadata/_custom_type_script = "uid://6f2yjn6wgcun"
 [node name="Weapon" type="Node3D" parent="Right/Projectile weapon"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.49094)
 script = ExtResource("6_muwi2")
+energy_cost = 1.0
 cooldown = 0.2
 projectile = ExtResource("6_ggnlv")
 metadata/_custom_type_script = "uid://bin0oxv424iww"
@@ -112,6 +113,7 @@ metadata/_custom_type_script = "uid://6f2yjn6wgcun"
 [node name="Weapon" type="Node3D" parent="Left/Projectile weapon"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.49094)
 script = ExtResource("6_muwi2")
+energy_cost = 1.0
 cooldown = 0.2
 projectile = ExtResource("6_ggnlv")
 metadata/_custom_type_script = "uid://bin0oxv424iww"

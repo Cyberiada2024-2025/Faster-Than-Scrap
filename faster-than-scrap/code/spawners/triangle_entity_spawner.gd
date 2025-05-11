@@ -14,6 +14,7 @@ extends BaseEntitySpawner
 @export var triangle_min_enemy: int = 4
 
 
+
 func set_spawner(points: Array[Vector3], difficulty: int):
 	while len(points) < 3:
 		points.append(Vector3.ZERO)

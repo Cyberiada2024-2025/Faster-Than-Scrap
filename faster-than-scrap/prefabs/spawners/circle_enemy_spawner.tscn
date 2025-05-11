@@ -8,3 +8,4 @@
 [node name="CircleEnemySpawner" type="Node"]
 script = ExtResource("1_fpgf4")
 spawned_entities = Array[PackedScene]([ExtResource("2_2k1tf"), ExtResource("3_43v37"), ExtResource("4_rllba")])
+min_entities = 10

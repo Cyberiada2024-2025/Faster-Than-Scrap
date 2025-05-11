@@ -3,13 +3,20 @@ class_name BaseEntitySpawner
 extends Node
 
 @export_category("Spawner")
-@export var spawned_entities: Array[PackedScene]
-## weights of entities, if there are none then all have equal weight
-@export var entities_weights: Array[float]
-## how much units position change in random direction
-@export var max_position_change: float = 0
 ## node to which spawned entity will be added as a child
 @export var nodes_location_in_tree: Node = self
+@export_group("Baned Areas")
+@export var baned_circles_centers: Array[Vector3] = []
+@export var baned_circles_radiuses: Array[float] = []
+@export_group("Entities")
+@export var spawned_entities: Array[PackedScene] = []
+## weights of entities, if there are none then all have equal weight
+@export var entities_weights: Array[float] = []
+## minimum distance betwen spawned entities
+@export var entities_distane: float = 1.0
+@export_subgroup("Entities Count")
+@export var min_entities: int = 0
+@export var points_per_entitie: float = 10
 ## limits of random y position
 @export_group("y spawn")
 @export var min_y: float = 0
@@ -18,6 +25,65 @@ extends Node
 var random_entity_function: Callable
 var entities_count: int
 var entities_distribuant: Array[float]
+
+var spawn_points: Array[Vector3] = []
+
+
+func add_baned_circle(center: Vector3, radius: float) -> void:
+	baned_circles_centers.append(center)
+	baned_circles_radiuses.append(radius)
+
+
+func _is_point_not_added(point: Vector3) -> bool:
+	const float_tolerance = 0.01
+	for added in spawn_points:
+		if abs(point.x - added.x) < float_tolerance and abs(point.z - added.z) < float_tolerance:
+			return false
+	return true
+
+
+func _is_point_in_baned_area(point: Vector3) -> bool:
+	for i in range(len(baned_circles_centers)):
+		if (
+			(
+				(baned_circles_centers[i].x - point.x) ** 2
+				+ (baned_circles_centers[i].z - point.z) ** 2
+			)
+			< baned_circles_radiuses[i] ** 2
+		):
+			return true
+	return false
+
+
+func _is_point_in_border(point: Vector3) -> bool:
+	return false
+
+
+func _add_points(start_point: Vector3) -> void:
+	var to_add: Array[Vector3] = []
+	to_add.append(start_point)
+
+	var point: Vector3
+	while not to_add.is_empty():
+		point = to_add.pop_back()
+		if _is_point_not_added(point) and _is_point_in_border(point):
+			spawn_points.append(point)
+			var new_point: Vector3 = Vector3(entities_distane, 0, 0)
+			to_add.append(point + new_point)
+			new_point = new_point.rotated(Vector3(0, 1, 0), PI / 3)
+			to_add.append(point + new_point)
+			new_point = new_point.rotated(Vector3(0, 1, 0), PI / 3)
+			to_add.append(point + new_point)
+			new_point = new_point.rotated(Vector3(0, 1, 0), PI / 3)
+			to_add.append(point + new_point)
+			new_point = new_point.rotated(Vector3(0, 1, 0), PI / 3)
+			to_add.append(point + new_point)
+			new_point = new_point.rotated(Vector3(0, 1, 0), PI / 3)
+			to_add.append(point + new_point)
+
+
+func _set_spawn_points() -> void:
+	pass
 
 
 func _ready() -> void:
@@ -32,6 +98,9 @@ func _ready() -> void:
 		entities_distribuant[0] = entities_weights[0] / weight_sum
 		for i in range(1, entities_count):
 			entities_distribuant[i] = entities_distribuant[i - 1] + entities_weights[i] / weight_sum
+	_set_spawn_points()
+	entities_count = min_entities + int(len(spawn_points) / points_per_entitie)
+	print(entities_count)
 
 
 func _get_weighted_entity() -> Node:
@@ -47,17 +116,6 @@ func _get_entity() -> Node:
 	return spawned_entities.pick_random().instantiate()
 
 
-func _get_base_position() -> Vector3:
-	return Vector3.ZERO
-
-
-func _get_position_change() -> Vector3:
-	return (
-		Vector3(0, 0, 1).rotated(Vector3(0, 1, 0), randf_range(0, 2 * PI))
-		* randf_range(0, max_position_change)
-	)
-
-
 func _get_position_y() -> float:
 	return randf_range(min_y, max_y)
 
@@ -67,8 +125,18 @@ func set_spawner(points: Array[Vector3], difficulty: int):
 
 
 func spawn_entities():
+	print(spawn_points)
+	var positions: Array[Vector3] = spawn_points.duplicate(true)
+	positions.shuffle()
+	print(len(positions))
 	for i in range(entities_count):
+		var point = positions.pop_back()
+		while point != null and _is_point_in_baned_area(point):
+			point = positions.pop_back()
+		if point == null:
+			print("NOT ENOUGHT SPACE TO SPAWN")
+			break
 		var ent: Node = random_entity_function.call()
-		ent.position = _get_base_position() + _get_position_change()
+		ent.position = point
 		ent.position.y = _get_position_y()
 		nodes_location_in_tree.add_child(ent)

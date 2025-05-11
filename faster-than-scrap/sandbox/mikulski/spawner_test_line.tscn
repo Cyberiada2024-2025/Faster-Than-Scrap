@@ -1,15 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmxysnr6lylvu"]
+[gd_scene load_steps=4 format=3 uid="uid://las5b0pf7nvg"]
 
-[ext_resource type="Script" uid="uid://caj6iun0eahjj" path="res://sandbox/mikulski/spawner_test.gd" id="1_jdtqq"]
-[ext_resource type="PackedScene" uid="uid://qmroj5befgan" path="res://prefabs/spawners/circle_enemy_spawner.tscn" id="2_jxmqa"]
+[ext_resource type="Script" uid="uid://caj6iun0eahjj" path="res://sandbox/mikulski/spawner_test.gd" id="1_x8wty"]
+[ext_resource type="PackedScene" uid="uid://cjuk5a3y1a8c2" path="res://prefabs/spawners/line_enemy_spawner.tscn" id="2_05ady"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_q2ser"]
 radius = 1.0
 height = 2.0
 
 [node name="spawner test" type="Node3D" node_paths=PackedStringArray("spawner", "point1", "point2", "point3")]
-script = ExtResource("1_jdtqq")
-spawner = NodePath("CircleEnemySpawner")
+script = ExtResource("1_x8wty")
+spawner = NodePath("LineEnemySpawner")
 point1 = NodePath("MeshInstance3D")
 point2 = NodePath("MeshInstance3D2")
 point3 = NodePath("MeshInstance3D3")
@@ -20,16 +20,16 @@ visible = false
 mesh = SubResource("SphereMesh_q2ser")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 0)
 mesh = SubResource("SphereMesh_q2ser")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 15.4118)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
 mesh = SubResource("SphereMesh_q2ser")
 skeleton = NodePath("../MeshInstance3D2")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.999568, 0.0294038, -0.000148827, -2.26076e-11, 0.00506144, 0.999987, 0.0294041, 0.999555, -0.00505925, 0, 56.742, 0)
+transform = Transform3D(0.999732, -0.0231576, 0.000117211, -5.50214e-12, 0.00506144, 0.999987, -0.0231579, -0.999719, 0.00506008, 0, 56.742, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.6065, 0)
@@ -38,9 +38,11 @@ omni_range = 4096.0
 
 [node name="Enemies" type="Node3D" parent="."]
 
-[node name="CircleEnemySpawner" parent="." node_paths=PackedStringArray("nodes_location_in_tree") instance=ExtResource("2_jxmqa")]
-nodes_location_in_tree = NodePath("../Enemies")
-baned_circles_centers = Array[Vector3]([Vector3(0, 0, 0)])
-baned_circles_radiuses = Array[float]([21.0])
+[node name="LineEnemySpawner" parent="." instance=ExtResource("2_05ady")]
+start_point = Vector3(-50, 0, 0)
+end_point = Vector3(50, 0, 0)
+line_width = 50.0
+baned_circles_centers = Array[Vector3]([Vector3(-50, 0, 0)])
+baned_circles_radiuses = Array[float]([20.0])
 entities_distane = 5.0
-min_entities = 270
+min_entities = 100

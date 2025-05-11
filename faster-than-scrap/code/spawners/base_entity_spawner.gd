@@ -35,9 +35,9 @@ func add_baned_circle(center: Vector3, radius: float) -> void:
 
 
 func _is_point_not_added(point: Vector3) -> bool:
-	const float_tolerance = 0.01
+	const FLOAT_TOLERANCE = 0.01
 	for added in spawn_points:
-		if abs(point.x - added.x) < float_tolerance and abs(point.z - added.z) < float_tolerance:
+		if abs(point.x - added.x) < FLOAT_TOLERANCE and abs(point.z - added.z) < FLOAT_TOLERANCE:
 			return false
 	return true
 
@@ -55,7 +55,7 @@ func _is_point_in_baned_area(point: Vector3) -> bool:
 	return false
 
 
-func _is_point_in_border(point: Vector3) -> bool:
+func _is_point_in_border(_point: Vector3) -> bool:
 	return false
 
 
@@ -120,7 +120,7 @@ func _get_position_y() -> float:
 	return randf_range(min_y, max_y)
 
 
-func set_spawner(points: Array[Vector3], difficulty: int):
+func set_spawner(_points: Array[Vector3], _difficulty: int):
 	pass
 
 

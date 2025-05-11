@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwn2a8yi0618d"
-path.s3tc="res://.godot/imported/mix_noise.png-f062d3538b73fb8325a185e2b504fc49.s3tc.ctex"
+uid="uid://7itl3wshrqoq"
+path.s3tc="res://.godot/imported/smoke_alpha.png-9ace2bf62b08a31dd268f00e7d4b3934.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://art/textures/vfx/mix_noise.png"
-dest_files=["res://.godot/imported/mix_noise.png-f062d3538b73fb8325a185e2b504fc49.s3tc.ctex"]
+source_file="res://art/textures/vfxy/smoke_alpha.png"
+dest_files=["res://.godot/imported/smoke_alpha.png-9ace2bf62b08a31dd268f00e7d4b3934.s3tc.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ditdai7w78iji"
-path.s3tc="res://.godot/imported/fire_gradient.png-88f590c5fa0465b56c085de3a4cf826b.s3tc.ctex"
+uid="uid://cwn2a8yi0618d"
+path.s3tc="res://.godot/imported/mix_noise.png-7ebfb5e8cbb633ee2d191015bc025db9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://art/textures/vfx/fire_gradient.png"
-dest_files=["res://.godot/imported/fire_gradient.png-88f590c5fa0465b56c085de3a4cf826b.s3tc.ctex"]
+source_file="res://art/textures/vfxy/mix_noise.png"
+dest_files=["res://.godot/imported/mix_noise.png-7ebfb5e8cbb633ee2d191015bc025db9.s3tc.ctex"]
 
 [params]
 

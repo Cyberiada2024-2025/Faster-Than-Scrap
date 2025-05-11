@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_sxkqv"]
 [ext_resource type="Script" uid="uid://2p7oc4a3141y" path="res://code/utilities/wait_free.gd" id="4_h37vo"]
 [ext_resource type="Shader" uid="uid://u1lxn7l8fww0" path="res://art/shaders/graphs/beam.tres" id="5_ayt1y"]
-[ext_resource type="Texture2D" uid="uid://cwn2a8yi0618d" path="res://art/textures/vfx/mix_noise.png" id="6_xti2x"]
+[ext_resource type="Texture2D" uid="uid://cwn2a8yi0618d" path="res://art/textures/vfxy/mix_noise.png" id="6_xti2x"]
 
 [sub_resource type="Resource" id="Resource_7ctxp"]
 script = ExtResource("3_sxkqv")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=62 format=3 uid="uid://d4asihbfpofor"]
 
 [ext_resource type="PackedScene" uid="uid://cfjkjqh4besqo" path="res://prefabs/vfx/particles/basic/thruster_fire.tscn" id="2_nhrox"]
-[ext_resource type="Texture2D" uid="uid://7itl3wshrqoq" path="res://art/textures/vfx/smoke_alpha.png" id="3_tkj1b"]
-[ext_resource type="Texture2D" uid="uid://d13pn5ajweul8" path="res://art/textures/vfx/smoke_normal.png" id="4_1kckd"]
+[ext_resource type="Texture2D" uid="uid://7itl3wshrqoq" path="res://art/textures/vfxy/smoke_alpha.png" id="3_tkj1b"]
+[ext_resource type="Texture2D" uid="uid://d13pn5ajweul8" path="res://art/textures/vfxy/smoke_normal.png" id="4_1kckd"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_tkj1b"]
 source = 5

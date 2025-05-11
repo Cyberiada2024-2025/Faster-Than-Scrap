@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb24thwd52doi"
-path.s3tc="res://.godot/imported/2DNoise.png-fcebbd50a01dcd2f498eda00381df960.s3tc.ctex"
+uid="uid://bl7mgydbx37a1"
+path.s3tc="res://.godot/imported/rust_noise.png-f265b71d6ade545f405a643034c46d08.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://art/textures/vfx/2DNoise.png"
-dest_files=["res://.godot/imported/2DNoise.png-fcebbd50a01dcd2f498eda00381df960.s3tc.ctex"]
+source_file="res://art/textures/vfxy/rust_noise.png"
+dest_files=["res://.godot/imported/rust_noise.png-f265b71d6ade545f405a643034c46d08.s3tc.ctex"]
 
 [params]
 

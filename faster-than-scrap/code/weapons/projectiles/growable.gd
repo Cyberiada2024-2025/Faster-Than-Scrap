@@ -1,6 +1,7 @@
+class_name Growable
 extends Node3D
 
-@export var max_scale: Vector3 = Vector3(10, 100, 10)
+@export var max_scale: Vector3 = Vector3(10, 10, 100)
 @export var grow_time: float = 1
 @export var stay_time: float = 3
 

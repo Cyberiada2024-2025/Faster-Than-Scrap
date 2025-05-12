@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://eol251w0tnh0"]
+[gd_scene load_steps=18 format=3 uid="uid://eol251w0tnh0"]
 
 [ext_resource type="Script" uid="uid://o52uw8n1ufdc" path="res://code/map_select/map_selector.gd" id="1_hqa1d"]
 [ext_resource type="PackedScene" uid="uid://2oa2dvray5oq" path="res://prefabs/map_select/map_layer.tscn" id="2_chfeh"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://ci7ns2p5tsax6" path="res://prefabs/map_select/nodes/templates/boss_node.tscn" id="7_2c4xb"]
 [ext_resource type="PackedScene" uid="uid://sxt04pfym7pt" path="res://prefabs/map_select/nodes/templates/finish_node.tscn" id="8_dg2fp"]
 [ext_resource type="Script" uid="uid://dupp04gxdeha5" path="res://code/missions/info/mission_info_escape.gd" id="8_yb7my"]
-[ext_resource type="Script" uid="uid://dvt7f3cg71bb" path="res://code/missions/info/mission_info_get_item.gd" id="9_gq7c2"]
 [ext_resource type="PackedScene" uid="uid://dkt55poxl1ki4" path="res://prefabs/bosses/examples/stationary_rings.tscn" id="10_gb11j"]
 [ext_resource type="PackedScene" uid="uid://c3rsq4emlmuky" path="res://prefabs/bosses/examples/laser_star/laser_star.tscn" id="11_gb11j"]
 
@@ -32,14 +31,6 @@ metadata/_custom_type_script = "uid://dupp04gxdeha5"
 [sub_resource type="Resource" id="Resource_0xqc7"]
 script = ExtResource("8_yb7my")
 portal_position = Vector3(100, 0, -100)
-about = ""
-difficulty = 0
-priority = 0
-
-[sub_resource type="Resource" id="Resource_gf21t"]
-script = ExtResource("9_gq7c2")
-item_position = Vector3(100, 0, 0)
-item_target_position = Vector3(-100, 0, 0)
 about = ""
 difficulty = 0
 priority = 0
@@ -118,7 +109,6 @@ next_map_nodes = [NodePath("../../MapLayer4/BossNode")]
 [node name="MissionNode2" parent="MapLayer3" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("4_llrlf")]
 modulate = Color(0.627451, 0.12549, 0.941176, 1)
 layout_mode = 2
-mission_info = SubResource("Resource_gf21t")
 next_map_nodes = [NodePath("../../MapLayer4/BossNode")]
 
 [node name="MissionNode3" parent="MapLayer3" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("4_llrlf")]

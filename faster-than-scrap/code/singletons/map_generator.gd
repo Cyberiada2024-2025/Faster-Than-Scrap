@@ -35,6 +35,7 @@ func generate_map_from_node() -> void:
 	if _map_node is MissionNode:
 		var mission_node: MissionNode = _map_node
 		mission_node.mission_info.start(_scene)
+		_add_enemy_spawner(mission_node)
 		return
 
 
@@ -46,10 +47,12 @@ func _spawn_shop() -> void:
 
 func _add_enemy_spawner(mission: MissionNode) -> void:
 	var spawner: CircleEntitySpawner = _spawner_prefab.instantiate()
+	print("addSpawner")
+	_scene.add_child.call_deferred(spawner)
 	spawner.baned_circles_centers.append(GameManager.player_ship.position)
 	spawner.baned_circles_radiuses.append(30.0)
 	spawner.set_spawner([Vector3.ZERO], mission.mission_info.difficulty)
-	_scene.add_child.call_deferred(spawner)
+	print("callSpawn")
 	spawner.spawn_entities()
 
 

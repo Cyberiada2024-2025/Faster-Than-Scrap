@@ -8,7 +8,7 @@ extends BaseEntitySpawner
 ## center of circle
 @export var center: Vector3
 @export_subgroup("Circle spawner setup")
-@export var circle_radius: float = 50.0
+@export var circle_radius: float = 300.0
 
 
 func _is_point_in_border(point: Vector3) -> bool:

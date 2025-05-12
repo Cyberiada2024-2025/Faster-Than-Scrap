@@ -37,15 +37,13 @@ text = "Build
 (dev purposes)"
 autowrap_mode = 3
 
-[node name="Enemies" type="Node" parent="."]
-
-[node name="FastEnemy" parent="Enemies" instance=ExtResource("5_3xk4m")]
+[node name="FastEnemy" parent="." instance=ExtResource("5_3xk4m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.13256, 0, -3.88455)
 
-[node name="HeavyEnemy" parent="Enemies" instance=ExtResource("6_ibgta")]
+[node name="HeavyEnemy" parent="." instance=ExtResource("6_ibgta")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5242, 0, -3.58749)
 
-[node name="StationaryEnemy" parent="Enemies" instance=ExtResource("7_fphmu")]
+[node name="StationaryEnemy" parent="." instance=ExtResource("7_fphmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5242, 0, 7.27022)
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_ibgta")]

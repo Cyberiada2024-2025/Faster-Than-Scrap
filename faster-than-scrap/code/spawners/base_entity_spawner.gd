@@ -13,10 +13,10 @@ extends Node
 ## weights of entities, if there are none then all have equal weight
 @export var entities_weights: Array[float] = []
 ## minimum distance betwen spawned entities
-@export var entities_distane: float = 1.0
+@export var entities_distane: float = 20.0
 @export_subgroup("Entities Count")
-@export var min_entities: int = 0
-@export var points_per_entitie: float = 10
+@export var min_entities: int = 10
+@export var points_per_entitie: float = 20
 ## limits of random y position
 @export_group("y spawn")
 @export var min_y: float = 0
@@ -24,6 +24,7 @@ extends Node
 
 var random_entity_function: Callable
 var entities_count: int
+var entities_instances: int
 var entities_distribuant: Array[float]
 
 var spawn_points: Array[Vector3] = []
@@ -87,7 +88,7 @@ func _set_spawn_points() -> void:
 
 
 func _ready() -> void:
-	entities_count = len(spawned_entities)
+	entities_instances = len(spawned_entities)
 	if len(entities_weights) == 0:
 		random_entity_function = _get_entity
 	else:
@@ -96,13 +97,13 @@ func _ready() -> void:
 		for weight in entities_weights:
 			weight_sum += weight
 		entities_distribuant[0] = entities_weights[0] / weight_sum
-		for i in range(1, entities_count):
+		for i in range(1, entities_instances):
 			entities_distribuant[i] = entities_distribuant[i - 1] + entities_weights[i] / weight_sum
 
 
 func _get_weighted_entity() -> Node:
 	var r: float = randf()
-	for i in range(entities_count):
+	for i in range(entities_instances):
 		if entities_distribuant[i] >= r:
 			return spawned_entities[i].instantiate()
 	print("Entities spawner weight not found - return first entity")
@@ -129,12 +130,15 @@ func start_spawner(difficulty: int) -> void:
 func set_spawner(points: Array[Vector3], difficulty: int):
 	set_points(points)
 	start_spawner(difficulty)
+	_ready()
 
 
 func spawn_entities():
+	print("SPAWNING")
 	var positions: Array[Vector3] = spawn_points.duplicate(true)
 	positions.shuffle()
 	#print(len(positions))
+	print(entities_count)
 	for i in range(entities_count):
 		var point = positions.pop_back()
 		while point != null and _is_point_in_baned_area(point):

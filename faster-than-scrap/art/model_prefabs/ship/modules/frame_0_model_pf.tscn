@@ -1,5 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bijtikg2etao2"]
 
+
 [ext_resource type="Material" uid="uid://u2jcla7cl0d0" path="res://art/materials/frame/frame_material_3d.tres" id="1_4xh5i"]
 [ext_resource type="ArrayMesh" uid="uid://dyggmpc21gmcw" path="res://art/models/modules/frame/frame.obj" id="2_bgipg"]
 

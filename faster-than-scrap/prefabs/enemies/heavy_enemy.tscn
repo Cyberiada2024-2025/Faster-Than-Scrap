@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://tw5ceddtulbf"]
+[gd_scene load_steps=29 format=3 uid="uid://tw5ceddtulbf"]
 
 [ext_resource type="Script" uid="uid://do6r4sdoiglip" path="res://code/enemy/NPC.gd" id="1_ok4vr"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_yc3bl"]
-[ext_resource type="PackedScene" uid="uid://dqr2x28shkw41" path="res://prefabs/projectiles/enemy projectiles/test_shotgun.tscn" id="3_ok4vr"]
+[ext_resource type="PackedScene" uid="uid://dpuxvcnuhlg62" path="res://prefabs/projectiles/heavy_enemy_blast.tscn" id="3_s1yp8"]
 [ext_resource type="Script" uid="uid://dpubtuvds874u" path="res://code/ship/ship.gd" id="4_s1yp8"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="5_q0blx"]
 [ext_resource type="Script" uid="uid://b1evvkbdec4yo" path="res://code/enemy/states/agressive_shooting.gd" id="6_xxpwe"]
@@ -14,10 +14,53 @@
 [ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="12_a4thn"]
 [ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/idle.gd" id="13_nle6o"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="14_rj4bm"]
-
-[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/poi/enemy_poi.tscn" id="15_rj4bm"]
+[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="15_rj4bm"]
 [ext_resource type="PackedScene" uid="uid://d3dt8ieym1dv8" path="res://art/models/enemies/enemy_2/heavy_enemy_unpacked.tscn" id="16_q0blx"]
+[ext_resource type="PackedScene" uid="uid://cslkg7x0muy4u" path="res://prefabs/vfx/particles/basic/fire.tscn" id="17_xxpwe"]
+[ext_resource type="Material" uid="uid://8jl1nnjrjx86" path="res://art/materials/vfx/engine_fire_weird.tres" id="18_xxpwe"]
 
+[sub_resource type="Curve" id="Curve_qoroq"]
+_data = [Vector2(0.256619, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bntxj"]
+curve = SubResource("Curve_qoroq")
+
+[sub_resource type="Curve" id="Curve_bntxj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_b5ybg"]
+curve = SubResource("Curve_bntxj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b5ybg"]
+direction = Vector3(0, 0, -1)
+spread = 90.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+damping_min = 15.0
+damping_max = 20.0
+scale_curve = SubResource("CurveTexture_b5ybg")
+alpha_curve = SubResource("CurveTexture_bntxj")
+
+[sub_resource type="Curve" id="Curve_pg335"]
+_data = [Vector2(0, 0), 0.0, 5.7583, 0, 0, Vector2(0.244898, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7ty2"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.682353, 0, 1)
+emission_enabled = true
+emission = Color(0.803495, 0.69185, 0.226226, 1)
+emission_energy_multiplier = 16.0
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_7shuu"]
+material = SubResource("StandardMaterial3D_b7ty2")
+size = 0.1
+curve = SubResource("Curve_pg335")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rj4bm"]
 radius = 1.636
@@ -32,12 +75,27 @@ rotation_speed = 0.03
 weapon = NodePath("Weapon")
 ship = NodePath("Ship")
 
-[node name="Weapon" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.55962)
+[node name="Weapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.75564)
 script = ExtResource("2_yc3bl")
+muzzle_flash = NodePath("MuzzleFlash")
 energy_cost = 30.0
 cooldown = 2.0
-projectile = ExtResource("3_ok4vr")
+projectile = ExtResource("3_s1yp8")
+
+[node name="MuzzleFlash" type="GPUParticles3D" parent="Weapon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.572005)
+emitting = false
+amount = 300
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+transform_align = 3
+trail_enabled = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_b5ybg")
+draw_pass_1 = SubResource("RibbonTrailMesh_7shuu")
 
 [node name="Ship" type="RigidBody3D" parent="."]
 gravity_scale = 0.0
@@ -114,6 +172,12 @@ shape = SubResource("BoxShape3D_rj4bm")
 
 [node name="enemy_model_2" parent="." instance=ExtResource("16_q0blx")]
 transform = Transform3D(0.75, 0, 0, 0, -0.75, 6.55671e-08, 0, -6.55671e-08, -0.75, 0, 0, 0)
+
+[node name="exhaust fire2" parent="." instance=ExtResource("17_xxpwe")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -2.84232e-08, 0.00520175, 1.49975)
+radius = 0.3
+height = 1.0
+material = ExtResource("18_xxpwe")
 
 [connection signal="damaged" from="Ship" to="enemy_model_2" method="_on_ship_damage"]
 [connection signal="damaged" from="DamageController" to="Ship" method="_on_take_damage"]

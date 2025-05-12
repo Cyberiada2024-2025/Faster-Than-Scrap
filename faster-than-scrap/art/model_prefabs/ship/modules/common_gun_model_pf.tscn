@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://ba5cisvxw5t1" path="res://art/materials/common_gun/common_gun_material_3d.tres" id="1_rjkge"]
 [ext_resource type="ArrayMesh" uid="uid://lwlx588xi1eg" path="res://art/models/modules/common_gun/common_gun.obj" id="2_7wi8k"]
 
+
 [node name="CommonGunModel" type="Node3D"]
 
 [node name="CommonGun" type="MeshInstance3D" parent="."]

@@ -4,17 +4,17 @@ class_name RandomTransition extends StateNPC
 ## It's supposed to be used a relay for default transition to allow
 ## branching transition with weighted propabilities.
 ## In the tree it's supposed to be next to the states, and it has children
-## of type WeighedPropability.
+## of type WeighedProbability.
 
 
-class StatePropability:
+class StateProbability:
 	extends Resource
 	var state: State
-	var propability: float
+	var probability: float
 
-	func _init(new_state: State, state_propability: float) -> void:
+	func _init(new_state: State, state_probability: float) -> void:
 		self.state = new_state
-		self.propability = state_propability
+		self.probability = state_probability
 
 
 var new_states: Array[WeighedState]
@@ -32,18 +32,18 @@ func state_update(_delta: float) -> void:
 		sum += state.weight
 
 	# create new array with propabilities
-	var states_prob: Array[StatePropability] = []
+	var states_prob: Array[StateProbability] = []
 	for state in new_states:
 		var prob = float(state.weight) / sum
-		states_prob.append(StatePropability.new(state.state, prob))
+		states_prob.append(StateProbability.new(state.state, prob))
 
 	var t = randf()
 	for state in states_prob:
-		if t < state.propability:
+		if t < state.probability:
 			# change to that state
 			finished.emit(state.state.name)
 			return
-		t -= state.propability
+		t -= state.probability
 
 	# in case it didn't find any (float precision error?)
 	# emit last

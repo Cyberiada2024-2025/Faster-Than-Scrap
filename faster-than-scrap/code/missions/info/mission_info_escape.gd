@@ -17,14 +17,3 @@ func get_node_color() -> Color:
 
 func get_node_description() -> String:
 	return "Mission Type:\nEscape"
-
-
-func _get_default_spawner() -> PackedScene:
-	return preload("res://prefabs/spawners/line_enemy_spawner.tscn")
-
-
-func _get_spawner_points() -> Array[Vector3]:
-	var result: Array[Vector3]
-	result.push_back(GameManager.player_ship.position)
-	result.push_back(portal_position)
-	return result

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bnnvqogplwfqa"]
 
-[ext_resource type="Script" uid="uid://dlhtkrvllhbjm" path="res://code/evironment/setup_fly_scene_with_spawner.gd" id="1_ibgta"]
+[ext_resource type="Script" uid="uid://dtqvp1s2omow6" path="res://code/evironment/setup_fly_scene.gd" id="1_fphmu"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="2_g53x4"]
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="3_jnhio"]
 [ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/enemies/fast_enemy.tscn" id="5_3xk4m"]
@@ -13,7 +13,7 @@
 [node name="Space" type="Node3D"]
 
 [node name="SetupFlyScene" type="Node" parent="."]
-script = ExtResource("1_ibgta")
+script = ExtResource("1_fphmu")
 metadata/_custom_type_script = "uid://dtqvp1s2omow6"
 
 [node name="HudSpawner" type="Node" parent="."]

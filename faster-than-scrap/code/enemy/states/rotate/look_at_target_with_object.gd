@@ -64,4 +64,3 @@ func _set_rotation_offset(look_object: Node3D) -> void:
 	var look_foward_2d = Vector2(look_foward.x, look_foward.z)
 
 	rotation_offset = ship_forward_2d.angle_to(look_foward_2d)
-	pass

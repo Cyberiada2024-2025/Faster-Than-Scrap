@@ -12,9 +12,7 @@ func _ready() -> void:
 	modules = Module.find_all_modules(self.get_parent_node_3d())
 	for module: Module in modules:
 		max_health += module.max_hp
-		module.destroyed.connect(func():
-			modules.erase(module)
-			)
+		module.destroyed.connect(func(): modules.erase(module))
 
 
 ## returns a number between 0 and 1

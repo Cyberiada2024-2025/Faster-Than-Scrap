@@ -9,6 +9,7 @@ var _map_node: MapNode = null
 var _scene: Node = null
 
 var _shop_prefab = preload("res://prefabs/environment/shop_miniature.tscn")
+var _spawner_prefab = preload("res://prefabs/spawners/circle_enemy_spawner.tscn")
 
 
 ## Called whenever the scene should be procedurally generated (
@@ -41,6 +42,15 @@ func _spawn_shop() -> void:
 	var shop = _shop_prefab.instantiate()
 	_scene.add_child.call_deferred(shop)
 	shop.position = Vector3(12, 0, 0)
+
+
+func _add_enemy_spawner(mission: MissionNode) -> void:
+	var spawner: CircleEntitySpawner = _spawner_prefab.instantiate()
+	spawner.baned_circles_centers.append(GameManager.player_ship.position)
+	spawner.baned_circles_radiuses.append(30.0)
+	spawner.set_spawner([Vector3.ZERO], mission.mission_info.difficulty)
+	_scene.add_child.call_deferred(spawner)
+	spawner.spawn_entities()
 
 
 func detach_and_save_current_scene() -> void:

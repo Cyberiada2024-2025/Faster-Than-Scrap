@@ -6,6 +6,7 @@ extends Node3D
 @export_dir var modules: Array[String] = []
 ## set starting cash here
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var starting_bank: int = 0
+@export var max_items_count = 10
 #@export var root: Node3D
 
 @export_category("Visuals")
@@ -30,33 +31,29 @@ var first_frame: bool = true
 
 var areas: Array[Area3D] = []
 
+#TODO turn into singleton? so it gets ready only once
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var i: int = 0
-	for module in ModulesList.all_modules:
-		#var clone = load(dir)
-		var mod = module instantiate()
+	MissionManager.map_finished.connect(_generate_shop)
+	_generate_shop()
+
+
+func _generate_shop() -> void:
+	for i in range(0, max_items_count):
+		var module = (
+			ModulesList
+			. all_modules[randi_range(0, ModulesList.all_modules.size() - 1)]
+			. instantiate()
+		)
 		var area = Area3D.new()
 		add_child(area)
-		area.add_child(mod)
-		mod.position = Vector3.ZERO
+		area.add_child(module)
+		module.position = Vector3.ZERO
 		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2
 		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
 		area.position = Vector3(x, 0, z)
-		i += 1
-
-	#for dir in modules:
-	#var clone = load(dir)
-	#var mod = clone.instantiate()
-	#var area = Area3D.new()
-	#add_child(area)
-	#area.add_child(mod)
-	#mod.position = Vector3.ZERO
-	#var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2
-	#var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
-	#area.position = Vector3(x, 0, z)
-	#i += 1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -6,6 +6,8 @@ var missions: Array[Mission] = []
 
 var scene_loader: SceneLoader
 
+signal map_finished
+
 
 func _ready() -> void:
 	scene_loader = $SceneLoader
@@ -23,6 +25,7 @@ func add_mission(mission: Mission) -> void:
 func on_mission_finished(mission: Mission) -> void:
 	if mission.info.priority == MissionInfo.Priority.MAIN_QUEST:
 		main_mission_finished = true
+		map_finished.emit()
 		print("MissionManager: FINISHED MAIN QUEST")
 		GameManager.player_ship.leave_animation.start_animation(
 			scene_loader.load_map_selector_scene

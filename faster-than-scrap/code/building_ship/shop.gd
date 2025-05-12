@@ -34,9 +34,9 @@ var areas: Array[Area3D] = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var i: int = 0
-	for dir in modules:
-		var clone = load(dir)
-		var mod = clone.instantiate()
+	for module in ModulesList.all_modules:
+		#var clone = load(dir)
+		var mod = module instantiate()
 		var area = Area3D.new()
 		add_child(area)
 		area.add_child(mod)
@@ -45,6 +45,18 @@ func _ready() -> void:
 		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
 		area.position = Vector3(x, 0, z)
 		i += 1
+
+	#for dir in modules:
+	#var clone = load(dir)
+	#var mod = clone.instantiate()
+	#var area = Area3D.new()
+	#add_child(area)
+	#area.add_child(mod)
+	#mod.position = Vector3.ZERO
+	#var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2
+	#var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
+	#area.position = Vector3(x, 0, z)
+	#i += 1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

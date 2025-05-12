@@ -23,6 +23,8 @@ BossManager="*res://code/singletons/boss_manager.gd"
 MapGenerator="*res://code/singletons/map_generator.gd"
 MapSaver="*res://code/singletons/map_saver.gd"
 CutsceneManager="*res://code/singletons/cutscene_manager.gd"
+ModulesList="*res://prefabs/singletons/modules_list.tscn"
+Rarities="*res://code/singletons/rarities.gd"
 
 [display]
 

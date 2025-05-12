@@ -24,7 +24,6 @@ extends Node3D
 ## Projectiles don't dissappear immidietly
 @export var particle_holder: WaitFree
 @export var particles: Array[GPUParticles3D]
-@export var particle_die_time: float = 10
 
 var _current_lifetime: float = 0
 
@@ -56,6 +55,6 @@ func _on_damage_applied(_damage: Damage, _target: Damageable) -> void:
 		if particle_holder != null:
 			for part in particles:
 				part.emitting = false
-			particle_holder.wait_free(particle_die_time)
+			particle_holder.wait_free()
 			particle_holder.reparent(get_tree().current_scene)
 		queue_free()

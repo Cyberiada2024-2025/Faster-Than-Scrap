@@ -1,16 +1,21 @@
 extends Node
 
 @export var player: AnimationPlayer
-@export var start_anim: String = "On"
-@export var end_anim: String = "Off"
 @export var holder: WaitFree
-@export var end_time: float = 1.0
+
+const start_anim: String = "On"
+const end_anim: String = "Off"
+
+var animation_check: bool
 
 func _ready() -> void:
-	player.play(start_anim)
+	animation_check = player.has_animation(start_anim) && player.has_animation(end_anim)
+	if animation_check:
+		player.play(start_anim)
 
 func _notification(notification):
 	if (notification == NOTIFICATION_PREDELETE):
 		holder.reparent(get_parent())
-		player.play(end_anim)
-		holder.wait_free(end_time)
+		if animation_check:
+			player.play(end_anim)
+		holder.wait_free()

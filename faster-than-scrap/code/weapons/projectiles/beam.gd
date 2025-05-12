@@ -10,21 +10,24 @@ extends Node3D
 @export var max_length: float = 20
 
 @export var player: AnimationPlayer
-@export var start_anim: String = "On"
-@export var end_anim: String = "Off"
 @export var holder: WaitFree
-@export var end_time: float = 1.0
 
 @export var mesh: MeshInstance3D
 @export var length_name: String = "current_length"
 
+const start_anim: String = "On"
+const end_anim: String = "Off"
+
+var animation_check: bool
 var _beam_length: float
 
 @onready var _damage_raycast: DamageRaycast3D = $DamageRaycast3D
 
 
 func _ready() -> void:
-	player.play(start_anim)
+	animation_check = player.has_animation(start_anim) && player.has_animation(end_anim)
+	if animation_check:
+		player.play(start_anim)
 	_damage_raycast.target_position = Vector3.FORWARD * max_length
 	_beam_length = _damage_raycast.target_position.length()
 
@@ -45,5 +48,6 @@ func _process(_delta: float) -> void:
 func _notification(notification):
 	if (notification == NOTIFICATION_PREDELETE):
 		holder.reparent(get_parent())
-		player.play(end_anim)
-		holder.wait_free(end_time)
+		if animation_check:
+			player.play(end_anim)
+		holder.wait_free()

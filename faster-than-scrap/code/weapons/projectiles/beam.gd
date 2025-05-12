@@ -25,7 +25,7 @@ var _beam_length: float
 
 
 func _ready() -> void:
-	animation_check = player.has_animation(START_ANIM) && player.has_animation(end_anim)
+	animation_check = player.has_animation(START_ANIM) && player.has_animation(END_ANIM)
 	if animation_check:
 		player.play(START_ANIM)
 	_damage_raycast.target_position = Vector3.FORWARD * max_length
@@ -49,5 +49,5 @@ func _notification(notification):
 	if (notification == NOTIFICATION_PREDELETE):
 		holder.reparent(get_parent())
 		if animation_check:
-			player.play(end_anim)
+			player.play(END_ANIM)
 		holder.wait_free()

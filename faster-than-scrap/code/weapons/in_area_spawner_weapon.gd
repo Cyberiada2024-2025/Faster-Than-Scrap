@@ -1,4 +1,4 @@
-class_name SpawnerInAreaWeapon
+class_name InAreaSpawnerWeapon
 extends SpawnerWeapon
 
 @export var spawn_count: int = 1

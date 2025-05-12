@@ -24,7 +24,7 @@ func _ready() -> void:
 		)
 		sprite.position = _random_point_inside_circle()
 		sprite.rotation_degrees = Vector3(90, 0, 0)
-		#ssprite.render_priority = i
+		sprite.render_priority = -i
 		var scale = 100
 		sprite.scale = Vector3(scale, scale, scale)
 		add_child(sprite)

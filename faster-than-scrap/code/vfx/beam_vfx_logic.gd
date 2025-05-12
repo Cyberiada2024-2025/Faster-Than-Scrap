@@ -1,10 +1,10 @@
 extends Node
 
-@export var player: AnimationPlayer
-@export var holder: WaitFree
-
 const start_anim: String = "On"
 const end_anim: String = "Off"
+
+@export var player: AnimationPlayer
+@export var holder: WaitFree
 
 var animation_check: bool
 

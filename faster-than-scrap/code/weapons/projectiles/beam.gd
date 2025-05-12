@@ -2,6 +2,9 @@ class_name Beam
 
 extends Node3D
 
+const start_anim: String = "On"
+const end_anim: String = "Off"
+
 ## Beam object that extends from it's start position up to the [DamageRaycast3D] beam length,
 ## or the raycast's collision point.
 
@@ -14,9 +17,6 @@ extends Node3D
 
 @export var mesh: MeshInstance3D
 @export var length_name: String = "current_length"
-
-const start_anim: String = "On"
-const end_anim: String = "Off"
 
 var animation_check: bool
 var _beam_length: float

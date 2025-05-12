@@ -23,7 +23,7 @@ static func show_popup(title: String, content: String, options: Array[String]) -
 	popup.process_mode = Node.PROCESS_MODE_ALWAYS
 
 	# add to the scene
-	GameManager.get_tree().current_scene.add_child(popup)
+	GameManager.get_tree().current_scene.add_child.call_deferred(popup)
 	# pause the game
 	GameManager._pause_entities()
 

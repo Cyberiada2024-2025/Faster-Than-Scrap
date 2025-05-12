@@ -1,12 +1,135 @@
-[gd_scene load_steps=3 format=3 uid="uid://vpjhyf0yh8md"]
+[gd_scene load_steps=16 format=3 uid="uid://vpjhyf0yh8md"]
 
+[ext_resource type="Script" uid="uid://bj3jqovmv760c" path="res://code/vfx/portal_object.gd" id="1_e7wwa"]
 [ext_resource type="PackedScene" uid="uid://c7gr12rhsysjx" path="res://prefabs/ui/poi/mission_poi.tscn" id="1_yvaxx"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_2gnvc"]
+[sub_resource type="Curve" id="Curve_e7wwa"]
+_data = [Vector2(0.398773, 0), 0.0, 0.0, 0, 0, Vector2(0.441718, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[node name="Portal" type="Node3D"]
+[sub_resource type="CurveTexture" id="CurveTexture_dgf7f"]
+curve = SubResource("Curve_e7wwa")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_2gnvc")
+[sub_resource type="Gradient" id="Gradient_ojbcp"]
+offsets = PackedFloat32Array(0, 0.462302, 0.81746)
+colors = PackedColorArray(0.3072, 0.64, 0.64, 1, 0.1711, 0.1711, 0.59, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6qbpo"]
+gradient = SubResource("Gradient_ojbcp")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_dgf7f"]
+_data = [Vector2(0.828221, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tpnjs"]
+curve = SubResource("Curve_dgf7f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ojbcp"]
+emission_shape_offset = Vector3(0, -2, 0)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 8.0
+emission_ring_inner_radius = 9.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 90.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -8.0
+radial_accel_max = -5.0
+tangential_accel_min = -5.0
+tangential_accel_max = -4.0
+damping_min = 4.5
+damping_max = 5.5
+attractor_interaction_enabled = false
+scale_min = 0.2
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_tpnjs")
+color_initial_ramp = SubResource("GradientTexture1D_6qbpo")
+alpha_curve = SubResource("CurveTexture_dgf7f")
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
+turbulence_noise_strength = 0.5
+turbulence_noise_scale = 10.0
+
+[sub_resource type="Curve" id="Curve_6qbpo"]
+_data = [Vector2(0, 0.072167), 0.0, 1.21988, 0, 0, Vector2(0.21017, 0.188469), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ak7dd"]
+transparency = 3
+alpha_hash_scale = 0.1
+alpha_antialiasing_mode = 0
+cull_mode = 2
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.3
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_o0b7f"]
+material = SubResource("StandardMaterial3D_ak7dd")
+shape = 0
+curve = SubResource("Curve_6qbpo")
+
+[sub_resource type="Animation" id="Animation_tpnjs"]
+resource_name = "Off"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:draw_pass_1:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o0b7f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:draw_pass_1:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vwd02"]
+_data = {
+&"Off": SubResource("Animation_tpnjs"),
+&"RESET": SubResource("Animation_o0b7f")
+}
+
+[node name="Portal" type="Node3D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_e7wwa")
+player = NodePath("AnimationPlayer")
 
 [node name="MissionPoi" parent="." instance=ExtResource("1_yvaxx")]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 1000
+lifetime = 6.0
+preprocess = 6.0
+collision_base_size = 0.0
+local_coords = true
+transform_align = 3
+trail_enabled = true
+trail_lifetime = 0.6
+process_material = SubResource("ParticleProcessMaterial_ojbcp")
+draw_pass_1 = SubResource("RibbonTrailMesh_o0b7f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../GPUParticles3D")
+libraries = {
+&"": SubResource("AnimationLibrary_vwd02")
+}

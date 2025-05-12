@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwn2a8yi0618d"
-path.s3tc="res://.godot/imported/mix_noise.png-7ad4727be44d8a0f05706a0b85539628.s3tc.ctex"
+uid="uid://b1a4xyvg0lnn6"
+path.s3tc="res://.godot/imported/rockyplanetnormal_planet1color.png-7aeba1e437a2ec809f8d207b381ba78a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "5597ffe1d3c83dfc346cb0fd055fc56a"
+}
 
 [deps]
 
-source_file="res://art/textures/enemies/mix_noise.png"
-dest_files=["res://.godot/imported/mix_noise.png-7ad4727be44d8a0f05706a0b85539628.s3tc.ctex"]
+source_file="res://art/model_prefabs/rockyplanetnormal_planet1color.png"
+dest_files=["res://.godot/imported/rockyplanetnormal_planet1color.png-7aeba1e437a2ec809f8d207b381ba78a.s3tc.ctex"]
 
 [params]
 

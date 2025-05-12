@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl7mgydbx37a1"
-path.s3tc="res://.godot/imported/rust_noise.png-39bb85cb39579cdb16de9344e9c831ac.s3tc.ctex"
+uid="uid://ditdai7w78iji"
+path.s3tc="res://.godot/imported/fire_gradient.png-580be39ad6fd6ff6e81b6b564bf5138c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://art/textures/enemies/rust_noise.png"
-dest_files=["res://.godot/imported/rust_noise.png-39bb85cb39579cdb16de9344e9c831ac.s3tc.ctex"]
+source_file="res://art/textures/vfxy/fire_gradient.png"
+dest_files=["res://.godot/imported/fire_gradient.png-580be39ad6fd6ff6e81b6b564bf5138c.s3tc.ctex"]
 
 [params]
 

@@ -4,9 +4,11 @@ class_name TimedParticle
 extends Node3D
 
 ## Node that is removed from the scene after some time has passed.
+
 ## Primarily used for particles. It should a parent for them if there are multiple.
 @export var _lifetime: float
 ## If parent of multiple particle systems, it allows previewing all of them at the same time.
+
 @export var preview: bool = false
 
 

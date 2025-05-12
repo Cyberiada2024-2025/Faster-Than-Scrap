@@ -48,6 +48,8 @@ shape = SubResource("SphereShape3D_fe0g0")
 [node name="Star Laser" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 
 [node name="Laser" parent="StaticBody3D/Core/Star Laser" index="0" node_paths=PackedStringArray("ship")]
+max_hp = 100.0
+hp = 100.0
 ship = NodePath("../../../../Boss")
 
 [node name="Projectile weapon" parent="StaticBody3D/Core/Star Laser/Right" index="1" node_paths=PackedStringArray("ship")]
@@ -60,6 +62,8 @@ ship = NodePath("../../../../../Boss")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="Laser" parent="StaticBody3D/Core/Star Laser2" index="0" node_paths=PackedStringArray("ship")]
+max_hp = 100.0
+hp = 100.0
 ship = NodePath("../../../../Boss")
 
 [node name="Projectile weapon" parent="StaticBody3D/Core/Star Laser2/Right" index="1" node_paths=PackedStringArray("ship")]
@@ -72,6 +76,8 @@ ship = NodePath("../../../../../Boss")
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Laser" parent="StaticBody3D/Core/Star Laser3" index="0" node_paths=PackedStringArray("ship")]
+max_hp = 100.0
+hp = 100.0
 ship = NodePath("../../../../Boss")
 
 [node name="Projectile weapon" parent="StaticBody3D/Core/Star Laser3/Right" index="1" node_paths=PackedStringArray("ship")]
@@ -84,6 +90,8 @@ ship = NodePath("../../../../../Boss")
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
 
 [node name="Laser" parent="StaticBody3D/Core/Star Laser4" index="0" node_paths=PackedStringArray("ship")]
+max_hp = 100.0
+hp = 100.0
 ship = NodePath("../../../../Boss")
 
 [node name="Projectile weapon" parent="StaticBody3D/Core/Star Laser4/Right" index="1" node_paths=PackedStringArray("ship")]

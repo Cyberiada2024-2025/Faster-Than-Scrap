@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://csls7imysojta"]
 
-[ext_resource type="Script" uid="uid://b86vmkhkjsh2k" path="res://code/weapons/projectiles/beam.gd" id="1_xdvip"]
-[ext_resource type="Script" uid="uid://buwehho3rx3g0" path="res://code/damage/damage_raycast_3d.gd" id="2_rexpx"]
-[ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_ein6c"]
+[ext_resource type="Script" uid="uid://b86vmkhkjsh2k" path="res://code/weapons/projectiles/beam.gd" id="1_uoyes"]
+[ext_resource type="Script" uid="uid://buwehho3rx3g0" path="res://code/damage/damage_raycast_3d.gd" id="2_ux1bn"]
+[ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_bi3tx"]
 
 [sub_resource type="Resource" id="Resource_7ctxp"]
-script = ExtResource("3_ein6c")
+script = ExtResource("3_bi3tx")
 value = 100.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2p3g"]
@@ -20,7 +20,7 @@ bottom_radius = 0.1
 height = 1.0
 
 [node name="EnemyBeam" type="Node3D" node_paths=PackedStringArray("beam_indicator")]
-script = ExtResource("1_xdvip")
+script = ExtResource("1_uoyes")
 beam_indicator = NodePath("Node3D")
 
 [node name="DamageRaycast3D" type="RayCast3D" parent="."]
@@ -28,7 +28,7 @@ target_position = Vector3(0, 0, -50)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
-script = ExtResource("2_rexpx")
+script = ExtResource("2_ux1bn")
 _damage = SubResource("Resource_7ctxp")
 
 [node name="Node3D" type="Node3D" parent="."]

@@ -170,7 +170,7 @@ script = ExtResource("4_clgev")
 [node name="MoveToOrbit" type="Node" parent="StateMachineNPC/Move To Orbit"]
 script = ExtResource("10_clgev")
 orbit_radius = 20.0
-lerp_strength = 0.8
+lerp_strength = 0.6
 
 [node name="LookAt" type="Node" parent="StateMachineNPC/Move To Orbit"]
 script = ExtResource("6_xr00f")
@@ -188,7 +188,7 @@ script = ExtResource("4_clgev")
 script = ExtResource("5_5ov2f")
 orbit_radius = 20.0
 lerp_strength = 0.8
-orbit_angular_speed = 45.0
+orbit_angular_speed = 20.0
 
 [node name="LookAt" type="Node" parent="StateMachineNPC/OrbitComposite"]
 script = ExtResource("6_xr00f")
@@ -208,8 +208,8 @@ script = ExtResource("4_clgev")
 
 [node name="MoveToOrbit" type="Node" parent="StateMachineNPC/GetCloser"]
 script = ExtResource("10_clgev")
-orbit_radius = 10.0
-lerp_strength = 0.6
+orbit_radius = 2.0
+lerp_strength = 0.5
 
 [node name="LookAt" type="Node" parent="StateMachineNPC/GetCloser"]
 script = ExtResource("6_xr00f")

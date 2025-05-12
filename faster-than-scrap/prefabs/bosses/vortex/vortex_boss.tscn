@@ -8,8 +8,8 @@
 [ext_resource type="Script" uid="uid://bnjdv1cll5kvy" path="res://code/weapons/on_target_spawner_weapon.gd" id="5_pqq2h"]
 [ext_resource type="PackedScene" uid="uid://kljbsmhkutax" path="res://prefabs/projectiles/boss_projectiles/vortex_spike.tscn" id="6_4qxwn"]
 [ext_resource type="Script" uid="uid://cdwjrb230l0qw" path="res://code/enemy/states/move/teleport.gd" id="6_yljnl"]
-[ext_resource type="Script" uid="uid://clbayyulct4as" path="res://code/enemy/transitions/transition_on_state_finish.gd" id="7_yfy1f"]
-[ext_resource type="Script" uid="uid://sb0nfuqj50k0" path="res://code/weapons/in_area_spawner_weapon.gd" id="8_kr82f"]
+[ext_resource type="Script" path="res://code/enemy/transitions/transition_on_state_finish.gd" id="7_yfy1f"]
+[ext_resource type="Script" path="res://code/weapons/in_area_spawner_weapon.gd" id="8_kr82f"]
 [ext_resource type="PackedScene" uid="uid://dxlsr82xkj688" path="res://prefabs/projectiles/boss_projectiles/vortex_cloud.tscn" id="8_vs6yj"]
 [ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/enemies/fast_enemy.tscn" id="10_54wyt"]
 [ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="12_4qxwn"]
@@ -71,6 +71,7 @@ metadata/_custom_type_script = "uid://6f2yjn6wgcun"
 [node name="SpikeShooter" type="Node3D" parent="StaticBody3D/Weapons/Spike shooter module"]
 script = ExtResource("5_pqq2h")
 y_offset = -100.0
+base_radius = 20.0
 cooldown = 0.5
 projectile = ExtResource("6_4qxwn")
 metadata/_custom_type_script = "uid://bnjdv1cll5kvy"
@@ -90,7 +91,6 @@ min_range = 15.0
 max_range = 40.0
 cooldown = 0.5
 projectile = ExtResource("8_vs6yj")
-metadata/_custom_type_script = "uid://sb0nfuqj50k0"
 
 [node name="Enemy Spawner module" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
 script = ExtResource("5_bk2yy")
@@ -107,7 +107,6 @@ min_range = 15.0
 max_range = 40.0
 cooldown = 0.5
 projectile = ExtResource("10_54wyt")
-metadata/_custom_type_script = "uid://sb0nfuqj50k0"
 
 [node name="StateMachineNPC" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("12_cbrw2")

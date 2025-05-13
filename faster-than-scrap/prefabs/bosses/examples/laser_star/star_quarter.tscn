@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://otlsujtci37k"]
+[gd_scene load_steps=19 format=3 uid="uid://otlsujtci37k"]
 
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_2btrf"]
 [ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="1_llond"]

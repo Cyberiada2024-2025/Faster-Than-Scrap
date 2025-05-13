@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpuxvcnuhlg62"]
+
+[ext_resource type="PackedScene" uid="uid://chcrxxwm78c8k" path="res://prefabs/projectiles/heavy_enemy_pellet.tscn" id="1_qh0vj"]
+
+[node name="HeavyEnemyBlast" type="Node3D"]
+
+[node name="EnemyHeavyPellet" parent="." instance=ExtResource("1_qh0vj")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0)
+
+[node name="EnemyHeavyPellet2" parent="." instance=ExtResource("1_qh0vj")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0, 0)
+
+[node name="EnemyHeavyPellet3" parent="." instance=ExtResource("1_qh0vj")]
+
+[node name="EnemyHeavyPellet4" parent="." instance=ExtResource("1_qh0vj")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 0, 0, 0)
+
+[node name="EnemyHeavyPellet5" parent="." instance=ExtResource("1_qh0vj")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 0, 0)

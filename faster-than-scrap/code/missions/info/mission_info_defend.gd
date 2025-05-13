@@ -18,3 +18,6 @@ func get_node_color() -> Color:
 
 func get_node_description() -> String:
 	return "Mission Type:\nDefend"
+
+func get_mission_final_target_position() -> Vector3:
+	return defendable_position

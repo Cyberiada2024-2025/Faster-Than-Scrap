@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://54v64mnafj41"
+path.s3tc="res://.godot/imported/enemy_model_3_spherebakemetal-spherebakeroughnes.png-a96a2cc4f5d9b3af4317c7ed3b121a6e.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "2b8dbc186b6200c6d0c9e808873805bc"
+}
+
+[deps]
+
+source_file="res://art/textures/enemies/enemy_3/enemy_model_3_spherebakemetal-spherebakeroughnes.png"
+dest_files=["res://.godot/imported/enemy_model_3_spherebakemetal-spherebakeroughnes.png-a96a2cc4f5d9b3af4317c7ed3b121a6e.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

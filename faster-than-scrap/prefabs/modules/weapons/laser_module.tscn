@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbajfkkhivhl0"]
+[gd_scene load_steps=15 format=3 uid="uid://dbajfkkhivhl0"]
 
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_akoi3"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_nlg4d"]
-[ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/enemy projectiles/test_projectile.tscn" id="3_ts8di"]
+[ext_resource type="PackedScene" uid="uid://d0bewf11rd3s4" path="res://prefabs/projectiles/basic_gun_projectile.tscn" id="3_nlg4d"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_nlg4d"]
+[ext_resource type="PackedScene" uid="uid://2t0lcotdylws" path="res://prefabs/vfx/particles/muzzle_flash.tscn" id="4_ts8di"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="6_cxsht"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="7_fkld4"]
 [ext_resource type="AudioStream" uid="uid://mavrm3tbmwii" path="res://art/audio/sounds/illegal_position_sound.wav" id="8_ts8di"]
@@ -35,16 +36,20 @@ sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
-module_name = "Laser"
-description = "One of basic weapons. Activate to shoot long-range laser projectile."
+module_name = "Gun"
+description = "One of basic weapons. Activate to shoot long-range projectile."
 
-[node name="SpawnerWeapon" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.610518)
+[node name="SpawnerWeapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.694184)
 script = ExtResource("2_nlg4d")
+muzzle_flash = NodePath("MuzzleFlash")
 cooldown = 0.5
 recoil_force = 50.0
-projectile = ExtResource("3_ts8di")
+projectile = ExtResource("3_nlg4d")
 metadata/_custom_type_script = "uid://crmxerc164n6q"
+
+[node name="MuzzleFlash" parent="SpawnerWeapon" instance=ExtResource("4_ts8di")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.189615)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.00262642)

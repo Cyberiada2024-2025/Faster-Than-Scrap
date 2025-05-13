@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://k2fy6gletmi3"]
+
+[ext_resource type="Script" uid="uid://b848rqn71fgir" path="res://code/dialogues/dialogue.gd" id="1_jwyou"]
+
+[node name="DialogueTree" type="Node3D" node_paths=PackedStringArray("next_dialogue")]
+script = ExtResource("1_jwyou")
+title = "oh you're finally awake"
+next_dialogue = NodePath("Dialogue2")
+
+[node name="Dialogue2" type="Node" parent="." node_paths=PackedStringArray("radio_results")]
+script = ExtResource("1_jwyou")
+text = "Do you fear death?"
+title = "Davy Jones"
+radio_choices = Array[String](["yes", "no"])
+radio_results = [NodePath("../Yes"), NodePath("../No")]
+type = 1
+metadata/_custom_type_script = "uid://b848rqn71fgir"
+
+[node name="Yes" type="Node" parent="."]
+script = ExtResource("1_jwyou")
+text = "there is no emotion there is peace"
+title = "Jedi Code"
+metadata/_custom_type_script = "uid://b848rqn71fgir"
+
+[node name="No" type="Node" parent="." node_paths=PackedStringArray("next_dialogue")]
+script = ExtResource("1_jwyou")
+text = "so you have chosen death"
+title = "Saruman the White"
+next_dialogue = NodePath("..")
+metadata/_custom_type_script = "uid://b848rqn71fgir"

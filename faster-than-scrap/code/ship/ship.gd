@@ -2,6 +2,7 @@ class_name Ship
 extends Node3D
 
 signal destroyed(ship)
+signal damaged(hp_percent)
 
 ## Base class for player and enemy
 
@@ -50,6 +51,7 @@ func _on_energy_change() -> void:
 
 func _on_take_damage(damage: Damage) -> void:
 	hp -= damage.value
+	damaged.emit(hp/max_hp)
 	if hp <= 0:
 		on_destroy()
 

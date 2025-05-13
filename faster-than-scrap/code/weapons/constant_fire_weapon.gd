@@ -4,6 +4,8 @@ extends BaseWeapon
 
 ## Weapon that spawns a single projectile at a time, such as beam, lightsaber, engine effect, etc.
 
+@export var muzzle_flash: GPUParticles3D
+
 var active_projectile: Node3D = null
 
 
@@ -32,6 +34,8 @@ func try_activate() -> Node3D:
 
 	active_projectile = _spawn_projectile()
 	add_child(active_projectile)
+	if muzzle_flash != null:
+		muzzle_flash.emitting = true
 	return active_projectile
 
 
@@ -44,4 +48,6 @@ func try_deactivate() -> bool:
 
 	active_projectile.queue_free()
 	_current_cooldown = cooldown
+	if muzzle_flash != null:
+		muzzle_flash.emitting = false
 	return true

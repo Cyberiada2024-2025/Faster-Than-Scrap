@@ -5,15 +5,15 @@
 [ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="3_4c6o0"]
 [ext_resource type="PackedScene" uid="uid://otlsujtci37k" path="res://prefabs/bosses/examples/laser_star/star_quarter.tscn" id="4_06rxb"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_f6ca3"]
-[ext_resource type="Script" uid="uid://ylaka7vn7784" path="res://code/enemy/states/rotate.gd" id="5_ssdl0"]
-[ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shooting.gd" id="6_vtp5i"]
+[ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="6_vtp5i"]
+[ext_resource type="Script" uid="uid://crp1vxubokrt" path="res://code/enemy/states/move/move_to_orbit_place.gd" id="7_tge7b"]
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="7_xvv2n"]
-[ext_resource type="Script" uid="uid://3y6n471w4m3e" path="res://code/enemy/states/change_position.gd" id="8_5u1yc"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="8_jstny"]
-[ext_resource type="Script" uid="uid://p2tfapf0egxl" path="res://code/enemy/transitions/timed_transition.gd" id="9_k4714"]
+[ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="9_k4714"]
+[ext_resource type="Script" uid="uid://b0xwjuq1av15m" path="res://code/enemy/states/rotate/constant_rotation.gd" id="10_vhk6y"]
 [ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="11_vp012"]
-[ext_resource type="Script" uid="uid://dig16nwffnibt" path="res://code/enemy/states/restore_energy.gd" id="12_tiubj"]
-[ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="13_dufb5"]
+[ext_resource type="Script" uid="uid://c7w7ael2yxs4y" path="res://code/enemy/states/rotate/look_at_target_with_object.gd" id="12_7fp2r"]
+[ext_resource type="Script" uid="uid://dig16nwffnibt" path="res://code/enemy/states/supplementary/restore_energy.gd" id="12_tiubj"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="15_vhk6y"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
@@ -25,6 +25,7 @@ script = ExtResource("1_nesmw")
 ship = NodePath("Boss")
 
 [node name="Boss" type="RigidBody3D" parent="."]
+gravity_scale = 0.0
 script = ExtResource("2_s6qyd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -51,6 +52,12 @@ max_hp = 100.0
 hp = 100.0
 ship = NodePath("../../../../Boss")
 
+[node name="Projectile weapon" parent="StaticBody3D/Core/Star Laser/Right" index="1" node_paths=PackedStringArray("ship")]
+ship = NodePath("../../../../../Boss")
+
+[node name="Projectile weapon" parent="StaticBody3D/Core/Star Laser/Left" index="1" node_paths=PackedStringArray("ship")]
+ship = NodePath("../../../../../Boss")
+
 [node name="Star Laser2" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
@@ -58,6 +65,12 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 max_hp = 100.0
 hp = 100.0
 ship = NodePath("../../../../Boss")
+
+[node name="Projectile weapon" parent="StaticBody3D/Core/Star Laser2/Right" index="1" node_paths=PackedStringArray("ship")]
+ship = NodePath("../../../../../Boss")
+
+[node name="Projectile weapon" parent="StaticBody3D/Core/Star Laser2/Left" index="1" node_paths=PackedStringArray("ship")]
+ship = NodePath("../../../../../Boss")
 
 [node name="Star Laser3" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
@@ -67,6 +80,12 @@ max_hp = 100.0
 hp = 100.0
 ship = NodePath("../../../../Boss")
 
+[node name="Projectile weapon" parent="StaticBody3D/Core/Star Laser3/Right" index="1" node_paths=PackedStringArray("ship")]
+ship = NodePath("../../../../../Boss")
+
+[node name="Projectile weapon" parent="StaticBody3D/Core/Star Laser3/Left" index="1" node_paths=PackedStringArray("ship")]
+ship = NodePath("../../../../../Boss")
+
 [node name="Star Laser4" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
 
@@ -75,59 +94,90 @@ max_hp = 100.0
 hp = 100.0
 ship = NodePath("../../../../Boss")
 
+[node name="Projectile weapon" parent="StaticBody3D/Core/Star Laser4/Right" index="1" node_paths=PackedStringArray("ship")]
+ship = NodePath("../../../../../Boss")
+
+[node name="Projectile weapon" parent="StaticBody3D/Core/Star Laser4/Left" index="1" node_paths=PackedStringArray("ship")]
+ship = NodePath("../../../../../Boss")
+
 [node name="StateMachineNPC" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_jstny")
-initial_state = NodePath("Composite Change Position")
+initial_state = NodePath("Move far away")
 
-[node name="Composite Change Position" type="Node" parent="StateMachineNPC"]
+[node name="Move far away" type="Node" parent="StateMachineNPC"]
 script = ExtResource("7_xvv2n")
 
-[node name="Change Position" type="Node" parent="StateMachineNPC/Composite Change Position" node_paths=PackedStringArray("points")]
-script = ExtResource("8_5u1yc")
-points = [NodePath("Points/Point"), NodePath("Points/Point2"), NodePath("Points/Point3"), NodePath("Points/Point4"), NodePath("Points/Point5")]
-duration = 3.0
+[node name="Move to orbit" type="Node" parent="StateMachineNPC/Move far away"]
+script = ExtResource("7_tge7b")
+lerp_strength = 0.7
+max_angle_diff = 120.0
 
-[node name="Points" type="Node3D" parent="StateMachineNPC/Composite Change Position/Change Position"]
+[node name="Restore energy" type="Node" parent="StateMachineNPC/Move far away"]
+script = ExtResource("12_tiubj")
+amount_per_second = 100.0
 
-[node name="Point" type="Node3D" parent="StateMachineNPC/Composite Change Position/Change Position/Points"]
+[node name="Rotate" type="Node" parent="StateMachineNPC/Move far away"]
+script = ExtResource("10_vhk6y")
+y_rotation_speed = 180.0
 
-[node name="Point2" type="Node3D" parent="StateMachineNPC/Composite Change Position/Change Position/Points"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
-
-[node name="Point3" type="Node3D" parent="StateMachineNPC/Composite Change Position/Change Position/Points"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
-
-[node name="Point4" type="Node3D" parent="StateMachineNPC/Composite Change Position/Change Position/Points"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
-
-[node name="Point5" type="Node3D" parent="StateMachineNPC/Composite Change Position/Change Position/Points"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8)
-
-[node name="TimedTransition" type="Node" parent="StateMachineNPC/Composite Change Position" node_paths=PackedStringArray("new_state")]
+[node name="Timed transition" type="Node" parent="StateMachineNPC/Move far away" node_paths=PackedStringArray("new_state")]
 script = ExtResource("9_k4714")
-duration = 3.0
-new_state = NodePath("../../Shooting")
+duration = 2.0
+new_state = NodePath("../../Shoot beam")
 
-[node name="Rotate" type="Node" parent="StateMachineNPC/Composite Change Position"]
-script = ExtResource("5_ssdl0")
-y_rotation = 270.0
-duration = 3.0
+[node name="Shoot beam" type="Node" parent="StateMachineNPC"]
+script = ExtResource("7_xvv2n")
 
-[node name="Shooting" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("weapons")]
+[node name="Shooting" type="Node" parent="StateMachineNPC/Shoot beam" node_paths=PackedStringArray("weapons")]
 script = ExtResource("6_vtp5i")
-weapons = [NodePath("../../StaticBody3D/Core/Star Laser/Laser/LaserBeam"), NodePath("../../StaticBody3D/Core/Star Laser2/Laser/LaserBeam"), NodePath("../../StaticBody3D/Core/Star Laser3/Laser/LaserBeam"), NodePath("../../StaticBody3D/Core/Star Laser4/Laser/LaserBeam")]
+weapons = [NodePath("../../../StaticBody3D/Core/Star Laser/Laser/LaserBeam"), NodePath("../../../StaticBody3D/Core/Star Laser2/Laser/LaserBeam"), NodePath("../../../StaticBody3D/Core/Star Laser3/Laser/LaserBeam"), NodePath("../../../StaticBody3D/Core/Star Laser4/Laser/LaserBeam")]
 
-[node name="TransitionLowEnergy" type="Node" parent="StateMachineNPC/Shooting" node_paths=PackedStringArray("new_state")]
+[node name="Look at player" type="Node" parent="StateMachineNPC/Shoot beam" node_paths=PackedStringArray("objects")]
+script = ExtResource("12_7fp2r")
+lerp_strength = 0.01
+objects = [NodePath("../../../StaticBody3D/Core/Star Laser/Laser/LaserBeam"), NodePath("../../../StaticBody3D/Core/Star Laser2/Laser/LaserBeam"), NodePath("../../../StaticBody3D/Core/Star Laser3/Laser/LaserBeam"), NodePath("../../../StaticBody3D/Core/Star Laser4/Laser/LaserBeam")]
+
+[node name="TransitionLowEnergy" type="Node" parent="StateMachineNPC/Shoot beam" node_paths=PackedStringArray("new_state")]
 script = ExtResource("11_vp012")
 low_energy_treshold = 10
-new_state = NodePath("../../Loading")
+new_state = NodePath("../../Get close")
 
-[node name="Loading" type="Node" parent="StateMachineNPC"]
+[node name="Get close" type="Node" parent="StateMachineNPC"]
+script = ExtResource("7_xvv2n")
+
+[node name="Move to orbit" type="Node" parent="StateMachineNPC/Get close"]
+script = ExtResource("7_tge7b")
+orbit_radius = 10.0
+lerp_strength = 0.8
+
+[node name="Restore energy" type="Node" parent="StateMachineNPC/Get close"]
 script = ExtResource("12_tiubj")
+amount_per_second = 100.0
 
-[node name="TransitionHighEnergy" type="Node" parent="StateMachineNPC/Loading" node_paths=PackedStringArray("new_state")]
-script = ExtResource("13_dufb5")
-new_state = NodePath("../../Composite Change Position")
+[node name="Rotate" type="Node" parent="StateMachineNPC/Get close"]
+script = ExtResource("10_vhk6y")
+y_rotation_speed = 30.0
+
+[node name="Timed transition" type="Node" parent="StateMachineNPC/Get close" node_paths=PackedStringArray("new_state")]
+script = ExtResource("9_k4714")
+duration = 2.0
+new_state = NodePath("../../Shoot lasers and spin")
+
+[node name="Shoot lasers and spin" type="Node" parent="StateMachineNPC"]
+script = ExtResource("7_xvv2n")
+
+[node name="Shooting" type="Node" parent="StateMachineNPC/Shoot lasers and spin" node_paths=PackedStringArray("weapons")]
+script = ExtResource("6_vtp5i")
+weapons = [NodePath("../../../StaticBody3D/Core/Star Laser/Right/Projectile weapon/Weapon"), NodePath("../../../StaticBody3D/Core/Star Laser/Left/Projectile weapon/Weapon"), NodePath("../../../StaticBody3D/Core/Star Laser2/Right/Projectile weapon/Weapon"), NodePath("../../../StaticBody3D/Core/Star Laser2/Left/Projectile weapon/Weapon"), NodePath("../../../StaticBody3D/Core/Star Laser3/Right/Projectile weapon/Weapon"), NodePath("../../../StaticBody3D/Core/Star Laser3/Left/Projectile weapon/Weapon"), NodePath("../../../StaticBody3D/Core/Star Laser4/Right/Projectile weapon/Weapon"), NodePath("../../../StaticBody3D/Core/Star Laser4/Left/Projectile weapon/Weapon")]
+
+[node name="Rotate" type="Node" parent="StateMachineNPC/Shoot lasers and spin"]
+script = ExtResource("10_vhk6y")
+y_rotation_speed = 360.0
+
+[node name="TransitionLowEnergy" type="Node" parent="StateMachineNPC/Shoot lasers and spin" node_paths=PackedStringArray("new_state")]
+script = ExtResource("11_vp012")
+low_energy_treshold = 10
+new_state = NodePath("../../Move far away")
 
 [node name="EnemyPoi" parent="." instance=ExtResource("15_vhk6y")]
 max_range = 10000.0

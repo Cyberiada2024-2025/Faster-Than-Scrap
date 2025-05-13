@@ -6,10 +6,15 @@ const VORTEX_PREFAB: PackedScene = preload(
 )
 
 const DAMAGE: float = 10  # damage per second
+const RADIUS: String = "Safe_Radius"
+const CENTER: String = "Safe_Center"
+
+@export var graphics: GeometryInstance3D
+
 var damageables_in_vortex: Array[Damageable] = []
 
 # vortex parameters
-var start_scale: float = 400
+var start_scale: float = 200
 var min_scale: float = 0.001
 var shrinking_time: float = 3 * 60  # in seconds
 
@@ -34,9 +39,11 @@ static func spawn_vortex(
 
 
 func _ready() -> void:
+	graphics.reparent(GameManager.get_tree().current_scene)
 	_shrink_speed = (start_scale - min_scale) / shrinking_time
 	scale.x = start_scale
 	scale.z = start_scale
+	graphics.set_instance_shader_parameter(RADIUS, start_scale)
 
 
 func _process(delta: float) -> void:
@@ -49,6 +56,7 @@ func _scale_self(delta: float) -> void:
 	if scale.x < min_scale:
 		scale.x = min_scale
 	scale.z = scale.x
+	graphics.set_instance_shader_parameter(RADIUS, start_scale)
 
 
 func _damage_objects(delta: float) -> void:

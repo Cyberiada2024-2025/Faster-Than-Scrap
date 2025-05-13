@@ -3,7 +3,7 @@ class_name Shop
 extends Node3D
 
 ## modules in the shop. Don't place them in the editor! Place them here!
-@export_dir var modules: Array[String] = []
+#@export_dir var modules: Array[String] = []
 ## set starting cash here
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var starting_bank: int = 0
 @export var max_items_count = 10
@@ -36,17 +36,15 @@ var areas: Array[Area3D] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	MissionManager.map_finished.connect(_generate_shop)
+	MissionManager.map_finished.connect(ShopContents.generate_contents)
 	_generate_shop()
 
 
 func _generate_shop() -> void:
-	for i in range(0, max_items_count):
-		var module = (
-			ModulesList
-			. all_modules[randi_range(0, ModulesList.all_modules.size() - 1)]
-			. instantiate()
-		)
+	var all_modules = ShopContents.shop_modules
+	var i = 0
+	for moduleScene: PackedScene in all_modules:
+		var module := moduleScene.instantiate()
 		var area = Area3D.new()
 		add_child(area)
 		area.add_child(module)
@@ -54,6 +52,7 @@ func _generate_shop() -> void:
 		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2
 		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
 		area.position = Vector3(x, 0, z)
+		i += 1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

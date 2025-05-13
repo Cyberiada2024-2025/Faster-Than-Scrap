@@ -67,6 +67,12 @@ func _on_energy_change() -> void:
 	energy_change.emit(energy)
 
 
+## Called whenever the max energy amount changes.
+func _on_energy_max_change() -> void:
+	super()
+	energy_max_change.emit(energy)
+
+
 func use_energy(amount: float) -> bool:
 	if energy < amount:
 		energy_warning.emit()

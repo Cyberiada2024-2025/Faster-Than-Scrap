@@ -58,9 +58,12 @@ var wait_timer: float = 0
 
 func _ready() -> void:
 	var player_ship = GameManager.player_ship
+	player_ship.energy_max_change.connect(_on_max_change)
 	player_ship.energy_change.connect(_change_value)
-	player_ship.energy_max_change.connect(_change_value)
 	player_ship.energy_warning.connect(_change_value)
+
+	_on_max_change(player_ship.max_energy)
+	_change_value(player_ship.energy)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

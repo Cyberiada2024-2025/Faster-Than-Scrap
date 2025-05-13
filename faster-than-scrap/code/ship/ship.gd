@@ -7,7 +7,15 @@ signal damaged(hp_percent)
 ## Base class for player and enemy
 
 @export var energy: float = 100
-@export var max_energy: float = 100
+@export var max_energy: float = 100:
+	get:
+		return max_energy
+	set(value):
+		max_energy = value
+		_on_energy_max_change()
+		if energy > max_energy:
+			energy = max_energy
+			_on_energy_change()
 @export var restore: float = 10
 
 @export var max_hp: float = 10
@@ -29,6 +37,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	energy += restore * delta
+	_on_energy_change()
 	if energy > max_energy:
 		energy = max_energy
 
@@ -49,9 +58,14 @@ func _on_energy_change() -> void:
 	pass
 
 
+## Called whenever the max energy amount changes.
+func _on_energy_max_change() -> void:
+	pass
+
+
 func _on_take_damage(damage: Damage) -> void:
 	hp -= damage.value
-	damaged.emit(hp/max_hp)
+	damaged.emit(hp / max_hp)
 	if hp <= 0:
 		on_destroy()
 

@@ -17,6 +17,5 @@ normal_texture = ExtResource("3_mrhvb")
 [node name="Battery" type="Node3D"]
 
 [node name="FinalestBattery" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.117249, 0, -0.117798)
 material_override = SubResource("StandardMaterial3D_u5p3y")
 mesh = ExtResource("5_7b800")

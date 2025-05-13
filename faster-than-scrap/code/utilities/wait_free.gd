@@ -5,5 +5,5 @@ extends Node3D
 @export var wait: float = 1.0
 
 func wait_free() -> void:
-dd	await get_tree().create_timer(wait).timeout
+	await get_tree().create_timer(wait).timeout
 	queue_free()

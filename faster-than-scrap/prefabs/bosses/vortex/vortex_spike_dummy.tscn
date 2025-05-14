@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://1km01juhp32b"]
+
+[ext_resource type="Script" uid="uid://dhqxa3bvfn8gj" path="res://code/weapons/projectiles/growable.gd" id="1_qveci"]
+[ext_resource type="Script" uid="uid://7rxxtodxpx1d" path="res://code/damage/damage_area_3d.gd" id="2_3vwvl"]
+[ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_loj12"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xhgwa"]
+top_radius = 0.0
+radial_segments = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ybhc0"]
+
+[sub_resource type="Resource" id="Resource_ybhc0"]
+script = ExtResource("3_loj12")
+value = 1000.0
+metadata/_custom_type_script = "uid://cukcjob61wwp7"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ne3qg"]
+
+[node name="VortexSpike" type="StaticBody3D"]
+script = ExtResource("1_qveci")
+max_scale = Vector3(1, 1, 5)
+stay_time = 0.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, 8.74228e-08, -1)
+mesh = SubResource("CylinderMesh_xhgwa")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, -6.99382e-08, -0.8, 0, 1.6, -3.49691e-08, 0, 0.01, -1)
+shape = SubResource("BoxShape3D_ybhc0")
+
+[node name="DamageArea3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_3vwvl")
+_damage_type = 0
+_damage = SubResource("Resource_ybhc0")
+metadata/_custom_type_script = "uid://7rxxtodxpx1d"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea3D"]
+transform = Transform3D(1, 0, 0, 0, -8.74228e-08, -1, 0, 2, -4.37114e-08, 0, 0, -1)
+shape = SubResource("BoxShape3D_ne3qg")

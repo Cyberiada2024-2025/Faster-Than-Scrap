@@ -1,35 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://kvcjjkw5yif5"]
+[gd_scene load_steps=4 format=3 uid="uid://kvcjjkw5yif5"]
 
 [ext_resource type="PackedScene" uid="uid://dk1g8kstnrxxk" path="res://prefabs/environment/space_vortex/space_vortex.tscn" id="1_jj561"]
-[ext_resource type="Script" uid="uid://cw1rnoqtmo74i" path="res://sandbox/mikulski/vortextest.gd" id="2_0se8q"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_asb27"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ka0mg"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_honml"]
-material = SubResource("StandardMaterial3D_ka0mg")
+[ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="2_jmhh1"]
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/ui/hud.tscn" id="3_nmxit"]
 
 [node name="test vortex" type="Node3D"]
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.994033, 0.0126044, -0.10835, 0.109055, -0.1362, 0.984661, -0.00234604, -0.990601, -0.136762, -0.402408, 15.0033, -0.623655)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(-0.0818166, 0.669027, -0.738721, 0.0736473, 0.743238, 0.664961, 0.993923, -1.00411e-20, -0.110081, -3.99809, 152.414, -0.623655)
 
-[node name="Area3D" type="CharacterBody3D" parent="." groups=["affected by vortex"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.07394, 0, -6.79244)
-script = ExtResource("2_0se8q")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("BoxShape3D_asb27")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
-mesh = SubResource("BoxMesh_honml")
-
 [node name="SpaceVortex" parent="." instance=ExtResource("1_jj561")]
+collision_layer = 2
+collision_mask = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SpaceVortex"]
-mesh = SubResource("BoxMesh_honml")
+[node name="FlyableShip" parent="." instance=ExtResource("2_jmhh1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8878, 0, -10.0619)
+
+[node name="MainCamera" parent="." instance=ExtResource("3_nmxit")]

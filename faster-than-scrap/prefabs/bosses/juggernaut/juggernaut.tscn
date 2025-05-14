@@ -1,0 +1,273 @@
+[gd_scene load_steps=25 format=3 uid="uid://bvcjycf02eb4c"]
+
+[ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_yarj2"]
+[ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_byxk3"]
+[ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="3_5ov2f"]
+[ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="3_a8moe"]
+[ext_resource type="Script" path="res://code/ship/modules/explodable.gd" id="3_qln4k"]
+[ext_resource type="Script" uid="uid://crmxerc164n6q" path="res://code/weapons/constant_fire_weapon.gd" id="4_1irkd"]
+[ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="4_clgev"]
+[ext_resource type="Script" uid="uid://befj25g2qfhr7" path="res://code/enemy/states/move/orbit.gd" id="5_5ov2f"]
+[ext_resource type="PackedScene" uid="uid://ymmjkrxvfgwu" path="res://prefabs/projectiles/enemy projectiles/heavy_projectile.tscn" id="5_8rvwn"]
+[ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/enemy projectiles/test_projectile.tscn" id="6_6fxl0"]
+[ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="6_cla4x"]
+[ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="6_ion51"]
+[ext_resource type="Script" uid="uid://c14j6cdbgt38o" path="res://code/enemy/states/rotate/look_at_target.gd" id="6_xr00f"]
+[ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="7_a8moe"]
+[ext_resource type="PackedScene" uid="uid://dqr2x28shkw41" path="res://prefabs/projectiles/enemy projectiles/test_shotgun.tscn" id="7_a23ns"]
+[ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="8_1irkd"]
+[ext_resource type="Script" uid="uid://dig16nwffnibt" path="res://code/enemy/states/supplementary/restore_energy.gd" id="9_ion51"]
+[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="10_6fxl0"]
+[ext_resource type="Script" uid="uid://crp1vxubokrt" path="res://code/enemy/states/move/move_to_orbit_place.gd" id="10_clgev"]
+[ext_resource type="PackedScene" uid="uid://bvqxhp4ueiwju" path="res://prefabs/projectiles/star_beam.tscn" id="10_qln4k"]
+[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="11_clgev"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_km21v"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_byxk3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qln4k"]
+
+[node name="Juggernaut" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
+script = ExtResource("1_yarj2")
+ship = NodePath("Boss")
+metadata/_custom_type_script = "uid://deimdflghl67a"
+
+[node name="Boss" type="RigidBody3D" parent="."]
+gravity_scale = 0.0
+script = ExtResource("2_byxk3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Body" type="CollisionShape3D" parent="StaticBody3D" node_paths=PackedStringArray("child_modules")]
+shape = SubResource("BoxShape3D_km21v")
+script = ExtResource("3_qln4k")
+child_modules = [NodePath("../Weapons/Heavy Weapon Module"), NodePath("../Weapons/Basic Weapon Module"), NodePath("../Weapons/Basic Weapon Module2"), NodePath("../Weapons/Laser Module"), NodePath("../Weapons/Shotgun Module"), NodePath("../Weapons/Shotgun Module2")]
+metadata/_custom_type_script = "uid://cs6qd5cf3gviv"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/Body"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+mesh = SubResource("BoxMesh_byxk3")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D/Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, -0.5)
+mesh = SubResource("BoxMesh_byxk3")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D/Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 2, 0, 0)
+mesh = SubResource("BoxMesh_byxk3")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="StaticBody3D/Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -2, 0, 0)
+mesh = SubResource("BoxMesh_byxk3")
+skeleton = NodePath("")
+
+[node name="DamageController" parent="StaticBody3D/Body" instance=ExtResource("10_6fxl0")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="0"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("BoxShape3D_qln4k")
+
+[node name="Weapons" type="Node3D" parent="StaticBody3D"]
+
+[node name="Heavy Weapon Module" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.21984)
+script = ExtResource("3_a8moe")
+weapon = NodePath("Basic Weapon")
+max_hp = 0.0
+hp = 0.0
+ship = NodePath("../../../Boss")
+metadata/_custom_type_script = "uid://6f2yjn6wgcun"
+
+[node name="Basic Weapon" type="Node3D" parent="StaticBody3D/Weapons/Heavy Weapon Module"]
+script = ExtResource("6_ion51")
+cooldown = 5.0
+projectile = ExtResource("5_8rvwn")
+
+[node name="Basic Weapon Module" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97444, 0, -2.63407)
+script = ExtResource("3_a8moe")
+weapon = NodePath("Basic Weapon")
+max_hp = 0.0
+hp = 0.0
+ship = NodePath("../../../Boss")
+metadata/_custom_type_script = "uid://6f2yjn6wgcun"
+
+[node name="Basic Weapon" type="Node3D" parent="StaticBody3D/Weapons/Basic Weapon Module"]
+script = ExtResource("6_ion51")
+cooldown = 5.0
+projectile = ExtResource("6_6fxl0")
+
+[node name="Basic Weapon Module2" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9361, 0, -2.63407)
+script = ExtResource("3_a8moe")
+weapon = NodePath("Basic Weapon")
+max_hp = 0.0
+hp = 0.0
+ship = NodePath("../../../Boss")
+metadata/_custom_type_script = "uid://6f2yjn6wgcun"
+
+[node name="Basic Weapon" type="Node3D" parent="StaticBody3D/Weapons/Basic Weapon Module2"]
+script = ExtResource("6_ion51")
+cooldown = 5.0
+projectile = ExtResource("6_6fxl0")
+
+[node name="Laser Module" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.89683)
+script = ExtResource("3_a8moe")
+weapon = NodePath("LaserBeam")
+max_hp = 0.0
+hp = 0.0
+ship = NodePath("../../../Boss")
+metadata/_custom_type_script = "uid://6f2yjn6wgcun"
+
+[node name="LaserBeam" type="Node3D" parent="StaticBody3D/Weapons/Laser Module"]
+script = ExtResource("4_1irkd")
+energy_cost = 20.0
+projectile = ExtResource("10_qln4k")
+
+[node name="Shotgun Module" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00526, 0, -2.58012)
+script = ExtResource("3_a8moe")
+weapon = NodePath("Shotgun")
+max_hp = 0.0
+hp = 0.0
+ship = NodePath("../../../Boss")
+metadata/_custom_type_script = "uid://6f2yjn6wgcun"
+
+[node name="Shotgun" type="Node3D" parent="StaticBody3D/Weapons/Shotgun Module"]
+script = ExtResource("6_ion51")
+energy_cost = 50.0
+cooldown = 5.0
+projectile = ExtResource("7_a23ns")
+
+[node name="Shotgun Module2" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00471, 0, -2.61206)
+script = ExtResource("3_a8moe")
+weapon = NodePath("Shotgun")
+max_hp = 0.0
+hp = 0.0
+ship = NodePath("../../../Boss")
+metadata/_custom_type_script = "uid://6f2yjn6wgcun"
+
+[node name="Shotgun" type="Node3D" parent="StaticBody3D/Weapons/Shotgun Module2"]
+script = ExtResource("6_ion51")
+energy_cost = 50.0
+cooldown = 5.0
+projectile = ExtResource("7_a23ns")
+
+[node name="StateMachineNPC" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_5ov2f")
+initial_state = NodePath("Move To Orbit")
+
+[node name="Move To Orbit" type="Node" parent="StateMachineNPC"]
+script = ExtResource("4_clgev")
+
+[node name="MoveToOrbit" type="Node" parent="StateMachineNPC/Move To Orbit"]
+script = ExtResource("10_clgev")
+orbit_radius = 20.0
+lerp_strength = 0.6
+
+[node name="LookAt" type="Node" parent="StateMachineNPC/Move To Orbit"]
+script = ExtResource("6_xr00f")
+lerp_strength = 0.1
+
+[node name="TimedTransition" type="Node" parent="StateMachineNPC/Move To Orbit" node_paths=PackedStringArray("new_state")]
+script = ExtResource("6_cla4x")
+duration = 1.0
+new_state = NodePath("../../OrbitComposite")
+
+[node name="OrbitComposite" type="Node" parent="StateMachineNPC"]
+script = ExtResource("4_clgev")
+
+[node name="Orbit" type="Node" parent="StateMachineNPC/OrbitComposite"]
+script = ExtResource("5_5ov2f")
+orbit_radius = 20.0
+lerp_strength = 0.8
+orbit_angular_speed = 20.0
+
+[node name="LookAt" type="Node" parent="StateMachineNPC/OrbitComposite"]
+script = ExtResource("6_xr00f")
+lerp_strength = 0.1
+
+[node name="Shoot" type="Node" parent="StateMachineNPC/OrbitComposite" node_paths=PackedStringArray("weapons")]
+script = ExtResource("7_a8moe")
+weapons = [NodePath("../../../StaticBody3D/Weapons/Heavy Weapon Module/Basic Weapon"), NodePath("../../../StaticBody3D/Weapons/Basic Weapon Module/Basic Weapon"), NodePath("../../../StaticBody3D/Weapons/Basic Weapon Module2/Basic Weapon")]
+
+[node name="TimedTransition" type="Node" parent="StateMachineNPC/OrbitComposite" node_paths=PackedStringArray("new_state")]
+script = ExtResource("6_cla4x")
+duration = 10.0
+new_state = NodePath("../../GetCloser")
+
+[node name="GetCloser" type="Node" parent="StateMachineNPC"]
+script = ExtResource("4_clgev")
+
+[node name="MoveToOrbit" type="Node" parent="StateMachineNPC/GetCloser"]
+script = ExtResource("10_clgev")
+orbit_radius = 2.0
+lerp_strength = 0.5
+
+[node name="LookAt" type="Node" parent="StateMachineNPC/GetCloser"]
+script = ExtResource("6_xr00f")
+lerp_strength = 0.1
+
+[node name="RestoreEnergy" type="Node" parent="StateMachineNPC/GetCloser"]
+script = ExtResource("9_ion51")
+amount_per_second = 50.0
+
+[node name="TimedTransition" type="Node" parent="StateMachineNPC/GetCloser" node_paths=PackedStringArray("new_state")]
+script = ExtResource("6_cla4x")
+duration = 2.0
+new_state = NodePath("../../ShootOnce")
+
+[node name="ShootOnce" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("weapons")]
+script = ExtResource("7_a8moe")
+weapons = [NodePath("../../StaticBody3D/Weapons/Shotgun Module/Shotgun"), NodePath("../../StaticBody3D/Weapons/Shotgun Module2/Shotgun")]
+
+[node name="TransitionLowEnergy" type="Node" parent="StateMachineNPC/ShootOnce" node_paths=PackedStringArray("new_state")]
+script = ExtResource("8_1irkd")
+low_energy_treshold = 10
+new_state = NodePath("../../GetFarAway")
+
+[node name="GetFarAway" type="Node" parent="StateMachineNPC"]
+script = ExtResource("4_clgev")
+
+[node name="MoveToOrbit" type="Node" parent="StateMachineNPC/GetFarAway"]
+script = ExtResource("10_clgev")
+lerp_strength = 0.6
+
+[node name="LookAt" type="Node" parent="StateMachineNPC/GetFarAway"]
+script = ExtResource("6_xr00f")
+lerp_strength = 0.1
+
+[node name="TimedTransition" type="Node" parent="StateMachineNPC/GetFarAway" node_paths=PackedStringArray("new_state")]
+script = ExtResource("6_cla4x")
+duration = 5.0
+new_state = NodePath("../../ShootLaserComposite")
+
+[node name="ShootLaserComposite" type="Node" parent="StateMachineNPC"]
+script = ExtResource("4_clgev")
+
+[node name="Shoot" type="Node" parent="StateMachineNPC/ShootLaserComposite" node_paths=PackedStringArray("weapons")]
+script = ExtResource("7_a8moe")
+weapons = [NodePath("../../../StaticBody3D/Weapons/Laser Module/LaserBeam")]
+
+[node name="LookAt" type="Node" parent="StateMachineNPC/ShootLaserComposite"]
+script = ExtResource("6_xr00f")
+lerp_strength = 0.01
+
+[node name="TransitionLowEnergy" type="Node" parent="StateMachineNPC/ShootLaserComposite" node_paths=PackedStringArray("new_state")]
+script = ExtResource("8_1irkd")
+low_energy_treshold = 10
+new_state = NodePath("../../OrbitComposite")
+
+[node name="EnemyPoi" parent="." instance=ExtResource("11_clgev")]
+max_range = 10000.0
+
+[connection signal="damaged" from="StaticBody3D/Body/DamageController" to="StaticBody3D/Body" method="take_damage"]
+
+[editable path="StaticBody3D/Body/DamageController"]

@@ -8,8 +8,6 @@ extends Node
 var _map_node: MapNode = null
 var _scene: Node = null
 
-var _shop_prefab = preload("res://prefabs/environment/shop_miniature.tscn")
-
 
 ## Called whenever the scene should be procedurally generated (
 ## when loading fly_phase scene).
@@ -30,18 +28,11 @@ func generate_map() -> void:
 
 func generate_map_from_node() -> void:
 	_scene = Node3D.new()
-	_spawn_shop()
 	if _map_node is MissionNode:
 		var mission_node: MissionNode = _map_node
 		_spawn_vortex(mission_node.mission_info)
 		mission_node.mission_info.start(_scene)
 		return
-
-
-func _spawn_shop() -> void:
-	var shop = _shop_prefab.instantiate()
-	_scene.add_child.call_deferred(shop)
-	shop.position = Vector3(12, 0, 0)
 
 
 func _spawn_vortex(mission_info: MissionInfo) -> void:

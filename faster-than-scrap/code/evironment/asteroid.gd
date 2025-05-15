@@ -12,8 +12,8 @@ func _ready() -> void:
 	self.linear_velocity.z += randf_range(-start_speed_range, start_speed_range)
 
 
-func take_damage(damage: int) -> void:
-	hp -= damage
+func take_damage(damage: Damage) -> void:
+	hp -= damage.value
 	if hp <= 0:
 		_on_destroy()
 

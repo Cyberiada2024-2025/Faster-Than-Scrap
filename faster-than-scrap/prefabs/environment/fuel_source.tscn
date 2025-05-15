@@ -12,8 +12,12 @@
 size = Vector3(1.5, 1.5, 1.5)
 
 [node name="FuelSource" type="RigidBody3D"]
+axis_lock_linear_y = true
 mass = 1000.0
+gravity_scale = 0.0
 script = ExtResource("1_76agp")
+hp = 10
+start_speed_range = 0.0
 
 [node name="Pickable Fuel Spawner" type="Node3D" parent="."]
 script = ExtResource("2_kaa5q")
@@ -50,5 +54,7 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
 shape = SubResource("BoxShape3D_vf3at")
+
+[connection signal="damaged" from="DamageController" to="." method="take_damage"]
 
 [editable path="DamageController"]

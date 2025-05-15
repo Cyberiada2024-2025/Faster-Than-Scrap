@@ -1,3 +1,4 @@
+class_name Asteroid
 extends RigidBody3D
 
 @export_category("Stats")

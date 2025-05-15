@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://b514xmqay8b1j"]
+
+[node name="ShipToDefend" type="Node3D"]

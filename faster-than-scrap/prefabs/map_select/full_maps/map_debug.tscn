@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dvyn8fb23heo" path="res://prefabs/map_select/nodes/templates/missions/mission_get_item.tscn" id="7_5f65k"]
 [ext_resource type="PackedScene" uid="uid://c03u0pmq5d36y" path="res://prefabs/map_select/nodes/templates/missions/mission_fuel.tscn" id="8_tl3nk"]
 [ext_resource type="PackedScene" uid="uid://ci7ns2p5tsax6" path="res://prefabs/map_select/nodes/templates/boss_node.tscn" id="9_18jqo"]
-[ext_resource type="PackedScene" uid="uid://c3rsq4emlmuky" path="res://prefabs/bosses/examples/laser_star/laser_star.tscn" id="10_dxror"]
-[ext_resource type="PackedScene" uid="uid://dkt55poxl1ki4" path="res://prefabs/bosses/examples/stationary_rings.tscn" id="11_lfxbk"]
+[ext_resource type="PackedScene" uid="uid://c3rsq4emlmuky" path="res://prefabs/npc/bosses/examples/laser_star/laser_star.tscn" id="10_dxror"]
+[ext_resource type="PackedScene" uid="uid://dkt55poxl1ki4" path="res://prefabs/npc/bosses/examples/stationary_rings.tscn" id="11_lfxbk"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="12_oe75j"]
 
 [node name="DebugMapSelector" type="Control"]

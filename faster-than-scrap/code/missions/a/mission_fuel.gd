@@ -4,7 +4,7 @@ extends Mission
 
 var info: MissionInfoFuel
 # TODO: Substitute to fuel spawn
-var fuel_source: CapturePoint
+var fuel_source: Asteroid
 var fuel_source_prefab = preload("res://prefabs/environment/fuel_source.tscn")
 
 

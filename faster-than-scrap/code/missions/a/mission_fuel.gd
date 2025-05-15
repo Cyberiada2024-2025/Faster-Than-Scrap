@@ -17,17 +17,4 @@ func setup() -> void:
 	MissionManager.get_tree().current_scene.add_child(fuel_source)
 
 	# position it
-	fuel_source.global_position = info.portal_position
-	fuel_source.on_capture.connect(_on_fuel_received)
-
-
-func _process(_delta: float) -> void:
-	super(_delta)
-	if _ended():
-		return
-
-
-func _on_fuel_received() -> void:
-	print("FUEL RECEIVED")
-	state = MissionState.FINISHED
-	finished.emit(self)
+	fuel_source.global_position = info.fuel_position

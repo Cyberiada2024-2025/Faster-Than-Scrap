@@ -1,12 +1,22 @@
 class_name Ship
 extends Node3D
 
-signal destroyed(ship)
-signal damaged(hp_percent)
+signal destroyed(ship: Ship)
+signal damaged(hp_percent: float)
 
 ## Base class for player and enemy
 
-@export var energy: float = 100
+@export var energy: float = 100:
+	get:
+		return energy
+	set(value):
+		var start_energy = energy
+		energy = value
+		if energy > max_energy:
+			energy = max_energy
+		if energy != start_energy:
+			_on_energy_change()
+
 @export var max_energy: float = 100:
 	get:
 		return max_energy
@@ -15,7 +25,7 @@ signal damaged(hp_percent)
 		_on_energy_max_change()
 		if energy > max_energy:
 			energy = max_energy
-			_on_energy_change()
+
 @export var restore: float = 10
 
 @export var max_hp: float = 10
@@ -37,9 +47,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	energy += restore * delta
-	_on_energy_change()
-	if energy > max_energy:
-		energy = max_energy
 
 
 ## Called when module wants to use the ship's energy [member Ship.energy].
@@ -49,7 +56,6 @@ func use_energy(amount: float) -> bool:
 	if energy < amount:
 		return false
 	energy -= amount
-	_on_energy_change()
 	return true
 
 

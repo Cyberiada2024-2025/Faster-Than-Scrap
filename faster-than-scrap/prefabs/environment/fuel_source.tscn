@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxk27xy7gsfsy"]
+
+[ext_resource type="Script" uid="uid://diheai0ulsufp" path="res://code/evironment/capture_point.gd" id="1_n0swx"]
+[ext_resource type="Script" uid="uid://druelgornyk4j" path="res://code/missions/fuel_giver.gd" id="2_76agp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3d00i"]
+radius = 5.0
+
+[node name="FuelSource" type="Area3D"]
+script = ExtResource("1_n0swx")
+metadata/_custom_type_script = "uid://diheai0ulsufp"
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("2_76agp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_3d00i")
+
+[connection signal="on_capture" from="." to="Node" method="_give_fuel"]

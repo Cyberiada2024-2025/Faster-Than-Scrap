@@ -43,8 +43,8 @@ func _ready() -> void:
 func _generate_shop() -> void:
 	var all_modules = ShopContents.shop_modules
 	var i = 0
-	for moduleScene: PackedScene in all_modules:
-		var module := moduleScene.instantiate()
+	for moduleData in all_modules:
+		var module = moduleData.packed_scene.instantiate()
 		var area = Area3D.new()
 		add_child(area)
 		area.add_child(module)

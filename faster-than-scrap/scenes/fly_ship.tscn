@@ -51,7 +51,4 @@ transform = Transform3D(0.337309, 0, 0.941394, 0, 1, 0, -0.941394, 0, 0.337309, 
 [node name="Background" type="Node3D" parent="."]
 script = ExtResource("9_fphmu")
 
-[node name="Vortex" type="Node3D" parent="."]
-visible = false
-
 [connection signal="pressed" from="Button" to="SceneLoader" method="load_build_ship_scene"]

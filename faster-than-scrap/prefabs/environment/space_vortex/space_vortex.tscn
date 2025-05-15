@@ -1,35 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk1g8kstnrxxk"]
+[gd_scene load_steps=7 format=3 uid="uid://dk1g8kstnrxxk"]
 
 [ext_resource type="Script" uid="uid://bdljn5ooj2ryy" path="res://code/evironment/space_vortex/space_vortex.gd" id="1_8f7e2"]
-[ext_resource type="Shader" uid="uid://1vfrvfc70gbo" path="res://art/shaders/graphs/vortex.tres" id="2_ivlmu"]
+[ext_resource type="Material" uid="uid://dsr4i8f5btjud" path="res://art/materials/vfx/Vortex.tres" id="2_ivlmu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cujf5"]
-radius = 1.0
+radius = 0.65
 
 [sub_resource type="TorusMesh" id="TorusMesh_ivlmu"]
+inner_radius = 0.65
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u6ya2"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("2_ivlmu")
-shader_parameter/ColorParameter = Color(0.6, 0, 0.49, 1)
-shader_parameter/Safe_Radius = 600.0
-shader_parameter/Plane_Size = 2000.0
-shader_parameter/Softness = 20.0
-shader_parameter/Safe_Center = Vector2(0, 0)
-shader_parameter/Glow = 0.0
-
-[sub_resource type="Gradient" id="Gradient_pxj1u"]
+[sub_resource type="Gradient" id="Gradient_ivlmu"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_egdpg"]
-gradient = SubResource("Gradient_pxj1u")
+gradient = SubResource("Gradient_ivlmu")
 
 [node name="SpaceVortex" type="Area3D" node_paths=PackedStringArray("graphics")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_8f7e2")
 graphics = NodePath("Sprite3D")
+mat = ExtResource("2_ivlmu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_cujf5")
@@ -39,8 +30,8 @@ visible = false
 mesh = SubResource("TorusMesh_ivlmu")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(2000, 0, 0, 0, -8.74228e-05, 2000, 0, -2000, -8.74228e-05, 0, -10, 0)
-material_override = SubResource("ShaderMaterial_u6ya2")
+transform = Transform3D(2000, 0, 0, 0, -8.74228e-05, 2000, 0, -2000, -8.74228e-05, 0, -5, 0)
+material_override = ExtResource("2_ivlmu")
 double_sided = false
 render_priority = 4
 texture = SubResource("GradientTexture2D_egdpg")

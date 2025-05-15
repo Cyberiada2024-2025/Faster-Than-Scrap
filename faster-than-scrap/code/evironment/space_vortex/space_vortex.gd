@@ -10,11 +10,12 @@ const RADIUS: String = "Safe_Radius"
 const CENTER: String = "Safe_Center"
 
 @export var graphics: GeometryInstance3D
+@export var mat: ShaderMaterial
 
 var damageables_in_vortex: Array[Damageable] = []
 
 # vortex parameters
-var start_scale: float = 200
+var start_scale: float = 100
 var min_scale: float = 0.001
 var shrinking_time: float = 3 * 60  # in seconds
 
@@ -24,7 +25,7 @@ var _shrink_speed: float  # units per seconds
 ## static spawner of vortex with paramateres deciding its behaviour
 static func spawn_vortex(
 	start_position: Vector3,
-	start_scale: float = 400,
+	start_scale: float = 200,
 	min_scale: float = 0.001,
 	shrinking_time: float = 3 * 60
 ) -> void:
@@ -43,7 +44,7 @@ func _ready() -> void:
 	_shrink_speed = (start_scale - min_scale) / shrinking_time
 	scale.x = start_scale
 	scale.z = start_scale
-	graphics.set_instance_shader_parameter(RADIUS, start_scale)
+	mat.set_shader_parameter(RADIUS, start_scale)
 
 
 func _process(delta: float) -> void:
@@ -56,7 +57,7 @@ func _scale_self(delta: float) -> void:
 	if scale.x < min_scale:
 		scale.x = min_scale
 	scale.z = scale.x
-	graphics.set_instance_shader_parameter(RADIUS, start_scale)
+	mat.set_shader_parameter(RADIUS, scale.x)
 
 
 func _damage_objects(delta: float) -> void:

@@ -1,0 +1,36 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://dsr4i8f5btjud"]
+
+[ext_resource type="Shader" uid="uid://1vfrvfc70gbo" path="res://art/shaders/graphs/vortex.tres" id="1_5cvm6"]
+[ext_resource type="Texture2D" uid="uid://cc70v8is7a6lc" path="res://art/textures/vfxy/vortex/Clouds1.png" id="2_5u5qx"]
+[ext_resource type="Texture2D" uid="uid://cdnuaoleepsqv" path="res://art/textures/vfxy/vortex/Clouds2.png" id="3_f78e8"]
+[ext_resource type="Texture2D" uid="uid://cc5xh0wvgum0i" path="res://art/textures/vfxy/vortex/lightning.png" id="4_gew6r"]
+[ext_resource type="Texture2D" uid="uid://cquo67pcvbos0" path="res://art/textures/vfxy/vortex/lightning cutout.png" id="5_k2qo8"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5cvm6")
+shader_parameter/Clouds_Color = Color(0, 0, 0, 1)
+shader_parameter/Lightning_Color = Color(1, 0, 0, 1)
+shader_parameter/Lightning_Edges = Vector2(0.4, 0.5)
+shader_parameter/Cutout_Scale = 15.0
+shader_parameter/Cutout_Speed = Vector2(0.308, -0.215)
+shader_parameter/Lightning_Cutout = ExtResource("5_k2qo8")
+shader_parameter/Lightning_Scale = 15.0
+shader_parameter/Ligthning_Speed = Vector2(-0.01, 0.025)
+shader_parameter/Lightning = ExtResource("4_gew6r")
+shader_parameter/Main_Color = Color(0.85, 0.00849999, 0.695725, 1)
+shader_parameter/Cloud_Edges = Vector2(0.3, 0.8)
+shader_parameter/Clouds1_Scale = 6.22
+shader_parameter/Clouds1_Speed = Vector2(-0.008, -0.011)
+shader_parameter/Clouds1 = ExtResource("2_5u5qx")
+shader_parameter/Clouds2_Scale = 9.18
+shader_parameter/Clouds2_Speed = Vector2(0.068, 0.04)
+shader_parameter/Clouds2 = ExtResource("3_f78e8")
+shader_parameter/Clouds_Mix = 0.5
+shader_parameter/Safe_Center = Vector2(0, 0)
+shader_parameter/Plane_Size = 2000.0
+shader_parameter/Safe_Radius = 200.0
+shader_parameter/Spike_Length = 30.0
+shader_parameter/Softness = 0.0
+shader_parameter/Spikes_Amount = 1000.0
+shader_parameter/Spike_Rotation = 5.0

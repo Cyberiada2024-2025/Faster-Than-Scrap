@@ -4,6 +4,7 @@ extends Node3D
 
 ## modules in the shop. Don't place them in the editor! Place them here!
 #@export_dir var modules: Array[String] = []
+var all_modules: Array[SceneData]
 ## set starting cash here
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var starting_bank: int = 0
 @export var max_items_count = 10
@@ -30,7 +31,7 @@ var bank: int = 0
 var first_frame: bool = true
 
 var areas: Array[Area3D] = []
-
+var loaded := false
 #TODO turn into singleton? so it gets ready only once
 
 
@@ -41,7 +42,7 @@ func _ready() -> void:
 
 
 func _generate_shop() -> void:
-	var all_modules = ShopContents.shop_modules
+	all_modules = ShopContents.shop_modules
 	var i = 0
 	for moduleData in all_modules:
 		var module = moduleData.packed_scene.instantiate()
@@ -53,6 +54,8 @@ func _generate_shop() -> void:
 		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
 		area.position = Vector3(x, 0, z)
 		i += 1
+	await Engine.get_main_loop().process_frame
+	loaded = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -98,6 +101,11 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		if child is Module:
 			var mod: Module = child
 			bank += mod.prize
+
+			if loaded:
+				for i in all_modules:
+					if i.name == mod.name:
+						ShopContents.shop_modules.erase(i)  # it clears at start everything
 			_on_bank_change()
 			if !areas.has(body):
 				areas.push_back(body)

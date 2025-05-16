@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://ckx4pgnacau0i"]
+[gd_scene load_steps=19 format=3 uid="uid://ckx4pgnacau0i"]
 
 [ext_resource type="Script" uid="uid://y01yp5jqupge" path="res://code/player/hud.gd" id="1_x65cj"]
 [ext_resource type="Script" uid="uid://hpmnb8n3f0n" path="res://code/player/resource_bar.gd" id="2_1s2ai"]
 [ext_resource type="Texture2D" uid="uid://b2wcjw2km4vjf" path="res://art/textures/ui/battery2.png" id="3_6m4ql"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="4_5fqad"]
+[ext_resource type="Texture2D" uid="uid://bmw35cwms6w7t" path="res://art/textures/ui/mapselect/Canister.png" id="5_ektdj"]
+[ext_resource type="Script" uid="uid://durs6dd5ncgap" path="res://code/player/fuel_display.gd" id="5_jtpgg"]
 
 [sub_resource type="Environment" id="Environment_s7i6o"]
 background_mode = 1
@@ -276,3 +278,38 @@ custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 texture = SubResource("ViewportTexture_77x52")
 expand_mode = 2
+
+[node name="Fuel indicator" type="ColorRect" parent="HUD" node_paths=PackedStringArray("fuel_display")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -95.0
+offset_bottom = 44.0
+grow_horizontal = 0
+color = Color(0, 0, 0, 1)
+script = ExtResource("5_jtpgg")
+fuel_display = NodePath("HBoxContainer/Fuel Label")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Fuel indicator"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Fuel indicator/HBoxContainer"]
+modulate = Color(0.514008, 0.191253, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_ektdj")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Fuel Label" type="Label" parent="HUD/Fuel indicator/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

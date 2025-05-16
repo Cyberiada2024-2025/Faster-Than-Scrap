@@ -6,7 +6,12 @@ signal on_capture
 ## The player detector will not emit any signals for this number of seconds after entering the tree,
 ## regardless of whether the player has entered the tree or not.
 @export var instantiated_cooldown: float = 0
-@export var capture_time: float = 2
+@export var capture_time: float = 2:
+	get:
+		return capture_time
+	set(value):
+		capture_time = value
+		_capture_counter = capture_time
 @export var _progress_mesh: MeshInstance3D
 
 var _player_in_range: bool = false

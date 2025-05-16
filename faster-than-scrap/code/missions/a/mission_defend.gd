@@ -4,10 +4,7 @@ extends Mission
 
 @export var info: MissionInfoDefend
 
-var defendable: Node3D
-var failed = false
-
-var defend_prefab = preload("res://prefabs/environment/defend_target.tscn")
+var _capture_counter: int = 1
 
 
 func setup() -> void:
@@ -15,34 +12,38 @@ func setup() -> void:
 
 	# create defendable object
 	# TODO swap to instantiating the defendable asset f.e.: ally ship
-	defendable = defend_prefab.instantiate()
+
+	_capture_counter = 1
+
+	_spawn_defendable()
+	_spawn_small_defendables()
+
+
+func _spawn_defendable() -> void:
+	# main defendable
+	var defendable: CapturePoint = info.defend_prefab.instantiate()
 	MissionManager.get_tree().current_scene.add_child(defendable)
-
-	# add timer
-	var timer := Timer.new()
-	# add to tree
-	timer.timeout.connect(success)
-	MissionManager.get_tree().current_scene.add_child(timer)
-	timer.start(info.time_to_defend)
-
-	# position it
 	defendable.global_position = info.defendable_position
+	defendable.on_capture.connect(_on_capture)
+	defendable.capture_time = info.time_to_defend
 
 
-func _process(_delta: float) -> void:
-	super(_delta)
-	if _ended():
-		return
-
-	# check if defendable is deleted (destroyed)
-	# or removed from the tree (if the object wasn't removed from the memory)
-	if not is_instance_valid(defendable) or not defendable.is_inside_tree():
-		state = MissionState.FAILED
+func _spawn_small_defendables() -> void:
+	# smaller defendables
+	for small_defendable_pos in info.small_defendable_position:
+		var small_defendable: CapturePoint = info.small_defend_prefab.instantiate()
+		MissionManager.get_tree().current_scene.add_child(small_defendable)
+		small_defendable.global_position = small_defendable_pos
+		small_defendable.on_capture.connect(_on_capture)
+		small_defendable.capture_time = info.small_time_to_defend
+		_capture_counter += 1
 
 
 ## called by the timer
 ## to signal the success of the mission
-func success() -> void:
+func _on_capture() -> void:
 	print("succesfuly defended!")
-	state = MissionState.FINISHED
-	finished.emit(self)
+	_capture_counter -= 1
+	if _capture_counter == 0:
+		state = MissionState.FINISHED
+		finished.emit(self)

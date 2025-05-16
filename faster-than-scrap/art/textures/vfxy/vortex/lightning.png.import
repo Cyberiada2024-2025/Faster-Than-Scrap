@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://28oqoogb4eyr"
-path.s3tc="res://.godot/imported/nebula6.png-eaa22a1d8a7a8837f208d7778640699d.s3tc.ctex"
+uid="uid://cc5xh0wvgum0i"
+path.s3tc="res://.godot/imported/lightning.png-af5be17a9e0a1fa6895e5d764039b1b2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://art/textures/environment/layers/nebula_tiles/nebula6.png"
-dest_files=["res://.godot/imported/nebula6.png-eaa22a1d8a7a8837f208d7778640699d.s3tc.ctex"]
+source_file="res://art/textures/vfxy/vortex/lightning.png"
+dest_files=["res://.godot/imported/lightning.png-af5be17a9e0a1fa6895e5d764039b1b2.s3tc.ctex"]
 
 [params]
 

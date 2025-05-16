@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d13pn5ajweul8"
-path.s3tc="res://.godot/imported/smoke_normal.png-48802bde5c9f362f6dc965f8fc8c7659.s3tc.ctex"
+uid="uid://cquo67pcvbos0"
+path.s3tc="res://.godot/imported/lightning cutout.png-a9d3d21c3ea646f324f35e40606ce449.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://art/textures/vfxy/smoke_normal.png"
-dest_files=["res://.godot/imported/smoke_normal.png-48802bde5c9f362f6dc965f8fc8c7659.s3tc.ctex"]
+source_file="res://art/textures/vfxy/vortex/lightning cutout.png"
+dest_files=["res://.godot/imported/lightning cutout.png-a9d3d21c3ea646f324f35e40606ce449.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://art/textures/VFX/smoke_normal.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

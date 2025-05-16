@@ -9,7 +9,7 @@ signal energy_change
 signal energy_max_change
 signal energy_warning
 
-signal fuel_change
+signal fuel_change(new_value: int)
 
 @export var cockpit: Cockpit
 
@@ -23,7 +23,7 @@ var current_fuel: int = 3:
 		var temp = current_fuel
 		current_fuel = new_value
 		if temp != current_fuel:
-			fuel_change.emit()
+			fuel_change.emit(current_fuel)
 
 var _saved_position: Vector3 = Vector3.ZERO
 var _saved_rotation: Vector3 = Vector3.ZERO

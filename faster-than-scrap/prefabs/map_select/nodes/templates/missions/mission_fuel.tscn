@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_awgas"]
 script = ExtResource("3_6x8tk")
-fuel_position = Vector3(0, 0, 0)
+fuel_position = Vector3(0, 0, -10)
 about = ""
 difficulty = 0
 priority = 0

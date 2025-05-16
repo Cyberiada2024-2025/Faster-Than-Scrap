@@ -1,3 +1,4 @@
+class_name Pickable
 extends PlayerDetector
 
 signal on_pick

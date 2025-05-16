@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtlau4bqcpa4b"]
+[gd_scene load_steps=7 format=3 uid="uid://dkbg1gqlrntx6"]
 
-[ext_resource type="PackedScene" uid="uid://c7gr12rhsysjx" path="res://prefabs/ui/poi/mission_poi.tscn" id="1_srhob"]
-[ext_resource type="Script" uid="uid://diheai0ulsufp" path="res://code/evironment/capture_point.gd" id="2_o3iip"]
-[ext_resource type="Material" uid="uid://cyne44ays80ug" path="res://art/materials/environment/control_point_progress.tres" id="3_rnyr5"]
+[ext_resource type="PackedScene" uid="uid://c7gr12rhsysjx" path="res://prefabs/ui/poi/mission_poi.tscn" id="1_x4trv"]
+[ext_resource type="Script" uid="uid://diheai0ulsufp" path="res://code/evironment/capture_point.gd" id="2_4tgdy"]
+[ext_resource type="Material" uid="uid://cyne44ays80ug" path="res://art/materials/environment/control_point_progress.tres" id="3_najc0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2gnvc"]
 
@@ -16,18 +16,16 @@ radius = 5.0
 [node name="Defend target" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(5.5, 0, 0, 0, 1, 0, 0, 0, 5.2, 0, 0, 0)
 mesh = SubResource("BoxMesh_2gnvc")
 
-[node name="MissionPoi" parent="." instance=ExtResource("1_srhob")]
+[node name="MissionPoi" parent="." instance=ExtResource("1_x4trv")]
 
 [node name="CapturePoint" type="Area3D" parent="." node_paths=PackedStringArray("_progress_mesh")]
-transform = Transform3D(1.6, 0, 0, 0, 1, 0, 0, 0, 1.6, 0, 0, 0)
-script = ExtResource("2_o3iip")
+script = ExtResource("2_4tgdy")
 _progress_mesh = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CapturePoint"]
-material_override = ExtResource("3_rnyr5")
+material_override = ExtResource("3_najc0")
 instance_shader_parameters/percentage = 0.085
 mesh = SubResource("TorusMesh_gw8ig")
 

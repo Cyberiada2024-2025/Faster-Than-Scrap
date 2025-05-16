@@ -47,4 +47,4 @@ func _process(delta: float) -> void:
 
 func _update_progress_bar() -> void:
 	var percentage: float = 1 - _capture_counter / capture_time
-	_progress_mesh.set_instance_shader_parameter("Percentage", percentage)
+	_progress_mesh.set_instance_shader_parameter("percentage", percentage)

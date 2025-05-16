@@ -12,6 +12,7 @@ size = Vector3(1.5, 1.5, 1.5)
 [sub_resource type="BoxMesh" id="BoxMesh_4x2we"]
 
 [node name="FuelSource" type="RigidBody3D"]
+transform = Transform3D(3.55253, 0, 0, 0, 1, 0, 0, 0, 3.55253, 0, 0, 0)
 axis_lock_linear_y = true
 mass = 1000.0
 gravity_scale = 0.0

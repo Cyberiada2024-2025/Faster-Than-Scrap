@@ -20,3 +20,5 @@ shape = SubResource("SphereShape3D_gr24o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("TorusMesh_2jy8s")
+
+[connection signal="on_pick" from="." to="Node" method="_give_fuel"]

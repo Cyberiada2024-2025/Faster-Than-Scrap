@@ -7,7 +7,6 @@ const VORTEX_PREFAB: PackedScene = preload(
 
 const DAMAGE: float = 10  # damage per second
 const RADIUS: String = "Safe_Radius"
-const CENTER: String = "Safe_Center"
 
 @export var graphics: GeometryInstance3D
 @export var mat: ShaderMaterial

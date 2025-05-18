@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	super(delta)
 
 	_spawn_timer -= delta
-	if _spawn_timer <= 0 and _spawned_enemies.size() < max_enemies:
+	if _spawn_timer <= 0 and _spawned_enemies.size() < max_enemies and _player_in_range:
 		_spawn_timer = spawn_interval
 		_spawn()
 

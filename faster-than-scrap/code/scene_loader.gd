@@ -28,11 +28,6 @@ func load_fly_ship_scene(
 	var attached_fly_scene: bool = false
 	if GameManager.game_state == GameState.State.BUILD:
 		attached_fly_scene = MapGenerator.swap_saved_and_current_scene()
-		#if not attached_fly_scene:
-		#MapGenerator.detach_and_save_current_scene() # if detached cant change_scene_file on null
-#
-	#if GameManager.game_state == GameState.State.BUILD:
-	#attached_fly_scene = MapGenerator.try_attach_saved_scene()
 
 	_detach_ship()
 	GameManager.on_scene_exit()

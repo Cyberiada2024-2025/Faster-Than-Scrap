@@ -4,9 +4,13 @@ extends Node
 ## given a sector node properties.
 ## Additionaly it stores the scene tree of that phase,
 ## to allow restoring it when returning from the shop.
-
+var prev
 var _map_node: MapNode = null
-var _scene: Node = null
+var _scene: Node:
+	set(value):
+		prev = _scene
+		_scene = value
+		print(_scene.name)
 
 var _shop_prefab = preload("res://prefabs/environment/shop_miniature.tscn")
 
@@ -60,13 +64,11 @@ func try_attach_saved_scene() -> bool:
 
 func swap_saved_and_current_scene() -> bool:
 	if _scene == null:
+		_scene = get_tree().current_scene
 		return false
 	var _temp_scene = get_tree().current_scene
 	_temp_scene.get_parent().remove_child(_temp_scene)
-
-	#get_tree().current_scene.queue_free() # queue free removes completly
-	var x = get_tree()
-	var y = get_tree().get_root()
+	print(_scene.name)  # Node3d35 isntead of actual scene. saving is wrong
 	get_tree().get_root().add_child(_scene)
 	get_tree().current_scene = _scene
 	_scene = _temp_scene

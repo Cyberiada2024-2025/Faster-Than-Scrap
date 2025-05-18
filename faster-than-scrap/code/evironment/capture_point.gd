@@ -34,7 +34,6 @@ func _check_if_player_entered(body: Node3D) -> void:
 func _check_if_player_exited(body: Node3D) -> void:
 	if body == GameManager.player_ship:
 		_player_in_range = false
-		_capture_counter = capture_time
 
 
 func _process(delta: float) -> void:
@@ -47,7 +46,12 @@ func _process(delta: float) -> void:
 			_capture_counter = 0
 			_captured = true
 			on_capture.emit()
-		_update_progress_bar()
+	else:
+		_capture_counter += delta * 3
+		if _capture_counter > capture_time:
+			_capture_counter = capture_time
+
+	_update_progress_bar()
 
 
 func _update_progress_bar() -> void:

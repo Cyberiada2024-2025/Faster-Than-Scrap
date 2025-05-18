@@ -2,6 +2,11 @@ class_name Shop
 
 extends Node3D
 
+## TODO
+# prevent generating too many of the same module
+# add rarities
+
+
 ## modules in the shop. Don't place them in the editor! Place them here!
 #@export_dir var modules: Array[String] = []
 var all_modules: Array[SceneData]
@@ -102,10 +107,10 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			var mod: Module = child
 			bank += mod.prize
 
-			if loaded:
-				for i in all_modules:
-					if i.name == mod.name:
-						ShopContents.shop_modules.erase(i)  # it clears at start everything
+			#if loaded:
+			#for i in all_modules:
+			#if i.name == mod.name:
+			#ShopContents.shop_modules.erase(i)  # it clears at start everything
 			_on_bank_change()
 			if !areas.has(body):
 				areas.push_back(body)

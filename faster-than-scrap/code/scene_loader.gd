@@ -25,12 +25,17 @@ func load_map_selector_scene() -> void:
 func load_fly_ship_scene(
 	pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO, use_saved_pos_rot: bool = true
 ) -> void:
-	_detach_ship()
-	GameManager.on_scene_exit()
-
 	var attached_fly_scene: bool = false
 	if GameManager.game_state == GameState.State.BUILD:
-		attached_fly_scene = MapGenerator.try_attach_saved_scene()
+		attached_fly_scene = MapGenerator.swap_saved_and_current_scene()
+		#if not attached_fly_scene:
+		#MapGenerator.detach_and_save_current_scene() # if detached cant change_scene_file on null
+#
+	#if GameManager.game_state == GameState.State.BUILD:
+	#attached_fly_scene = MapGenerator.try_attach_saved_scene()
+
+	_detach_ship()
+	GameManager.on_scene_exit()
 
 	if not attached_fly_scene:
 		get_tree().change_scene_to_file("res://scenes/fly_ship.tscn")
@@ -55,11 +60,14 @@ func load_build_ship_scene() -> void:
 	GameManager.player_ship.save_rotation()
 	_detach_ship()
 
+	var attached_fly_scene: bool = false
 	if GameManager.game_state == GameState.State.FLY:
-		MapGenerator.detach_and_save_current_scene()
+		attached_fly_scene = MapGenerator.swap_saved_and_current_scene()
+		#MapGenerator.detach_and_save_current_scene()
 
 	GameManager.on_scene_exit()
-	GameManager.get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
+	if not attached_fly_scene:
+		GameManager.get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
 	GameManager.set_game_state(GameState.State.BUILD)
 	_attach_ship_with_hud.call_deferred()
 

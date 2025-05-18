@@ -58,6 +58,21 @@ func try_attach_saved_scene() -> bool:
 	return true
 
 
+func swap_saved_and_current_scene() -> bool:
+	if _scene == null:
+		return false
+	var _temp_scene = get_tree().current_scene
+	_temp_scene.get_parent().remove_child(_temp_scene)
+
+	#get_tree().current_scene.queue_free() # queue free removes completly
+	var x = get_tree()
+	var y = get_tree().get_root()
+	get_tree().get_root().add_child(_scene)
+	get_tree().current_scene = _scene
+	_scene = _temp_scene
+	return true
+
+
 func set_node(new_node: MapNode) -> void:
 	_map_node = new_node
 	_scene = null

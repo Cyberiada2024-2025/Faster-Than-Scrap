@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpr65ttaqujar"]
+[gd_scene load_steps=5 format=3 uid="uid://bpr65ttaqujar"]
 
 [ext_resource type="Script" uid="uid://n3n525xrpgvs" path="res://code/map_select/map_manager.gd" id="1_0byna"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_0byna"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="3_0byna"]
+[ext_resource type="Texture2D" uid="uid://hueargt7yrni" path="res://art/textures/ui/mapselect/map_select_background_light.png" id="4_d2opd"]
 
 [node name="MapSelector" type="Node" node_paths=PackedStringArray("map_container", "button", "label", "scene_loader")]
 script = ExtResource("1_0byna")
@@ -46,3 +47,10 @@ text = "Select Mission
 script = ExtResource("2_0byna")
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_0byna")]
+
+[node name="Background" type="Sprite2D" parent="."]
+show_behind_parent = true
+z_index = -3
+position = Vector2(576, 324)
+scale = Vector2(0.610185, 0.610185)
+texture = ExtResource("4_d2opd")

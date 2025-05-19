@@ -41,11 +41,17 @@ var loaded := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	MissionManager.map_finished.connect(ShopContents.generate_contents)
+	MissionManager.map_finished.connect(ShopContents.generate_contents)  # new modules for new shop
+	MissionManager.map_finished.connect(_clear_shop)  # clear current shop on new map
 	var sl = SceneLoader.new()
 	sl.shop_entered.connect(_generate_shop)
 	# signal for shop generate when entering shop
 	_generate_shop()
+
+
+func _clear_shop() -> void:
+	MapGenerator._saved_scene = null  # so scene loader will create new shop
+	queue_free()
 
 
 func _generate_shop() -> void:

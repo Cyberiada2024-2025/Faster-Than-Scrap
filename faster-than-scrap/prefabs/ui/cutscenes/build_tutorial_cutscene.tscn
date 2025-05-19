@@ -1,0 +1,129 @@
+[gd_scene load_steps=4 format=3 uid="uid://coyf8ah8v6git"]
+
+[ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_unui1"]
+[ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_hak7e"]
+[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="3_01i7v"]
+
+[node name="BuildTutorialCutscene" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.596078)
+script = ExtResource("1_unui1")
+cutscene_name = "BuildTutorial"
+metadata/_custom_type_script = "uid://bn8cfyemp6axl"
+
+[node name="Slide" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_hak7e")
+duration = 5.0
+metadata/_custom_type_script = "uid://c8potv0p1705d"
+
+[node name="ColorRect" type="ColorRect" parent="Slide"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.292656, 0.388731, 0.540954, 1)
+
+[node name="Label" type="Label" parent="Slide/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_01i7v")
+theme_override_font_sizes/font_size = 20
+text = "Welcome in the ship editor.
+Here you can modify your ship."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slide2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_hak7e")
+duration = 10.0
+metadata/_custom_type_script = "uid://c8potv0p1705d"
+
+[node name="ColorRect" type="ColorRect" parent="Slide2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.2
+anchor_right = 0.895
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.292656, 0.388731, 0.540954, 1)
+
+[node name="Label" type="Label" parent="Slide2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_01i7v")
+text = "In the center you have your ship.
+
+Click LMB to attach and detach modules.
+
+Click RMB to change the activation key of a module. You will need that for new modules."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Slide3" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_hak7e")
+duration = 10.0
+metadata/_custom_type_script = "uid://c8potv0p1705d"
+
+[node name="ColorRect" type="ColorRect" parent="Slide3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.6
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.292656, 0.388731, 0.540954, 1)
+
+[node name="Label" type="Label" parent="Slide3/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_01i7v")
+text = "On the right you have a shop.  You can sell your modules to buy new modules laying there. You will not be able to leave until the total cost is negative."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

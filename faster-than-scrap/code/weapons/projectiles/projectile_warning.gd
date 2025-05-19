@@ -17,6 +17,12 @@ func _ready() -> void:
 	# puts graphics on y=0 plane at point we are looking at
 	# this is for vortex spike attack really
 	# no I don't know why /5 has to be there
+	# y=0------------o---------
+	#           |   /
+	# position.y|  /-graphics.z
+	#           | /
+	#           x--)basis.get_euler().x
+	# we move along local -z axis by sin(90-basis.get_euler().x [degrees])
 	if zero_y_pos && graphics != null:
 		graphics.position.z = -abs(position.y)/sin(PI/2-basis.get_euler().x)/5
 		graphics.global_rotation = Vector3.ZERO

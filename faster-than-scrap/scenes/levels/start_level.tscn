@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://buy7ourt75b2t"]
+[gd_scene load_steps=6 format=3 uid="uid://buy7ourt75b2t"]
 
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_xgqdr"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/enemies/stationary_enemy.tscn" id="2_mu58n"]
 [ext_resource type="PackedScene" uid="uid://cgx7bdd0f2rhg" path="res://prefabs/environment/shop_miniature.tscn" id="2_nbrbp"]
+[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_on_ready_player.gd" id="4_25ioe"]
+[ext_resource type="PackedScene" uid="uid://8uscjmf61w5f" path="res://prefabs/ui/cutscenes/fly_tutorial_cutscene.tscn" id="5_8bnrt"]
 
 [node name="DummyLevel" type="Node3D"]
 
@@ -22,3 +24,7 @@ transform = Transform3D(0.337309, 0, 0.941394, 0, 1, 0, -0.941394, 0, 0.337309, 
 
 [node name="StationaryEnemy4" parent="." instance=ExtResource("2_mu58n")]
 transform = Transform3D(0.337309, 0, 0.941394, 0, 1, 0, -0.941394, 0, 0.337309, -9.9507, 0, -16.8744)
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("4_25ioe")
+cutscene_path = ExtResource("5_8bnrt")

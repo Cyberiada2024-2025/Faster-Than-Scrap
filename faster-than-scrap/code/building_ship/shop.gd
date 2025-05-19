@@ -58,7 +58,6 @@ func _clear_shop() -> void:
 
 
 func _generate_shop() -> void:
-	first_frame = true
 	all_modules = ShopContents.shop_modules
 	var i = 0
 	for moduleData in all_modules:
@@ -72,6 +71,7 @@ func _generate_shop() -> void:
 		area.position = Vector3(x, 0, z)
 		i += 1
 	await Engine.get_main_loop().process_frame
+	first_frame = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -106,6 +106,7 @@ func _on_ship_builder_on_module_select(module: Module) -> void:
 		selected_module_display.text += ""
 		selected_module_description.text = ""
 		return
+	module.placed_in_shop = true
 	selected_module_display.text = "[b]" + module.module_name + ":[/b] "
 	selected_module_display.text += String.num_int64(module.prize) + "$"
 
@@ -115,26 +116,21 @@ func _on_ship_builder_on_module_select(module: Module) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	for child in body.get_children():
 		if child is Module:
-			var mod: Module = child
-			bank += mod.prize
-
-			#if loaded:
-			#for i in all_modules:
-			#if i.name == mod.name:
-			#ShopContents.shop_modules.erase(i)  # it clears at start everything
-			_on_bank_change()
-			if !areas.has(body):
-				areas.push_back(body)
+			if child.placed_in_shop:  # prevents activating when instantiating
+				var mod: Module = child
+				bank += mod.prize
+				_on_bank_change()
+				if !areas.has(body):
+					areas.push_back(body)
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
-	if areas.has(body):
-		for child in body.get_children():
-			if child is Module:
-				var mod: Module = child
-				bank -= mod.prize
-				_on_bank_change()
-				areas.remove_at(areas.find(body))
+	for child in body.get_children():
+		if child is Module:
+			var mod: Module = child
+			bank -= mod.prize
+			_on_bank_change()
+			areas.remove_at(areas.find(body))
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:

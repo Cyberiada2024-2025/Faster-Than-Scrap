@@ -35,6 +35,7 @@ const NOT_ACTIVABLE_KEYS: Array[Key] = [KEY_ENTER, KEY_ESCAPE]
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var prize: int = 1
 @export_multiline var description: String
 @export var rarity: Rarities
+var placed_in_shop = false
 
 var was_key_pressed: bool = false
 

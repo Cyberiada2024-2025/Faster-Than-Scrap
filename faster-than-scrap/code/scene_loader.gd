@@ -76,6 +76,10 @@ func load_credits_scene() -> void:
 	MapGenerator.reset()
 
 
+func load_lore_scene() -> void:
+	get_tree().change_scene_to_file("res://scenes/lore_start.tscn")
+
+
 ## detach the ship from the scene tree, to preserve it, when it is changed
 func _detach_ship():
 	if GameManager.player_ship == null:

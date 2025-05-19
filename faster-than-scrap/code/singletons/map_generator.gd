@@ -5,15 +5,9 @@ extends Node
 ## Additionaly it stores the scene tree of that phase,
 ## to allow restoring it when returning from the shop.
 var _map_node: MapNode = null
-var _scene: Node:
-	set(value):
-		_scene = value
-		print(_scene.name)
+var _scene: Node
 
-var _saved_scene: Node:
-	set(value):
-		_saved_scene = value
-		print(_saved_scene.name)
+var _saved_scene: Node
 
 var _shop_prefab = preload("res://prefabs/environment/shop_miniature.tscn")
 
@@ -68,14 +62,14 @@ func try_attach_saved_scene() -> bool:
 func swap_saved_and_current_scene() -> bool:
 	if _saved_scene == null:
 		_saved_scene = get_tree().current_scene
+		_saved_scene.get_parent().remove_child(_saved_scene)
 		return false
 	var _temp_scene = get_tree().current_scene
 	_temp_scene.get_parent().remove_child(_temp_scene)
-	print(_saved_scene.name)  # Node3d35 isntead of actual scene because map_generation overwrites it (and before it is turned to null for some reason)
 	get_tree().get_root().add_child(_saved_scene)
 	get_tree().current_scene = _saved_scene
+
 	_saved_scene = _temp_scene
-	_scene = _saved_scene
 	return true
 
 

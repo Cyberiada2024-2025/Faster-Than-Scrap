@@ -6,7 +6,6 @@ extends Node3D
 # prevent generating too many of the same module
 # add rarities
 
-
 ## modules in the shop. Don't place them in the editor! Place them here!
 #@export_dir var modules: Array[String] = []
 var all_modules: Array[SceneData]
@@ -43,6 +42,9 @@ var loaded := false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	MissionManager.map_finished.connect(ShopContents.generate_contents)
+	var sl = SceneLoader.new()
+	sl.shop_entered.connect(_generate_shop)
+	# signal for shop generate when entering shop
 	_generate_shop()
 
 

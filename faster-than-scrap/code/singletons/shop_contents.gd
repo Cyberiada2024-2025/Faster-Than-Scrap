@@ -14,9 +14,11 @@ func _ready() -> void:
 
 func generate_contents() -> void:
 	shop_modules = []
+	var rng = RandomNumberGenerator.new()
 	for i in range(max_modules_count):
-		var modulePacked := ModulesList.all_modules[randi_range(
+		var modulePacked := ModulesList.all_modules[rng.randi_range(
 			0, ModulesList.all_modules.size() - 1
 		)]
 		var module = modulePacked.instantiate()
 		shop_modules.append(SceneData.new(module.name, modulePacked))
+	pass

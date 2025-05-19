@@ -8,6 +8,8 @@ extends Node
 
 var default_ship_prefab = preload("res://prefabs/ships/flyable_ship_with_shield.tscn")
 
+signal shop_entered
+
 
 func load_main_menu_scene() -> void:
 	GameManager.on_scene_exit()
@@ -33,7 +35,7 @@ func load_fly_ship_scene(
 	GameManager.on_scene_exit()
 
 	if not attached_fly_scene:
-		get_tree().change_scene_to_file("res://scenes/fly_ship.tscn")
+		GameManager.get_tree().change_scene_to_file("res://scenes/fly_ship.tscn")
 
 	GameManager.set_game_state(GameState.State.FLY)
 	if use_saved_pos_rot:
@@ -65,6 +67,7 @@ func load_build_ship_scene() -> void:
 		GameManager.get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
 	GameManager.set_game_state(GameState.State.BUILD)
 	_attach_ship_with_hud.call_deferred()
+	shop_entered.emit()
 
 
 func load_credits_scene() -> void:

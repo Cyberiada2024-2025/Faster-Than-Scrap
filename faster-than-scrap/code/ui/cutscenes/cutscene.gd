@@ -14,6 +14,8 @@ const CIRCLE_OFFSET: float = 50
 
 const MAX_HOLD_TIME: float = 2
 
+@export var cutscene_name: String = ""
+
 var slides: Array[Slide]
 var skipping: bool = false
 var skip_timer: float = 0

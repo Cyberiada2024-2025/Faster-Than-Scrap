@@ -17,4 +17,4 @@ func play_cutscene(cutscene_packed_scene: PackedScene) -> void:
 
 
 func reset_cutscenes() -> void:
-	alread_played_cutscenes = []
+	alread_played_cutscenes.clear()

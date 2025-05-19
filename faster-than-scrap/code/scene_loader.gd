@@ -13,6 +13,7 @@ func load_main_menu_scene() -> void:
 	GameManager.on_scene_exit()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	GameManager.set_game_state(GameState.State.MAIN_MENU)
+	CutsceneManager.reset_cutscenes()
 
 
 func load_map_selector_scene() -> void:

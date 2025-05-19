@@ -31,7 +31,10 @@ var all_modules: Array[SceneData]
 @export var selected_module_description: RichTextLabel
 
 ## actual cash balance
-var bank: int = 0
+var bank: int = 0:
+	set(v):
+		print(v)
+		bank = v
 var first_frame: bool = true
 
 var areas: Array[Area3D] = []
@@ -55,6 +58,7 @@ func _clear_shop() -> void:
 
 
 func _generate_shop() -> void:
+	first_frame = true
 	all_modules = ShopContents.shop_modules
 	var i = 0
 	for moduleData in all_modules:
@@ -68,7 +72,6 @@ func _generate_shop() -> void:
 		area.position = Vector3(x, 0, z)
 		i += 1
 	await Engine.get_main_loop().process_frame
-	loaded = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

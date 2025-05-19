@@ -1,8 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://csls7imysojta"]
 
+
 [ext_resource type="Script" uid="uid://b86vmkhkjsh2k" path="res://code/weapons/projectiles/beam.gd" id="1_uoyes"]
 [ext_resource type="Script" uid="uid://buwehho3rx3g0" path="res://code/damage/damage_raycast_3d.gd" id="2_ux1bn"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_bi3tx"]
+
 
 [sub_resource type="Resource" id="Resource_7ctxp"]
 script = ExtResource("3_bi3tx")
@@ -28,7 +30,9 @@ target_position = Vector3(0, 0, -50)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
 script = ExtResource("2_ux1bn")
+
 _damage = SubResource("Resource_7ctxp")
 
 [node name="Node3D" type="Node3D" parent="."]

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7itl3wshrqoq"
-path.s3tc="res://.godot/imported/smoke_alpha.png-9ace2bf62b08a31dd268f00e7d4b3934.s3tc.ctex"
+uid="uid://cc70v8is7a6lc"
+path.s3tc="res://.godot/imported/Clouds1.png-ae9c31d6fd3d55166ac8b671b03cb6f0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://art/textures/vfxy/smoke_alpha.png"
-dest_files=["res://.godot/imported/smoke_alpha.png-9ace2bf62b08a31dd268f00e7d4b3934.s3tc.ctex"]
+source_file="res://art/textures/vfxy/vortex/Clouds1.png"
+dest_files=["res://.godot/imported/Clouds1.png-ae9c31d6fd3d55166ac8b671b03cb6f0.s3tc.ctex"]
 
 [params]
 

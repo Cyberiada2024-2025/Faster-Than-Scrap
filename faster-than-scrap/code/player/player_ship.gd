@@ -5,9 +5,9 @@ extends Ship
 ## Extension of Ship class.
 ## Supposed to be used only by player.
 
-signal energy_change
-signal energy_max_change
-signal energy_warning
+signal energy_change(energy: float)
+signal energy_max_change(max_energy: float)
+signal energy_warning(energy: float)
 
 @export var cockpit: Cockpit
 
@@ -65,6 +65,12 @@ func get_saved_rotation():
 func _on_energy_change() -> void:
 	super()
 	energy_change.emit(energy)
+
+
+## Called whenever the max energy amount changes.
+func _on_energy_max_change() -> void:
+	super()
+	energy_max_change.emit(max_energy)
 
 
 func use_energy(amount: float) -> bool:

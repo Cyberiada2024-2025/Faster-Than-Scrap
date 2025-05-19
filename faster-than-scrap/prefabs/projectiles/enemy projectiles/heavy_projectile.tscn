@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ymmjkrxvfgwu"]
 
-[ext_resource type="Script" uid="uid://2uexqgp76p1n" path="res://code/ship/projectiles/projectile.gd" id="1_6fcri"]
+[ext_resource type="Script" uid="uid://2uexqgp76p1n" path="res://code/weapons/projectiles/projectile.gd" id="1_6fcri"]
 [ext_resource type="Script" uid="uid://7rxxtodxpx1d" path="res://code/damage/damage_area_3d.gd" id="2_47qli"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_xoudu"]
 
@@ -8,14 +8,14 @@
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ld4gu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6fcri"]
 albedo_color = Color(1, 0, 0, 1)
 emission_enabled = true
 emission = Color(1, 0, 0, 1)
 emission_energy_multiplier = 16.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_6fcri"]
-material = SubResource("StandardMaterial3D_ld4gu")
+material = SubResource("StandardMaterial3D_6fcri")
 radius = 1.0
 height = 2.0
 

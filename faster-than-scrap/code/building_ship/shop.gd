@@ -6,6 +6,9 @@ extends Node3D
 # prevent generating too many of the same module
 # add rarities
 
+## GainResourceArea must be at negative y coordinate
+## otherwise, engine module is not selectable
+
 ## modules in the shop. Don't place them in the editor! Place them here!
 #@export_dir var modules: Array[String] = []
 var all_modules: Array[SceneData]
@@ -44,11 +47,13 @@ var loaded := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	MissionManager.map_finished.connect(ShopContents.generate_contents)  # new modules for new shop
-	MissionManager.map_finished.connect(_clear_shop)  # clear current shop on new map
+	# clear current shop when new map
+	MissionManager.map_finished.connect(_clear_shop)
+	MissionManager.map_finished.connect(ShopContents.generate_contents)
+
+	# generate shop when reentering
 	var sl = SceneLoader.new()
 	sl.shop_entered.connect(_generate_shop)
-	# signal for shop generate when entering shop
 	_generate_shop()
 
 
@@ -111,6 +116,26 @@ func _on_ship_builder_on_module_select(module: Module) -> void:
 	selected_module_display.text += String.num_int64(module.prize) + "$"
 
 	selected_module_description.text = module.description
+
+
+func _on_gain_resource_body_entered(body: Node3D) -> void:
+	for child in body.get_children():
+		if child is Module:
+			var mod: Module = child
+			# 2 times to offset price of leaving PayResourceArea
+			bank += mod.prize
+			_on_bank_change()
+			if !areas.has(body):
+				areas.push_back(body)
+
+
+func _on_gain_resource_body_exited(body: Node3D) -> void:
+	for child in body.get_children():
+		if child is Module:
+			var mod: Module = child
+			bank -= mod.prize
+			_on_bank_change()
+			areas.remove_at(areas.find(body))
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

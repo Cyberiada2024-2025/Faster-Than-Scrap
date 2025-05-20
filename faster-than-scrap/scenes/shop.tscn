@@ -57,10 +57,8 @@ size = Vector3(8.32263, 1, 12.5726)
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_kqinb")]
 
-[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "shop", "choose_key_message", "confirm_finish_message")]
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("choose_key_message", "confirm_finish_message")]
 script = ExtResource("2_jgpv1")
-ignore = NodePath("../Shop/Area3D")
-shop = NodePath("../Shop")
 outline_mat = ExtResource("3_tpphw")
 flash_mat = ExtResource("4_ead8n")
 flash_time = 0.5
@@ -245,10 +243,11 @@ vertical_alignment = 1
 [node name="PlayerShipExample" parent="." instance=ExtResource("7_qmxef")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62968, 0, 0)
 
-[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish", "selected_module_prize_display")]
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.85019, 0, 0)
 script = ExtResource("12_bskm6")
 modules = Array[String](["res://prefabs/modules/module_base_with_area.tscn", "res://prefabs/modules/module_base_with_area.tscn", "uid://6nbs7s4q12jh"])
+starting_bank = 5
 size_x = 8.323
 size_z = 12.573
 columns = 4
@@ -256,7 +255,6 @@ rows = 5
 bank_display = NodePath("Label3D")
 deny_finish = NodePath("../ShipBuilder/Control/Deny finish")
 confirm_finish = NodePath("../ShipBuilder/Control/Confirm finish")
-selected_module_prize_display = NodePath("../ShipBuilder/Control/Prize_display/Label")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Shop"]
 transform = Transform3D(8.28, 0, 0, 0, 0.083, 0, 0, 0, 12.42, 0, 0, 0)

@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://crp1vxubokrt" path="res://code/enemy/states/move/move_to_orbit_place.gd" id="7_tge7b"]
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="7_xvv2n"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="8_jstny"]
-[ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="9_k4714"]
+[ext_resource type="Script" uid="uid://p2tfapf0egxl" path="res://code/enemy/transitions/timed_transition.gd" id="9_k4714"]
 [ext_resource type="Script" uid="uid://b0xwjuq1av15m" path="res://code/enemy/states/rotate/constant_rotation.gd" id="10_vhk6y"]
 [ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="11_vp012"]
 [ext_resource type="Script" uid="uid://c7w7ael2yxs4y" path="res://code/enemy/states/rotate/look_at_target_with_object.gd" id="12_7fp2r"]
@@ -177,6 +177,18 @@ y_rotation_speed = 360.0
 [node name="TransitionLowEnergy" type="Node" parent="StateMachineNPC/Shoot lasers and spin" node_paths=PackedStringArray("new_state")]
 script = ExtResource("11_vp012")
 low_energy_treshold = 10
+new_state = NodePath("../../Spin")
+
+[node name="Spin" type="Node" parent="StateMachineNPC"]
+script = ExtResource("7_xvv2n")
+
+[node name="Rotate" type="Node" parent="StateMachineNPC/Spin"]
+script = ExtResource("10_vhk6y")
+y_rotation_speed = 360.0
+
+[node name="Timed transition" type="Node" parent="StateMachineNPC/Spin" node_paths=PackedStringArray("new_state")]
+script = ExtResource("9_k4714")
+duration = 1.0
 new_state = NodePath("../../Move far away")
 
 [node name="EnemyPoi" parent="." instance=ExtResource("15_vhk6y")]

@@ -2,6 +2,7 @@ class_name SpawnerWeapon
 
 extends BaseWeapon
 @export var muzzle_flash: GPUParticles3D
+@export var warning: bool
 
 ## Weapon that can spawn multiple projectiles, such as bullets, laser bolts, etc.
 
@@ -15,8 +16,12 @@ func try_activate() -> Node3D:
 	recoil.emit(recoil_force)
 
 	var new_projectile = _spawn_projectile()
-	new_projectile.transform = global_transform
-	get_tree().current_scene.add_child(new_projectile)
+
+	if !warning:
+		new_projectile.transform = global_transform
+		get_tree().current_scene.add_child(new_projectile)
+	else:
+		add_child(new_projectile)
 
 	if muzzle_flash != null:
 		muzzle_flash.restart()

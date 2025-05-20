@@ -1,21 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk1g8kstnrxxk"]
+[gd_scene load_steps=6 format=3 uid="uid://dk1g8kstnrxxk"]
 
 [ext_resource type="Script" uid="uid://bdljn5ooj2ryy" path="res://code/evironment/space_vortex/space_vortex.gd" id="1_8f7e2"]
+[ext_resource type="Material" uid="uid://dsr4i8f5btjud" path="res://art/materials/vfx/Vortex.tres" id="2_ivlmu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cujf5"]
+radius = 0.65
 
-[sub_resource type="TorusMesh" id="TorusMesh_ivlmu"]
+[sub_resource type="Gradient" id="Gradient_ivlmu"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
-[node name="SpaceVortex" type="Area3D"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_egdpg"]
+gradient = SubResource("Gradient_ivlmu")
+
+[node name="SpaceVortex" type="Area3D" node_paths=PackedStringArray("graphics")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_8f7e2")
+graphics = NodePath("Sprite3D")
+mat = ExtResource("2_ivlmu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_cujf5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("TorusMesh_ivlmu")
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2000, 0, 0, 0, -8.74228e-05, 2000, 0, -2000, -8.74228e-05, 0, -5, 0)
+material_override = ExtResource("2_ivlmu")
+double_sided = false
+render_priority = 4
+texture = SubResource("GradientTexture2D_egdpg")
 
 [connection signal="area_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_exited" from="." to="." method="_on_body_exited"]

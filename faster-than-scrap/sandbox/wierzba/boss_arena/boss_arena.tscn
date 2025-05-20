@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://1x45q2a5nnee" path="res://prefabs/npc/bosses/vortex/vortex_boss.tscn" id="6_lsvnc"]
 [ext_resource type="PackedScene" uid="uid://c3v1bk85mx7p3" path="res://prefabs/ships/flyable_ship_with_guns.tscn" id="8_es6mq"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/ui/hud.tscn" id="8_lsvnc"]
-[ext_resource type="Script" path="res://code/evironment/generate_nebulas.gd" id="9_lsvnc"]
+[ext_resource type="Script" uid="uid://f6d84uyul237" path="res://code/evironment/generate_nebulas.gd" id="9_lsvnc"]
 
 [sub_resource type="Resource" id="Resource_l2brj"]
 script = ExtResource("3_13iag")

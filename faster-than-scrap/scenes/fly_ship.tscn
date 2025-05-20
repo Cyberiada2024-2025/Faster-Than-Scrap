@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnnvqogplwfqa"]
+[gd_scene load_steps=11 format=3 uid="uid://bnnvqogplwfqa"]
 
 [ext_resource type="Script" uid="uid://dtqvp1s2omow6" path="res://code/evironment/setup_fly_scene.gd" id="1_nuays"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="2_g53x4"]
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="3_jnhio"]
 [ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/npc/enemies/fast_enemy.tscn" id="5_3xk4m"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="5_gcgjm"]
-[ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/npc/enemies/heavy_enemy.tscn" id="6_ibgta"]
-[ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/stationary_enemy.tscn" id="7_fphmu"]
+[ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/enemies/heavy_enemy.tscn" id="6_ibgta"]
+[ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/enemies/stationary_enemy.tscn" id="7_fphmu"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="8_ibgta"]
-[ext_resource type="Script" path="res://code/evironment/generate_nebulas.gd" id="9_fphmu"]
+[ext_resource type="Script" uid="uid://f6d84uyul237" path="res://code/evironment/generate_nebulas.gd" id="9_fphmu"]
+[ext_resource type="AudioStream" uid="uid://dca4vlll603e5" path="res://art/audio/music/music_fly_ship.mp3" id="10_4i6js"]
 
 [node name="Space" type="Node3D"]
 
@@ -50,5 +51,11 @@ transform = Transform3D(0.337309, 0, 0.941394, 0, 1, 0, -0.941394, 0, 0.337309, 
 
 [node name="Background" type="Node3D" parent="."]
 script = ExtResource("9_fphmu")
+
+[node name="FlySceneMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_4i6js")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="pressed" from="Button" to="SceneLoader" method="load_build_ship_scene"]

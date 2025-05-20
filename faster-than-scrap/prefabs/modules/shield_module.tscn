@@ -126,6 +126,8 @@ points = PackedVector3Array(-0.951058, -0.000195742, -0.011405, 0.850515, -0.525
 [node name="ShieldModule" type="CollisionShape3D" node_paths=PackedStringArray("shield", "collider", "attach_points", "sprite", "label")]
 shape = SubResource("BoxShape3D_x6hs4")
 script = ExtResource("1_qfqke")
+energy_per_turning = 15.0
+energy_per_sec = 15.0
 shield = NodePath("Shield2")
 collider = NodePath("Shield2/Shield_Collision/CollisionShape3D")
 attach_points = [NodePath("AttachPoints/AttachPoint1")]

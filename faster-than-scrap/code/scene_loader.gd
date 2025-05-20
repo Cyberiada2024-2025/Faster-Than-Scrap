@@ -109,6 +109,8 @@ func _attach_ship_with_hud(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.Z
 	GameManager.player_ship.position = pos
 	GameManager.player_ship.rotation = rot
 
+	HudSpawner.spawn_hud = true
+
 
 ## attach the ship to the scene tree
 func _attach_ship_without_hud():

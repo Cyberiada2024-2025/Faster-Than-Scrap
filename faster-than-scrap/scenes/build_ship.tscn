@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=35 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -6,8 +6,6 @@
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_sra6p"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_jtm63"]
-[ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="9_xqadh"]
-[ext_resource type="PackedScene" uid="uid://cujiw86wtjlp8" path="res://prefabs/modules/frame1.tscn" id="10_jtm63"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="10_xqadh"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
@@ -66,8 +64,24 @@ emission_enabled = true
 emission = Color(0.111572, 0.616094, 1.92523e-07, 1)
 emission_energy_multiplier = 2.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cv5l0"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.313726)
+emission_enabled = true
+emission = Color(0.692552, 0, 0.243357, 1)
+emission_energy_multiplier = 1.39
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbg4l"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.705939, 2.23808e-06, 2.88785e-07, 1)
+emission_energy_multiplier = 2.0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_cv5l0"]
-size = Vector3(8.32263, 1, 12.5726)
+size = Vector3(17.907, 1, 19.3862)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jtm63"]
+size = Vector3(8.64761, 1, 8.69147)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqadh"]
 transparency = 1
@@ -92,9 +106,8 @@ font_color = Color(0.105882, 1, 0.105882, 1)
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_8ccmg")]
 
-[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "confirm_finish_message")]
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ship_borders", "choose_key_message", "confirm_finish_message")]
 script = ExtResource("1_d5jmr")
-ignore = [NodePath("../Shop/Area3D"), NodePath("../Ship Max Size/Area3D")]
 ship_borders = NodePath("../Ship Max Size/Area3D")
 outline_mat = ExtResource("3_7x66o")
 flash_mat = ExtResource("4_sra6p")
@@ -310,14 +323,11 @@ metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
 [node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "inventory_limit_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description", "selected_module_prize_display")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2428, 0, 0)
+
 script = ExtResource("11_jtm63")
-
-modules = Array[String](["uid://cujiw86wtjlp8", "uid://cujiw86wtjlp8", "uid://cujiw86wtjlp8", "uid://gngfqbur01ep", "uid://gngfqbur01ep", "uid://dbajfkkhivhl0", "uid://dbajfkkhivhl0", "uid://cqkj1jovh07cf", "uid://cqkj1jovh07cf", "uid://taxlqo87sp7s", "uid://15te4x6fjtx4", "uid://b8v177mewyt5j"])
-starting_bank = 3
-
-size_x = 8.323
-size_z = 12.573
-columns = 4
+size_x = 10.0
+size_z = 10.0
+columns = 3
 rows = 5
 bank_display = NodePath("Label3D")
 inventory_limit_display = NodePath("Inventory/InventoryLimitLabel")
@@ -330,17 +340,27 @@ selected_module_description = NodePath("../ShipBuilder/Control/Description_displ
 metadata/_custom_type_script = "uid://dsebh10ryevl"
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Shop"]
-transform = Transform3D(8.28, 0, 0, 0, 0.083, 0, 0, 0, 12.42, 0, 0, 0)
+transform = Transform3D(10, 0, 0, 0, 0.177, 0, 0, 0, 10, -0.413557, 0.009, -0.32811)
 mesh = SubResource("BoxMesh_jtm63")
 material = SubResource("StandardMaterial3D_d8di0")
 
 [node name="CSGMesh3D2" type="CSGMesh3D" parent="Shop/CSGMesh3D"]
-transform = Transform3D(1.01, 0, 0, 0, 0.5, 0, 0, 0, 1.01, 0, 0, 0)
+transform = Transform3D(1.02, 0, 0, 0, 1, 0, 0, 0, 1.01, 0, 0, -0.00857064)
 mesh = SubResource("BoxMesh_jtm63")
 material = SubResource("StandardMaterial3D_bwh47")
 
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Shop"]
+transform = Transform3D(10, 0, 0, 0, 0.083, 0, 0, 0, 10, -0.413557, 0, 9.67189)
+mesh = SubResource("BoxMesh_jtm63")
+material = SubResource("StandardMaterial3D_cv5l0")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Shop/CSGMesh3D2"]
+transform = Transform3D(1.01, 0, 0, 0, 0.5, 0, 0, 0, 1.002, -0.000127196, -0.00248185, 0.00770876)
+mesh = SubResource("BoxMesh_jtm63")
+material = SubResource("StandardMaterial3D_hbg4l")
+
 [node name="Label3D" type="Label3D" parent="Shop"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.88895, 5.0121e-08, -6.75637)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.03545, 5.0121e-08, -6.44521)
 modulate = Color(0.1, 3, 0, 1)
 text = "0$"
 font = ExtResource("6_au3vu")
@@ -348,12 +368,20 @@ font_size = 128
 outline_size = 0
 horizontal_alignment = 2
 
-[node name="Area3D" type="Area3D" parent="Shop"]
+[node name="PayResourceArea" type="Area3D" parent="Shop"]
+transform = Transform3D(1.06696, 0, 0, 0, 3.28825, 0, 0, 0, 1, -21.2996, -0.197084, -1.78511)
 input_ray_pickable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0455933, 0, 0.0821714)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/PayResourceArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.01693, 0, 6.15209)
 shape = SubResource("BoxShape3D_cv5l0")
+
+[node name="GainResourceArea" type="Area3D" parent="Shop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38156, -0.1, 8.64289)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/GainResourceArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11545, -0.156928, 1.04995)
+shape = SubResource("BoxShape3D_jtm63")
 
 [node name="Ship Max Size" type="Node3D" parent="."]
 
@@ -422,16 +450,6 @@ shape = SubResource("BoxShape3D_xqadh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3246, 0, 0.0656614)
 shape = SubResource("BoxShape3D_xqadh")
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.57239, 0, 3.31371)
-
-[node name="Thruster" parent="Area3D" instance=ExtResource("9_xqadh")]
-
-[node name="Area3D2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56951, 0, 8.0293)
-
-[node name="Frame" parent="Area3D2" instance=ExtResource("10_jtm63")]
-
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -466,9 +484,16 @@ vertical_alignment = 1
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Confirm" to="ShipBuilder" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Deny" to="ShipBuilder" method="_on_deny_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Finish" to="Shop" method="_on_finish_pressed"]
-[connection signal="area_entered" from="Shop/Area3D" to="Shop" method="_on_area_3d_area_entered"]
-[connection signal="area_exited" from="Shop/Area3D" to="Shop" method="_on_area_3d_area_exited"]
-[connection signal="body_entered" from="Shop/Area3D" to="Shop" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Shop/Area3D" to="Shop" method="_on_area_3d_body_exited"]
+
+[connection signal="area_entered" from="Shop/PayResourceArea" to="Shop" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Shop/PayResourceArea" to="Shop" method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="Shop/PayResourceArea" to="Shop" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Shop/PayResourceArea" to="Shop" method="_on_area_3d_body_exited"]
+[connection signal="area_entered" from="Shop/GainResourceArea" to="Shop" method="_on_gain_resource_body_entered"]
+[connection signal="area_exited" from="Shop/GainResourceArea" to="Shop" method="_on_gain_resource_body_exited"]
+[connection signal="body_entered" from="Shop/GainResourceArea" to="Shop" method="_on_gain_resource_body_entered"]
+[connection signal="body_exited" from="Shop/GainResourceArea" to="Shop" method="_on_gain_resource_body_exited"]
+
 [connection signal="area_entered" from="Shop/Inventory/Area3D" to="Shop" method="_on_inventory_entered"]
 [connection signal="area_exited" from="Shop/Inventory/Area3D" to="Shop" method="_on_inventory_exited"]
+

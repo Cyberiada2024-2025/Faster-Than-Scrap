@@ -64,6 +64,7 @@ func _generate_shop() -> void:
 		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
 		area.position = Vector3(x, 0, z)
 		modules_on_scene.append(module)
+		module.placed_in_shop = false
 		i += 1
 	await Engine.get_main_loop().process_frame
 	first_frame = true

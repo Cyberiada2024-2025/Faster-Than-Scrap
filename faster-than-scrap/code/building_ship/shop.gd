@@ -12,6 +12,7 @@ extends Node3D
 ## modules in the shop. Don't place them in the editor! Place them here!
 #@export_dir var modules: Array[String] = []
 var all_modules: Array[SceneData]
+var modules_on_scene: Array[Module]
 ## set starting cash here
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var starting_bank: int = 0
 @export var max_items_count = 10
@@ -19,9 +20,9 @@ var all_modules: Array[SceneData]
 
 @export_category("Visuals")
 ## shop size X
-@export_custom(PROPERTY_HINT_NONE, "suffix:m") var size_x: float = 10
+@export_custom(PROPERTY_HINT_NONE, "suffix:m") var size_x: float = 0
 ## shop size Y
-@export_custom(PROPERTY_HINT_NONE, "suffix:m") var size_z: float = 15
+@export_custom(PROPERTY_HINT_NONE, "suffix:m") var size_z: float = 0
 @export var columns: int
 @export var rows: int
 ## display of cash balance
@@ -74,6 +75,7 @@ func _generate_shop() -> void:
 		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2
 		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
 		area.position = Vector3(x, 0, z)
+		modules_on_scene.append(module)
 		i += 1
 	await Engine.get_main_loop().process_frame
 	first_frame = true
@@ -98,6 +100,12 @@ func _on_finish_pressed() -> void:
 		deny_finish.visible = true
 	else:
 		confirm_finish.visible = true
+		print("hey")
+		for mod in modules_on_scene:
+			mod.placed_in_shop = false
+			if mod.marked_to_destroy == true:
+				modules_on_scene.erase(mod)
+				mod.queue_free()
 
 
 func _on_confirm_pressed() -> void:
@@ -122,8 +130,8 @@ func _on_gain_resource_body_entered(body: Node3D) -> void:
 	for child in body.get_children():
 		if child is Module:
 			var mod: Module = child
-			# 2 times to offset price of leaving PayResourceArea
 			bank += mod.prize
+			mod.marked_to_destroy = true
 			_on_bank_change()
 			if !areas.has(body):
 				areas.push_back(body)
@@ -134,6 +142,7 @@ func _on_gain_resource_body_exited(body: Node3D) -> void:
 		if child is Module:
 			var mod: Module = child
 			bank -= mod.prize
+			mod.marked_to_destroy = false
 			_on_bank_change()
 			areas.remove_at(areas.find(body))
 
@@ -152,18 +161,20 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	for child in body.get_children():
 		if child is Module:
-			var mod: Module = child
-			bank -= mod.prize
-			_on_bank_change()
-			areas.remove_at(areas.find(body))
+			if child.placed_in_shop:  # prevents activating when instantiating
+				var mod: Module = child
+				bank -= mod.prize
+				_on_bank_change()
+				areas.remove_at(areas.find(body))
 
 
-func _on_area_3d_area_entered(area: Area3D) -> void:
-	_on_area_3d_body_entered(area)
-
-
-func _on_area_3d_area_exited(area: Area3D) -> void:
-	_on_area_3d_body_exited(area)
+#
+#func _on_area_3d_area_entered(area: Area3D) -> void:
+#_on_area_3d_body_entered(area)
+#
+#
+#func _on_area_3d_area_exited(area: Area3D) -> void:
+#_on_area_3d_body_exited(area)
 
 
 func _on_module_attached(module: Module) -> void:

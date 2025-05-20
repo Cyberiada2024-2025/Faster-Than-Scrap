@@ -36,6 +36,7 @@ const NOT_ACTIVABLE_KEYS: Array[Key] = [KEY_ENTER, KEY_ESCAPE]
 @export_multiline var description: String
 @export var rarity: Rarities
 var placed_in_shop = false
+var marked_to_destroy = false
 
 var was_key_pressed: bool = false
 

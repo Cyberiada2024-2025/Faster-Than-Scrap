@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyelnq2hlcth4"]
 
 [ext_resource type="Material" uid="uid://bkh7a5m7sul53" path="res://art/materials/missile/missile_material_3d.tres" id="1_ud0ea"]
-[ext_resource type="ArrayMesh" uid="uid://dgcyhaqmlmgwh" path="res://art/models/missile/missile.obj" id="2_3bkh5"]
+[ext_resource type="ArrayMesh" uid="uid://dgcyhaqmlmgwh" path="res://art/modelss/missile/missile.obj" id="2_3bkh5"]
 
 [node name="Missile" type="Node3D"]
 

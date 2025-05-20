@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bfla2gv2cw50c"
+path="res://.godot/imported/thruster.obj-fc02d5e98a2d4abf85cb82318bbbe92f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/thruster.obj-fc02d5e98a2d4abf85cb82318bbbe92f.mesh"]
+
+source_file="res://art/modelss/thruster/thruster.obj"
+dest_files=["res://.godot/imported/thruster.obj-fc02d5e98a2d4abf85cb82318bbbe92f.mesh", "res://.godot/imported/thruster.obj-fc02d5e98a2d4abf85cb82318bbbe92f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

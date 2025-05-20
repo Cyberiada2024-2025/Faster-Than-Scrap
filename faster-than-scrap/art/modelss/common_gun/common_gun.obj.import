@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://lwlx588xi1eg"
+path="res://.godot/imported/common_gun.obj-153ae1b64151d959113f726e873f66ce.mesh"
+
+[deps]
+
+files=["res://.godot/imported/common_gun.obj-153ae1b64151d959113f726e873f66ce.mesh"]
+
+source_file="res://art/modelss/common_gun/common_gun.obj"
+dest_files=["res://.godot/imported/common_gun.obj-153ae1b64151d959113f726e873f66ce.mesh", "res://.godot/imported/common_gun.obj-153ae1b64151d959113f726e873f66ce.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

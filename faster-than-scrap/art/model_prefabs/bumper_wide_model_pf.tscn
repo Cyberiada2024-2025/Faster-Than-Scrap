@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkdilbsdwigdf"]
 
 [ext_resource type="Material" uid="uid://dwb3vte80n530" path="res://art/materials/bumper_wide/bumper_wide_material_3d.tres" id="1_6glbb"]
-[ext_resource type="ArrayMesh" uid="uid://bg4jdtf51j1tf" path="res://art/models/bumper_wide/bumper.obj" id="2_ss1it"]
+[ext_resource type="ArrayMesh" uid="uid://bg4jdtf51j1tf" path="res://art/modelss/bumper_wide/bumper.obj" id="2_ss1it"]
 
 [node name="BumperWideModel" type="Node3D"]
 

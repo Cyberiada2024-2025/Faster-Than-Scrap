@@ -121,43 +121,47 @@ func _on_ship_builder_on_module_select(module: Module) -> void:
 
 
 func _on_gain_resource_body_entered(body: Node3D) -> void:
-	for child in body.find_children("*", "Module"):
-		var mod: Module = child
-		bank += mod.prize
-		mod.marked_to_destroy = true
-		if mod not in modules_on_scene:
-			modules_on_scene.append(mod)
-		_on_bank_change()
-		if !areas.has(body):
-			areas.push_back(body)
-
-
-func _on_gain_resource_body_exited(body: Node3D) -> void:
-	for child in body.find_children("*", "Module"):
-		var mod: Module = child
-		bank -= mod.prize
-		mod.marked_to_destroy = false
-		_on_bank_change()
-		areas.remove_at(areas.find(body))
-
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	for child in body.find_children("*", "Module"):
-		if child.placed_in_shop:  # prevents activating when instantiating
+	for child in body.get_children():
+		if child is Module:
 			var mod: Module = child
 			bank += mod.prize
+			mod.marked_to_destroy = true
+			if mod not in modules_on_scene:
+				modules_on_scene.append(mod)
 			_on_bank_change()
 			if !areas.has(body):
 				areas.push_back(body)
 
 
-func _on_area_3d_body_exited(body: Node3D) -> void:
-	for child in body.find_children("*", "Module"):
-		if child.placed_in_shop:  # prevents activating when instantiating
+func _on_gain_resource_body_exited(body: Node3D) -> void:
+	for child in body.get_children():
+		if child is Module:
 			var mod: Module = child
 			bank -= mod.prize
+			mod.marked_to_destroy = false
 			_on_bank_change()
 			areas.remove_at(areas.find(body))
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	for child in body.get_children():
+		if child is Module:
+			if child.placed_in_shop:  # prevents activating when instantiating
+				var mod: Module = child
+				bank += mod.prize
+				_on_bank_change()
+				if !areas.has(body):
+					areas.push_back(body)
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	for child in body.get_children():
+		if child is Module:
+			if child.placed_in_shop:  # prevents activating when instantiating
+				var mod: Module = child
+				bank -= mod.prize
+				_on_bank_change()
+				areas.remove_at(areas.find(body))
 
 
 func _on_module_attached(module: Module) -> void:

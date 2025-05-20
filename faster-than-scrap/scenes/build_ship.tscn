@@ -108,13 +108,12 @@ font_color = Color(0.105882, 1, 0.105882, 1)
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_8ccmg")]
 
-[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "confirm_finish_message")]
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ship_borders", "choose_key_message", "confirm_finish_message")]
 script = ExtResource("1_d5jmr")
-ignore = [NodePath("../Shop/PayResourceArea"), NodePath("../Ship Max Size/Area3D")]
-ship_borders = NodePath("../Ship Max Size/Area3D")
 outline_mat = ExtResource("3_7x66o")
 flash_mat = ExtResource("4_sra6p")
 flash_time = 0.5
+ship_borders = NodePath("../Ship Max Size/Area3D")
 choose_key_message = NodePath("Control/Choose_key")
 confirm_finish_message = NodePath("Control/Confirm finish")
 

@@ -29,17 +29,14 @@ func load_fly_ship_scene(
 	use_saved_pos_rot: bool = true
 ) -> void:
 	var attached_fly_scene: bool = false
-	if GameManager.game_state == GameState.State.BUILD:
-		attached_fly_scene = MapGenerator.swap_saved_and_current_scene()
 
-	_detach_ship()				
+	_detach_ship()
 	GameManager.on_scene_exit()
-
 	if scene_to_load != null:
 		get_tree().change_scene_to_file(scene_to_load.resource_path)
 	else:
 		if GameManager.game_state == GameState.State.BUILD:
-			attached_fly_scene = MapGenerator.try_attach_saved_scene()
+			attached_fly_scene = MapGenerator.swap_saved_and_current_scene()
 		if not attached_fly_scene:
 			GameManager.get_tree().change_scene_to_file("res://scenes/levels/start_level.tscn")
 

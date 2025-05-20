@@ -8,10 +8,18 @@ const VORTEX_PREFAB: PackedScene = preload(
 const DAMAGE: float = 10  # damage per second
 var damageables_in_vortex: Array[Damageable] = []
 
+static var instance: SpaceVortex = null
+
 # vortex parameters
 var start_scale: float = 400
 var min_scale: float = 0.001
 var shrinking_time: float = 3 * 60  # in seconds
+
+## variable for reacting on scene change. Godot treats detaching the scene
+## as on collision exit, and calls on_body_exit even though the relative positions
+## haven't changed. When false it will react normally as expected. When true it won't
+## modify its damage targets.
+var preserve_target: bool = false
 
 var _shrink_speed: float  # units per seconds
 
@@ -37,6 +45,7 @@ func _ready() -> void:
 	_shrink_speed = (start_scale - min_scale) / shrinking_time
 	scale.x = start_scale
 	scale.z = start_scale
+	instance = self
 
 
 func _process(delta: float) -> void:
@@ -62,7 +71,7 @@ func _damage_objects(delta: float) -> void:
 
 
 func _on_body_exited(body: Node3D) -> void:
-	if body.is_in_group("affected by vortex"):
+	if not preserve_target and body.is_in_group("affected by vortex"):
 		damageables_in_vortex.append(body)
 
 

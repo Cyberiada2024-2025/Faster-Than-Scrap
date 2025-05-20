@@ -4,7 +4,7 @@ extends Mission
 
 var info: MissionInfoEscape
 
-var portal: Node3D
+var portal: PortalObject
 
 var portal_prefab = preload("res://prefabs/environment/portal.tscn")
 
@@ -25,7 +25,8 @@ func _process(_delta: float) -> void:
 	super(_delta)
 	if _ended():
 		return
-	if portal.position.distance_to(GameManager.player_ship.position) < 4:
+	if portal.position.distance_to(GameManager.player_ship.position) < 6:
 		print("ESCAPE SUCCESS")
 		state = MissionState.FINISHED
 		finished.emit(self)
+		portal.off()

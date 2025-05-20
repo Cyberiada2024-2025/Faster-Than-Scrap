@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://68w7nor1of7l"
+path="res://.godot/imported/frame1Collider.obj-9d18ca42bc4f7af86b050c3b5cf10960.mesh"
+
+[deps]
+
+files=["res://.godot/imported/frame1Collider.obj-9d18ca42bc4f7af86b050c3b5cf10960.mesh"]
+
+source_file="res://art/models/modules/frame1/frame1Collider.obj"
+dest_files=["res://.godot/imported/frame1Collider.obj-9d18ca42bc4f7af86b050c3b5cf10960.mesh", "res://.godot/imported/frame1Collider.obj-9d18ca42bc4f7af86b050c3b5cf10960.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

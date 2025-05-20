@@ -9,10 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="6_nujs4"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="6_phxvv"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="8_8ytpa"]
-[ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shooting.gd" id="9_x6flm"]
+[ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="9_x6flm"]
 [ext_resource type="Script" uid="uid://cloxstqh8taic" path="res://code/enemy/transitions/module_destroyed.gd" id="10_3jdo5"]
 [ext_resource type="Script" uid="uid://ct1o07sjgv31b" path="res://code/enemy/state.gd" id="11_3sux5"]
-[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/poi/enemy_poi.tscn" id="13_m10ps"]
+[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="13_m10ps"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
 

@@ -1,0 +1,3 @@
+[gd_scene load_steps=0 format=3 uid="uid://c7gytciqardfe"]
+
+[node name="Enemy2Model" type="Node2D"]

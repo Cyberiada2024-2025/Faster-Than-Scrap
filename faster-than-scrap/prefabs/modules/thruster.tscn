@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_18ma3"]
 [ext_resource type="Script" uid="uid://crmxerc164n6q" path="res://code/weapons/constant_fire_weapon.gd" id="2_5rd74"]
-[ext_resource type="PackedScene" uid="uid://cybvhv36ih1j6" path="res://art/model_prefabs/thruster_model_pf.tscn" id="2_br7jh"]
+[ext_resource type="PackedScene" uid="uid://cybvhv36ih1j6" path="res://art/model_prefabs/ship/modules/thruster_model_pf.tscn" id="2_br7jh"]
 [ext_resource type="PackedScene" uid="uid://4ct5vtkfetun" path="res://prefabs/projectiles/thruster_fire.tscn" id="3_24upk"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="4_putpi"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="5_24upk"]
@@ -46,16 +46,20 @@ Vector2i(1, 2): {
 shape = SubResource("BoxShape3D_lwypn")
 script = ExtResource("1_18ma3")
 weapon = NodePath("ConstantFireWeapon")
+allow_auto_fire = true
 attach_points = [NodePath("AttachPoints/AttachPoint")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
+module_name = "Thruster"
 prize = 2
+description = "Basic movement module. Activate to push ship forward (relative to thruster)."
 
 [node name="ConstantFireWeapon" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.26313)
 script = ExtResource("2_5rd74")
+energy_cost = 10.0
 recoil_force = 300.0
 projectile = ExtResource("3_24upk")
 

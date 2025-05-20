@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://djte30tpgvnkf" path="res://sandbox/mikulski/leaving_test.gd" id="1_vwaq7"]
 [ext_resource type="PackedScene" uid="uid://cvhtby50lwoe4" path="res://sandbox/mikulski/set_player_for_test.tscn" id="3_17rlt"]
 [ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="3_guilh"]
-[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/hud.tscn" id="4_61pl8"]
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/ui/hud.tscn" id="4_61pl8"]
 [ext_resource type="Script" uid="uid://4w17qx65voq6" path="res://code/missions/a/mission_defend.gd" id="5_vwaq7"]
 [ext_resource type="Script" uid="uid://b6oaocatti460" path="res://code/missions/info/mission_info_defend.gd" id="6_51o16"]
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="7_d4ou2"]

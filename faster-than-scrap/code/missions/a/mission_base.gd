@@ -9,6 +9,7 @@ signal finished(mission: Mission)
 
 enum MissionState { IN_PROGRESS, FINISHED, FAILED }
 
+@export var time_to_hold: float = 2
 var state: MissionState = MissionState.IN_PROGRESS
 
 
@@ -23,6 +24,31 @@ func setup() -> void:
 
 func _process(_delta: float) -> void:
 	pass
+
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("use_fuel"):
+		if GameManager.player_ship.current_fuel > 0:
+			var timer := Timer.new()
+			add_child(timer)
+			timer.one_shot = true
+			timer.wait_time = time_to_hold
+			timer.timeout.connect(_use_fuel)
+			timer.name = "hyperdrive"
+			timer.start()
+		else:
+			print("No hyperspace fuel")
+
+	if Input.is_action_just_released("use_fuel"):
+		for child in get_children():
+			if child.name == "hyperdrive":
+				child.queue_free()
+
+
+func _use_fuel() -> void:
+	state = MissionState.FINISHED
+	finished.emit(self)
+	GameManager.player_ship.current_fuel -= 1
 
 
 ## returns whether the missions ended.

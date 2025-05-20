@@ -6,20 +6,23 @@ extends Node3D
 ## it reacts to mouse clicking for grabbing the module
 ## and snapping it to the ship if close enough.
 signal on_module_select(module: Module)
+signal on_module_attach(module: Module)
+signal on_module_hover(module: Module)
 
 enum State { NONE, DRAGGING, SETTING_BUTTON }
 
 const RAY_LENGTH = 1000.0
 
 ## collider or ares ignored by raycast, might be empty
-@export var ignore: CollisionObject3D
+@export var ignore: Array[CollisionObject3D]
 ## the mask of checked colliders when checking if there are modules near the mouse
 @export var collision_mask: int = 1
 ## the range of spherecast when checking if there are modules near the mouse
 @export var snap_range: float = 1
 ## material of ghost outline
 
-@export var shop: Shop
+## borders limiting max size of the ship
+@export var ship_borders: Area3D
 
 @export_group("Visuals")
 @export var outline_mat: ShaderMaterial
@@ -46,7 +49,7 @@ var mouse_position_3d: Vector3 = Vector3.ZERO
 var lmb_was_pressed: bool = false
 var lmb_is_pressed: bool = false
 var rmb_was_pressed: bool = false
-
+var ignore_rid: Array[RID]
 var scene_loader: SceneLoader
 
 
@@ -56,6 +59,9 @@ func _ready() -> void:
 
 	GameManager.player_ship.position = Vector3.ZERO
 	GameManager.player_ship.rotation = Vector3.ZERO
+
+	for ig in ignore:
+		ignore_rid.push_back(ig.get_rid())
 
 
 # ---------------mouse ---------------------------------------------
@@ -114,7 +120,7 @@ func _get_raycast_hit(event: InputEvent) -> Dictionary:
 	# only first layer (to avoid clicking damageable)
 	var query = PhysicsRayQueryParameters3D.create(from, to, 1)
 	query.collide_with_areas = true
-	query.exclude = [ignore]
+	query.exclude = ignore_rid
 	return space_state.intersect_ray(query)
 
 
@@ -245,8 +251,7 @@ func _attach_module() -> void:
 		# remove area above module. Ship already has rigidbody,
 		# so module is clickable
 		var area_parent = active_module.get_parent()
-		if shop != null:
-			shop._on_area_3d_area_exited(area_parent)
+		on_module_attach.emit(active_module)
 		active_module.reparent(attach_target.ship)
 		area_parent.queue_free()
 	else:
@@ -255,6 +260,7 @@ func _attach_module() -> void:
 	active_module.set_ship_reference(attach_target.ship)  # copy the reference to the ship
 	attach_target.child_modules.append(active_module)
 	active_module.parent_module = attach_target
+	active_module.attach()
 
 
 ## Function for setting up the module, when it is to be dettached
@@ -262,6 +268,7 @@ func _attach_module() -> void:
 ## It will add an area3D if needed to allow clicking the module, and set module
 ## parameters.
 func _dettach_module() -> void:
+	active_module.detach()
 	active_module.set_ship_reference(null)
 	if active_module.parent_module != null:
 		active_module.parent_module.child_modules.erase(active_module)
@@ -298,9 +305,17 @@ func _input(event: InputEvent):
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
 					active_module = _get_module_from_hit(hit)
-					state = State.SETTING_BUTTON
-					choose_key_message.visible = true
-					print("new state = setting button")
+					if active_module.is_activable:
+						state = State.SETTING_BUTTON
+						choose_key_message.visible = true
+						print("new state = setting button")
+			elif event is InputEventMouse:
+				var hit := _get_raycast_hit(event)
+				if hit.size() > 0:
+					var hovered_module: Module = _get_module_from_hit(hit)
+					on_module_hover.emit(hovered_module)
+				else:
+					on_module_hover.emit(null)
 		State.DRAGGING:
 			if confirm_finish_message.visible || choose_key_message.visible:
 				return
@@ -310,10 +325,11 @@ func _input(event: InputEvent):
 			## check if keyboard pressed
 			if event is InputEventKey and event.pressed:
 				var key_event: InputEventKey = event
-				active_module.change_key(key_event.keycode)
-				state = State.NONE
-				choose_key_message.visible = false
-				print("new state = none")
+				if not key_event.keycode in active_module.NOT_ACTIVABLE_KEYS:
+					active_module.change_key(key_event.keycode)
+					state = State.NONE
+					choose_key_message.visible = false
+					print("new state = none")
 
 
 #        +------------+
@@ -393,6 +409,9 @@ func _process(_delta: float) -> void:
 			_position_module(intersection.position, intersection.normal)
 			if _module_collides():
 				# Module colliding with other module
+				_display_illegal()
+				legal = false
+			elif ship_borders.overlaps_area(active_module_ghost):
 				_display_illegal()
 				legal = false
 			else:

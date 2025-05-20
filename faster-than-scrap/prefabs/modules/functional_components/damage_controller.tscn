@@ -6,7 +6,7 @@
 [node name="DamageController" type="Node3D"]
 script = ExtResource("1_a5jg1")
 
-[node name="Damageable" type="Area3D" parent="."]
+[node name="Damageable" type="Area3D" parent="." groups=["affected by vortex"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("2_ot1re")

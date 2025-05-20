@@ -1,0 +1,68 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://c6crxix4ih0oh"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_fma5l"]
+expanded_output_ports = [0]
+parameter_name = "Albedo"
+
+[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_fma5l"]
+default_input_values = [2, true, 3, 1.0]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_4gmyf"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_sq0pk"]
+parameter_name = "Fresnel_Power"
+hint = 1
+max = 50.0
+default_value_enabled = true
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_sub, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_disabled, unshaded, shadows_disabled, ambient_light_disabled, fog_disabled;
+
+uniform vec4 Albedo : source_color;
+uniform float Fresnel_Power : hint_range(0.0, 50.0) = 0.0;
+
+
+
+void fragment() {
+// ColorParameter:2
+	vec4 n_out2p0 = Albedo;
+	float n_out2p4 = n_out2p0.a;
+
+
+// FloatParameter:5
+	float n_out5p0 = Fresnel_Power;
+
+
+// Fresnel:3
+	float n_out3p0 = pow(clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_out5p0);
+
+
+// FloatOp:4
+	float n_out4p0 = n_out2p4 * n_out3p0;
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	ALPHA = n_out4p0;
+
+
+}
+"
+modes/blend = 2
+modes/cull = 2
+modes/specular = 2
+flags/unshaded = true
+flags/shadows_disabled = true
+flags/ambient_light_disabled = true
+flags/fog_disabled = true
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_fma5l")
+nodes/fragment/2/position = Vector2(-760, 240)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFresnel_fma5l")
+nodes/fragment/3/position = Vector2(-740, 860)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatOp_4gmyf")
+nodes/fragment/4/position = Vector2(-80, 620)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_sq0pk")
+nodes/fragment/5/position = Vector2(-1360, 940)
+nodes/fragment/connections = PackedInt32Array(2, 4, 4, 0, 3, 0, 4, 1, 5, 0, 3, 3, 2, 0, 0, 0, 4, 0, 0, 1)

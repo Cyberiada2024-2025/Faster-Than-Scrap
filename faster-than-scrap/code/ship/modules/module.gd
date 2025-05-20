@@ -10,28 +10,40 @@ signal deactivated
 signal damaged
 signal destroyed
 
+const NOT_ACTIVABLE_KEYS: Array[Key] = [KEY_ENTER, KEY_ESCAPE]
+
+@export_category("Settings")
 @export var activation_key: Key = KEY_NONE
+@export var is_activable: bool = true
 @export var max_hp: float = 100
 @export var hp: float = 100
+@export_category("References")
 @export var ship: Ship
 @export var attach_points: Array[Node3D] = []
 @export var parent_module: Module
 @export var child_modules: Array[Module] = []
-
+@export_category("Graphics")
 @export var sprite: Sprite3D
 @export var label: Label3D
 
 @export var healthy_color: Color
 @export var dead_color: Color
 
+@export_category("Shop")
 ## Prize in shop
+@export var module_name: String
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var prize: int = 1
+@export_multiline var description: String
 
 var was_key_pressed: bool = false
 
 var module_rigidbody_prefab = preload("res://prefabs/modules/module_rigidbody.tscn")
 
 var activation_key_saved: Key = KEY_NONE
+
+var module_explosion_prefab = preload(
+	"res://prefabs/vfx/particles/timed_particles/module_explosion.tscn"
+)
 
 
 func _ready() -> void:
@@ -98,8 +110,19 @@ func _on_destroy() -> void:
 		child.reparent(rb)
 		rb.linear_velocity = ship.linear_velocity
 		child.deactivate()
+		child.detach()
+
+	detach()
 	queue_free()  # delete self as an object
 	destroyed.emit()
+
+
+func attach() -> void:
+	pass
+
+
+func detach() -> void:
+	pass
 
 
 func deactivate() -> void:
@@ -112,9 +135,10 @@ func activate() -> void:
 
 
 func _explode() -> void:
-	# TODO create particles object,
-	# which will die after some die by itself
-	pass
+	# create particles object
+	var explosion: TimedParticle = module_explosion_prefab.instantiate()
+	get_tree().current_scene.add_child(explosion)
+	explosion.global_position = global_position
 
 
 func detachable() -> bool:
@@ -174,6 +198,7 @@ func create_ghost() -> ModuleGhost:
 	ghost.add_child(duplicate_node)
 	duplicate_node.position = Vector3.ZERO
 	duplicate_node.rotation = Vector3.ZERO
+	duplicate_node.prize = 0
 	ghost.module_to_ignore = self
 
 	return ghost

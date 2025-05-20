@@ -1,28 +1,27 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgx7bdd0f2rhg"]
 
 [ext_resource type="Script" uid="uid://ddvifutgxb0el" path="res://code/evironment/enter_shop.gd" id="1_hgafx"]
-[ext_resource type="PackedScene" uid="uid://dms6n6r5fyo4o" path="res://prefabs/poi/shop_poi.tscn" id="2_hgafx"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_m1twc"]
+[ext_resource type="PackedScene" uid="uid://bchvj3y0r6b7l" path="res://prefabs/environment/scrap_shop_model_pf.tscn" id="1_qgjcn"]
+[ext_resource type="PackedScene" uid="uid://dms6n6r5fyo4o" path="res://prefabs/ui/poi/shop_poi.tscn" id="2_hgafx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_seei7"]
-radius = 1.0
+radius = 3.5
 
 [node name="ShopMiniature" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PrismMesh_m1twc")
+[node name="ScrapShop" parent="." instance=ExtResource("1_qgjcn")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="Label" type="Label3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 2)
+[node name="Label" type="Label3D" parent="ScrapShop"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 7.94038)
 text = "WORKSHOP"
 font_size = 180
 
-[node name="PlayerDetector" type="Area3D" parent="."]
+[node name="EnterShop" type="Area3D" parent="."]
 script = ExtResource("1_hgafx")
-metadata/_custom_type_script = "uid://bceg4vylbdwdr"
+instantiated_cooldown = 1.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetector"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnterShop"]
 shape = SubResource("SphereShape3D_seei7")
 
 [node name="ShopPoi" parent="." instance=ExtResource("2_hgafx")]

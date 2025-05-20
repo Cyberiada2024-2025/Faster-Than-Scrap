@@ -4,9 +4,9 @@ extends Node
 ## It is not supposed to be added to the scene tree!
 ## It is autoloaded and always available to be called from everywhere!
 
-signal new_game_state
+signal new_game_state(new_state: GameState.State)
 
-@export var game_state: GameState.State = GameState.State.FLY
+@export var game_state: GameState.State = GameState.State.MAIN_MENU
 @export var death_screen: PackedScene
 
 var player_ship: PlayerShip
@@ -25,6 +25,7 @@ func on_scene_exit() -> void:
 	ships = []
 	if game_state==GameState.State.BUILD:
 		InventoryManager.change_inventory()
+
 
 
 func set_game_state(new_state: GameState.State) -> void:
@@ -83,8 +84,16 @@ func find_closest_ship(ship: Ship) -> Ship:
 	var position: Vector3 = ship.global_position
 	var distance_sqr: float = INF
 	for s in ships:
-		if TeamManager.hate(ship, s):
+		if TeamManager.hate(ship.team, s.team):
 			if s != ship && (s.global_position - position).length_squared() < distance_sqr:
 				distance_sqr = (s.global_position - position).length_squared()
 				closest = s
 	return closest
+
+
+func find_all_enemies(team: TeamManager.Team) -> Array[Ship]:
+	var enemies: Array[Ship] = []
+	for ship in ships:
+		if TeamManager.hate(team, ship.team):
+			enemies.append(ship)
+	return enemies

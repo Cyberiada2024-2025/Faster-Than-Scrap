@@ -1,0 +1,255 @@
+[gd_scene load_steps=27 format=3 uid="uid://1x45q2a5nnee"]
+
+[ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_bnu5o"]
+[ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_cs180"]
+[ext_resource type="Script" uid="uid://dc42aagfm4o0o" path="res://code/ship/modules/explodable.gd" id="3_mclyr"]
+[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_treuf"]
+[ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="5_bk2yy"]
+[ext_resource type="Script" uid="uid://bnjdv1cll5kvy" path="res://code/weapons/on_target_spawner_weapon.gd" id="5_pqq2h"]
+[ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="6_2hnf7"]
+[ext_resource type="Script" uid="uid://cdwjrb230l0qw" path="res://code/enemy/states/move/teleport.gd" id="6_yljnl"]
+[ext_resource type="PackedScene" uid="uid://clbtrvxx10t1h" path="res://prefabs/bosses/vortex/vortex_spike_warning.tscn" id="7_osa2j"]
+[ext_resource type="Script" uid="uid://clbayyulct4as" path="res://code/enemy/transitions/transition_on_state_finish.gd" id="7_yfy1f"]
+[ext_resource type="Script" uid="uid://sb0nfuqj50k0" path="res://code/weapons/in_area_spawner_weapon.gd" id="8_kr82f"]
+[ext_resource type="PackedScene" uid="uid://coiccskokh2q6" path="res://prefabs/projectiles/boss_projectiles/vortex_spike_flash.tscn" id="9_2hnf7"]
+[ext_resource type="PackedScene" uid="uid://ncfq5uokthtd" path="res://prefabs/projectiles/boss_projectiles/vortex_cloud_flash.tscn" id="11_2hnf7"]
+[ext_resource type="PackedScene" uid="uid://b2xl30r0e0ece" path="res://prefabs/projectiles/boss_projectiles/vortex_spawn_flash.tscn" id="12_2hnf7"]
+[ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="12_4qxwn"]
+[ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="12_cbrw2"]
+[ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="13_3aeiy"]
+[ext_resource type="Script" uid="uid://dm7n818e46apw" path="res://code/enemy/transitions/random_transitions/random_transition.gd" id="14_erpum"]
+[ext_resource type="Script" uid="uid://bhyxhxybm21hs" path="res://code/enemy/transitions/random_transitions/weighted_state.gd" id="15_0jnmf"]
+[ext_resource type="Script" uid="uid://p2tfapf0egxl" path="res://code/enemy/transitions/timed_transition.gd" id="16_6qrt1"]
+[ext_resource type="Script" uid="uid://bwe8glgj1swy" path="res://code/enemy/transitions/boss_specific_transitions/damage_taken.gd" id="19_p6xao"]
+[ext_resource type="Script" uid="uid://b7v5naphnvff4" path="res://code/enemy/transitions/boss_specific_transitions/damage_memory.gd" id="20_pkmkm"]
+[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="21_hho6b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_km21v"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="SphereMesh" id="SphereMesh_v24uf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8b1eu"]
+
+[node name="Vortex Boss" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
+script = ExtResource("1_bnu5o")
+ship = NodePath("Boss")
+metadata/_custom_type_script = "uid://deimdflghl67a"
+
+[node name="Boss" type="RigidBody3D" parent="."]
+gravity_scale = 0.0
+script = ExtResource("2_cs180")
+max_hp = 100.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Body" type="CollisionShape3D" parent="StaticBody3D" node_paths=PackedStringArray("child_modules")]
+shape = SubResource("BoxShape3D_km21v")
+script = ExtResource("3_mclyr")
+child_modules = [null, null, null, null, null, null]
+metadata/_custom_type_script = "uid://cs6qd5cf3gviv"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/Body"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("SphereMesh_v24uf")
+skeleton = NodePath("")
+
+[node name="DamageController" parent="StaticBody3D/Body" instance=ExtResource("4_treuf")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="0"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("SphereShape3D_8b1eu")
+
+[node name="Weapons" type="Node3D" parent="StaticBody3D"]
+
+[node name="Spike warning shooter module" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
+script = ExtResource("5_bk2yy")
+weapon = NodePath("SpikeWarningShooter")
+max_hp = 0.0
+hp = 0.0
+ship = NodePath("../../../Boss")
+metadata/_custom_type_script = "uid://6f2yjn6wgcun"
+
+[node name="SpikeWarningShooter" type="Node3D" parent="StaticBody3D/Weapons/Spike warning shooter module"]
+script = ExtResource("6_2hnf7")
+cooldown = 2.0
+projectile = ExtResource("7_osa2j")
+metadata/_custom_type_script = "uid://bin0oxv424iww"
+
+[node name="Spike shooter module2" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
+script = ExtResource("5_bk2yy")
+weapon = NodePath("SpikeShooter")
+max_hp = 0.0
+hp = 0.0
+ship = NodePath("../../../Boss")
+metadata/_custom_type_script = "uid://6f2yjn6wgcun"
+
+[node name="SpikeShooter" type="Node3D" parent="StaticBody3D/Weapons/Spike shooter module2"]
+script = ExtResource("5_pqq2h")
+y_offset = -100.0
+base_radius = 20.0
+cooldown = 0.5
+projectile = ExtResource("9_2hnf7")
+metadata/_custom_type_script = "uid://bnjdv1cll5kvy"
+
+[node name="Cloud shooter module" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
+script = ExtResource("5_bk2yy")
+weapon = NodePath("Cloud shooter")
+max_hp = 0.0
+hp = 0.0
+ship = NodePath("../../../Boss")
+metadata/_custom_type_script = "uid://6f2yjn6wgcun"
+
+[node name="Cloud shooter" type="Node3D" parent="StaticBody3D/Weapons/Cloud shooter module"]
+script = ExtResource("8_kr82f")
+spawn_count = 3
+min_range = 15.0
+max_range = 40.0
+cooldown = 0.5
+projectile = ExtResource("11_2hnf7")
+
+[node name="Enemy Spawner module" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
+script = ExtResource("5_bk2yy")
+weapon = NodePath("Enemy spawner")
+max_hp = 0.0
+hp = 0.0
+ship = NodePath("../../../Boss")
+metadata/_custom_type_script = "uid://6f2yjn6wgcun"
+
+[node name="Enemy spawner" type="Node3D" parent="StaticBody3D/Weapons/Enemy Spawner module"]
+script = ExtResource("8_kr82f")
+spawn_count = 3
+min_range = 15.0
+max_range = 40.0
+cooldown = 0.5
+projectile = ExtResource("12_2hnf7")
+
+[node name="StateMachineNPC" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("12_cbrw2")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachineNPC"]
+script = ExtResource("13_3aeiy")
+
+[node name="TimedTransition" type="Node" parent="StateMachineNPC/Idle" node_paths=PackedStringArray("new_state")]
+script = ExtResource("16_6qrt1")
+duration = 2.0
+new_state = NodePath("../../RandomTransition After idle")
+
+[node name="DamageTaken" type="Node" parent="StateMachineNPC/Idle" node_paths=PackedStringArray("damage_memory", "new_state")]
+script = ExtResource("19_p6xao")
+damage_memory = NodePath("../../Damage Memory")
+new_state = NodePath("../../Teleport")
+
+[node name="RandomTransition After idle" type="Node" parent="StateMachineNPC"]
+script = ExtResource("14_erpum")
+
+[node name="Weight to Spike attack" type="Node" parent="StateMachineNPC/RandomTransition After idle" node_paths=PackedStringArray("state")]
+script = ExtResource("15_0jnmf")
+state = NodePath("../../Spike Warning")
+weight = 6
+
+[node name="Weight to Cloud attack" type="Node" parent="StateMachineNPC/RandomTransition After idle" node_paths=PackedStringArray("state")]
+script = ExtResource("15_0jnmf")
+state = NodePath("../../Cloud Attack")
+weight = 3
+
+[node name="Weight to Spawn enemies" type="Node" parent="StateMachineNPC/RandomTransition After idle" node_paths=PackedStringArray("state")]
+script = ExtResource("15_0jnmf")
+state = NodePath("../../Spawn enemies")
+weight = 1
+
+[node name="Teleport" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("node_to_scale", "_transition_to_call")]
+script = ExtResource("6_yljnl")
+teleport_radius = 40.0
+node_to_scale = NodePath("../../StaticBody3D")
+_transition_to_call = NodePath("OnStateFinish")
+
+[node name="OnStateFinish" type="Node" parent="StateMachineNPC/Teleport" node_paths=PackedStringArray("new_state")]
+script = ExtResource("7_yfy1f")
+new_state = NodePath("../../Idle")
+
+[node name="Spike Warning" type="Node" parent="StateMachineNPC"]
+script = ExtResource("13_3aeiy")
+
+[node name="Shooting" type="Node" parent="StateMachineNPC/Spike Warning" node_paths=PackedStringArray("weapons")]
+script = ExtResource("12_4qxwn")
+weapons = [NodePath("../../../StaticBody3D/Weapons/Spike warning shooter module/SpikeWarningShooter")]
+metadata/_custom_type_script = "uid://c70pkbnps6ysy"
+
+[node name="TimedTransition" type="Node" parent="StateMachineNPC/Spike Warning" node_paths=PackedStringArray("new_state")]
+script = ExtResource("16_6qrt1")
+duration = 2.0
+new_state = NodePath("../../Spike attack")
+
+[node name="DamageTaken" type="Node" parent="StateMachineNPC/Spike Warning" node_paths=PackedStringArray("damage_memory", "new_state")]
+script = ExtResource("19_p6xao")
+damage_memory = NodePath("../../Damage Memory")
+new_state = NodePath("../../Teleport")
+
+[node name="Spike attack" type="Node" parent="StateMachineNPC"]
+script = ExtResource("13_3aeiy")
+
+[node name="Shooting" type="Node" parent="StateMachineNPC/Spike attack" node_paths=PackedStringArray("weapons")]
+script = ExtResource("12_4qxwn")
+weapons = [NodePath("../../../StaticBody3D/Weapons/Spike shooter module2/SpikeShooter")]
+metadata/_custom_type_script = "uid://c70pkbnps6ysy"
+
+[node name="TimedTransition" type="Node" parent="StateMachineNPC/Spike attack" node_paths=PackedStringArray("new_state")]
+script = ExtResource("16_6qrt1")
+duration = 10.0
+new_state = NodePath("../../Idle")
+
+[node name="DamageTaken" type="Node" parent="StateMachineNPC/Spike attack" node_paths=PackedStringArray("damage_memory", "new_state")]
+script = ExtResource("19_p6xao")
+damage_memory = NodePath("../../Damage Memory")
+new_state = NodePath("../../Teleport")
+
+[node name="Cloud Attack" type="Node" parent="StateMachineNPC"]
+script = ExtResource("13_3aeiy")
+
+[node name="Shooting" type="Node" parent="StateMachineNPC/Cloud Attack" node_paths=PackedStringArray("weapons")]
+script = ExtResource("12_4qxwn")
+weapons = [NodePath("../../../StaticBody3D/Weapons/Cloud shooter module/Cloud shooter")]
+metadata/_custom_type_script = "uid://c70pkbnps6ysy"
+
+[node name="TimedTransition" type="Node" parent="StateMachineNPC/Cloud Attack" node_paths=PackedStringArray("new_state")]
+script = ExtResource("16_6qrt1")
+duration = 2.0
+new_state = NodePath("../../Idle")
+
+[node name="DamageTaken" type="Node" parent="StateMachineNPC/Cloud Attack" node_paths=PackedStringArray("damage_memory", "new_state")]
+script = ExtResource("19_p6xao")
+damage_memory = NodePath("../../Damage Memory")
+new_state = NodePath("../../Teleport")
+
+[node name="Spawn enemies" type="Node" parent="StateMachineNPC"]
+script = ExtResource("13_3aeiy")
+
+[node name="Shooting" type="Node" parent="StateMachineNPC/Spawn enemies" node_paths=PackedStringArray("weapons")]
+script = ExtResource("12_4qxwn")
+weapons = [NodePath("../../../StaticBody3D/Weapons/Enemy Spawner module/Enemy spawner")]
+metadata/_custom_type_script = "uid://c70pkbnps6ysy"
+
+[node name="TimedTransition" type="Node" parent="StateMachineNPC/Spawn enemies" node_paths=PackedStringArray("new_state")]
+script = ExtResource("16_6qrt1")
+duration = 1.0
+new_state = NodePath("../../Idle")
+
+[node name="DamageTaken" type="Node" parent="StateMachineNPC/Spawn enemies" node_paths=PackedStringArray("damage_memory", "new_state")]
+script = ExtResource("19_p6xao")
+damage_memory = NodePath("../../Damage Memory")
+new_state = NodePath("../../Teleport")
+
+[node name="TODO vortex closure attack" type="Node" parent="StateMachineNPC"]
+script = ExtResource("13_3aeiy")
+
+[node name="Damage Memory" type="Node" parent="StateMachineNPC"]
+script = ExtResource("20_pkmkm")
+
+[node name="EnemyPoi" parent="." instance=ExtResource("21_hho6b")]
+max_range = 10000.0
+
+[connection signal="damaged" from="StaticBody3D/Body/DamageController" to="StaticBody3D/Body" method="take_damage"]
+
+[editable path="StaticBody3D/Body/DamageController"]

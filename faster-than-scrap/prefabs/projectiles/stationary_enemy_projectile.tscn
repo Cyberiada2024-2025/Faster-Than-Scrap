@@ -1,0 +1,111 @@
+[gd_scene load_steps=17 format=3 uid="uid://cy87tegddjndv"]
+
+[ext_resource type="Script" uid="uid://2uexqgp76p1n" path="res://code/weapons/projectiles/projectile.gd" id="1_6ecgd"]
+[ext_resource type="Script" uid="uid://7rxxtodxpx1d" path="res://code/damage/damage_area_3d.gd" id="2_hbhgn"]
+[ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_havp3"]
+[ext_resource type="Script" uid="uid://2p7oc4a3141y" path="res://code/utilities/wait_free.gd" id="4_bhfep"]
+
+[sub_resource type="Curve" id="Curve_4quhm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ld4gu"]
+emission_enabled = true
+emission = Color(0, 0.433333, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_386xi"]
+material = SubResource("StandardMaterial3D_ld4gu")
+top_radius = 0.0
+bottom_radius = 0.1
+height = 0.5
+
+[sub_resource type="Resource" id="Resource_x6y5o"]
+script = ExtResource("3_havp3")
+value = 50.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2fpck"]
+height = 0.5
+radius = 0.1
+
+[sub_resource type="Curve" id="Curve_8h3ef"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.215805, 0.315375), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xn5pm"]
+curve = SubResource("Curve_8h3ef")
+
+[sub_resource type="Curve" id="Curve_35s47"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.115502, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_o73pc"]
+curve = SubResource("Curve_35s47")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_di6p2"]
+inherit_velocity_ratio = -0.8
+direction = Vector3(0, 0, 1)
+spread = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_o73pc")
+alpha_curve = SubResource("CurveTexture_xn5pm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1cn7k"]
+emission_enabled = true
+emission = Color(0, 0.435294, 1, 1)
+emission_energy_multiplier = 16.0
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_583bb"]
+material = SubResource("StandardMaterial3D_1cn7k")
+
+[node name="EnemyStationaryProjectile" type="Node3D" node_paths=PackedStringArray("particle_holder", "particles")]
+script = ExtResource("1_6ecgd")
+velocity = SubResource("Curve_4quhm")
+velocity_multiplier = 40.0
+lifetime = 2.0
+particle_holder = NodePath("ParticleHolder")
+particles = [NodePath("ParticleHolder/Trail"), NodePath("ParticleHolder/Trail2")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.25)
+mesh = SubResource("CylinderMesh_386xi")
+
+[node name="DamageArea3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+input_ray_pickable = false
+monitorable = false
+script = ExtResource("2_hbhgn")
+_damage_type = 0
+_damage = SubResource("Resource_x6y5o")
+_die_on_hit = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.25)
+shape = SubResource("CylinderShape3D_2fpck")
+
+[node name="ParticleHolder" type="Node3D" parent="."]
+script = ExtResource("4_bhfep")
+
+[node name="Trail" type="GPUParticles3D" parent="ParticleHolder"]
+transform = Transform3D(1, 3.85398e-11, 5.82077e-11, -2.33058e-11, 1, 0, -5.82077e-11, -2.32831e-10, 1, 0.09, 0, -0.0306122)
+amount = 200
+lifetime = 0.2
+fixed_fps = 50
+transform_align = 3
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_di6p2")
+draw_pass_1 = SubResource("RibbonTrailMesh_583bb")
+
+[node name="Trail2" type="GPUParticles3D" parent="ParticleHolder"]
+transform = Transform3D(1, 7.70796e-11, 1.16415e-10, -4.66116e-11, 1, -1.35658e-21, -1.16415e-10, -4.65662e-10, 1, -0.09, 4.15278e-23, -0.0306122)
+amount = 200
+lifetime = 0.2
+fixed_fps = 50
+transform_align = 3
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_di6p2")
+draw_pass_1 = SubResource("RibbonTrailMesh_583bb")

@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://mavrm3tbmwii" path="res://art/audio/sounds/illegal_position_sound.wav" id="8_xt0p0"]
 [ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="9_6ldun"]
 [ext_resource type="Script" uid="uid://crmxerc164n6q" path="res://code/weapons/constant_fire_weapon.gd" id="10_bht8f"]
-[ext_resource type="PackedScene" uid="uid://bnvojbycskewd" path="res://prefabs/projectiles/test_beam.tscn" id="11_plubx"]
+[ext_resource type="PackedScene" uid="uid://bnvojbycskewd" path="res://prefabs/projectiles/test/test_beam.tscn" id="11_plubx"]
 [ext_resource type="AudioStream" uid="uid://d1psa84etuesc" path="res://sandbox/pisarski/beam_start_tmp.wav" id="12_yw5j1"]
 [ext_resource type="AudioStream" uid="uid://cl30vhv1agqcr" path="res://sandbox/pisarski/beam_loop_tmp.wav" id="13_4kpln"]
 [ext_resource type="AudioStream" uid="uid://bq3myi1evd56a" path="res://art/audio/sounds/shield_takingdmg_sound.wav" id="14_2jfcd"]

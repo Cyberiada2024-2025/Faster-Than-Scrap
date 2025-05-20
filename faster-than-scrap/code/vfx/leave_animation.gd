@@ -26,6 +26,7 @@ var callable: bool = true
 
 func _ready() -> void:
 	player = GameManager.player_ship
+	prepare_particles.speed_scale = 6/(prepare_time + jump_time)
 
 func _process(_delta: float) -> void:
 	if animating:

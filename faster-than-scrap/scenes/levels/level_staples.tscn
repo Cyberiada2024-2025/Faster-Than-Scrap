@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnp5ctgr2bm66"]
+
+[ext_resource type="Script" uid="uid://dtqvp1s2omow6" path="res://code/evironment/setup_fly_scene.gd" id="1_dje0g"]
+[ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="2_g7p6o"]
+[ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="3_40ga3"]
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="4_ynct0"]
+[ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="5_w06h8"]
+[ext_resource type="Script" uid="uid://f6d84uyul237" path="res://code/evironment/generate_nebulas.gd" id="6_dq8h5"]
+
+[node name="LevelBase" type="Node3D"]
+
+[node name="SetupFlyScene" type="Node" parent="."]
+script = ExtResource("1_dje0g")
+metadata/_custom_type_script = "uid://dtqvp1s2omow6"
+
+[node name="HudSpawner" type="Node" parent="."]
+script = ExtResource("2_g7p6o")
+metadata/_custom_type_script = "uid://ckk7d55t1hi01"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.26226, 2.66942, -2.54272)
+
+[node name="SpaceEnvironment" parent="." instance=ExtResource("3_40ga3")]
+
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource("4_ynct0")
+metadata/_custom_type_script = "uid://16i5n2yxnlsr"
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(0.254902, 1, 0.278431, 1)
+offset_right = 133.0
+offset_bottom = 54.0
+text = "Build 
+(dev purposes)"
+autowrap_mode = 3
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_w06h8")]
+
+[node name="Background" type="Node3D" parent="."]
+script = ExtResource("6_dq8h5")
+
+[connection signal="pressed" from="Button" to="SceneLoader" method="load_build_ship_scene"]

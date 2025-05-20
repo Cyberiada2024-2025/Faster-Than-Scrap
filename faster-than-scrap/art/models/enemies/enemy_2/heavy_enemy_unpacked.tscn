@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://ckjg0c7xp6hni" path="res://art/models/enemies/enemy_2/enemy_model_2_2skrzyproccolor.png" id="3_x0xts"]
 [ext_resource type="Texture2D" uid="uid://353cf3s01xhx" path="res://art/models/enemies/enemy_2/enemy_model_2_2skrzyprocmetal-2skrzyprocroughn.png" id="4_0y5jt"]
 [ext_resource type="Texture2D" uid="uid://clw46bartp4jm" path="res://art/models/enemies/enemy_2/enemy_model_2_colorproc.png" id="4_txle5"]
-[ext_resource type="Texture2D" uid="uid://cwn2a8yi0618d" path="res://art/textures/enemies/mix_noise.png" id="5_2yai2"]
+[ext_resource type="Texture2D" uid="uid://cwn2a8yi0618d" path="res://art/textures/vfxy/mix_noise.png" id="5_2yai2"]
 [ext_resource type="Texture2D" uid="uid://c1bxg3dvebft8" path="res://art/models/enemies/enemy_2/enemy_model_2_2skrzyprocnormal.png" id="5_nm02e"]
 [ext_resource type="Texture2D" uid="uid://dk3jn31dmcblx" path="res://art/models/enemies/enemy_2/enemy_model_2_metalproc-roughnesproc.png" id="7_6jsfm"]
-[ext_resource type="Texture2D" uid="uid://bl7mgydbx37a1" path="res://art/textures/enemies/rust_noise.png" id="7_hg1ap"]
+[ext_resource type="Texture2D" uid="uid://bl7mgydbx37a1" path="res://art/textures/vfxy/rust_noise.png" id="7_hg1ap"]
 [ext_resource type="Texture2D" uid="uid://bi1x03kbqfegk" path="res://art/models/enemies/enemy_2/enemy_model_2_normalsproc.png" id="8_w6qbj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cmvsu"]

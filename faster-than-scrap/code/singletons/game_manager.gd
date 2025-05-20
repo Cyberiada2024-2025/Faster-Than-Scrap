@@ -4,7 +4,7 @@ extends Node
 ## It is not supposed to be added to the scene tree!
 ## It is autoloaded and always available to be called from everywhere!
 
-signal new_game_state
+signal new_game_state(new_state: GameState.State)
 
 @export var game_state: GameState.State = GameState.State.MAIN_MENU
 @export var death_screen: PackedScene

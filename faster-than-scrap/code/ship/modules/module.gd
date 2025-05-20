@@ -113,8 +113,19 @@ func _on_destroy() -> void:
 		child.reparent(rb)
 		rb.linear_velocity = ship.linear_velocity
 		child.deactivate()
+		child.detach()
+
+	detach()
 	queue_free()  # delete self as an object
 	destroyed.emit()
+
+
+func attach() -> void:
+	pass
+
+
+func detach() -> void:
+	pass
 
 
 func deactivate() -> void:

@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://dq3jc5dp1dyq6" path="res://art/models/enemies/enemy_3/enemy_model_3.glb" id="1_muygt"]
 [ext_resource type="Shader" uid="uid://daw8hb8ypy7ri" path="res://art/shaders/Enemies.tres" id="2_658na"]
 [ext_resource type="Script" uid="uid://ckopxl7ibocoa" path="res://code/vfx/damaged_skin.gd" id="2_rhbjs"]
-[ext_resource type="Texture2D" uid="uid://cgblb7yf6f842" path="res://art/models/enemies/enemy_3/enemy_model_3_spherebakecolor.png" id="3_i2t4m"]
-[ext_resource type="Texture2D" uid="uid://54v64mnafj41" path="res://art/models/enemies/enemy_3/enemy_model_3_spherebakemetal-spherebakeroughnes.png" id="4_3v5wd"]
-[ext_resource type="Texture2D" uid="uid://cwn2a8yi0618d" path="res://art/textures/enemies/mix_noise.png" id="5_3v5wd"]
+[ext_resource type="Texture2D" uid="uid://cgblb7yf6f842" path="res://art/textures/enemies/enemy_3/enemy_3_albedo.png" id="3_i2t4m"]
+[ext_resource type="Texture2D" uid="uid://54v64mnafj41" path="res://art/textures/enemies/enemy_3/enemy_model_3_spherebakemetal-spherebakeroughnes.png" id="4_3v5wd"]
+[ext_resource type="Texture2D" uid="uid://cwn2a8yi0618d" path="res://art/textures/vfxy/mix_noise.png" id="5_3v5wd"]
 [ext_resource type="Texture2D" uid="uid://biy8roe7al3uv" path="res://art/models/enemies/enemy_3/enemy_model_3_spherebakenormal.png" id="5_rhbjs"]
-[ext_resource type="Texture2D" uid="uid://bl7mgydbx37a1" path="res://art/textures/enemies/rust_noise.png" id="7_rhbjs"]
+[ext_resource type="Texture2D" uid="uid://bl7mgydbx37a1" path="res://art/textures/vfxy/rust_noise.png" id="7_rhbjs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fqq1q"]
 render_priority = 0
@@ -16,7 +16,7 @@ shader_parameter/Rust_Color_2 = Color(0.690196, 0.317647, 0.117647, 1)
 shader_parameter/Rust_Color_1 = Color(0.145098, 0.047059, 0.035294, 1)
 shader_parameter/Rust_Noise = ExtResource("7_rhbjs")
 shader_parameter/Albedo = ExtResource("3_i2t4m")
-shader_parameter/Rust_Amount = 0.445
+shader_parameter/Rust_Amount = 0.0
 shader_parameter/Mix_Noise = ExtResource("5_3v5wd")
 shader_parameter/Met_Rough = ExtResource("4_3v5wd")
 shader_parameter/Normal = ExtResource("5_rhbjs")

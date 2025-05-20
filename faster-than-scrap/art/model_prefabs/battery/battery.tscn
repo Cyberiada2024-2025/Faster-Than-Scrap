@@ -1,0 +1,21 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqpqw2adjm7qg"]
+
+[ext_resource type="Texture2D" uid="uid://kj5g7i54g3jd" path="res://art/textures/battery/final_battery_color.png" id="1_n1f4p"]
+[ext_resource type="Texture2D" uid="uid://bm7v8lkx5wn8i" path="res://art/textures/battery/final_battery_metal.png" id="2_ohtun"]
+[ext_resource type="Texture2D" uid="uid://cht2tuc3ktuqe" path="res://art/textures/battery/final_battery_normal.png" id="3_mrhvb"]
+[ext_resource type="Texture2D" uid="uid://cj64a42nysov1" path="res://art/textures/battery/final_battery_roughnes.png" id="4_sj1wd"]
+[ext_resource type="ArrayMesh" uid="uid://ujku2hob0mcy" path="res://art/models/battery/finalest_battery.obj" id="5_7b800"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5p3y"]
+albedo_texture = ExtResource("1_n1f4p")
+metallic = 1.0
+metallic_texture = ExtResource("2_ohtun")
+roughness_texture = ExtResource("4_sj1wd")
+normal_enabled = true
+normal_texture = ExtResource("3_mrhvb")
+
+[node name="Battery" type="Node3D"]
+
+[node name="FinalestBattery" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_u5p3y")
+mesh = ExtResource("5_7b800")

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cloxwhygax06u" path="res://prefabs/vfx/particles/timed_particles/explosion.tscn" id="1_pddhe"]
 
 [node name="BaseProjectilHitParticles" type="Node3D"]
+top_level = true
 
 [node name="Explosion" parent="." instance=ExtResource("1_pddhe")]
 _lifetime = 3.0

@@ -58,11 +58,13 @@ func _on_damage_applied(_damage: Damage, _target: Damageable) -> void:
 	if die_on_hit:
 		if death_particles:
 			var particle = death_particles.instantiate()
-			particle.position = global_position
 			get_tree().current_scene.add_child(particle)
+			particle.global_position = global_position
+			particle.global_rotation = global_rotation + Vector3(0, PI, 0)
 		queue_free()
 	else:
 		if hit_particles:
 			var particle = hit_particles.instantiate()
-			particle.position = global_position
 			get_tree().current_scene.add_child(particle)
+			particle.global_position = global_position
+			particle.global_rotation = global_rotation + Vector3(0, PI, 0)

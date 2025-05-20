@@ -24,7 +24,7 @@ func _enter_tree() -> void:
 func on_scene_exit() -> void:
 	ships = []
 	if game_state==GameState.State.BUILD:
-		InventoryManager.change_inventory()
+		InventoryManager.save_inventory()
 
 
 

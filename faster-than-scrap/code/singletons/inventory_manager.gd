@@ -5,7 +5,7 @@ var max_items = 8
 var item_number = 0
 
 
-func change_inventory() -> void:
+func save_inventory() -> void:
 	for i in range(inventory.size()):
 		var item = inventory[i]
 		var area = Area3D.new()

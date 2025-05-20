@@ -99,13 +99,18 @@ func _on_finish_pressed() -> void:
 	if bank < 0:
 		deny_finish.visible = true
 	else:
-		confirm_finish.visible = true
-		print("hey")
-		for mod in modules_on_scene:
-			mod.placed_in_shop = false
-			if mod.marked_to_destroy == true:
-				modules_on_scene.erase(mod)
-				mod.queue_free()
+		# is it correct, always reached, place for exit_shop?
+		_exit_shop()
+
+
+func _exit_shop() -> void:
+	confirm_finish.visible = true
+	bank = 0
+	for mod in modules_on_scene:
+		mod.placed_in_shop = false
+		if mod.marked_to_destroy == true:
+			modules_on_scene.erase(mod)
+			mod.queue_free()
 
 
 func _on_confirm_pressed() -> void:

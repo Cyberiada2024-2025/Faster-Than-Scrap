@@ -327,7 +327,6 @@ metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 [node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish", "selected_module_display", "selected_module_description")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6513, 0, -4.67189)
 script = ExtResource("11_jtm63")
-starting_bank = 3
 size_x = 10.0
 size_z = 10.0
 columns = 3

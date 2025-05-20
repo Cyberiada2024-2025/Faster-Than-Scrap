@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bymii530libmh"]
+
+[ext_resource type="Script" uid="uid://d03dpbuoffat" path="res://code/evironment/pickable.gd" id="1_ts6op"]
+[ext_resource type="Script" uid="uid://druelgornyk4j" path="res://code/missions/fuel_giver.gd" id="2_6pvhe"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gr24o"]
+radius = 1.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_2jy8s"]
+
+[node name="FuelPickup" type="Area3D"]
+script = ExtResource("1_ts6op")
+metadata/_custom_type_script = "uid://bceg4vylbdwdr"
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("2_6pvhe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_gr24o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_2jy8s")
+
+[connection signal="on_pick" from="." to="Node" method="_give_fuel"]

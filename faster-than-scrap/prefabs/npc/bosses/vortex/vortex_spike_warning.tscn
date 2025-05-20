@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://clbtrvxx10t1h"]
 
-[ext_resource type="PackedScene" uid="uid://1km01juhp32b" path="res://prefabs/bosses/vortex/vortex_spike_dummy.tscn" id="1_da3hp"]
+[ext_resource type="PackedScene" uid="uid://1km01juhp32b" path="res://prefabs/npc/bosses/vortex/vortex_spike_dummy.tscn" id="1_da3hp"]
 
 [node name="VortexSpikeWarning" type="Node3D"]
 

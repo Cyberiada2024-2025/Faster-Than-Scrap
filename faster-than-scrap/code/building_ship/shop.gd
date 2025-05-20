@@ -17,17 +17,26 @@ extends Node3D
 ## shop size X
 @export_custom(PROPERTY_HINT_NONE, "suffix:m") var size_x: float = 0
 ## shop size Y
+
 @export_custom(PROPERTY_HINT_NONE, "suffix:m") var size_z: float = 0
+
+## distance X between shop and inventory
+@export_custom(PROPERTY_HINT_NONE, "suffix:m") var distance: float = 12
+
 @export var columns: int
 @export var rows: int
 ## display of cash balance
 @export var bank_display: Label3D
+@export var inventory_limit_display: Label3D
 
 @export var deny_finish: Control
 @export var confirm_finish: Control
 
+@export var deny_finish_label: Label
+@export var selected_module_prize_display: Label
 @export var selected_module_display: RichTextLabel
 @export var selected_module_description: RichTextLabel
+
 
 ## actual cash balance
 var bank: int = 0
@@ -66,8 +75,20 @@ func _generate_shop() -> void:
 		modules_on_scene.append(module)
 		module.placed_in_shop = false
 		i += 1
+
 	await Engine.get_main_loop().process_frame
 	first_frame = true
+
+	i = 0
+	for obj in InventoryManager.inventory:
+		add_child(obj)
+		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2 + distance
+		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
+		obj.position = Vector3(x, 0, z)
+		obj.get_child(0).position = Vector3(0, 0, 0)
+		i += 1
+	_display_inventory_number()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -87,6 +108,10 @@ func _on_bank_change() -> void:
 func _on_finish_pressed() -> void:
 	if bank < 0:
 		deny_finish.visible = true
+		deny_finish_label.text = "You cannot leave without paying for modules!"
+	elif InventoryManager.if_overflow():
+		deny_finish.visible = true
+		deny_finish_label.text = "Your inventory has too many items!"
 	else:
 		# is it correct, always reached, place for exit_shop?
 		_exit_shop()
@@ -164,6 +189,34 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 				_on_bank_change()
 				areas.remove_at(areas.find(body))
 
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	_on_area_3d_body_entered(area)
+
+
+func _on_area_3d_area_exited(area: Area3D) -> void:
+	_on_area_3d_body_exited(area)
+
+
+func _on_inventory_entered(body: Area3D) -> void:
+	if InventoryManager.add_item(body):
+		_display_inventory_number()
+
+
+func _on_inventory_exited(body: Area3D) -> void:
+	if InventoryManager.remove_item(body):
+		_display_inventory_number()
+
+
+func _display_inventory_number() -> void:
+	var current_num = InventoryManager.get_item_num()
+	var max_num = InventoryManager.get_max_item_num()
+	if current_num > max_num:
+		inventory_limit_display.modulate = Color("red")
+	else:
+		inventory_limit_display.modulate = Color(0.1, 1, 0)
+	inventory_limit_display.text = (
+		String.num_int64(current_num) + "\\" + String.num_int64(max_num)
+	)
 
 func _on_module_attached(module: Module) -> void:
 	_on_area_3d_body_exited(module.get_parent())

@@ -6,9 +6,10 @@ const VORTEX_PREFAB: PackedScene = preload(
 )
 
 const DAMAGE: float = 10  # damage per second
-var damageables_in_vortex: Array[Damageable] = []
 
 static var instance: SpaceVortex = null
+
+var damageables_in_vortex: Array[Damageable] = []
 
 # vortex parameters
 var start_scale: float = 400

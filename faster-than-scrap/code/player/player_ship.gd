@@ -9,12 +9,21 @@ signal energy_change(energy: float)
 signal energy_max_change(max_energy: float)
 signal energy_warning(energy: float)
 
+signal fuel_change(new_value: int)
+
 @export var cockpit: Cockpit
 
 ## All modules of the ship (to prevent checking the tree hierarchy).
 ## Mostly used for building phase
 @export var modules: Array[Module] = []
-var current_fuel: int = 3
+var current_fuel: int = 3:
+	get:
+		return current_fuel
+	set(new_value):
+		var temp = current_fuel
+		current_fuel = new_value
+		if temp != current_fuel:
+			fuel_change.emit(current_fuel)
 
 var _saved_position: Vector3 = Vector3.ZERO
 var _saved_rotation: Vector3 = Vector3.ZERO

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cyne44ays80ug"]
+
+[ext_resource type="Shader" path="res://art/shaders/spatial/control_point_progress.gdshader" id="1_5eghb"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5eghb")
+shader_parameter/Uncontrolled = Color(0, 0.5, 0, 0.5)
+shader_parameter/Controlled = Color(0, 1, 0, 0.5)

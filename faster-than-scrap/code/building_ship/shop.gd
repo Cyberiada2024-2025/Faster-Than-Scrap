@@ -19,10 +19,12 @@ extends Node3D
 @export var rows: int
 ## display of cash balance
 @export var bank_display: Label3D
+@export var inventory_limit_display: Label3D
 
 @export var deny_finish: Control
 @export var confirm_finish: Control
 
+@export var deny_finish_label: Label
 @export var selected_module_prize_display: Label
 
 ## actual cash balance
@@ -54,6 +56,7 @@ func _ready() -> void:
 		obj.position = Vector3(x, 0, z)
 		obj.get_child(0).position = Vector3(0, 0, 0)
 		i += 1
+	_display_inventory_number()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -73,6 +76,10 @@ func _on_bank_change() -> void:
 func _on_finish_pressed() -> void:
 	if bank < 0:
 		deny_finish.visible = true
+		deny_finish_label.text = "You cannot leave without paying for modules!"
+	elif InventoryManager.if_overflow():
+		deny_finish.visible = true
+		deny_finish_label.text = "Your inventory has too many items!"
 	else:
 		confirm_finish.visible = true
 
@@ -114,8 +121,22 @@ func _on_area_3d_area_exited(area: Area3D) -> void:
 
 
 func _on_inventory_entered(body: Area3D) -> void:
-	InventoryManager.add_item(body)
+	if InventoryManager.add_item(body):
+		_display_inventory_number()
 
 
 func _on_inventory_exited(body: Area3D) -> void:
-	InventoryManager.remove_item(body)
+	if InventoryManager.remove_item(body):
+		_display_inventory_number()
+
+
+func _display_inventory_number() -> void:
+	var current_num = InventoryManager.get_item_num()
+	var max_num = InventoryManager.get_max_item_num()
+	if current_num > max_num:
+		inventory_limit_display.modulate = Color("red")
+	else:
+		inventory_limit_display.modulate = Color(0.1, 1, 0)
+	inventory_limit_display.text = (
+		String.num_int64(current_num) + "\\" + String.num_int64(max_num)
+	)

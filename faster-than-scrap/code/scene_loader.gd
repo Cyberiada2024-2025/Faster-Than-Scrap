@@ -5,7 +5,6 @@ extends Node
 ## object which loads new scene and informs the game manager
 ## of the game game state
 ## Used as a helper node, so there can be multiple of scene managers in the same scene
-signal shop_entered
 
 var default_ship_prefab = preload("res://prefabs/ships/flyable_ship_with_shield.tscn")
 
@@ -56,16 +55,15 @@ func load_build_ship_scene() -> void:
 	GameManager.player_ship.save_rotation()
 	_detach_ship()
 
-	var attached_fly_scene: bool = false
+	var attached_build_scene: bool = false
 	if GameManager.game_state == GameState.State.FLY:
-		attached_fly_scene = MapGenerator.swap_saved_and_current_scene()
+		attached_build_scene = MapGenerator.swap_saved_and_current_scene()
 
 	GameManager.on_scene_exit()
-	if not attached_fly_scene:
+	if not attached_build_scene:
 		GameManager.get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
 	GameManager.set_game_state(GameState.State.BUILD)
 	_attach_ship_with_hud.call_deferred()
-	shop_entered.emit()
 
 
 func load_credits_scene() -> void:

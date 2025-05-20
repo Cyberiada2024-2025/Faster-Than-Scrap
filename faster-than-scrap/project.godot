@@ -24,7 +24,6 @@ MapGenerator="*res://code/singletons/map_generator.gd"
 MapSaver="*res://code/singletons/map_saver.gd"
 CutsceneManager="*res://code/singletons/cutscene_manager.gd"
 ModulesList="*res://prefabs/singletons/modules_list.tscn"
-Rarities="*res://code/singletons/rarities.gd"
 ShopContents="*res://code/singletons/shop_contents.gd"
 
 [display]

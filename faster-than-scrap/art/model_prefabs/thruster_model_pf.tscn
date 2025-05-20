@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cybvhv36ih1j6"]
 
 [ext_resource type="Material" uid="uid://bbmx3djnt7c0u" path="res://art/materials/thruster/thruster_material_3d.tres" id="1_nif0b"]
-[ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/modelss/thruster/thruster.obj" id="2_bfwmp"]
+[ext_resource type="ArrayMesh" uid="uid://bfla2gv2cw50c" path="res://art/models/thruster/thruster.obj" id="2_bfwmp"]
 
 [node name="ThrusterModel" type="Node3D"]
 

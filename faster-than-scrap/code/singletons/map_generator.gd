@@ -64,12 +64,12 @@ func swap_saved_and_current_scene() -> bool:
 		_saved_scene = get_tree().current_scene
 		_saved_scene.get_parent().remove_child(_saved_scene)
 		return false
-	var _temp_scene = get_tree().current_scene
-	_temp_scene.get_parent().remove_child(_temp_scene)
+	var temp_scene = get_tree().current_scene
+	temp_scene.get_parent().remove_child(temp_scene)
 	get_tree().get_root().add_child(_saved_scene)
 	get_tree().current_scene = _saved_scene
 
-	_saved_scene = _temp_scene
+	_saved_scene = temp_scene
 	return true
 
 
@@ -82,7 +82,3 @@ func set_node(new_node: MapNode) -> void:
 func reset() -> void:
 	_map_node = null
 	_scene = null
-
-
-func _ready() -> void:
-	pass

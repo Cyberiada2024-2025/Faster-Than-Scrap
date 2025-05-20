@@ -9,14 +9,9 @@ extends Node3D
 ## GainResourceArea must be at negative y coordinate
 ## otherwise, engine module is not selectable
 
-## modules in the shop. Don't place them in the editor! Place them here!
-#@export_dir var modules: Array[String] = []
-var all_modules: Array[SceneData]
-var modules_on_scene: Array[Module]
 ## set starting cash here
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var starting_bank: int = 0
 @export var max_items_count = 10
-#@export var root: Node3D
 
 @export_category("Visuals")
 ## shop size X
@@ -35,18 +30,15 @@ var modules_on_scene: Array[Module]
 @export var selected_module_description: RichTextLabel
 
 ## actual cash balance
-var bank: int = 0:
-	set(v):
-		print(v)
-		bank = v
+var bank: int = 0
 var first_frame: bool = true
 
 var areas: Array[Area3D] = []
-var loaded := false
-#TODO turn into singleton? so it gets ready only once
+
+var all_modules: Array[SceneData]
+var modules_on_scene: Array[Module]
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# clear current shop when new map
 	MissionManager.map_finished.connect(_clear_shop)
@@ -66,8 +58,8 @@ func _clear_shop() -> void:
 func _generate_shop() -> void:
 	all_modules = ShopContents.shop_modules
 	var i = 0
-	for moduleData in all_modules:
-		var module = moduleData.packed_scene.instantiate()
+	for module_data in all_modules:
+		var module = module_data.packed_scene.instantiate()
 		var area = Area3D.new()
 		add_child(area)
 		area.add_child(module)
@@ -107,10 +99,11 @@ func _exit_shop() -> void:
 	confirm_finish.visible = true
 	bank = 0
 	for mod in modules_on_scene:
-		mod.placed_in_shop = false
-		if mod.marked_to_destroy == true:
-			modules_on_scene.erase(mod)
-			mod.queue_free()
+		if mod != null:
+			mod.placed_in_shop = false
+			if mod.marked_to_destroy == true:
+				modules_on_scene.erase(mod)
+				mod.queue_free()
 
 
 func _on_confirm_pressed() -> void:
@@ -137,6 +130,8 @@ func _on_gain_resource_body_entered(body: Node3D) -> void:
 			var mod: Module = child
 			bank += mod.prize
 			mod.marked_to_destroy = true
+			if mod not in modules_on_scene:
+				modules_on_scene.append(mod)
 			_on_bank_change()
 			if !areas.has(body):
 				areas.push_back(body)
@@ -171,15 +166,6 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 				bank -= mod.prize
 				_on_bank_change()
 				areas.remove_at(areas.find(body))
-
-
-#
-#func _on_area_3d_area_entered(area: Area3D) -> void:
-#_on_area_3d_body_entered(area)
-#
-#
-#func _on_area_3d_area_exited(area: Area3D) -> void:
-#_on_area_3d_body_exited(area)
 
 
 func _on_module_attached(module: Module) -> void:

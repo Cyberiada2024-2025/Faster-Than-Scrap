@@ -5,10 +5,9 @@ extends Node
 ## object which loads new scene and informs the game manager
 ## of the game game state
 ## Used as a helper node, so there can be multiple of scene managers in the same scene
+signal shop_entered
 
 var default_ship_prefab = preload("res://prefabs/ships/flyable_ship_with_shield.tscn")
-
-signal shop_entered
 
 
 func load_main_menu_scene() -> void:

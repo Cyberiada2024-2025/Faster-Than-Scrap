@@ -1,12 +1,11 @@
 extends Node
+signal map_finished
 
 var main_mission_finished = false
 
 var missions: Array[Mission] = []
 
 var scene_loader: SceneLoader
-
-signal map_finished
 
 
 func _ready() -> void:

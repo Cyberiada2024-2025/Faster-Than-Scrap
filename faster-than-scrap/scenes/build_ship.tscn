@@ -354,7 +354,7 @@ mesh = SubResource("BoxMesh_jtm63")
 material = SubResource("StandardMaterial3D_cv5l0")
 
 [node name="CSGMesh3D2" type="CSGMesh3D" parent="Shop/CSGMesh3D2"]
-transform = Transform3D(1.008, 0, 0, 0, 0.499, 0, 0, 0, 1, -0.000127196, -0.00248185, 0.00770876)
+transform = Transform3D(1.01, 0, 0, 0, 0.5, 0, 0, 0, 1.002, -0.000127196, -0.00248185, 0.00770876)
 mesh = SubResource("BoxMesh_jtm63")
 material = SubResource("StandardMaterial3D_hbg4l")
 

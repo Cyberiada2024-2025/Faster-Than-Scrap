@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=35 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -6,8 +6,6 @@
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_sra6p"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_jtm63"]
-[ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="9_xqadh"]
-[ext_resource type="PackedScene" uid="uid://cujiw86wtjlp8" path="res://prefabs/modules/frame1.tscn" id="10_jtm63"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="10_xqadh"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
@@ -80,10 +78,10 @@ emission = Color(0.705939, 2.23808e-06, 2.88785e-07, 1)
 emission_energy_multiplier = 2.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cv5l0"]
-size = Vector3(19.0752, 1, 19.3862)
+size = Vector3(17.907, 1, 19.3862)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jtm63"]
-size = Vector3(9.60657, 1, 9.86304)
+size = Vector3(8.64761, 1, 8.69147)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqadh"]
 transparency = 1
@@ -372,14 +370,14 @@ transform = Transform3D(1.06696, 0, 0, 0, 3.28825, 0, 0, 0, 1, -21.2996, -0.1970
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/PayResourceArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.60101, 0, 6.15209)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.01693, 0, 6.15209)
 shape = SubResource("BoxShape3D_cv5l0")
 
 [node name="GainResourceArea" type="Area3D" parent="Shop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38156, -0.1, 8.64289)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/GainResourceArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.131, -0.156928, 1.38)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11545, -0.156928, 1.04995)
 shape = SubResource("BoxShape3D_jtm63")
 
 [node name="Ship Max Size" type="Node3D" parent="."]
@@ -412,16 +410,6 @@ shape = SubResource("BoxShape3D_xqadh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ship Max Size/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3246, 0, 0.0656614)
 shape = SubResource("BoxShape3D_xqadh")
-
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.57239, 0, 3.31371)
-
-[node name="Thruster" parent="Area3D" instance=ExtResource("9_xqadh")]
-
-[node name="Area3D2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56951, 0, 8.0293)
-
-[node name="Frame" parent="Area3D2" instance=ExtResource("10_jtm63")]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

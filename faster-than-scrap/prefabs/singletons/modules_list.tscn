@@ -1,0 +1,15 @@
+[gd_scene load_steps=9 format=3 uid="uid://cxbdxx7rlfi4x"]
+
+[ext_resource type="Script" uid="uid://hwqcwre52djc" path="res://code/singletons/modules_list.gd" id="1_amswa"]
+[ext_resource type="PackedScene" uid="uid://cqkj1jovh07cf" path="res://prefabs/modules/weapons/beam_module.tscn" id="2_mrudw"]
+[ext_resource type="PackedScene" uid="uid://dbajfkkhivhl0" path="res://prefabs/modules/weapons/laser_module.tscn" id="3_j7ou0"]
+[ext_resource type="PackedScene" uid="uid://15te4x6fjtx4" path="res://prefabs/modules/weapons/missile_module.tscn" id="4_0wbnf"]
+[ext_resource type="PackedScene" uid="uid://cujiw86wtjlp8" path="res://prefabs/modules/frame1.tscn" id="5_ujen1"]
+[ext_resource type="PackedScene" uid="uid://gngfqbur01ep" path="res://prefabs/modules/frame2.tscn" id="6_q0dg1"]
+[ext_resource type="PackedScene" uid="uid://b6fx656pcno7s" path="res://prefabs/modules/shield_module.tscn" id="7_xaf2k"]
+[ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="8_gkw77"]
+
+[node name="ModulesList" type="Node"]
+script = ExtResource("1_amswa")
+all_modules = Array[PackedScene]([ExtResource("5_ujen1"), ExtResource("6_q0dg1"), ExtResource("7_xaf2k"), ExtResource("8_gkw77"), ExtResource("2_mrudw"), ExtResource("3_j7ou0"), ExtResource("4_0wbnf")])
+s = Array[String](["", "", ""])

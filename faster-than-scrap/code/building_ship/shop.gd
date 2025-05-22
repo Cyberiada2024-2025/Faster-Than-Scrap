@@ -49,6 +49,9 @@ func _ready() -> void:
 	MissionManager.map_finished.connect(_clear_shop)
 	MissionManager.map_finished.connect(ShopContents.generate_contents)
 	_generate_shop()
+	#_generate_inventory()
+	var es = EnterShop.new()  # will it trigger since its not singleton .nope
+	es.shop_entered.connect(_generate_inventory)
 
 
 func _clear_shop() -> void:
@@ -71,7 +74,10 @@ func _generate_shop() -> void:
 		modules_on_scene.append(module)
 		module.placed_in_shop = false
 		i += 1
-	i = 0
+
+
+func _generate_inventory() -> void:
+	var i = 0
 	for obj in InventoryManager.inventory:
 		add_child(obj)
 		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2 + distance
@@ -79,7 +85,6 @@ func _generate_shop() -> void:
 		obj.position = Vector3(x, 0, z)
 		obj.get_child(0).position = Vector3(0, 0, 0)
 		modules_on_scene.append(obj)
-		obj.placed_in_shop = false
 		i += 1
 	_display_inventory_number()
 
@@ -92,6 +97,10 @@ func _process(delta: float) -> void:
 		first_frame = false
 		bank = starting_bank
 		_on_bank_change()
+
+
+func _enter_tree() -> void:
+	_generate_inventory()
 
 
 func _on_bank_change() -> void:

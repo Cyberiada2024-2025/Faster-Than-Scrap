@@ -325,7 +325,7 @@ script = ExtResource("7_jtm63")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
 [node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "inventory_limit_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4025, 0, -8.21922)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.897, 0, -3.63634)
 script = ExtResource("11_jtm63")
 size_x = 10.0
 size_z = 10.0
@@ -341,17 +341,17 @@ selected_module_description = NodePath("../ShipBuilder/Control/Description_displ
 metadata/_custom_type_script = "uid://dsebh10ryevl"
 
 [node name="Inventory2" type="CSGMesh3D" parent="Shop"]
-transform = Transform3D(10, 0, 0, 0, 0.177, 0, 0, 0, 10, 3.41943, 0.009, 3.35722)
+transform = Transform3D(10, 0, 0, 0, 0.177, 0, 0, 0, 10, -0.0750866, 0.009, -1.22566)
 mesh = SubResource("BoxMesh_jtm63")
 material = SubResource("StandardMaterial3D_d8di0")
 
 [node name="Inventory" type="CSGMesh3D" parent="Shop/Inventory2"]
-transform = Transform3D(1.02, 0, 0, 0, 1, 0, 0, 0, 1.01, 0, 0, -0.00857064)
+transform = Transform3D(1.02, 0, 0, 0, 1, 0, 0, 0, 1.01, 0, 0, 0)
 mesh = SubResource("BoxMesh_jtm63")
 material = SubResource("StandardMaterial3D_bwh47")
 
 [node name="Inventory3" type="CSGMesh3D" parent="Shop"]
-transform = Transform3D(10, 0, 0, 0, 0.083, 0, 0, 0, 10, 3.41821, 0, 13.7978)
+transform = Transform3D(10, 0, 0, 0, 0.083, 0, 0, 0, 10, -0.0763063, 0, 9.21492)
 mesh = SubResource("BoxMesh_jtm63")
 material = SubResource("StandardMaterial3D_cv5l0")
 
@@ -368,7 +368,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11545, -0.156928, 1.04995)
 shape = SubResource("BoxShape3D_jtm63")
 
 [node name="Inventory4" type="Label3D" parent="Shop"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.70663, -2.2316e-07, -4.47792)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.77373, -1.36849e-07, -7.08624)
 modulate = Color(0.1, 3, 0, 1)
 text = "0$"
 font = ExtResource("6_au3vu")
@@ -377,7 +377,7 @@ outline_size = 0
 horizontal_alignment = 2
 
 [node name="Inventory5" type="Area3D" parent="Shop"]
-transform = Transform3D(1.06696, 0, 0, 0, 3.28825, 0, 0, 0, 1, -12.4594, -0.197084, 6.43411)
+transform = Transform3D(1.06696, 0, 0, 0, 3.28825, 0, 0, 0, 1, -15.9539, -0.197084, 1.85123)
 input_ray_pickable = false
 
 [node name="Inventory" type="CollisionShape3D" parent="Shop/Inventory5"]
@@ -385,7 +385,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.178986, -0.351958, 2.41971
 shape = SubResource("BoxShape3D_kf4id")
 
 [node name="Inventory" type="Node3D" parent="Shop"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0448, 0, 10.6419)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1809, 0, 0.146426)
 
 [node name="InventoryItems" type="CSGMesh3D" parent="Shop/Inventory"]
 transform = Transform3D(8.28, 0, 0, 0, 0.083, 0, 0, 0, 12.42, 0, 0, 0)

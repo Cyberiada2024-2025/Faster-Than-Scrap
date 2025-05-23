@@ -1,11 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://b2xl30r0e0ece"]
 
 [ext_resource type="Script" uid="uid://spw30bieh03o" path="res://code/weapons/projectiles/projectile_warning.gd" id="1_ntfh7"]
-[ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/enemies/fast_enemy.tscn" id="2_ntfh7"]
+[ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/npc/enemies/fighter.tscn" id="2_ntfh7"]
 [ext_resource type="Shader" uid="uid://fmj6au2uao1y" path="res://art/shaders/graphs/warnings/warning_aoe.tres" id="3_3nfx5"]
 [ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/ui/minimap/placeholder/Enemy.png" id="4_6byr0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_slp7i"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_3nfx5")
 shader_parameter/Line_Width = 0.0

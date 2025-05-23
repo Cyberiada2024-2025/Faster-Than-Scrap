@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://8gbxm6vrfug2" path="res://art/textures/missile/missile_Roughness.png" id="5_5nwhl"]
 
 [resource]
+albedo_color = Color(1, 0.47, 0.47, 1)
 albedo_texture = ExtResource("1_6rqid")
 metallic = 1.0
 metallic_texture = ExtResource("3_61bu7")

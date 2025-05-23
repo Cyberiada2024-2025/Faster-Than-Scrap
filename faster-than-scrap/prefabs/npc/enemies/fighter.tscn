@@ -1,55 +1,55 @@
-[gd_scene load_steps=60 format=3 uid="uid://tw5ceddtulbf"]
+[gd_scene load_steps=60 format=3 uid="uid://c1bx3ko83hdsi"]
 
-[ext_resource type="Script" uid="uid://do6r4sdoiglip" path="res://code/enemy/NPC.gd" id="1_ok4vr"]
-[ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_yc3bl"]
-[ext_resource type="PackedScene" uid="uid://dpuxvcnuhlg62" path="res://prefabs/projectiles/heavy_enemy_blast.tscn" id="3_s1yp8"]
-[ext_resource type="Script" uid="uid://dpubtuvds874u" path="res://code/ship/ship.gd" id="4_s1yp8"]
-[ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="5_q0blx"]
-[ext_resource type="Script" uid="uid://b1evvkbdec4yo" path="res://code/enemy/states/move/state_npc_movemenet/agressive_shooting.gd" id="6_xxpwe"]
-[ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="7_n13x3"]
-[ext_resource type="Script" uid="uid://cjvpeo4f2tmj1" path="res://code/enemy/transitions/outOfRange.gd" id="8_fi2gh"]
-[ext_resource type="Script" uid="uid://4cghdv6buscd" path="res://code/enemy/states/move/state_npc_movemenet/aggressive.gd" id="9_skqe0"]
-[ext_resource type="Script" uid="uid://dugu022f8k6tr" path="res://code/enemy/transitions/inRange.gd" id="10_3dyoh"]
-[ext_resource type="Script" uid="uid://co8l81epe742x" path="res://code/enemy/states/move/state_npc_movemenet/defensive.gd" id="11_1eplk"]
-[ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="12_a4thn"]
-[ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/move/state_npc_movemenet/idle.gd" id="13_nle6o"]
-[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="14_rj4bm"]
-[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="15_rj4bm"]
-[ext_resource type="PackedScene" uid="uid://d3dt8ieym1dv8" path="res://art/models/enemies/enemy_2/heavy_enemy_unpacked.tscn" id="16_q0blx"]
-[ext_resource type="PackedScene" uid="uid://cslkg7x0muy4u" path="res://prefabs/vfx/particles/basic/fire.tscn" id="17_xxpwe"]
-[ext_resource type="Texture2D" uid="uid://2c1a1ogf3sa1" path="res://art/textures/vfxy/fire_gradient_weird.png" id="18_668tx"]
-[ext_resource type="Texture2D" uid="uid://brgjvlvgmigyf" path="res://art/textures/vfxy/fire_voronoi.png" id="19_7pmuj"]
-[ext_resource type="Texture2D" uid="uid://bb24thwd52doi" path="res://art/textures/vfxy/2DNoise.png" id="20_x00yj"]
+[ext_resource type="Script" uid="uid://do6r4sdoiglip" path="res://code/enemy/NPC.gd" id="1_5ysbx"]
+[ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_ydtva"]
+[ext_resource type="PackedScene" uid="uid://blsmln7x7do0p" path="res://prefabs/projectiles/enemy projectiles/fighter_projectile.tscn" id="3_5ysbx"]
+[ext_resource type="Script" uid="uid://dpubtuvds874u" path="res://code/ship/ship.gd" id="4_eb5v7"]
+[ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="5_a0eui"]
+[ext_resource type="Script" uid="uid://b1evvkbdec4yo" path="res://code/enemy/states/move/state_npc_movemenet/agressive_shooting.gd" id="6_qa6fy"]
+[ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="7_7kkk4"]
+[ext_resource type="Script" uid="uid://cjvpeo4f2tmj1" path="res://code/enemy/transitions/outOfRange.gd" id="8_1oj4j"]
+[ext_resource type="Script" uid="uid://4cghdv6buscd" path="res://code/enemy/states/move/state_npc_movemenet/aggressive.gd" id="9_nw2hu"]
+[ext_resource type="Script" uid="uid://dugu022f8k6tr" path="res://code/enemy/transitions/inRange.gd" id="10_b678f"]
+[ext_resource type="Script" uid="uid://co8l81epe742x" path="res://code/enemy/states/move/state_npc_movemenet/defensive.gd" id="11_ju6ap"]
+[ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="12_817pd"]
+[ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/move/state_npc_movemenet/idle.gd" id="13_dwqcp"]
+[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="14_23euh"]
+[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="15_i0f2p"]
+[ext_resource type="PackedScene" uid="uid://bgrypc1sb6dk" path="res://art/models/enemies/enemy_1/fast_enemy_unpacked.tscn" id="16_7e2om"]
+[ext_resource type="PackedScene" uid="uid://cslkg7x0muy4u" path="res://prefabs/vfx/particles/basic/fire.tscn" id="17_j4xxe"]
+[ext_resource type="Texture2D" uid="uid://2c1a1ogf3sa1" path="res://art/textures/vfxy/fire_gradient_weird.png" id="18_3w1pj"]
+[ext_resource type="Texture2D" uid="uid://brgjvlvgmigyf" path="res://art/textures/vfxy/fire_voronoi.png" id="19_7eb4u"]
+[ext_resource type="Texture2D" uid="uid://bb24thwd52doi" path="res://art/textures/vfxy/2DNoise.png" id="20_rmwa3"]
 
 [sub_resource type="Curve" id="Curve_qoroq"]
 _data = [Vector2(0.256619, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_bntxj"]
+[sub_resource type="CurveTexture" id="CurveTexture_qi6go"]
 curve = SubResource("Curve_qoroq")
 
 [sub_resource type="Curve" id="Curve_bntxj"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_b5ybg"]
+[sub_resource type="CurveTexture" id="CurveTexture_c55qp"]
 curve = SubResource("Curve_bntxj")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b5ybg"]
 direction = Vector3(0, 0, -1)
 spread = 90.0
-initial_velocity_max = 10.0
+initial_velocity_max = 15.0
 gravity = Vector3(0, 0, 0)
 damping_min = 15.0
 damping_max = 20.0
-scale_curve = SubResource("CurveTexture_b5ybg")
-alpha_curve = SubResource("CurveTexture_bntxj")
+scale_curve = SubResource("CurveTexture_c55qp")
+alpha_curve = SubResource("CurveTexture_qi6go")
 
-[sub_resource type="Curve" id="Curve_pg335"]
+[sub_resource type="Curve" id="Curve_dafrm"]
 _data = [Vector2(0, 0), 0.0, 5.7583, 0, 0, Vector2(0.244898, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7ty2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_te00q"]
 transparency = 1
 blend_mode = 1
 vertex_color_use_as_albedo = true
@@ -60,15 +60,15 @@ emission_energy_multiplier = 16.0
 use_particle_trails = true
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_7shuu"]
-material = SubResource("StandardMaterial3D_b7ty2")
+material = SubResource("StandardMaterial3D_te00q")
 size = 0.1
-curve = SubResource("Curve_pg335")
+curve = SubResource("Curve_dafrm")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_rj4bm"]
-radius = 1.636
+[sub_resource type="SphereShape3D" id="SphereShape3D_sjc04"]
+radius = 1.801
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rj4bm"]
-size = Vector3(2.13038, 1, 4.07983)
+[sub_resource type="BoxShape3D" id="BoxShape3D_sjc04"]
+size = Vector3(2.25854, 1, 4.01675)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_728c8"]
 source = 5
@@ -367,131 +367,129 @@ nodes/fragment/61/node = SubResource("VisualShaderNodeStep_dhf0v")
 nodes/fragment/61/position = Vector2(400, -100)
 nodes/fragment/connections = PackedInt32Array(9, 0, 10, 2, 29, 0, 28, 1, 23, 0, 30, 0, 25, 0, 30, 1, 35, 0, 38, 2, 30, 0, 42, 0, 38, 0, 42, 1, 42, 0, 10, 0, 43, 0, 42, 2, 8, 0, 45, 0, 44, 0, 45, 1, 45, 0, 30, 2, 27, 0, 29, 0, 27, 0, 28, 0, 10, 0, 49, 1, 10, 0, 28, 2, 50, 0, 51, 2, 49, 0, 52, 0, 28, 0, 0, 1, 52, 0, 51, 0, 51, 0, 53, 0, 53, 0, 0, 0, 54, 0, 53, 1, 20, 2, 58, 1, 58, 0, 22, 0, 55, 0, 58, 0, 58, 0, 49, 0, 22, 0, 59, 0, 59, 0, 27, 0, 61, 0, 59, 1, 58, 0, 61, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_22jxi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_td47d"]
 resource_local_to_scene = true
 render_priority = 0
 shader = SubResource("VisualShader_adqk0")
 shader_parameter/On = 1.0
 shader_parameter/Noise_Scale = Vector2(1, 2)
 shader_parameter/ScrollingSpeed = Vector2(0.25, 1)
-shader_parameter/Warp_Noise = ExtResource("20_x00yj")
+shader_parameter/Warp_Noise = ExtResource("20_rmwa3")
 shader_parameter/Warp_Strength = 0.05
-shader_parameter/Noise = ExtResource("19_7pmuj")
-shader_parameter/Gradient = ExtResource("18_668tx")
+shader_parameter/Noise = ExtResource("19_7eb4u")
+shader_parameter/Gradient = ExtResource("18_3w1pj")
 shader_parameter/Glow_Strength = 3.0
 
-[node name="HeavyEnemy" type="CharacterBody3D" node_paths=PackedStringArray("weapon", "ship")]
-script = ExtResource("1_ok4vr")
-speed = 6
-rotation_speed = 0.03
-weapon = NodePath("Weapon")
+[node name="Fighter" type="CharacterBody3D" node_paths=PackedStringArray("weapons", "ship")]
+script = ExtResource("1_5ysbx")
+rotation_speed = 0.05
+weapons = [NodePath("Weapon")]
 ship = NodePath("Ship")
 
 [node name="Weapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.75564)
-script = ExtResource("2_yc3bl")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.64815)
+script = ExtResource("2_ydtva")
 muzzle_flash = NodePath("MuzzleFlash")
-energy_cost = 30.0
-cooldown = 2.0
-projectile = ExtResource("3_s1yp8")
+energy_cost = 20.0
+cooldown = 0.12
+projectile = ExtResource("3_5ysbx")
 
 [node name="MuzzleFlash" type="GPUParticles3D" parent="Weapon"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.572005)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.316722)
 emitting = false
-amount = 300
-lifetime = 0.2
+amount = 200
+lifetime = 0.08
 one_shot = true
 explosiveness = 1.0
 local_coords = true
 transform_align = 3
 trail_enabled = true
-trail_lifetime = 0.2
+trail_lifetime = 0.08
 process_material = SubResource("ParticleProcessMaterial_b5ybg")
 draw_pass_1 = SubResource("RibbonTrailMesh_7shuu")
 
 [node name="Ship" type="RigidBody3D" parent="."]
 gravity_scale = 0.0
-script = ExtResource("4_s1yp8")
-max_hp = 20.0
+script = ExtResource("4_eb5v7")
 
 [node name="StateMachineEnemy" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("5_q0blx")
+script = ExtResource("5_a0eui")
 initial_state = NodePath("Idle")
 
 [node name="AggressiveShooting" type="Node" parent="StateMachineEnemy"]
-script = ExtResource("6_xxpwe")
+script = ExtResource("6_qa6fy")
 dead_zone = 1.0
 
 [node name="LowEnergy" type="Node" parent="StateMachineEnemy/AggressiveShooting" node_paths=PackedStringArray("new_state")]
-script = ExtResource("7_n13x3")
+script = ExtResource("7_7kkk4")
 low_energy_treshold = 25
 new_state = NodePath("../../Defensive")
 
 [node name="OutOfRange" type="Node" parent="StateMachineEnemy/AggressiveShooting" node_paths=PackedStringArray("new_state")]
-script = ExtResource("8_fi2gh")
-range_treshold = 12
+script = ExtResource("8_1oj4j")
+range_treshold = 20
 new_state = NodePath("../../Aggressive")
 
 [node name="Aggressive" type="Node" parent="StateMachineEnemy"]
-script = ExtResource("9_skqe0")
+script = ExtResource("9_nw2hu")
 dead_zone = 1.0
 
 [node name="LowEnergy" type="Node" parent="StateMachineEnemy/Aggressive" node_paths=PackedStringArray("new_state")]
-script = ExtResource("7_n13x3")
+script = ExtResource("7_7kkk4")
 new_state = NodePath("../../Defensive")
 
 [node name="OutOfRange" type="Node" parent="StateMachineEnemy/Aggressive" node_paths=PackedStringArray("new_state")]
-script = ExtResource("8_fi2gh")
+script = ExtResource("8_1oj4j")
 new_state = NodePath("../../Idle")
 
 [node name="InRange" type="Node" parent="StateMachineEnemy/Aggressive" node_paths=PackedStringArray("new_state")]
-script = ExtResource("10_3dyoh")
-range_treshold = 10
+script = ExtResource("10_b678f")
+range_treshold = 15
 new_state = NodePath("../../AggressiveShooting")
 
 [node name="Defensive" type="Node" parent="StateMachineEnemy"]
-script = ExtResource("11_1eplk")
+script = ExtResource("11_ju6ap")
 extra_energy_cost = -10.0
 circle_target = true
 
 [node name="HighEnergy" type="Node" parent="StateMachineEnemy/Defensive" node_paths=PackedStringArray("new_state")]
-script = ExtResource("12_a4thn")
+script = ExtResource("12_817pd")
+high_energy_treshold = 95
 new_state = NodePath("../../Aggressive")
 
 [node name="OutOfRange" type="Node" parent="StateMachineEnemy/Defensive" node_paths=PackedStringArray("new_state")]
-script = ExtResource("8_fi2gh")
+script = ExtResource("8_1oj4j")
 new_state = NodePath("../../Idle")
 
 [node name="Idle" type="Node" parent="StateMachineEnemy"]
-script = ExtResource("13_nle6o")
+script = ExtResource("13_dwqcp")
 
 [node name="InRange" type="Node" parent="StateMachineEnemy/Idle" node_paths=PackedStringArray("new_state")]
-script = ExtResource("10_3dyoh")
+script = ExtResource("10_b678f")
 range_treshold = 50
 new_state = NodePath("../../Aggressive")
 
 [node name="ControlerCollider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, -0.687797)
-shape = SubResource("SphereShape3D_rj4bm")
+transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, -0.336469)
+shape = SubResource("SphereShape3D_sjc04")
 
-[node name="DamageController" parent="." instance=ExtResource("14_rj4bm")]
+[node name="DamageController" parent="." instance=ExtResource("14_23euh")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0745242, 0, -0.329517)
-shape = SubResource("BoxShape3D_rj4bm")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00402832, 0, -0.343613)
+shape = SubResource("BoxShape3D_sjc04")
 
-[node name="EnemyPoi" parent="." instance=ExtResource("15_rj4bm")]
+[node name="EnemyPoi" parent="." instance=ExtResource("15_i0f2p")]
 
-[node name="enemy_model_2" parent="." instance=ExtResource("16_q0blx")]
-transform = Transform3D(0.75, 0, 0, 0, -0.75, 6.55671e-08, 0, -6.55671e-08, -0.75, 0, 0, 0)
+[node name="enemy_1" parent="." instance=ExtResource("16_7e2om")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0487721, 0, -2.32095)
 
-[node name="exhaust fire2" parent="." instance=ExtResource("17_xxpwe")]
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -2.84232e-08, 0.00520175, 1.49975)
+[node name="exhaust fire2" parent="." instance=ExtResource("17_j4xxe")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -0.0446548, 0.085, 2.16566)
 radius = 0.3
-height = 1.0
-material = SubResource("ShaderMaterial_22jxi")
+material = SubResource("ShaderMaterial_td47d")
 
-[connection signal="damaged" from="Ship" to="enemy_model_2" method="_on_ship_damage"]
+[connection signal="damaged" from="Ship" to="enemy_1" method="_on_ship_damage"]
 [connection signal="damaged" from="DamageController" to="Ship" method="_on_take_damage"]
 
 [editable path="DamageController"]

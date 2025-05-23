@@ -19,6 +19,7 @@ shader_parameter/Rust_Noise = ExtResource("7_rhbjs")
 shader_parameter/Albedo = ExtResource("3_i2t4m")
 shader_parameter/Rust_Amount = 0.0
 shader_parameter/Mix_Noise = ExtResource("5_3v5wd")
+shader_parameter/Albedo_Color = Color(1, 1, 1, 1)
 shader_parameter/Met_Rough = ExtResource("4_3v5wd")
 shader_parameter/Normal = ExtResource("5_rhbjs")
 shader_parameter/triplanar_scale = Vector3(1, 1, 1)

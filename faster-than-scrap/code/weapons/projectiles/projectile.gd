@@ -33,7 +33,7 @@ var _current_lifetime: float = 0
 func _ready() -> void:
 	_damage_area.damage_applied.connect(_on_damage_applied)
 	for part in particles:
-				part.emitting = true
+		part.emitting = true
 
 
 func _process(delta: float) -> void:

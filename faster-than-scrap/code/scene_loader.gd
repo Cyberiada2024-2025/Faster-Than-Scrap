@@ -46,6 +46,8 @@ func load_fly_ship_scene(
 		rot = GameManager.player_ship.get_saved_rotation()
 	_attach_ship_with_hud.call_deferred(pos, rot)
 
+	_set_vortex_preserve(false)
+
 
 func load_boss_scene(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO) -> void:
 	_detach_ship()
@@ -56,6 +58,7 @@ func load_boss_scene(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO) -
 
 
 func load_build_ship_scene() -> void:
+	_set_vortex_preserve(true)
 	GameManager.player_ship.save_position()
 	GameManager.player_ship.save_rotation()
 	_detach_ship()
@@ -120,3 +123,9 @@ func _attach_ship_without_hud():
 	# zero velocity
 	GameManager.player_ship.linear_velocity = Vector3.ZERO
 	GameManager.player_ship.angular_velocity = Vector3.ZERO
+
+
+## See [member SpaceVortex.preserve_target] for reference
+func _set_vortex_preserve(preserve: bool) -> void:
+	if SpaceVortex.instance != null:
+		SpaceVortex.instance.preserve_target = preserve

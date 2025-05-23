@@ -1,14 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhnli7a3skvdj"]
+[gd_scene load_steps=8 format=3 uid="uid://dhnli7a3skvdj"]
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_i1yyr"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_6tlui"]
 [ext_resource type="Script" uid="uid://b6oaocatti460" path="res://code/missions/info/mission_info_defend.gd" id="3_6tlui"]
+[ext_resource type="PackedScene" uid="uid://dtlau4bqcpa4b" path="res://prefabs/environment/defend_target.tscn" id="3_k6wb1"]
 [ext_resource type="Texture2D" uid="uid://g3rub1aaciib" path="res://art/textures/ui/mapselect/Shield.png" id="4_h6nkk"]
+[ext_resource type="PackedScene" uid="uid://dkbg1gqlrntx6" path="res://prefabs/environment/defend_target_small.tscn" id="5_a5paq"]
 
 [sub_resource type="Resource" id="Resource_h6nkk"]
 script = ExtResource("3_6tlui")
-defendable_position = Vector3(0, 0, 0)
-time_to_defend = 60.0
+defendable_position = Vector3(0, 0, -20)
+time_to_defend = 20.0
+defend_prefab = ExtResource("3_k6wb1")
+small_defendable_position = Array[Vector3]([Vector3(30, 0, 0), Vector3(-30, 0, 0)])
+small_time_to_defend = 5.0
+small_defend_prefab = ExtResource("5_a5paq")
 about = ""
 difficulty = 0
 priority = 0

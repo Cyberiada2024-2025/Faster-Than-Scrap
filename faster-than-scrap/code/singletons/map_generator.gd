@@ -4,10 +4,9 @@ extends Node
 ## given a sector node properties.
 ## Additionaly it stores the scene tree of that phase,
 ## to allow restoring it when returning from the shop.
-var _map_node: MapNode = null
-var _scene: Node
 
-var _saved_scene: Node
+var _map_node: MapNode = null
+var _scene: Node = null
 
 
 ## Called whenever the scene should be procedurally generated (
@@ -52,20 +51,6 @@ func try_attach_saved_scene() -> bool:
 	get_tree().get_root().add_child(_scene)
 	get_tree().current_scene = _scene
 	_scene = null
-	return true
-
-
-func swap_saved_and_current_scene() -> bool:
-	if _saved_scene == null:
-		_saved_scene = get_tree().current_scene
-		_saved_scene.get_parent().remove_child(_saved_scene)
-		return false
-	var temp_scene = get_tree().current_scene
-	temp_scene.get_parent().remove_child(temp_scene)
-	get_tree().get_root().add_child(_saved_scene)
-	get_tree().current_scene = _saved_scene
-
-	_saved_scene = temp_scene
 	return true
 
 

@@ -12,13 +12,20 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 
 [node name="StationaryEnemy" parent="." instance=ExtResource("2_mu58n")]
-transform = Transform3D(0.337309, 0, 0.941394, 0, 1, 0, -0.941394, 0, 0.337309, -7.5242, 0, 7.27022)
+transform = Transform3D(0.337309, 0, 0.941394, 0, 1, 0, -0.941394, 0, 0.337309, 37.8064, -5.7378, -23.702)
 
 [node name="StationaryEnemy2" parent="." instance=ExtResource("2_mu58n")]
-transform = Transform3D(0.337309, 0, 0.941394, 0, 1, 0, -0.941394, 0, 0.337309, -20.5589, 0, 12.6778)
+transform = Transform3D(0.337309, 0, 0.941394, 0, 1, 0, -0.941394, 0, 0.337309, 23.145, 0, -21.859)
 
 [node name="StationaryEnemy3" parent="." instance=ExtResource("2_mu58n")]
-transform = Transform3D(0.337309, 0, 0.941394, 0, 1, 0, -0.941394, 0, 0.337309, -26.6381, 0, -14.9211)
+transform = Transform3D(0.337309, 0, 0.941394, 0, 1, 0, -0.941394, 0, 0.337309, -21.3203, 0, -29.7625)
 
 [node name="StationaryEnemy4" parent="." instance=ExtResource("2_mu58n")]
 transform = Transform3D(0.337309, 0, 0.941394, 0, 1, 0, -0.941394, 0, 0.337309, -9.9507, 0, -16.8744)
+
+[node name="PortalPosition" type="Node3D" parent="." groups=["portal", "portalpos"]]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -29.7591)
+
+[node name="Marker3D" type="Marker3D" parent="PortalPosition"]
+gizmo_extents = 10.0

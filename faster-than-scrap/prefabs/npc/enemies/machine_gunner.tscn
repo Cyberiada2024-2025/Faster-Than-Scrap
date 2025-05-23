@@ -79,7 +79,7 @@ curve = SubResource("Curve_3v7me")
 radius = 1.636
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rj4bm"]
-size = Vector3(2.13038, 1, 4.07983)
+size = Vector3(3, 1, 4.08)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qq0ad"]
 resource_local_to_scene = true
@@ -648,7 +648,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0745242, 0, -0.329517)
 shape = SubResource("BoxShape3D_rj4bm")
 
 [node name="EnemyPoi" parent="." instance=ExtResource("15_c60k2")]
-visible = false
 
 [node name="enemy_model_2" type="Node3D" parent="." node_paths=PackedStringArray("meshes")]
 transform = Transform3D(0.75, 0, 0, 0, -0.75, 6.55671e-08, 0, -6.55671e-08, -0.75, 0, 0, 0)

@@ -1,9 +1,9 @@
 [gd_scene load_steps=23 format=3 uid="uid://bgpoyw23tdb7h"]
 
-[ext_resource type="Material" uid="uid://ckc38n3v8xtvf" path="res://art/textures/bosses/juggernaut/juggernaut_material_with_no_diffuse.tres" id="1_fqmqs"]
+[ext_resource type="Material" uid="uid://ckc38n3v8xtvf" path="res://art/materials/bosses/juggernaut/juggernaut_material_with_no_diffuse.tres" id="1_fqmqs"]
 [ext_resource type="ArrayMesh" uid="uid://co5fp42a4ij4j" path="res://art/models/bosses/juggernaut/arm.L.obj" id="2_ypgjs"]
 [ext_resource type="ArrayMesh" uid="uid://dsh0i30c77gpm" path="res://art/models/bosses/juggernaut/arm.R.obj" id="3_n0f6n"]
-[ext_resource type="Material" uid="uid://dej2nffyqhao1" path="res://art/textures/bosses/juggernaut/juggernaut_material_with_diffuse.tres" id="4_fr3ya"]
+[ext_resource type="Material" uid="uid://dej2nffyqhao1" path="res://art/materials/bosses/juggernaut/juggernaut_material_with_diffuse.tres" id="4_fr3ya"]
 [ext_resource type="ArrayMesh" uid="uid://wjlfl75uigw8" path="res://art/models/bosses/juggernaut/cannon.obj" id="5_tppxa"]
 [ext_resource type="ArrayMesh" uid="uid://ufo3k61ncvk4" path="res://art/models/bosses/juggernaut/core.obj" id="6_ek3jj"]
 [ext_resource type="Texture2D" uid="uid://danvcyualpk27" path="res://art/textures/bosses/juggernaut/roughness.png" id="7_tqynv"]

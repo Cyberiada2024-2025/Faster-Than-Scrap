@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bl7mgydbx37a1" path="res://art/textures/vfxy/rust_noise.png" id="5_vapdw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fr4s8"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_4q7ht")
 shader_parameter/Rust_Color_2 = Color(0.690196, 0.317647, 0.117647, 1)
@@ -18,6 +19,7 @@ shader_parameter/Rust_Noise = ExtResource("5_vapdw")
 shader_parameter/Albedo = ExtResource("3_n1dii")
 shader_parameter/Rust_Amount = 0.453
 shader_parameter/Mix_Noise = ExtResource("5_4q7ht")
+shader_parameter/Albedo_Color = Color(1, 1, 1, 1)
 shader_parameter/Met_Rough = ExtResource("4_q0rf4")
 shader_parameter/Normal = ExtResource("5_mulr4")
 shader_parameter/triplanar_scale = Vector3(1, 1, 1)

@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_2shb0"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/ui/hud.tscn" id="1_cqaxs"]
 [ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="1_ifny6"]
-[ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/enemies/fast_enemy.tscn" id="5_81nd3"]
-[ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/enemies/stationary_enemy.tscn" id="6_e40t7"]
-[ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/enemies/heavy_enemy.tscn" id="6_p5vsi"]
-[ext_resource type="PackedScene" uid="uid://goh62nkboyy1" path="res://prefabs/enemies/fren.tscn" id="7_8b4rj"]
-[ext_resource type="PackedScene" uid="uid://2d27nuwt86j3" path="res://prefabs/enemies/killall.tscn" id="8_wwxch"]
-[ext_resource type="PackedScene" uid="uid://ywf18qdgisi7" path="res://prefabs/enemies/smol_fren.tscn" id="9_p5vsi"]
+[ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/npc/enemies/fighter.tscn" id="5_81nd3"]
+[ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="6_e40t7"]
+[ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/npc/enemies/shotgunner.tscn" id="6_p5vsi"]
+[ext_resource type="PackedScene" uid="uid://goh62nkboyy1" path="res://prefabs/npc/friends/fren.tscn" id="7_8b4rj"]
+[ext_resource type="PackedScene" uid="uid://2d27nuwt86j3" path="res://prefabs/npc/killall.tscn" id="8_wwxch"]
+[ext_resource type="PackedScene" uid="uid://ywf18qdgisi7" path="res://prefabs/npc/friends/smol_fren.tscn" id="9_p5vsi"]
 
 [node name="EnemyTest" type="Node2D"]
 

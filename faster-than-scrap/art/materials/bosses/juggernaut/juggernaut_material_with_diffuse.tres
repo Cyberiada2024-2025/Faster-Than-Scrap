@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dej2nffyqhao1"]
+
+[ext_resource type="Texture2D" uid="uid://0hw0rmvwo34p" path="res://art/textures/bosses/juggernaut/diffuse.png" id="1_lfwlt"]
+[ext_resource type="Texture2D" uid="uid://danvcyualpk27" path="res://art/textures/bosses/juggernaut/roughness.png" id="2_ntyhs"]
+
+[resource]
+albedo_texture = ExtResource("1_lfwlt")
+metallic = 1.0
+roughness = 0.5
+roughness_texture = ExtResource("2_ntyhs")

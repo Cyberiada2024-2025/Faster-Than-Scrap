@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://clqnlcly6aidu"]
+
+[ext_resource type="Texture2D" uid="uid://d08jswt27g1h0" path="res://art/textures/bosses/laserstar/roughness.png" id="2_rsmfu"]
+
+[resource]
+metallic = 1.0
+roughness = 0.5
+roughness_texture = ExtResource("2_rsmfu")

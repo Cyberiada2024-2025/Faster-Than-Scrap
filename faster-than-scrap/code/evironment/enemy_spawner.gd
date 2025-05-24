@@ -1,7 +1,7 @@
 class_name EnemySpawner
 extends CapturePoint
 
-@export var enemy_prefab: PackedScene = preload("res://prefabs/npc/enemies/fast_enemy.tscn")
+@export var enemy_prefab: PackedScene = preload("res://prefabs/npc/enemies/fighter.tscn")
 @export var spawn_range: float = 40
 @export var spawn_interval: float = 5
 @export var max_enemies: int = 3

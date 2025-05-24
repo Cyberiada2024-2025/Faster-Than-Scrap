@@ -1,27 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://dbajfkkhivhl0"]
+[gd_scene load_steps=13 format=3 uid="uid://dbajfkkhivhl0"]
 
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_akoi3"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_nlg4d"]
 [ext_resource type="PackedScene" uid="uid://d0bewf11rd3s4" path="res://prefabs/projectiles/basic_gun_projectile.tscn" id="3_nlg4d"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_nlg4d"]
 [ext_resource type="PackedScene" uid="uid://2t0lcotdylws" path="res://prefabs/vfx/particles/muzzle_flash.tscn" id="4_ts8di"]
+[ext_resource type="PackedScene" uid="uid://dwlfvellnrf75" path="res://art/model_prefabs/ship/modules/common_gun_model_pf.tscn" id="5_kru4r"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="6_cxsht"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="7_fkld4"]
 [ext_resource type="AudioStream" uid="uid://mavrm3tbmwii" path="res://art/audio/sounds/illegal_position_sound.wav" id="8_ts8di"]
 [ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="9_kru4r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yf3ku"]
-
-[sub_resource type="PlaceholderMaterial" id="PlaceholderMaterial_da12c"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_miefn"]
-next_pass = SubResource("PlaceholderMaterial_da12c")
-albedo_color = Color(1, 0.415686, 0.14902, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_quigi"]
-top_radius = 0.1
-bottom_radius = 0.1
-height = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_recg5"]
 size = Vector3(0.182556, 0.165771, 0.972778)
@@ -52,10 +42,8 @@ metadata/_custom_type_script = "uid://crmxerc164n6q"
 [node name="MuzzleFlash" parent="SpawnerWeapon" instance=ExtResource("4_ts8di")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.189615)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.00262642)
-material_override = SubResource("StandardMaterial3D_miefn")
-mesh = SubResource("CylinderMesh_quigi")
+[node name="CommonGunModel" parent="." instance=ExtResource("5_kru4r")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.01, 0)
 
 [node name="AttachPoints" type="Node3D" parent="."]
 

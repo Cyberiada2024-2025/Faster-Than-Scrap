@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3rsq4emlmuky"]
+[gd_scene load_steps=20 format=3 uid="uid://c3rsq4emlmuky"]
 
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_nesmw"]
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_s6qyd"]
@@ -9,12 +9,14 @@
 [ext_resource type="Script" uid="uid://crp1vxubokrt" path="res://code/enemy/states/move/move_to_orbit_place.gd" id="7_tge7b"]
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="7_xvv2n"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="8_jstny"]
-[ext_resource type="Script" uid="uid://p2tfapf0egxl" path="res://code/enemy/transitions/timed_transition.gd" id="9_k4714"]
+[ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="9_k4714"]
 [ext_resource type="Script" uid="uid://b0xwjuq1av15m" path="res://code/enemy/states/rotate/constant_rotation.gd" id="10_vhk6y"]
 [ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="11_vp012"]
 [ext_resource type="Script" uid="uid://c7w7ael2yxs4y" path="res://code/enemy/states/rotate/look_at_target_with_object.gd" id="12_7fp2r"]
 [ext_resource type="Script" uid="uid://dig16nwffnibt" path="res://code/enemy/states/supplementary/restore_energy.gd" id="12_tiubj"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="15_vhk6y"]
+[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_on_ready_player.gd" id="16_mynj6"]
+[ext_resource type="PackedScene" uid="uid://ciecgbtrcy16n" path="res://prefabs/ui/cutscenes/boss_cutscenes/laster_star_cutscene.tscn" id="17_kardv"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
 
@@ -193,6 +195,10 @@ new_state = NodePath("../../Move far away")
 
 [node name="EnemyPoi" parent="." instance=ExtResource("15_vhk6y")]
 max_range = 10000.0
+
+[node name="Boss Cutscene" type="Node" parent="."]
+script = ExtResource("16_mynj6")
+cutscene_path = ExtResource("17_kardv")
 
 [connection signal="damaged" from="StaticBody3D/Core/DamageController" to="StaticBody3D/Core" method="take_damage"]
 

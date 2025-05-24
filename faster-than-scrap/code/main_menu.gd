@@ -15,4 +15,4 @@ func _on_exit_button_pressed() -> void:
 
 func _on_start_button_pressed() -> void:
 	# TODO change to main scene
-	scene_loader.load_build_ship_scene()
+	scene_loader.load_lore_scene()

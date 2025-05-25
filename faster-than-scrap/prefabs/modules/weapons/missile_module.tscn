@@ -84,7 +84,7 @@ label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Missile"
-description = "Advanced waepon. Activate to release a slow-moving homing missile."
+description = "Advanced weapon. Activate to release a slow-moving homing missile."
 
 [node name="SpawnerWeapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.610518)

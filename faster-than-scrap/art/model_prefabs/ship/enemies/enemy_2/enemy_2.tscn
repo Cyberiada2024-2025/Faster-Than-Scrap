@@ -1,18 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://7f03m2v0jo2d"]
+[gd_scene load_steps=7 format=3 uid="uid://7f03m2v0jo2d"]
 
-[ext_resource type="Texture2D" uid="uid://uhwnb4p7i4v3" path="res://art/textures/enemies/enemy_2/enemy2_albedo.png" id="1_208v2"]
-[ext_resource type="Texture2D" uid="uid://h3ky6qh0ch1i" path="res://art/textures/enemies/enemy_2/enemy2_metal.png" id="2_6ob1c"]
-[ext_resource type="Texture2D" uid="uid://cptelv6mg3sk8" path="res://art/textures/enemies/enemy_2/enemy2_roughness.png" id="3_fda8d"]
-[ext_resource type="ArrayMesh" uid="uid://ch06troh0f8hn" path="res://art/models/enemies/enemy2/enemy_2.obj" id="4_p717c"]
+[ext_resource type="Texture2D" uid="uid://cebfslb2pryqa" path="res://art/textures/jerrycan/jerrycan_color.png" id="1_6ob1c"]
+[ext_resource type="Texture2D" uid="uid://b60mk2gtb6i3p" path="res://art/textures/jerrycan/jerrycan_metal.png" id="2_fda8d"]
+[ext_resource type="Texture2D" uid="uid://c8f6jbwbn1hrt" path="res://art/textures/jerrycan/jerrycan_normal.png" id="3_p717c"]
+[ext_resource type="Texture2D" uid="uid://2g3itoxc85ke" path="res://art/textures/jerrycan/jerrycan_roughnesspng.png" id="4_lgyaf"]
+[ext_resource type="ArrayMesh" uid="uid://c2x2erglhjcrs" path="res://art/models/jerrycan/jerrycan.obj" id="5_nnanf"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgyaf"]
-albedo_texture = ExtResource("1_208v2")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pe3n5"]
+albedo_texture = ExtResource("1_6ob1c")
 metallic = 1.0
-metallic_texture = ExtResource("2_6ob1c")
-roughness_texture = ExtResource("3_fda8d")
+metallic_texture = ExtResource("2_fda8d")
+roughness = 0.85
+roughness_texture = ExtResource("4_lgyaf")
+normal_enabled = true
+normal_scale = 0.71
+normal_texture = ExtResource("3_p717c")
 
 [node name="Enemy2" type="Node3D"]
 
-[node name="Enemy2" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_lgyaf")
-mesh = ExtResource("4_p717c")
+[node name="Jerrycan" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0120866, 0, -0.0438256)
+material_override = SubResource("StandardMaterial3D_pe3n5")
+mesh = ExtResource("5_nnanf")

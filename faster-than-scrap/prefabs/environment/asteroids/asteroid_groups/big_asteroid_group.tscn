@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8ggfura4533j"]
+
+[ext_resource type="PackedScene" uid="uid://dn3mypfoixbpt" path="res://prefabs/environment/asteroids/single_asteroid/asteroid1.tscn" id="1_qjb6c"]
+[ext_resource type="PackedScene" uid="uid://c21ake882np85" path="res://prefabs/environment/asteroids/single_asteroid/asteroid2.tscn" id="2_wmdj2"]
+[ext_resource type="PackedScene" uid="uid://uuv0d0vpd0wf" path="res://prefabs/environment/asteroids/single_asteroid/asteroid3.tscn" id="3_hmhvq"]
+
+[node name="AsteroidGroupCircle" type="Node3D"]
+
+[node name="Asteroid" parent="." instance=ExtResource("1_qjb6c")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -3.33053, 0, 13.0665)
+hp = 100
+start_speed_range = 0.5
+
+[node name="Asteroid4" parent="." instance=ExtResource("1_qjb6c")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 1.60059, 0, -5.01415)
+hp = 100
+start_speed_range = 0.5
+
+[node name="Asteroid2" parent="." instance=ExtResource("2_wmdj2")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -20.0479, 0, 7.88724)
+hp = 100
+start_speed_range = 0.5
+
+[node name="Asteroid6" parent="." instance=ExtResource("2_wmdj2")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 27.4989, 0, 1.94927)
+hp = 100
+start_speed_range = 0.5
+
+[node name="Asteroid8" parent="." instance=ExtResource("2_wmdj2")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 5.1772, 0, -18.266)
+hp = 100
+start_speed_range = 0.5
+
+[node name="Asteroid3" parent="." instance=ExtResource("3_hmhvq")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -18.1809, 0, -10.8892)
+hp = 100
+
+[node name="Asteroid7" parent="." instance=ExtResource("3_hmhvq")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 25.7825, 0, -14.9098)
+hp = 100
+
+[node name="Asteroid9" parent="." instance=ExtResource("3_hmhvq")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 11.2737, 0, 12.5346)
+hp = 100

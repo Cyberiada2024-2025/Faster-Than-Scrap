@@ -12,7 +12,7 @@ const WHITE_NON_TRANSPARENT = Color(1, 1, 1, 1)
 
 const CIRCLE_OFFSET: float = 50
 
-const MAX_HOLD_TIME: float = 2
+const MAX_HOLD_TIME: float = 0.75
 
 @export var cutscene_name: String = ""
 

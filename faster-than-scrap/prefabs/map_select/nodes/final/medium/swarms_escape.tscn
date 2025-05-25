@@ -14,7 +14,7 @@ difficulty = 1
 priority = 0
 metadata/_custom_type_script = "uid://dupp04gxdeha5"
 
-[node name="MissionEscape" type="TextureButton"]
+[node name="MissionEscapeSwarms" type="TextureButton"]
 modulate = Color(0, 0, 1, 1)
 anchors_preset = 15
 anchor_right = 1.0

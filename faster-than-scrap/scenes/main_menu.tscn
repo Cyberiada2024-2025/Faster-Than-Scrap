@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://dyj46rbaohfnw"]
 
-[ext_resource type="Script" uid="uid://bk270qnughqkv" path="res://code/main_menu.gd" id="1_jktvg"]
-[ext_resource type="Texture2D" uid="uid://d4ea46ajcslyj" path="res://art/textures/map_select_background.png" id="2_10vif"]
-[ext_resource type="Texture2D" uid="uid://ic7d4huaalha" path="res://art/textures/light_mask.png" id="3_10vif"]
-[ext_resource type="Script" uid="uid://dqpv50nhd6ixc" path="res://art/light_mask.gd" id="4_10vif"]
-[ext_resource type="Texture2D" uid="uid://go1u7xe1f41q" path="res://art/textures/background_mask.png" id="4_cpsme"]
-[ext_resource type="Script" uid="uid://b8kgrdxasqvq0" path="res://art/background_light.gd" id="5_xinij"]
-[ext_resource type="Texture2D" uid="uid://ckvfh4pwc78ge" path="res://art/textures/title_placeholder.png" id="6_nnm8n"]
-[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_vmwgf"]
+[ext_resource type="Script" uid="uid://bk270qnughqkv" path="res://code/main_menu.gd" id="1_4xnjd"]
+[ext_resource type="Texture2D" uid="uid://d4ea46ajcslyj" path="res://art/textures/map_select_background.png" id="2_tbmy8"]
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="3_0uprt"]
+[ext_resource type="Texture2D" uid="uid://ic7d4huaalha" path="res://art/textures/light_mask.png" id="3_jk1qb"]
+[ext_resource type="Script" uid="uid://dqpv50nhd6ixc" path="res://art/light_mask.gd" id="4_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://go1u7xe1f41q" path="res://art/textures/background_mask.png" id="5_lgwnu"]
+[ext_resource type="Script" uid="uid://b8kgrdxasqvq0" path="res://art/background_light.gd" id="6_flqon"]
+[ext_resource type="Texture2D" uid="uid://cvsc1hfn6jjb" path="res://art/textures/main_title.png" id="7_rcqid"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -18,38 +18,38 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_jktvg")
+script = ExtResource("1_4xnjd")
 
 [node name="background" type="Sprite2D" parent="."]
 show_behind_parent = true
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_10vif")
+texture = ExtResource("2_tbmy8")
 centered = false
 
 [node name="LightMask" type="Sprite2D" parent="."]
 clip_children = 1
-texture = ExtResource("3_10vif")
-script = ExtResource("4_10vif")
+texture = ExtResource("3_jk1qb")
+script = ExtResource("4_5dd4i")
 
 [node name="BackgroundLight" type="Sprite2D" parent="LightMask"]
 self_modulate = Color(0.865093, 0.536184, 0, 1)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("4_cpsme")
+texture = ExtResource("5_lgwnu")
 centered = false
-script = ExtResource("5_xinij")
+script = ExtResource("6_flqon")
 
 [node name="GameTitle" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -285.0
-offset_top = 35.0
-offset_right = 285.0
-offset_bottom = 284.0
+offset_left = -333.0
+offset_top = 23.0
+offset_right = 333.0
+offset_bottom = 356.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_nnm8n")
+texture = ExtResource("7_rcqid")
 expand_mode = 3
 
 [node name="Buttons" type="VBoxContainer" parent="."]
@@ -60,9 +60,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -90.0
-offset_top = -34.0
+offset_top = 46.0
 offset_right = 90.0
-offset_bottom = 81.0
+offset_bottom = 161.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -86,7 +86,7 @@ theme_override_font_sizes/font_size = 30
 text = "EXIT"
 
 [node name="SceneLoader" type="Node" parent="."]
-script = ExtResource("7_vmwgf")
+script = ExtResource("3_0uprt")
 
 [connection signal="pressed" from="Buttons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_exit_button_pressed"]

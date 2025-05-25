@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_a8lyy"]
 [ext_resource type="PackedScene" uid="uid://cgx7bdd0f2rhg" path="res://prefabs/environment/shop_miniature.tscn" id="2_nc5sn"]
-[ext_resource type="PackedScene" uid="uid://b7d6dp7jrytp3" path="res://prefabs/environment/asteroids/asteroid_groups/asteroid_group.tscn" id="3_fru1p"]
+[ext_resource type="PackedScene" uid="uid://b7d6dp7jrytp3" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group.tscn" id="3_fru1p"]
 [ext_resource type="PackedScene" uid="uid://c3v1bk85mx7p3" path="res://prefabs/ships/flyable_ship_with_guns.tscn" id="4_ibrva"]
 [ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/ui/hud.tscn" id="5_nc5sn"]
 

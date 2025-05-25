@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bkn8atkk3qg3d"]
 
-[ext_resource type="PackedScene" uid="uid://dn3mypfoixbpt" path="res://prefabs/environment/asteroids/single_asteroid/asteroid1.tscn" id="2_jtlwr"]
+[ext_resource type="PackedScene" uid="uid://dn3mypfoixbpt" path="res://prefabs/environment/asteroids/single_asteroid/small/asteroid1.tscn" id="2_jtlwr"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="2_jusb2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6b47d"]

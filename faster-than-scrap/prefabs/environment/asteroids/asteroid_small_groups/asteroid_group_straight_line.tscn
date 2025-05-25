@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dlp3fs4qym6g2"]
 
-[ext_resource type="PackedScene" uid="uid://dn3mypfoixbpt" path="res://prefabs/environment/asteroids/single_asteroid/asteroid1.tscn" id="1_vqyr1"]
-[ext_resource type="PackedScene" uid="uid://c21ake882np85" path="res://prefabs/environment/asteroids/single_asteroid/asteroid2.tscn" id="2_lxhdu"]
-[ext_resource type="PackedScene" uid="uid://uuv0d0vpd0wf" path="res://prefabs/environment/asteroids/single_asteroid/asteroid3.tscn" id="3_2dtby"]
+[ext_resource type="PackedScene" uid="uid://dn3mypfoixbpt" path="res://prefabs/environment/asteroids/single_asteroid/small/asteroid1.tscn" id="1_vqyr1"]
+[ext_resource type="PackedScene" uid="uid://c21ake882np85" path="res://prefabs/environment/asteroids/single_asteroid/small/asteroid2.tscn" id="2_lxhdu"]
+[ext_resource type="PackedScene" uid="uid://uuv0d0vpd0wf" path="res://prefabs/environment/asteroids/single_asteroid/small/asteroid3.tscn" id="3_2dtby"]
 
 [node name="AsteroidGroupStraightLine" type="Node3D"]
 

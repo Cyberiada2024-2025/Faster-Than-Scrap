@@ -2,7 +2,6 @@ extends Control
 
 var scene_loader: SceneLoader
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Buttons/StartButton.grab_focus()

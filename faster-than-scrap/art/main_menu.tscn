@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://dyj46rbaohfnw"]
+
+[ext_resource type="Script" uid="uid://bk270qnughqkv" path="res://code/main_menu.gd" id="1_jktvg"]
+[ext_resource type="Texture2D" uid="uid://d4ea46ajcslyj" path="res://art/textures/map_select_background.png" id="2_10vif"]
+[ext_resource type="Texture2D" uid="uid://ic7d4huaalha" path="res://art/textures/light_mask.png" id="3_10vif"]
+[ext_resource type="Script" uid="uid://dqpv50nhd6ixc" path="res://art/light_mask.gd" id="4_10vif"]
+[ext_resource type="Texture2D" uid="uid://go1u7xe1f41q" path="res://art/textures/background_mask.png" id="4_cpsme"]
+[ext_resource type="Script" uid="uid://b8kgrdxasqvq0" path="res://art/background_light.gd" id="5_xinij"]
+[ext_resource type="Texture2D" uid="uid://ckvfh4pwc78ge" path="res://art/textures/title_placeholder.png" id="6_nnm8n"]
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_vmwgf"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_jktvg")
+
+[node name="background" type="Sprite2D" parent="."]
+show_behind_parent = true
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_10vif")
+centered = false
+
+[node name="LightMask" type="Sprite2D" parent="."]
+clip_children = 1
+texture = ExtResource("3_10vif")
+script = ExtResource("4_10vif")
+
+[node name="BackgroundLight" type="Sprite2D" parent="LightMask"]
+self_modulate = Color(0.865093, 0.536184, 0, 1)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_cpsme")
+centered = false
+script = ExtResource("5_xinij")
+
+[node name="GameTitle" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -285.0
+offset_top = 35.0
+offset_right = 285.0
+offset_bottom = 284.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_nnm8n")
+expand_mode = 3
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -34.0
+offset_right = 90.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="StartButton" type="Button" parent="Buttons"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../ExitButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
+theme_override_font_sizes/font_size = 30
+text = "START"
+icon_alignment = 1
+
+[node name="ExitButton" type="Button" parent="Buttons"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+theme_override_font_sizes/font_size = 30
+text = "EXIT"
+
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource("7_vmwgf")
+
+[connection signal="pressed" from="Buttons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_exit_button_pressed"]

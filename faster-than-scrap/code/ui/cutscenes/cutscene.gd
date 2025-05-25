@@ -27,7 +27,7 @@ func _enter_tree() -> void:
 	slides.assign(find_children("*", "Slide"))
 	modulate = WHITE_TRANSPARENT
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	skip_timer = 2
+	skip_timer = MAX_HOLD_TIME
 	_create_skip_circle()
 
 

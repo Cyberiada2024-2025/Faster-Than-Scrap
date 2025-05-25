@@ -467,6 +467,7 @@ func _on_finish_pressed() -> void:
 
 
 func _on_confirm_pressed() -> void:
+	confirm_finish_message.visible = false
 	scene_loader.load_fly_ship_scene()
 
 

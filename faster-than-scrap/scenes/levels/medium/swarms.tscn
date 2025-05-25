@@ -1,0 +1,362 @@
+[gd_scene load_steps=5 format=3 uid="uid://diof2yyi43m0j"]
+
+[ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_n7sc6"]
+[ext_resource type="PackedScene" uid="uid://cgx7bdd0f2rhg" path="res://prefabs/environment/shop_miniature.tscn" id="2_lrdyp"]
+[ext_resource type="PackedScene" uid="uid://b7d6dp7jrytp3" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group.tscn" id="3_bc5pv"]
+[ext_resource type="PackedScene" uid="uid://dsbr8a55sppml" path="res://prefabs/npc/enemies/drone.tscn" id="3_i803d"]
+
+[node name="Asteroid cramped" type="Node3D"]
+
+[node name="LevelStaples" parent="." instance=ExtResource("1_n7sc6")]
+
+[node name="ShopMiniature" parent="." instance=ExtResource("2_lrdyp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86879, 0, -134.445)
+
+[node name="Asteroids" type="Node3D" parent="."]
+
+[node name="AsteroidGroupCircle" parent="Asteroids" instance=ExtResource("3_bc5pv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3464, 0, -39.6481)
+
+[node name="AsteroidGroupCircle2" parent="Asteroids" instance=ExtResource("3_bc5pv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.1507, 0, -9.23653)
+
+[node name="AsteroidGroupCircle3" parent="Asteroids" instance=ExtResource("3_bc5pv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7063, 0, 46.5932)
+
+[node name="AsteroidGroupCircle4" parent="Asteroids" instance=ExtResource("3_bc5pv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.4357, 0, 22.5236)
+
+[node name="AsteroidGroupCircle5" parent="Asteroids" instance=ExtResource("3_bc5pv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.339, 0, -131.26)
+
+[node name="AsteroidGroupCircle6" parent="Asteroids" instance=ExtResource("3_bc5pv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65349, -7.62939e-06, -118.282)
+
+[node name="AsteroidGroupCircle7" parent="Asteroids" instance=ExtResource("3_bc5pv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6311, -7.62939e-06, -140.722)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Swarm" type="Node3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.911139, 0, -78.5845)
+
+[node name="Drone" parent="Enemies/Swarm" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -1.69761)
+
+[node name="Drone8" parent="Enemies/Swarm" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, 1.30238)
+
+[node name="Drone9" parent="Enemies/Swarm" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.82644, 0, -5.69762)
+
+[node name="Drone10" parent="Enemies/Swarm" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, -3.69762)
+
+[node name="Drone11" parent="Enemies/Swarm" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -7.69762)
+
+[node name="Drone2" parent="Enemies/Swarm" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45247, 0, 2.34418)
+
+[node name="Drone3" parent="Enemies/Swarm" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, 2.59098)
+
+[node name="Drone4" parent="Enemies/Swarm" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, -3.40902)
+
+[node name="Drone5" parent="Enemies/Swarm" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.61348, -9.53674e-07, -3.68368)
+
+[node name="Drone6" parent="Enemies/Swarm" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80505, 0, 2.74456)
+
+[node name="Drone7" parent="Enemies/Swarm" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.80505, 0, -0.255439)
+
+[node name="Swarm2" type="Node3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.9111, 0, -27.5845)
+
+[node name="Drone" parent="Enemies/Swarm2" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -1.69761)
+
+[node name="Drone8" parent="Enemies/Swarm2" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, 1.30238)
+
+[node name="Drone9" parent="Enemies/Swarm2" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.82644, 0, -5.69762)
+
+[node name="Drone10" parent="Enemies/Swarm2" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, -3.69762)
+
+[node name="Drone11" parent="Enemies/Swarm2" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -7.69762)
+
+[node name="Drone2" parent="Enemies/Swarm2" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45247, 0, 2.34418)
+
+[node name="Drone3" parent="Enemies/Swarm2" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, 2.59098)
+
+[node name="Drone4" parent="Enemies/Swarm2" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, -3.40902)
+
+[node name="Drone5" parent="Enemies/Swarm2" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.61348, -9.53674e-07, -3.68368)
+
+[node name="Drone6" parent="Enemies/Swarm2" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80505, 0, 2.74456)
+
+[node name="Drone7" parent="Enemies/Swarm2" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.80505, 0, -0.255439)
+
+[node name="Swarm3" type="Node3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.9111, 0, 61.4155)
+
+[node name="Drone" parent="Enemies/Swarm3" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -1.69761)
+
+[node name="Drone8" parent="Enemies/Swarm3" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, 1.30238)
+
+[node name="Drone9" parent="Enemies/Swarm3" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.82644, 0, -5.69762)
+
+[node name="Drone10" parent="Enemies/Swarm3" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, -3.69762)
+
+[node name="Drone11" parent="Enemies/Swarm3" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -7.69762)
+
+[node name="Drone2" parent="Enemies/Swarm3" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45247, 0, 2.34418)
+
+[node name="Drone3" parent="Enemies/Swarm3" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, 2.59098)
+
+[node name="Drone4" parent="Enemies/Swarm3" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, -3.40902)
+
+[node name="Drone5" parent="Enemies/Swarm3" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.61348, -9.53674e-07, -3.68368)
+
+[node name="Drone6" parent="Enemies/Swarm3" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80505, 0, 2.74456)
+
+[node name="Drone7" parent="Enemies/Swarm3" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.80505, 0, -0.255439)
+
+[node name="Swarm4" type="Node3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.0889, 0, 87.4155)
+
+[node name="Drone" parent="Enemies/Swarm4" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -1.69761)
+
+[node name="Drone8" parent="Enemies/Swarm4" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, 1.30238)
+
+[node name="Drone9" parent="Enemies/Swarm4" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.82644, 0, -5.69762)
+
+[node name="Drone10" parent="Enemies/Swarm4" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, -3.69762)
+
+[node name="Drone11" parent="Enemies/Swarm4" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -7.69762)
+
+[node name="Drone2" parent="Enemies/Swarm4" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45247, 0, 2.34418)
+
+[node name="Drone3" parent="Enemies/Swarm4" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, 2.59098)
+
+[node name="Drone4" parent="Enemies/Swarm4" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, -3.40902)
+
+[node name="Drone5" parent="Enemies/Swarm4" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.61348, -9.53674e-07, -3.68368)
+
+[node name="Drone6" parent="Enemies/Swarm4" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80505, 0, 2.74456)
+
+[node name="Drone7" parent="Enemies/Swarm4" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.80505, 0, -0.255439)
+
+[node name="Swarm5" type="Node3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.089, 0, 20.4155)
+
+[node name="Drone" parent="Enemies/Swarm5" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -1.69761)
+
+[node name="Drone8" parent="Enemies/Swarm5" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, 1.30238)
+
+[node name="Drone9" parent="Enemies/Swarm5" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.82644, 0, -5.69762)
+
+[node name="Drone10" parent="Enemies/Swarm5" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, -3.69762)
+
+[node name="Drone11" parent="Enemies/Swarm5" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -7.69762)
+
+[node name="Drone2" parent="Enemies/Swarm5" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45247, 0, 2.34418)
+
+[node name="Drone3" parent="Enemies/Swarm5" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, 2.59098)
+
+[node name="Drone4" parent="Enemies/Swarm5" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, -3.40902)
+
+[node name="Drone5" parent="Enemies/Swarm5" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.61348, -9.53674e-07, -3.68368)
+
+[node name="Drone6" parent="Enemies/Swarm5" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80505, 0, 2.74456)
+
+[node name="Drone7" parent="Enemies/Swarm5" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.80505, 0, -0.255439)
+
+[node name="Swarm6" type="Node3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.0889, 0, -43.5845)
+
+[node name="Drone" parent="Enemies/Swarm6" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -1.69761)
+
+[node name="Drone8" parent="Enemies/Swarm6" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, 1.30238)
+
+[node name="Drone9" parent="Enemies/Swarm6" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.82644, 0, -5.69762)
+
+[node name="Drone10" parent="Enemies/Swarm6" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, -3.69762)
+
+[node name="Drone11" parent="Enemies/Swarm6" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -7.69762)
+
+[node name="Drone2" parent="Enemies/Swarm6" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45247, 0, 2.34418)
+
+[node name="Drone3" parent="Enemies/Swarm6" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, 2.59098)
+
+[node name="Drone4" parent="Enemies/Swarm6" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, -3.40902)
+
+[node name="Drone5" parent="Enemies/Swarm6" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.61348, -9.53674e-07, -3.68368)
+
+[node name="Drone6" parent="Enemies/Swarm6" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80505, 0, 2.74456)
+
+[node name="Drone7" parent="Enemies/Swarm6" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.80505, 0, -0.255439)
+
+[node name="Swarm7" type="Node3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.6438, 0, -202.859)
+
+[node name="Drone" parent="Enemies/Swarm7" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -1.69761)
+
+[node name="Drone8" parent="Enemies/Swarm7" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, 1.30238)
+
+[node name="Drone9" parent="Enemies/Swarm7" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.82644, 0, -5.69762)
+
+[node name="Drone10" parent="Enemies/Swarm7" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, -3.69762)
+
+[node name="Drone11" parent="Enemies/Swarm7" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -7.69762)
+
+[node name="Drone2" parent="Enemies/Swarm7" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45247, 0, 2.34418)
+
+[node name="Drone3" parent="Enemies/Swarm7" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, 2.59098)
+
+[node name="Drone4" parent="Enemies/Swarm7" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, -3.40902)
+
+[node name="Drone5" parent="Enemies/Swarm7" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.61348, -9.53674e-07, -3.68368)
+
+[node name="Drone6" parent="Enemies/Swarm7" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80505, 0, 2.74456)
+
+[node name="Drone7" parent="Enemies/Swarm7" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.80505, 0, -0.255439)
+
+[node name="Swarm8" type="Node3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4247, 0, -202.859)
+
+[node name="Drone" parent="Enemies/Swarm8" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -1.69761)
+
+[node name="Drone8" parent="Enemies/Swarm8" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, 1.30238)
+
+[node name="Drone9" parent="Enemies/Swarm8" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.82644, 0, -5.69762)
+
+[node name="Drone10" parent="Enemies/Swarm8" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, -3.69762)
+
+[node name="Drone11" parent="Enemies/Swarm8" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -7.69762)
+
+[node name="Drone2" parent="Enemies/Swarm8" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45247, 0, 2.34418)
+
+[node name="Drone3" parent="Enemies/Swarm8" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, 2.59098)
+
+[node name="Drone4" parent="Enemies/Swarm8" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, -3.40902)
+
+[node name="Drone5" parent="Enemies/Swarm8" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.61348, -9.53674e-07, -3.68368)
+
+[node name="Drone6" parent="Enemies/Swarm8" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80505, 0, 2.74456)
+
+[node name="Drone7" parent="Enemies/Swarm8" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.80505, 0, -0.255439)
+
+[node name="Swarm9" type="Node3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57528, 0, -242.859)
+
+[node name="Drone" parent="Enemies/Swarm9" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -1.69761)
+
+[node name="Drone8" parent="Enemies/Swarm9" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, 1.30238)
+
+[node name="Drone9" parent="Enemies/Swarm9" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.82644, 0, -5.69762)
+
+[node name="Drone10" parent="Enemies/Swarm9" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17356, 0, -3.69762)
+
+[node name="Drone11" parent="Enemies/Swarm9" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17356, 0, -7.69762)
+
+[node name="Drone2" parent="Enemies/Swarm9" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45247, 0, 2.34418)
+
+[node name="Drone3" parent="Enemies/Swarm9" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, 2.59098)
+
+[node name="Drone4" parent="Enemies/Swarm9" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.890136, 0, -3.40902)
+
+[node name="Drone5" parent="Enemies/Swarm9" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.61348, -9.53674e-07, -3.68368)
+
+[node name="Drone6" parent="Enemies/Swarm9" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80505, 0, 2.74456)
+
+[node name="Drone7" parent="Enemies/Swarm9" instance=ExtResource("3_i803d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.80505, 0, -0.255439)

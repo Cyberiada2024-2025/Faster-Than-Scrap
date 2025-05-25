@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://syln6fah0e2b"]
+
+[ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_cxn53"]
+[ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_28rwa"]
+[ext_resource type="PackedScene" uid="uid://dtlau4bqcpa4b" path="res://prefabs/environment/defend_target.tscn" id="3_jqbqi"]
+[ext_resource type="Script" uid="uid://b6oaocatti460" path="res://code/missions/info/mission_info_defend.gd" id="4_kte1q"]
+[ext_resource type="PackedScene" uid="uid://dkbg1gqlrntx6" path="res://prefabs/environment/defend_target_small.tscn" id="5_jfvhs"]
+[ext_resource type="PackedScene" uid="uid://cxjcvbhn4rs4i" path="res://scenes/levels/hard/corruption.tscn" id="6_cxn53"]
+[ext_resource type="Texture2D" uid="uid://g3rub1aaciib" path="res://art/textures/ui/mapselect/Shield.png" id="7_4io1n"]
+
+[sub_resource type="Resource" id="Resource_h6nkk"]
+script = ExtResource("4_kte1q")
+defendable_position = Vector3(-190, 0, 0)
+time_to_defend = 20.0
+defend_prefab = ExtResource("3_jqbqi")
+small_defendable_position = Array[Vector3]([Vector3(30, 0, 0), Vector3(-30, 0, 0)])
+small_time_to_defend = 5.0
+small_defend_prefab = ExtResource("5_jfvhs")
+about = ""
+difficulty = 0
+priority = 0
+metadata/_custom_type_script = "uid://b6oaocatti460"
+
+[node name="MissionDefend" type="TextureButton"]
+modulate = Color(0, 1, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("1_cxn53")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("2_28rwa")
+mission_info = SubResource("Resource_h6nkk")
+level_prefab = ExtResource("6_cxn53")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.462291, 0.462291, 0.462291, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_4io1n")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="." to="." method="on_click"]

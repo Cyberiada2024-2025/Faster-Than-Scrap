@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dn2ehinf2m8ne"]
+
+[ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_ag2u6"]
+[ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_0wdqi"]
+[ext_resource type="Script" uid="uid://dupp04gxdeha5" path="res://code/missions/info/mission_info_escape.gd" id="3_7bhah"]
+[ext_resource type="PackedScene" uid="uid://ba07i3rgk8ia2" path="res://scenes/levels/hard/lots_of_heavy_enemies.tscn" id="4_j7wq7"]
+[ext_resource type="Texture2D" uid="uid://b13ef553h7ss7" path="res://art/textures/ui/mapselect/vortex.png" id="5_4d44s"]
+
+[sub_resource type="Resource" id="Resource_2h3km"]
+script = ExtResource("3_7bhah")
+portal_position = Vector3(156, 0, -150)
+about = ""
+difficulty = 1
+priority = 0
+metadata/_custom_type_script = "uid://dupp04gxdeha5"
+
+[node name="MissionEscape" type="TextureButton"]
+modulate = Color(0, 0, 1, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("1_ag2u6")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("2_0wdqi")
+mission_info = SubResource("Resource_2h3km")
+level_prefab = ExtResource("4_j7wq7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.462291, 0.462291, 0.462291, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_4d44s")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="." to="." method="on_click"]

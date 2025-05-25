@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cv5s4pmb4id6p"]
+
+[ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_dm6o3"]
+[ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_d66f2"]
+[ext_resource type="Script" uid="uid://c44xyh1e7p5a5" path="res://code/missions/info/mission_info_fuel.gd" id="3_me5vk"]
+[ext_resource type="PackedScene" uid="uid://c5t55uwwv5ewk" path="res://scenes/levels/easy/asteroids_cramped.tscn" id="4_l1657"]
+[ext_resource type="Texture2D" uid="uid://bmw35cwms6w7t" path="res://art/textures/ui/mapselect/Canister.png" id="4_masne"]
+
+[sub_resource type="Resource" id="Resource_awgas"]
+script = ExtResource("3_me5vk")
+fuel_position = Vector3(-100, 0, -80)
+about = ""
+difficulty = 0
+priority = 0
+metadata/_custom_type_script = "uid://c44xyh1e7p5a5"
+
+[node name="MissionFuel" type="TextureButton"]
+modulate = Color(1, 1, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("1_dm6o3")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("2_d66f2")
+mission_info = SubResource("Resource_awgas")
+level_prefab = ExtResource("4_l1657")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.462291, 0.462291, 0.462291, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_masne")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="." to="." method="on_click"]

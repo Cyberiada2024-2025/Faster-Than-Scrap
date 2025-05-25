@@ -211,13 +211,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.5552, 0, -93.6863)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.4448, 0, -96.6863)
 
 [node name="Turret Laser" parent="Enemies" instance=ExtResource("5_iwlph")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.7611, 0, -155.666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.1178, 0, -158.468)
 
 [node name="Turret Laser2" parent="Enemies" instance=ExtResource("5_iwlph")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.6348, 0, -137.942)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.2441, 0, -140.744)
 
 [node name="Turret Laser3" parent="Enemies" instance=ExtResource("5_iwlph")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.6569, 0, -182.05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.222, 0, -184.852)
 
 [node name="Turret Laser4" parent="Enemies" instance=ExtResource("5_iwlph")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.3711, 0, -162.141)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5078, 0, -164.943)

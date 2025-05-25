@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="4_jnq3k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jnq3k"]
-size = Vector3(1, 1, 1.075)
+size = Vector3(0.71, 1, 1.075)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e1j53"]
 
@@ -29,7 +29,7 @@ transform = Transform3D(0.645, 0, 0, 0, 0.645, 0, 0, 0, 0.645, 0, 0, 0)
 [node name="AttachPoints" type="Node3D" parent="."]
 
 [node name="AttachPoint1" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.85682e-09, 0, 0.566994)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.80515e-09, 0, 0.58928)
 metadata/_edit_group_ = true
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("2_8i8s5")]

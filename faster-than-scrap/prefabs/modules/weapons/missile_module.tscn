@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://15te4x6fjtx4"]
+[gd_scene load_steps=25 format=3 uid="uid://15te4x6fjtx4"]
 
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_wqaao"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_wf0w0"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://b08thixotsobt" path="res://art/textures/common_gun/common_gun_Roughness.png" id="9_7ufp7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yf3ku"]
+size = Vector3(1.325, 1, 1.105)
 
 [sub_resource type="Curve" id="Curve_qoroq"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -72,9 +73,6 @@ normal_texture = ExtResource("8_1nmv8")
 ao_enabled = true
 ao_texture = ExtResource("6_bdmed")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_recg5"]
-size = Vector3(0.182556, 0.165771, 0.972778)
-
 [node name="MissileModule" type="CollisionShape3D" node_paths=PackedStringArray("weapon", "attach_points", "sprite", "label")]
 shape = SubResource("BoxShape3D_yf3ku")
 script = ExtResource("1_wqaao")
@@ -122,13 +120,13 @@ material_override = SubResource("StandardMaterial3D_r6e22")
 [node name="AttachPoints" type="Node3D" parent="."]
 
 [node name="AttachPoint" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4399e-08, 0, 0.506178)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4399e-08, 0, 0.587799)
 
 [node name="DamageController" parent="." instance=ExtResource("4_tjuoy")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00500476, -0.00528124, -0.00144887)
-shape = SubResource("BoxShape3D_recg5")
+shape = SubResource("BoxShape3D_yf3ku")
 
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("shape") instance=ExtResource("5_5u5s7")]
 shape = NodePath("../DamageController/Damageable/CollisionShape3D")

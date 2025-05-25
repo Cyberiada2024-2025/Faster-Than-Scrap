@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="10_sdq7t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x6hs4"]
+size = Vector3(0.78, 1, 1.085)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qjp2t"]
 render_priority = 0
@@ -172,7 +173,7 @@ shape = SubResource("ConvexPolygonShape3D_h2lat")
 disabled = true
 
 [node name="ShieldModuleModel" parent="." instance=ExtResource("7_usejs")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.05581e-08, 0, -0.241541)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.48654e-09, 0, -0.171272)
 
 [node name="DamageController" parent="." instance=ExtResource("8_e18hx")]
 
@@ -184,7 +185,7 @@ shape = SubResource("BoxShape3D_x6hs4")
 [node name="AttachPoints" type="Node3D" parent="."]
 
 [node name="AttachPoint1" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.03911e-08, 0, -0.533954)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.03911e-08, 0, -0.627646)
 metadata/_edit_group_ = true
 
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("10_sdq7t")]

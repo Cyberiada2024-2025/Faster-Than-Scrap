@@ -11,4 +11,4 @@ func _process(delta):
 	time = time + delta
 	time = fmod(time, 2 * PI)
 	red = 0.7 + 0.15 * sin(time)
-	self_modulate.r = red 
+	self_modulate.r = red

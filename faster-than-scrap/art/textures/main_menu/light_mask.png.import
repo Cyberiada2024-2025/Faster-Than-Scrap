@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckvfh4pwc78ge"
-path="res://.godot/imported/title_placeholder.png-93b34325ebb1169754d148a8a0da8592.ctex"
+uid="uid://ic7d4huaalha"
+path="res://.godot/imported/light_mask.png-d7e9db9728bc8a2b1e0dfdcc498d82b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/textures/title_placeholder.png"
-dest_files=["res://.godot/imported/title_placeholder.png-93b34325ebb1169754d148a8a0da8592.ctex"]
+source_file="res://art/textures/main_menu/light_mask.png"
+dest_files=["res://.godot/imported/light_mask.png-d7e9db9728bc8a2b1e0dfdcc498d82b4.ctex"]
 
 [params]
 

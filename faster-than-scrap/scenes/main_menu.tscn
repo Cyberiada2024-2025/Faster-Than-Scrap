@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://dyj46rbaohfnw"]
 
 [ext_resource type="Script" uid="uid://bk270qnughqkv" path="res://code/main_menu.gd" id="1_4xnjd"]
-[ext_resource type="Texture2D" uid="uid://d4ea46ajcslyj" path="res://art/textures/map_select_background.png" id="2_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://d4ea46ajcslyj" path="res://art/textures/main_menu/map_select_background.png" id="2_tbmy8"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="3_0uprt"]
-[ext_resource type="Texture2D" uid="uid://ic7d4huaalha" path="res://art/textures/light_mask.png" id="3_jk1qb"]
-[ext_resource type="Script" uid="uid://dqpv50nhd6ixc" path="res://art/light_mask.gd" id="4_5dd4i"]
-[ext_resource type="Texture2D" uid="uid://go1u7xe1f41q" path="res://art/textures/background_mask.png" id="5_lgwnu"]
-[ext_resource type="Script" uid="uid://b8kgrdxasqvq0" path="res://art/background_light.gd" id="6_flqon"]
-[ext_resource type="Texture2D" uid="uid://cvsc1hfn6jjb" path="res://art/textures/main_title.png" id="7_rcqid"]
+[ext_resource type="Texture2D" uid="uid://ic7d4huaalha" path="res://art/textures/main_menu/light_mask.png" id="3_jk1qb"]
+[ext_resource type="Script" uid="uid://dqpv50nhd6ixc" path="res://code/main_menu/light_mask.gd" id="4_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://go1u7xe1f41q" path="res://art/textures/main_menu/background_mask.png" id="5_lgwnu"]
+[ext_resource type="Script" uid="uid://b8kgrdxasqvq0" path="res://code/main_menu/background_light.gd" id="6_flqon"]
+[ext_resource type="Texture2D" uid="uid://cvsc1hfn6jjb" path="res://art/textures/main_menu/main_title.png" id="7_rcqid"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

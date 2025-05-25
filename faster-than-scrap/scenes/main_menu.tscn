@@ -30,6 +30,7 @@ centered = false
 clip_children = 1
 texture = ExtResource("3_jk1qb")
 script = ExtResource("4_5dd4i")
+follow_speed = 2.0
 
 [node name="BackgroundLight" type="Sprite2D" parent="LightMask"]
 self_modulate = Color(0.865093, 0.536184, 0, 1)

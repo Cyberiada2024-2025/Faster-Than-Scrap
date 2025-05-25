@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpr65ttaqujar"]
+[gd_scene load_steps=9 format=3 uid="uid://bpr65ttaqujar"]
 
 [ext_resource type="Script" uid="uid://n3n525xrpgvs" path="res://code/map_select/map_manager.gd" id="1_0byna"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_0byna"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="3_0byna"]
-[ext_resource type="Texture2D" uid="uid://hueargt7yrni" path="res://art/textures/ui/mapselect/map_select_background_light.png" id="4_d2opd"]
+[ext_resource type="Texture2D" uid="uid://ic7d4huaalha" path="res://art/textures/main_menu/light_mask.png" id="3_exisy"]
+[ext_resource type="Script" uid="uid://dqpv50nhd6ixc" path="res://code/main_menu/light_mask.gd" id="4_273au"]
+[ext_resource type="Texture2D" uid="uid://dh6fl5n30osgh" path="res://art/textures/main_menu/map_select_background_light.png" id="4_d2opd"]
+[ext_resource type="Texture2D" uid="uid://go1u7xe1f41q" path="res://art/textures/main_menu/background_mask.png" id="5_jq2mv"]
+[ext_resource type="Script" uid="uid://b8kgrdxasqvq0" path="res://code/main_menu/background_light.gd" id="6_17kcy"]
 
 [node name="MapSelector" type="Node" node_paths=PackedStringArray("map_container", "button", "label", "scene_loader")]
 script = ExtResource("1_0byna")
@@ -12,6 +16,27 @@ button = NodePath("Button")
 label = NodePath("Label")
 scene_loader = NodePath("SceneLoader")
 metadata/_custom_type_script = "uid://n3n525xrpgvs"
+
+[node name="Background" type="Sprite2D" parent="."]
+show_behind_parent = true
+z_index = -3
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_d2opd")
+centered = false
+
+[node name="LightMask" type="Sprite2D" parent="."]
+clip_children = 1
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_exisy")
+script = ExtResource("4_273au")
+follow_speed = 2.0
+
+[node name="BackgroundLight" type="Sprite2D" parent="LightMask"]
+self_modulate = Color(0.258338, 0.68849, 0.758165, 1)
+texture = ExtResource("5_jq2mv")
+centered = false
+script = ExtResource("6_17kcy")
+blue_modulation = 0.15
 
 [node name="MapContainer" type="Control" parent="."]
 layout_mode = 3
@@ -47,10 +72,3 @@ text = "Select Mission
 script = ExtResource("2_0byna")
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_0byna")]
-
-[node name="Background" type="Sprite2D" parent="."]
-show_behind_parent = true
-z_index = -3
-position = Vector2(576, 324)
-scale = Vector2(0.610185, 0.610185)
-texture = ExtResource("4_d2opd")

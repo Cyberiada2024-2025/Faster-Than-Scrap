@@ -36,3 +36,9 @@ func _on_key_press(_delta: float) -> void:
 	elif ship.use_energy(energy_per_turning):
 		shield.activate()
 		activated.emit()
+
+
+func deactivate() -> void:
+	super()
+	shield.deactivate()
+	deactivated.emit()

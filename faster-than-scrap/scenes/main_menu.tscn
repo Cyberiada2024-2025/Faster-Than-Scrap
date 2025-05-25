@@ -37,6 +37,7 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("5_lgwnu")
 centered = false
 script = ExtResource("6_flqon")
+red_modulation = 0.15
 
 [node name="GameTitle" type="TextureRect" parent="."]
 layout_mode = 1

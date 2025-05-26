@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccv5nte5axhfh"]
+[gd_scene load_steps=6 format=3 uid="uid://bymii530libmh"]
 
 [ext_resource type="Script" path="res://code/evironment/pickable.gd" id="1_ts6op"]
-[ext_resource type="Script" path="res://code/missions/fuel_giver.gd" id="2_6pvhe"]
+[ext_resource type="Script" uid="uid://druelgornyk4j" path="res://code/missions/fuel_giver.gd" id="2_6pvhe"]
 [ext_resource type="PackedScene" uid="uid://1ajphwg8evpv" path="res://art/model_prefabs/jerrycan/jerrycan.tscn" id="3_6pvhe"]
 [ext_resource type="Script" uid="uid://b0xwjuq1av15m" path="res://code/enemy/states/rotate/constant_rotation.gd" id="4_gr24o"]
 
@@ -14,6 +14,7 @@ metadata/_custom_type_script = "uid://bceg4vylbdwdr"
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("2_6pvhe")
+fuel_to_give = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_gr24o")

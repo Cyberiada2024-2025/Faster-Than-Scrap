@@ -26,13 +26,14 @@ top_radius = 0.1
 bottom_radius = 0.1
 height = 1.0
 
-[node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "modules", "leave_animation")]
+[node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "body", "modules", "leave_animation")]
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 gravity_scale = 0.0
 script = ExtResource("1_k3yb4")
 cockpit = NodePath("Cockpit")
+body = NodePath(".")
 modules = [NodePath("Cockpit"), NodePath("BaseModule"), NodePath("Thruster Backward"), NodePath("Thruster Right"), NodePath("Thruster Left"), NodePath("Thruster Forward"), NodePath("ShieldModule"), null]
 team = 0
 leave_animation = NodePath("Cockpit/AnimationPlayer")

@@ -21,9 +21,6 @@ extends Node3D
 ## Note: In both cases, die_on_hit in the child [DamageArea3D] should be set to false.
 @export var die_on_hit: bool = true
 
-## The projectile's collisions will be activated after waiting this number of seconds
-@export var collision_activation_delay: float = 0.075
-
 ## Projectiles don't dissappear immidietly
 @export var particle_holder: WaitFree
 @export var particles: Array[GPUParticles3D]
@@ -38,12 +35,6 @@ var _current_lifetime: float = 0
 
 
 func _ready() -> void:
-	if collision_activation_delay > 0:
-		_damage_area.monitoring = false
-		get_tree().create_timer(collision_activation_delay).timeout.connect(
-			func(): _damage_area.monitoring = true
-		)
-
 	_damage_area.damage_applied.connect(_on_damage_applied)
 	for part in particles:
 		part.emitting = true

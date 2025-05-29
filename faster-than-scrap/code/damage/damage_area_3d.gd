@@ -29,10 +29,18 @@ enum DamageType {
 ## If set to true, this node will be destroyed immediately after applying damage.
 @export var _die_on_hit: bool = false
 
+## The collision will start monitoring after waiting this number of seconds
+@export var collision_activation_delay: float = 0
+
 var _colliding_areas: Array[Damageable] = []
 
 
 func _ready():
+	if collision_activation_delay > 0:
+		monitoring = false
+		get_tree().create_timer(collision_activation_delay).timeout.connect(
+			func(): monitoring = true
+		)
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
 

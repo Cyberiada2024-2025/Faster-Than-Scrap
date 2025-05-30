@@ -1,5 +1,5 @@
 class_name Ship
-extends Node3D
+extends RigidBody3D
 
 signal destroyed(ship: Ship)
 signal damaged(hp_percent: float)

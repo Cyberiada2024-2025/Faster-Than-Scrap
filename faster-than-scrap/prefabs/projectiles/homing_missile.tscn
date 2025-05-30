@@ -361,6 +361,7 @@ script = ExtResource("2_xnu3b")
 _damage_type = 0
 _damage = SubResource("Resource_43gyh")
 _die_on_hit = true
+collision_activation_delay = 0.075
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -6.07488e-09, -0.611023)

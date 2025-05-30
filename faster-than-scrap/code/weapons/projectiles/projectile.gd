@@ -25,6 +25,10 @@ extends Node3D
 @export var particle_holder: WaitFree
 @export var particles: Array[GPUParticles3D]
 
+## Additional velocity applied to the projectile in every frame.
+## Used for applying the ship's speed to projectile after spawning.
+var velocity_offset: Vector3 = Vector3.ZERO
+
 var _current_lifetime: float = 0
 
 @onready var _damage_area: DamageArea3D = $DamageArea3D
@@ -45,6 +49,7 @@ func _process(delta: float) -> void:
 
 
 func _process_movement(delta: float) -> void:
+	global_position += velocity_offset * delta
 	var speed = velocity.sample_baked(_current_lifetime / lifetime)
 	speed *= velocity_multiplier
 	translate_object_local(Vector3.FORWARD * speed * delta)

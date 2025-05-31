@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr1umm51wsmta"]
+
+[ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_kc6dd"]
+[ext_resource type="PackedScene" uid="uid://cgx7bdd0f2rhg" path="res://prefabs/environment/shop_miniature.tscn" id="2_83ukq"]
+[ext_resource type="PackedScene" uid="uid://dsbr8a55sppml" path="res://prefabs/npc/enemies/drone.tscn" id="3_i4jrc"]
+[ext_resource type="PackedScene" uid="uid://dlp3fs4qym6g2" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group_straight_line.tscn" id="5_6htnx"]
+
+[node name="Lasers" type="Node3D"]
+
+[node name="LevelStaples" parent="." instance=ExtResource("1_kc6dd")]
+
+[node name="ShopMiniature" parent="." instance=ExtResource("2_83ukq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.429, 0, 32.0019)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Drone" parent="Enemies" instance=ExtResource("3_i4jrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.7743, -7.62939e-06, -66.4163)
+
+[node name="Drone2" parent="Enemies" instance=ExtResource("3_i4jrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.1297, 0, -77.1679)
+
+[node name="Drone3" parent="Enemies" instance=ExtResource("3_i4jrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.9321, 7.62939e-06, -5.92756)
+
+[node name="Drone4" parent="Enemies" instance=ExtResource("3_i4jrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.632, 1.52588e-05, 42.2606)
+
+[node name="Drone5" parent="Enemies" instance=ExtResource("3_i4jrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.941, 2.28882e-05, 23.224)
+
+[node name="Drone6" parent="Enemies" instance=ExtResource("3_i4jrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.6105, 2.28882e-05, 35.3954)
+
+[node name="Drone7" parent="Enemies" instance=ExtResource("3_i4jrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.593, 2.28882e-05, -24.5298)
+
+[node name="Drone8" parent="Enemies" instance=ExtResource("3_i4jrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.856, 3.8147e-05, -160.757)
+
+[node name="Drone9" parent="Enemies" instance=ExtResource("3_i4jrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6458, 3.8147e-05, -186.087)
+
+[node name="Drone10" parent="Enemies" instance=ExtResource("3_i4jrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0145, 3.8147e-05, -180.179)
+
+[node name="Drone11" parent="Enemies" instance=ExtResource("3_i4jrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0145, 3.8147e-05, -153.179)
+
+[node name="Asteroids" type="Node3D" parent="."]
+
+[node name="AsteroidGroupStraightLine" parent="Asteroids" instance=ExtResource("5_6htnx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7903, 0, 19.3468)
+
+[node name="AsteroidGroupStraightLine2" parent="Asteroids" instance=ExtResource("5_6htnx")]
+transform = Transform3D(0.0892594, 0, 0.996008, 0, 1, 0, -0.996008, 0, 0.0892594, 80.4841, 7.62939e-06, -23.0169)
+
+[node name="AsteroidGroupStraightLine3" parent="Asteroids" instance=ExtResource("5_6htnx")]
+transform = Transform3D(-0.447057, 0, 0.894506, 0, 1, 0, -0.894506, 0, -0.447057, -49.9986, 0, 24.723)
+
+[node name="AsteroidGroupStraightLine4" parent="Asteroids" instance=ExtResource("5_6htnx")]
+transform = Transform3D(0.7674, 0, 0.641168, 0, 1, 0, -0.641168, 0, 0.7674, -70.5355, -7.62939e-06, -37.1873)
+
+[node name="AsteroidGroupStraightLine5" parent="Asteroids" instance=ExtResource("5_6htnx")]
+transform = Transform3D(0.7674, 0, 0.641168, 0, 1, 0, -0.641168, 0, 0.7674, 40.0781, 0, -51.6734)
+
+[node name="AsteroidGroupStraightLine6" parent="Asteroids" instance=ExtResource("5_6htnx")]
+transform = Transform3D(-0.641168, 0, 0.7674, 0, 1, 0, -0.7674, 0, -0.641168, -3.67141, 0, -61.6204)

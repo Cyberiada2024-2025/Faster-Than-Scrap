@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://coyf8ah8v6git"]
+[gd_scene load_steps=5 format=3 uid="uid://dfqok04svlmok"]
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_unui1"]
 [ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_hak7e"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="3_01i7v"]
+[ext_resource type="PackedScene" uid="uid://c78jp45hhpqhd" path="res://prefabs/ui/cutscenes/skip_info_text.tscn" id="4_eqp44"]
 
 [node name="BuildTutorialCutscene" type="ColorRect"]
 anchors_preset = 15
@@ -127,3 +128,6 @@ text = "On the right you have a shop.  You can sell your modules to buy new modu
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="SkipInfoText" parent="." instance=ExtResource("4_eqp44")]
+layout_mode = 1

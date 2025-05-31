@@ -13,6 +13,5 @@ normal_texture = ExtResource("2_5mbdt")
 [node name="Asteroid1" type="Node3D"]
 
 [node name="Asteroid1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.238269, 0, 0.0853207)
 material_override = SubResource("StandardMaterial3D_1dyhg")
 mesh = ExtResource("3_s7mof")

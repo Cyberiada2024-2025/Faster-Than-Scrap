@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq0b36pd5v3ew"]
+[gd_scene load_steps=4 format=3 uid="uid://cq0b36pd5v3ew"]
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_uch67"]
 [ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_ldtpa"]
+[ext_resource type="PackedScene" uid="uid://c78jp45hhpqhd" path="res://prefabs/ui/cutscenes/skip_info_text.tscn" id="3_3tslu"]
 
 [node name="StartGameCutscene" type="ColorRect"]
 anchors_preset = 15
@@ -122,3 +123,6 @@ grow_vertical = 2
 text = "FINITO OPPOSSUM"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SkipInfoText" parent="." instance=ExtResource("3_3tslu")]
+layout_mode = 1

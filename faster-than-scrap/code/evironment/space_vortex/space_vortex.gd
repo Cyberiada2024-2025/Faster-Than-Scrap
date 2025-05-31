@@ -32,7 +32,7 @@ var _shrink_speed: float  # units per seconds
 ## static spawner of vortex with paramateres deciding its behaviour
 static func spawn_vortex(
 	start_position: Vector3,
-	start_scale: float = 200,
+	start_scale: float = 400,
 	min_scale: float = 0.001,
 	shrinking_time: float = 3 * 60
 ) -> void:

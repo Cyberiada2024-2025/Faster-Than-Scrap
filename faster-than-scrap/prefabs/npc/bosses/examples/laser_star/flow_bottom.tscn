@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=3 uid="uid://bwji2ay2xd5bf"]
+
+[ext_resource type="Script" path="res://code/ship/modules/explodable.gd" id="1_yjyq8"]
+[ext_resource type="Material" uid="uid://clqnlcly6aidu" path="res://art/materials/bosses/laserstar/laserstar_material_with_no_diffuse.tres" id="2_hwdfq"]
+[ext_resource type="ArrayMesh" uid="uid://epeo6w6b7qmi" path="res://art/models/bosses/laserstar/flow_main.003.obj" id="3_yjyq8"]
+[ext_resource type="Material" uid="uid://fp26so8t1e6n" path="res://art/materials/bosses/laserstar/laserstar_material_with_diffuse.tres" id="4_081hp"]
+[ext_resource type="ArrayMesh" uid="uid://dn5dhm2jh3cum" path="res://art/models/bosses/laserstar/core_mini.001.obj" id="5_7c3ob"]
+[ext_resource type="Script" uid="uid://df3sgcpdwrckg" path="res://code/boss/weak_point.gd" id="6_yekci"]
+[ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="7_n84p4"]
+[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="8_hwdfq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t7psh"]
+size = Vector3(3.59, 1, 1)
+
+[sub_resource type="Resource" id="Resource_ytkk1"]
+script = ExtResource("7_n84p4")
+value = 10000.0
+metadata/_custom_type_script = "uid://cukcjob61wwp7"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_soqbe"]
+size = Vector3(3.59, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_081hp"]
+size = Vector3(3.59, 1, 1)
+
+[node name="FlowBottom" type="StaticBody3D"]
+
+[node name="ExplodableModule" type="CollisionShape3D" parent="."]
+script = ExtResource("1_yjyq8")
+is_activable = false
+
+[node name="Model" type="Node3D" parent="ExplodableModule"]
+
+[node name="FlowMain_003" type="MeshInstance3D" parent="ExplodableModule/Model"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+material_override = ExtResource("2_hwdfq")
+mesh = ExtResource("3_yjyq8")
+skeleton = NodePath("../../..")
+
+[node name="CoreMini_004" type="MeshInstance3D" parent="ExplodableModule/Model"]
+material_override = ExtResource("4_081hp")
+mesh = ExtResource("5_7c3ob")
+skeleton = NodePath("../../..")
+
+[node name="WeakPoint" type="CollisionShape3D" parent="ExplodableModule" node_paths=PackedStringArray("damage_target")]
+transform = Transform3D(0.828187, 0, -0.560451, 0, 1, 0, 0.560451, 0, 0.828187, -2.97386, -0.0745049, 4.59788)
+shape = SubResource("BoxShape3D_t7psh")
+script = ExtResource("6_yekci")
+damage = SubResource("Resource_ytkk1")
+damage_target = NodePath("..")
+max_hp = 20.0
+hp = 20.0
+metadata/_custom_type_script = "uid://df3sgcpdwrckg"
+
+[node name="DamageController" parent="ExplodableModule/WeakPoint" instance=ExtResource("8_hwdfq")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplodableModule/WeakPoint/DamageController/Damageable" index="0"]
+shape = SubResource("BoxShape3D_soqbe")
+
+[node name="WeakPoint2" type="CollisionShape3D" parent="ExplodableModule" node_paths=PackedStringArray("damage_target")]
+transform = Transform3D(0.524595, 0, 0.851352, 0, 1, 0, -0.851352, 0, 0.524595, 2.00806, -0.0745053, 3.59237)
+shape = SubResource("BoxShape3D_t7psh")
+script = ExtResource("6_yekci")
+damage = SubResource("Resource_ytkk1")
+damage_target = NodePath("..")
+max_hp = 20.0
+hp = 20.0
+metadata/_custom_type_script = "uid://df3sgcpdwrckg"
+
+[node name="DamageController" parent="ExplodableModule/WeakPoint2" instance=ExtResource("8_hwdfq")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplodableModule/WeakPoint2/DamageController/Damageable" index="0"]
+shape = SubResource("BoxShape3D_081hp")
+
+[connection signal="damaged" from="ExplodableModule/WeakPoint/DamageController" to="ExplodableModule/WeakPoint" method="take_damage"]
+[connection signal="damaged" from="ExplodableModule/WeakPoint2/DamageController" to="ExplodableModule/WeakPoint2" method="take_damage"]
+
+[editable path="ExplodableModule/WeakPoint/DamageController"]
+[editable path="ExplodableModule/WeakPoint2/DamageController"]

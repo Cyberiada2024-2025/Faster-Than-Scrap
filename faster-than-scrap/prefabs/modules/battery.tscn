@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8v177mewyt5j"]
+[gd_scene load_steps=15 format=3 uid="uid://b8v177mewyt5j"]
 
-[ext_resource type="Script" uid="uid://urjr40lajiyq" path="res://code/ship/modules/battery_module.gd" id="1_aagdk"]
+[ext_resource type="Script" path="res://code/ship/modules/battery_module.gd" id="1_aagdk"]
+[ext_resource type="PackedScene" uid="uid://dqpqw2adjm7qg" path="res://art/model_prefabs/battery/battery.tscn" id="2_0nt81"]
 [ext_resource type="Texture2D" uid="uid://cebxmyyc7xq5m" path="res://art/textures/frame/frame_Albedo.png" id="2_aagdk"]
 [ext_resource type="Texture2D" uid="uid://r30h1nnmjryd" path="res://art/textures/frame/frame_AO.png" id="3_0nt81"]
 [ext_resource type="ArrayMesh" uid="uid://dyggmpc21gmcw" path="res://art/models/modules/frame/frame.obj" id="3_6dylh"]
@@ -12,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bqpvtwe8hkr0w" path="res://art/textures/frame/frame_Roughness.png" id="6_5g11m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jnq3k"]
-size = Vector3(1, 1, 1.075)
+size = Vector3(0.805, 1, 1.075)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttear"]
 albedo_color = Color(0, 1, 0, 1)
@@ -44,7 +45,11 @@ description = "Increases ship max energy."
 [node name="Frame0Model" type="Node3D" parent="."]
 transform = Transform3D(0.645, 0, 0, 0, 0.645, 0, 0, 0, 0.645, 0, 0, 0)
 
+[node name="Battery" parent="Frame0Model" instance=ExtResource("2_0nt81")]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0)
+
 [node name="Frame0" type="MeshInstance3D" parent="Frame0Model"]
+visible = false
 material_override = SubResource("StandardMaterial3D_ttear")
 mesh = ExtResource("3_6dylh")
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxk27xy7gsfsy"]
+[gd_scene load_steps=9 format=3 uid="uid://83pmb3ixecep"]
 
 [ext_resource type="Script" uid="uid://chekqae75l00d" path="res://code/evironment/asteroid.gd" id="1_76agp"]
-[ext_resource type="Script" uid="uid://bxvqss31pcw3p" path="res://code/evironment/droppable.gd" id="2_kaa5q"]
+[ext_resource type="Script" path="res://code/evironment/droppable.gd" id="2_kaa5q"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="3_3d00i"]
 [ext_resource type="PackedScene" uid="uid://bymii530libmh" path="res://prefabs/environment/fuel_pickup.tscn" id="3_4x2we"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_kaa5q"]
+[ext_resource type="PackedScene" uid="uid://c7gr12rhsysjx" path="res://prefabs/ui/poi/mission_poi.tscn" id="6_4x2we"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vf3at"]
 size = Vector3(4, 1.5, 4)
@@ -58,6 +59,8 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
 shape = SubResource("BoxShape3D_vf3at")
+
+[node name="MissionPoi" parent="." instance=ExtResource("6_4x2we")]
 
 [connection signal="damaged" from="DamageController" to="." method="take_damage"]
 

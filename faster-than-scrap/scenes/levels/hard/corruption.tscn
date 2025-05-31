@@ -1,0 +1,132 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxjcvbhn4rs4i"]
+
+[ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_pk6eq"]
+[ext_resource type="PackedScene" uid="uid://cgx7bdd0f2rhg" path="res://prefabs/environment/shop_miniature.tscn" id="2_hqss8"]
+[ext_resource type="PackedScene" uid="uid://dfco2h1p5vdx1" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid1.tscn" id="3_btvjn"]
+[ext_resource type="PackedScene" uid="uid://bvng8hdkqm2d6" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid2.tscn" id="4_57km8"]
+[ext_resource type="PackedScene" uid="uid://cs2m7lumvnaot" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid3.tscn" id="5_ub4j4"]
+[ext_resource type="PackedScene" uid="uid://do0sasbjik8fp" path="res://prefabs/npc/enemies/corrupted.tscn" id="6_pk6eq"]
+[ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="7_hqss8"]
+
+[node name="Big Asteroid Sparse" type="Node3D"]
+
+[node name="LevelStaples" parent="." instance=ExtResource("1_pk6eq")]
+
+[node name="ShopMiniature" parent="." instance=ExtResource("2_hqss8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10871, 0, 146.42)
+
+[node name="Asteroids" type="Node3D" parent="."]
+
+[node name="Asteroid" parent="Asteroids" instance=ExtResource("3_btvjn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5057, 1.52588e-05, -44.7497)
+
+[node name="Asteroid10" parent="Asteroids" instance=ExtResource("3_btvjn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -177.622, 1.52588e-05, -89.5052)
+
+[node name="Asteroid4" parent="Asteroids" instance=ExtResource("3_btvjn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.0282, 1.52588e-05, 63.391)
+
+[node name="Asteroid5" parent="Asteroids" instance=ExtResource("3_btvjn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.143, 1.52588e-05, -107.663)
+
+[node name="Asteroid2" parent="Asteroids" instance=ExtResource("4_57km8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.282, 0, 19.2363)
+
+[node name="Asteroid6" parent="Asteroids" instance=ExtResource("4_57km8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.6109, 0, -154.416)
+
+[node name="Asteroid7" parent="Asteroids" instance=ExtResource("4_57km8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0179, 0, -93.175)
+
+[node name="Asteroid3" parent="Asteroids" instance=ExtResource("5_ub4j4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.0282, 0, -12.6529)
+
+[node name="Asteroid8" parent="Asteroids" instance=ExtResource("5_ub4j4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.852, -1.52588e-05, -44.7423)
+
+[node name="Asteroid9" parent="Asteroids" instance=ExtResource("5_ub4j4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.6623, 0, 97.657)
+
+[node name="Enemies" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7409, 0, -13.9709)
+
+[node name="Corruption squad" type="Node3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.7468, 0, -68.5877)
+
+[node name="Corrupted" parent="Enemies/Corruption squad" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.74609, 0, 2.87502)
+
+[node name="Corrupted2" parent="Enemies/Corruption squad" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76038, 0, 8.86962)
+
+[node name="Corrupted3" parent="Enemies/Corruption squad" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.83276, 0, -2.39144)
+
+[node name="Corrupted4" parent="Enemies/Corruption squad" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88789, 0, -5.98516)
+
+[node name="Corrupted5" parent="Enemies/Corruption squad" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8595, 0, -3.83274)
+
+[node name="Corrupted6" parent="Enemies/Corruption squad" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.81631, 0, -20.5783)
+
+[node name="Corruption squad2" type="Node3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -187.596, 0, 17.5489)
+
+[node name="Corrupted" parent="Enemies/Corruption squad2" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.74609, 0, 2.87502)
+
+[node name="Corrupted2" parent="Enemies/Corruption squad2" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76038, 0, 8.86962)
+
+[node name="Corrupted3" parent="Enemies/Corruption squad2" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.83276, 0, -2.39144)
+
+[node name="Corrupted4" parent="Enemies/Corruption squad2" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88789, 0, -5.98516)
+
+[node name="Corrupted5" parent="Enemies/Corruption squad2" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8595, 0, -3.83274)
+
+[node name="Corrupted6" parent="Enemies/Corruption squad2" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.81631, 0, -20.5783)
+
+[node name="Corruption squad3" type="Node3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9203, 0, 155.273)
+
+[node name="Corrupted" parent="Enemies/Corruption squad3" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.74609, 0, 2.87502)
+
+[node name="Corrupted2" parent="Enemies/Corruption squad3" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76038, 0, 8.86962)
+
+[node name="Corrupted3" parent="Enemies/Corruption squad3" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.83276, 0, -2.39144)
+
+[node name="Corrupted4" parent="Enemies/Corruption squad3" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88789, 0, -5.98516)
+
+[node name="Corrupted5" parent="Enemies/Corruption squad3" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8595, 0, -3.83274)
+
+[node name="Corrupted6" parent="Enemies/Corruption squad3" instance=ExtResource("6_pk6eq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.81631, 0, -20.5783)
+
+[node name="Turret Sniper" parent="Enemies" instance=ExtResource("7_hqss8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.6759, 0, 84.6283)
+
+[node name="Turret Sniper2" parent="Enemies" instance=ExtResource("7_hqss8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.7222, 0, -18.0812)
+
+[node name="Turret Sniper3" parent="Enemies" instance=ExtResource("7_hqss8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.6903, 0, -54.059)
+
+[node name="Turret Sniper4" parent="Enemies" instance=ExtResource("7_hqss8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.69, 0, -66.059)
+
+[node name="Turret Sniper5" parent="Enemies" instance=ExtResource("7_hqss8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.579, 0, 62.2533)
+
+[node name="Turret Sniper6" parent="Enemies" instance=ExtResource("7_hqss8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.7933, 0, 143.943)

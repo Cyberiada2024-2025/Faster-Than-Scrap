@@ -20,7 +20,7 @@ func generate_map() -> void:
 			# create default escape node
 			_map_node = MissionNode.new()
 			_map_node.mission_info = MissionInfoEscape.new()
-			_map_node.mission_info.portal_position = Vector3(0, 0, 15)
+			_map_node.mission_info.portal_position = Vector3(0, 0, -150)
 		generate_map_from_node()
 	get_tree().current_scene.add_child.call_deferred(_scene)
 	## TODO SET player position

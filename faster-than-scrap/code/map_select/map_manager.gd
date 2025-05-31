@@ -2,7 +2,7 @@ class_name MapManager
 
 extends Node
 
-const DEFAULT_MAP_SELECT = preload("res://sandbox/wierzba/map_selector/map_example.tscn")
+const DEFAULT_MAP_SELECT = preload("res://prefabs/map_select/full_maps/map1.tscn")
 
 @export var map_container: Control
 @export var button: Button

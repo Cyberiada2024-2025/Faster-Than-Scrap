@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="4_ux3ip"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4r7dq"]
+size = Vector3(0.74, 1, 1)
 
 [node name="Cockpit" type="CollisionShape3D" node_paths=PackedStringArray("sprite")]
 shape = SubResource("BoxShape3D_4r7dq")

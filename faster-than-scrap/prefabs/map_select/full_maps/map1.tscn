@@ -30,7 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://syln6fah0e2b" path="res://prefabs/map_select/nodes/final/hard/corruption_defend.tscn" id="27_rwq3m"]
 [ext_resource type="PackedScene" uid="uid://1c0liu6wdajl" path="res://prefabs/map_select/nodes/final/hard/lots_of_heavy_enemies_defend.tscn" id="28_0a6x0"]
 
-[node name="DebugMap" type="HBoxContainer" node_paths=PackedStringArray("active_node")]
+[node name="Map1" type="HBoxContainer" node_paths=PackedStringArray("active_node")]
 offset_right = 994.0
 offset_bottom = 648.0
 grow_horizontal = 2
@@ -57,7 +57,7 @@ layout_mode = 2
 
 [node name="MissionEscapeFewDrones" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_yrn6p")]
 layout_mode = 2
-next_map_nodes = [NodePath("../../MapLayer5/Shotgunners"), null]
+next_map_nodes = [NodePath("../../MapLayer5/Shotgunners")]
 
 [node name="MissionDefendFewDrones" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_bh1t4")]
 layout_mode = 2

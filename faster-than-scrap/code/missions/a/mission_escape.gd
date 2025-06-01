@@ -2,7 +2,7 @@ class_name MissionEscape
 
 extends Mission
 
-@export var portal_position: Vector3 = Vector3.ZERO
+@export var portal_position: Node3D
 
 var portal: PortalObject
 
@@ -18,7 +18,7 @@ func setup() -> void:
 	MissionManager.get_tree().current_scene.add_child(portal)
 
 	# position it
-	portal.global_position = portal_position
+	portal.global_position = portal_position.global_position
 
 
 func _process(_delta: float) -> void:

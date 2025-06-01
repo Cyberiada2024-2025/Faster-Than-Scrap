@@ -10,9 +10,5 @@ extends Resource
 @export var difficulty: int
 
 
-func get_node_color() -> Color:
-	return Color.BLACK
-
-
 func get_node_description() -> String:
 	return about

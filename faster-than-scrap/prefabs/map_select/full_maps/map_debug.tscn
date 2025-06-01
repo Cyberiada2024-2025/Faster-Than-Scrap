@@ -63,24 +63,28 @@ layout_mode = 2
 layout_mode = 2
 mission_info = SubResource("Resource_62f8o")
 level_prefab = ExtResource("9_e15ri")
+modulate_color = null
 next_map_nodes = [NodePath("../../MapLayer5/BossNode")]
 
 [node name="MissionNode2" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_vstsd")]
 layout_mode = 2
 mission_info = SubResource("Resource_83oip")
 level_prefab = ExtResource("9_e15ri")
+modulate_color = null
 next_map_nodes = [NodePath("../../MapLayer5/BossNode")]
 
 [node name="MissionNode3" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("7_5f65k")]
 layout_mode = 2
 mission_info = SubResource("Resource_axfvs")
 level_prefab = ExtResource("9_e15ri")
+modulate_color = null
 next_map_nodes = [NodePath("../../MapLayer5/BossNode")]
 
 [node name="MissionFuel" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_tl3nk")]
 layout_mode = 2
 mission_info = SubResource("Resource_vstsd")
 level_prefab = ExtResource("9_e15ri")
+modulate_color = null
 next_map_nodes = [NodePath("../../MapLayer5/BossNode")]
 
 [node name="BossNode" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("9_18jqo")]

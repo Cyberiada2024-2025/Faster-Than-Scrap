@@ -5,8 +5,9 @@
 
 [node name="FewDronesEscape" type="Node3D"]
 
-[node name="MissionEscape" type="Node" parent="."]
+[node name="MissionEscape" type="Node" parent="." node_paths=PackedStringArray("portal_position")]
 script = ExtResource("1_vxno8")
+portal_position = NodePath("../Portal Position")
 metadata/_custom_type_script = "uid://bq0dwhdq76qw"
 
 [node name="Portal Position" type="Node3D" parent="."]

@@ -1,34 +1,155 @@
-[gd_scene load_steps=30 format=3 uid="uid://qemwu1rt7gtj"]
+[gd_scene load_steps=53 format=3 uid="uid://qemwu1rt7gtj"]
 
 [ext_resource type="Script" uid="uid://o52uw8n1ufdc" path="res://code/map_select/map_selector.gd" id="1_yxgtb"]
 [ext_resource type="PackedScene" uid="uid://2oa2dvray5oq" path="res://prefabs/map_select/map_layer.tscn" id="2_bp67s"]
 [ext_resource type="PackedScene" uid="uid://ska6812npmde" path="res://prefabs/map_select/nodes/templates/map_node.tscn" id="3_s8emc"]
 [ext_resource type="PackedScene" uid="uid://dko08cmdkba7m" path="res://prefabs/map_select/map_margin.tscn" id="4_nrfml"]
-[ext_resource type="PackedScene" uid="uid://b700q0s4b4ybb" path="res://prefabs/map_select/nodes/final/easy/asteroids_cramped_escape.tscn" id="5_bcx1s"]
-[ext_resource type="PackedScene" uid="uid://jyhpfg4odmqm" path="res://prefabs/map_select/nodes/final/easy/few_drones_escape.tscn" id="5_yrn6p"]
-[ext_resource type="PackedScene" uid="uid://o8e3pefm614f" path="res://prefabs/map_select/nodes/final/easy/few_drones_defend.tscn" id="6_bh1t4"]
+[ext_resource type="PackedScene" uid="uid://c6sug4hxemhdp" path="res://prefabs/map_select/nodes/templates/missions/mission_escape.tscn" id="5_rwq3m"]
+[ext_resource type="Script" uid="uid://bmhwp67vae4gu" path="res://code/missions/info/mission_info.gd" id="6_0a6x0"]
 [ext_resource type="PackedScene" uid="uid://ci7ns2p5tsax6" path="res://prefabs/map_select/nodes/templates/boss_node.tscn" id="6_mkmvc"]
+[ext_resource type="PackedScene" uid="uid://caybyxagodpfw" path="res://scenes/levels/final/easy/few_drones_escape.tscn" id="7_uee5q"]
 [ext_resource type="PackedScene" uid="uid://bvcjycf02eb4c" path="res://prefabs/npc/bosses/juggernaut/juggernaut.tscn" id="7_yxgtb"]
-[ext_resource type="PackedScene" uid="uid://girmr6p7de62" path="res://prefabs/map_select/nodes/final/easy/shotgunners_defend.tscn" id="8_fms5q"]
-[ext_resource type="PackedScene" uid="uid://dptxt76qyfm6f" path="res://prefabs/map_select/nodes/final/easy/shotgunners_escape.tscn" id="9_rafgn"]
-[ext_resource type="PackedScene" uid="uid://c65hidjpyhvu3" path="res://prefabs/map_select/nodes/final/easy/few_turret_guns_defend.tscn" id="10_xfikn"]
-[ext_resource type="PackedScene" uid="uid://cv5s4pmb4id6p" path="res://prefabs/map_select/nodes/final/easy/asteroids_cramped_fuel.tscn" id="11_ax5eh"]
-[ext_resource type="PackedScene" uid="uid://c6s0ls2212fuo" path="res://prefabs/map_select/nodes/final/easy/asteroids_cramped_defend.tscn" id="12_mqg28"]
-[ext_resource type="PackedScene" uid="uid://dahnnsbuhubmv" path="res://prefabs/map_select/nodes/final/medium/asteroids_squares_defend.tscn" id="15_rwq3m"]
-[ext_resource type="PackedScene" uid="uid://dkc8ajfhimslp" path="res://prefabs/map_select/nodes/final/medium/asteroids_squares_escape.tscn" id="16_0a6x0"]
-[ext_resource type="PackedScene" uid="uid://gfuj3obqcwt2" path="res://prefabs/map_select/nodes/final/medium/swarms_fuel.tscn" id="17_uee5q"]
-[ext_resource type="PackedScene" uid="uid://dsg0h407sewk7" path="res://prefabs/map_select/nodes/final/medium/asteroids_lines_escape.tscn" id="18_mxsq4"]
-[ext_resource type="PackedScene" uid="uid://b1kl0bwnofhgt" path="res://prefabs/map_select/nodes/final/medium/swarms_defend.tscn" id="19_dlw72"]
-[ext_resource type="PackedScene" uid="uid://b3rellcul7ypm" path="res://prefabs/map_select/nodes/final/medium/lasers_escape.tscn" id="20_sau2r"]
-[ext_resource type="PackedScene" uid="uid://bkv46tcup3ses" path="res://prefabs/map_select/nodes/final/medium/lasers_defend.tscn" id="21_f40e2"]
-[ext_resource type="PackedScene" uid="uid://dpuf7urkvm3dp" path="res://prefabs/map_select/nodes/final/medium/asteroids_lines_defend.tscn" id="22_4e3x0"]
-[ext_resource type="PackedScene" uid="uid://dlg21rb2dq6ry" path="res://prefabs/map_select/nodes/final/medium/swarms_escape.tscn" id="23_u5ucl"]
+[ext_resource type="PackedScene" uid="uid://dhnli7a3skvdj" path="res://prefabs/map_select/nodes/templates/missions/mission_defend.tscn" id="8_mxsq4"]
+[ext_resource type="PackedScene" uid="uid://crbesxqkbf1ss" path="res://scenes/levels/final/easy/few_drones_defend.tscn" id="9_dlw72"]
+[ext_resource type="PackedScene" uid="uid://ct6ykt00y3j7k" path="res://scenes/levels/final/easy/asteroids_cramped_escape.tscn" id="10_sau2r"]
+[ext_resource type="PackedScene" uid="uid://1ipl2ppnmckf" path="res://scenes/levels/final/easy/shotgunners_escape.tscn" id="11_f40e2"]
+[ext_resource type="PackedScene" uid="uid://pgmnuirpnvwb" path="res://scenes/levels/final/easy/few_turret_guns_defend.tscn" id="12_4e3x0"]
+[ext_resource type="PackedScene" uid="uid://c03u0pmq5d36y" path="res://prefabs/map_select/nodes/templates/missions/mission_fuel.tscn" id="13_rwq3m"]
+[ext_resource type="PackedScene" uid="uid://dcem0fucmljrh" path="res://scenes/levels/final/easy/asteroids_cramped_get_fuel.tscn" id="14_0a6x0"]
+[ext_resource type="PackedScene" uid="uid://rk0er3r4rdr5" path="res://scenes/levels/final/medium/asteroids_squares_defend.tscn" id="17_0a6x0"]
+[ext_resource type="PackedScene" uid="uid://b2o4mugnnrfo5" path="res://scenes/levels/final/medium/asteroids_squares_escape.tscn" id="18_uee5q"]
+[ext_resource type="PackedScene" uid="uid://cffdw3rw68kj0" path="res://scenes/levels/final/medium/swarms_get_fuel.tscn" id="19_mxsq4"]
+[ext_resource type="PackedScene" uid="uid://cbv0prbd1g1cy" path="res://scenes/levels/final/medium/asteroids_line_escape.tscn" id="20_uee5q"]
+[ext_resource type="PackedScene" uid="uid://csflp7dntxrp1" path="res://scenes/levels/final/medium/swarms_defend.tscn" id="21_0a6x0"]
+[ext_resource type="PackedScene" uid="uid://b758kia2tcjfn" path="res://scenes/levels/final/medium/lasers_escape.tscn" id="22_uee5q"]
+[ext_resource type="PackedScene" uid="uid://cn6v1cias8nck" path="res://scenes/levels/final/medium/lasers_defend.tscn" id="23_mxsq4"]
+[ext_resource type="PackedScene" uid="uid://bpjc7uuyupx1c" path="res://scenes/levels/final/medium/asteroids_line_defend.tscn" id="24_uee5q"]
 [ext_resource type="PackedScene" uid="uid://c3rsq4emlmuky" path="res://prefabs/npc/bosses/examples/laser_star/laser_star.tscn" id="24_ui2af"]
-[ext_resource type="PackedScene" uid="uid://b781v0tpcqk7c" path="res://prefabs/map_select/nodes/final/hard/big_asteroids_sparse_escape.tscn" id="25_ax5eh"]
 [ext_resource type="PackedScene" uid="uid://1x45q2a5nnee" path="res://prefabs/npc/bosses/vortex/vortex_boss.tscn" id="25_bh1t4"]
-[ext_resource type="PackedScene" uid="uid://dnml8mf7d5ns" path="res://prefabs/map_select/nodes/final/hard/corruption_escape.tscn" id="26_mqg28"]
-[ext_resource type="PackedScene" uid="uid://syln6fah0e2b" path="res://prefabs/map_select/nodes/final/hard/corruption_defend.tscn" id="27_rwq3m"]
-[ext_resource type="PackedScene" uid="uid://1c0liu6wdajl" path="res://prefabs/map_select/nodes/final/hard/lots_of_heavy_enemies_defend.tscn" id="28_0a6x0"]
+[ext_resource type="PackedScene" uid="uid://pamatfxtjl6c" path="res://scenes/levels/final/medium/swarms_escape.tscn" id="25_mxsq4"]
+[ext_resource type="PackedScene" uid="uid://d18x6bug11tqh" path="res://scenes/levels/final/hard/big_asteroid_sparse_escape.tscn" id="27_0a6x0"]
+[ext_resource type="PackedScene" uid="uid://bi4fprtdhvhfk" path="res://scenes/levels/final/hard/corruption_esacape.tscn" id="28_uee5q"]
+[ext_resource type="PackedScene" uid="uid://dsiunhrpghlkd" path="res://scenes/levels/final/hard/corruption_defend.tscn" id="29_rwq3m"]
+[ext_resource type="PackedScene" uid="uid://cxu20ysf6eu7q" path="res://scenes/levels/final/hard/lots_of_heavy_enemies_defend.tscn" id="30_0a6x0"]
+
+[sub_resource type="Resource" id="Resource_pgkvg"]
+script = ExtResource("6_0a6x0")
+about = "Escape from the space!"
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[sub_resource type="Resource" id="Resource_pki7u"]
+script = ExtResource("6_0a6x0")
+about = "DEFEND THE TARGET!"
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[sub_resource type="Resource" id="Resource_5jnkn"]
+script = ExtResource("6_0a6x0")
+about = "ESCAPE"
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[sub_resource type="Resource" id="Resource_55wni"]
+script = ExtResource("6_0a6x0")
+about = "Defend against shotgunners"
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[sub_resource type="Resource" id="Resource_gobyi"]
+script = ExtResource("6_0a6x0")
+about = "Escape"
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[sub_resource type="Resource" id="Resource_prcho"]
+script = ExtResource("6_0a6x0")
+about = "Defend from multiple turrets!"
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[sub_resource type="Resource" id="Resource_3cw18"]
+script = ExtResource("6_0a6x0")
+about = "GET SOME FUEL"
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[sub_resource type="Resource" id="Resource_bpxjr"]
+script = ExtResource("6_0a6x0")
+about = "DEFEND"
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[sub_resource type="Resource" id="Resource_t1mo6"]
+script = ExtResource("6_0a6x0")
+about = "Defend - beware of squares"
+difficulty = 0
+
+[sub_resource type="Resource" id="Resource_vsw54"]
+script = ExtResource("6_0a6x0")
+about = "Escape - Hope you are not afraid of squares"
+difficulty = 0
+
+[sub_resource type="Resource" id="Resource_6ev6g"]
+script = ExtResource("6_0a6x0")
+about = "Get fuel - SWARMS"
+difficulty = 0
+
+[sub_resource type="Resource" id="Resource_bbwgh"]
+script = ExtResource("6_0a6x0")
+about = "Escape"
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[sub_resource type="Resource" id="Resource_dxj05"]
+script = ExtResource("6_0a6x0")
+about = "Defend - SWARMS OF ENEMIES"
+difficulty = 0
+
+[sub_resource type="Resource" id="Resource_svwm4"]
+script = ExtResource("6_0a6x0")
+about = "Escape - LASSSEERS"
+difficulty = 0
+
+[sub_resource type="Resource" id="Resource_r4xfp"]
+script = ExtResource("6_0a6x0")
+about = "Defend - LASEERS"
+difficulty = 0
+
+[sub_resource type="Resource" id="Resource_fj8or"]
+script = ExtResource("6_0a6x0")
+about = "Defend"
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[sub_resource type="Resource" id="Resource_dl063"]
+script = ExtResource("6_0a6x0")
+about = "Escape  - SWARMS"
+difficulty = 0
+
+[sub_resource type="Resource" id="Resource_s2vhm"]
+script = ExtResource("6_0a6x0")
+about = "Escape"
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[sub_resource type="Resource" id="Resource_td40y"]
+script = ExtResource("6_0a6x0")
+about = "Escape from there!"
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[sub_resource type="Resource" id="Resource_2ovlg"]
+script = ExtResource("6_0a6x0")
+about = "Defend"
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[sub_resource type="Resource" id="Resource_wqn4u"]
+script = ExtResource("6_0a6x0")
+about = "Defend against lots of enemies"
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [node name="Map1" type="HBoxContainer" node_paths=PackedStringArray("active_node")]
 offset_right = 994.0
@@ -55,16 +176,22 @@ layout_mode = 2
 [node name="MapLayer4" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="MissionEscapeFewDrones" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_yrn6p")]
+[node name="MissionEscapeFewDrones" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
 layout_mode = 2
+mission_info = SubResource("Resource_pgkvg")
+level_prefab = ExtResource("7_uee5q")
 next_map_nodes = [NodePath("../../MapLayer5/Shotgunners")]
 
-[node name="MissionDefendFewDrones" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_bh1t4")]
+[node name="MissionDefendFewDrones" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
 layout_mode = 2
+mission_info = SubResource("Resource_pki7u")
+level_prefab = ExtResource("9_dlw72")
 next_map_nodes = [NodePath("../../MapLayer5/MissionDefendShotgunners"), NodePath("../../MapLayer5/Shotgunners")]
 
-[node name="MissionEscapeAsteroidsCramped" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_bcx1s")]
+[node name="MissionEscapeAsteroidsCramped" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
 layout_mode = 2
+mission_info = SubResource("Resource_5jnkn")
+level_prefab = ExtResource("10_sau2r")
 next_map_nodes = [NodePath("../../MapLayer5/MissionDefendFewTurretGuns")]
 
 [node name="MapMargin4" parent="." instance=ExtResource("4_nrfml")]
@@ -73,16 +200,21 @@ layout_mode = 2
 [node name="MapLayer5" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="MissionDefendShotgunners" parent="MapLayer5" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_fms5q")]
+[node name="MissionDefendShotgunners" parent="MapLayer5" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
 layout_mode = 2
+mission_info = SubResource("Resource_55wni")
 next_map_nodes = [NodePath("../../MapLayer7/MissionFuelAsteroidsCramped")]
 
-[node name="Shotgunners" parent="MapLayer5" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("9_rafgn")]
+[node name="Shotgunners" parent="MapLayer5" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
 layout_mode = 2
+mission_info = SubResource("Resource_gobyi")
+level_prefab = ExtResource("11_f40e2")
 next_map_nodes = [NodePath("../../MapLayer7/MissionDefendAsteroidsCramped")]
 
-[node name="MissionDefendFewTurretGuns" parent="MapLayer5" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("10_xfikn")]
+[node name="MissionDefendFewTurretGuns" parent="MapLayer5" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
 layout_mode = 2
+mission_info = SubResource("Resource_prcho")
+level_prefab = ExtResource("12_4e3x0")
 next_map_nodes = [NodePath("../../MapLayer7/MissionDefendAsteroidsCramped")]
 
 [node name="MapMargin5" parent="." instance=ExtResource("4_nrfml")]
@@ -91,12 +223,15 @@ layout_mode = 2
 [node name="MapLayer7" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="MissionFuelAsteroidsCramped" parent="MapLayer7" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("11_ax5eh")]
+[node name="MissionFuelAsteroidsCramped" parent="MapLayer7" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("13_rwq3m")]
 layout_mode = 2
+mission_info = SubResource("Resource_3cw18")
+level_prefab = ExtResource("14_0a6x0")
 next_map_nodes = [NodePath("../../MapLayer6/BossNode")]
 
-[node name="MissionDefendAsteroidsCramped" parent="MapLayer7" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("12_mqg28")]
+[node name="MissionDefendAsteroidsCramped" parent="MapLayer7" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
 layout_mode = 2
+mission_info = SubResource("Resource_bpxjr")
 next_map_nodes = [NodePath("../../MapLayer6/BossNode")]
 
 [node name="MapMargin6" parent="." instance=ExtResource("4_nrfml")]
@@ -117,16 +252,22 @@ layout_mode = 2
 [node name="MapLayer8" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="MissionDefendAsteroidsSquares" parent="MapLayer8" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("15_rwq3m")]
+[node name="MissionDefendAsteroidsSquares" parent="MapLayer8" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
 layout_mode = 2
-next_map_nodes = [NodePath("../../MapLayer9/MissionEscapeAsteroidsLines"), NodePath("../../MapLayer9/MissionDefendSwarms")]
+mission_info = SubResource("Resource_t1mo6")
+level_prefab = ExtResource("17_0a6x0")
+next_map_nodes = [NodePath("../../MapLayer9/MissionEscapeAsteroidsLines")]
 
-[node name="MissionEscapeAsteroidsSquares" parent="MapLayer8" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("16_0a6x0")]
+[node name="MissionEscapeAsteroidsSquares" parent="MapLayer8" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
 layout_mode = 2
+mission_info = SubResource("Resource_vsw54")
+level_prefab = ExtResource("18_uee5q")
 next_map_nodes = [NodePath("../../MapLayer9/MissionDefendSwarms"), NodePath("../../MapLayer9/MissionEscapeLasers")]
 
-[node name="MissionFuelSwarms" parent="MapLayer8" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("17_uee5q")]
+[node name="MissionFuelSwarms" parent="MapLayer8" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("13_rwq3m")]
 layout_mode = 2
+mission_info = SubResource("Resource_6ev6g")
+level_prefab = ExtResource("19_mxsq4")
 next_map_nodes = [NodePath("../../MapLayer9/MissionDefendLasers")]
 
 [node name="MapMargin8" parent="." instance=ExtResource("4_nrfml")]
@@ -135,20 +276,28 @@ layout_mode = 2
 [node name="MapLayer9" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="MissionEscapeAsteroidsLines" parent="MapLayer9" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("18_mxsq4")]
+[node name="MissionEscapeAsteroidsLines" parent="MapLayer9" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
 layout_mode = 2
+mission_info = SubResource("Resource_bbwgh")
+level_prefab = ExtResource("20_uee5q")
 next_map_nodes = [NodePath("../../MapLayer10/MissionDefendAsteroidsLines")]
 
-[node name="MissionDefendSwarms" parent="MapLayer9" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("19_dlw72")]
+[node name="MissionDefendSwarms" parent="MapLayer9" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
 layout_mode = 2
+mission_info = SubResource("Resource_dxj05")
+level_prefab = ExtResource("21_0a6x0")
 next_map_nodes = [NodePath("../../MapLayer10/MissionEscapeSwarms")]
 
-[node name="MissionEscapeLasers" parent="MapLayer9" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("20_sau2r")]
+[node name="MissionEscapeLasers" parent="MapLayer9" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
 layout_mode = 2
+mission_info = SubResource("Resource_svwm4")
+level_prefab = ExtResource("22_uee5q")
 next_map_nodes = [NodePath("../../MapLayer10/MissionEscapeSwarms")]
 
-[node name="MissionDefendLasers" parent="MapLayer9" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("21_f40e2")]
+[node name="MissionDefendLasers" parent="MapLayer9" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
 layout_mode = 2
+mission_info = SubResource("Resource_r4xfp")
+level_prefab = ExtResource("23_mxsq4")
 next_map_nodes = [NodePath("../../MapLayer10/MissionDefendAsteroidsSquares")]
 
 [node name="MapMargin9" parent="." instance=ExtResource("4_nrfml")]
@@ -157,16 +306,22 @@ layout_mode = 2
 [node name="MapLayer10" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="MissionDefendAsteroidsLines" parent="MapLayer10" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("22_4e3x0")]
+[node name="MissionDefendAsteroidsLines" parent="MapLayer10" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
 layout_mode = 2
+mission_info = SubResource("Resource_fj8or")
+level_prefab = ExtResource("24_uee5q")
 next_map_nodes = [NodePath("../../MapLayer11/BossNode")]
 
-[node name="MissionEscapeSwarms" parent="MapLayer10" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("23_u5ucl")]
+[node name="MissionEscapeSwarms" parent="MapLayer10" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
 layout_mode = 2
+mission_info = SubResource("Resource_dl063")
+level_prefab = ExtResource("25_mxsq4")
 next_map_nodes = [NodePath("../../MapLayer11/BossNode")]
 
-[node name="MissionDefendAsteroidsSquares" parent="MapLayer10" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("15_rwq3m")]
+[node name="MissionDefendAsteroidsSquares" parent="MapLayer10" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
 layout_mode = 2
+mission_info = SubResource("Resource_t1mo6")
+level_prefab = ExtResource("17_0a6x0")
 next_map_nodes = [NodePath("../../MapLayer11/BossNode")]
 
 [node name="MapMargin10" parent="." instance=ExtResource("4_nrfml")]
@@ -179,7 +334,7 @@ layout_mode = 2
 layout_mode = 2
 boss_prefabs = Array[PackedScene]([ExtResource("24_ui2af")])
 is_miniboss = true
-next_map_nodes = [NodePath("../../MapLayer12/MissionEscapeBigAsteroidsSparse"), NodePath("../../MapLayer12/MissionEscapeCorruption")]
+next_map_nodes = [NodePath("../../MapLayer12/MissionEscapeBigAsteroidsSparse3"), NodePath("../../MapLayer12/MissionEscapeCorruption")]
 
 [node name="MapMargin11" parent="." instance=ExtResource("4_nrfml")]
 layout_mode = 2
@@ -187,12 +342,16 @@ layout_mode = 2
 [node name="MapLayer12" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="MissionEscapeBigAsteroidsSparse" parent="MapLayer12" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("25_ax5eh")]
+[node name="MissionEscapeBigAsteroidsSparse3" parent="MapLayer12" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
 layout_mode = 2
+mission_info = SubResource("Resource_s2vhm")
+level_prefab = ExtResource("27_0a6x0")
 next_map_nodes = [NodePath("../../MapLayer13/MissionDefendCorruption")]
 
-[node name="MissionEscapeCorruption" parent="MapLayer12" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("26_mqg28")]
+[node name="MissionEscapeCorruption" parent="MapLayer12" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
 layout_mode = 2
+mission_info = SubResource("Resource_td40y")
+level_prefab = ExtResource("28_uee5q")
 next_map_nodes = [NodePath("../../MapLayer13/MissionDefendCorruption")]
 
 [node name="MapMargin12" parent="." instance=ExtResource("4_nrfml")]
@@ -201,8 +360,10 @@ layout_mode = 2
 [node name="MapLayer13" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="MissionDefendCorruption" parent="MapLayer13" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("27_rwq3m")]
+[node name="MissionDefendCorruption" parent="MapLayer13" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
 layout_mode = 2
+mission_info = SubResource("Resource_2ovlg")
+level_prefab = ExtResource("29_rwq3m")
 next_map_nodes = [NodePath("../../MapLayer14/MissionDefendLotsOfHeavyEnemies"), NodePath("../../MapLayer14/MissionDefendLotsOfHeavyEnemies2")]
 
 [node name="MapMargin13" parent="." instance=ExtResource("4_nrfml")]
@@ -211,12 +372,16 @@ layout_mode = 2
 [node name="MapLayer14" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="MissionDefendLotsOfHeavyEnemies" parent="MapLayer14" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("28_0a6x0")]
+[node name="MissionDefendLotsOfHeavyEnemies" parent="MapLayer14" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
 layout_mode = 2
+mission_info = SubResource("Resource_wqn4u")
+level_prefab = ExtResource("30_0a6x0")
 next_map_nodes = [NodePath("../../MapLayer15/BossNode")]
 
-[node name="MissionDefendLotsOfHeavyEnemies2" parent="MapLayer14" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("28_0a6x0")]
+[node name="MissionDefendLotsOfHeavyEnemies2" parent="MapLayer14" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
 layout_mode = 2
+mission_info = SubResource("Resource_wqn4u")
+level_prefab = ExtResource("30_0a6x0")
 next_map_nodes = [NodePath("../../MapLayer15/BossNode")]
 
 [node name="MapMargin14" parent="." instance=ExtResource("4_nrfml")]

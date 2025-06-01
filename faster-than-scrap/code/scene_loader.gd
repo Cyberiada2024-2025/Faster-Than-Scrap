@@ -83,6 +83,8 @@ func load_credits_scene() -> void:
 func load_lore_scene() -> void:
 	get_tree().change_scene_to_file("res://scenes/lore_start.tscn")
 
+func load_settings_scene() -> void:
+	get_tree().change_scene_to_file("res://scenes/settings.tscn")
 
 ## detach the ship from the scene tree, to preserve it, when it is changed
 func _detach_ship():

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://pamatfxtjl6c"]
+
+[ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="1_bgxyo"]
+[ext_resource type="PackedScene" uid="uid://diof2yyi43m0j" path="res://scenes/levels/templates/medium/swarms.tscn" id="2_5p8ni"]
+
+[node name="Swarms Escape" type="Node3D"]
+
+[node name="MissionEscape" type="Node" parent="." node_paths=PackedStringArray("portal_position")]
+script = ExtResource("1_bgxyo")
+portal_position = NodePath("../Portal Position")
+metadata/_custom_type_script = "uid://bq0dwhdq76qw"
+
+[node name="Portal Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.354305, 0, -208.382)
+
+[node name="Swarms" parent="." instance=ExtResource("2_5p8ni")]

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b7d6dp7jrytp3" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group.tscn" id="3_bc5pv"]
 [ext_resource type="PackedScene" uid="uid://dsbr8a55sppml" path="res://prefabs/npc/enemies/drone.tscn" id="3_i803d"]
 
-[node name="Asteroid cramped" type="Node3D"]
+[node name="Swarms" type="Node3D"]
 
 [node name="LevelStaples" parent="." instance=ExtResource("1_n7sc6")]
 

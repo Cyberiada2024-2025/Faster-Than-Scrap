@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg76vtqkyq22q"]
+
+[ext_resource type="Script" uid="uid://cne5mpb7d4xce" path="res://code/missions/a/mission_fuel.gd" id="1_by2wk"]
+[ext_resource type="PackedScene" uid="uid://c5m51a8jf7jrf" path="res://scenes/levels/templates/medium/lasers.tscn" id="2_gave5"]
+
+[node name="Lasers GetFuel" type="Node3D"]
+
+[node name="MissionFuel" type="Node" parent="." node_paths=PackedStringArray("fuel_position")]
+script = ExtResource("1_by2wk")
+fuel_position = NodePath("../Fuel Position")
+metadata/_custom_type_script = "uid://cne5mpb7d4xce"
+
+[node name="Fuel Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.184, 0, -158.546)
+
+[node name="Lasers" parent="." instance=ExtResource("2_gave5")]

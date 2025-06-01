@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ceu6i6ji4q3oq" path="res://prefabs/npc/enemies/turret_gun.tscn" id="4_7tnqv"]
 [ext_resource type="PackedScene" uid="uid://dxbwuxdfu600q" path="res://prefabs/npc/enemies/turret_laser.tscn" id="5_iwlph"]
 
-[node name="Asteroid cramped" type="Node3D"]
+[node name="Asteroid Lines" type="Node3D"]
 
 [node name="LevelStaples" parent="." instance=ExtResource("1_br1rn")]
 

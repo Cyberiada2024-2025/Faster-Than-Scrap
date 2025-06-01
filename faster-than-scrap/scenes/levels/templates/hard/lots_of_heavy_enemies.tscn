@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dusrity80tka3" path="res://prefabs/npc/enemies/rocket_ship.tscn" id="7_i1ppg"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="8_pcxud"]
 
-[node name="Big Asteroid Sparse" type="Node3D"]
+[node name="LotsOfHeavyEnemies" type="Node3D"]
 
 [node name="LevelStaples" parent="." instance=ExtResource("1_hbi0s")]
 

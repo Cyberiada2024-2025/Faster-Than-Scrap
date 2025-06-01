@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://do0sasbjik8fp" path="res://prefabs/npc/enemies/corrupted.tscn" id="6_pk6eq"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="7_hqss8"]
 
-[node name="Big Asteroid Sparse" type="Node3D"]
+[node name="Corruption" type="Node3D"]
 
 [node name="LevelStaples" parent="." instance=ExtResource("1_pk6eq")]
 

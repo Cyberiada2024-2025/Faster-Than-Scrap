@@ -18,3 +18,4 @@ func setup() -> void:
 
 	# position it
 	fuel_source.global_position = fuel_position.global_position
+	_spawn_vortex(fuel_position.global_position)

@@ -19,6 +19,7 @@ func setup() -> void:
 
 	# position it
 	portal.global_position = portal_position.global_position
+	_spawn_vortex(portal_position.global_position)
 
 
 func _process(_delta: float) -> void:

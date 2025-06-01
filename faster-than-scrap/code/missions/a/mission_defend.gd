@@ -25,6 +25,7 @@ func setup() -> void:
 
 	_spawn_defendable()
 	_spawn_small_defendables()
+	_spawn_vortex(defendable_position.global_position)
 
 
 func _spawn_defendable() -> void:

@@ -66,3 +66,7 @@ func create_label(text: String) -> Label3D:
 	label.position = Vector3(0, 0, 2)
 	label.rotation_degrees = Vector3(270, 0, 0)
 	return label
+
+
+func _spawn_vortex(target_position: Vector3) -> void:
+	SpaceVortex.spawn_vortex(target_position)

@@ -16,7 +16,3 @@ func get_node_color() -> Color:
 
 func get_node_description() -> String:
 	return about
-
-
-func get_mission_final_target_position() -> Vector3:
-	return Vector3.ZERO

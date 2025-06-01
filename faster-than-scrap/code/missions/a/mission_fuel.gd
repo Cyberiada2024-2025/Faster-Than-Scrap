@@ -14,7 +14,7 @@ func setup() -> void:
 	# create fuel source
 	fuel_source = fuel_source_prefab.instantiate()
 	fuel_source.add_child(create_label("FUEL"))
-	MissionManager.get_tree().current_scene.add_child(fuel_source)
+	MissionManager.get_tree().current_scene.add_child.call_deferred(fuel_source)
 
 	# position it
 	fuel_source.global_position = fuel_position.global_position

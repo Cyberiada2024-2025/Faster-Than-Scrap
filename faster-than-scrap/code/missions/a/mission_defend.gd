@@ -30,7 +30,7 @@ func setup() -> void:
 func _spawn_defendable() -> void:
 	# main defendable
 	var defendable: CapturePoint = defend_prefab.instantiate()
-	MissionManager.get_tree().current_scene.add_child(defendable)
+	MissionManager.get_tree().current_scene.add_child.call_deferred(defendable)
 	defendable.global_position = defendable_position.global_position
 	defendable.on_capture.connect(_on_capture)
 	defendable.capture_time = time_to_defend
@@ -40,7 +40,7 @@ func _spawn_small_defendables() -> void:
 	# smaller defendables
 	for small_defendable_pos in small_defendable_position:
 		var small_defendable: CapturePoint = small_defend_prefab.instantiate()
-		MissionManager.get_tree().current_scene.add_child(small_defendable)
+		MissionManager.get_tree().current_scene.add_child.call_deferred(small_defendable)
 		small_defendable.global_position = small_defendable_pos.global_position
 		small_defendable.on_capture.connect(_on_capture)
 		small_defendable.capture_time = small_time_to_defend

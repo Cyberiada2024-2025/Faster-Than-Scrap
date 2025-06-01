@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnp5ctgr2bm66"]
+[gd_scene load_steps=6 format=3 uid="uid://bnp5ctgr2bm66"]
 
-[ext_resource type="Script" uid="uid://dtqvp1s2omow6" path="res://code/evironment/setup_fly_scene.gd" id="1_dje0g"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="2_g7p6o"]
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="3_40ga3"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="4_ynct0"]
@@ -8,10 +7,6 @@
 [ext_resource type="Script" path="res://code/evironment/generate_nebulas.gd" id="6_dq8h5"]
 
 [node name="LevelStaples" type="Node3D"]
-
-[node name="SetupFlyScene" type="Node" parent="."]
-script = ExtResource("1_dje0g")
-metadata/_custom_type_script = "uid://dtqvp1s2omow6"
 
 [node name="HudSpawner" type="Node" parent="."]
 script = ExtResource("2_g7p6o")

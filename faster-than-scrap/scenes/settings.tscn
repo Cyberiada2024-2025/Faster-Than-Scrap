@@ -85,7 +85,11 @@ text = "Inertial Dampers"
 [node name="AirResistanceCheckBox" type="CheckBox" parent="Buttons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Void resistance"
+text = "Void resistance WIP"
+
+[node name="SkipCutscenesCheckBox" type="CheckBox" parent="Buttons"]
+layout_mode = 2
+text = "Skip Cutscenes WIP"
 
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("8_oe2nd")

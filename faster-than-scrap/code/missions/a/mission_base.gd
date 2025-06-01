@@ -8,7 +8,9 @@ extends Node
 signal finished(mission: Mission)
 
 enum MissionState { IN_PROGRESS, FINISHED, FAILED }
+enum Priority { MAIN_QUEST, SIDE_QUEST }
 
+@export var priority: Priority = Priority.MAIN_QUEST ## not use
 @export var time_to_hold: float = 2
 var state: MissionState = MissionState.IN_PROGRESS
 

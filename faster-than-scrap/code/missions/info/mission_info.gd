@@ -6,11 +6,8 @@ extends Resource
 ## It does not process the progress of a mission.
 ## Supposed to be used in the map select.
 
-enum Priority { MAIN_QUEST, SIDE_QUEST }
-
 @export var about: String = ""
 @export var difficulty: int
-@export var priority: Priority = Priority.MAIN_QUEST
 
 var mission: Mission
 

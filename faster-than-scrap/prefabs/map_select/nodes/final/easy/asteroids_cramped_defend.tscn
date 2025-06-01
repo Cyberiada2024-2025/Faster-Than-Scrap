@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_bswgb"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_dgntn"]
-[ext_resource type="Script" uid="uid://b6oaocatti460" path="res://code/missions/info/mission_info_defend.gd" id="4_1q8l5"]
+[ext_resource type="Script" path="res://code/missions/info/mission_info_defend.gd" id="4_1q8l5"]
 [ext_resource type="PackedScene" uid="uid://dkbg1gqlrntx6" path="res://prefabs/environment/defend_target_small.tscn" id="5_jowhw"]
 [ext_resource type="Texture2D" uid="uid://g3rub1aaciib" path="res://art/textures/ui/mapselect/Shield.png" id="6_b1li5"]
-[ext_resource type="PackedScene" uid="uid://c5t55uwwv5ewk" path="res://scenes/levels/easy/asteroids_cramped.tscn" id="6_k3250"]
+[ext_resource type="PackedScene" uid="uid://c5t55uwwv5ewk" path="res://scenes/levels/templates/easy/asteroids_cramped.tscn" id="6_k3250"]
 
 [sub_resource type="Resource" id="Resource_h6nkk"]
 script = ExtResource("4_1q8l5")

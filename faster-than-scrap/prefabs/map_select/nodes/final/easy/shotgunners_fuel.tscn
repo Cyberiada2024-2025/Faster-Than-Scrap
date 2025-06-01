@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_l5flx"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_5lhql"]
-[ext_resource type="Script" uid="uid://c44xyh1e7p5a5" path="res://code/missions/info/mission_info_fuel.gd" id="3_d0ccg"]
-[ext_resource type="PackedScene" uid="uid://d2nutk07rp8dw" path="res://scenes/levels/easy/shotgunners.tscn" id="4_l5flx"]
+[ext_resource type="Script" path="res://code/missions/info/mission_info_fuel.gd" id="3_d0ccg"]
+[ext_resource type="PackedScene" uid="uid://d2nutk07rp8dw" path="res://scenes/levels/templates/easy/shotgunners.tscn" id="4_l5flx"]
 [ext_resource type="Texture2D" uid="uid://bmw35cwms6w7t" path="res://art/textures/ui/mapselect/Canister.png" id="5_pw7w3"]
 
 [sub_resource type="Resource" id="Resource_awgas"]

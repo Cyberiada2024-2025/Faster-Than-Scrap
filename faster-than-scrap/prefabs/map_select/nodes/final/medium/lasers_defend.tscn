@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_r4xfp"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_k7x6k"]
 [ext_resource type="PackedScene" uid="uid://dtlau4bqcpa4b" path="res://prefabs/environment/defend_target.tscn" id="3_kq3cn"]
-[ext_resource type="Script" uid="uid://b6oaocatti460" path="res://code/missions/info/mission_info_defend.gd" id="4_8yllk"]
+[ext_resource type="Script" path="res://code/missions/info/mission_info_defend.gd" id="4_8yllk"]
 [ext_resource type="PackedScene" uid="uid://dkbg1gqlrntx6" path="res://prefabs/environment/defend_target_small.tscn" id="5_kbvh2"]
-[ext_resource type="PackedScene" uid="uid://c5m51a8jf7jrf" path="res://scenes/levels/medium/lasers.tscn" id="6_r4xfp"]
+[ext_resource type="PackedScene" uid="uid://c5m51a8jf7jrf" path="res://scenes/levels/templates/medium/lasers.tscn" id="6_r4xfp"]
 [ext_resource type="Texture2D" uid="uid://g3rub1aaciib" path="res://art/textures/ui/mapselect/Shield.png" id="7_53fpw"]
 
 [sub_resource type="Resource" id="Resource_h6nkk"]

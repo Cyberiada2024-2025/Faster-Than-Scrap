@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_eaer8"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_3xb47"]
 [ext_resource type="PackedScene" uid="uid://dtlau4bqcpa4b" path="res://prefabs/environment/defend_target.tscn" id="3_qmh2b"]
-[ext_resource type="Script" uid="uid://b6oaocatti460" path="res://code/missions/info/mission_info_defend.gd" id="4_wx335"]
+[ext_resource type="Script" path="res://code/missions/info/mission_info_defend.gd" id="4_wx335"]
 [ext_resource type="PackedScene" uid="uid://dkbg1gqlrntx6" path="res://prefabs/environment/defend_target_small.tscn" id="5_dgg1k"]
-[ext_resource type="PackedScene" uid="uid://ba07i3rgk8ia2" path="res://scenes/levels/hard/lots_of_heavy_enemies.tscn" id="6_wqn4u"]
+[ext_resource type="PackedScene" uid="uid://ba07i3rgk8ia2" path="res://scenes/levels/templates/hard/lots_of_heavy_enemies.tscn" id="6_wqn4u"]
 [ext_resource type="Texture2D" uid="uid://g3rub1aaciib" path="res://art/textures/ui/mapselect/Shield.png" id="7_gpf4n"]
 
 [sub_resource type="Resource" id="Resource_h6nkk"]

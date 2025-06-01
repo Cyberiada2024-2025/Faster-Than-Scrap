@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_86rqa"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_8sy2a"]
 [ext_resource type="PackedScene" uid="uid://dtlau4bqcpa4b" path="res://prefabs/environment/defend_target.tscn" id="3_f3rnm"]
-[ext_resource type="Script" uid="uid://b6oaocatti460" path="res://code/missions/info/mission_info_defend.gd" id="4_7tpgh"]
+[ext_resource type="Script" path="res://code/missions/info/mission_info_defend.gd" id="4_7tpgh"]
 [ext_resource type="PackedScene" uid="uid://dkbg1gqlrntx6" path="res://prefabs/environment/defend_target_small.tscn" id="5_seutm"]
-[ext_resource type="PackedScene" uid="uid://cec1ownqbtyag" path="res://scenes/levels/hard/big_asteroids_sparse.tscn" id="6_86rqa"]
+[ext_resource type="PackedScene" uid="uid://cec1ownqbtyag" path="res://scenes/levels/templates/hard/big_asteroids_sparse.tscn" id="6_86rqa"]
 [ext_resource type="Texture2D" uid="uid://g3rub1aaciib" path="res://art/textures/ui/mapselect/Shield.png" id="7_qcv4w"]
 
 [sub_resource type="Resource" id="Resource_h6nkk"]

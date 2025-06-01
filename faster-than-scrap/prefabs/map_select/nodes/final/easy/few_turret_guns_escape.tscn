@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_uhy1n"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_pdrmc"]
-[ext_resource type="Script" uid="uid://dupp04gxdeha5" path="res://code/missions/info/mission_info_escape.gd" id="3_8r8oe"]
-[ext_resource type="PackedScene" uid="uid://cxqel5a26uydo" path="res://scenes/levels/easy/few_turret_guns.tscn" id="4_uhy1n"]
+[ext_resource type="Script" path="res://code/missions/info/mission_info_escape.gd" id="3_8r8oe"]
+[ext_resource type="PackedScene" uid="uid://cxqel5a26uydo" path="res://scenes/levels/templates/easy/few_turret_guns.tscn" id="4_uhy1n"]
 [ext_resource type="Texture2D" uid="uid://b13ef553h7ss7" path="res://art/textures/ui/mapselect/vortex.png" id="5_pspmd"]
 
 [sub_resource type="Resource" id="Resource_2h3km"]

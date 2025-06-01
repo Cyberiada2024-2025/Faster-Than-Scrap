@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_buhwp"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_rexkb"]
-[ext_resource type="Script" uid="uid://c44xyh1e7p5a5" path="res://code/missions/info/mission_info_fuel.gd" id="3_4hixi"]
-[ext_resource type="PackedScene" uid="uid://c5m51a8jf7jrf" path="res://scenes/levels/medium/lasers.tscn" id="4_buhwp"]
+[ext_resource type="Script" path="res://code/missions/info/mission_info_fuel.gd" id="3_4hixi"]
+[ext_resource type="PackedScene" uid="uid://c5m51a8jf7jrf" path="res://scenes/levels/templates/medium/lasers.tscn" id="4_buhwp"]
 [ext_resource type="Texture2D" uid="uid://bmw35cwms6w7t" path="res://art/textures/ui/mapselect/Canister.png" id="5_ulk3o"]
 
 [sub_resource type="Resource" id="Resource_awgas"]

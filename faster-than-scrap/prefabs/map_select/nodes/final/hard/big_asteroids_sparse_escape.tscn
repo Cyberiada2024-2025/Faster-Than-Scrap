@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_3iw2v"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_aejta"]
-[ext_resource type="Script" uid="uid://dupp04gxdeha5" path="res://code/missions/info/mission_info_escape.gd" id="3_s2vhm"]
-[ext_resource type="PackedScene" uid="uid://cec1ownqbtyag" path="res://scenes/levels/hard/big_asteroids_sparse.tscn" id="4_3iw2v"]
+[ext_resource type="Script" path="res://code/missions/info/mission_info_escape.gd" id="3_s2vhm"]
+[ext_resource type="PackedScene" uid="uid://cec1ownqbtyag" path="res://scenes/levels/templates/hard/big_asteroids_sparse.tscn" id="4_3iw2v"]
 [ext_resource type="Texture2D" uid="uid://b13ef553h7ss7" path="res://art/textures/ui/mapselect/vortex.png" id="5_p4e5q"]
 
 [sub_resource type="Resource" id="Resource_2h3km"]

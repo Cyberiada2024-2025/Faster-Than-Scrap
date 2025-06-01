@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_pp7my"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_vxwgp"]
-[ext_resource type="Script" uid="uid://dupp04gxdeha5" path="res://code/missions/info/mission_info_escape.gd" id="3_pgkvg"]
-[ext_resource type="PackedScene" uid="uid://cr1umm51wsmta" path="res://scenes/levels/easy/few_drones.tscn" id="4_pp7my"]
+[ext_resource type="Script" path="res://code/missions/info/mission_info_escape.gd" id="3_pgkvg"]
+[ext_resource type="PackedScene" uid="uid://cr1umm51wsmta" path="res://scenes/levels/templates/easy/few_drones.tscn" id="4_pp7my"]
 [ext_resource type="Texture2D" uid="uid://b13ef553h7ss7" path="res://art/textures/ui/mapselect/vortex.png" id="5_dyolr"]
 
 [sub_resource type="Resource" id="Resource_2h3km"]

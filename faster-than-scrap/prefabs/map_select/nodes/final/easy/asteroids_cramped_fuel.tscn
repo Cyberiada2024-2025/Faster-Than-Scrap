@@ -2,42 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_dm6o3"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_d66f2"]
-[ext_resource type="PackedScene" uid="uid://c5t55uwwv5ewk" path="res://scenes/levels/templates/easy/asteroids_cramped.tscn" id="4_l1657"]
+[ext_resource type="Script" uid="uid://bmhwp67vae4gu" path="res://code/missions/info/mission_info.gd" id="3_l1657"]
 [ext_resource type="Texture2D" uid="uid://bmw35cwms6w7t" path="res://art/textures/ui/mapselect/Canister.png" id="4_masne"]
+[ext_resource type="PackedScene" uid="uid://dcem0fucmljrh" path="res://scenes/levels/final/easy/asteroids_cramped_get_fuel.tscn" id="4_xk4q7"]
 
-[sub_resource type="GDScript" id="GDScript_fvx6i"]
-script/source = "class_name MissionInfoFuel
-
-extends MissionInfo
-
-@export var fuel_position: Vector3 = Vector3.ZERO
-
-
-func start(scene_root: Node) -> void:
-	mission = MissionFuel.new()
-	mission.info = self
-	super(scene_root)
-
-
-func get_node_color() -> Color:
-	return Color.YELLOW
-
-
-func get_node_description() -> String:
-	return \"Mission Type:\\nGet fuel\"
-
-
-func get_mission_final_target_position() -> Vector3:
-	return fuel_position
-"
-
-[sub_resource type="Resource" id="Resource_awgas"]
-script = SubResource("GDScript_fvx6i")
-fuel_position = Vector3(-100, 0, -80)
-about = ""
+[sub_resource type="Resource" id="Resource_3cw18"]
+script = ExtResource("3_l1657")
+about = "GET SOME FUEL"
 difficulty = 0
-priority = 0
-metadata/_custom_type_script = "uid://c44xyh1e7p5a5"
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [node name="MissionFuelAsteroidsCramped" type="TextureButton"]
 modulate = Color(1, 1, 0, 1)
@@ -51,8 +24,8 @@ texture_normal = ExtResource("1_dm6o3")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_d66f2")
-mission_info = SubResource("Resource_awgas")
-level_prefab = ExtResource("4_l1657")
+mission_info = SubResource("Resource_3cw18")
+level_prefab = ExtResource("4_xk4q7")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.462291, 0.462291, 0.462291, 1)

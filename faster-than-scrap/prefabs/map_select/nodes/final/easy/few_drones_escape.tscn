@@ -2,17 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_pp7my"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_vxwgp"]
-[ext_resource type="Script" path="res://code/missions/info/mission_info_escape.gd" id="3_pgkvg"]
-[ext_resource type="PackedScene" uid="uid://cr1umm51wsmta" path="res://scenes/levels/templates/easy/few_drones.tscn" id="4_pp7my"]
+[ext_resource type="Script" uid="uid://bmhwp67vae4gu" path="res://code/missions/info/mission_info.gd" id="3_pp7my"]
+[ext_resource type="PackedScene" uid="uid://caybyxagodpfw" path="res://scenes/levels/final/easy/few_drones_escape.tscn" id="4_vxwgp"]
 [ext_resource type="Texture2D" uid="uid://b13ef553h7ss7" path="res://art/textures/ui/mapselect/vortex.png" id="5_dyolr"]
 
-[sub_resource type="Resource" id="Resource_2h3km"]
-script = ExtResource("3_pgkvg")
-portal_position = Vector3(6, 0, -171)
-about = ""
-difficulty = 1
-priority = 0
-metadata/_custom_type_script = "uid://dupp04gxdeha5"
+[sub_resource type="Resource" id="Resource_pgkvg"]
+script = ExtResource("3_pp7my")
+about = "Escape from the space!"
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [node name="MissionEscapeFewDrones" type="TextureButton"]
 modulate = Color(0, 0, 1, 1)
@@ -26,8 +24,8 @@ texture_normal = ExtResource("1_pp7my")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_vxwgp")
-mission_info = SubResource("Resource_2h3km")
-level_prefab = ExtResource("4_pp7my")
+mission_info = SubResource("Resource_pgkvg")
+level_prefab = ExtResource("4_vxwgp")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.462291, 0.462291, 0.462291, 1)

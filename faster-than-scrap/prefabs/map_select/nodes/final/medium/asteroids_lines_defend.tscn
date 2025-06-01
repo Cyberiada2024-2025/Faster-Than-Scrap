@@ -1,25 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpuf7urkvm3dp"]
+[gd_scene load_steps=7 format=3 uid="uid://dpuf7urkvm3dp"]
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_d00u5"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_hosxe"]
-[ext_resource type="PackedScene" uid="uid://dtlau4bqcpa4b" path="res://prefabs/environment/defend_target.tscn" id="3_fcy4j"]
-[ext_resource type="Script" path="res://code/missions/info/mission_info_defend.gd" id="4_oymfp"]
-[ext_resource type="PackedScene" uid="uid://dkbg1gqlrntx6" path="res://prefabs/environment/defend_target_small.tscn" id="5_v4g0j"]
-[ext_resource type="PackedScene" uid="uid://dpsaboehg5ija" path="res://scenes/levels/templates/medium/asteroids_lines.tscn" id="6_d00u5"]
+[ext_resource type="Script" uid="uid://bmhwp67vae4gu" path="res://code/missions/info/mission_info.gd" id="3_kflq7"]
+[ext_resource type="PackedScene" uid="uid://bpjc7uuyupx1c" path="res://scenes/levels/final/medium/asteroids_line_defend.tscn" id="4_kflq7"]
 [ext_resource type="Texture2D" uid="uid://g3rub1aaciib" path="res://art/textures/ui/mapselect/Shield.png" id="7_0hu7u"]
 
-[sub_resource type="Resource" id="Resource_h6nkk"]
-script = ExtResource("4_oymfp")
-defendable_position = Vector3(64, 0, -176)
-time_to_defend = 20.0
-defend_prefab = ExtResource("3_fcy4j")
-small_defendable_position = Array[Vector3]([Vector3(-100, 0, -50), Vector3(-80, 0, -110)])
-small_time_to_defend = 10.0
-small_defend_prefab = ExtResource("5_v4g0j")
-about = ""
+[sub_resource type="Resource" id="Resource_fj8or"]
+script = ExtResource("3_kflq7")
+about = "Defend"
 difficulty = 0
-priority = 0
-metadata/_custom_type_script = "uid://b6oaocatti460"
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [node name="MissionDefendAsteroidsLines" type="TextureButton"]
 modulate = Color(0, 1, 0, 1)
@@ -33,8 +24,8 @@ texture_normal = ExtResource("1_d00u5")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_hosxe")
-mission_info = SubResource("Resource_h6nkk")
-level_prefab = ExtResource("6_d00u5")
+mission_info = SubResource("Resource_fj8or")
+level_prefab = ExtResource("4_kflq7")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.462291, 0.462291, 0.462291, 1)

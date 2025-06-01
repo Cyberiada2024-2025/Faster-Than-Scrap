@@ -2,17 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_buhwp"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_rexkb"]
-[ext_resource type="Script" path="res://code/missions/info/mission_info_fuel.gd" id="3_4hixi"]
-[ext_resource type="PackedScene" uid="uid://c5m51a8jf7jrf" path="res://scenes/levels/templates/medium/lasers.tscn" id="4_buhwp"]
+[ext_resource type="Script" uid="uid://bmhwp67vae4gu" path="res://code/missions/info/mission_info.gd" id="3_buhwp"]
+[ext_resource type="PackedScene" uid="uid://dg76vtqkyq22q" path="res://scenes/levels/final/medium/lasers_get_fuel.tscn" id="4_rexkb"]
 [ext_resource type="Texture2D" uid="uid://bmw35cwms6w7t" path="res://art/textures/ui/mapselect/Canister.png" id="5_ulk3o"]
 
-[sub_resource type="Resource" id="Resource_awgas"]
-script = ExtResource("3_4hixi")
-fuel_position = Vector3(-130, 0, -165)
-about = ""
+[sub_resource type="Resource" id="Resource_4hixi"]
+script = ExtResource("3_buhwp")
+about = "Get fuel - LASERSS"
 difficulty = 0
-priority = 0
-metadata/_custom_type_script = "uid://c44xyh1e7p5a5"
 
 [node name="MissionFuelLasers" type="TextureButton"]
 modulate = Color(1, 1, 0, 1)
@@ -26,8 +23,8 @@ texture_normal = ExtResource("1_buhwp")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_rexkb")
-mission_info = SubResource("Resource_awgas")
-level_prefab = ExtResource("4_buhwp")
+mission_info = SubResource("Resource_4hixi")
+level_prefab = ExtResource("4_rexkb")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.462291, 0.462291, 0.462291, 1)

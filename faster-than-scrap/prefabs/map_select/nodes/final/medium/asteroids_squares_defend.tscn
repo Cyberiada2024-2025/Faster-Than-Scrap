@@ -1,25 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://dahnnsbuhubmv"]
+[gd_scene load_steps=7 format=3 uid="uid://dahnnsbuhubmv"]
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_t1mo6"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_k78yl"]
-[ext_resource type="PackedScene" uid="uid://dtlau4bqcpa4b" path="res://prefabs/environment/defend_target.tscn" id="3_f6b5j"]
-[ext_resource type="Script" path="res://code/missions/info/mission_info_defend.gd" id="4_8pv1l"]
-[ext_resource type="PackedScene" uid="uid://dkbg1gqlrntx6" path="res://prefabs/environment/defend_target_small.tscn" id="5_c2bdg"]
-[ext_resource type="PackedScene" uid="uid://bfrsupiyi0gj0" path="res://scenes/levels/templates/medium/asteroids_squares.tscn" id="6_t1mo6"]
+[ext_resource type="Script" uid="uid://bmhwp67vae4gu" path="res://code/missions/info/mission_info.gd" id="3_1qrew"]
+[ext_resource type="PackedScene" uid="uid://rk0er3r4rdr5" path="res://scenes/levels/final/medium/asteroids_squares_defend.tscn" id="4_rrlyi"]
 [ext_resource type="Texture2D" uid="uid://g3rub1aaciib" path="res://art/textures/ui/mapselect/Shield.png" id="7_o6rnh"]
 
-[sub_resource type="Resource" id="Resource_h6nkk"]
-script = ExtResource("4_8pv1l")
-defendable_position = Vector3(-80, 0, -100)
-time_to_defend = 20.0
-defend_prefab = ExtResource("3_f6b5j")
-small_defendable_position = Array[Vector3]([Vector3(75, 0, 55), Vector3(62, 0, -44)])
-small_time_to_defend = 5.0
-small_defend_prefab = ExtResource("5_c2bdg")
-about = ""
+[sub_resource type="Resource" id="Resource_t1mo6"]
+script = ExtResource("3_1qrew")
+about = "Defend - beware of squares"
 difficulty = 0
-priority = 0
-metadata/_custom_type_script = "uid://b6oaocatti460"
 
 [node name="MissionDefendAsteroidsSquares" type="TextureButton"]
 modulate = Color(0, 1, 0, 1)
@@ -33,8 +23,8 @@ texture_normal = ExtResource("1_t1mo6")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_k78yl")
-mission_info = SubResource("Resource_h6nkk")
-level_prefab = ExtResource("6_t1mo6")
+mission_info = SubResource("Resource_t1mo6")
+level_prefab = ExtResource("4_rrlyi")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.462291, 0.462291, 0.462291, 1)

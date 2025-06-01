@@ -9,19 +9,13 @@ extends Resource
 @export var about: String = ""
 @export var difficulty: int
 
-var mission: Mission
-
-
-func start(scene_root: Node) -> void:
-	scene_root.add_child.call_deferred(mission)
-
 
 func get_node_color() -> Color:
 	return Color.BLACK
 
 
 func get_node_description() -> String:
-	return ""
+	return about
 
 
 func get_mission_final_target_position() -> Vector3:

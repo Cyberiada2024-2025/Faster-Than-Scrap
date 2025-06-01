@@ -1,48 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6s0ls2212fuo"]
+[gd_scene load_steps=7 format=3 uid="uid://c6s0ls2212fuo"]
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_bswgb"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_dgntn"]
-[ext_resource type="PackedScene" uid="uid://dkbg1gqlrntx6" path="res://prefabs/environment/defend_target_small.tscn" id="5_jowhw"]
+[ext_resource type="Script" uid="uid://bmhwp67vae4gu" path="res://code/missions/info/mission_info.gd" id="3_x15v3"]
+[ext_resource type="PackedScene" uid="uid://bw25vofmqhjp6" path="res://scenes/levels/final/easy/asteroids_cramped_defend.tscn" id="4_x15v3"]
 [ext_resource type="Texture2D" uid="uid://g3rub1aaciib" path="res://art/textures/ui/mapselect/Shield.png" id="6_b1li5"]
-[ext_resource type="PackedScene" uid="uid://c5t55uwwv5ewk" path="res://scenes/levels/templates/easy/asteroids_cramped.tscn" id="6_k3250"]
 
-[sub_resource type="GDScript" id="GDScript_x15v3"]
-script/source = "class_name MissionInfoDefend
-
-extends MissionInfo
-
-
-
-func start(scene_root: Node) -> void:
-	mission = MissionTimedDefend.new()
-	mission.info = self
-	super(scene_root)
-
-
-func get_node_color() -> Color:
-	return Color.GREEN
-
-
-func get_node_description() -> String:
-	return \"Mission Type:\\nDefend\"
-
-
-func get_mission_final_target_position() -> Vector3:
-	return defendable_position
-"
-
-[sub_resource type="Resource" id="Resource_h6nkk"]
-script = SubResource("GDScript_x15v3")
-defendable_position = Vector3(-100, 0, -80)
-time_to_defend = 20.0
-defend_prefab = ExtResource("5_jowhw")
-small_defendable_position = Array[Vector3]([])
-small_time_to_defend = 30.0
-small_defend_prefab = ExtResource("5_jowhw")
-about = ""
+[sub_resource type="Resource" id="Resource_bpxjr"]
+script = ExtResource("3_x15v3")
+about = "DEFEND"
 difficulty = 0
-priority = 0
-metadata/_custom_type_script = "uid://b6oaocatti460"
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [node name="MissionDefendAsteroidsCramped" type="TextureButton"]
 modulate = Color(0, 1, 0, 1)
@@ -56,8 +24,8 @@ texture_normal = ExtResource("1_bswgb")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_dgntn")
-mission_info = SubResource("Resource_h6nkk")
-level_prefab = ExtResource("6_k3250")
+mission_info = SubResource("Resource_bpxjr")
+level_prefab = ExtResource("4_x15v3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.462291, 0.462291, 0.462291, 1)

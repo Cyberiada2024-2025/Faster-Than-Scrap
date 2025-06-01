@@ -2,17 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_tyhrw"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_37qti"]
-[ext_resource type="Script" path="res://code/missions/info/mission_info_fuel.gd" id="3_ol4kd"]
-[ext_resource type="PackedScene" uid="uid://cxqel5a26uydo" path="res://scenes/levels/templates/easy/few_turret_guns.tscn" id="4_tyhrw"]
+[ext_resource type="Script" uid="uid://bmhwp67vae4gu" path="res://code/missions/info/mission_info.gd" id="3_tyhrw"]
+[ext_resource type="PackedScene" uid="uid://rs42af3e03ig" path="res://scenes/levels/final/easy/few_turret_guns_get_fuel.tscn" id="4_37qti"]
 [ext_resource type="Texture2D" uid="uid://bmw35cwms6w7t" path="res://art/textures/ui/mapselect/Canister.png" id="5_kr006"]
 
-[sub_resource type="Resource" id="Resource_awgas"]
-script = ExtResource("3_ol4kd")
-fuel_position = Vector3(3, 0, -150)
-about = ""
+[sub_resource type="Resource" id="Resource_ol4kd"]
+script = ExtResource("3_tyhrw")
+about = "Steal the fuel from turrets!"
 difficulty = 0
-priority = 0
-metadata/_custom_type_script = "uid://c44xyh1e7p5a5"
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [node name="MissionFuelFewTurretGuns" type="TextureButton"]
 modulate = Color(1, 1, 0, 1)
@@ -26,8 +24,8 @@ texture_normal = ExtResource("1_tyhrw")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_37qti")
-mission_info = SubResource("Resource_awgas")
-level_prefab = ExtResource("4_tyhrw")
+mission_info = SubResource("Resource_ol4kd")
+level_prefab = ExtResource("4_37qti")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.462291, 0.462291, 0.462291, 1)

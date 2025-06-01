@@ -2,17 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_2f4k5"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_yr4pd"]
-[ext_resource type="Script" path="res://code/missions/info/mission_info_escape.gd" id="3_itlki"]
-[ext_resource type="PackedScene" uid="uid://diof2yyi43m0j" path="res://scenes/levels/templates/medium/swarms.tscn" id="4_d7wxj"]
+[ext_resource type="Script" uid="uid://bmhwp67vae4gu" path="res://code/missions/info/mission_info.gd" id="3_d7wxj"]
+[ext_resource type="PackedScene" uid="uid://pamatfxtjl6c" path="res://scenes/levels/final/medium/swarms_escape.tscn" id="4_cdrrb"]
 [ext_resource type="Texture2D" uid="uid://b13ef553h7ss7" path="res://art/textures/ui/mapselect/vortex.png" id="5_b1rbl"]
 
-[sub_resource type="Resource" id="Resource_2h3km"]
-script = ExtResource("3_itlki")
-portal_position = Vector3(0, 0, -213)
-about = ""
-difficulty = 1
-priority = 0
-metadata/_custom_type_script = "uid://dupp04gxdeha5"
+[sub_resource type="Resource" id="Resource_dl063"]
+script = ExtResource("3_d7wxj")
+about = "Escape  - SWARMS"
+difficulty = 0
 
 [node name="MissionEscapeSwarms" type="TextureButton"]
 modulate = Color(0, 0, 1, 1)
@@ -26,8 +23,8 @@ texture_normal = ExtResource("1_2f4k5")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_yr4pd")
-mission_info = SubResource("Resource_2h3km")
-level_prefab = ExtResource("4_d7wxj")
+mission_info = SubResource("Resource_dl063")
+level_prefab = ExtResource("4_cdrrb")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.462291, 0.462291, 0.462291, 1)

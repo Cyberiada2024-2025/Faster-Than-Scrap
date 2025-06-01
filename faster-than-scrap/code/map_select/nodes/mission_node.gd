@@ -3,7 +3,7 @@ class_name MissionNode
 
 extends MapNode
 
-@export var mission_info: MissionInfo
+@export var mission_info: MissionInfo = MissionInfo.new()
 @export var level_prefab: PackedScene
 
 

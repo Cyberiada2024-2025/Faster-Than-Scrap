@@ -2,17 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_j5xsd"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_oldpx"]
-[ext_resource type="Script" path="res://code/missions/info/mission_info_fuel.gd" id="3_qwawp"]
-[ext_resource type="PackedScene" uid="uid://bfrsupiyi0gj0" path="res://scenes/levels/templates/medium/asteroids_squares.tscn" id="4_j5xsd"]
+[ext_resource type="Script" uid="uid://bmhwp67vae4gu" path="res://code/missions/info/mission_info.gd" id="3_j5xsd"]
+[ext_resource type="PackedScene" uid="uid://dtu7f5cqn36jo" path="res://scenes/levels/final/medium/asteroids_squares_get_fuel.tscn" id="4_oldpx"]
 [ext_resource type="Texture2D" uid="uid://bmw35cwms6w7t" path="res://art/textures/ui/mapselect/Canister.png" id="5_ii5e2"]
 
-[sub_resource type="Resource" id="Resource_awgas"]
-script = ExtResource("3_qwawp")
-fuel_position = Vector3(-80, 0, -100)
-about = ""
+[sub_resource type="Resource" id="Resource_qwawp"]
+script = ExtResource("3_j5xsd")
+about = "Get fuel - SQUARES"
 difficulty = 0
-priority = 0
-metadata/_custom_type_script = "uid://c44xyh1e7p5a5"
 
 [node name="MissionFuelAsteroidsSquares" type="TextureButton"]
 modulate = Color(1, 1, 0, 1)
@@ -26,8 +23,8 @@ texture_normal = ExtResource("1_j5xsd")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_oldpx")
-mission_info = SubResource("Resource_awgas")
-level_prefab = ExtResource("4_j5xsd")
+mission_info = SubResource("Resource_qwawp")
+level_prefab = ExtResource("4_oldpx")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.462291, 0.462291, 0.462291, 1)

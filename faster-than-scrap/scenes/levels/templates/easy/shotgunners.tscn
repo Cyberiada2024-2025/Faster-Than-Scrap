@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/npc/enemies/shotgunner.tscn" id="3_e5cyy"]
 [ext_resource type="PackedScene" uid="uid://b7d6dp7jrytp3" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group.tscn" id="4_rrqwo"]
 
-[node name="Lasers" type="Node3D"]
+[node name="Shotgunners" type="Node3D"]
 
 [node name="LevelStaples" parent="." instance=ExtResource("1_e5cyy")]
 

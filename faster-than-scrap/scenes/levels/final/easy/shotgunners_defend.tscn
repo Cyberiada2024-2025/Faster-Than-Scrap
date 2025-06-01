@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbtbiqg2rf01i"]
+
+[ext_resource type="Script" uid="uid://4w17qx65voq6" path="res://code/missions/a/mission_defend.gd" id="1_drbo7"]
+[ext_resource type="PackedScene" uid="uid://d2nutk07rp8dw" path="res://scenes/levels/templates/easy/shotgunners.tscn" id="2_drbo7"]
+
+[node name="ShotgunnersDefend" type="Node3D"]
+
+[node name="MissionDefend" type="Node" parent="." node_paths=PackedStringArray("defendable_position")]
+script = ExtResource("1_drbo7")
+defendable_position = NodePath("../Defendable Position")
+metadata/_custom_type_script = "uid://4w17qx65voq6"
+
+[node name="Defendable Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.456, 0, -103.117)
+
+[node name="Shotgunners" parent="." instance=ExtResource("2_drbo7")]

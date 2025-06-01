@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw25vofmqhjp6"]
+
+[ext_resource type="PackedScene" uid="uid://c5t55uwwv5ewk" path="res://scenes/levels/templates/easy/asteroids_cramped.tscn" id="1_jniy3"]
+[ext_resource type="Script" uid="uid://4w17qx65voq6" path="res://code/missions/a/mission_defend.gd" id="2_pnbi0"]
+
+[node name="Asteroid crampedDefend" type="Node3D"]
+
+[node name="Asteroid cramped" parent="." instance=ExtResource("1_jniy3")]
+
+[node name="MissionTimedDefend" type="Node" parent="." node_paths=PackedStringArray("defendable_position")]
+script = ExtResource("2_pnbi0")
+defendable_position = NodePath("../Main Defendable position")
+metadata/_custom_type_script = "uid://4w17qx65voq6"
+
+[node name="Main Defendable position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, -80)

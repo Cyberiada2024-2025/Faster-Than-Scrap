@@ -2,12 +2,37 @@
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_dm6o3"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_d66f2"]
-[ext_resource type="Script" path="res://code/missions/info/mission_info_fuel.gd" id="3_me5vk"]
 [ext_resource type="PackedScene" uid="uid://c5t55uwwv5ewk" path="res://scenes/levels/templates/easy/asteroids_cramped.tscn" id="4_l1657"]
 [ext_resource type="Texture2D" uid="uid://bmw35cwms6w7t" path="res://art/textures/ui/mapselect/Canister.png" id="4_masne"]
 
+[sub_resource type="GDScript" id="GDScript_fvx6i"]
+script/source = "class_name MissionInfoFuel
+
+extends MissionInfo
+
+@export var fuel_position: Vector3 = Vector3.ZERO
+
+
+func start(scene_root: Node) -> void:
+	mission = MissionFuel.new()
+	mission.info = self
+	super(scene_root)
+
+
+func get_node_color() -> Color:
+	return Color.YELLOW
+
+
+func get_node_description() -> String:
+	return \"Mission Type:\\nGet fuel\"
+
+
+func get_mission_final_target_position() -> Vector3:
+	return fuel_position
+"
+
 [sub_resource type="Resource" id="Resource_awgas"]
-script = ExtResource("3_me5vk")
+script = SubResource("GDScript_fvx6i")
 fuel_position = Vector3(-100, 0, -80)
 about = ""
 difficulty = 0

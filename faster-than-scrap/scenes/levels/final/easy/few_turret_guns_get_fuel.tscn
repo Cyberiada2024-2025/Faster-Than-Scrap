@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://rs42af3e03ig"]
+
+[ext_resource type="Script" uid="uid://cne5mpb7d4xce" path="res://code/missions/a/mission_fuel.gd" id="1_6hpj7"]
+[ext_resource type="PackedScene" uid="uid://cxqel5a26uydo" path="res://scenes/levels/templates/easy/few_turret_guns.tscn" id="2_65d7s"]
+
+[node name="FewTurretGunsGetFuel" type="Node3D"]
+
+[node name="MissionGetFuel" type="Node" parent="." node_paths=PackedStringArray("fuel_position")]
+script = ExtResource("1_6hpj7")
+fuel_position = NodePath("../Fuel Position")
+metadata/_custom_type_script = "uid://cne5mpb7d4xce"
+
+[node name="Fuel Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3735, 0, -138.237)
+
+[node name="Lasers" parent="." instance=ExtResource("2_65d7s")]

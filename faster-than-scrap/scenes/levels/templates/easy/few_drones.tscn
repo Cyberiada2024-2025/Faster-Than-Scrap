@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dsbr8a55sppml" path="res://prefabs/npc/enemies/drone.tscn" id="3_i4jrc"]
 [ext_resource type="PackedScene" uid="uid://dlp3fs4qym6g2" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group_straight_line.tscn" id="5_6htnx"]
 
-[node name="Lasers" type="Node3D"]
+[node name="Few Drones" type="Node3D"]
 
 [node name="LevelStaples" parent="." instance=ExtResource("1_kc6dd")]
 

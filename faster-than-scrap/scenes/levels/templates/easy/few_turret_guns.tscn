@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ceu6i6ji4q3oq" path="res://prefabs/npc/enemies/turret_gun.tscn" id="3_wn2pp"]
 [ext_resource type="PackedScene" uid="uid://dlp3fs4qym6g2" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group_straight_line.tscn" id="4_fe0fb"]
 
-[node name="Lasers" type="Node3D"]
+[node name="Few Turret Guns" type="Node3D"]
 
 [node name="LevelStaples" parent="." instance=ExtResource("1_wn2pp")]
 

@@ -2,7 +2,15 @@ class_name MissionTimedDefend
 
 extends Mission
 
-@export var info: MissionInfoDefend
+@export_category("Main defendable")
+@export var defendable_position: Vector3 = Vector3.ZERO
+@export var time_to_defend: float = 20
+@export var defend_prefab = preload("res://prefabs/environment/defend_target.tscn")
+
+@export_category("Small defendables")
+@export var small_defendable_position: Array[Vector3] = []
+@export var small_time_to_defend: float = 5
+@export var small_defend_prefab = preload("res://prefabs/environment/defend_target_small.tscn")
 
 var _capture_counter: int = 1
 
@@ -21,11 +29,11 @@ func setup() -> void:
 
 func _spawn_defendable() -> void:
 	# main defendable
-	var defendable: CapturePoint = info.defend_prefab.instantiate()
+	var defendable: CapturePoint = defend_prefab.instantiate()
 	MissionManager.get_tree().current_scene.add_child(defendable)
-	defendable.global_position = info.defendable_position
+	defendable.global_position = defendable_position
 	defendable.on_capture.connect(_on_capture)
-	defendable.capture_time = info.time_to_defend
+	defendable.capture_time = time_to_defend
 
 
 func _spawn_small_defendables() -> void:

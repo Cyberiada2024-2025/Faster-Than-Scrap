@@ -2,7 +2,7 @@ class_name MissionFuel
 
 extends Mission
 
-var info: MissionInfoFuel
+@export var fuel_position: Vector3 = Vector3.ZERO
 # TODO: Substitute to fuel spawn
 var fuel_source: Asteroid
 var fuel_source_prefab = preload("res://prefabs/environment/fuel_source.tscn")
@@ -17,4 +17,4 @@ func setup() -> void:
 	MissionManager.get_tree().current_scene.add_child(fuel_source)
 
 	# position it
-	fuel_source.global_position = info.fuel_position
+	fuel_source.global_position = fuel_position

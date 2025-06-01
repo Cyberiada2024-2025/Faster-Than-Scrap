@@ -2,15 +2,6 @@ class_name MissionInfoDefend
 
 extends MissionInfo
 
-@export_category("Main defendable")
-@export var defendable_position: Vector3 = Vector3.ZERO
-@export var time_to_defend: float = 20
-@export var defend_prefab = preload("res://prefabs/environment/defend_target.tscn")
-
-@export_category("Small defendables")
-@export var small_defendable_position: Array[Vector3] = []
-@export var small_time_to_defend: float = 5
-@export var small_defend_prefab = preload("res://prefabs/environment/defend_target_small.tscn")
 
 
 func start(scene_root: Node) -> void:

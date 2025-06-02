@@ -281,6 +281,13 @@ func _dettach_module() -> void:
 		active_module.reparent(area)
 
 
+func _can_module_have_assigned_key(active_module: Module) -> bool:
+	return (
+		active_module.is_activable
+		or (active_module.module_name == "Cockpit" and SettingsManager.brakes_enabled == true)
+	)
+
+
 func _input(event: InputEvent):
 	_update_lmb_state(event)
 	_update_mouse_3d_position()
@@ -304,13 +311,7 @@ func _input(event: InputEvent):
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
 					active_module = _get_module_from_hit(hit)
-					if (
-						active_module.is_activable
-						or (
-							active_module.module_name == "Cockpit"
-							and SettingsManager.brakes_enabled == true
-						)
-					):
+					if _can_module_have_assigned_key(active_module):
 						state = State.SETTING_BUTTON
 						choose_key_message.visible = true
 						print("new state = setting button")

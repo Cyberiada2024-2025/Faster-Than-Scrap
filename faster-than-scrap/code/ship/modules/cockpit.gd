@@ -7,6 +7,13 @@ extends Module
 ## It informs the ship on death.
 
 
+func _enter_tree() -> void:
+	if not SettingsManager.brakes_enabled:
+		var cockpit_sprite = $ModuleDisplay/Sprite3D
+		var texture = load("res://art/textures/ui/module icons/placeholder/Cockpit Icon.png")
+		cockpit_sprite.texture = texture
+
+
 func _on_destroy() -> void:
 	super()  # call base
 	ship.on_destroy()  # inform ship of death

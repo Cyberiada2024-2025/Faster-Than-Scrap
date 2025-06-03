@@ -18,6 +18,11 @@ const END_ANIM: String = "Off"
 @export var mesh: MeshInstance3D
 @export var length_name: String = "current_length"
 
+@export
+var hit_particle_prefab: PackedScene = preload("res://prefabs/vfx/particles/beam_particles.tscn")
+var hit_particle = null
+var is_beam_hitting: bool = false
+
 var animation_check: bool
 var _beam_length: float
 
@@ -34,6 +39,15 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if _damage_raycast.is_colliding():
+		if not is_beam_hitting:
+			is_beam_hitting = true
+			if hit_particle == null:
+				hit_particle = hit_particle_prefab.instantiate()
+				holder.add_child(hit_particle)
+			else:
+				hit_particle.emitting = true
+		hit_particle.global_position = _damage_raycast.get_collision_point()
+		hit_particle.look_at(_damage_raycast.global_position)
 		var ray_length = _damage_raycast.global_position.distance_to(
 			_damage_raycast.get_collision_point()
 		)
@@ -41,13 +55,19 @@ func _process(_delta: float) -> void:
 		if mesh != null:
 			mesh.material_override.set_shader_parameter(length_name, ray_length)
 	else:
+		if is_beam_hitting:
+			is_beam_hitting = false
+			hit_particle.emitting = false
 		beam_indicator.scale.z = _beam_length
 		if mesh != null:
 			mesh.material_override.set_shader_parameter(length_name, _beam_length)
 
+
 func _notification(notification):
-	if (notification == NOTIFICATION_PREDELETE):
+	if notification == NOTIFICATION_PREDELETE:
 		holder.reparent(get_parent())
 		if animation_check:
 			player.play(END_ANIM)
+		if hit_particle != null:
+			hit_particle.emitting = false
 		holder.wait_free()

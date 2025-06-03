@@ -30,8 +30,8 @@ radius = 0.2
 height = 0.4
 
 [node name="BeamParticles" type="GPUParticles3D"]
-visible = false
 material_override = SubResource("StandardMaterial3D_o3xl1")
-amount = 32
+amount = 64
+speed_scale = 2.0
 process_material = SubResource("ParticleProcessMaterial_fg0bf")
 draw_pass_1 = SubResource("SphereMesh_x8uhr")

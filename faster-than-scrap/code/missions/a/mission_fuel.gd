@@ -2,32 +2,20 @@ class_name MissionFuel
 
 extends Mission
 
-var info: MissionInfoFuel
+@export var fuel_position: Node3D
 # TODO: Substitute to fuel spawn
-var portal: Node3D
-var portal_prefab = preload("res://prefabs/environment/portal.tscn")
+var fuel_source: Asteroid
+var fuel_source_prefab = preload("res://prefabs/environment/fuel_source.tscn")
 
 
 func setup() -> void:
 	super()
 
-	# TODO: Substitute to fuel spawn
-	# create escape object
-	portal = portal_prefab.instantiate()
-	portal.add_child(create_label("EXIT"))
-	MissionManager.get_tree().current_scene.add_child(portal)
+	# create fuel source
+	fuel_source = fuel_source_prefab.instantiate()
+	fuel_source.add_child(create_label("FUEL"))
+	MissionManager.get_tree().current_scene.add_child.call_deferred(fuel_source)
 
 	# position it
-	portal.global_position = info.portal_position
-
-
-func _process(_delta: float) -> void:
-	super(_delta)
-	if _ended():
-		return
-
-	# TODO: Substitute to fuel logic
-	if portal.position.distance_to(GameManager.player_ship.position) < 4:
-		print("ESCAPE SUCCESS")
-		state = MissionState.FINISHED
-		finished.emit(self)
+	fuel_source.global_position = fuel_position.global_position
+	_spawn_vortex(fuel_position.global_position)

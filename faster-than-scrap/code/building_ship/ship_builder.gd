@@ -54,7 +54,6 @@ var scene_loader: SceneLoader
 
 
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS
 	scene_loader = $SceneLoader
 
 	GameManager.player_ship.position = Vector3.ZERO
@@ -260,6 +259,7 @@ func _attach_module() -> void:
 	active_module.set_ship_reference(attach_target.ship)  # copy the reference to the ship
 	attach_target.child_modules.append(active_module)
 	active_module.parent_module = attach_target
+	active_module.attach()
 
 
 ## Function for setting up the module, when it is to be dettached
@@ -267,6 +267,7 @@ func _attach_module() -> void:
 ## It will add an area3D if needed to allow clicking the module, and set module
 ## parameters.
 func _dettach_module() -> void:
+	active_module.detach()
 	active_module.set_ship_reference(null)
 	if active_module.parent_module != null:
 		active_module.parent_module.child_modules.erase(active_module)
@@ -278,6 +279,13 @@ func _dettach_module() -> void:
 		get_tree().current_scene.add_child(area)
 		area.position = active_module.position
 		active_module.reparent(area)
+
+
+func _can_module_have_assigned_key(active_module: Module) -> bool:
+	return (
+		active_module.is_activable
+		or (active_module.module_name == "Cockpit" and SettingsManager.brakes_enabled == true)
+	)
 
 
 func _input(event: InputEvent):
@@ -303,9 +311,10 @@ func _input(event: InputEvent):
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
 					active_module = _get_module_from_hit(hit)
-					state = State.SETTING_BUTTON
-					choose_key_message.visible = true
-					print("new state = setting button")
+					if _can_module_have_assigned_key(active_module):
+						state = State.SETTING_BUTTON
+						choose_key_message.visible = true
+						print("new state = setting button")
 			elif event is InputEventMouse:
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
@@ -322,10 +331,11 @@ func _input(event: InputEvent):
 			## check if keyboard pressed
 			if event is InputEventKey and event.pressed:
 				var key_event: InputEventKey = event
-				active_module.change_key(key_event.keycode)
-				state = State.NONE
-				choose_key_message.visible = false
-				print("new state = none")
+				if not key_event.keycode in active_module.NOT_ACTIVABLE_KEYS:
+					active_module.change_key(key_event.keycode)
+					state = State.NONE
+					choose_key_message.visible = false
+					print("new state = none")
 
 
 #        +------------+

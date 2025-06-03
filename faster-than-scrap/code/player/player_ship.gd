@@ -5,16 +5,25 @@ extends Ship
 ## Extension of Ship class.
 ## Supposed to be used only by player.
 
-signal energy_change
-signal energy_max_change
-signal energy_warning
+signal energy_change(energy: float)
+signal energy_max_change(max_energy: float)
+signal energy_warning(energy: float)
+
+signal fuel_change(new_value: int)
 
 @export var cockpit: Cockpit
 
 ## All modules of the ship (to prevent checking the tree hierarchy).
 ## Mostly used for building phase
 @export var modules: Array[Module] = []
-var current_fuel: int = 3
+var current_fuel: int = 1:
+	get:
+		return current_fuel
+	set(new_value):
+		var temp = current_fuel
+		current_fuel = new_value
+		if temp != current_fuel:
+			fuel_change.emit(current_fuel)
 
 var _saved_position: Vector3 = Vector3.ZERO
 var _saved_rotation: Vector3 = Vector3.ZERO
@@ -29,7 +38,6 @@ func _ready() -> void:
 	GameManager.new_game_state.connect(on_game_change_state)
 	energy_max_change.emit(max_energy)
 	_on_energy_change()
-
 
 func on_game_change_state(new_state: GameState.State) -> void:
 	match new_state:
@@ -65,6 +73,12 @@ func get_saved_rotation():
 func _on_energy_change() -> void:
 	super()
 	energy_change.emit(energy)
+
+
+## Called whenever the max energy amount changes.
+func _on_energy_max_change() -> void:
+	super()
+	energy_max_change.emit(max_energy)
 
 
 func use_energy(amount: float) -> bool:

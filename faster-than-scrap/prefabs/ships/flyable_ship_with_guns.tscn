@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://c3v1bk85mx7p3"]
+[gd_scene load_steps=18 format=3 uid="uid://c3v1bk85mx7p3"]
 
 [ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/player/player_ship.gd" id="1_k3yb4"]
 [ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="2_5kypi"]
+[ext_resource type="PackedScene" uid="uid://5lsgaj0hoqfu" path="res://prefabs/vfx/leave_animation.tscn" id="3_bgch1"]
 [ext_resource type="PackedScene" uid="uid://b66go7dtdv2m1" path="res://prefabs/modules/module_base.tscn" id="3_fx3ql"]
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="4_nxst3"]
 [ext_resource type="PackedScene" uid="uid://b6fx656pcno7s" path="res://prefabs/modules/shield_module.tscn" id="5_4ovpx"]
@@ -25,18 +26,23 @@ top_radius = 0.1
 bottom_radius = 0.1
 height = 1.0
 
-[node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "modules")]
+[node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "body", "modules", "leave_animation")]
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 gravity_scale = 0.0
 script = ExtResource("1_k3yb4")
 cockpit = NodePath("Cockpit")
+body = NodePath(".")
 modules = [NodePath("Cockpit"), NodePath("BaseModule"), NodePath("Thruster Backward"), NodePath("Thruster Right"), NodePath("Thruster Left"), NodePath("Thruster Forward"), NodePath("ShieldModule"), null]
+team = 0
+leave_animation = NodePath("Cockpit/AnimationPlayer")
 
 [node name="Cockpit" parent="." node_paths=PackedStringArray("ship", "child_modules") instance=ExtResource("2_5kypi")]
 ship = NodePath("..")
 child_modules = [NodePath("../BaseModule"), NodePath("../Thruster Backward")]
+
+[node name="AnimationPlayer" parent="Cockpit" instance=ExtResource("3_bgch1")]
 
 [node name="BaseModule" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("3_fx3ql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0289251, 0, -1.25452)

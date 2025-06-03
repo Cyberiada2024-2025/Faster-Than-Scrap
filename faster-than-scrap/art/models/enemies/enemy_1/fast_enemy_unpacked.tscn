@@ -3,13 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://dre33esgq52yw" path="res://art/models/enemies/enemy_1/enemy_1.glb" id="1_vapdw"]
 [ext_resource type="Shader" uid="uid://daw8hb8ypy7ri" path="res://art/shaders/Enemies.tres" id="2_4q7ht"]
 [ext_resource type="Script" uid="uid://ckopxl7ibocoa" path="res://code/vfx/damaged_skin.gd" id="2_q0rf4"]
-[ext_resource type="Texture2D" uid="uid://d0a2bygbg4bmw" path="res://art/models/enemies/enemy_1/enemy_1_ENEM-1-DIF.png" id="3_n1dii"]
-[ext_resource type="Texture2D" uid="uid://b0iruiaoebeec" path="res://art/models/enemies/enemy_1/enemy_1_ENEM-1-ENEM-1-ROG.png" id="4_q0rf4"]
-[ext_resource type="Texture2D" uid="uid://cwn2a8yi0618d" path="res://art/textures/enemies/mix_noise.png" id="5_4q7ht"]
+[ext_resource type="Texture2D" uid="uid://d0a2bygbg4bmw" path="res://art/textures/enemies/enemy_1/enemy_1_albedo.png" id="3_n1dii"]
+[ext_resource type="Texture2D" uid="uid://b0iruiaoebeec" path="res://art/textures/enemies/enemy_1/enemy_1_metal_and_roughness.png" id="4_q0rf4"]
+[ext_resource type="Texture2D" uid="uid://cwn2a8yi0618d" path="res://art/textures/vfxy/mix_noise.png" id="5_4q7ht"]
 [ext_resource type="Texture2D" uid="uid://cqn3u7r7y10os" path="res://art/models/enemies/enemy_1/enemy_1_ENEM-1-NOR.png" id="5_mulr4"]
-[ext_resource type="Texture2D" uid="uid://bl7mgydbx37a1" path="res://art/textures/enemies/rust_noise.png" id="5_vapdw"]
+[ext_resource type="Texture2D" uid="uid://bl7mgydbx37a1" path="res://art/textures/vfxy/rust_noise.png" id="5_vapdw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fr4s8"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_4q7ht")
 shader_parameter/Rust_Color_2 = Color(0.690196, 0.317647, 0.117647, 1)
@@ -18,6 +19,7 @@ shader_parameter/Rust_Noise = ExtResource("5_vapdw")
 shader_parameter/Albedo = ExtResource("3_n1dii")
 shader_parameter/Rust_Amount = 0.453
 shader_parameter/Mix_Noise = ExtResource("5_4q7ht")
+shader_parameter/Albedo_Color = Color(1, 1, 1, 1)
 shader_parameter/Met_Rough = ExtResource("4_q0rf4")
 shader_parameter/Normal = ExtResource("5_mulr4")
 shader_parameter/triplanar_scale = Vector3(1, 1, 1)

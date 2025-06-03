@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi4fprtdhvhfk"]
+
+[ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="1_amsr0"]
+[ext_resource type="PackedScene" uid="uid://cxjcvbhn4rs4i" path="res://scenes/levels/templates/hard/corruption.tscn" id="2_xxwjr"]
+
+[node name="CorruptionEscape" type="Node3D"]
+
+[node name="MissionEscape" type="Node" parent="." node_paths=PackedStringArray("portal_position")]
+script = ExtResource("1_amsr0")
+portal_position = NodePath("../Portal Position")
+metadata/_custom_type_script = "uid://bq0dwhdq76qw"
+
+[node name="Portal Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.8309, 0, -102.426)
+
+[node name="Corruption" parent="." instance=ExtResource("2_xxwjr")]

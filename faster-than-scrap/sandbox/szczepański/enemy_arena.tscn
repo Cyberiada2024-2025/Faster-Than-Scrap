@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cml16xve04bhe"]
+
+[ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="3_xqo22"]
+[ext_resource type="PackedScene" uid="uid://ckx4pgnacau0i" path="res://prefabs/ui/hud.tscn" id="7_5tg4m"]
+[ext_resource type="Script" uid="uid://f6d84uyul237" path="res://code/evironment/generate_nebulas.gd" id="9_hrd63"]
+
+[node name="BossArena" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.00296707, 0.999996, 0, -0.999996, 0.00296707, -6.20547, -4.76837e-07, 11.1022)
+
+[node name="MainCamera" parent="." instance=ExtResource("7_5tg4m")]
+
+[node name="Background" type="Node3D" parent="."]
+script = ExtResource("9_hrd63")
+
+[node name="FlyableShip" parent="." instance=ExtResource("3_xqo22")]

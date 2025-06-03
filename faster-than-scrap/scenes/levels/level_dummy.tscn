@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b00xgnuawg5tk"]
+
+[ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_rhnrv"]
+[ext_resource type="PackedScene" uid="uid://cgx7bdd0f2rhg" path="res://prefabs/environment/shop_miniature.tscn" id="2_pqyqd"]
+
+[node name="DummyLevel" type="Node3D"]
+
+[node name="LevelBase" parent="." instance=ExtResource("1_rhnrv")]
+
+[node name="ShopMiniature" parent="." instance=ExtResource("2_pqyqd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cxo6xrrmotkv7"
+path="res://.godot/imported/core_mini.L.obj-62428a389440076d2fe96ed92ce3a68e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/core_mini.L.obj-62428a389440076d2fe96ed92ce3a68e.mesh"]
+
+source_file="res://art/models/bosses/juggernaut/core_mini.L.obj"
+dest_files=["res://.godot/imported/core_mini.L.obj-62428a389440076d2fe96ed92ce3a68e.mesh", "res://.godot/imported/core_mini.L.obj-62428a389440076d2fe96ed92ce3a68e.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

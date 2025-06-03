@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cslkg7x0muy4u"]
+
+[ext_resource type="Script" uid="uid://2p7oc4a3141y" path="res://code/utilities/wait_free.gd" id="1_dgnnc"]
+[ext_resource type="Material" uid="uid://c04e0wsb1bqto" path="res://art/materials/vfx/engine_fire.tres" id="1_tjqjc"]
+
+[node name="exhaust fire2" type="CSGCylinder3D"]
+transform = Transform3D(-6.61657e-11, -4.36557e-08, -1, -1, -4.37722e-08, 3.18323e-12, -4.4005e-08, 1, -4.3714e-08, 0, 0, 0)
+radius = 0.25
+smooth_faces = false
+material = ExtResource("1_tjqjc")
+script = ExtResource("1_dgnnc")

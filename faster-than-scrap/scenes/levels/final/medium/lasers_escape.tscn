@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b758kia2tcjfn"]
+
+[ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="1_eotb7"]
+[ext_resource type="PackedScene" uid="uid://c5m51a8jf7jrf" path="res://scenes/levels/templates/medium/lasers.tscn" id="2_o7iob"]
+
+[node name="Lasers Escape" type="Node3D"]
+
+[node name="MissionEscape" type="Node" parent="." node_paths=PackedStringArray("portal_position")]
+script = ExtResource("1_eotb7")
+portal_position = NodePath("../Portal Position")
+metadata/_custom_type_script = "uid://bq0dwhdq76qw"
+
+[node name="Portal Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.184, 0, -158.546)
+
+[node name="Lasers" parent="." instance=ExtResource("2_o7iob")]

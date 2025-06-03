@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://6mrvum8tjctj"]
+
+[ext_resource type="Script" uid="uid://spw30bieh03o" path="res://code/weapons/projectiles/projectile_warning.gd" id="1_ldgqo"]
+[ext_resource type="PackedScene" uid="uid://ymmjkrxvfgwu" path="res://prefabs/projectiles/enemy projectiles/heavy_projectile.tscn" id="2_ldgqo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ld4gu"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_bdcit"]
+material = SubResource("StandardMaterial3D_ld4gu")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="Animation" id="Animation_ldgqo"]
+resource_name = "Flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:mesh:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.85, 1),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
+"update": 0,
+"values": [0.001, 0.6, 0.3, 1.1, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mesh:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.85, 1),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
+"update": 0,
+"values": [0.001, 1.2, 0.6, 2.2, 2.0]
+}
+
+[sub_resource type="Animation" id="Animation_ucb28"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:mesh:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mesh:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_du46o"]
+_data = {
+&"Flash": SubResource("Animation_ldgqo"),
+&"RESET": SubResource("Animation_ucb28")
+}
+
+[node name="Warning" type="Node3D" node_paths=PackedStringArray("animator", "graphics")]
+script = ExtResource("1_ldgqo")
+animator = NodePath("Graphics/MeshInstance3D/AnimationPlayer")
+graphics = NodePath("Graphics")
+projectile = ExtResource("2_ldgqo")
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00634766, 0.0161133, -1.00366)
+mesh = SubResource("SphereMesh_bdcit")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics/MeshInstance3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_du46o")
+}

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://uxb4t3wfttgq"]
+[gd_scene load_steps=4 format=3 uid="uid://uxb4t3wfttgq"]
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_yafkt"]
 [ext_resource type="Script" uid="uid://4y8nts6ke7i" path="res://code/ui/cutscenes/comic_slide.gd" id="2_yafkt"]
+[ext_resource type="PackedScene" uid="uid://c78jp45hhpqhd" path="res://prefabs/ui/cutscenes/skip_info_text.tscn" id="3_54ur3"]
 
 [node name="StartGameCutscene" type="ColorRect"]
 anchors_preset = 15
@@ -11,6 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("1_yafkt")
+cutscene_name = "Lore start cutscene"
 metadata/_custom_type_script = "uid://bn8cfyemp6axl"
 
 [node name="Slide" type="ColorRect" parent="." node_paths=PackedStringArray("rects")]
@@ -67,7 +69,7 @@ offset_left = 51.0
 offset_top = 72.0
 offset_right = 159.0
 offset_bottom = 95.0
-text = "LOREM START"
+text = "LORE playceholder"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -235,3 +237,6 @@ offset_bottom = 142.0
 text = "LOREM START"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SkipInfoText" parent="." instance=ExtResource("3_54ur3")]
+layout_mode = 1

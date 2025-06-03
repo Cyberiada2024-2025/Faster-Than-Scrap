@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://rdrduhwrnp5q"]
+
+[ext_resource type="Script" uid="uid://cne5mpb7d4xce" path="res://code/missions/a/mission_fuel.gd" id="1_lvu38"]
+[ext_resource type="PackedScene" uid="uid://cec1ownqbtyag" path="res://scenes/levels/templates/hard/big_asteroids_sparse.tscn" id="2_1yovw"]
+
+[node name="BigAsteroidSparseGetFuel" type="Node3D"]
+
+[node name="MissionFuel" type="Node" parent="." node_paths=PackedStringArray("fuel_position")]
+script = ExtResource("1_lvu38")
+fuel_position = NodePath("../Fuel Position")
+metadata/_custom_type_script = "uid://cne5mpb7d4xce"
+
+[node name="Fuel Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.63, 0, -111.192)
+
+[node name="Big Asteroid Sparse" parent="." instance=ExtResource("2_1yovw")]

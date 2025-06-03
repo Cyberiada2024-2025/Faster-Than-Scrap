@@ -4,7 +4,7 @@ extends Node
 ## It is not supposed to be added to the scene tree!
 ## It is autoloaded and always available to be called from everywhere!
 
-signal new_game_state
+signal new_game_state(new_state: GameState.State)
 
 @export var game_state: GameState.State = GameState.State.MAIN_MENU
 @export var death_screen: PackedScene
@@ -22,6 +22,8 @@ func _enter_tree() -> void:
 
 func on_scene_exit() -> void:
 	ships = []
+	if game_state == GameState.State.BUILD:
+		InventoryManager.save_inventory()
 
 
 func set_game_state(new_state: GameState.State) -> void:
@@ -38,7 +40,8 @@ func set_game_state(new_state: GameState.State) -> void:
 		GameState.State.BUILD:
 			turn_player_modules(false)
 		GameState.State.MAIN_MENU:
-			turn_player_modules(true)
+			#turn_player_modules(true)
+			pass
 
 
 func _pause_entities():

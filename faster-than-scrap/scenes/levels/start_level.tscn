@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://buy7ourt75b2t"]
+
+[ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_xgqdr"]
+[ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_on_ready_player.gd" id="4_25ioe"]
+[ext_resource type="PackedScene" uid="uid://cdq5hecjw2uki" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_group.tscn" id="4_r0dwq"]
+[ext_resource type="PackedScene" uid="uid://c3t2663kj3gty" path="res://prefabs/ui/cutscenes/fly_tutorial_cutscene.tscn" id="5_8bnrt"]
+[ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="5_25ioe"]
+
+[node name="DummyLevel" type="Node3D"]
+
+[node name="LevelBase" parent="." instance=ExtResource("1_xgqdr")]
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("4_25ioe")
+cutscene_path = ExtResource("5_8bnrt")
+
+[node name="AsteroidBigGroup" parent="." instance=ExtResource("4_r0dwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.1736, 0, -66.0928)
+
+[node name="AsteroidBigGroup2" parent="." instance=ExtResource("4_r0dwq")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 26.9828, 0, -61.0218)
+
+[node name="MissionEscape" type="Node" parent="." node_paths=PackedStringArray("portal_position")]
+script = ExtResource("5_25ioe")
+portal_position = NodePath("../Portal Position")
+metadata/_custom_type_script = "uid://bq0dwhdq76qw"
+
+[node name="Portal Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -107.266)

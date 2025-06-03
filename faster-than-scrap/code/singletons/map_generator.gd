@@ -8,39 +8,9 @@ extends Node
 var _map_node: MapNode = null
 var _scene: Node = null
 
-var _shop_prefab = preload("res://prefabs/environment/shop_miniature.tscn")
 
-
-## Called whenever the scene should be procedurally generated (
-## when loading fly_phase scene).
-## It will restore the map if the _map_node wasn't changed (Useful
-## when leaving the shop).
-## Also sets the player position
-func generate_map() -> void:
-	if _scene == null:
-		if _map_node == null:
-			# create default escape node
-			_map_node = MissionNode.new()
-			_map_node.mission_info = MissionInfoEscape.new()
-			_map_node.mission_info.portal_position = Vector3(0, 0, 15)
-		generate_map_from_node()
-	get_tree().current_scene.add_child.call_deferred(_scene)
-	## TODO SET player position
-
-
-func generate_map_from_node() -> void:
-	_scene = Node3D.new()
-	_spawn_shop()
-	if _map_node is MissionNode:
-		var mission_node: MissionNode = _map_node
-		mission_node.mission_info.start(_scene)
-		return
-
-
-func _spawn_shop() -> void:
-	var shop = _shop_prefab.instantiate()
-	_scene.add_child.call_deferred(shop)
-	shop.position = Vector3(12, 0, 0)
+func _spawn_vortex(mission_info: MissionInfo) -> void:
+	SpaceVortex.spawn_vortex(mission_info.get_mission_final_target_position())
 
 
 func detach_and_save_current_scene() -> void:

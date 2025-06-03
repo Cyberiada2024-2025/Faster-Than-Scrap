@@ -10,8 +10,11 @@ signal deactivated
 signal damaged
 signal destroyed
 
+const NOT_ACTIVABLE_KEYS: Array[Key] = [KEY_ENTER, KEY_ESCAPE]
+
 @export_category("Settings")
 @export var activation_key: Key = KEY_NONE
+@export var is_activable: bool = true
 @export var max_hp: float = 100
 @export var hp: float = 100
 @export_category("References")
@@ -107,8 +110,19 @@ func _on_destroy() -> void:
 		child.reparent(rb)
 		rb.linear_velocity = ship.linear_velocity
 		child.deactivate()
+		child.detach()
+
+	detach()
 	queue_free()  # delete self as an object
 	destroyed.emit()
+
+
+func attach() -> void:
+	pass
+
+
+func detach() -> void:
+	pass
 
 
 func deactivate() -> void:
@@ -184,7 +198,7 @@ func create_ghost() -> ModuleGhost:
 	ghost.add_child(duplicate_node)
 	duplicate_node.position = Vector3.ZERO
 	duplicate_node.rotation = Vector3.ZERO
-	duplicate_node.prize = 0;
+	duplicate_node.prize = 0
 	ghost.module_to_ignore = self
 
 	return ghost

@@ -46,6 +46,7 @@ Vector2i(1, 2): {
 shape = SubResource("BoxShape3D_lwypn")
 script = ExtResource("1_18ma3")
 weapon = NodePath("ConstantFireWeapon")
+allow_auto_fire = true
 attach_points = [NodePath("AttachPoints/AttachPoint")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
@@ -58,7 +59,8 @@ description = "Basic movement module. Activate to push ship forward (relative to
 [node name="ConstantFireWeapon" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.26313)
 script = ExtResource("2_5rd74")
-recoil_force = 300.0
+energy_cost = 10.0
+recoil_force = 400.0
 projectile = ExtResource("3_24upk")
 
 [node name="ThrusterModel" parent="." instance=ExtResource("2_br7jh")]

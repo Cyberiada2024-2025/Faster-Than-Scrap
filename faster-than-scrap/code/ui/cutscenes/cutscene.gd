@@ -12,7 +12,9 @@ const WHITE_NON_TRANSPARENT = Color(1, 1, 1, 1)
 
 const CIRCLE_OFFSET: float = 50
 
-const MAX_HOLD_TIME: float = 2
+const MAX_HOLD_TIME: float = 0.5
+
+@export var cutscene_name: String = ""
 
 var slides: Array[Slide]
 var skipping: bool = false
@@ -25,7 +27,7 @@ func _enter_tree() -> void:
 	slides.assign(find_children("*", "Slide"))
 	modulate = WHITE_TRANSPARENT
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	skip_timer = 2
+	skip_timer = MAX_HOLD_TIME
 	_create_skip_circle()
 
 

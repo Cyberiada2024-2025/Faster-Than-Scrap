@@ -6,13 +6,15 @@ extends Node
 ## of the game game state
 ## Used as a helper node, so there can be multiple of scene managers in the same scene
 
-var default_ship_prefab = preload("res://prefabs/ships/flyable_ship_with_shield.tscn")
+var default_ship_prefab = preload("res://prefabs/ships/flyable_ship.tscn")
 
 
 func load_main_menu_scene() -> void:
 	GameManager.on_scene_exit()
+
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	GameManager.set_game_state(GameState.State.MAIN_MENU)
+	CutsceneManager.reset_cutscenes()
 
 
 func load_map_selector_scene() -> void:
@@ -23,23 +25,30 @@ func load_map_selector_scene() -> void:
 
 
 func load_fly_ship_scene(
-	pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO, use_saved_pos_rot: bool = true
+	scene_to_load: PackedScene = null,
+	pos: Vector3 = Vector3.ZERO,
+	rot: Vector3 = Vector3.ZERO,
+	use_saved_pos_rot: bool = true
 ) -> void:
 	_detach_ship()
 	GameManager.on_scene_exit()
 
-	var attached_fly_scene: bool = false
-	if GameManager.game_state == GameState.State.BUILD:
-		attached_fly_scene = MapGenerator.try_attach_saved_scene()
-
-	if not attached_fly_scene:
-		get_tree().change_scene_to_file("res://scenes/fly_ship.tscn")
+	if scene_to_load != null:
+		get_tree().change_scene_to_file(scene_to_load.resource_path)
+	else:
+		var attached_fly_scene: bool = false
+		if GameManager.game_state == GameState.State.BUILD:
+			attached_fly_scene = MapGenerator.try_attach_saved_scene()
+		if not attached_fly_scene:
+			get_tree().change_scene_to_file("res://scenes/levels/start_level.tscn")
 
 	GameManager.set_game_state(GameState.State.FLY)
 	if use_saved_pos_rot:
 		pos = GameManager.player_ship.get_saved_position()
 		rot = GameManager.player_ship.get_saved_rotation()
 	_attach_ship_with_hud.call_deferred(pos, rot)
+
+	_set_vortex_preserve(false)
 
 
 func load_boss_scene(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO) -> void:
@@ -51,6 +60,7 @@ func load_boss_scene(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO) -
 
 
 func load_build_ship_scene() -> void:
+	_set_vortex_preserve(true)
 	GameManager.player_ship.save_position()
 	GameManager.player_ship.save_rotation()
 	_detach_ship()
@@ -70,6 +80,15 @@ func load_credits_scene() -> void:
 	GameManager.set_game_state(GameState.State.MAIN_MENU)
 	MapGenerator.reset()
 
+
+func load_lore_scene() -> void:
+	get_tree().change_scene_to_file("res://scenes/lore_start.tscn")
+	# reset player
+	GameManager.player_ship.queue_free()
+	GameManager.player_ship = default_ship_prefab.instantiate()
+
+func load_settings_scene() -> void:
+	get_tree().change_scene_to_file("res://scenes/settings.tscn")
 
 ## detach the ship from the scene tree, to preserve it, when it is changed
 func _detach_ship():
@@ -101,6 +120,8 @@ func _attach_ship_with_hud(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.Z
 	GameManager.player_ship.position = pos
 	GameManager.player_ship.rotation = rot
 
+	HudSpawner.spawn_hud = true
+
 
 ## attach the ship to the scene tree
 func _attach_ship_without_hud():
@@ -113,3 +134,9 @@ func _attach_ship_without_hud():
 	# zero velocity
 	GameManager.player_ship.linear_velocity = Vector3.ZERO
 	GameManager.player_ship.angular_velocity = Vector3.ZERO
+
+
+## See [member SpaceVortex.preserve_target] for reference
+func _set_vortex_preserve(preserve: bool) -> void:
+	if SpaceVortex.instance != null:
+		SpaceVortex.instance.preserve_target = preserve

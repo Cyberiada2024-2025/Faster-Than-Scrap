@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=3 uid="uid://1ajphwg8evpv"]
+
+[ext_resource type="Texture2D" uid="uid://cebfslb2pryqa" path="res://art/textures/jerrycan/jerrycan_color.png" id="1_bjncq"]
+[ext_resource type="Texture2D" uid="uid://b60mk2gtb6i3p" path="res://art/textures/jerrycan/jerrycan_metal.png" id="2_kweo3"]
+[ext_resource type="Texture2D" uid="uid://c8f6jbwbn1hrt" path="res://art/textures/jerrycan/jerrycan_normal.png" id="3_tjhxs"]
+[ext_resource type="Texture2D" uid="uid://2g3itoxc85ke" path="res://art/textures/jerrycan/jerrycan_roughnesspng.png" id="4_wrpqw"]
+[ext_resource type="ArrayMesh" uid="uid://c2x2erglhjcrs" path="res://art/models/jerrycan/jerrycan.obj" id="5_sv1q1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cgr4a"]
+albedo_texture = ExtResource("1_bjncq")
+metallic = 1.0
+metallic_texture = ExtResource("2_kweo3")
+roughness = 0.75
+roughness_texture = ExtResource("4_wrpqw")
+normal_enabled = true
+normal_scale = 0.85
+normal_texture = ExtResource("3_tjhxs")
+
+[node name="Jerrycan" type="Node3D"]
+
+[node name="Jerrycan" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_cgr4a")
+mesh = ExtResource("5_sv1q1")

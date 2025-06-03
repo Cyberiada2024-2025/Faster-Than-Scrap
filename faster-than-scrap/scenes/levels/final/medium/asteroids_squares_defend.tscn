@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://rk0er3r4rdr5"]
+
+[ext_resource type="Script" uid="uid://4w17qx65voq6" path="res://code/missions/a/mission_defend.gd" id="1_ok8u4"]
+[ext_resource type="PackedScene" uid="uid://bfrsupiyi0gj0" path="res://scenes/levels/templates/medium/asteroids_squares.tscn" id="2_ok8u4"]
+
+[node name="AsteroidSquaresDefend" type="Node3D"]
+
+[node name="MissionDefend" type="Node" parent="." node_paths=PackedStringArray("defendable_position")]
+script = ExtResource("1_ok8u4")
+defendable_position = NodePath("../Defendable Position")
+metadata/_custom_type_script = "uid://4w17qx65voq6"
+
+[node name="Defendable Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.9942, 0, -98.1014)
+
+[node name="Asteroid Squares" parent="." instance=ExtResource("2_ok8u4")]

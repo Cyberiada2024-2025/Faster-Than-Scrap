@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cyne44ays80ug"]
+
+[ext_resource type="Shader" uid="uid://cptyrr47l0s6e" path="res://art/shaders/spatial/control_point_progress.gdshader" id="1_5eghb"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5eghb")
+shader_parameter/Uncontrolled = Color(0.497906, 0.397163, 3.85046e-07, 0.5)
+shader_parameter/Controlled = Color(0, 1, 0, 0.5)
+shader_parameter/brightness = 10.0
+shader_parameter/noise_scale = Vector2(23.55, 9.045)
+shader_parameter/noise_speed = Vector2(0.695, 1.025)

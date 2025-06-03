@@ -6,13 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://ckjg0c7xp6hni" path="res://art/models/enemies/enemy_2/enemy_model_2_2skrzyproccolor.png" id="3_x0xts"]
 [ext_resource type="Texture2D" uid="uid://353cf3s01xhx" path="res://art/models/enemies/enemy_2/enemy_model_2_2skrzyprocmetal-2skrzyprocroughn.png" id="4_0y5jt"]
 [ext_resource type="Texture2D" uid="uid://clw46bartp4jm" path="res://art/models/enemies/enemy_2/enemy_model_2_colorproc.png" id="4_txle5"]
-[ext_resource type="Texture2D" uid="uid://cwn2a8yi0618d" path="res://art/textures/enemies/mix_noise.png" id="5_2yai2"]
+[ext_resource type="Texture2D" uid="uid://cwn2a8yi0618d" path="res://art/textures/vfxy/mix_noise.png" id="5_2yai2"]
 [ext_resource type="Texture2D" uid="uid://c1bxg3dvebft8" path="res://art/models/enemies/enemy_2/enemy_model_2_2skrzyprocnormal.png" id="5_nm02e"]
 [ext_resource type="Texture2D" uid="uid://dk3jn31dmcblx" path="res://art/models/enemies/enemy_2/enemy_model_2_metalproc-roughnesproc.png" id="7_6jsfm"]
-[ext_resource type="Texture2D" uid="uid://bl7mgydbx37a1" path="res://art/textures/enemies/rust_noise.png" id="7_hg1ap"]
+[ext_resource type="Texture2D" uid="uid://bl7mgydbx37a1" path="res://art/textures/vfxy/rust_noise.png" id="7_hg1ap"]
 [ext_resource type="Texture2D" uid="uid://bi1x03kbqfegk" path="res://art/models/enemies/enemy_2/enemy_model_2_normalsproc.png" id="8_w6qbj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cmvsu"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_ffq7h")
 shader_parameter/Rust_Color_2 = Color(0.690196, 0.317647, 0.117647, 1)
@@ -21,6 +22,7 @@ shader_parameter/Rust_Noise = ExtResource("7_hg1ap")
 shader_parameter/Albedo = ExtResource("3_x0xts")
 shader_parameter/Rust_Amount = 0.45
 shader_parameter/Mix_Noise = ExtResource("5_2yai2")
+shader_parameter/Albedo_Color = Color(1, 1, 1, 1)
 shader_parameter/Met_Rough = ExtResource("4_0y5jt")
 shader_parameter/Normal = ExtResource("5_nm02e")
 shader_parameter/triplanar_scale = Vector3(1, 1, 1)
@@ -28,6 +30,7 @@ shader_parameter/triplanar_offset = Vector3(0, 0, 0)
 shader_parameter/triplanar_sharpness = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_38wpc"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_ffq7h")
 shader_parameter/Rust_Color_2 = Color(0.611765, 0.384314, 0.262745, 1)
@@ -36,6 +39,7 @@ shader_parameter/Rust_Noise = ExtResource("7_hg1ap")
 shader_parameter/Albedo = ExtResource("4_txle5")
 shader_parameter/Rust_Amount = 0.45
 shader_parameter/Mix_Noise = ExtResource("5_2yai2")
+shader_parameter/Albedo_Color = Color(1, 1, 1, 1)
 shader_parameter/Met_Rough = ExtResource("7_6jsfm")
 shader_parameter/Normal = ExtResource("8_w6qbj")
 shader_parameter/triplanar_scale = Vector3(1, 1, 1)

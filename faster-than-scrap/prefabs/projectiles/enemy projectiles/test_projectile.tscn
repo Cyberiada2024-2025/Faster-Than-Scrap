@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://whj7or7t81c0"]
+[gd_scene load_steps=10 format=3 uid="uid://whj7or7t81c0"]
 
 [ext_resource type="Script" uid="uid://2uexqgp76p1n" path="res://code/weapons/projectiles/projectile.gd" id="1_nnrsk"]
 [ext_resource type="Script" uid="uid://7rxxtodxpx1d" path="res://code/damage/damage_area_3d.gd" id="2_dbj64"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_dpdsj"]
+[ext_resource type="PackedScene" uid="uid://ck03mtapll4r3" path="res://prefabs/vfx/particles/pseudoTrail.tscn" id="4_dbj64"]
 
 [sub_resource type="Curve" id="Curve_4quhm"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -51,3 +52,6 @@ _die_on_hit = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.75)
 shape = SubResource("CylinderShape3D_2fpck")
+
+[node name="Trail" parent="." instance=ExtResource("4_dbj64")]
+transform = Transform3D(1, 2.33058e-11, 5.82077e-11, -2.33058e-11, 1, 2.32831e-10, -5.82077e-11, -2.32831e-10, 1, 0.00321577, 0.0199672, -0.00985405)

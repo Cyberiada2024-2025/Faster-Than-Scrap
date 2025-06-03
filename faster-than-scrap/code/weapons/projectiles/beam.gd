@@ -2,23 +2,34 @@ class_name Beam
 
 extends Node3D
 
+const START_ANIM: String = "On"
+const END_ANIM: String = "Off"
+
 ## Beam object that extends from it's start position up to the [DamageRaycast3D] beam length,
 ## or the raycast's collision point.
 
 ## Node that will be scaled so that it's Z size is the same as the beam's length.
 @export var beam_indicator: Node3D
+@export var max_length: float = 20
 
+@export var player: AnimationPlayer
+@export var holder: WaitFree
+
+@export var mesh: MeshInstance3D
+@export var length_name: String = "current_length"
+
+var animation_check: bool
 var _beam_length: float
-var _was_colliding: bool = false
-var _beam_particles: Node3D
 
 @onready var _damage_raycast: DamageRaycast3D = $DamageRaycast3D
 
 
 func _ready() -> void:
+	animation_check = player.has_animation(START_ANIM) && player.has_animation(END_ANIM)
+	if animation_check:
+		player.play(START_ANIM)
+	_damage_raycast.target_position = Vector3.FORWARD * max_length
 	_beam_length = _damage_raycast.target_position.length()
-	_beam_particles = preload("res://prefabs/vfx/particles/beam_particles.tscn").instantiate()
-	self.add_child(_beam_particles)
 
 
 func _process(_delta: float) -> void:
@@ -27,13 +38,16 @@ func _process(_delta: float) -> void:
 			_damage_raycast.get_collision_point()
 		)
 		beam_indicator.scale.z = ray_length
-		_beam_particles.global_position = _damage_raycast.get_collision_point()
-		_beam_particles.look_at(_damage_raycast.global_position)
-		if not _was_colliding:
-			_was_colliding = true
-			_beam_particles.visible = true
+		if mesh != null:
+			mesh.material_override.set_shader_parameter(length_name, ray_length)
 	else:
 		beam_indicator.scale.z = _beam_length
-		if _was_colliding:
-			_was_colliding = false
-			_beam_particles.visible = false
+		if mesh != null:
+			mesh.material_override.set_shader_parameter(length_name, _beam_length)
+
+func _notification(notification):
+	if (notification == NOTIFICATION_PREDELETE):
+		holder.reparent(get_parent())
+		if animation_check:
+			player.play(END_ANIM)
+		holder.wait_free()

@@ -8,7 +8,9 @@ extends Node
 signal finished(mission: Mission)
 
 enum MissionState { IN_PROGRESS, FINISHED, FAILED }
+enum Priority { MAIN_QUEST, SIDE_QUEST }
 
+@export var priority: Priority = Priority.MAIN_QUEST
 @export var time_to_hold: float = 2
 var state: MissionState = MissionState.IN_PROGRESS
 
@@ -64,3 +66,7 @@ func create_label(text: String) -> Label3D:
 	label.position = Vector3(0, 0, 2)
 	label.rotation_degrees = Vector3(270, 0, 0)
 	return label
+
+
+func _spawn_vortex(target_position: Vector3) -> void:
+	SpaceVortex.spawn_vortex(target_position)

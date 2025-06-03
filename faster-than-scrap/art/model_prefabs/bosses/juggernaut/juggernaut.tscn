@@ -1,0 +1,102 @@
+[gd_scene load_steps=23 format=3 uid="uid://bgpoyw23tdb7h"]
+
+[ext_resource type="Material" uid="uid://ckc38n3v8xtvf" path="res://art/materials/bosses/juggernaut/juggernaut_material_with_no_diffuse.tres" id="1_fqmqs"]
+[ext_resource type="ArrayMesh" uid="uid://co5fp42a4ij4j" path="res://art/models/bosses/juggernaut/arm.L.obj" id="2_ypgjs"]
+[ext_resource type="ArrayMesh" uid="uid://dsh0i30c77gpm" path="res://art/models/bosses/juggernaut/arm.R.obj" id="3_n0f6n"]
+[ext_resource type="Material" uid="uid://dej2nffyqhao1" path="res://art/materials/bosses/juggernaut/juggernaut_material_with_diffuse.tres" id="4_fr3ya"]
+[ext_resource type="ArrayMesh" uid="uid://wjlfl75uigw8" path="res://art/models/bosses/juggernaut/cannon.obj" id="5_tppxa"]
+[ext_resource type="ArrayMesh" uid="uid://ufo3k61ncvk4" path="res://art/models/bosses/juggernaut/core.obj" id="6_ek3jj"]
+[ext_resource type="Texture2D" uid="uid://danvcyualpk27" path="res://art/textures/bosses/juggernaut/roughness.png" id="7_tqynv"]
+[ext_resource type="ArrayMesh" uid="uid://cxo6xrrmotkv7" path="res://art/models/bosses/juggernaut/core_mini.L.obj" id="8_q0phk"]
+[ext_resource type="ArrayMesh" uid="uid://06m33yc3sjdn" path="res://art/models/bosses/juggernaut/core_mini.R.obj" id="9_rqi0v"]
+[ext_resource type="ArrayMesh" uid="uid://bwlnpxbovgrbp" path="res://art/models/bosses/juggernaut/engine1.L.obj" id="10_ll8rk"]
+[ext_resource type="ArrayMesh" uid="uid://cpakxo5qnb706" path="res://art/models/bosses/juggernaut/engine1.R.obj" id="11_02gw3"]
+[ext_resource type="ArrayMesh" uid="uid://cnxn3gu4g1o65" path="res://art/models/bosses/juggernaut/engine2.L.obj" id="12_5n038"]
+[ext_resource type="ArrayMesh" uid="uid://dfum517c8jea3" path="res://art/models/bosses/juggernaut/engine2.R.obj" id="13_d0804"]
+[ext_resource type="ArrayMesh" uid="uid://b1jorgtl14u86" path="res://art/models/bosses/juggernaut/engine3.L.obj" id="14_afyfi"]
+[ext_resource type="ArrayMesh" uid="uid://bjx0a2efuvbi" path="res://art/models/bosses/juggernaut/engine3.R.obj" id="15_1jxh6"]
+[ext_resource type="ArrayMesh" uid="uid://cpa3miaj4jafm" path="res://art/models/bosses/juggernaut/engine4.L.obj" id="16_76ccl"]
+[ext_resource type="ArrayMesh" uid="uid://bw5bw8hwri6km" path="res://art/models/bosses/juggernaut/engine4.R.obj" id="17_fix1k"]
+[ext_resource type="ArrayMesh" uid="uid://bkmjpa3ll84d5" path="res://art/models/bosses/juggernaut/flow.L.obj" id="18_64p20"]
+[ext_resource type="ArrayMesh" uid="uid://bc7mcmrdlbsjf" path="res://art/models/bosses/juggernaut/flow.R.obj" id="19_s4t6t"]
+[ext_resource type="ArrayMesh" uid="uid://76unqm6s6hcq" path="res://art/models/bosses/juggernaut/flow_main.L.obj" id="20_dlp56"]
+[ext_resource type="ArrayMesh" uid="uid://gcmxi4hbfp3g" path="res://art/models/bosses/juggernaut/flow_main.R.obj" id="21_kp24h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8blsg"]
+albedo_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+metallic = 1.0
+roughness_texture = ExtResource("7_tqynv")
+
+[node name="Juggernaut" type="Node3D"]
+
+[node name="Arm_l" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_fqmqs")
+mesh = ExtResource("2_ypgjs")
+
+[node name="Arm_r" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_fqmqs")
+mesh = ExtResource("3_n0f6n")
+
+[node name="Cannon" type="MeshInstance3D" parent="."]
+material_override = ExtResource("4_fr3ya")
+mesh = ExtResource("5_tppxa")
+
+[node name="Core" type="MeshInstance3D" parent="."]
+material_override = ExtResource("4_fr3ya")
+mesh = ExtResource("6_ek3jj")
+
+[node name="CoreMini_l" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_8blsg")
+mesh = ExtResource("8_q0phk")
+
+[node name="CoreMini_r" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_8blsg")
+mesh = ExtResource("9_rqi0v")
+
+[node name="Engine1_l" type="MeshInstance3D" parent="."]
+material_override = ExtResource("4_fr3ya")
+mesh = ExtResource("10_ll8rk")
+
+[node name="Engine1_r" type="MeshInstance3D" parent="."]
+material_override = ExtResource("4_fr3ya")
+mesh = ExtResource("11_02gw3")
+
+[node name="Engine2_l" type="MeshInstance3D" parent="."]
+material_override = ExtResource("4_fr3ya")
+mesh = ExtResource("12_5n038")
+
+[node name="Engine2_r" type="MeshInstance3D" parent="."]
+material_override = ExtResource("4_fr3ya")
+mesh = ExtResource("13_d0804")
+
+[node name="Engine3_l" type="MeshInstance3D" parent="."]
+material_override = ExtResource("4_fr3ya")
+mesh = ExtResource("14_afyfi")
+
+[node name="Engine3_r" type="MeshInstance3D" parent="."]
+material_override = ExtResource("4_fr3ya")
+mesh = ExtResource("15_1jxh6")
+
+[node name="Engine4_l" type="MeshInstance3D" parent="."]
+material_override = ExtResource("4_fr3ya")
+mesh = ExtResource("16_76ccl")
+
+[node name="Engine4_r" type="MeshInstance3D" parent="."]
+material_override = ExtResource("4_fr3ya")
+mesh = ExtResource("17_fix1k")
+
+[node name="Flow_l" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_fqmqs")
+mesh = ExtResource("18_64p20")
+
+[node name="Flow_r" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_fqmqs")
+mesh = ExtResource("19_s4t6t")
+
+[node name="FlowMain_l" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_fqmqs")
+mesh = ExtResource("20_dlp56")
+
+[node name="FlowMain_r" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_fqmqs")
+mesh = ExtResource("21_kp24h")

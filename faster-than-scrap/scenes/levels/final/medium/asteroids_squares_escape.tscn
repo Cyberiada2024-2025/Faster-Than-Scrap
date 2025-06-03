@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2o4mugnnrfo5"]
+
+[ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="1_vu3q3"]
+[ext_resource type="PackedScene" uid="uid://bfrsupiyi0gj0" path="res://scenes/levels/templates/medium/asteroids_squares.tscn" id="2_3o7j7"]
+
+[node name="AsteroidSquaresEscape" type="Node3D"]
+
+[node name="MissionEscape" type="Node" parent="." node_paths=PackedStringArray("portal_position")]
+script = ExtResource("1_vu3q3")
+portal_position = NodePath("../Portal Position")
+metadata/_custom_type_script = "uid://bq0dwhdq76qw"
+
+[node name="Portal Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.9942, 0, -98.1014)
+
+[node name="Asteroid Squares" parent="." instance=ExtResource("2_3o7j7")]

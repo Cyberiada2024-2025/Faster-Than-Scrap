@@ -62,11 +62,9 @@ func _process_movement(delta: float) -> void:
 func _on_damage_applied(_damage: Damage, _target: Damageable) -> void:
 	var hit_particle = hit_particle_prefab.instantiate()
 	get_tree().current_scene.add_child(hit_particle)
-	hit_particle.position = self.global_position
-	print(hit_particle.position)
-	print(hit_particle.visible)
-	print(hit_particle.get_parent())
-	print(self.global_position)
+	hit_particle.position = global_position
+	hit_particle.global_rotation = global_rotation
+	hit_particle.global_rotation.y += PI
 	if die_on_hit:
 		if particle_holder != null:
 			for part in particles:

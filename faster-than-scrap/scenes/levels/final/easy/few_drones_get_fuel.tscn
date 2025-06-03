@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf2axlv0od28q"]
+
+[ext_resource type="Script" uid="uid://cne5mpb7d4xce" path="res://code/missions/a/mission_fuel.gd" id="1_qvjww"]
+[ext_resource type="PackedScene" uid="uid://cr1umm51wsmta" path="res://scenes/levels/templates/easy/few_drones.tscn" id="2_6rs3q"]
+
+[node name="FewDronesGetFuel" type="Node3D"]
+
+[node name="MissionGetFuel" type="Node" parent="."]
+script = ExtResource("1_qvjww")
+metadata/_custom_type_script = "uid://cne5mpb7d4xce"
+
+[node name="Fuel Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3735, 0, -164.844)
+
+[node name="Few Drones" parent="." instance=ExtResource("2_6rs3q")]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d18x6bug11tqh"]
+
+[ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="1_fn81g"]
+[ext_resource type="PackedScene" uid="uid://cec1ownqbtyag" path="res://scenes/levels/templates/hard/big_asteroids_sparse.tscn" id="2_86h1e"]
+
+[node name="BigAsteroidSparseEscape" type="Node3D"]
+
+[node name="MissionEscape" type="Node" parent="." node_paths=PackedStringArray("portal_position")]
+script = ExtResource("1_fn81g")
+portal_position = NodePath("../Portal Position")
+metadata/_custom_type_script = "uid://bq0dwhdq76qw"
+
+[node name="Portal Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.63, 0, -111.192)
+
+[node name="Big Asteroid Sparse" parent="." instance=ExtResource("2_86h1e")]

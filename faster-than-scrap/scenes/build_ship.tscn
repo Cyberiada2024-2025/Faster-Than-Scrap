@@ -11,8 +11,8 @@
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="10_xqadh"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
-[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_on_ready_player.gd" id="12_bwh47"]
-[ext_resource type="PackedScene" uid="uid://coyf8ah8v6git" path="res://prefabs/ui/cutscenes/build_tutorial_cutscene.tscn" id="13_bwh47"]
+[ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_on_ready_player.gd" id="12_bwh47"]
+[ext_resource type="PackedScene" path="res://prefabs/ui/cutscenes/build_tutorial_cutscene.tscn" id="13_bwh47"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
 font = ExtResource("6_au3vu")
@@ -310,7 +310,7 @@ horizontal_alignment = 1
 script = ExtResource("7_jtm63")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
-[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "inventory_limit_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description", "selected_module_prize_display")]
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "inventory_limit_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2428, 0, 0)
 script = ExtResource("11_jtm63")
 modules = Array[String](["uid://cujiw86wtjlp8", "uid://cujiw86wtjlp8", "uid://cujiw86wtjlp8", "uid://gngfqbur01ep", "uid://gngfqbur01ep", "uid://dbajfkkhivhl0", "uid://dbajfkkhivhl0", "uid://cqkj1jovh07cf", "uid://cqkj1jovh07cf", "uid://taxlqo87sp7s", "uid://15te4x6fjtx4", "uid://b8v177mewyt5j"])
@@ -324,7 +324,6 @@ inventory_limit_display = NodePath("Inventory/InventoryLimitLabel")
 deny_finish = NodePath("../ShipBuilder/Control/Deny finish")
 confirm_finish = NodePath("../ShipBuilder/Control/Confirm finish")
 deny_finish_label = NodePath("../ShipBuilder/Control/Deny finish/Color_Rect/Label")
-selected_module_prize_display = NodePath("../ShipBuilder/Control/Prize_display/Label")
 selected_module_display = NodePath("../ShipBuilder/Control/Prize_display/RichTextLabel")
 selected_module_description = NodePath("../ShipBuilder/Control/Description_display/RichTextLabel")
 metadata/_custom_type_script = "uid://dsebh10ryevl"
@@ -354,8 +353,6 @@ input_ray_pickable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0455933, 0, 0.0821714)
 shape = SubResource("BoxShape3D_cv5l0")
-
-[node name="Ship Max Size" type="Node3D" parent="."]
 
 [node name="Inventory" type="Node3D" parent="Shop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.303, 0, 0)
@@ -393,6 +390,8 @@ font = ExtResource("6_au3vu")
 font_size = 128
 outline_size = 0
 
+[node name="Ship Max Size" type="Node3D" parent="."]
+
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Ship Max Size"]
 transform = Transform3D(20, 0, 0, 0, 0.2, 0, 0, 0, 20, 0, 0, 0)
 mesh = SubResource("BoxMesh_jtm63")
@@ -407,7 +406,7 @@ material = SubResource("StandardMaterial3D_jtm63")
 input_ray_pickable = false
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Ship Max Size/Area3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0340881, 0, 0.525291)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0340876, 0, -10.3936)
 shape = SubResource("BoxShape3D_xqadh")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Ship Max Size/Area3D"]

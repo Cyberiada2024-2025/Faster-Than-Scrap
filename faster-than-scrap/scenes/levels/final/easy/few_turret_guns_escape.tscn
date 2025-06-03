@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://db2b53imp5pua"]
+
+[ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="1_7k0ut"]
+[ext_resource type="PackedScene" uid="uid://cxqel5a26uydo" path="res://scenes/levels/templates/easy/few_turret_guns.tscn" id="2_w8e4m"]
+
+[node name="FewTurretGunsEscape" type="Node3D"]
+
+[node name="MissionEscape" type="Node" parent="." node_paths=PackedStringArray("portal_position")]
+script = ExtResource("1_7k0ut")
+portal_position = NodePath("../Portal Position")
+metadata/_custom_type_script = "uid://bq0dwhdq76qw"
+
+[node name="Portal Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3735, 0, -138.237)
+
+[node name="Lasers" parent="." instance=ExtResource("2_w8e4m")]

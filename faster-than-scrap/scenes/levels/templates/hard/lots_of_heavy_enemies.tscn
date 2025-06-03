@@ -1,0 +1,133 @@
+[gd_scene load_steps=9 format=3 uid="uid://ba07i3rgk8ia2"]
+
+[ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_hbi0s"]
+[ext_resource type="PackedScene" uid="uid://cgx7bdd0f2rhg" path="res://prefabs/environment/shop_miniature.tscn" id="2_hdicv"]
+[ext_resource type="PackedScene" uid="uid://dfco2h1p5vdx1" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid1.tscn" id="3_gu6qk"]
+[ext_resource type="PackedScene" uid="uid://bvng8hdkqm2d6" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid2.tscn" id="4_84rku"]
+[ext_resource type="PackedScene" uid="uid://cs2m7lumvnaot" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid3.tscn" id="5_iswaw"]
+[ext_resource type="PackedScene" uid="uid://chtuqjjikj2f" path="res://prefabs/npc/enemies/bomber.tscn" id="6_17gh8"]
+[ext_resource type="PackedScene" uid="uid://dusrity80tka3" path="res://prefabs/npc/enemies/rocket_ship.tscn" id="7_i1ppg"]
+[ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="8_pcxud"]
+
+[node name="LotsOfHeavyEnemies" type="Node3D"]
+
+[node name="LevelStaples" parent="." instance=ExtResource("1_hbi0s")]
+
+[node name="ShopMiniature" parent="." instance=ExtResource("2_hdicv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -293.14, 0, 2.54283)
+
+[node name="Asteroids" type="Node3D" parent="."]
+
+[node name="Asteroid" parent="Asteroids" instance=ExtResource("3_gu6qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.947, 1.52588e-05, -13.6072)
+
+[node name="Asteroid10" parent="Asteroids" instance=ExtResource("3_gu6qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -147.721, 1.52588e-05, 78.7135)
+
+[node name="Asteroid4" parent="Asteroids" instance=ExtResource("3_gu6qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192.438, 1.52588e-05, -105.59)
+
+[node name="Asteroid5" parent="Asteroids" instance=ExtResource("3_gu6qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206.395, 1.52588e-05, -112.059)
+
+[node name="Asteroid11" parent="Asteroids" instance=ExtResource("3_gu6qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.2097, -8.8557, -80.8876)
+
+[node name="Asteroid2" parent="Asteroids" instance=ExtResource("4_84rku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.866, 0, 91.3418)
+
+[node name="Asteroid6" parent="Asteroids" instance=ExtResource("4_84rku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.674, 0, -199.822)
+
+[node name="Asteroid7" parent="Asteroids" instance=ExtResource("4_84rku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.1404, 0, -185.384)
+
+[node name="Asteroid3" parent="Asteroids" instance=ExtResource("5_iswaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -215.809, 0, -0.112105)
+
+[node name="Asteroid8" parent="Asteroids" instance=ExtResource("5_iswaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.8267, -1.52588e-05, -110.29)
+
+[node name="Asteroid9" parent="Asteroids" instance=ExtResource("5_iswaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0598221, 0, 112.178)
+
+[node name="Enemies" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7409, 0, -13.9709)
+
+[node name="Bomber" parent="Enemies" instance=ExtResource("6_17gh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.9378, -1.52588e-05, 79.1418)
+
+[node name="Bomber2" parent="Enemies" instance=ExtResource("6_17gh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.1983, -1.52588e-05, -34.0516)
+
+[node name="Bomber3" parent="Enemies" instance=ExtResource("6_17gh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5004, -1.52588e-05, -137.145)
+
+[node name="Bomber4" parent="Enemies" instance=ExtResource("6_17gh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.426, -1.52588e-05, -201.678)
+
+[node name="Bomber5" parent="Enemies" instance=ExtResource("6_17gh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -265.723, -1.52588e-05, -109.624)
+
+[node name="Bomber6" parent="Enemies" instance=ExtResource("6_17gh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -327.318, -1.52588e-05, 43.7584)
+
+[node name="Bomber7" parent="Enemies" instance=ExtResource("6_17gh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.385, -1.52588e-05, 127.237)
+
+[node name="Bomber8" parent="Enemies" instance=ExtResource("6_17gh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4702, -1.52588e-05, 167.745)
+
+[node name="Rocket Ship" parent="Enemies" instance=ExtResource("7_i1ppg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.208, 0, -12.6666)
+
+[node name="Rocket Ship2" parent="Enemies" instance=ExtResource("7_i1ppg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.54, 0, -144.187)
+
+[node name="Rocket Ship3" parent="Enemies" instance=ExtResource("7_i1ppg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.2909, -3.05176e-05, -121.236)
+
+[node name="Rocket Ship4" parent="Enemies" instance=ExtResource("7_i1ppg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.912, -3.05176e-05, -81.5379)
+
+[node name="Rocket Ship5" parent="Enemies" instance=ExtResource("7_i1ppg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -230.812, -3.05176e-05, 115.756)
+
+[node name="Rocket Ship6" parent="Enemies" instance=ExtResource("7_i1ppg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.939, -3.05176e-05, 164.188)
+
+[node name="Turret Sniper" parent="Enemies" instance=ExtResource("8_pcxud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -167.021, 0, 1.27048)
+
+[node name="Turret Sniper2" parent="Enemies" instance=ExtResource("8_pcxud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -155.261, 0, 112.256)
+
+[node name="Turret Sniper3" parent="Enemies" instance=ExtResource("8_pcxud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.2613, 0, 136.256)
+
+[node name="Turret Sniper4" parent="Enemies" instance=ExtResource("8_pcxud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.73866, 0, 130.256)
+
+[node name="Turret Sniper5" parent="Enemies" instance=ExtResource("8_pcxud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.739, 0, 53.2564)
+
+[node name="Turret Sniper6" parent="Enemies" instance=ExtResource("8_pcxud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.172, 0, -62.2692)
+
+[node name="Turret Sniper7" parent="Enemies" instance=ExtResource("8_pcxud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6479, 0, -177.361)
+
+[node name="Turret Sniper8" parent="Enemies" instance=ExtResource("8_pcxud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -167.967, 0, -162.926)
+
+[node name="Turret Sniper9" parent="Enemies" instance=ExtResource("8_pcxud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185.334, 0, -147.893)
+
+[node name="Turret Sniper10" parent="Enemies" instance=ExtResource("8_pcxud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.41177, 1.52588e-05, -177.04)
+
+[node name="Turret Sniper11" parent="Enemies" instance=ExtResource("8_pcxud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.588, 1.52588e-05, -80.0405)
+
+[node name="Turret Sniper12" parent="Enemies" instance=ExtResource("8_pcxud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -239.815, 0, -47.6946)

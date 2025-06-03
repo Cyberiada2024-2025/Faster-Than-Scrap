@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://boujepi22erf"]
+
+[ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="1_7ic3w"]
+[ext_resource type="PackedScene" uid="uid://ba07i3rgk8ia2" path="res://scenes/levels/templates/hard/lots_of_heavy_enemies.tscn" id="2_jv0sp"]
+
+[node name="LotsOfHeavyEnemiesEscape" type="Node3D"]
+
+[node name="MissionEscape" type="Node" parent="." node_paths=PackedStringArray("portal_position")]
+script = ExtResource("1_7ic3w")
+portal_position = NodePath("../Portal Position")
+metadata/_custom_type_script = "uid://bq0dwhdq76qw"
+
+[node name="Portal Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 197.813, 0, -60.6068)
+
+[node name="LotsOfHeavyEnemies" parent="." instance=ExtResource("2_jv0sp")]

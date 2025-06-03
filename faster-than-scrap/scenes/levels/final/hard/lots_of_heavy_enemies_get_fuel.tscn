@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c72bmfmugnbbv"]
+
+[ext_resource type="Script" uid="uid://cne5mpb7d4xce" path="res://code/missions/a/mission_fuel.gd" id="1_4farl"]
+[ext_resource type="PackedScene" uid="uid://ba07i3rgk8ia2" path="res://scenes/levels/templates/hard/lots_of_heavy_enemies.tscn" id="2_4farl"]
+
+[node name="LotsOfHeavyEnemiesGetFuel" type="Node3D"]
+
+[node name="MissionFuel" type="Node" parent="." node_paths=PackedStringArray("fuel_position")]
+script = ExtResource("1_4farl")
+fuel_position = NodePath("../Fuel Position")
+metadata/_custom_type_script = "uid://cne5mpb7d4xce"
+
+[node name="Fuel Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 197.813, 0, -60.6068)
+
+[node name="LotsOfHeavyEnemies" parent="." instance=ExtResource("2_4farl")]

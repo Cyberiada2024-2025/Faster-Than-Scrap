@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://crbesxqkbf1ss"]
+
+[ext_resource type="Script" uid="uid://4w17qx65voq6" path="res://code/missions/a/mission_defend.gd" id="2_inwfk"]
+[ext_resource type="PackedScene" uid="uid://cr1umm51wsmta" path="res://scenes/levels/templates/easy/few_drones.tscn" id="2_uh746"]
+
+[node name="FewDronesDefend" type="Node3D"]
+
+[node name="MissionTimedDefend" type="Node" parent="." node_paths=PackedStringArray("defendable_position")]
+script = ExtResource("2_inwfk")
+defendable_position = NodePath("../Main Defendable position")
+metadata/_custom_type_script = "uid://4w17qx65voq6"
+
+[node name="Main Defendable position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3735, 0, -164.844)
+
+[node name="Few Drones" parent="." instance=ExtResource("2_uh746")]

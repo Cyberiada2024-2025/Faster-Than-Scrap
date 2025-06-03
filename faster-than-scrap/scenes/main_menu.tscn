@@ -80,6 +80,11 @@ theme_override_font_sizes/font_size = 30
 text = "START"
 icon_alignment = 1
 
+[node name="SettingsButton" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "SETTINGS"
+
 [node name="ExitButton" type="Button" parent="Buttons"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../StartButton")
@@ -91,4 +96,5 @@ text = "EXIT"
 script = ExtResource("3_0uprt")
 
 [connection signal="pressed" from="Buttons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_exit_button_pressed"]

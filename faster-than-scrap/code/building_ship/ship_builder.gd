@@ -400,7 +400,7 @@ func _process(_delta: float) -> void:
 				_display_illegal()
 				legal = false
 			else:
-				_display_legal()
+				_display_legal_not_attached()
 				legal = true
 			return
 
@@ -429,6 +429,12 @@ func _process(_delta: float) -> void:
 # display in ui as legal
 func _display_legal() -> void:
 	outline_mat.set_shader_parameter("Color", Color.GREEN)
+
+
+# allow build
+# display in ui as legal, but not attached to the ship
+func _display_legal_not_attached() -> void:
+	outline_mat.set_shader_parameter("Color", Color.ORANGE)
 
 
 # do not allow build

@@ -25,6 +25,10 @@ extends Node3D
 @export var particle_holder: WaitFree
 @export var particles: Array[GPUParticles3D]
 
+@export var hit_particle_prefab: PackedScene = preload(
+	"res://prefabs/vfx/particles/base_projectile_hit_particles.tscn"
+)
+
 ## Additional velocity applied to the projectile in every frame.
 ## Used for applying the ship's speed to projectile after spawning.
 var velocity_offset: Vector3 = Vector3.ZERO
@@ -56,6 +60,11 @@ func _process_movement(delta: float) -> void:
 
 
 func _on_damage_applied(_damage: Damage, _target: Damageable) -> void:
+	var hit_particle = hit_particle_prefab.instantiate()
+	get_tree().current_scene.add_child(hit_particle)
+	hit_particle.position = global_position
+	hit_particle.global_rotation = global_rotation
+	hit_particle.global_rotation.y += PI
 	if die_on_hit:
 		if particle_holder != null:
 			for part in particles:

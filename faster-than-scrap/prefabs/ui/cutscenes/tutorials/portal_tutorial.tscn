@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://crti8uuwttken"]
+
+[ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_5gsu5"]
+[ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_l46mg"]
+[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="3_dtod5"]
+[ext_resource type="PackedScene" uid="uid://c78jp45hhpqhd" path="res://prefabs/ui/cutscenes/skip_info_text.tscn" id="4_nc2nx"]
+
+[node name="MovementTutorialCutscene" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.596078)
+script = ExtResource("1_5gsu5")
+cutscene_name = "BuildTutorial"
+metadata/_custom_type_script = "uid://bn8cfyemp6axl"
+
+[node name="Slide" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_l46mg")
+duration = 5.0
+metadata/_custom_type_script = "uid://c8potv0p1705d"
+
+[node name="ColorRect" type="ColorRect" parent="Slide"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.292656, 0.388731, 0.540954, 1)
+
+[node name="Label" type="Label" parent="Slide/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.400009
+offset_top = 0.399994
+offset_right = -0.400024
+offset_bottom = 0.399994
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_dtod5")
+theme_override_font_sizes/font_size = 20
+text = "You've found the portal!
+Enter it to ESCAPE this region!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipInfoText" parent="." instance=ExtResource("4_nc2nx")]
+layout_mode = 1

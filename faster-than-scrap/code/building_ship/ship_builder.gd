@@ -434,7 +434,7 @@ func _display_legal() -> void:
 # allow build
 # display in ui as legal, but not attached to the ship
 func _display_legal_not_attached() -> void:
-	outline_mat.set_shader_parameter("Color", Color.YELLOW)
+	outline_mat.set_shader_parameter("Color", Color.ORANGE)
 
 
 # do not allow build

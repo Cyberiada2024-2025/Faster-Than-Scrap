@@ -72,4 +72,7 @@ func _notification(notification):
 			player.play(END_ANIM)
 		if hit_particle != null:
 			hit_particle.emitting = false
+			hit_particle_holder.wait_free()
+			hit_particle = null
+			hit_particle_holder = null
 		holder.wait_free()

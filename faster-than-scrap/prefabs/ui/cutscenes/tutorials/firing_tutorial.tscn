@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.596078)
 script = ExtResource("1_yfpjr")
-cutscene_name = "BuildTutorial"
+cutscene_name = "Firing tutorial"
 metadata/_custom_type_script = "uid://bn8cfyemp6axl"
 
 [node name="Slide" type="ColorRect" parent="."]
@@ -49,8 +49,8 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_4v6fl")
 theme_override_font_sizes/font_size = 20
 text = "Caution!
-We are blocked by the obstacles!
-Let's destroy them!"
+You are blocked by the obstacles!
+Destroy them!"
 horizontal_alignment = 1
 vertical_alignment = 1
 

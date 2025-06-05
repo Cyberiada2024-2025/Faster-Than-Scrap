@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.596078)
 script = ExtResource("1_c7aa7")
-cutscene_name = "BuildTutorial"
+cutscene_name = "Movement tutorial"
 metadata/_custom_type_script = "uid://bn8cfyemp6axl"
 
 [node name="Slide" type="ColorRect" parent="."]
@@ -48,8 +48,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_jrdi4")
 theme_override_font_sizes/font_size = 20
-text = "I need to get out of here!
-I see an exit on the minimap!"
+text = "You need to get out of here!
+You can see an exit on the minimap!"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -11,8 +11,8 @@
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="10_xqadh"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
-[ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_on_ready_player.gd" id="12_bwh47"]
-[ext_resource type="PackedScene" path="res://prefabs/ui/cutscenes/build_tutorial_cutscene.tscn" id="13_bwh47"]
+[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="12_bwh47"]
+[ext_resource type="PackedScene" uid="uid://dfqok04svlmok" path="res://prefabs/ui/cutscenes/build_tutorial_cutscene.tscn" id="13_bwh47"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
 font = ExtResource("6_au3vu")
@@ -462,6 +462,7 @@ vertical_alignment = 1
 [node name="Node" type="Node" parent="."]
 script = ExtResource("12_bwh47")
 cutscene_path = ExtResource("13_bwh47")
+play_on_ready = true
 
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]
 [connection signal="on_module_hover" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_select"]

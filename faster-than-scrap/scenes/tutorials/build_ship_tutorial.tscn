@@ -426,6 +426,7 @@ vertical_alignment = 1
 [node name="Cutscene player" type="Node" parent="."]
 script = ExtResource("12_esu31")
 cutscene_path = ExtResource("12_yvpli")
+play_on_ready = true
 
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]
 [connection signal="on_module_hover" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_select"]

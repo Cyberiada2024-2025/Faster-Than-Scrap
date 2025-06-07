@@ -1,0 +1,168 @@
+[gd_scene load_steps=21 format=3 uid="uid://buaupty5vjbs5"]
+
+[ext_resource type="PackedScene" uid="uid://djgm5s1ld5wgr" path="res://prefabs/ships/flyable_ship_tutorial.tscn" id="1_8fkjt"]
+[ext_resource type="PackedScene" uid="uid://dm1qlo34r16co" path="res://prefabs/environment/shop_miniature_tutorial.tscn" id="2_8fkjt"]
+[ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="2_ngx30"]
+[ext_resource type="PackedScene" uid="uid://dfco2h1p5vdx1" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid1.tscn" id="4_6bw2y"]
+[ext_resource type="PackedScene" uid="uid://bvng8hdkqm2d6" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid2.tscn" id="5_phkkj"]
+[ext_resource type="PackedScene" uid="uid://cs2m7lumvnaot" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid3.tscn" id="6_tkgtl"]
+[ext_resource type="PackedScene" uid="uid://cdq5hecjw2uki" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_group.tscn" id="7_7xu24"]
+[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="8_6xv7r"]
+[ext_resource type="PackedScene" uid="uid://dsc8yod53e2qk" path="res://prefabs/ui/cutscenes/tutorials/movement_tutorial.tscn" id="9_l855j"]
+[ext_resource type="PackedScene" uid="uid://dpdbniaaphy1t" path="res://prefabs/ui/cutscenes/tutorials/energy_tutorial.tscn" id="10_aa5ti"]
+[ext_resource type="Script" uid="uid://driyjosimvut3" path="res://code/player/detect_player_low_energy.gd" id="11_37dpr"]
+[ext_resource type="Script" uid="uid://bceg4vylbdwdr" path="res://code/evironment/player_detector.gd" id="12_8j6x4"]
+[ext_resource type="PackedScene" uid="uid://31y5kdihtoxf" path="res://prefabs/ui/cutscenes/tutorials/firing_tutorial.tscn" id="13_jcith"]
+[ext_resource type="PackedScene" uid="uid://crti8uuwttken" path="res://prefabs/ui/cutscenes/tutorials/portal_tutorial.tscn" id="14_416px"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uf04d"]
+size = Vector3(800, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pdi7d"]
+size = Vector3(800, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pdi7d"]
+size = Vector3(1, 1, 1000)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q6xgx"]
+size = Vector3(1, 1, 1000)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4rgob"]
+radius = 100.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_83mrs"]
+radius = 22.121
+
+[node name="BasicMovementTutorial" type="Node3D"]
+
+[node name="FlyableShip" parent="." node_paths=PackedStringArray("modules") instance=ExtResource("1_8fkjt")]
+modules = []
+
+[node name="ShopMiniatureTutorial" parent="." instance=ExtResource("2_8fkjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41.8358)
+
+[node name="LevelStaples" parent="." instance=ExtResource("2_ngx30")]
+
+[node name="Asteroids" type="Node3D" parent="."]
+
+[node name="Big Asteroids" type="Node3D" parent="Asteroids"]
+
+[node name="Asteroid" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.0614, 0, -155.991)
+start_speed_range = 0.0
+start_angular_speed_range = 0.02
+
+[node name="Asteroid5" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.871, 0, -72.1861)
+start_speed_range = 0.0
+start_angular_speed_range = 0.02
+
+[node name="Asteroid6" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -186.8, 0, -72.1861)
+start_speed_range = 0.0
+start_angular_speed_range = 0.02
+
+[node name="Asteroid3" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.9386, 0, -155.991)
+start_speed_range = 0.0
+start_angular_speed_range = 0.02
+
+[node name="Asteroid2" parent="Asteroids/Big Asteroids" instance=ExtResource("5_phkkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01693, 0, -74.1182)
+start_speed_range = 0.0
+start_angular_speed_range = 0.0
+
+[node name="Asteroid4" parent="Asteroids/Big Asteroids" instance=ExtResource("6_tkgtl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -221.78)
+start_speed_range = 0.0
+start_angular_speed_range = 0.0
+
+[node name="Groups" type="Node3D" parent="Asteroids"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380.205)
+
+[node name="AsteroidBigGroup" parent="Asteroids/Groups" instance=ExtResource("7_7xu24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.526077, -0.224533, 56.1773)
+
+[node name="AsteroidBigGroup2" parent="Asteroids/Groups" instance=ExtResource("7_7xu24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -56.5887)
+
+[node name="AsteroidBigGroup3" parent="Asteroids/Groups" instance=ExtResource("7_7xu24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.8234, 0, 3.36975)
+
+[node name="AsteroidBigGroup4" parent="Asteroids/Groups" instance=ExtResource("7_7xu24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.3829, 0, 2.2291)
+
+[node name="SpaceLimit" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SpaceLimit"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpaceLimit/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -500)
+shape = SubResource("BoxShape3D_uf04d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpaceLimit/StaticBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_pdi7d")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SpaceLimit/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 500)
+shape = SubResource("BoxShape3D_uf04d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpaceLimit/StaticBody3D/CollisionShape3D2"]
+mesh = SubResource("BoxMesh_pdi7d")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="SpaceLimit/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 0, 0)
+shape = SubResource("BoxShape3D_pdi7d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpaceLimit/StaticBody3D/CollisionShape3D3"]
+mesh = SubResource("BoxMesh_q6xgx")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="SpaceLimit/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -400, 0, 0)
+shape = SubResource("BoxShape3D_pdi7d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpaceLimit/StaticBody3D/CollisionShape3D4"]
+mesh = SubResource("BoxMesh_q6xgx")
+skeleton = NodePath("../..")
+
+[node name="Movement cutscene player" type="Node" parent="."]
+script = ExtResource("8_6xv7r")
+cutscene_path = ExtResource("9_l855j")
+play_on_ready = true
+
+[node name="Energy cutscene player" type="Node" parent="."]
+script = ExtResource("8_6xv7r")
+cutscene_path = ExtResource("10_aa5ti")
+
+[node name="Detect player low energy" type="Node" parent="Energy cutscene player"]
+script = ExtResource("11_37dpr")
+percentage = 0.2
+
+[node name="Weapon Cutscene player" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380)
+script = ExtResource("12_8j6x4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon Cutscene player"]
+shape = SubResource("SphereShape3D_4rgob")
+
+[node name="Weapon cutscene player" type="Node" parent="Weapon Cutscene player"]
+script = ExtResource("8_6xv7r")
+cutscene_path = ExtResource("13_jcith")
+
+[node name="Portal Cutscene player" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380)
+script = ExtResource("12_8j6x4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Portal Cutscene player"]
+shape = SubResource("SphereShape3D_83mrs")
+
+[node name="Portal cutscene player" type="Node" parent="Portal Cutscene player"]
+script = ExtResource("8_6xv7r")
+cutscene_path = ExtResource("14_416px")
+
+[connection signal="player_low_energy" from="Energy cutscene player/Detect player low energy" to="Energy cutscene player" method="play"]
+[connection signal="player_entered" from="Weapon Cutscene player" to="Weapon Cutscene player/Weapon cutscene player" method="play"]
+[connection signal="player_entered" from="Portal Cutscene player" to="Portal Cutscene player/Portal cutscene player" method="play"]

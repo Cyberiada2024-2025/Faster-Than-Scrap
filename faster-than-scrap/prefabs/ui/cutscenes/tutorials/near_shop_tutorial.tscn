@@ -52,8 +52,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_dtod5")
 theme_override_font_sizes/font_size = 20
-text = "You've found the portal!
-Enter it to ESCAPE this region!"
+text = "You've found the hangar!
+Enter it to modify your ship!"
 horizontal_alignment = 1
 vertical_alignment = 1
 

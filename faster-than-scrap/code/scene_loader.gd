@@ -57,6 +57,7 @@ func load_fly_ship_scene(
 			attached_fly_scene = MapGenerator.try_attach_saved_scene()
 		if not attached_fly_scene:
 			get_tree().change_scene_to_file("res://scenes/levels/start_level.tscn")
+			use_saved_pos_rot = false
 
 	GameManager.set_game_state(GameState.State.FLY)
 

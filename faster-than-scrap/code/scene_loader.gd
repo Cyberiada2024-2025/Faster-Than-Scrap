@@ -29,7 +29,7 @@ func load_movement_tutorial() -> void:
 func load_build_tutorial() -> void:
 	_detach_ship()
 	HudSpawner.spawn_hud = true
-	GameManager.set_game_state(GameState.State.BUILD_TUTORIAL)
+	GameManager.set_game_state(GameState.State.BUILD)
 	get_tree().change_scene_to_file("res://scenes/tutorials/build_ship_tutorial.tscn")
 	_attach_ship_with_hud.call_deferred()
 
@@ -106,10 +106,8 @@ func load_credits_scene() -> void:
 
 
 func load_lore_scene() -> void:
+	_detach_ship()
 	get_tree().change_scene_to_file("res://scenes/lore_start.tscn")
-	# reset player
-	GameManager.player_ship.queue_free()
-	GameManager.player_ship = default_ship_prefab.instantiate()
 
 
 func load_settings_scene() -> void:

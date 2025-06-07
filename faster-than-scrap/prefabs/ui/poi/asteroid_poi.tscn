@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5h05bkp7b8go"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_u2r44"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcbvu"]
+shading_mode = 0
+albedo_color = Color(1.50196, 0.447059, 0.25098, 1)
+grow_amount = 0.47
+
+[node name="Asteroid Poi" type="MeshInstance3D"]
+layers = 4
+mesh = SubResource("SphereMesh_u2r44")
+surface_material_override/0 = SubResource("StandardMaterial3D_tcbvu")

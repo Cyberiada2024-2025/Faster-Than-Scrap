@@ -7,6 +7,10 @@ extends Mission
 var fuel_source: Asteroid
 var fuel_source_prefab = preload("res://prefabs/environment/fuel_source.tscn")
 
+var fuel_mission_tutorial_cutscene = preload(
+	"res://prefabs/ui/cutscenes/tutorials/missions/fuel_mission_tutorial.tscn"
+)
+
 
 func setup() -> void:
 	super()
@@ -19,3 +23,5 @@ func setup() -> void:
 	# position it
 	fuel_source.global_position = fuel_position.global_position
 	_spawn_vortex(fuel_position.global_position)
+
+	CutsceneManager.play_cutscene(fuel_mission_tutorial_cutscene)

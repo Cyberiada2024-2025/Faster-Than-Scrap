@@ -23,8 +23,6 @@ func _ready() -> void:
 	body_entered.connect(_check_if_player_entered)
 	body_exited.connect(_check_if_player_exited)
 
-	assert(_progress_mesh != null, "Progress mesh is null for CapturePoint script")
-
 
 func _check_if_player_entered(body: Node3D) -> void:
 	if body == GameManager.player_ship:
@@ -55,5 +53,7 @@ func _process(delta: float) -> void:
 
 
 func _update_progress_bar() -> void:
+	if _progress_mesh == null:
+		return
 	var percentage: float = 1 - _capture_counter / capture_time
 	_progress_mesh.set_instance_shader_parameter("percentage", percentage)

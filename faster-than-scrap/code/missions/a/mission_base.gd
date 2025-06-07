@@ -12,6 +12,11 @@ enum Priority { MAIN_QUEST, SIDE_QUEST }
 
 @export var priority: Priority = Priority.MAIN_QUEST
 @export var time_to_hold: float = 2
+
+@export_category("Vortex paramaters")
+@export var _use_custom_vortex_size: bool = false
+@export var _custom_vortex_size: float = 400
+
 var state: MissionState = MissionState.IN_PROGRESS
 
 
@@ -69,4 +74,7 @@ func create_label(text: String) -> Label3D:
 
 
 func _spawn_vortex(target_position: Vector3) -> void:
-	SpaceVortex.spawn_vortex(target_position)
+	if _use_custom_vortex_size:
+		SpaceVortex.spawn_vortex(target_position, _custom_vortex_size)
+	else:
+		SpaceVortex.spawn_vortex(target_position)

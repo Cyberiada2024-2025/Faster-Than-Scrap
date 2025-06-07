@@ -16,7 +16,7 @@ signal fuel_change(new_value: int)
 ## All modules of the ship (to prevent checking the tree hierarchy).
 ## Mostly used for building phase
 @export var modules: Array[Module] = []
-var current_fuel: int = 1:
+var current_fuel: int = 0:
 	get:
 		return current_fuel
 	set(new_value):

@@ -25,6 +25,8 @@ play_on_ready = true
 [node name="MissionEscape" type="Node" parent="." node_paths=PackedStringArray("portal_position")]
 script = ExtResource("5_25ioe")
 portal_position = NodePath("../Portal Position")
+_use_custom_vortex_size = true
+_custom_vortex_size = 200.0
 metadata/_custom_type_script = "uid://bq0dwhdq76qw"
 
 [node name="Asteroids" type="Node3D" parent="."]

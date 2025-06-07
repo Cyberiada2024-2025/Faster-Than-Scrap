@@ -30,5 +30,3 @@ shape = SubResource("SphereShape3D_seei7")
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("4_yv3rc")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
-
-[connection signal="player_entered" from="EnterShop" to="SceneLoader" method="load_lore_scene"]

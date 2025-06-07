@@ -163,6 +163,9 @@ shape = SubResource("SphereShape3D_83mrs")
 script = ExtResource("8_6xv7r")
 cutscene_path = ExtResource("14_416px")
 
+[connection signal="player_entered" from="ShopMiniatureTutorial/EnterShop" to="ShopMiniatureTutorial/SceneLoader" method="load_lore_scene"]
 [connection signal="player_low_energy" from="Energy cutscene player/Detect player low energy" to="Energy cutscene player" method="play"]
 [connection signal="player_entered" from="Weapon Cutscene player" to="Weapon Cutscene player/Weapon cutscene player" method="play"]
 [connection signal="player_entered" from="Portal Cutscene player" to="Portal Cutscene player/Portal cutscene player" method="play"]
+
+[editable path="ShopMiniatureTutorial"]

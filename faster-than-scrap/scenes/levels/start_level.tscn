@@ -50,7 +50,10 @@ transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -107.266)
 
 [node name="ShopMiniatureTutorial" parent="." instance=ExtResource("7_0pcpl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.4474)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.72222)
+
+[node name="EnterShop" parent="ShopMiniatureTutorial" index="1"]
+instantiated_cooldown = 2.0
 
 [node name="Enemies" type="Node3D" parent="."]
 
@@ -84,3 +87,7 @@ capture_time = 100000.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D"]
 shape = SubResource("SphereShape3D_ul8wb")
+
+[connection signal="player_entered" from="ShopMiniatureTutorial/EnterShop" to="ShopMiniatureTutorial/SceneLoader" method="load_build_tutorial"]
+
+[editable path="ShopMiniatureTutorial"]

@@ -90,7 +90,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_4v6fl")
 theme_override_font_sizes/font_size = 20
 text = "Your ship is equiped with guns.
-You can use them by pressing O P buttons."
+You can use them by pressing I O buttons."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

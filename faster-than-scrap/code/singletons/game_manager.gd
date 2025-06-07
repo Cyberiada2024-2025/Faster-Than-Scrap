@@ -17,7 +17,6 @@ var ships: Array[Ship] = []
 
 func _enter_tree() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
-	player_ship = preload("res://prefabs/ships/flyable_ship.tscn").instantiate()
 
 
 func on_scene_exit() -> void:

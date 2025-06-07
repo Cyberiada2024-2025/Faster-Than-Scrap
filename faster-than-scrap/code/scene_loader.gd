@@ -22,16 +22,12 @@ func load_main_menu_scene() -> void:
 
 func load_movement_tutorial() -> void:
 	HudSpawner.spawn_hud = true
-	GameManager.set_game_state(GameState.State.FLY_TUTORIAL)
+	GameManager.set_game_state(GameState.State.FLY)
 	get_tree().change_scene_to_file("res://scenes/tutorials/basic_movement_tutorial.tscn")
 
 
 func load_build_tutorial() -> void:
-	_detach_ship()
-	HudSpawner.spawn_hud = true
-	GameManager.set_game_state(GameState.State.BUILD)
-	get_tree().change_scene_to_file("res://scenes/tutorials/build_ship_tutorial.tscn")
-	_attach_ship_with_hud.call_deferred()
+	load_build_ship_scene(true)
 
 
 #endregion
@@ -63,6 +59,7 @@ func load_fly_ship_scene(
 			get_tree().change_scene_to_file("res://scenes/levels/start_level.tscn")
 
 	GameManager.set_game_state(GameState.State.FLY)
+
 	if use_saved_pos_rot:
 		pos = GameManager.player_ship.get_saved_position()
 		rot = GameManager.player_ship.get_saved_rotation()
@@ -79,11 +76,7 @@ func load_boss_scene(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO) -
 	_attach_ship_with_hud.call_deferred(pos, rot)
 
 
-func load_build_ship_scene() -> void:
-	if GameManager.game_state == GameState.State.FLY_TUTORIAL:
-		load_build_tutorial()
-		return
-
+func load_build_ship_scene(tutorial_version = false) -> void:
 	_set_vortex_preserve(true)
 	GameManager.player_ship.save_position()
 	GameManager.player_ship.save_rotation()
@@ -93,7 +86,12 @@ func load_build_ship_scene() -> void:
 		MapGenerator.detach_and_save_current_scene()
 
 	GameManager.on_scene_exit()
-	GameManager.get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
+	if tutorial_version:
+		GameManager.get_tree().change_scene_to_file(
+			"res://scenes/tutorials/build_ship_tutorial.tscn"
+		)
+	else:
+		GameManager.get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
 	GameManager.set_game_state(GameState.State.BUILD)
 	_attach_ship_with_hud.call_deferred()
 
@@ -108,6 +106,7 @@ func load_credits_scene() -> void:
 func load_lore_scene() -> void:
 	_detach_ship()
 	get_tree().change_scene_to_file("res://scenes/lore_start.tscn")
+	GameManager.set_game_state(GameState.State.CUTSCENE)
 
 
 func load_settings_scene() -> void:

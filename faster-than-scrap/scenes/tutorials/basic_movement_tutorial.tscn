@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://driyjosimvut3" path="res://code/player/detect_player_low_energy.gd" id="11_37dpr"]
 [ext_resource type="Script" uid="uid://bceg4vylbdwdr" path="res://code/evironment/player_detector.gd" id="12_8j6x4"]
 [ext_resource type="PackedScene" uid="uid://31y5kdihtoxf" path="res://prefabs/ui/cutscenes/tutorials/firing_tutorial.tscn" id="13_jcith"]
-[ext_resource type="PackedScene" uid="uid://crti8uuwttken" path="res://prefabs/ui/cutscenes/tutorials/portal_tutorial.tscn" id="14_416px"]
+[ext_resource type="PackedScene" uid="uid://crti8uuwttken" path="res://prefabs/ui/cutscenes/tutorials/near_shop_tutorial.tscn" id="14_416px"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uf04d"]
 size = Vector3(800, 1, 1)
@@ -39,7 +39,7 @@ radius = 22.121
 modules = []
 
 [node name="ShopMiniatureTutorial" parent="." instance=ExtResource("2_8fkjt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41.8358)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380)
 
 [node name="LevelStaples" parent="." instance=ExtResource("2_ngx30")]
 

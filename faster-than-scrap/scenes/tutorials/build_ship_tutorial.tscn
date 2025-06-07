@@ -310,7 +310,7 @@ horizontal_alignment = 1
 script = ExtResource("7_rimmj")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
-[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "inventory_limit_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description")]
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2428, 0, 0)
 script = ExtResource("8_hc2q3")
 modules = Array[String](["uid://cujiw86wtjlp8", "uid://cujiw86wtjlp8", "uid://cujiw86wtjlp8", "uid://gngfqbur01ep", "uid://gngfqbur01ep", "uid://dbajfkkhivhl0", "uid://dbajfkkhivhl0", "uid://cqkj1jovh07cf", "uid://cqkj1jovh07cf", "uid://taxlqo87sp7s", "uid://15te4x6fjtx4", "uid://b8v177mewyt5j"])
@@ -320,7 +320,6 @@ size_z = 12.573
 columns = 4
 rows = 5
 bank_display = NodePath("Label3D")
-inventory_limit_display = NodePath("")
 deny_finish = NodePath("../ShipBuilder/Control/Deny finish")
 confirm_finish = NodePath("../ShipBuilder/Control/Confirm finish")
 deny_finish_label = NodePath("../ShipBuilder/Control/Deny finish/Color_Rect/Label")

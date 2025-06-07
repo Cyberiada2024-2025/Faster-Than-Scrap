@@ -1,10 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://buy7ourt75b2t"]
+[gd_scene load_steps=11 format=3 uid="uid://buy7ourt75b2t"]
 
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_xgqdr"]
-[ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_on_ready_player.gd" id="4_25ioe"]
-[ext_resource type="PackedScene" uid="uid://cdq5hecjw2uki" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_group.tscn" id="4_r0dwq"]
-[ext_resource type="PackedScene" uid="uid://c3t2663kj3gty" path="res://prefabs/ui/cutscenes/fly_tutorial_cutscene.tscn" id="5_8bnrt"]
+[ext_resource type="PackedScene" uid="uid://bdbipv17ae6j2" path="res://prefabs/ui/cutscenes/tutorials/missions/escape_tutorial.tscn" id="3_ug5yp"]
+[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="4_25ioe"]
 [ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="5_25ioe"]
+[ext_resource type="PackedScene" uid="uid://dlp3fs4qym6g2" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group_straight_line.tscn" id="5_subpj"]
+[ext_resource type="PackedScene" uid="uid://dsbr8a55sppml" path="res://prefabs/npc/enemies/drone.tscn" id="6_subpj"]
+[ext_resource type="PackedScene" uid="uid://dm1qlo34r16co" path="res://prefabs/environment/shop_miniature_tutorial.tscn" id="7_0pcpl"]
+[ext_resource type="Script" path="res://code/evironment/enemy_spawner.gd" id="8_ug5yp"]
+[ext_resource type="PackedScene" uid="uid://do0sasbjik8fp" path="res://prefabs/npc/enemies/corrupted.tscn" id="9_1rg6r"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ul8wb"]
+radius = 30.819
 
 [node name="DummyLevel" type="Node3D"]
 
@@ -12,18 +19,66 @@
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("4_25ioe")
-cutscene_path = ExtResource("5_8bnrt")
-
-[node name="AsteroidBigGroup" parent="." instance=ExtResource("4_r0dwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.1736, 0, -66.0928)
-
-[node name="AsteroidBigGroup2" parent="." instance=ExtResource("4_r0dwq")]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 26.9828, 0, -61.0218)
+cutscene_path = ExtResource("3_ug5yp")
+play_on_ready = true
 
 [node name="MissionEscape" type="Node" parent="." node_paths=PackedStringArray("portal_position")]
 script = ExtResource("5_25ioe")
 portal_position = NodePath("../Portal Position")
 metadata/_custom_type_script = "uid://bq0dwhdq76qw"
 
+[node name="Asteroids" type="Node3D" parent="."]
+
+[node name="AsteroidGroupStraightLine" parent="Asteroids" instance=ExtResource("5_subpj")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 23.4058, 0, -28.9219)
+
+[node name="AsteroidGroupStraightLine2" parent="Asteroids" instance=ExtResource("5_subpj")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -6.94727, 0, -52.465)
+
+[node name="AsteroidGroupStraightLine3" parent="Asteroids" instance=ExtResource("5_subpj")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -24.1767, 0, -30.037)
+
+[node name="AsteroidGroupStraightLine4" parent="Asteroids" instance=ExtResource("5_subpj")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 27.589, 0, -79.6556)
+
+[node name="AsteroidGroupStraightLine5" parent="Asteroids" instance=ExtResource("5_subpj")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -29.3615, 0, -91.6104)
+
 [node name="Portal Position" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -107.266)
+
+[node name="ShopMiniatureTutorial" parent="." instance=ExtResource("7_0pcpl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.4474)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Drone" parent="Enemies" instance=ExtResource("6_subpj")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 34.0926, 1.90735e-06, -29.9716)
+speed = 8
+
+[node name="Drone2" parent="Enemies" instance=ExtResource("6_subpj")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -31.3992, 1.90735e-06, -32.8985)
+speed = 8
+
+[node name="Drone3" parent="Enemies" instance=ExtResource("6_subpj")]
+transform = Transform3D(-0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866026, -7.99529, 1.90735e-06, -63.1925)
+speed = 8
+
+[node name="Drone4" parent="Enemies" instance=ExtResource("6_subpj")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 33.4008, 1.90735e-06, -82.5668)
+speed = 8
+
+[node name="Drone5" parent="Enemies" instance=ExtResource("6_subpj")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -37.4078, 1.90735e-06, -95.6873)
+speed = 8
+
+[node name="Node3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -102.316)
+script = ExtResource("8_ug5yp")
+enemy_prefab = ExtResource("9_1rg6r")
+spawn_interval = 2.0
+max_enemies = 10
+capture_time = 100000.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D"]
+shape = SubResource("SphereShape3D_ul8wb")

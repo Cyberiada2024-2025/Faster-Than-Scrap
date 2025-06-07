@@ -17,6 +17,26 @@ func load_main_menu_scene() -> void:
 	CutsceneManager.reset_cutscenes()
 
 
+#region tutorials
+
+
+func load_movement_tutorial() -> void:
+	HudSpawner.spawn_hud = true
+	GameManager.set_game_state(GameState.State.FLY_TUTORIAL)
+	get_tree().change_scene_to_file("res://scenes/tutorials/basic_movement_tutorial.tscn")
+
+
+func load_build_tutorial() -> void:
+	_detach_ship()
+	HudSpawner.spawn_hud = true
+	GameManager.set_game_state(GameState.State.BUILD_TUTORIAL)
+	get_tree().change_scene_to_file("res://scenes/tutorials/build_ship_tutorial.tscn")
+	_attach_ship_with_hud.call_deferred()
+
+
+#endregion
+
+
 func load_map_selector_scene() -> void:
 	_detach_ship()
 	GameManager.on_scene_exit()
@@ -60,6 +80,10 @@ func load_boss_scene(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO) -
 
 
 func load_build_ship_scene() -> void:
+	if GameManager.game_state == GameState.State.FLY_TUTORIAL:
+		load_build_tutorial()
+		return
+
 	_set_vortex_preserve(true)
 	GameManager.player_ship.save_position()
 	GameManager.player_ship.save_rotation()
@@ -87,8 +111,10 @@ func load_lore_scene() -> void:
 	GameManager.player_ship.queue_free()
 	GameManager.player_ship = default_ship_prefab.instantiate()
 
+
 func load_settings_scene() -> void:
 	get_tree().change_scene_to_file("res://scenes/settings.tscn")
+
 
 ## detach the ship from the scene tree, to preserve it, when it is changed
 func _detach_ship():

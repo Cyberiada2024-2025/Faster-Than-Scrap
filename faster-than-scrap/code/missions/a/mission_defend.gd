@@ -14,6 +14,10 @@ extends Mission
 
 var _capture_counter: int = 1
 
+var defend_tutorial_cutscene = preload(
+	"res://prefabs/ui/cutscenes/tutorials/missions/defend_tutorial.tscn"
+)
+
 
 func setup() -> void:
 	super()
@@ -26,6 +30,8 @@ func setup() -> void:
 	_spawn_defendable()
 	_spawn_small_defendables()
 	_spawn_vortex(defendable_position.global_position)
+
+	CutsceneManager.play_cutscene(defend_tutorial_cutscene)
 
 
 func _spawn_defendable() -> void:

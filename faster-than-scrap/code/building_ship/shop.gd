@@ -91,7 +91,7 @@ func _process(delta: float) -> void:
 		## linter will burn my house down if I don't use delta somewhere in this function
 		first_frame = 0 * delta
 		first_frame = false
-		bank = starting_bank
+		bank = starting_bank + GameManager.player_ship.money
 		_on_bank_change()
 
 
@@ -111,13 +111,13 @@ func _on_finish_pressed() -> void:
 		deny_finish.visible = true
 		deny_finish_label.text = "Your inventory has too many items!"
 	else:
-		# is it correct, always reached, place for exit_shop?
 		_exit_shop()
 
 
 func _exit_shop() -> void:
 	#confirm_finish.visible = true
-	bank = 0
+	$"../ShipBuilder/SceneLoader".load_fly_ship_scene()
+	GameManager.player_ship.money = bank
 
 
 func _on_confirm_pressed() -> void:

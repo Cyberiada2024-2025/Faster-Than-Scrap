@@ -1,19 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://dqg0tu7q3qhpx"]
-
-[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_g28q7"]
-resource_name = "LowPassFilter"
-
-[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_g28q7"]
-resource_name = "Reverb"
-
-[sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_j3pel"]
-resource_name = "HighPassFilter"
-
-[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
-resource_name = "Reverb"
-
-[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_j3pel"]
-resource_name = "LowPassFilter"
+[gd_resource type="AudioBusLayout" load_steps=0 format=3 uid="uid://dqg0tu7q3qhpx"]
 
 [resource]
 bus/0/volume_db = -3.76831

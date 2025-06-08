@@ -40,6 +40,7 @@ label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Battery"
+prize = 2
 description = "Increases ship max energy."
 
 [node name="Frame0Model" type="Node3D" parent="."]

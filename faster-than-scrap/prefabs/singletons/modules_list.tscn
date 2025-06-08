@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxbdxx7rlfi4x"]
+[gd_scene load_steps=2 format=3 uid="uid://mp85m8ek2wqq"]
 
-[ext_resource type="Script" uid="uid://hwqcwre52djc" path="res://code/singletons/modules_list.gd" id="1_amswa"]
+[ext_resource type="Script" path="res://code/singletons/modules_list.gd" id="1_amswa"]
 
 [node name="ModulesList" type="Node"]
 script = ExtResource("1_amswa")

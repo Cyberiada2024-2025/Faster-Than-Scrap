@@ -8,6 +8,7 @@ static var instance: Hud
 
 @export var main_camera_offset: Vector3 = Vector3(0, 40, 0)
 @export var module_camera_offset: Vector3 = Vector3(0, 10, 0)
+@export var module_camera_zoom_strength := 2.6
 @export var minimap_camera_offset: Vector3 = Vector3(0, 30, 0)
 @export var zoom_strength := 15
 @export var zoom_time := 0.2
@@ -49,8 +50,7 @@ func _process(_delta: float) -> void:
 	_main_camera.global_position = player_ship.global_position + main_camera_offset
 	_module_camera.global_position = player_ship.global_position + module_camera_offset
 	_minimap_camera.global_position = player_ship.global_position + minimap_camera_offset
-	var x = _calculate_module_camera_size() * 3
-	_module_camera.size = x
+	_module_camera.size = _calculate_module_camera_size() * module_camera_zoom_strength
 	if Input.is_action_just_pressed("zoom_in"):
 		zoom_camera(-zoom_strength)
 

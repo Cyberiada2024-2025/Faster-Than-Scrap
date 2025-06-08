@@ -47,6 +47,7 @@ var module_explosion_prefab = preload(
 
 
 func _ready() -> void:
+	activation_key_saved = activation_key
 	_on_key_change()
 	update_sprite()
 

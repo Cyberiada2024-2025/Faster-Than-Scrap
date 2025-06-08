@@ -7,6 +7,7 @@ extends Node3D
 ## and snapping it to the ship if close enough.
 signal on_module_select(module: Module)
 signal on_module_attach(module: Module)
+signal on_module_detach(module: Module)
 signal on_module_hover(module: Module)
 
 enum State { NONE, DRAGGING, SETTING_BUTTON }
@@ -271,6 +272,7 @@ func _dettach_module() -> void:
 	active_module.detach()
 	active_module.set_ship_reference(null)
 	if active_module.parent_module != null:
+		on_module_detach.emit(active_module)
 		active_module.parent_module.child_modules.erase(active_module)
 		active_module.parent_module = null
 

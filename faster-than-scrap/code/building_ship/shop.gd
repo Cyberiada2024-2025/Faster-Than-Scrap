@@ -80,8 +80,10 @@ func _generate_inventory() -> void:
 	var i = 0
 	for obj in InventoryManager.inventory:
 		add_child(obj)
-		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2 + distance
-		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
+		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2
+		var z: float = (
+			size_z / rows / 2 + i / columns * size_z / rows - size_z / 2 + $Inventory.position.z
+		)
 		obj.position = Vector3(x, 0, z)
 		obj.get_child(0).position = Vector3(0, 0, 0)
 		modules_on_scene.append(obj)
@@ -125,9 +127,6 @@ func _exit_shop() -> void:
 	for mod in modules_on_scene:
 		if mod != null:
 			mod.placed_in_shop = false
-			if mod.marked_to_destroy == true:
-				modules_on_scene.erase(mod)
-				mod.queue_free()
 
 
 func _on_confirm_pressed() -> void:
@@ -146,58 +145,6 @@ func _on_ship_builder_on_module_select(module: Module) -> void:
 	selected_module_display.text += String.num_int64(module.prize) + "$"
 
 	selected_module_description.text = module.description
-
-
-func _on_gain_resource_body_entered(body: Node3D) -> void:
-	for child in body.get_children():
-		if child is Module:
-			var mod: Module = child
-			bank += mod.prize
-			mod.marked_to_destroy = true
-			if mod not in modules_on_scene:
-				modules_on_scene.append(mod)
-			_on_bank_change()
-			if !areas.has(body):
-				areas.push_back(body)
-
-
-func _on_gain_resource_body_exited(body: Node3D) -> void:
-	for child in body.get_children():
-		if child is Module:
-			var mod: Module = child
-			bank -= mod.prize
-			mod.marked_to_destroy = false
-			_on_bank_change()
-			areas.remove_at(areas.find(body))
-
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	for child in body.get_children():
-		if child is Module:
-			if child.placed_in_shop:  # prevents activating when instantiating
-				var mod: Module = child
-				bank += mod.prize
-				_on_bank_change()
-				if !areas.has(body):
-					areas.push_back(body)
-
-
-func _on_area_3d_body_exited(body: Node3D) -> void:
-	for child in body.get_children():
-		if child is Module:
-			if child.placed_in_shop:  # prevents activating when instantiating
-				var mod: Module = child
-				bank -= mod.prize
-				_on_bank_change()
-				areas.remove_at(areas.find(body))
-
-
-func _on_area_3d_area_entered(area: Area3D) -> void:
-	_on_area_3d_body_entered(area)
-
-
-func _on_area_3d_area_exited(area: Area3D) -> void:
-	_on_area_3d_body_exited(area)
 
 
 func _on_inventory_entered(body: Area3D) -> void:
@@ -223,4 +170,11 @@ func _display_inventory_number() -> void:
 
 
 func _on_module_attached(module: Module) -> void:
-	_on_area_3d_body_exited(module.get_parent())
+	bank -= module.prize
+	_on_bank_change()
+	#_on_area_3d_body_exited(module.get_parent())
+
+
+func _on_ship_builder_on_module_detach(module: Module) -> void:
+	bank += module.prize
+	_on_bank_change()

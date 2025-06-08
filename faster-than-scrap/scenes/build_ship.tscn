@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=33 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -64,27 +64,11 @@ emission_enabled = true
 emission = Color(0.111572, 0.616094, 1.92523e-07, 1)
 emission_energy_multiplier = 2.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cv5l0"]
-transparency = 1
-albedo_color = Color(0, 0, 0, 0.313726)
-emission_enabled = true
-emission = Color(0.692552, 0, 0.243357, 1)
-emission_energy_multiplier = 1.39
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbg4l"]
-albedo_color = Color(0, 0, 0, 1)
-emission_enabled = true
-emission = Color(0.705939, 2.23808e-06, 2.88785e-07, 1)
-emission_energy_multiplier = 2.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jtm63"]
-size = Vector3(8.64761, 1, 8.69147)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_kf4id"]
-size = Vector3(16.3878, 1, 20.1173)
+size = Vector3(17.5186, 1, 18.3633)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cv5l0"]
-size = Vector3(6.72793, 1, 12.6733)
+size = Vector3(9.33811, 1, 9.40362)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqadh"]
 transparency = 1
@@ -350,23 +334,6 @@ transform = Transform3D(1.02, 0, 0, 0, 1, 0, 0, 0, 1.01, 0, 0, 0)
 mesh = SubResource("BoxMesh_jtm63")
 material = SubResource("StandardMaterial3D_bwh47")
 
-[node name="Inventory3" type="CSGMesh3D" parent="Shop"]
-transform = Transform3D(10, 0, 0, 0, 0.083, 0, 0, 0, 10, -0.0763063, 0, 9.21492)
-mesh = SubResource("BoxMesh_jtm63")
-material = SubResource("StandardMaterial3D_cv5l0")
-
-[node name="Inventory" type="CSGMesh3D" parent="Shop/Inventory3"]
-transform = Transform3D(1.01, 0, 0, 0, 0.5, 0, 0, 0, 1.002, -0.000127196, -0.00248185, 0.00770876)
-mesh = SubResource("BoxMesh_jtm63")
-material = SubResource("StandardMaterial3D_hbg4l")
-
-[node name="Inventory2" type="Area3D" parent="Shop/Inventory3"]
-transform = Transform3D(0.1, 0, 0, 0, 12.0482, 0, 0, 0, 0.1, -0.0968002, -1.70403, -0.1029)
-
-[node name="Inventory" type="CollisionShape3D" parent="Shop/Inventory3/Inventory2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11545, -0.156928, 1.04995)
-shape = SubResource("BoxShape3D_jtm63")
-
 [node name="Inventory4" type="Label3D" parent="Shop"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.77373, -1.36849e-07, -7.08624)
 modulate = Color(0.1, 3, 0, 1)
@@ -381,14 +348,14 @@ transform = Transform3D(1.06696, 0, 0, 0, 3.28825, 0, 0, 0, 1, -15.9539, -0.1970
 input_ray_pickable = false
 
 [node name="Inventory" type="CollisionShape3D" parent="Shop/Inventory5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.178986, -0.351958, 2.41971)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0081991, -0.351958, 1.54273)
 shape = SubResource("BoxShape3D_kf4id")
 
 [node name="Inventory" type="Node3D" parent="Shop"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1809, 0, 0.146426)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0750866, 0.009, 8.9829)
 
 [node name="InventoryItems" type="CSGMesh3D" parent="Shop/Inventory"]
-transform = Transform3D(8.28, 0, 0, 0, 0.083, 0, 0, 0, 12.42, 0, 0, 0)
+transform = Transform3D(10, 0, 0, 0, 0.177, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("BoxMesh_jtm63")
 material = SubResource("StandardMaterial3D_d8di0")
 
@@ -398,7 +365,7 @@ mesh = SubResource("BoxMesh_jtm63")
 material = SubResource("StandardMaterial3D_bwh47")
 
 [node name="InventoryLabel" type="Label3D" parent="Shop/Inventory"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -6.756)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.50409e-07, 5.83589)
 modulate = Color(0.1, 3, 0, 1)
 text = "Inventory"
 font = ExtResource("6_au3vu")
@@ -409,7 +376,7 @@ outline_size = 0
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/Inventory/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.104856, -0.5, -0.119748)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0713987, 0, 0.259615)
 shape = SubResource("BoxShape3D_cv5l0")
 
 [node name="InventoryLimitLabel" type="Label3D" parent="Shop/Inventory"]
@@ -480,18 +447,13 @@ vertical_alignment = 1
 [node name="PauseMenu" parent="." instance=ExtResource("11_d8di0")]
 
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]
+[connection signal="on_module_detach" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_detach"]
 [connection signal="on_module_hover" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_select"]
 [connection signal="pressed" from="ShipBuilder/Control/Deny finish/Color_Rect/Confirm" to="Shop" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Confirm" to="ShipBuilder" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Deny" to="ShipBuilder" method="_on_deny_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Finish" to="Shop" method="_on_finish_pressed"]
-[connection signal="area_entered" from="Shop/Inventory3/Inventory2" to="Shop" method="_on_gain_resource_body_entered"]
-[connection signal="area_exited" from="Shop/Inventory3/Inventory2" to="Shop" method="_on_gain_resource_body_exited"]
-[connection signal="body_entered" from="Shop/Inventory3/Inventory2" to="Shop" method="_on_gain_resource_body_entered"]
-[connection signal="body_exited" from="Shop/Inventory3/Inventory2" to="Shop" method="_on_gain_resource_body_exited"]
 [connection signal="area_entered" from="Shop/Inventory5" to="Shop" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Shop/Inventory5" to="Shop" method="_on_area_3d_area_exited"]
-[connection signal="body_entered" from="Shop/Inventory5" to="Shop" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Shop/Inventory5" to="Shop" method="_on_area_3d_body_exited"]
 [connection signal="area_entered" from="Shop/Inventory/Area3D" to="Shop" method="_on_inventory_entered"]
 [connection signal="area_exited" from="Shop/Inventory/Area3D" to="Shop" method="_on_inventory_exited"]

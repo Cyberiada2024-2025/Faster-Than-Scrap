@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=19 format=3 uid="uid://daw8hb8ypy7ri"]
+[gd_resource type="VisualShader" load_steps=21 format=3 uid="uid://daw8hb8ypy7ri"]
 
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_na32g"]
 default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
@@ -42,6 +42,15 @@ op_type = 2
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_hdfmj"]
 default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
 op_type = 3
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_na32g"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 2
+operator = 2
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_f8g43"]
+parameter_name = "Albedo_Color"
+default_value_enabled = true
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_ss03n"]
 parameter_name = "Albedo"
@@ -233,4 +242,8 @@ nodes/fragment/22/node = SubResource("VisualShaderNodeVectorCompose_42hno")
 nodes/fragment/22/position = Vector2(-480, 280)
 nodes/fragment/23/node = SubResource("VisualShaderNodeMix_hdfmj")
 nodes/fragment/23/position = Vector2(-120, 320)
-nodes/fragment/connections = PackedInt32Array(3, 0, 2, 2, 5, 0, 4, 2, 6, 0, 0, 2, 8, 0, 7, 2, 6, 1, 0, 3, 7, 0, 0, 9, 14, 0, 17, 1, 17, 0, 11, 2, 16, 0, 17, 0, 2, 0, 11, 1, 20, 0, 21, 0, 19, 0, 21, 1, 9, 0, 21, 2, 21, 0, 11, 0, 11, 0, 0, 0, 9, 0, 18, 0, 18, 0, 22, 1, 23, 0, 6, 0, 17, 0, 23, 2, 4, 0, 23, 1, 22, 0, 23, 0)
+nodes/fragment/24/node = SubResource("VisualShaderNodeVectorOp_na32g")
+nodes/fragment/24/position = Vector2(460, -20)
+nodes/fragment/25/node = SubResource("VisualShaderNodeColorParameter_f8g43")
+nodes/fragment/25/position = Vector2(80, 140)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 2, 5, 0, 4, 2, 6, 0, 0, 2, 8, 0, 7, 2, 6, 1, 0, 3, 7, 0, 0, 9, 14, 0, 17, 1, 17, 0, 11, 2, 16, 0, 17, 0, 2, 0, 11, 1, 20, 0, 21, 0, 19, 0, 21, 1, 9, 0, 21, 2, 21, 0, 11, 0, 9, 0, 18, 0, 18, 0, 22, 1, 23, 0, 6, 0, 17, 0, 23, 2, 4, 0, 23, 1, 22, 0, 23, 0, 24, 0, 0, 0, 11, 0, 24, 0, 25, 0, 24, 1, 11, 0, 0, 0)

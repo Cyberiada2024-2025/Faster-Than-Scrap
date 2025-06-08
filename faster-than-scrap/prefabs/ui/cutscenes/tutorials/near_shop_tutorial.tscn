@@ -25,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 script = ExtResource("2_l46mg")
-duration = 5.0
+duration = 999.0
 metadata/_custom_type_script = "uid://c8potv0p1705d"
 
 [node name="ColorRect" type="ColorRect" parent="Slide"]

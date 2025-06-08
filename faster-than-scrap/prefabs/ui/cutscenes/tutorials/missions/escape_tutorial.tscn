@@ -26,6 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 script = ExtResource("2_fakub")
+duration = 999.0
 metadata/_custom_type_script = "uid://c8potv0p1705d"
 
 [node name="ColorRect" type="ColorRect" parent="Slide"]
@@ -64,7 +65,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 script = ExtResource("2_fakub")
-duration = 10.0
+duration = 999.0
 metadata/_custom_type_script = "uid://c8potv0p1705d"
 
 [node name="ColorRect" type="ColorRect" parent="Slide2"]
@@ -102,7 +103,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 script = ExtResource("2_fakub")
-duration = 10.0
+duration = 999.0
 metadata/_custom_type_script = "uid://c8potv0p1705d"
 
 [node name="ColorRect" type="ColorRect" parent="Slide3"]

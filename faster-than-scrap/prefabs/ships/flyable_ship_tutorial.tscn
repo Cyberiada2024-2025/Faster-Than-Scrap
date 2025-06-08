@@ -37,19 +37,19 @@ no_depth_test = true
 [node name="AnimationPlayer" parent="Cockpit" instance=ExtResource("3_p382y")]
 
 [node name="Thruster Backward" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("4_vxcau")]
-transform = Transform3D(1, 0, -1.62921e-07, 0, 1, 0, 1.62921e-07, 0, 1, -0.0103829, 0, -5.0019)
+transform = Transform3D(1, 0, -1.62921e-07, 0, 1, 0, 1.62921e-07, 0, 1, -0.0103829, 0, -6.0019)
 activation_key = 83
 ship = NodePath("..")
 parent_module = NodePath("../Frame Center")
 
 [node name="Thruster Right" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("4_vxcau")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -3.46043, 0, -3.33397)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -3.46043, 0, -4.33397)
 activation_key = 68
 ship = NodePath("..")
 parent_module = NodePath("../Frame Left Outer")
 
 [node name="Thruster Left" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("4_vxcau")]
-transform = Transform3D(-2.06632e-07, 0, -1, 0, 1, 0, 1, 0, -2.06632e-07, 3.4359, 0, -3.33397)
+transform = Transform3D(-2.06632e-07, 0, -1, 0, 1, 0, 1, 0, -2.06632e-07, 3.4359, 0, -4.33397)
 activation_key = 65
 ship = NodePath("..")
 parent_module = NodePath("../Frame Right Outer")
@@ -61,15 +61,21 @@ ship = NodePath("..")
 parent_module = NodePath("../Cockpit")
 
 [node name="Frame Center" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("6_bq2yq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.36316)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.36316)
 ship = NodePath("..")
-parent_module = NodePath("../Frame Center2")
+parent_module = NodePath("../Frame Center4")
 child_modules = [NodePath("../Thruster Backward"), NodePath("../Frame Left Inner"), NodePath("../Frame Right Inner")]
 
 [node name="Frame Center2" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("6_bq2yq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.36316)
 ship = NodePath("..")
 parent_module = NodePath("../Frame Center3")
+child_modules = [NodePath("../Frame Center4")]
+
+[node name="Frame Center4" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("6_bq2yq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.36316)
+ship = NodePath("..")
+parent_module = NodePath("../Frame Center2")
 child_modules = [NodePath("../Frame Center")]
 
 [node name="Frame Center3" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("6_bq2yq")]
@@ -79,37 +85,37 @@ parent_module = NodePath("../Cockpit")
 child_modules = [NodePath("../Frame Center2")]
 
 [node name="Frame Left Inner" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("6_bq2yq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3.36316)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4.36316)
 ship = NodePath("..")
 parent_module = NodePath("../Frame Center")
 child_modules = [NodePath("../Frame Left Outer")]
 
 [node name="Frame Left Outer" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("6_bq2yq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3.36316)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4.36316)
 ship = NodePath("..")
 parent_module = NodePath("../Frame Left Inner")
 child_modules = [NodePath("../Thruster Right"), NodePath("../Laser Left")]
 
 [node name="Frame Right Inner" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("6_bq2yq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02567, 0, -3.36316)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02567, 0, -4.36316)
 ship = NodePath("..")
 parent_module = NodePath("../Frame Center")
 child_modules = [NodePath("../Frame Right Outer")]
 
 [node name="Frame Right Outer" parent="." node_paths=PackedStringArray("ship", "parent_module", "child_modules") instance=ExtResource("6_bq2yq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02567, 0, -3.36316)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02567, 0, -4.36316)
 ship = NodePath("..")
 parent_module = NodePath("../Frame Right Inner")
 child_modules = [NodePath("../Thruster Left"), NodePath("../Laser Right")]
 
 [node name="Laser Right" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("4_067ro")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 2.03181, 0, -4.60132)
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 2.03181, 0, -5.60132)
 activation_key = 79
 ship = NodePath("..")
 parent_module = NodePath("../Frame Right Outer")
 
 [node name="Laser Left" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("4_067ro")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -1.96819, 0, -4.60132)
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -1.96819, 0, -5.60132)
 activation_key = 73
 ship = NodePath("..")
 parent_module = NodePath("../Frame Left Outer")

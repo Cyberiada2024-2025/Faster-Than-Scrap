@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0twhkh7o7skp"]
+
+[ext_resource type="Script" uid="uid://cne5mpb7d4xce" path="res://code/missions/a/mission_fuel.gd" id="1_pldm7"]
+[ext_resource type="PackedScene" uid="uid://d2nutk07rp8dw" path="res://scenes/levels/templates/easy/shotgunners.tscn" id="2_vcinw"]
+
+[node name="ShotgunnersGetFuel" type="Node3D"]
+
+[node name="MissionFuel" type="Node" parent="." node_paths=PackedStringArray("fuel_position")]
+script = ExtResource("1_pldm7")
+fuel_position = NodePath("../Fuel Position")
+metadata/_custom_type_script = "uid://cne5mpb7d4xce"
+
+[node name="Fuel Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.456, 0, -103.117)
+
+[node name="Shotgunners" parent="." instance=ExtResource("2_vcinw")]

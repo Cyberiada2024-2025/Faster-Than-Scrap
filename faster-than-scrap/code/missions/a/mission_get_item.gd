@@ -2,7 +2,8 @@ class_name MissionGetItem
 
 extends Mission
 
-var info: MissionInfoGetItem
+@export var item_position: Vector3 = Vector3.ZERO
+@export var item_target_position: Vector3 = Vector3.ZERO
 
 var from: Node3D
 var to: Node3D
@@ -21,8 +22,8 @@ func setup() -> void:
 	MissionManager.get_tree().current_scene.add_child(from)
 	MissionManager.get_tree().current_scene.add_child(to)
 
-	from.global_position = info.item_position
-	to.global_position = info.item_target_position
+	from.global_position = item_position
+	to.global_position = item_target_position
 	to.hide()
 
 

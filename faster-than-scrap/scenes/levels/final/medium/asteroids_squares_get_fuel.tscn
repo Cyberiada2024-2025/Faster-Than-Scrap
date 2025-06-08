@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtu7f5cqn36jo"]
+
+[ext_resource type="Script" uid="uid://cne5mpb7d4xce" path="res://code/missions/a/mission_fuel.gd" id="1_6qjpa"]
+[ext_resource type="PackedScene" uid="uid://bfrsupiyi0gj0" path="res://scenes/levels/templates/medium/asteroids_squares.tscn" id="2_ir82q"]
+
+[node name="AsteroidSquaresGetFuel" type="Node3D"]
+
+[node name="MissionFuel" type="Node" parent="." node_paths=PackedStringArray("fuel_position")]
+script = ExtResource("1_6qjpa")
+fuel_position = NodePath("../Fuel Position")
+metadata/_custom_type_script = "uid://cne5mpb7d4xce"
+
+[node name="Fuel Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.9942, 0, -98.1014)
+
+[node name="Asteroid Squares" parent="." instance=ExtResource("2_ir82q")]

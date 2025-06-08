@@ -5,13 +5,16 @@ extends Node
 ## object which loads new scene and informs the game manager
 ## of the game game state
 ## Used as a helper node, so there can be multiple of scene managers in the same scene
-var default_ship_prefab = preload("res://prefabs/ships/flyable_ship_with_shield.tscn")
+
+var default_ship_prefab = preload("res://prefabs/ships/flyable_ship.tscn")
 
 
 func load_main_menu_scene() -> void:
 	GameManager.on_scene_exit()
+
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	GameManager.set_game_state(GameState.State.MAIN_MENU)
+	CutsceneManager.reset_cutscenes()
 
 
 func load_map_selector_scene() -> void:
@@ -79,6 +82,15 @@ func load_credits_scene() -> void:
 	GameManager.set_game_state(GameState.State.MAIN_MENU)
 	MapGenerator.reset()
 
+
+func load_lore_scene() -> void:
+	get_tree().change_scene_to_file("res://scenes/lore_start.tscn")
+	# reset player
+	GameManager.player_ship.queue_free()
+	GameManager.player_ship = default_ship_prefab.instantiate()
+
+func load_settings_scene() -> void:
+	get_tree().change_scene_to_file("res://scenes/settings.tscn")
 
 ## detach the ship from the scene tree, to preserve it, when it is changed
 func _detach_ship():

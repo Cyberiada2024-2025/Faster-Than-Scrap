@@ -54,6 +54,7 @@ var value_main: float = 1
 var value_under = 1
 ## timer counting down waiting time
 var wait_timer: float = 0
+var lowering: bool = false
 
 
 func _ready() -> void:
@@ -62,27 +63,28 @@ func _ready() -> void:
 	player_ship.energy_change.connect(_change_value)
 	player_ship.energy_warning.connect(_on_warning)
 
-	if max_value != player_ship.max_energy:
-		_on_max_change(player_ship.max_energy)
-
-	if value_main != player_ship.energy:
-		_change_value(player_ship.energy)
+	_on_max_change(player_ship.max_energy)
+	_change_value(player_ship.energy)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if wait_timer > 0:
+		lowering = true
 		wait_timer -= delta
 	elif value_under > value_main:
 		value_under -= change_speed * delta
 		bar_under.value = value_under
+	elif lowering:
+		lowering = false
 
 
 ## Call when value displayed by the bar has changed
 ## Will change bar and numeric display values
 ## and begin animating underbar
 func _change_value(input: float) -> void:
-	wait_timer = change_wait
+	if !lowering:
+		wait_timer = change_wait
 	value_main = input
 	bar_main.value = value_main
 

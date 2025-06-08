@@ -1,24 +1,29 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3rsq4emlmuky"]
+[gd_scene load_steps=23 format=3 uid="uid://c3rsq4emlmuky"]
 
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_nesmw"]
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_s6qyd"]
 [ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="3_4c6o0"]
+[ext_resource type="Material" uid="uid://fp26so8t1e6n" path="res://art/materials/bosses/laserstar/laserstar_material_with_diffuse.tres" id="4_4miem"]
 [ext_resource type="PackedScene" uid="uid://otlsujtci37k" path="res://prefabs/npc/bosses/examples/laser_star/star_quarter.tscn" id="4_06rxb"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_f6ca3"]
+[ext_resource type="ArrayMesh" uid="uid://bekmcaup47wjt" path="res://art/models/bosses/laserstar/core.obj" id="5_xo358"]
 [ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="6_vtp5i"]
 [ext_resource type="Script" uid="uid://crp1vxubokrt" path="res://code/enemy/states/move/move_to_orbit_place.gd" id="7_tge7b"]
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="7_xvv2n"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="8_jstny"]
-[ext_resource type="Script" uid="uid://p2tfapf0egxl" path="res://code/enemy/transitions/timed_transition.gd" id="9_k4714"]
+[ext_resource type="PackedScene" uid="uid://bwji2ay2xd5bf" path="res://prefabs/npc/bosses/examples/laser_star/flow_bottom.tscn" id="9_ame6i"]
+[ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="9_k4714"]
+[ext_resource type="PackedScene" uid="uid://bpp1eb4sc4f8q" path="res://prefabs/npc/bosses/examples/laser_star/flow_top.tscn" id="10_8xa4f"]
 [ext_resource type="Script" uid="uid://b0xwjuq1av15m" path="res://code/enemy/states/rotate/constant_rotation.gd" id="10_vhk6y"]
 [ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="11_vp012"]
 [ext_resource type="Script" uid="uid://c7w7ael2yxs4y" path="res://code/enemy/states/rotate/look_at_target_with_object.gd" id="12_7fp2r"]
 [ext_resource type="Script" uid="uid://dig16nwffnibt" path="res://code/enemy/states/supplementary/restore_energy.gd" id="12_tiubj"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="15_vhk6y"]
+[ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_on_ready_player.gd" id="16_mynj6"]
+[ext_resource type="PackedScene" uid="uid://ciecgbtrcy16n" path="res://prefabs/ui/cutscenes/boss_cutscenes/laster_star_cutscene.tscn" id="17_kardv"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_mj7ff"]
+radius = 2.375
 
 [node name="LaserStar" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
 script = ExtResource("1_nesmw")
@@ -34,10 +39,9 @@ script = ExtResource("2_s6qyd")
 shape = SubResource("SphereShape3D_fe0g0")
 script = ExtResource("3_4c6o0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/Core"]
-transform = Transform3D(0.999998, 0.000325448, -0.00194442, -0.000327706, 0.999999, -0.00115764, 0.00194404, 0.00115827, 0.999997, 0, 0, 0)
-mesh = SubResource("SphereMesh_mj7ff")
-skeleton = NodePath("")
+[node name="Core" type="MeshInstance3D" parent="StaticBody3D/Core"]
+material_override = ExtResource("4_4miem")
+mesh = ExtResource("5_xo358")
 
 [node name="DamageController" parent="StaticBody3D/Core" instance=ExtResource("4_f6ca3")]
 transform = Transform3D(0.999998, 0.000325448, -0.00194442, -0.000327706, 0.999999, -0.00115764, 0.00194404, 0.00115827, 0.999997, 0, 0, 0)
@@ -100,6 +104,17 @@ ship = NodePath("../../../../../Boss")
 [node name="Projectile weapon" parent="StaticBody3D/Core/Star Laser4/Left" index="1" node_paths=PackedStringArray("ship")]
 ship = NodePath("../../../../../Boss")
 
+[node name="FlowTop" parent="StaticBody3D/Core" instance=ExtResource("10_8xa4f")]
+
+[node name="FlowTop2" parent="StaticBody3D/Core" instance=ExtResource("10_8xa4f")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="FlowBottom" parent="StaticBody3D/Core" instance=ExtResource("9_ame6i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="FlowBottom2" parent="StaticBody3D/Core" instance=ExtResource("9_ame6i")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
+
 [node name="StateMachineNPC" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_jstny")
 initial_state = NodePath("Move far away")
@@ -142,6 +157,11 @@ script = ExtResource("11_vp012")
 low_energy_treshold = 10
 new_state = NodePath("../../Get close")
 
+[node name="Timed transition" type="Node" parent="StateMachineNPC/Shoot beam" node_paths=PackedStringArray("new_state")]
+script = ExtResource("9_k4714")
+duration = 10.0
+new_state = NodePath("../../Get close")
+
 [node name="Get close" type="Node" parent="StateMachineNPC"]
 script = ExtResource("7_xvv2n")
 
@@ -179,6 +199,11 @@ script = ExtResource("11_vp012")
 low_energy_treshold = 10
 new_state = NodePath("../../Spin")
 
+[node name="Timed transition" type="Node" parent="StateMachineNPC/Shoot lasers and spin" node_paths=PackedStringArray("new_state")]
+script = ExtResource("9_k4714")
+duration = 6.0
+new_state = NodePath("../../Spin")
+
 [node name="Spin" type="Node" parent="StateMachineNPC"]
 script = ExtResource("7_xvv2n")
 
@@ -193,6 +218,10 @@ new_state = NodePath("../../Move far away")
 
 [node name="EnemyPoi" parent="." instance=ExtResource("15_vhk6y")]
 max_range = 10000.0
+
+[node name="Boss Cutscene" type="Node" parent="."]
+script = ExtResource("16_mynj6")
+cutscene_path = ExtResource("17_kardv")
 
 [connection signal="damaged" from="StaticBody3D/Core/DamageController" to="StaticBody3D/Core" method="take_damage"]
 

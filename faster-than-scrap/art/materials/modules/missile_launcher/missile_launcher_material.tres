@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://f2m4kd1jkb2f"]
+
+[ext_resource type="Texture2D" uid="uid://5kvaxr3t2ehk" path="res://art/textures/missile_launcher/Rocket_Module_Albedo.png" id="1_ux6pr"]
+[ext_resource type="Texture2D" uid="uid://jl5f8uqvc4tk" path="res://art/textures/missile_launcher/Rocket_Module_AO.png" id="2_raqht"]
+[ext_resource type="Texture2D" uid="uid://58y55vdadve3" path="res://art/textures/missile_launcher/Rocket_Module_Metalness.png" id="3_wbcha"]
+[ext_resource type="Texture2D" uid="uid://dgq8j2o5s5788" path="res://art/textures/missile_launcher/Rocket_Module_Normal.png" id="4_gnm5p"]
+[ext_resource type="Texture2D" uid="uid://bfgenp78qjwnk" path="res://art/textures/missile_launcher/Rocket_Module_Roughness.png" id="5_dcawx"]
+
+[resource]
+albedo_texture = ExtResource("1_ux6pr")
+metallic = 1.0
+metallic_texture = ExtResource("3_wbcha")
+roughness_texture = ExtResource("5_dcawx")
+normal_enabled = true
+normal_texture = ExtResource("4_gnm5p")
+ao_enabled = true
+ao_texture = ExtResource("2_raqht")

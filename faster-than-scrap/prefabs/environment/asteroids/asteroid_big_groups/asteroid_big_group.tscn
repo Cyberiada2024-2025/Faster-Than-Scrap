@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdq5hecjw2uki"]
+
+[ext_resource type="PackedScene" uid="uid://b7d6dp7jrytp3" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group.tscn" id="1_jxbfn"]
+
+[node name="AsteroidBigGroup" type="Node3D"]
+
+[node name="AsteroidGroupCircle" parent="." instance=ExtResource("1_jxbfn")]
+
+[node name="AsteroidGroupCircle2" parent="." instance=ExtResource("1_jxbfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66957, 0, 20.6958)
+
+[node name="AsteroidGroupCircle3" parent="." instance=ExtResource("1_jxbfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.3631, 0, -2.49204)
+
+[node name="AsteroidGroupCircle4" parent="." instance=ExtResource("1_jxbfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6534, 0, -28.2525)
+
+[node name="AsteroidGroupCircle5" parent="." instance=ExtResource("1_jxbfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.87601, 0, -27.559)
+
+[node name="AsteroidGroupCircle6" parent="." instance=ExtResource("1_jxbfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1614, 0, -19.5792)
+
+[node name="AsteroidGroupCircle7" parent="." instance=ExtResource("1_jxbfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2103, 0, -0.566576)
+
+[node name="AsteroidGroupCircle8" parent="." instance=ExtResource("1_jxbfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3328, 0, 19.0016)
+
+[node name="AsteroidGroupCircle9" parent="." instance=ExtResource("1_jxbfn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6221, -0.0788498, 15.97)

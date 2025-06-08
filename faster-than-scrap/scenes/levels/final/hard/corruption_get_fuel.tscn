@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqa1gqyx5g0rp"]
+
+[ext_resource type="Script" uid="uid://cne5mpb7d4xce" path="res://code/missions/a/mission_fuel.gd" id="1_u66s8"]
+[ext_resource type="PackedScene" uid="uid://cxjcvbhn4rs4i" path="res://scenes/levels/templates/hard/corruption.tscn" id="2_u66s8"]
+
+[node name="CorruptionGetFuel" type="Node3D"]
+
+[node name="MissionFuel" type="Node" parent="." node_paths=PackedStringArray("fuel_position")]
+script = ExtResource("1_u66s8")
+fuel_position = NodePath("../Fuel Position")
+metadata/_custom_type_script = "uid://cne5mpb7d4xce"
+
+[node name="Fuel Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.8309, 0, -102.426)
+
+[node name="Corruption" parent="." instance=ExtResource("2_u66s8")]

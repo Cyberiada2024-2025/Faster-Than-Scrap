@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://f1t8ika2b03g"]
+
+[ext_resource type="Script" uid="uid://4w17qx65voq6" path="res://code/missions/a/mission_defend.gd" id="1_a5ppg"]
+[ext_resource type="PackedScene" uid="uid://cec1ownqbtyag" path="res://scenes/levels/templates/hard/big_asteroids_sparse.tscn" id="2_a5ppg"]
+
+[node name="BigAsteroidSparseDefend" type="Node3D"]
+
+[node name="MissionDefend" type="Node" parent="." node_paths=PackedStringArray("defendable_position")]
+script = ExtResource("1_a5ppg")
+defendable_position = NodePath("../Defendable Position")
+metadata/_custom_type_script = "uid://4w17qx65voq6"
+
+[node name="Defendable Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.63, 0, -111.192)
+
+[node name="Big Asteroid Sparse" parent="." instance=ExtResource("2_a5ppg")]

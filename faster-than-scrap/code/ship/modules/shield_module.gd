@@ -19,8 +19,8 @@ func _process(delta: float) -> void:
 	super._process(delta)
 
 
-func take_shield_damage(dmg: int) -> void:
-	if shield.on && !ship.use_energy(dmg * energy_per_dmg):
+func take_shield_damage(dmg: Damage) -> void:
+	if shield.on && !ship.use_energy(dmg.value * energy_per_dmg):
 		shield.deactivate()
 		ship.use_energy(ship.energy - 1)
 		shield_broken.emit()
@@ -36,3 +36,9 @@ func _on_key_press(_delta: float) -> void:
 	elif ship.use_energy(energy_per_turning):
 		shield.activate()
 		activated.emit()
+
+
+func deactivate() -> void:
+	super()
+	shield.deactivate()
+	deactivated.emit()

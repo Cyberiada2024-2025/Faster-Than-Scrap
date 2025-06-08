@@ -1,0 +1,138 @@
+[gd_scene load_steps=31 format=3 uid="uid://dfjhn5nuk5paa"]
+
+[ext_resource type="Texture2D" uid="uid://cxtumssgo5bo" path="res://art/textures/bosses/laserstar/diffuse.png" id="1_cdhf2"]
+[ext_resource type="Texture2D" uid="uid://d08jswt27g1h0" path="res://art/textures/bosses/laserstar/roughness.png" id="2_q0dik"]
+[ext_resource type="ArrayMesh" uid="uid://bnqju3gx7e1jt" path="res://art/models/bosses/laserstar/beam.001.obj" id="3_s4e16"]
+[ext_resource type="ArrayMesh" uid="uid://b1lemtwo62as4" path="res://art/models/bosses/laserstar/beam.002.obj" id="4_y8t7x"]
+[ext_resource type="ArrayMesh" uid="uid://b2f3c0berj827" path="res://art/models/bosses/laserstar/beam.003.obj" id="5_y31e0"]
+[ext_resource type="ArrayMesh" uid="uid://bwbxiapq7ha5k" path="res://art/models/bosses/laserstar/beam.obj" id="6_2k7hv"]
+[ext_resource type="Material" uid="uid://clqnlcly6aidu" path="res://art/materials/bosses/laserstar/laserstar_material_with_no_diffuse.tres" id="7_fauqv"]
+[ext_resource type="ArrayMesh" uid="uid://cryrea16useio" path="res://art/models/bosses/laserstar/beam_armour_inner.001.obj" id="8_7gvjd"]
+[ext_resource type="ArrayMesh" uid="uid://82b4e6wim1uq" path="res://art/models/bosses/laserstar/beam_armour_inner.002.obj" id="9_0nsx5"]
+[ext_resource type="ArrayMesh" uid="uid://dhqjo18r2ky0n" path="res://art/models/bosses/laserstar/beam_armour_inner.003.obj" id="10_0p867"]
+[ext_resource type="ArrayMesh" uid="uid://duklyoe3qf03k" path="res://art/models/bosses/laserstar/beam_armour_inner.obj" id="11_bjakn"]
+[ext_resource type="ArrayMesh" uid="uid://b3ti8yw0pevtw" path="res://art/models/bosses/laserstar/beam_armour_outer.L003.obj" id="12_74t5p"]
+[ext_resource type="ArrayMesh" uid="uid://dvhi4iea86qy5" path="res://art/models/bosses/laserstar/beam_armour_outer.L.001.obj" id="13_7hy2b"]
+[ext_resource type="ArrayMesh" uid="uid://bdvqu2bqhjons" path="res://art/models/bosses/laserstar/beam_armour_outer.L.002.obj" id="14_wwfj6"]
+[ext_resource type="ArrayMesh" uid="uid://c2ndouqicxlpn" path="res://art/models/bosses/laserstar/beam_armour_outer.L.obj" id="15_0wf7g"]
+[ext_resource type="ArrayMesh" uid="uid://mnfvmrqqd6g2" path="res://art/models/bosses/laserstar/beam_armour_outer.R.001.obj" id="16_xiytb"]
+[ext_resource type="ArrayMesh" uid="uid://smjf0qbwsrdy" path="res://art/models/bosses/laserstar/beam_armour_outer.R.002.obj" id="17_kfoh4"]
+[ext_resource type="ArrayMesh" uid="uid://dp1e8wlelrycq" path="res://art/models/bosses/laserstar/beam_armour_outer.R.003.obj" id="18_kwvtn"]
+[ext_resource type="ArrayMesh" uid="uid://q8klofgquydh" path="res://art/models/bosses/laserstar/beam_armour_outer.R.obj" id="19_ci7pv"]
+[ext_resource type="Material" uid="uid://fp26so8t1e6n" path="res://art/materials/bosses/laserstar/laserstar_material_with_diffuse.tres" id="20_elq6s"]
+[ext_resource type="ArrayMesh" uid="uid://bekmcaup47wjt" path="res://art/models/bosses/laserstar/core.obj" id="21_1qldl"]
+[ext_resource type="ArrayMesh" uid="uid://dn5dhm2jh3cum" path="res://art/models/bosses/laserstar/core_mini.001.obj" id="22_mfrn4"]
+[ext_resource type="ArrayMesh" uid="uid://bawux4fbarh75" path="res://art/models/bosses/laserstar/core_mini.002.obj" id="23_vhhfb"]
+[ext_resource type="ArrayMesh" uid="uid://d0ajinfi8js5w" path="res://art/models/bosses/laserstar/core_mini.003.obj" id="24_w5uaj"]
+[ext_resource type="ArrayMesh" uid="uid://cvsg1oc5a75c6" path="res://art/models/bosses/laserstar/core_mini.obj" id="25_c5nla"]
+[ext_resource type="ArrayMesh" uid="uid://deps14dp3wypc" path="res://art/models/bosses/laserstar/flow_main.001.obj" id="26_tr0i1"]
+[ext_resource type="ArrayMesh" uid="uid://c1mhmiydceja1" path="res://art/models/bosses/laserstar/flow_main.002.obj" id="27_5e03h"]
+[ext_resource type="ArrayMesh" uid="uid://epeo6w6b7qmi" path="res://art/models/bosses/laserstar/flow_main.003.obj" id="28_o1yib"]
+[ext_resource type="ArrayMesh" uid="uid://gp7dx7d3pcnq" path="res://art/models/bosses/laserstar/flow_main.obj" id="29_idf0v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_26r5j"]
+albedo_texture = ExtResource("1_cdhf2")
+metallic = 1.0
+roughness = 0.5
+roughness_texture = ExtResource("2_q0dik")
+
+[node name="Laserstar" type="Node3D"]
+
+[node name="Beam_001" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_26r5j")
+mesh = ExtResource("3_s4e16")
+
+[node name="Beam_002" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_26r5j")
+mesh = ExtResource("4_y8t7x")
+
+[node name="Beam_003" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_26r5j")
+mesh = ExtResource("5_y31e0")
+
+[node name="Beam" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_26r5j")
+mesh = ExtResource("6_2k7hv")
+
+[node name="BeamArmourInner_001" type="MeshInstance3D" parent="."]
+material_override = ExtResource("7_fauqv")
+mesh = ExtResource("8_7gvjd")
+
+[node name="BeamArmourInner_002" type="MeshInstance3D" parent="."]
+mesh = ExtResource("9_0nsx5")
+
+[node name="BeamArmourInner_003" type="MeshInstance3D" parent="."]
+material_override = ExtResource("7_fauqv")
+mesh = ExtResource("10_0p867")
+
+[node name="BeamArmourInner" type="MeshInstance3D" parent="."]
+material_override = ExtResource("7_fauqv")
+mesh = ExtResource("11_bjakn")
+
+[node name="BeamArmourOuter_l003" type="MeshInstance3D" parent="."]
+material_override = ExtResource("7_fauqv")
+mesh = ExtResource("12_74t5p")
+
+[node name="BeamArmourOuter_l_001" type="MeshInstance3D" parent="."]
+material_override = ExtResource("7_fauqv")
+mesh = ExtResource("13_7hy2b")
+
+[node name="BeamArmourOuter_l_002" type="MeshInstance3D" parent="."]
+material_override = ExtResource("7_fauqv")
+mesh = ExtResource("14_wwfj6")
+
+[node name="BeamArmourOuter_l" type="MeshInstance3D" parent="."]
+material_override = ExtResource("7_fauqv")
+mesh = ExtResource("15_0wf7g")
+
+[node name="BeamArmourOuter_r_001" type="MeshInstance3D" parent="."]
+material_override = ExtResource("7_fauqv")
+mesh = ExtResource("16_xiytb")
+
+[node name="BeamArmourOuter_r_002" type="MeshInstance3D" parent="."]
+material_override = ExtResource("7_fauqv")
+mesh = ExtResource("17_kfoh4")
+
+[node name="BeamArmourOuter_r_003" type="MeshInstance3D" parent="."]
+material_override = ExtResource("7_fauqv")
+mesh = ExtResource("18_kwvtn")
+
+[node name="BeamArmourOuter_r" type="MeshInstance3D" parent="."]
+material_override = ExtResource("7_fauqv")
+mesh = ExtResource("19_ci7pv")
+
+[node name="Core" type="MeshInstance3D" parent="."]
+material_override = ExtResource("20_elq6s")
+mesh = ExtResource("21_1qldl")
+
+[node name="CoreMini_001" type="MeshInstance3D" parent="."]
+material_override = ExtResource("20_elq6s")
+mesh = ExtResource("22_mfrn4")
+
+[node name="CoreMini_002" type="MeshInstance3D" parent="."]
+material_override = ExtResource("20_elq6s")
+mesh = ExtResource("23_vhhfb")
+
+[node name="CoreMini_003" type="MeshInstance3D" parent="."]
+material_override = ExtResource("20_elq6s")
+mesh = ExtResource("24_w5uaj")
+
+[node name="CoreMini" type="MeshInstance3D" parent="."]
+material_override = ExtResource("20_elq6s")
+mesh = ExtResource("25_c5nla")
+
+[node name="FlowMain_001" type="MeshInstance3D" parent="."]
+material_override = ExtResource("7_fauqv")
+mesh = ExtResource("26_tr0i1")
+
+[node name="FlowMain_002" type="MeshInstance3D" parent="."]
+material_override = ExtResource("7_fauqv")
+mesh = ExtResource("27_5e03h")
+
+[node name="FlowMain_003" type="MeshInstance3D" parent="."]
+material_override = ExtResource("7_fauqv")
+mesh = ExtResource("28_o1yib")
+
+[node name="FlowMain" type="MeshInstance3D" parent="."]
+material_override = ExtResource("7_fauqv")
+mesh = ExtResource("29_idf0v")

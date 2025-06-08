@@ -12,7 +12,6 @@ signal new_game_state(new_state: GameState.State)
 var player_ship: PlayerShip
 var ships: Array[Ship] = []
 
-
 # Called when the node enters the scene tree for the first time.
 
 
@@ -23,9 +22,8 @@ func _enter_tree() -> void:
 
 func on_scene_exit() -> void:
 	ships = []
-	if game_state==GameState.State.BUILD:
+	if game_state == GameState.State.BUILD:
 		InventoryManager.save_inventory()
-
 
 
 func set_game_state(new_state: GameState.State) -> void:
@@ -42,7 +40,8 @@ func set_game_state(new_state: GameState.State) -> void:
 		GameState.State.BUILD:
 			turn_player_modules(false)
 		GameState.State.MAIN_MENU:
-			turn_player_modules(true)
+			#turn_player_modules(true)
+			pass
 
 
 func _pause_entities():

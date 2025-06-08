@@ -1,12 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://pxlntfewdl2l"]
+[gd_scene load_steps=5 format=3 uid="uid://pxlntfewdl2l"]
 
 [ext_resource type="Texture2D" uid="uid://byl11wod03t2u" path="res://art/textures/asteroids/asteroid_2/asteroid_2_albedo.png" id="1_7rkn4"]
 [ext_resource type="Texture2D" uid="uid://bjbpspvgh5ppv" path="res://art/textures/asteroids/asteroid_2/asteroid_2_asteroid_normal.png" id="2_1oade"]
 [ext_resource type="ArrayMesh" uid="uid://dj47y3bp171pv" path="res://art/models/asteroids/asteroid_2/asteroid_2.obj" id="3_lfwjt"]
-[ext_resource type="PackedScene" uid="uid://1jrjvgq3vqt4" path="res://art/model_prefabs/asteroids/asteroid_3.tscn" id="4_mbbm2"]
-[ext_resource type="ArrayMesh" uid="uid://dl5jy44rkjgrr" path="res://art/models/asteroids/asteroid_1/asteroid1.obj" id="5_s5sn2"]
-[ext_resource type="PackedScene" uid="uid://maswxxigwvow" path="res://art/models/asteroids/asteroid_1/asteroid_1_collider.tscn" id="6_570fy"]
-[ext_resource type="PackedScene" uid="uid://cj7j6pmi068fm" path="res://art/model_prefabs/asteroids/asteroid_1.tscn" id="7_dyiw3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14nvo"]
 albedo_texture = ExtResource("1_7rkn4")
@@ -21,16 +17,3 @@ normal_texture = ExtResource("2_1oade")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.196661, 0, 0.330823)
 material_override = SubResource("StandardMaterial3D_14nvo")
 mesh = ExtResource("3_lfwjt")
-
-[node name="Asteroid3" parent="." instance=ExtResource("4_mbbm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.391161, 0, 3.50288)
-
-[node name="Asteroid1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92363, 0, -2.52721)
-mesh = ExtResource("5_s5sn2")
-
-[node name="asteroid_1_collider" parent="." instance=ExtResource("6_570fy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92363, 0, -2.52721)
-
-[node name="Asteroid4" parent="." instance=ExtResource("7_dyiw3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54628, 4.76837e-07, 1.4418)

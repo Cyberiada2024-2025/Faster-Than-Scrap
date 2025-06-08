@@ -26,6 +26,7 @@ InventoryManager="*res://prefabs/singletons/inventory_manager.tscn"
 CutsceneManager="*res://code/singletons/cutscene_manager.gd"
 ModulesList="*res://prefabs/singletons/modules_list.tscn"
 ShopContents="*res://code/singletons/shop_contents.gd"
+SettingsManager="*res://code/singletons/settings_manager.gd"
 
 [display]
 

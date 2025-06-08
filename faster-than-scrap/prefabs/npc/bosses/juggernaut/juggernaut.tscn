@@ -1,14 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://bvcjycf02eb4c"]
+[gd_scene load_steps=27 format=3 uid="uid://bvcjycf02eb4c"]
 
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_yarj2"]
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_byxk3"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="3_5ov2f"]
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="3_a8moe"]
-[ext_resource type="Script" uid="uid://dc42aagfm4o0o" path="res://code/ship/modules/explodable.gd" id="3_qln4k"]
+[ext_resource type="Script" path="res://code/ship/modules/explodable.gd" id="3_qln4k"]
 [ext_resource type="Script" uid="uid://crmxerc164n6q" path="res://code/weapons/constant_fire_weapon.gd" id="4_1irkd"]
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="4_clgev"]
+[ext_resource type="PackedScene" uid="uid://bgpoyw23tdb7h" path="res://art/model_prefabs/bosses/juggernaut/juggernaut.tscn" id="4_t21y8"]
 [ext_resource type="Script" uid="uid://befj25g2qfhr7" path="res://code/enemy/states/move/orbit.gd" id="5_5ov2f"]
-[ext_resource type="Script" uid="uid://p2tfapf0egxl" path="res://code/enemy/transitions/timed_transition.gd" id="6_cla4x"]
+[ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="6_cla4x"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="6_ion51"]
 [ext_resource type="Script" uid="uid://c14j6cdbgt38o" path="res://code/enemy/states/rotate/look_at_target.gd" id="6_xr00f"]
 [ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="7_a8moe"]
@@ -21,11 +22,11 @@
 [ext_resource type="PackedScene" uid="uid://cf4qlk85kdwxg" path="res://prefabs/projectiles/boss_projectiles/star_beam_flash.tscn" id="10_qln4k"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="11_clgev"]
 [ext_resource type="PackedScene" uid="uid://c02tg8vmx2ibt" path="res://prefabs/projectiles/boss_projectiles/juggernaut_shotgun_flash.tscn" id="11_qln4k"]
+[ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_on_ready_player.gd" id="22_1nvpg"]
+[ext_resource type="PackedScene" uid="uid://bh1max67hf46s" path="res://prefabs/ui/cutscenes/boss_cutscenes/juggernaut_cutscene.tscn" id="23_j2cd8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_km21v"]
 size = Vector3(5, 1, 5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_byxk3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qln4k"]
 
@@ -41,35 +42,39 @@ script = ExtResource("2_byxk3")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="Body" type="CollisionShape3D" parent="StaticBody3D" node_paths=PackedStringArray("child_modules")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 shape = SubResource("BoxShape3D_km21v")
 script = ExtResource("3_qln4k")
 child_modules = [NodePath("../Weapons/Heavy Weapon Module"), NodePath("../Weapons/Basic Weapon Module"), NodePath("../Weapons/Basic Weapon Module2"), NodePath("../Weapons/Laser Module"), NodePath("../Weapons/Shotgun Module"), NodePath("../Weapons/Shotgun Module2")]
 metadata/_custom_type_script = "uid://cs6qd5cf3gviv"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/Body"]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-mesh = SubResource("BoxMesh_byxk3")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D/Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, -0.5)
-mesh = SubResource("BoxMesh_byxk3")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D/Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 2, 0, 0)
-mesh = SubResource("BoxMesh_byxk3")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="StaticBody3D/Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -2, 0, 0)
-mesh = SubResource("BoxMesh_byxk3")
-skeleton = NodePath("")
+[node name="Juggernaut" parent="StaticBody3D/Body" instance=ExtResource("4_t21y8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="DamageController" parent="StaticBody3D/Body" instance=ExtResource("10_6fxl0")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="0"]
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("BoxShape3D_qln4k")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="1"]
+transform = Transform3D(3.63411, 0, 0, 0, 1, 0, 0, 0, 1.92392, 4.20319, 0, 0)
+shape = SubResource("BoxShape3D_qln4k")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="2"]
+transform = Transform3D(3.63411, 0, 0, 0, 1, 0, 0, 0, 1.92392, -4.203, 0, 0)
+shape = SubResource("BoxShape3D_qln4k")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, -6.34885)
+shape = SubResource("BoxShape3D_qln4k")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, 5.39856, 0, -1.95781)
+shape = SubResource("BoxShape3D_qln4k")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, -5.399, 0, -1.958)
 shape = SubResource("BoxShape3D_qln4k")
 
 [node name="Weapons" type="Node3D" parent="StaticBody3D"]
@@ -84,6 +89,7 @@ ship = NodePath("../../../Boss")
 metadata/_custom_type_script = "uid://6f2yjn6wgcun"
 
 [node name="Basic Weapon" type="Node3D" parent="StaticBody3D/Weapons/Heavy Weapon Module"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.178858)
 script = ExtResource("6_ion51")
 warning = true
 cooldown = 5.0
@@ -99,6 +105,7 @@ ship = NodePath("../../../Boss")
 metadata/_custom_type_script = "uid://6f2yjn6wgcun"
 
 [node name="Basic Weapon" type="Node3D" parent="StaticBody3D/Weapons/Basic Weapon Module"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09404, 0, 1.28491)
 script = ExtResource("6_ion51")
 warning = true
 cooldown = 5.0
@@ -114,6 +121,7 @@ ship = NodePath("../../../Boss")
 metadata/_custom_type_script = "uid://6f2yjn6wgcun"
 
 [node name="Basic Weapon" type="Node3D" parent="StaticBody3D/Weapons/Basic Weapon Module2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14377, 0, 1.26826)
 script = ExtResource("6_ion51")
 warning = true
 cooldown = 5.0
@@ -129,6 +137,7 @@ ship = NodePath("../../../Boss")
 metadata/_custom_type_script = "uid://6f2yjn6wgcun"
 
 [node name="LaserBeam" type="Node3D" parent="StaticBody3D/Weapons/Laser Module"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.77426)
 script = ExtResource("4_1irkd")
 energy_cost = 20.0
 projectile = ExtResource("10_qln4k")
@@ -143,6 +152,7 @@ ship = NodePath("../../../Boss")
 metadata/_custom_type_script = "uid://6f2yjn6wgcun"
 
 [node name="Shotgun" type="Node3D" parent="StaticBody3D/Weapons/Shotgun Module"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12289, 0, 1.10803)
 script = ExtResource("6_ion51")
 warning = true
 energy_cost = 50.0
@@ -150,7 +160,7 @@ cooldown = 5.0
 projectile = ExtResource("11_qln4k")
 
 [node name="Shotgun Module2" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00471, 0, -2.61206)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40955, 0, -4.57242)
 script = ExtResource("3_a8moe")
 weapon = NodePath("Shotgun")
 max_hp = 0.0
@@ -159,6 +169,7 @@ ship = NodePath("../../../Boss")
 metadata/_custom_type_script = "uid://6f2yjn6wgcun"
 
 [node name="Shotgun" type="Node3D" parent="StaticBody3D/Weapons/Shotgun Module2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34533, 0, 3.32784)
 script = ExtResource("6_ion51")
 warning = true
 energy_cost = 50.0
@@ -289,6 +300,10 @@ new_state = NodePath("../../OrbitComposite")
 
 [node name="EnemyPoi" parent="." instance=ExtResource("11_clgev")]
 max_range = 10000.0
+
+[node name="Boss Cutscene" type="Node" parent="."]
+script = ExtResource("22_1nvpg")
+cutscene_path = ExtResource("23_j2cd8")
 
 [connection signal="damaged" from="StaticBody3D/Body/DamageController" to="StaticBody3D/Body" method="take_damage"]
 

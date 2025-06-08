@@ -1,15 +1,22 @@
-[gd_scene load_steps=22 format=3 uid="uid://15te4x6fjtx4"]
+[gd_scene load_steps=25 format=3 uid="uid://15te4x6fjtx4"]
 
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_wqaao"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_wf0w0"]
 [ext_resource type="PackedScene" uid="uid://dyn1ks7ebosel" path="res://prefabs/projectiles/homing_missile.tscn" id="3_duybm"]
+[ext_resource type="PackedScene" uid="uid://dwlfvellnrf75" path="res://art/model_prefabs/ship/modules/common_gun_model_pf.tscn" id="4_ssbkt"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_tjuoy"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="5_5u5s7"]
+[ext_resource type="Texture2D" uid="uid://2gjyanubtuq0" path="res://art/textures/common_gun/common_gun_Albedo.png" id="5_ojn6j"]
+[ext_resource type="Texture2D" uid="uid://cfbuewvtj0krm" path="res://art/textures/common_gun/common_gun_AO.png" id="6_bdmed"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="6_qts7g"]
+[ext_resource type="Texture2D" uid="uid://d17p4g3iue8i4" path="res://art/textures/common_gun/common_gun_Metalness.png" id="7_j4nm5"]
 [ext_resource type="AudioStream" uid="uid://mavrm3tbmwii" path="res://art/audio/sounds/illegal_position_sound.wav" id="7_sylsa"]
+[ext_resource type="Texture2D" uid="uid://bbplkfi81cc5b" path="res://art/textures/common_gun/common_gun_Normal.png" id="8_1nmv8"]
 [ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="8_kgddl"]
+[ext_resource type="Texture2D" uid="uid://b08thixotsobt" path="res://art/textures/common_gun/common_gun_Roughness.png" id="9_7ufp7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yf3ku"]
+size = Vector3(1.325, 1, 1.105)
 
 [sub_resource type="Curve" id="Curve_qoroq"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -55,19 +62,16 @@ material = SubResource("StandardMaterial3D_b7ty2")
 size = 0.05
 curve = SubResource("Curve_pg335")
 
-[sub_resource type="PlaceholderMaterial" id="PlaceholderMaterial_da12c"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_miefn"]
-next_pass = SubResource("PlaceholderMaterial_da12c")
-albedo_color = Color(0.969626, 0.769405, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_quigi"]
-top_radius = 0.1
-bottom_radius = 0.1
-height = 1.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_recg5"]
-size = Vector3(0.182556, 0.165771, 0.972778)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6e22"]
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("5_ojn6j")
+metallic = 1.0
+metallic_texture = ExtResource("7_j4nm5")
+roughness_texture = ExtResource("9_7ufp7")
+normal_enabled = true
+normal_texture = ExtResource("8_1nmv8")
+ao_enabled = true
+ao_texture = ExtResource("6_bdmed")
 
 [node name="MissileModule" type="CollisionShape3D" node_paths=PackedStringArray("weapon", "attach_points", "sprite", "label")]
 shape = SubResource("BoxShape3D_yf3ku")
@@ -107,21 +111,23 @@ trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_b5ybg")
 draw_pass_1 = SubResource("RibbonTrailMesh_7shuu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_miefn")
-mesh = SubResource("CylinderMesh_quigi")
+[node name="CommonGunModel" parent="." instance=ExtResource("4_ssbkt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.01, 0)
+
+[node name="CommonGun" parent="CommonGunModel" index="0"]
+transform = Transform3D(0.999996, 0.00099188, -0.00265222, -0.000994776, 0.999999, -0.00109618, 0.00265113, 0.0010988, 0.999996, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_r6e22")
 
 [node name="AttachPoints" type="Node3D" parent="."]
 
 [node name="AttachPoint" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4399e-08, 0, 0.506178)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4399e-08, 0, 0.587799)
 
 [node name="DamageController" parent="." instance=ExtResource("4_tjuoy")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00500476, -0.00528124, -0.00144887)
-shape = SubResource("BoxShape3D_recg5")
+shape = SubResource("BoxShape3D_yf3ku")
 
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("shape") instance=ExtResource("5_5u5s7")]
 shape = NodePath("../DamageController/Damageable/CollisionShape3D")
@@ -136,5 +142,6 @@ metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
 [connection signal="activated" from="." to="SoundEmitter" method="start_playing"]
 [connection signal="damaged" from="DamageController" to="." method="take_damage"]
 
+[editable path="CommonGunModel"]
 [editable path="DamageController"]
 [editable path="ModuleDisplay"]

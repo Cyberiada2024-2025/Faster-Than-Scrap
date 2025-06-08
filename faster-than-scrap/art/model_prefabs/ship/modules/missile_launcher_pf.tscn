@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://nurptglh2vv7"]
+
+[ext_resource type="Material" uid="uid://f2m4kd1jkb2f" path="res://art/materials/modules/missile_launcher/missile_launcher_material.tres" id="1_shas0"]
+[ext_resource type="ArrayMesh" uid="uid://ch6fu068ragnw" path="res://art/models/modules/missille_launcher/Missile_Launcher.obj" id="6_xqx46"]
+
+[node name="MissileLauncher" type="Node3D"]
+
+[node name="MissileLauncher" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.189852, 0, 0)
+material_override = ExtResource("1_shas0")
+mesh = ExtResource("6_xqx46")

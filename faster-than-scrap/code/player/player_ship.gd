@@ -40,7 +40,6 @@ func _ready() -> void:
 	energy_max_change.emit(max_energy)
 	_on_energy_change()
 
-
 func on_game_change_state(new_state: GameState.State) -> void:
 	match new_state:
 		GameState.State.FLY:

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsiunhrpghlkd"]
+
+[ext_resource type="Script" uid="uid://4w17qx65voq6" path="res://code/missions/a/mission_defend.gd" id="1_bij8b"]
+[ext_resource type="PackedScene" uid="uid://cxjcvbhn4rs4i" path="res://scenes/levels/templates/hard/corruption.tscn" id="2_nyccl"]
+
+[node name="CorruptionDefend" type="Node3D"]
+
+[node name="MissionDefend" type="Node" parent="." node_paths=PackedStringArray("defendable_position")]
+script = ExtResource("1_bij8b")
+defendable_position = NodePath("../Defendable Position")
+metadata/_custom_type_script = "uid://4w17qx65voq6"
+
+[node name="Defendable Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.8309, 0, -102.426)
+
+[node name="Corruption" parent="." instance=ExtResource("2_nyccl")]

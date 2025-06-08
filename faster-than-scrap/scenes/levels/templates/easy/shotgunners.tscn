@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2nutk07rp8dw"]
+
+[ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_e5cyy"]
+[ext_resource type="PackedScene" uid="uid://cgx7bdd0f2rhg" path="res://prefabs/environment/shop_miniature.tscn" id="2_rrqwo"]
+[ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/npc/enemies/shotgunner.tscn" id="3_e5cyy"]
+[ext_resource type="PackedScene" uid="uid://b7d6dp7jrytp3" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group.tscn" id="4_rrqwo"]
+
+[node name="Shotgunners" type="Node3D"]
+
+[node name="LevelStaples" parent="." instance=ExtResource("1_e5cyy")]
+
+[node name="ShopMiniature" parent="." instance=ExtResource("2_rrqwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1742, 0, -133.991)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Shotgunner" parent="Enemies" instance=ExtResource("3_e5cyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.6841, 0, 30.3592)
+
+[node name="Shotgunner2" parent="Enemies" instance=ExtResource("3_e5cyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.7432, 0, 53.0495)
+
+[node name="Shotgunner3" parent="Enemies" instance=ExtResource("3_e5cyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.5258, 0, 4.58823)
+
+[node name="Shotgunner4" parent="Enemies" instance=ExtResource("3_e5cyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.2659, 0, -66.7816)
+
+[node name="Shotgunner5" parent="Enemies" instance=ExtResource("3_e5cyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.5481, 0, -92.176)
+
+[node name="Shotgunner6" parent="Enemies" instance=ExtResource("3_e5cyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.591, 0, -29.6761)
+
+[node name="Shotgunner7" parent="Enemies" instance=ExtResource("3_e5cyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.049, 0, -86.9479)
+
+[node name="Shotgunner8" parent="Enemies" instance=ExtResource("3_e5cyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.049, 0, -104.948)
+
+[node name="Shotgunner9" parent="Enemies" instance=ExtResource("3_e5cyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -141.049, 0, -128.948)
+
+[node name="Asteroids" type="Node3D" parent="."]
+
+[node name="AsteroidGroupCircle" parent="Asteroids" instance=ExtResource("4_rrqwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.6355, 0, -15.8939)
+
+[node name="AsteroidGroupCircle2" parent="Asteroids" instance=ExtResource("4_rrqwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.2033, 0, -77.8983)
+
+[node name="AsteroidGroupCircle3" parent="Asteroids" instance=ExtResource("4_rrqwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.426, 0, -74.3617)
+
+[node name="AsteroidGroupCircle4" parent="Asteroids" instance=ExtResource("4_rrqwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.6828, 0, -33.3376)
+
+[node name="AsteroidGroupCircle5" parent="Asteroids" instance=ExtResource("4_rrqwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.1676, 0, 30.0568)
+
+[node name="AsteroidGroupCircle6" parent="Asteroids" instance=ExtResource("4_rrqwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.569, 0, 45.9174)
+
+[node name="AsteroidGroupCircle7" parent="Asteroids" instance=ExtResource("4_rrqwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.0282, 0.159073, 38.5062)

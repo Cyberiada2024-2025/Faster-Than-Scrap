@@ -22,7 +22,7 @@ func add_mission(mission: Mission) -> void:
 
 
 func on_mission_finished(mission: Mission) -> void:
-	if mission.info.priority == MissionInfo.Priority.MAIN_QUEST:
+	if mission.priority == Mission.Priority.MAIN_QUEST:
 		main_mission_finished = true
 		map_finished.emit()
 		print("MissionManager: FINISHED MAIN QUEST")

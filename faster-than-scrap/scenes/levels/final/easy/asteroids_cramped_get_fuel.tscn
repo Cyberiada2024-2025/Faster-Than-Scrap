@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcem0fucmljrh"]
+
+[ext_resource type="PackedScene" uid="uid://c5t55uwwv5ewk" path="res://scenes/levels/templates/easy/asteroids_cramped.tscn" id="1_7eyy7"]
+[ext_resource type="Script" uid="uid://cne5mpb7d4xce" path="res://code/missions/a/mission_fuel.gd" id="2_7eyy7"]
+
+[node name="Asteroid crampedDefend" type="Node3D"]
+
+[node name="Asteroid cramped" parent="." instance=ExtResource("1_7eyy7")]
+
+[node name="MissionGetFuel" type="Node" parent="." node_paths=PackedStringArray("fuel_position")]
+script = ExtResource("2_7eyy7")
+fuel_position = NodePath("../Fuel Position")
+metadata/_custom_type_script = "uid://cne5mpb7d4xce"
+
+[node name="Fuel Position" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, -80)

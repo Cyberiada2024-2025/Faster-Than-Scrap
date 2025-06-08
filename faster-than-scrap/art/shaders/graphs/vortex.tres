@@ -101,7 +101,7 @@ linked_parent_graph_frame = 155
 parameter_name = "Lightning_Color"
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_gxsk8"]
-size = Vector2(896, 270)
+size = Vector2(804, 202)
 title = "Polar UV"
 attached_nodes = PackedInt32Array(3, 4)
 
@@ -114,7 +114,7 @@ attached_nodes = PackedInt32Array(3, 4)
 [sub_resource type="VisualShaderNodeReroute" id="VisualShaderNodeReroute_2v25o"]
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_3noyx"]
-size = Vector2(684, 412)
+size = Vector2(684, 302)
 title = "Spike Rotation"
 attached_nodes = PackedInt32Array(75, 74, 76)
 
@@ -137,27 +137,27 @@ attached_nodes = PackedInt32Array(75, 74, 76)
 [sub_resource type="VisualShaderNodeReroute" id="VisualShaderNodeReroute_wltsk"]
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_s53ee"]
-size = Vector2(1164, 523)
+size = Vector2(1164, 342)
 title = "Soft radius in UV coordinates"
 attached_nodes = PackedInt32Array(44, 26, 25, 45, 163)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_ujj3x"]
-size = Vector2(1044, 308)
+size = Vector2(1044, 162)
 title = "Spike length in UV coordinates"
 attached_nodes = PackedInt32Array(63, 65, 66)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_x6xsr"]
-size = Vector2(317, 232)
+size = Vector2(317, 122)
 title = "Hard radius in UV coordinates"
 attached_nodes = PackedInt32Array(6)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_ev5ty"]
-size = Vector2(1065, 674)
+size = Vector2(1064, 462)
 title = "Cuttting out transparent portions"
 attached_nodes = PackedInt32Array(71, 67, 32)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_wxdmm"]
-size = Vector2(244, 161)
+size = Vector2(244, 122)
 title = "Neutral/transparent"
 attached_nodes = PackedInt32Array(35)
 
@@ -170,22 +170,22 @@ default_input_values = [0, Vector4(0, 0, 0, 0)]
 port_type = 5
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_jphte"]
-size = Vector2(2624, 2145)
+size = Vector2(2624, 1862)
 title = "Cloud weights"
 attached_nodes = PackedInt32Array(78, 101, 102, 98, 96, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 80, 79)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_ourj4"]
-size = Vector2(2464, 1808)
+size = Vector2(2464, 1662)
 title = "Lightning weights"
 attached_nodes = PackedInt32Array(122, 124, 123, 113, 106, 118, 105, 121, 119, 117, 116, 115, 114, 112, 111, 110, 109, 108, 107)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_7senu"]
-size = Vector2(824, 465)
+size = Vector2(824, 322)
 title = "Clouds + lightning colors"
 attached_nodes = PackedInt32Array(100, 125, 126)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_ay36t"]
-size = Vector2(804, 385)
+size = Vector2(804, 242)
 title = "Clouds + lightning + main colors"
 attached_nodes = PackedInt32Array(28, 99)
 
@@ -879,7 +879,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-49.9949, -755.221)
 modes/blend = 3
 modes/specular = 2
 flags/shadows_disabled = true

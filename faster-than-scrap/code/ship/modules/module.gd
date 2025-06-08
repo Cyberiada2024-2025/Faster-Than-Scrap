@@ -99,6 +99,14 @@ func update_sprite() -> void:
 		sprite.modulate = lerp(dead_color, healthy_color, hp / max_hp)
 
 
+func hide_sprite() -> void:
+	sprite.set_layer_mask_value(2, false)
+
+
+func show_sprite() -> void:
+	sprite.set_layer_mask_value(2, true)
+
+
 ## Destroy self and detach children
 func _on_destroy() -> void:
 	if parent_module != null:

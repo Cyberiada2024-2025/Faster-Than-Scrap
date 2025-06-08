@@ -65,6 +65,7 @@ func _generate_shop() -> void:
 		add_child(area)
 		area.add_child(module)
 		module.position = Vector3.ZERO
+		module.hide_sprite()
 		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2
 		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
 		area.position = Vector3(x, 0, z)
@@ -81,6 +82,7 @@ func _generate_inventory() -> void:
 		)
 		obj.position = Vector3(x, 0, z)
 		obj.get_child(0).position = Vector3(0, 0, 0)
+		obj.hide_sprite()
 		i += 1
 	_display_inventory_number()
 

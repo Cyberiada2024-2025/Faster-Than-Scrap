@@ -68,7 +68,6 @@ func _process(_delta: float) -> void:
 	_main_camera.global_position = player_ship.global_position + main_camera_offset
 	_module_camera.global_position = player_ship.global_position + module_camera_offset
 	_minimap_camera.global_position = player_ship.global_position + minimap_camera_offset
-	#_module_camera.size = _calculate_module_camera_size() + module_camera_zoom_strength
 	_module_camera.position.x = _module_camera_offset_x() * -1
 	_module_camera.position.z = _module_camera_offset_z()
 	_module_camera.position += module_camera_offset

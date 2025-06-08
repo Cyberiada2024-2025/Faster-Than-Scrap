@@ -14,14 +14,14 @@ radius = 1.005
 
 [node name="Asteroid" type="RigidBody3D"]
 axis_lock_linear_y = true
-mass = 10.0
+mass = 40000.0
 physics_material_override = SubResource("PhysicsMaterial_gro5k")
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 5
 angular_damp_mode = 1
 script = ExtResource("1_vmr2c")
-hp = 10
+hp = 1000
 
 [node name="Asteroid3" parent="." instance=ExtResource("2_eb6xg")]
 transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, 0.205451, 0, 0)

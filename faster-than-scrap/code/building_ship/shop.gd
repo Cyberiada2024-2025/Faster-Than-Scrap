@@ -6,8 +6,8 @@ extends Node3D
 # prevent generating too many of the same module
 # add rarities
 
-## GainResourceArea must be at negative y coordinate
-## otherwise, engine module is not selectable
+## Areas should have negative y coordinate
+## otherwise, engine module might not be selectable
 
 ## set starting cash here
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var starting_bank: int = 0
@@ -53,7 +53,7 @@ func _ready() -> void:
 func _clear_shop() -> void:
 	MapGenerator._saved_scene = null  # so scene loader will create new shop
 	queue_free()
-	#todo move left items to inventory
+	#should left items be moved to inventory?
 
 
 func _generate_shop() -> void:

@@ -35,6 +35,7 @@ SettingsManager="*res://code/singletons/settings_manager.gd"
 [display]
 
 window/stretch/mode="canvas_items"
+window/per_pixel_transparency/allowed=true
 
 [editor_plugins]
 

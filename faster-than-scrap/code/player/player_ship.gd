@@ -16,6 +16,7 @@ signal fuel_change(new_value: int)
 ## All modules of the ship (to prevent checking the tree hierarchy).
 ## Mostly used for building phase
 @export var modules: Array[Module] = []
+var money: int = 0
 var current_fuel: int = 3:
 	get:
 		return current_fuel
@@ -27,7 +28,6 @@ var current_fuel: int = 3:
 
 var _saved_position: Vector3 = Vector3.ZERO
 var _saved_rotation: Vector3 = Vector3.ZERO
-var money = 0
 
 
 func _enter_tree() -> void:

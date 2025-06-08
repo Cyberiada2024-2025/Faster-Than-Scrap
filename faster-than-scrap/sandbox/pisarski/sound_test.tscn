@@ -134,6 +134,7 @@ self_damage_multiplier = 5.0
 
 [node name="SoundEmitter" type="AudioStreamPlayer3D" parent="WeaponTesting/LaserWeaponModule"]
 stream = ExtResource("8_xt0p0")
+bus = &"Music"
 script = ExtResource("9_6ldun")
 metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
 
@@ -160,6 +161,7 @@ mesh = SubResource("BoxMesh_tnaw4")
 
 [node name="SoundEmitter" type="AudioStreamPlayer3D" parent="WeaponTesting/BeamWeaponModule"]
 stream = SubResource("AudioStreamInteractive_5lft3")
+volume_db = -80.0
 script = ExtResource("9_6ldun")
 stop_behaviour = 1
 transition_clip_name = &"end"

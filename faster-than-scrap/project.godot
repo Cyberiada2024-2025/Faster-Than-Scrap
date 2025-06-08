@@ -15,6 +15,10 @@ run/main_scene="uid://dyj46rbaohfnw"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://dqg0tu7q3qhpx"
+
 [autoload]
 
 GameManager="*res://prefabs/singletons/game_manager.tscn"

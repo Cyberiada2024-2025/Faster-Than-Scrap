@@ -18,7 +18,7 @@ angular_damp_mode = 1
 angular_damp = 1.5
 script = ExtResource("1_keeht")
 cockpit = NodePath("Cockpit")
-modules = [null, null, null, null, null]
+modules = [NodePath("Cockpit"), NodePath("Thruster Backward"), NodePath("Thruster Right"), NodePath("Thruster Left"), NodePath("Thruster Forward"), NodePath("ShieldModule"), NodePath("Frame")]
 team = 0
 leave_animation = NodePath("Cockpit/AnimationPlayer")
 

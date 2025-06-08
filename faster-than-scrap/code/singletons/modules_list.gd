@@ -1,6 +1,5 @@
 extends Node
-enum { COMMON = 50, UNCOMMON = 30, RARE = 20 }
-#@export var all_modules: Array[PackedScene]
+enum { COMMON = 5, UNCOMMON = 3, RARE = 2 }
 var modules_and_chances = [
 	[preload("res://prefabs/modules/frame1.tscn"), COMMON],
 	[preload("res://prefabs/modules/frame2.tscn"), COMMON],

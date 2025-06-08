@@ -23,14 +23,17 @@ void vertex() {
 
 	if (t < pulse_duration){
 		t /= pulse_duration; // normalize to (0,1) values
+		// check side of triangle
 		if (t < .5f){
+			// left side of triangle
 			t *= 2.f;
 		}
 		else{
+			// right side of triangle
 			t = -2.f*t+2.f;
 		}
 
-		t = pow(t,pulse_sharpness);
+		t = pow(t,pulse_sharpness); // modify triangle shape
 		COLOR.rgb = mix(default_color,pulse_color,t);
 	}
 	else{

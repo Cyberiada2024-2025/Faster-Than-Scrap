@@ -15,6 +15,7 @@ void vertex() {
 	// Called for every vertex the material is visible on.
 }
 
+// from cartesian to polar
 vec2 polar_coordinates(vec2 uv, vec2 center)
 {
 	vec2 dir = uv - center;
@@ -23,7 +24,7 @@ vec2 polar_coordinates(vec2 uv, vec2 center)
 	return vec2(radius, angle);
 }
 
-
+// from polar to cartesian
 vec2 cartesian_coordinates(vec2 polar_uv, vec2 center)
 {
 	float dist = polar_uv.x;
@@ -43,13 +44,16 @@ void fragment() {
 	float dist = polar_uv.x;
 	float angle = polar_uv.y;
 	
-	angle += dist * spirality;
-	angle -= TIME * rot_speed;
+	angle += dist * spirality; // create curves
+	angle -= TIME * rot_speed; // rotate whole texture
 	
+	// make it move towards center
 	dist += TIME * speed_to_center;
+	// to hide noncontinuity it ignores some beginning of the textuer
 	dist = mod(dist,5.0f);
 	dist += 2.f;
 	
+	// convert back to cartesian
 	vec2 new_polar = vec2(dist,angle);
 	vec2 cartesian_cords = cartesian_coordinates(new_polar, vec2(0.5f,0.5f));
 	
@@ -57,7 +61,8 @@ void fragment() {
 	
 	COLOR *= texture(noise, cartesian_cords);
 	
-	float t =sin(TIME * change_speed)/2.f + 0.5f;
+	// alternate colors
+	float t = sin(TIME * change_speed)/2.f + 0.5f;
 	COLOR *= mix(color, alt_color,t);
 }
 

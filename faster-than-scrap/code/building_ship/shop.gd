@@ -41,7 +41,6 @@ var first_frame: bool = true
 var areas: Array[Area3D] = []
 
 var all_modules: Array[SceneData]
-var modules_on_scene: Array[Module]
 
 
 func _ready() -> void:
@@ -49,14 +48,12 @@ func _ready() -> void:
 	MissionManager.map_finished.connect(_clear_shop)
 	MissionManager.map_finished.connect(ShopContents.generate_contents)
 	_generate_shop()
-	#_generate_inventory()
-	var es = EnterShop.new()  # will it trigger since its not singleton .nope
-	es.shop_entered.connect(_generate_inventory)
 
 
 func _clear_shop() -> void:
 	MapGenerator._saved_scene = null  # so scene loader will create new shop
 	queue_free()
+	#todo move left items to inventory
 
 
 func _generate_shop() -> void:
@@ -71,8 +68,6 @@ func _generate_shop() -> void:
 		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2
 		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
 		area.position = Vector3(x, 0, z)
-		modules_on_scene.append(module)
-		module.placed_in_shop = false
 		i += 1
 
 
@@ -86,7 +81,6 @@ func _generate_inventory() -> void:
 		)
 		obj.position = Vector3(x, 0, z)
 		obj.get_child(0).position = Vector3(0, 0, 0)
-		modules_on_scene.append(obj)
 		i += 1
 	_display_inventory_number()
 
@@ -122,11 +116,8 @@ func _on_finish_pressed() -> void:
 
 
 func _exit_shop() -> void:
-	confirm_finish.visible = true
+	#confirm_finish.visible = true
 	bank = 0
-	for mod in modules_on_scene:
-		if mod != null:
-			mod.placed_in_shop = false
 
 
 func _on_confirm_pressed() -> void:
@@ -140,7 +131,6 @@ func _on_ship_builder_on_module_select(module: Module) -> void:
 		selected_module_display.text += ""
 		selected_module_description.text = ""
 		return
-	module.placed_in_shop = true
 	selected_module_display.text = "[b]" + module.module_name + ":[/b] "
 	selected_module_display.text += String.num_int64(module.prize) + "$"
 
@@ -172,7 +162,6 @@ func _display_inventory_number() -> void:
 func _on_module_attached(module: Module) -> void:
 	bank -= module.prize
 	_on_bank_change()
-	#_on_area_3d_body_exited(module.get_parent())
 
 
 func _on_ship_builder_on_module_detach(module: Module) -> void:

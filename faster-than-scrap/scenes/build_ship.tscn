@@ -343,11 +343,11 @@ font_size = 128
 outline_size = 0
 horizontal_alignment = 2
 
-[node name="Inventory5" type="Area3D" parent="Shop"]
+[node name="BuildArea" type="Area3D" parent="Shop"]
 transform = Transform3D(1.06696, 0, 0, 0, 3.28825, 0, 0, 0, 1, -15.9539, -0.197084, 1.85123)
 input_ray_pickable = false
 
-[node name="Inventory" type="CollisionShape3D" parent="Shop/Inventory5"]
+[node name="Inventory" type="CollisionShape3D" parent="Shop/BuildArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0081991, -0.351958, 1.54273)
 shape = SubResource("BoxShape3D_kf4id")
 
@@ -453,7 +453,5 @@ vertical_alignment = 1
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Confirm" to="ShipBuilder" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Deny" to="ShipBuilder" method="_on_deny_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Finish" to="Shop" method="_on_finish_pressed"]
-[connection signal="area_entered" from="Shop/Inventory5" to="Shop" method="_on_area_3d_area_entered"]
-[connection signal="area_exited" from="Shop/Inventory5" to="Shop" method="_on_area_3d_area_exited"]
 [connection signal="area_entered" from="Shop/Inventory/Area3D" to="Shop" method="_on_inventory_entered"]
 [connection signal="area_exited" from="Shop/Inventory/Area3D" to="Shop" method="_on_inventory_exited"]

@@ -82,7 +82,6 @@ dead_color = Color(1, 0, 0, 1)
 module_name = "Missile"
 prize = 3
 description = "Advanced waepon. Activate to release a slow-moving homing missile."
-rarity = 2
 
 [node name="SpawnerWeapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.610518)

@@ -20,7 +20,7 @@ const END_ANIM: String = "Off"
 
 @export
 var hit_particle_prefab: PackedScene = preload("res://prefabs/vfx/particles/beam_particles.tscn")
-var hit_particle = null
+var hit_particle: GPUParticles3D = null
 var hit_particle_holder: WaitFree = null
 
 var animation_check: bool

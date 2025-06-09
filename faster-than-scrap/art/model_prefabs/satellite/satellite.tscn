@@ -1,0 +1,22 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqal0i08be8o"]
+
+[ext_resource type="Texture2D" uid="uid://dn0ijplva2u6b" path="res://art/textures/satellite/color_satellite.png" id="1_liikd"]
+[ext_resource type="Texture2D" uid="uid://tubjth7c1c25" path="res://art/textures/satellite/metal_satellite.png" id="2_bbxan"]
+[ext_resource type="Texture2D" uid="uid://dvsub2b07nyx6" path="res://art/textures/satellite/normal_satellite.png" id="3_2y35a"]
+[ext_resource type="Texture2D" uid="uid://qpwfxj8b8x61" path="res://art/textures/satellite/roughness_satellite.png" id="4_owwdl"]
+[ext_resource type="ArrayMesh" uid="uid://cdrvc80o6mybp" path="res://art/models/satellite/satellite.obj" id="5_d3xim"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eq2cx"]
+albedo_texture = ExtResource("1_liikd")
+metallic = 1.0
+metallic_texture = ExtResource("2_bbxan")
+roughness_texture = ExtResource("4_owwdl")
+normal_enabled = true
+normal_scale = 2.2
+normal_texture = ExtResource("3_2y35a")
+
+[node name="Satellite" type="Node3D"]
+
+[node name="ModelSatellite" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_eq2cx")
+mesh = ExtResource("5_d3xim")

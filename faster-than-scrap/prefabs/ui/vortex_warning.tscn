@@ -32,6 +32,7 @@ script = ExtResource("1_8efkb")
 warning_objects_container = NodePath("Warnings")
 danger_object = NodePath("Danger")
 time_to_enter_vortex = 4.0
+distance_from_vortex_edge = 30.0
 warning_reveal_speed = 0.5
 warning_material = ExtResource("2_2vcdg")
 danger_material = ExtResource("3_e54e8")

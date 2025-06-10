@@ -35,6 +35,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	# check if there is vortex
+	if SpaceVortex.instance == null:
+		return
+
 	match warning_state:
 		WarningState.PLAYER_SAFE:
 			_hide_warning(delta)

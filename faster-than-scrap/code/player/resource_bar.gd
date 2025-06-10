@@ -88,7 +88,7 @@ func _change_value(input: float) -> void:
 	value_main = input
 	bar_main.value = value_main
 
-	var temp: int = int(value_main)
+	var temp: int = ceili(value_main)
 	numbers.text = String.num_int64(temp)
 
 	if value_main > value_under:

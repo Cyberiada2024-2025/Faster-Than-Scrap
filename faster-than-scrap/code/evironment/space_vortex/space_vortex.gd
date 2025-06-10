@@ -28,6 +28,8 @@ var preserve_target: bool = false
 
 var _shrink_speed: float  # units per seconds
 
+@onready var _collider_radius: float = $CollisionShape3D.shape.radius
+
 
 ## static spawner of vortex with paramateres deciding its behaviour
 static func spawn_vortex(
@@ -86,3 +88,7 @@ func _on_body_exited(body: Node3D) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("affected by vortex"):
 		damageables_in_vortex.erase(body)
+
+
+func get_current_radius() -> float:
+	return scale.x * _collider_radius

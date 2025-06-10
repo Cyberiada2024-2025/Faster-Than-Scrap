@@ -104,20 +104,27 @@ func _on_destroy() -> void:
 	if parent_module != null:
 		parent_module.child_modules.erase(self)
 	_explode()
+
+	detach_all_children()
+
+	if parent_module != null:
+		on_detach()
+
+	queue_free()  # delete self as an object
+	destroyed.emit()
+
+
+func detach_all_children() -> void:
 	for child in child_modules:
 		var rb: RigidBody3D = module_rigidbody_prefab.instantiate()
 		get_tree().current_scene.add_child(rb)  # attach floating modules to scene
 		child.reparent(rb)
 		rb.linear_velocity = ship.linear_velocity
+		rb.linear_velocity += Vector3(randf_range(-2, 2), 0, randf_range(-2, 2))
 		child.deactivate()
 		child.on_detach()
-		child.set_ship_reference(null)
 
-	if self.ship != null:
-		on_detach()
-
-	queue_free()  # delete self as an object
-	destroyed.emit()
+		child.detach_all_children()
 
 
 ## Called when the module is attached to the ship

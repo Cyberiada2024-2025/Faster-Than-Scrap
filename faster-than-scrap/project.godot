@@ -15,6 +15,10 @@ run/main_scene="uid://dyj46rbaohfnw"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://dqg0tu7q3qhpx"
+
 [autoload]
 
 GameManager="*res://prefabs/singletons/game_manager.tscn"
@@ -24,11 +28,14 @@ MapGenerator="*res://code/singletons/map_generator.gd"
 MapSaver="*res://code/singletons/map_saver.gd"
 InventoryManager="*res://prefabs/singletons/inventory_manager.tscn"
 CutsceneManager="*res://code/singletons/cutscene_manager.gd"
+ModulesList="*res://prefabs/singletons/modules_list.tscn"
+ShopContents="*res://code/singletons/shop_contents.gd"
 SettingsManager="*res://code/singletons/settings_manager.gd"
 
 [display]
 
 window/stretch/mode="canvas_items"
+window/per_pixel_transparency/allowed=true
 
 [editor_plugins]
 

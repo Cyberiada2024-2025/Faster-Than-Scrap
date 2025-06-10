@@ -253,7 +253,7 @@ func _attach_module() -> void:
 		var area_parent = active_module.get_parent()
 		on_module_attach.emit(active_module)
 		GameManager.player_ship.modules.append(active_module)
-		active_module.show_sprite()
+		active_module.show_on_module_camera()
 		active_module.reparent(attach_target.ship)
 		area_parent.queue_free()
 	else:
@@ -273,11 +273,12 @@ func _dettach_module() -> void:
 	active_module.detach()
 	active_module.set_ship_reference(null)
 	if active_module.parent_module != null:
+		active_module.hide_on_module_camera()
 		on_module_detach.emit(active_module)
 		active_module.parent_module.child_modules.erase(active_module)
 		active_module.parent_module = null
 		GameManager.player_ship.modules.erase(active_module)
-		active_module.hide_sprite()
+
 		# add some area3d as a root of the module, to allow clicking it
 		active_module.reparent(get_tree().get_root())
 		var area = Area3D.new()

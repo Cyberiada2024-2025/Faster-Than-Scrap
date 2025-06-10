@@ -41,7 +41,7 @@ func _ready() -> void:
 	_on_energy_change()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$CenterOfMass.position = _center_of_mass()
 
 

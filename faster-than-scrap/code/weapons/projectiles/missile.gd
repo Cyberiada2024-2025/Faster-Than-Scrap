@@ -11,6 +11,15 @@ extends Projectile
 ## This makes it easier to quickly adjust the missile's turn rate.
 @export var turn_rate_multiplier: float = 1
 
+## Time (in seconds) that it takes for [member velocity_offset] to reach zero. [br]
+## [member velocity_offset] will be linearly interpolated from its starting value
+## to [code]Vector3.ZERO[/code] during this time. [br]
+## This is used to solve the missile being unable to move in certain directions
+## due to being fired from a fast-moving ship. [br] [br]
+##
+## See also: [member Projectile.velocity_offset]
+@export var velocity_offset_decay_time: float = 2
+
 ## The team this missile belongs to. It will only consider ships from enemy teams as valid targets.
 @export var team: TeamManager.Team
 
@@ -28,12 +37,26 @@ extends Projectile
 ## The object this missile follows
 var target: Node3D
 
+var _starting_velocity_offset: Vector3
+
+
+func _ready() -> void:
+	super()
+	_starting_velocity_offset = velocity_offset
+
 
 func _process(delta: float) -> void:
 	super(delta)
 	_process_rotation(delta)
 	if target == null or not target.is_inside_tree():
 		target = _find_target()
+
+	if _current_lifetime < velocity_offset_decay_time:
+		velocity_offset = lerp(
+			_starting_velocity_offset, Vector3.ZERO, _current_lifetime / velocity_offset_decay_time
+		)
+	else:
+		velocity_offset = Vector3.ZERO
 
 
 func _find_target() -> Node3D:
@@ -52,7 +75,6 @@ func _find_target() -> Node3D:
 		var distance = ship.global_position.distance_to(global_position)
 
 		var weight = distance * distance_weight + angle * angle_weight
-		print(ship, " angle=", angle, " distance=", distance, " weight=", weight)
 		if weight < lowest_weight:
 			chosen_enemy = ship
 			lowest_weight = weight

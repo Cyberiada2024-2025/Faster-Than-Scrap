@@ -35,6 +35,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	# check if there is vortex
+	if SpaceVortex.instance == null:
+		return
+
 	match warning_state:
 		WarningState.PLAYER_SAFE:
 			_hide_warning(delta)
@@ -59,10 +63,6 @@ func _process(delta: float) -> void:
 func _player_near_vortex() -> bool:
 	var player: PlayerShip = GameManager.player_ship
 
-	# check if there is vortex
-	if SpaceVortex.instance == null:
-		return false
-
 	var vortex_radius: float = SpaceVortex.instance.get_current_radius()
 	var vortex_center: Vector3 = SpaceVortex.instance.global_position
 
@@ -77,10 +77,6 @@ func _player_near_vortex() -> bool:
 func _player_will_fly_into_vortex() -> bool:
 	var player: PlayerShip = GameManager.player_ship
 
-	# check if there is vortex
-	if SpaceVortex.instance == null:
-		return false
-
 	var vortex_radius: float = SpaceVortex.instance.get_current_radius()
 	var vortex_center: Vector3 = SpaceVortex.instance.global_position
 
@@ -94,10 +90,6 @@ func _player_will_fly_into_vortex() -> bool:
 
 func _player_in_vortex() -> bool:
 	var player: PlayerShip = GameManager.player_ship
-
-	# check if there is vortex
-	if SpaceVortex.instance == null:
-		return false
 
 	var vortex_radius: float = SpaceVortex.instance.get_current_radius()
 	var vortex_center: Vector3 = SpaceVortex.instance.global_position

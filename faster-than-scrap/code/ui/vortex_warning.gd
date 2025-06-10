@@ -68,7 +68,7 @@ func _player_near_vortex() -> bool:
 	return sqr_distance >= pow(vortex_radius - distance_from_vortex_edge, 2)
 
 
-# return true if player will fly into vortex with actual speed
+# return true if player will fly into vortex with current speed
 func _player_will_fly_into_vortex() -> bool:
 	var player: PlayerShip = GameManager.player_ship
 

@@ -88,7 +88,6 @@ script = ExtResource("1_062iq")
 beam_indicator = NodePath("VFX holder")
 player = NodePath("VFX holder/AnimationPlayer")
 holder = NodePath("VFX holder")
-end_time = 0.5
 mesh = NodePath("VFX holder/MeshInstance3D")
 
 [node name="DamageRaycast3D" type="RayCast3D" parent="."]

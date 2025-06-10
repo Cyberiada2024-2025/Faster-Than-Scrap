@@ -13,6 +13,7 @@ func _ready() -> void:
 	for module: Module in modules:
 		max_health += module.max_hp
 		module.destroyed.connect(func(): modules.erase(module))
+	GameManager._on_ship_born(self)
 
 
 ## returns a number between 0 and 1

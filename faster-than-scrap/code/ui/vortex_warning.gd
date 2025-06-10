@@ -1,8 +1,8 @@
 class_name VortexWarning
 extends Control
 
-## Class that displays a warning when the player is about to fly into the vortex, or when the vortex is nearby.
-## When inside the vortex, it will also show danger.
+## Class that displays a warning when the player is about to fly into the vortex,
+## or when the vortex is nearby. When inside the vortex, it will also show danger.
 
 enum WarningState { PLAYER_SAFE, WARNING, DANGER }
 

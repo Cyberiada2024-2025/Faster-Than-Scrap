@@ -54,6 +54,7 @@ label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Beam"
+prize = 2
 description = "One of basic weapons. Hold activation to shoot continous beam."
 
 [node name="Constant" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]

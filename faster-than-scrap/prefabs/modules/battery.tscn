@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://b8v177mewyt5j"]
 
-[ext_resource type="Script" path="res://code/ship/modules/battery_module.gd" id="1_aagdk"]
+[ext_resource type="Script" uid="uid://urjr40lajiyq" path="res://code/ship/modules/battery_module.gd" id="1_aagdk"]
 [ext_resource type="PackedScene" uid="uid://dqpqw2adjm7qg" path="res://art/model_prefabs/battery/battery.tscn" id="2_0nt81"]
 [ext_resource type="Texture2D" uid="uid://cebxmyyc7xq5m" path="res://art/textures/frame/frame_Albedo.png" id="2_aagdk"]
 [ext_resource type="Texture2D" uid="uid://r30h1nnmjryd" path="res://art/textures/frame/frame_AO.png" id="3_0nt81"]
@@ -40,6 +40,7 @@ label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Battery"
+prize = 2
 description = "Increases ship max energy."
 
 [node name="Frame0Model" type="Node3D" parent="."]

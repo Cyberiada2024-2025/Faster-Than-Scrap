@@ -31,7 +31,6 @@ var warning_state: WarningState = WarningState.PLAYER_SAFE
 func _ready() -> void:
 	warning_objects_container.modulate.a = 0
 	danger_object.modulate.a = 0
-	_set_warning_material(warning_material)
 
 
 func _process(delta: float) -> void:

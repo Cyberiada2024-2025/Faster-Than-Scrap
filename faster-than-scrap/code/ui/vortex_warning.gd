@@ -7,12 +7,18 @@ extends Control
 enum WarningState { PLAYER_SAFE, WARNING, DANGER }
 
 @export_category("Warning objects")
+## Container for control nodes which will be hidden/revealed according to warning state.
 @export var warning_objects_container: Control
+## Control node which will be hidden/revealed when in danger state.
 @export var danger_object: Control
 
 @export_category("Warning parameters")
-@export var time_enter_vortex: float = 2
+## If player with current velocity will fly into vortex in time_to_enter_vortex seconds,
+## warning will be displayed
+@export var time_to_enter_vortex: float = 2
+## Distance from the edge of vortex to start displaying warning
 @export var distance_from_vortex_edge: float = 10
+## Speed of alpha canal modulation of [member VortexWarning.danger_object] and [member VortexWarning.warning_objects_container]
 @export_range(0.01, 2) var warning_reveal_speed: float = 0.1
 
 @export_category("Warning materials")
@@ -73,7 +79,7 @@ func _player_will_fly_into_vortex() -> bool:
 	var player_position: Vector3 = player.global_position
 	var player_speed: Vector3 = player.linear_velocity
 
-	var predicted_player_position = player_position + player_speed * time_enter_vortex
+	var predicted_player_position = player_position + player_speed * time_to_enter_vortex
 
 	return vortex_center.distance_squared_to(predicted_player_position) >= pow(vortex_radius, 2)
 

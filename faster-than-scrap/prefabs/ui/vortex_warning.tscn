@@ -17,7 +17,7 @@ shader_parameter/spirality = 3.0
 shader_parameter/rot_speed = 1.2
 shader_parameter/speed_to_center = 1.0
 shader_parameter/alt_color = Color(1, 0, 0, 0.396078)
-shader_parameter/change_speed = 5.0
+shader_parameter/color_change_speed = 5.0
 
 [node name="VortexWarning" type="Control" node_paths=PackedStringArray("warning_objects_container", "danger_object")]
 physics_interpolation_mode = 0
@@ -31,7 +31,7 @@ grow_vertical = 2
 script = ExtResource("1_8efkb")
 warning_objects_container = NodePath("Warnings")
 danger_object = NodePath("Danger")
-time_enter_vortex = 4.0
+time_to_enter_vortex = 4.0
 warning_reveal_speed = 0.5
 warning_material = ExtResource("2_2vcdg")
 danger_material = ExtResource("3_e54e8")

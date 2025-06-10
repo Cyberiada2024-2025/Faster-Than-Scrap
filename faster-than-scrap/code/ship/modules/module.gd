@@ -110,18 +110,28 @@ func _on_destroy() -> void:
 		child.reparent(rb)
 		rb.linear_velocity = ship.linear_velocity
 		child.deactivate()
-		child.detach()
+		child.on_detach()
+		child.set_ship_reference(null)
 
-	detach()
+	if self.ship != null:
+		on_detach()
+
 	queue_free()  # delete self as an object
 	destroyed.emit()
 
 
-func attach() -> void:
+## Called when the module is attached to the ship
+func on_attach() -> void:
 	pass
 
 
-func detach() -> void:
+## Called just before the module is detached from the ship
+func on_detach() -> void:
+	pass
+
+
+## Called when the module is attached to a different part of the ship than it previously was
+func on_reattach() -> void:
 	pass
 
 

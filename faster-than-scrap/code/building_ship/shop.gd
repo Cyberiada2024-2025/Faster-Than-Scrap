@@ -29,7 +29,6 @@ extends Node3D
 @export var selected_module_display: RichTextLabel
 @export var selected_module_description: RichTextLabel
 
-
 ## actual cash balance
 var bank: int = 0
 var first_frame: bool = true
@@ -143,6 +142,9 @@ func _on_inventory_exited(body: Area3D) -> void:
 
 
 func _display_inventory_number() -> void:
+	if inventory_limit_display == null:
+		return
+
 	var current_num = InventoryManager.get_item_num()
 	var max_num = InventoryManager.get_max_item_num()
 	if current_num > max_num:

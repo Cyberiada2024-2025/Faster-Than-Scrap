@@ -16,7 +16,7 @@ signal fuel_change(new_value: int)
 ## All modules of the ship (to prevent checking the tree hierarchy).
 ## Mostly used for building phase
 @export var modules: Array[Module] = []
-var current_fuel: int = 1:
+var current_fuel: int = 0:
 	get:
 		return current_fuel
 	set(new_value):
@@ -39,13 +39,12 @@ func _ready() -> void:
 	energy_max_change.emit(max_energy)
 	_on_energy_change()
 
+
 func on_game_change_state(new_state: GameState.State) -> void:
 	match new_state:
 		GameState.State.FLY:
 			pass
 		GameState.State.PAUSE:
-			pass
-		GameState.State.CUTSCENE:
 			pass
 		GameState.State.BUILD:
 			pass

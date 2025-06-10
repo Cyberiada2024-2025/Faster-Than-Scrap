@@ -1,0 +1,151 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwl3fpu8v7vt2"]
+
+[ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_wxnq3"]
+[ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_8uwey"]
+[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="3_b46f7"]
+[ext_resource type="Texture2D" uid="uid://ddm80lnoo3ty7" path="res://art/textures/ui/arrow.png" id="4_7eq28"]
+[ext_resource type="PackedScene" uid="uid://c78jp45hhpqhd" path="res://prefabs/ui/cutscenes/skip_info_text.tscn" id="5_3l0a1"]
+
+[node name="FuelUseTutorialCutscene" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.596078)
+script = ExtResource("1_wxnq3")
+cutscene_name = "Fuel Use tutorial"
+metadata/_custom_type_script = "uid://bn8cfyemp6axl"
+
+[node name="Slide" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_8uwey")
+duration = 999.0
+metadata/_custom_type_script = "uid://c8potv0p1705d"
+
+[node name="ColorRect" type="ColorRect" parent="Slide"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.292656, 0.388731, 0.540954, 1)
+
+[node name="Label" type="Label" parent="Slide/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_b46f7")
+theme_override_font_sizes/font_size = 20
+text = "You've grabbed your first cosmic fuel!
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Slide3" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_8uwey")
+duration = 999.0
+metadata/_custom_type_script = "uid://c8potv0p1705d"
+
+[node name="ColorRect" type="ColorRect" parent="Slide3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.292656, 0.388731, 0.540954, 1)
+
+[node name="Label" type="Label" parent="Slide3/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_b46f7")
+theme_override_font_sizes/font_size = 20
+text = "You can see your fuel count in the corner."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="Slide3"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.915
+anchor_top = 0.015
+anchor_right = 0.985
+anchor_bottom = 0.29
+offset_left = -0.0800781
+offset_top = -2.72003
+offset_right = -0.0800781
+offset_bottom = -2.72003
+grow_vertical = 0
+rotation = 0.76891
+scale = Vector2(0.707474, 1)
+texture = ExtResource("4_7eq28")
+expand_mode = 1
+
+[node name="Slide2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_8uwey")
+duration = 999.0
+metadata/_custom_type_script = "uid://c8potv0p1705d"
+
+[node name="ColorRect" type="ColorRect" parent="Slide2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.292656, 0.388731, 0.540954, 1)
+
+[node name="Label" type="Label" parent="Slide2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_b46f7")
+theme_override_font_sizes/font_size = 20
+text = "Now you can fly away by holding ENTER."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="SkipInfoText" parent="." instance=ExtResource("5_3l0a1")]
+layout_mode = 1

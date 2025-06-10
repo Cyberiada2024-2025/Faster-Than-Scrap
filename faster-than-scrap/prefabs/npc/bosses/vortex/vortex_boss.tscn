@@ -8,12 +8,12 @@
 [ext_resource type="Script" path="res://code/weapons/on_target_spawner_weapon.gd" id="5_pqq2h"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="6_2hnf7"]
 [ext_resource type="Script" uid="uid://cdwjrb230l0qw" path="res://code/enemy/states/move/teleport.gd" id="6_yljnl"]
-[ext_resource type="PackedScene" uid="uid://clbtrvxx10t1h" path="res://prefabs/bosses/vortex/vortex_spike_warning.tscn" id="7_osa2j"]
+[ext_resource type="PackedScene" uid="uid://clbtrvxx10t1h" path="res://prefabs/npc/bosses/vortex/vortex_spike_warning.tscn" id="7_osa2j"]
 [ext_resource type="Script" path="res://code/enemy/transitions/transition_on_state_finish.gd" id="7_yfy1f"]
 [ext_resource type="Script" path="res://code/weapons/in_area_spawner_weapon.gd" id="8_kr82f"]
-[ext_resource type="PackedScene" uid="uid://coiccskokh2q6" path="res://prefabs/projectiles/boss_projectiles/vortex_spike_flash.tscn" id="9_2hnf7"]
-[ext_resource type="PackedScene" uid="uid://ncfq5uokthtd" path="res://prefabs/projectiles/boss_projectiles/vortex_cloud_flash.tscn" id="11_2hnf7"]
-[ext_resource type="PackedScene" uid="uid://b2xl30r0e0ece" path="res://prefabs/projectiles/boss_projectiles/vortex_spawn_flash.tscn" id="12_2hnf7"]
+[ext_resource type="PackedScene" path="res://prefabs/projectiles/boss_projectiles/vortex_spike_flash.tscn" id="9_2hnf7"]
+[ext_resource type="PackedScene" path="res://prefabs/projectiles/boss_projectiles/vortex_cloud_flash.tscn" id="11_2hnf7"]
+[ext_resource type="PackedScene" path="res://prefabs/projectiles/boss_projectiles/vortex_spawn_flash.tscn" id="12_2hnf7"]
 [ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="12_4qxwn"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="12_cbrw2"]
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="13_3aeiy"]
@@ -23,8 +23,8 @@
 [ext_resource type="Script" uid="uid://bwe8glgj1swy" path="res://code/enemy/transitions/boss_specific_transitions/damage_taken.gd" id="19_p6xao"]
 [ext_resource type="Script" uid="uid://b7v5naphnvff4" path="res://code/enemy/transitions/boss_specific_transitions/damage_memory.gd" id="20_pkmkm"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="21_hho6b"]
-[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_on_ready_player.gd" id="24_osa2j"]
-[ext_resource type="PackedScene" uid="uid://d307oss2yr4s5" path="res://prefabs/ui/cutscenes/boss_cutscenes/vortex_boss_cutscene.tscn" id="25_q7a2e"]
+[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="24_osa2j"]
+[ext_resource type="PackedScene" path="res://prefabs/ui/cutscenes/boss_cutscenes/vortex_boss_cutscene.tscn" id="25_q7a2e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_km21v"]
 size = Vector3(5, 1, 5)
@@ -254,6 +254,7 @@ max_range = 10000.0
 [node name="Boss Cutscene" type="Node" parent="."]
 script = ExtResource("24_osa2j")
 cutscene_path = ExtResource("25_q7a2e")
+play_on_ready = true
 
 [connection signal="damaged" from="StaticBody3D/Body/DamageController" to="StaticBody3D/Body" method="take_damage"]
 

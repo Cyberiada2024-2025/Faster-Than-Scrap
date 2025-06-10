@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm1qlo34r16co"]
+
+[ext_resource type="PackedScene" uid="uid://bchvj3y0r6b7l" path="res://prefabs/environment/scrap_shop_model_pf.tscn" id="1_jcae2"]
+[ext_resource type="Script" uid="uid://bceg4vylbdwdr" path="res://code/evironment/player_detector.gd" id="2_0yipc"]
+[ext_resource type="PackedScene" uid="uid://dms6n6r5fyo4o" path="res://prefabs/ui/poi/shop_poi.tscn" id="3_yv3rc"]
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="4_yv3rc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_seei7"]
+radius = 3.5
+
+[node name="ShopMiniatureTutorial" type="Node3D"]
+
+[node name="ScrapShop" parent="." instance=ExtResource("1_jcae2")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Label" type="Label3D" parent="ScrapShop"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 7.94038)
+text = "WORKSHOP"
+font_size = 180
+
+[node name="EnterShop" type="Area3D" parent="."]
+script = ExtResource("2_0yipc")
+metadata/_custom_type_script = "uid://bceg4vylbdwdr"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnterShop"]
+shape = SubResource("SphereShape3D_seei7")
+
+[node name="ShopPoi" parent="." instance=ExtResource("3_yv3rc")]
+
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource("4_yv3rc")
+metadata/_custom_type_script = "uid://16i5n2yxnlsr"

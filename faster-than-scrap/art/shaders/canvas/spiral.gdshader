@@ -9,7 +9,7 @@ uniform float rot_speed = 2.f;
 uniform float speed_to_center = 2.0f;
 
 uniform vec4 alt_color: source_color = vec4(1.f);
-uniform float change_speed = 1.f;
+uniform float color_change_speed = 1.f;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
@@ -62,7 +62,7 @@ void fragment() {
 	COLOR *= texture(noise, cartesian_cords);
 	
 	// alternate colors
-	float t = sin(TIME * change_speed)/2.f + 0.5f;
+	float t = sin(TIME * color_change_speed)/2.f + 0.5f;
 	COLOR *= mix(color, alt_color,t);
 }
 

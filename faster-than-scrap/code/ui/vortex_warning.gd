@@ -58,9 +58,9 @@ func _player_near_vortex() -> bool:
 
 	var player_position: Vector3 = player.global_position
 
-	var distance = vortex_center.distance_to(player_position)
+	var sqr_distance = vortex_center.distance_squared_to(player_position)
 
-	return distance >= (vortex_radius - distance_from_vortex_edge)
+	return sqr_distance >= pow(vortex_radius - distance_from_vortex_edge, 2)
 
 
 # return true if player will fly into vortex with actual speed
@@ -75,7 +75,7 @@ func _player_will_fly_into_vortex() -> bool:
 
 	var predicted_player_position = player_position + player_speed * time_enter_vortex
 
-	return vortex_center.distance_to(predicted_player_position) >= vortex_radius
+	return vortex_center.distance_squared_to(predicted_player_position) >= pow(vortex_radius, 2)
 
 
 func _player_in_vortex() -> bool:
@@ -86,7 +86,7 @@ func _player_in_vortex() -> bool:
 
 	var player_position: Vector3 = player.global_position
 
-	return vortex_center.distance_to(player_position) >= vortex_radius
+	return vortex_center.distance_squared_to(player_position) >= pow(vortex_radius, 2)
 
 
 #endregion

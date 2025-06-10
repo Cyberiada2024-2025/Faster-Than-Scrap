@@ -9,3 +9,4 @@ shader_parameter/pulse_color = Color(1, 0.47451, 0, 1)
 shader_parameter/period_duration = 1.0
 shader_parameter/pulse_duration = 0.24
 shader_parameter/pulse_sharpness = 0.425
+shader_parameter/pulse_sharpness = 0.22

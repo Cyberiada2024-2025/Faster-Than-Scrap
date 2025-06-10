@@ -32,16 +32,6 @@ func _ready() -> void:
 	_minimap_camera = $MinimapViewport/MinimapCamera
 
 
-func _calculate_module_camera_size() -> float:
-	var arr: Array[float] = []
-	var center = GameManager.player_ship.position
-
-	for module in GameManager.player_ship.modules:
-		arr.append(abs(center.x - module.position.x))
-		arr.append(abs(center.z - module.position.z))
-	return arr.max()
-
-
 func _module_camera_offset_x() -> float:
 	var arr: Array[float] = []
 	var center = GameManager.player_ship.position
@@ -68,9 +58,11 @@ func _process(_delta: float) -> void:
 	_main_camera.global_position = player_ship.global_position + main_camera_offset
 	_module_camera.global_position = player_ship.global_position + module_camera_offset
 	_minimap_camera.global_position = player_ship.global_position + minimap_camera_offset
+
 	_module_camera.position.x = _module_camera_offset_x() * -1
 	_module_camera.position.z = _module_camera_offset_z()
 	_module_camera.position += module_camera_offset
+
 	if Input.is_action_just_pressed("zoom_in"):
 		zoom_camera(-zoom_strength)
 

@@ -18,7 +18,8 @@ enum WarningState { PLAYER_SAFE, WARNING, DANGER }
 @export var time_to_enter_vortex: float = 2
 ## Distance from the edge of vortex to start displaying warning
 @export var distance_from_vortex_edge: float = 10
-## Speed of alpha canal modulation of [member VortexWarning.danger_object] and [member VortexWarning.warning_objects_container]
+## Speed of alpha canal modulation of [member VortexWarning.danger_object]
+## and [member VortexWarning.warning_objects_container]
 @export_range(0.01, 2) var warning_reveal_speed: float = 0.1
 
 @export_category("Warning materials")

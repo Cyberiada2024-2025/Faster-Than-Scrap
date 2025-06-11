@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyj46rbaohfnw"]
+[gd_scene load_steps=11 format=3 uid="uid://dyj46rbaohfnw"]
 
 [ext_resource type="Script" uid="uid://bk270qnughqkv" path="res://code/main_menu.gd" id="1_4xnjd"]
 [ext_resource type="Texture2D" uid="uid://d4ea46ajcslyj" path="res://art/textures/main_menu/map_select_background.png" id="2_tbmy8"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://go1u7xe1f41q" path="res://art/textures/main_menu/background_mask.png" id="5_lgwnu"]
 [ext_resource type="Script" uid="uid://b8kgrdxasqvq0" path="res://code/main_menu/background_light.gd" id="6_flqon"]
 [ext_resource type="Texture2D" uid="uid://cvsc1hfn6jjb" path="res://art/textures/main_menu/main_title.png" id="7_rcqid"]
+[ext_resource type="Theme" uid="uid://dem21sdi676vh" path="res://art/themes/new_theme.tres" id="8_jk1qb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dd4i"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -60,36 +63,34 @@ anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = 46.0
-offset_right = 90.0
-offset_bottom = 161.0
+anchor_bottom = 0.543
+offset_left = -156.0
+offset_top = -4.0
+offset_right = 156.0
+offset_bottom = 234.136
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 15
+theme_override_constants/separation = 21
 alignment = 1
 
 [node name="StartButton" type="Button" parent="Buttons"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../ExitButton")
-focus_neighbor_bottom = NodePath("../ExitButton")
-theme_override_font_sizes/font_size = 30
+focus_mode = 0
+theme = ExtResource("8_jk1qb")
 text = "START"
+icon = SubResource("AtlasTexture_5dd4i")
 icon_alignment = 1
 
 [node name="SettingsButton" type="Button" parent="Buttons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("8_jk1qb")
 text = "SETTINGS"
 
 [node name="ExitButton" type="Button" parent="Buttons"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../StartButton")
-focus_neighbor_bottom = NodePath("../StartButton")
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("8_jk1qb")
 text = "EXIT"
 
 [node name="SceneLoader" type="Node" parent="."]

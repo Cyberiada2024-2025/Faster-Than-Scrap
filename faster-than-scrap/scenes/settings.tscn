@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://36s8658cgl8t"]
+[gd_scene load_steps=10 format=3 uid="uid://bg5v4r5yvw57o"]
 
-[ext_resource type="Script" uid="uid://ba3jfd0801hhd" path="res://code/ui/settings_menu.gd" id="1_gjs24"]
+[ext_resource type="Script" path="res://code/ui/settings_menu.gd" id="1_gjs24"]
 [ext_resource type="Texture2D" uid="uid://d4ea46ajcslyj" path="res://art/textures/main_menu/map_select_background.png" id="2_am25x"]
 [ext_resource type="Texture2D" uid="uid://ic7d4huaalha" path="res://art/textures/main_menu/light_mask.png" id="3_4ppmf"]
 [ext_resource type="Script" uid="uid://dqpv50nhd6ixc" path="res://code/main_menu/light_mask.gd" id="4_uhhto"]
 [ext_resource type="Texture2D" uid="uid://go1u7xe1f41q" path="res://art/textures/main_menu/background_mask.png" id="5_1g033"]
 [ext_resource type="Script" uid="uid://b8kgrdxasqvq0" path="res://code/main_menu/background_light.gd" id="6_01roj"]
 [ext_resource type="Texture2D" uid="uid://cvsc1hfn6jjb" path="res://art/textures/main_menu/main_title.png" id="7_wqwn7"]
+[ext_resource type="Theme" uid="uid://dem21sdi676vh" path="res://art/themes/new_theme.tres" id="8_am25x"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="8_oe2nd"]
 
 [node name="Settings" type="Control"]
@@ -54,47 +55,47 @@ grow_vertical = 2
 texture = ExtResource("7_wqwn7")
 expand_mode = 3
 
-[node name="Buttons" type="VBoxContainer" parent="."]
+[node name="Buttons2" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = 46.0
-offset_right = 90.0
-offset_bottom = 161.0
+anchor_bottom = 0.543
+offset_left = -156.0
+offset_top = -12.5
+offset_right = 156.0
+offset_bottom = 242.636
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 15
+theme_override_constants/separation = 21
 alignment = 1
 
-[node name="BrakesCheckBox" type="CheckBox" parent="Buttons"]
+[node name="BrakesCheckBox" type="CheckBox" parent="Buttons2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Inertial Dampers"
 
-[node name="AirResistanceCheckBox" type="CheckBox" parent="Buttons"]
+[node name="AirResistanceCheckBox" type="CheckBox" parent="Buttons2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Void resistance WIP"
 
-[node name="SkipCutscenesCheckBox" type="CheckBox" parent="Buttons"]
+[node name="SkipCutscenesCheckBox" type="CheckBox" parent="Buttons2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Skip Cutscenes WIP"
 
-[node name="ReturnButton" type="Button" parent="Buttons"]
+[node name="ReturnButton" type="Button" parent="Buttons2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("8_am25x")
 text = "RETURN"
 
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("8_oe2nd")
 
-[connection signal="pressed" from="Buttons/BrakesCheckBox" to="." method="_on_brakes_check_box_pressed"]
-[connection signal="pressed" from="Buttons/AirResistanceCheckBox" to="." method="_on_air_resistance_check_box_pressed"]
-[connection signal="pressed" from="Buttons/ReturnButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Buttons2/BrakesCheckBox" to="." method="_on_brakes_check_box_pressed"]
+[connection signal="pressed" from="Buttons2/AirResistanceCheckBox" to="." method="_on_air_resistance_check_box_pressed"]
+[connection signal="pressed" from="Buttons2/ReturnButton" to="." method="_on_button_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hj2i6bngtot3"
-path="res://.godot/imported/PRZYCISK.png-89624a0545e2dccb2ce8a72800491735.ctex"
+uid="uid://dek2nfhy2s8jm"
+path="res://.godot/imported/buttons.png-c14b0073fff93d5aee577ece4b1c840f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/textures/ui/buttons/PRZYCISK.png"
-dest_files=["res://.godot/imported/PRZYCISK.png-89624a0545e2dccb2ce8a72800491735.ctex"]
+source_file="res://art/textures/ui/buttons/buttons.png"
+dest_files=["res://.godot/imported/buttons.png-c14b0073fff93d5aee577ece4b1c840f.ctex"]
 
 [params]
 

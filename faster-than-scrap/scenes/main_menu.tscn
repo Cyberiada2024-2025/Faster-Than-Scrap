@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://go1u7xe1f41q" path="res://art/textures/main_menu/background_mask.png" id="5_lgwnu"]
 [ext_resource type="Script" uid="uid://b8kgrdxasqvq0" path="res://code/main_menu/background_light.gd" id="6_flqon"]
 [ext_resource type="Texture2D" uid="uid://cvsc1hfn6jjb" path="res://art/textures/main_menu/main_title.png" id="7_rcqid"]
-[ext_resource type="Theme" uid="uid://dem21sdi676vh" path="res://art/themes/new_theme.tres" id="8_jk1qb"]
+[ext_resource type="Theme" uid="uid://dem21sdi676vh" path="res://art/themes/menu_buttons.tres" id="8_jk1qb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5dd4i"]
 

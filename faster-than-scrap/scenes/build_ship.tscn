@@ -5,14 +5,14 @@
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="3_7x66o"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_sra6p"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
-[ext_resource type="Theme" uid="uid://dem21sdi676vh" path="res://art/themes/new_theme.tres" id="7_cv5l0"]
+[ext_resource type="Theme" uid="uid://baanjdgqm7bkp" path="res://art/themes/build_ship.tres" id="7_cv5l0"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_jtm63"]
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="9_xqadh"]
 [ext_resource type="PackedScene" uid="uid://cujiw86wtjlp8" path="res://prefabs/modules/frame1.tscn" id="10_jtm63"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="10_xqadh"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
-[ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_on_ready_player.gd" id="12_bwh47"]
+[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_on_ready_player.gd" id="12_bwh47"]
 [ext_resource type="PackedScene" uid="uid://dgcndntkhn2hh" path="res://prefabs/ui/cutscenes/inventory_tutorial_cutscene.tscn" id="13_bwh47"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
@@ -97,10 +97,10 @@ font_color = Color(0.105882, 1, 0.105882, 1)
 
 [node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ship_borders", "choose_key_message", "confirm_finish_message")]
 script = ExtResource("1_d5jmr")
+ship_borders = NodePath("../Ship Max Size/Area3D")
 outline_mat = ExtResource("3_7x66o")
 flash_mat = ExtResource("4_sra6p")
 flash_time = 0.5
-ship_borders = NodePath("../Ship Max Size/Area3D")
 choose_key_message = NodePath("Control/Choose_key")
 confirm_finish_message = NodePath("Control/Confirm finish")
 

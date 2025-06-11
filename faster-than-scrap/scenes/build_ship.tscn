@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="10_xqadh"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
-[ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_player.gd" id="12_bwh47"]
 [ext_resource type="PackedScene" uid="uid://dgcndntkhn2hh" path="res://prefabs/ui/cutscenes/inventory_tutorial_cutscene.tscn" id="13_bwh47"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
@@ -90,6 +89,27 @@ size = Vector3(0.41153, 1, 20.8868)
 
 [sub_resource type="LabelSettings" id="LabelSettings_xqadh"]
 font_color = Color(0.105882, 1, 0.105882, 1)
+
+[sub_resource type="GDScript" id="GDScript_bwh47"]
+script/source = "class_name CutscenePlayer
+extends Node
+
+signal finished
+
+@export var cutscene_path: PackedScene
+@export var play_on_ready: bool = false
+
+
+func _ready() -> void:
+	if play_on_ready:
+		await CutsceneManager.play_cutscene(cutscene_path)
+		finished.emit()
+
+
+func play() -> void:
+	await CutsceneManager.play_cutscene(cutscene_path)
+	finished.emit()
+"
 
 [node name="BuildShip" type="Node3D"]
 
@@ -477,7 +497,7 @@ vertical_alignment = 1
 [node name="PauseMenu" parent="." instance=ExtResource("11_d8di0")]
 
 [node name="Node" type="Node" parent="."]
-script = ExtResource("12_bwh47")
+script = SubResource("GDScript_bwh47")
 cutscene_path = ExtResource("13_bwh47")
 
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]

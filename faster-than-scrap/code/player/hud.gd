@@ -46,9 +46,6 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("zoom_out"):
 		zoom_camera(zoom_strength)
 
-	if Input.is_action_just_pressed("camera_right"):
-		pass
-
 	position.y = y_pos
 
 
@@ -56,8 +53,3 @@ func zoom_camera(strength: int) -> void:
 	var fov = clampf(_main_camera.fov + strength, min_zoom, max_zoom)
 	_tween = create_tween()
 	_tween.tween_property(_main_camera, "fov", fov, zoom_time)
-
-#func move_camera(strength: int) -> void:
-#var pos = clampf(_main_camera.position + strength, min_zoom, max_zoom)
-#_tween = create_tween()
-#_tween.tween_property(_main_camera, "position", pos, zoom_time)

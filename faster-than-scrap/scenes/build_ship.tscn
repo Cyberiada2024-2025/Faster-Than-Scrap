@@ -1,17 +1,17 @@
-[gd_scene load_steps=37 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=36 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="3_7x66o"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_sra6p"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
-[ext_resource type="Theme" uid="uid://baanjdgqm7bkp" path="res://art/themes/build_ship.tres" id="7_cv5l0"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_jtm63"]
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="9_xqadh"]
 [ext_resource type="PackedScene" uid="uid://cujiw86wtjlp8" path="res://prefabs/modules/frame1.tscn" id="10_jtm63"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="10_xqadh"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
+[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="12_bwh47"]
 [ext_resource type="PackedScene" uid="uid://dgcndntkhn2hh" path="res://prefabs/ui/cutscenes/inventory_tutorial_cutscene.tscn" id="13_bwh47"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
@@ -90,33 +90,13 @@ size = Vector3(0.41153, 1, 20.8868)
 [sub_resource type="LabelSettings" id="LabelSettings_xqadh"]
 font_color = Color(0.105882, 1, 0.105882, 1)
 
-[sub_resource type="GDScript" id="GDScript_bwh47"]
-script/source = "class_name CutscenePlayer
-extends Node
-
-signal finished
-
-@export var cutscene_path: PackedScene
-@export var play_on_ready: bool = false
-
-
-func _ready() -> void:
-	if play_on_ready:
-		await CutsceneManager.play_cutscene(cutscene_path)
-		finished.emit()
-
-
-func play() -> void:
-	await CutsceneManager.play_cutscene(cutscene_path)
-	finished.emit()
-"
-
-[node name="BuildShip" type="Node3D"]
+[node name="BuildShip2" type="Node3D"]
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_8ccmg")]
 
-[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ship_borders", "choose_key_message", "confirm_finish_message")]
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "confirm_finish_message")]
 script = ExtResource("1_d5jmr")
+ignore = [NodePath("../Shop/Area3D"), NodePath("../Ship Max Size/Area3D")]
 ship_borders = NodePath("../Ship Max Size/Area3D")
 outline_mat = ExtResource("3_7x66o")
 flash_mat = ExtResource("4_sra6p")
@@ -263,29 +243,12 @@ label_settings = SubResource("LabelSettings_x5wpm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Finish2" type="Button" parent="ShipBuilder/Control"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -120.0
-offset_right = 120.0
-offset_bottom = 40.0
-grow_horizontal = 2
-theme = ExtResource("7_cv5l0")
-text = "Finish
-Building"
-
 [node name="Finish" type="Button" parent="ShipBuilder/Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -120.0
-offset_right = 120.0
-offset_bottom = 40.0
-grow_horizontal = 2
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 244.0
+offset_bottom = 18.0
 theme_override_colors/font_hover_pressed_color = Color(0.109804, 0.988235, 0.113725, 1)
 theme_override_colors/font_hover_color = Color(0.113725, 1, 0.113725, 1)
 theme_override_colors/font_color = Color(0.113725, 1, 0.113725, 1)
@@ -497,15 +460,15 @@ vertical_alignment = 1
 [node name="PauseMenu" parent="." instance=ExtResource("11_d8di0")]
 
 [node name="Node" type="Node" parent="."]
-script = SubResource("GDScript_bwh47")
+script = ExtResource("12_bwh47")
 cutscene_path = ExtResource("13_bwh47")
+play_on_ready = true
 
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]
 [connection signal="on_module_hover" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_select"]
 [connection signal="pressed" from="ShipBuilder/Control/Deny finish/Color_Rect/Confirm" to="Shop" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Confirm" to="ShipBuilder" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Deny" to="ShipBuilder" method="_on_deny_pressed"]
-[connection signal="pressed" from="ShipBuilder/Control/Finish2" to="Shop" method="_on_finish_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Finish" to="Shop" method="_on_finish_pressed"]
 [connection signal="area_entered" from="Shop/Area3D" to="Shop" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Shop/Area3D" to="Shop" method="_on_area_3d_area_exited"]

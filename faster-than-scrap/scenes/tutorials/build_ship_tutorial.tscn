@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dom21c42bbjwl"]
+[gd_scene load_steps=37 format=3 uid="uid://dom21c42bbjwl"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_mjhpt"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="2_esu31"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cujiw86wtjlp8" path="res://prefabs/modules/frame1.tscn" id="10_y4ww1"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_0pnhb"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="12_esu31"]
+[ext_resource type="PackedScene" uid="uid://dfqok04svlmok" path="res://prefabs/ui/cutscenes/build_tutorial_cutscene.tscn" id="12_yvpli"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
 font = ExtResource("6_hk4jn")
@@ -250,10 +251,9 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -120.0
 offset_right = 120.0
-offset_bottom = 90.0
+offset_bottom = 40.0
 grow_horizontal = 2
 theme = ExtResource("7_s0r3m")
-theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
 text = "Finish
 Building"
 
@@ -439,6 +439,7 @@ vertical_alignment = 1
 
 [node name="Cutscene player" type="Node" parent="."]
 script = ExtResource("12_esu31")
+cutscene_path = ExtResource("12_yvpli")
 play_on_ready = true
 
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]

@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="5_25ioe"]
 [ext_resource type="PackedScene" uid="uid://dlp3fs4qym6g2" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group_straight_line.tscn" id="5_subpj"]
 [ext_resource type="PackedScene" uid="uid://dsbr8a55sppml" path="res://prefabs/npc/enemies/drone.tscn" id="6_subpj"]
-[ext_resource type="PackedScene" path="res://prefabs/environment/shop_miniature_tutorial.tscn" id="7_0pcpl"]
-[ext_resource type="Script" uid="uid://dgljxwmpb7xrv" path="res://code/evironment/enemy_spawner.gd" id="8_ug5yp"]
+[ext_resource type="PackedScene" uid="uid://dm1qlo34r16co" path="res://prefabs/environment/shop_miniature_tutorial.tscn" id="7_0pcpl"]
+[ext_resource type="Script" path="res://code/evironment/enemy_spawner.gd" id="8_ug5yp"]
 [ext_resource type="PackedScene" uid="uid://do0sasbjik8fp" path="res://prefabs/npc/enemies/corrupted.tscn" id="9_1rg6r"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ul8wb"]

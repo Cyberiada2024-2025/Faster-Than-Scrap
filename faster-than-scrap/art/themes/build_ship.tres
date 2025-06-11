@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=5 format=3 uid="uid://baanjdgqm7bkp"]
 
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="1_6jx8w"]
-[ext_resource type="Texture2D" uid="uid://dek2nfhy2s8jm" path="res://art/textures/ui/buttons/buttons.png" id="2_8ax3j"]
+[ext_resource type="Texture2D" uid="uid://coufv54lsptx2" path="res://art/textures/ui/buttons/default_buttons.png" id="2_8ax3j"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_epstd"]
 content_margin_top = 25.0

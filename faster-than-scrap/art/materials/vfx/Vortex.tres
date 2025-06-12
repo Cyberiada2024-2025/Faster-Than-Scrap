@@ -30,6 +30,6 @@ shader_parameter/Clouds_Mix = 0.5
 shader_parameter/Safe_Radius = 180.0
 shader_parameter/Spike_Length = 30.0
 shader_parameter/Plane_Size = 2000.0
-shader_parameter/Softness = 0.0
+shader_parameter/Softness = 1.0
 shader_parameter/Spikes_Amount = 300.0
 shader_parameter/Spike_Rotation = 20.0

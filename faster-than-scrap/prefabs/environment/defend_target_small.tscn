@@ -9,7 +9,7 @@ inner_radius = 4.7
 outer_radius = 5.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o3iip"]
-radius = 5.0
+radius = 7.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_2gnvc"]
 
@@ -18,6 +18,7 @@ script = ExtResource("2_4tgdy")
 _progress_mesh = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 material_override = ExtResource("3_najc0")
 instance_shader_parameters/percentage = 0.085
 mesh = SubResource("TorusMesh_gw8ig")

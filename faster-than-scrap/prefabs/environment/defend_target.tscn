@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dtlau4bqcpa4b"]
 
-[ext_resource type="Script" uid="uid://dgljxwmpb7xrv" path="res://code/evironment/enemy_spawner.gd" id="1_o3iip"]
+[ext_resource type="Script" path="res://code/evironment/enemy_spawner.gd" id="1_o3iip"]
 [ext_resource type="PackedScene" uid="uid://c7gr12rhsysjx" path="res://prefabs/ui/poi/mission_poi.tscn" id="1_srhob"]
 [ext_resource type="Material" uid="uid://cyne44ays80ug" path="res://art/materials/environment/control_point_progress.tres" id="3_rnyr5"]
 
@@ -9,7 +9,7 @@ inner_radius = 4.7
 outer_radius = 5.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o3iip"]
-radius = 5.0
+radius = 10.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_2gnvc"]
 
@@ -17,9 +17,9 @@ radius = 5.0
 transform = Transform3D(1.6, 0, 0, 0, 1, 0, 0, 0, 1.6, 0, 0, 0)
 script = ExtResource("1_o3iip")
 _progress_mesh = NodePath("MeshInstance3D")
-metadata/_custom_type_script = "uid://dgljxwmpb7xrv"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 material_override = ExtResource("3_rnyr5")
 instance_shader_parameters/percentage = 0.085
 mesh = SubResource("TorusMesh_gw8ig")
@@ -33,4 +33,3 @@ mesh = SubResource("BoxMesh_2gnvc")
 skeleton = NodePath("")
 
 [node name="MissionPoi" parent="." instance=ExtResource("1_srhob")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

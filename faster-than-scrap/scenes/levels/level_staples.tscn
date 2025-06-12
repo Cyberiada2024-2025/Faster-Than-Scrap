@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnp5ctgr2bm66"]
+[gd_scene load_steps=8 format=3 uid="uid://bnp5ctgr2bm66"]
 
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="2_g7p6o"]
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="3_40ga3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="5_w06h8"]
 [ext_resource type="Script" path="res://code/evironment/generate_nebulas.gd" id="6_dq8h5"]
 [ext_resource type="PackedScene" uid="uid://bv13odmw2deac" path="res://prefabs/ui/vortex_warning.tscn" id="6_fj3oh"]
+[ext_resource type="AudioStream" uid="uid://dca4vlll603e5" path="res://art/audio/music/music_fly_ship.mp3" id="7_r20ym"]
 
 [node name="LevelStaples" type="Node3D"]
 
@@ -36,5 +37,12 @@ autowrap_mode = 3
 script = ExtResource("6_dq8h5")
 
 [node name="VortexWarning" parent="." instance=ExtResource("6_fj3oh")]
+
+[node name="FlySceneMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("7_r20ym")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="pressed" from="Button" to="SceneLoader" method="load_build_ship_scene"]

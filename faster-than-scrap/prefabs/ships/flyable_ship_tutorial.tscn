@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://djgm5s1ld5wgr"]
+[gd_scene load_steps=7 format=3 uid="uid://fsq0cckhrvij"]
 
 [ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/player/player_ship.gd" id="1_y502x"]
 [ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="2_qrnnh"]

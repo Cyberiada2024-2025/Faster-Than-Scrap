@@ -5,14 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://dqr2x28shkw41" path="res://prefabs/projectiles/enemy projectiles/test_shotgun.tscn" id="3_oln5v"]
 [ext_resource type="Script" uid="uid://dpubtuvds874u" path="res://code/ship/ship.gd" id="4_n7qog"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="5_i17jo"]
-[ext_resource type="Script" uid="uid://b1evvkbdec4yo" path="res://code/enemy/states/agressive_shooting.gd" id="6_ayvvl"]
+[ext_resource type="Script" uid="uid://b1evvkbdec4yo" path="res://code/enemy/states/move/state_npc_movemenet/agressive_shooting.gd" id="6_ayvvl"]
 [ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="7_ugg45"]
 [ext_resource type="Script" uid="uid://cjvpeo4f2tmj1" path="res://code/enemy/transitions/outOfRange.gd" id="8_nsyvj"]
-[ext_resource type="Script" uid="uid://4cghdv6buscd" path="res://code/enemy/states/aggressive.gd" id="9_opwcl"]
+[ext_resource type="Script" uid="uid://4cghdv6buscd" path="res://code/enemy/states/move/state_npc_movemenet/aggressive.gd" id="9_opwcl"]
 [ext_resource type="Script" uid="uid://dugu022f8k6tr" path="res://code/enemy/transitions/inRange.gd" id="10_xp2wu"]
-[ext_resource type="Script" uid="uid://co8l81epe742x" path="res://code/enemy/states/defensive.gd" id="11_75ti7"]
+[ext_resource type="Script" uid="uid://co8l81epe742x" path="res://code/enemy/states/move/state_npc_movemenet/defensive.gd" id="11_75ti7"]
 [ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="12_us5j7"]
-[ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/idle.gd" id="13_fdvrf"]
+[ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/move/state_npc_movemenet/idle.gd" id="13_fdvrf"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="14_lh6is"]
 [ext_resource type="PackedScene" uid="uid://7n6k2ve3l3pm" path="res://prefabs/ui/poi/friend_poi.tscn" id="15_uy1x0"]
 
@@ -25,11 +25,10 @@ radius = 1.636
 [sub_resource type="BoxShape3D" id="BoxShape3D_rj4bm"]
 size = Vector3(2.92049, 1, 2.84192)
 
-[node name="HeavyEnemy" type="CharacterBody3D" node_paths=PackedStringArray("weapon", "ship")]
+[node name="HeavyEnemy" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
 script = ExtResource("1_uy1x0")
 speed = 6
 rotation_speed = 0.03
-weapon = NodePath("Weapon")
 ship = NodePath("Ship")
 
 [node name="Weapon" type="Node3D" parent="."]

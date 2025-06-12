@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="10_tpfpo"]
 [ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/move/state_npc_movemenet/idle.gd" id="11_l6c1q"]
 [ext_resource type="Script" uid="uid://dugu022f8k6tr" path="res://code/enemy/transitions/inRange.gd" id="12_f8vxm"]
-[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="13_rdove"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="14_gemla"]
 [ext_resource type="Script" uid="uid://ckopxl7ibocoa" path="res://code/vfx/damaged_skin.gd" id="15_absf4"]
 [ext_resource type="PackedScene" uid="uid://cslkg7x0muy4u" path="res://prefabs/vfx/particles/basic/fire.tscn" id="16_e4uw1"]
@@ -25,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cwn2a8yi0618d" path="res://art/textures/vfxy/mix_noise.png" id="19_l6c1q"]
 [ext_resource type="Texture2D" uid="uid://biy8roe7al3uv" path="res://art/models/enemies/enemy_3/enemy_model_3_spherebakenormal.png" id="20_f8vxm"]
 [ext_resource type="Texture2D" uid="uid://bl7mgydbx37a1" path="res://art/textures/vfxy/rust_noise.png" id="21_rdove"]
+[ext_resource type="PackedScene" uid="uid://7qpviaps53i1" path="res://prefabs/modules/functional_components/damage_controller_ally_damage.tscn" id="26_rcoul"]
 
 [sub_resource type="Curve" id="Curve_487vp"]
 _data = [Vector2(0.256619, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -72,9 +72,6 @@ curve = SubResource("Curve_3v7me")
 [sub_resource type="SphereShape3D" id="SphereShape3D_s16g2"]
 radius = 2.1533
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_s16g2"]
-size = Vector3(2.68118, 1, 5.32639)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fqq1q"]
 resource_local_to_scene = true
 render_priority = 0
@@ -85,7 +82,6 @@ shader_parameter/Rust_Noise = ExtResource("21_rdove")
 shader_parameter/Albedo = ExtResource("17_1vlah")
 shader_parameter/Rust_Amount = 0.0
 shader_parameter/Mix_Noise = ExtResource("19_l6c1q")
-shader_parameter/Albedo_Color = Color(1, 0.98, 0.7, 1)
 shader_parameter/Met_Rough = ExtResource("18_tpfpo")
 shader_parameter/Normal = ExtResource("20_f8vxm")
 shader_parameter/triplanar_scale = Vector3(1, 1, 1)
@@ -488,6 +484,9 @@ shader_parameter/Noise = ExtResource("18_nlxxa")
 shader_parameter/Gradient = ExtResource("17_lfr1d")
 shader_parameter/Glow_Strength = 3.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_s16g2"]
+size = Vector3(2.68118, 1, 5.32639)
+
 [node name="Turret Gun" type="CharacterBody3D" node_paths=PackedStringArray("weapons", "ship")]
 script = ExtResource("1_1ynje")
 speed = 0
@@ -568,12 +567,6 @@ new_state = NodePath("../../AggressiveShooting")
 transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, -0.287834)
 shape = SubResource("SphereShape3D_s16g2")
 
-[node name="DamageController" parent="." instance=ExtResource("13_rdove")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0153472, 0, -0.864081)
-shape = SubResource("BoxShape3D_s16g2")
-
 [node name="EnemyPoi" parent="." instance=ExtResource("14_gemla")]
 
 [node name="enemy_model_3" type="Node3D" parent="." node_paths=PackedStringArray("meshes")]
@@ -613,7 +606,12 @@ radius = 0.15
 height = 0.75
 material = SubResource("ShaderMaterial_cua4x")
 
-[connection signal="damaged" from="Ship" to="enemy_model_3" method="_on_ship_damage"]
-[connection signal="damaged" from="DamageController" to="Ship" method="_on_take_damage"]
+[node name="DamageControllerAllyDamage" parent="." instance=ExtResource("26_rcoul")]
 
-[editable path="DamageController"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageControllerAllyDamage/Damageable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0153472, 0, -0.864081)
+shape = SubResource("BoxShape3D_s16g2")
+
+[connection signal="damaged" from="Ship" to="enemy_model_3" method="_on_ship_damage"]
+
+[editable path="DamageControllerAllyDamage"]

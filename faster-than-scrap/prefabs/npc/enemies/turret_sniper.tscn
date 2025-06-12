@@ -12,12 +12,12 @@
 [ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="10_cuhla"]
 [ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/move/state_npc_movemenet/idle.gd" id="11_rgehv"]
 [ext_resource type="Script" uid="uid://dugu022f8k6tr" path="res://code/enemy/transitions/inRange.gd" id="12_yyb84"]
-[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="13_3ofma"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="14_8b2ox"]
 [ext_resource type="PackedScene" uid="uid://ens8pls3jn8x" path="res://art/models/enemies/enemy_3/turret_enemy_unpacked.tscn" id="15_2ww87"]
 [ext_resource type="PackedScene" uid="uid://cslkg7x0muy4u" path="res://prefabs/vfx/particles/basic/fire.tscn" id="16_jmg8g"]
 [ext_resource type="Texture2D" uid="uid://2c1a1ogf3sa1" path="res://art/textures/vfxy/fire_gradient_weird.png" id="17_slfyb"]
 [ext_resource type="Texture2D" uid="uid://brgjvlvgmigyf" path="res://art/textures/vfxy/fire_voronoi.png" id="18_ey57i"]
+[ext_resource type="PackedScene" uid="uid://7qpviaps53i1" path="res://prefabs/modules/functional_components/damage_controller_ally_damage.tscn" id="19_2kswb"]
 [ext_resource type="Texture2D" uid="uid://bb24thwd52doi" path="res://art/textures/vfxy/2DNoise.png" id="19_t6gyf"]
 
 [sub_resource type="Curve" id="Curve_qoroq"]
@@ -64,9 +64,6 @@ curve = SubResource("Curve_hhsm3")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s16g2"]
 radius = 2.1533
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_s16g2"]
-size = Vector3(2.68118, 1, 6.808)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_728c8"]
 source = 5
@@ -417,6 +414,9 @@ shader_parameter/Noise = ExtResource("18_ey57i")
 shader_parameter/Gradient = ExtResource("17_slfyb")
 shader_parameter/Glow_Strength = 3.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_s16g2"]
+size = Vector3(2.68118, 1, 6.808)
+
 [node name="Turret Sniper" type="CharacterBody3D" node_paths=PackedStringArray("weapons", "ship")]
 script = ExtResource("1_2kswb")
 speed = 0
@@ -497,12 +497,6 @@ new_state = NodePath("../../AggressiveShooting")
 transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, -0.287834)
 shape = SubResource("SphereShape3D_s16g2")
 
-[node name="DamageController" parent="." instance=ExtResource("13_3ofma")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00712562, 0, -1.51618)
-shape = SubResource("BoxShape3D_s16g2")
-
 [node name="EnemyPoi" parent="." instance=ExtResource("14_8b2ox")]
 
 [node name="enemy_model_3" parent="." instance=ExtResource("15_2ww87")]
@@ -535,7 +529,12 @@ radius = 0.15
 height = 0.75
 material = SubResource("ShaderMaterial_cua4x")
 
-[connection signal="damaged" from="Ship" to="enemy_model_3" method="_on_ship_damage"]
-[connection signal="damaged" from="DamageController" to="Ship" method="_on_take_damage"]
+[node name="DamageControllerAllyDamage" parent="." instance=ExtResource("19_2kswb")]
 
-[editable path="DamageController"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageControllerAllyDamage/Damageable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00712562, 0, -1.51618)
+shape = SubResource("BoxShape3D_s16g2")
+
+[connection signal="damaged" from="Ship" to="enemy_model_3" method="_on_ship_damage"]
+
+[editable path="DamageControllerAllyDamage"]

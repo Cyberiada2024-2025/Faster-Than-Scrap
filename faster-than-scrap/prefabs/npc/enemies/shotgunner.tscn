@@ -13,12 +13,12 @@
 [ext_resource type="Script" uid="uid://co8l81epe742x" path="res://code/enemy/states/move/state_npc_movemenet/defensive.gd" id="11_1eplk"]
 [ext_resource type="Script" uid="uid://b6pvn21w64qto" path="res://code/enemy/transitions/transitionHighEnergy.gd" id="12_a4thn"]
 [ext_resource type="Script" uid="uid://qx0dats6aa2u" path="res://code/enemy/states/move/state_npc_movemenet/idle.gd" id="13_nle6o"]
-[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="14_rj4bm"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="15_rj4bm"]
 [ext_resource type="PackedScene" uid="uid://d3dt8ieym1dv8" path="res://art/models/enemies/enemy_2/heavy_enemy_unpacked.tscn" id="16_q0blx"]
 [ext_resource type="PackedScene" uid="uid://cslkg7x0muy4u" path="res://prefabs/vfx/particles/basic/fire.tscn" id="17_xxpwe"]
 [ext_resource type="Texture2D" uid="uid://2c1a1ogf3sa1" path="res://art/textures/vfxy/fire_gradient_weird.png" id="18_668tx"]
 [ext_resource type="Texture2D" uid="uid://brgjvlvgmigyf" path="res://art/textures/vfxy/fire_voronoi.png" id="19_7pmuj"]
+[ext_resource type="PackedScene" uid="uid://7qpviaps53i1" path="res://prefabs/modules/functional_components/damage_controller_ally_damage.tscn" id="20_d1td6"]
 [ext_resource type="Texture2D" uid="uid://bb24thwd52doi" path="res://art/textures/vfxy/2DNoise.png" id="20_x00yj"]
 
 [sub_resource type="Curve" id="Curve_qoroq"]
@@ -66,9 +66,6 @@ curve = SubResource("Curve_pg335")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rj4bm"]
 radius = 1.636
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rj4bm"]
-size = Vector3(2.13038, 1, 4.07983)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_728c8"]
 source = 5
@@ -380,6 +377,9 @@ shader_parameter/Noise = ExtResource("19_7pmuj")
 shader_parameter/Gradient = ExtResource("18_668tx")
 shader_parameter/Glow_Strength = 3.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rj4bm"]
+size = Vector3(2.13038, 1, 4.07983)
+
 [node name="Shotgunner" type="CharacterBody3D" node_paths=PackedStringArray("weapons", "ship")]
 script = ExtResource("1_ok4vr")
 speed = 6
@@ -477,12 +477,6 @@ new_state = NodePath("../../Aggressive")
 transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, -0.687797)
 shape = SubResource("SphereShape3D_rj4bm")
 
-[node name="DamageController" parent="." instance=ExtResource("14_rj4bm")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0745242, 0, -0.329517)
-shape = SubResource("BoxShape3D_rj4bm")
-
 [node name="EnemyPoi" parent="." instance=ExtResource("15_rj4bm")]
 
 [node name="enemy_model_2" parent="." instance=ExtResource("16_q0blx")]
@@ -494,7 +488,12 @@ radius = 0.3
 height = 1.0
 material = SubResource("ShaderMaterial_22jxi")
 
-[connection signal="damaged" from="Ship" to="enemy_model_2" method="_on_ship_damage"]
-[connection signal="damaged" from="DamageController" to="Ship" method="_on_take_damage"]
+[node name="DamageControllerAllyDamage" parent="." instance=ExtResource("20_d1td6")]
 
-[editable path="DamageController"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageControllerAllyDamage/Damageable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0745242, 0, -0.329517)
+shape = SubResource("BoxShape3D_rj4bm")
+
+[connection signal="damaged" from="Ship" to="enemy_model_2" method="_on_ship_damage"]
+
+[editable path="DamageControllerAllyDamage"]

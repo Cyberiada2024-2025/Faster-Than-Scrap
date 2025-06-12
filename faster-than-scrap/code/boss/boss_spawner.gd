@@ -22,6 +22,8 @@ func _ready() -> void:
 	for boss_prefab in BossManager.bosses_to_spawn:
 		_spawn_boss(boss_prefab)
 
+	SpaceVortex.spawn_vortex(Vector3.ZERO, 200, 50, 60 * 5)
+
 
 func _process(_delta: float) -> void:
 	if _all_bosses_dead():

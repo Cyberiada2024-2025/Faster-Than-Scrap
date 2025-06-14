@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="3_40ga3"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="4_ynct0"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="5_w06h8"]
-[ext_resource type="Script" path="res://code/evironment/generate_nebulas.gd" id="6_dq8h5"]
+[ext_resource type="Script" uid="uid://f6d84uyul237" path="res://code/evironment/generate_nebulas.gd" id="6_dq8h5"]
 [ext_resource type="PackedScene" uid="uid://bv13odmw2deac" path="res://prefabs/ui/vortex_warning.tscn" id="6_fj3oh"]
 
 [node name="LevelStaples" type="Node3D"]
@@ -36,5 +36,6 @@ autowrap_mode = 3
 script = ExtResource("6_dq8h5")
 
 [node name="VortexWarning" parent="." instance=ExtResource("6_fj3oh")]
+visible = false
 
 [connection signal="pressed" from="Button" to="SceneLoader" method="load_build_ship_scene"]

@@ -34,8 +34,7 @@ metadata/_edit_group_ = true
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("2_4crnk")]
 
-[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("4_s0cg4")]
-damageable = NodePath("")
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("shape") instance=ExtResource("4_s0cg4")]
 shape = NodePath("..")
 self_damage_multiplier = 5.0
 

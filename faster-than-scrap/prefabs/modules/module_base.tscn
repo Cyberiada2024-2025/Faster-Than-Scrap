@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="1_if6ta"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="2_4crnk"]
-[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_bknuf"]
+[ext_resource type="PackedScene" uid="uid://cueuhnoh0g75p" path="res://prefabs/modules/functional_components/damage_controller_hostile_damage.tscn" id="4_bknuf"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="4_s0cg4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1whwh"]
@@ -34,17 +34,17 @@ metadata/_edit_group_ = true
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("2_4crnk")]
 
-[node name="DamageController2" parent="." instance=ExtResource("4_bknuf")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController2/Damageable" index="0"]
-shape = SubResource("SphereShape3D_e1j53")
-
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("4_s0cg4")]
-damageable = NodePath("../DamageController2/Damageable")
+damageable = NodePath("")
 shape = NodePath("..")
 self_damage_multiplier = 5.0
 
-[connection signal="damaged" from="DamageController2" to="." method="take_damage"]
+[node name="DamageControllerHostileDamage" parent="." instance=ExtResource("4_bknuf")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageControllerHostileDamage/Damageable" index="0"]
+shape = SubResource("SphereShape3D_e1j53")
+
+[connection signal="damaged" from="DamageControllerHostileDamage" to="." method="take_damage"]
 
 [editable path="ModuleDisplay"]
-[editable path="DamageController2"]
+[editable path="DamageControllerHostileDamage"]

@@ -1,19 +1,20 @@
-[gd_scene load_steps=21 format=3 uid="uid://buaupty5vjbs5"]
+[gd_scene load_steps=22 format=3 uid="uid://buaupty5vjbs5"]
 
-[ext_resource type="PackedScene" uid="uid://djgm5s1ld5wgr" path="res://prefabs/ships/flyable_ship_tutorial.tscn" id="1_8fkjt"]
+[ext_resource type="PackedScene" uid="uid://fsq0cckhrvij" path="res://prefabs/ships/flyable_ship_tutorial.tscn" id="1_8fkjt"]
 [ext_resource type="PackedScene" uid="uid://dm1qlo34r16co" path="res://prefabs/environment/shop_miniature_tutorial.tscn" id="2_8fkjt"]
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="2_ngx30"]
 [ext_resource type="PackedScene" uid="uid://dfco2h1p5vdx1" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid1.tscn" id="4_6bw2y"]
 [ext_resource type="PackedScene" uid="uid://bvng8hdkqm2d6" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid2.tscn" id="5_phkkj"]
 [ext_resource type="PackedScene" uid="uid://cs2m7lumvnaot" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid3.tscn" id="6_tkgtl"]
 [ext_resource type="PackedScene" uid="uid://cdq5hecjw2uki" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_group.tscn" id="7_7xu24"]
-[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="8_6xv7r"]
+[ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_player.gd" id="8_6xv7r"]
 [ext_resource type="PackedScene" uid="uid://dsc8yod53e2qk" path="res://prefabs/ui/cutscenes/tutorials/movement_tutorial.tscn" id="9_l855j"]
 [ext_resource type="PackedScene" uid="uid://dpdbniaaphy1t" path="res://prefabs/ui/cutscenes/tutorials/energy_tutorial.tscn" id="10_aa5ti"]
-[ext_resource type="Script" uid="uid://driyjosimvut3" path="res://code/player/detect_player_low_energy.gd" id="11_37dpr"]
+[ext_resource type="Script" path="res://code/player/detect_player_low_energy.gd" id="11_37dpr"]
 [ext_resource type="Script" uid="uid://bceg4vylbdwdr" path="res://code/evironment/player_detector.gd" id="12_8j6x4"]
 [ext_resource type="PackedScene" uid="uid://31y5kdihtoxf" path="res://prefabs/ui/cutscenes/tutorials/firing_tutorial.tscn" id="13_jcith"]
 [ext_resource type="PackedScene" uid="uid://crti8uuwttken" path="res://prefabs/ui/cutscenes/tutorials/near_shop_tutorial.tscn" id="14_416px"]
+[ext_resource type="PackedScene" uid="uid://ceu6i6ji4q3oq" path="res://prefabs/npc/enemies/turret_gun.tscn" id="15_ngx30"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uf04d"]
 size = Vector3(800, 1, 1)
@@ -162,6 +163,9 @@ shape = SubResource("SphereShape3D_83mrs")
 [node name="Portal cutscene player" type="Node" parent="Portal Cutscene player"]
 script = ExtResource("8_6xv7r")
 cutscene_path = ExtResource("14_416px")
+
+[node name="Turret Gun" parent="." instance=ExtResource("15_ngx30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.9524)
 
 [connection signal="player_entered" from="ShopMiniatureTutorial/EnterShop" to="ShopMiniatureTutorial/SceneLoader" method="load_lore_scene"]
 [connection signal="player_low_energy" from="Energy cutscene player/Detect player low energy" to="Energy cutscene player" method="play"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cueuhnoh0g75p"]
+
+[ext_resource type="Script" uid="uid://k3n7j0mjfmxt" path="res://code/damage/damage_controller.gd" id="1_wiobd"]
+[ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://code/damage/damageable.gd" id="2_mc33k"]
+
+[node name="DamageControllerHostileDamage" type="Node3D"]
+script = ExtResource("1_wiobd")
+metadata/_custom_type_script = "uid://k3n7j0mjfmxt"
+
+[node name="Damageable" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_mc33k")
+metadata/_custom_type_script = "uid://b7c5dxlqsxtlt"

@@ -66,7 +66,7 @@ material = SubResource("StandardMaterial3D_1cn7k")
 [node name="EnemyFastProjectile" type="Node3D" node_paths=PackedStringArray("particle_holder", "particles")]
 script = ExtResource("1_qoroq")
 velocity = SubResource("Curve_4quhm")
-velocity_multiplier = 30.0
+velocity_multiplier = 100.0
 lifetime = 1.0
 particle_holder = NodePath("ParticleHolder")
 particles = [NodePath("ParticleHolder/Trail")]
@@ -76,15 +76,14 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 mesh = SubResource("CylinderMesh_386xi")
 
 [node name="DamageArea3D" type="Area3D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
+collision_mask = 6
 input_ray_pickable = false
 monitorable = false
 script = ExtResource("2_bntxj")
 _damage_type = 0
 _damage = SubResource("Resource_x6y5o")
 _die_on_hit = true
-collision_activation_delay = 0.075
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.5)

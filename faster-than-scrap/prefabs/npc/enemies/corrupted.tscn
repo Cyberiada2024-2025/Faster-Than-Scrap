@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://cjvpeo4f2tmj1" path="res://code/enemy/transitions/outOfRange.gd" id="8_bisll"]
 [ext_resource type="Script" uid="uid://4cghdv6buscd" path="res://code/enemy/states/move/state_npc_movemenet/aggressive.gd" id="9_stlrq"]
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="9_vssqj"]
-[ext_resource type="Script" uid="uid://p2tfapf0egxl" path="res://code/enemy/transitions/timed_transition.gd" id="10_cnu0d"]
+[ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="10_cnu0d"]
 [ext_resource type="Script" uid="uid://dugu022f8k6tr" path="res://code/enemy/transitions/inRange.gd" id="10_vssqj"]
 [ext_resource type="Script" uid="uid://co8l81epe742x" path="res://code/enemy/states/move/state_npc_movemenet/defensive.gd" id="11_cnu0d"]
 [ext_resource type="Script" uid="uid://crp1vxubokrt" path="res://code/enemy/states/move/move_to_orbit_place.gd" id="11_stlrq"]
@@ -709,22 +709,6 @@ shader_parameter/Noise = ExtResource("19_3ma27")
 shader_parameter/Gradient = ExtResource("18_lkh5c")
 shader_parameter/Glow_Strength = 3.0
 
-[sub_resource type="Animation" id="Animation_stlrq"]
-resource_name = "on"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/On")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
 [sub_resource type="Animation" id="Animation_vssqj"]
 length = 0.001
 tracks/0/type = "value"
@@ -754,6 +738,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_stlrq"]
+resource_name = "on"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/On")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2xlc8"]
@@ -893,6 +893,10 @@ transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, -0.33
 shape = SubResource("SphereShape3D_sjc04")
 
 [node name="DamageController" parent="." instance=ExtResource("14_xxepa")]
+
+[node name="Damageable" parent="DamageController" index="0"]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00402832, 0, -0.343613)

@@ -17,7 +17,7 @@ signal fuel_change(new_value: int)
 ## Mostly used for building phase
 @export var modules: Array[Module] = []
 var money: int = 0
-var current_fuel: int = 3:
+var current_fuel: int = 0:
 	get:
 		return current_fuel
 	set(new_value):

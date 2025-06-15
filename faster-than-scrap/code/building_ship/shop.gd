@@ -148,6 +148,9 @@ func _on_inventory_exited(body: Area3D) -> void:
 
 
 func _display_inventory_number() -> void:
+	if inventory_limit_display == null:
+		return
+
 	var current_num = InventoryManager.get_item_num()
 	var max_num = InventoryManager.get_max_item_num()
 	if current_num > max_num:

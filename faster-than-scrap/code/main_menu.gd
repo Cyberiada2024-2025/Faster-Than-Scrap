@@ -15,7 +15,7 @@ func _on_exit_button_pressed() -> void:
 
 func _on_start_button_pressed() -> void:
 	# TODO change to main scene
-	scene_loader.load_lore_scene()
+	scene_loader.load_movement_tutorial()
 
 
 func _on_settings_button_pressed() -> void:

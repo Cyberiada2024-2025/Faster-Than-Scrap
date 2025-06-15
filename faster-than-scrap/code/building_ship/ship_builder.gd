@@ -257,10 +257,16 @@ func _attach_module() -> void:
 	else:
 		active_module.reparent(attach_target.ship)
 		active_module.parent_module.child_modules.erase(active_module)
+
+	var module_was_already_attached: bool = active_module.ship != null
 	active_module.set_ship_reference(attach_target.ship)  # copy the reference to the ship
 	attach_target.child_modules.append(active_module)
 	active_module.parent_module = attach_target
-	active_module.attach()
+
+	if module_was_already_attached:
+		active_module.on_reattach()
+	else:
+		active_module.on_attach()
 
 
 ## Function for setting up the module, when it is to be dettached
@@ -268,7 +274,9 @@ func _attach_module() -> void:
 ## It will add an area3D if needed to allow clicking the module, and set module
 ## parameters.
 func _dettach_module() -> void:
-	active_module.detach()
+	if active_module.ship != null:
+		active_module.on_detach()
+
 	active_module.set_ship_reference(null)
 	if active_module.parent_module != null:
 		on_module_detach.emit(active_module)

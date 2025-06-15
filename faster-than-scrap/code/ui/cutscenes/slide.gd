@@ -22,6 +22,13 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if Input.is_action_just_pressed("Skip Cutscene") and playing:
 			skip()
+	elif (
+		playing
+		and event is InputEventMouseButton
+		and event.button_index == MOUSE_BUTTON_LEFT
+		and event.is_pressed()
+	):
+		skip()
 
 
 func skip():

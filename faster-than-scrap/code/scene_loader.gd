@@ -17,6 +17,22 @@ func load_main_menu_scene() -> void:
 	CutsceneManager.reset_cutscenes()
 
 
+#region tutorials
+
+
+func load_movement_tutorial() -> void:
+	HudSpawner.spawn_hud = true
+	GameManager.set_game_state(GameState.State.FLY)
+	get_tree().change_scene_to_file("res://scenes/tutorials/basic_movement_tutorial.tscn")
+
+
+func load_build_tutorial() -> void:
+	load_build_ship_scene(true)
+
+
+#endregion
+
+
 func load_map_selector_scene() -> void:
 	_detach_ship()
 	GameManager.on_scene_exit()
@@ -41,8 +57,10 @@ func load_fly_ship_scene(
 			attached_fly_scene = MapGenerator.swap_saved_and_current_scene()
 		if not attached_fly_scene:
 			GameManager.get_tree().change_scene_to_file("res://scenes/levels/start_level.tscn")
+			use_saved_pos_rot = false
 
 	GameManager.set_game_state(GameState.State.FLY)
+
 	if use_saved_pos_rot:
 		pos = GameManager.player_ship.get_saved_position()
 		rot = GameManager.player_ship.get_saved_rotation()
@@ -59,7 +77,7 @@ func load_boss_scene(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO) -
 	_attach_ship_with_hud.call_deferred(pos, rot)
 
 
-func load_build_ship_scene() -> void:
+func load_build_ship_scene(tutorial_version = false) -> void:
 	_set_vortex_preserve(true)
 	GameManager.player_ship.save_position()
 	GameManager.player_ship.save_rotation()
@@ -70,7 +88,11 @@ func load_build_ship_scene() -> void:
 		attached_build_scene = MapGenerator.swap_saved_and_current_scene()
 
 	GameManager.on_scene_exit()
-	if not attached_build_scene:
+	if tutorial_version:
+		GameManager.get_tree().change_scene_to_file(
+			"res://scenes/tutorials/build_ship_tutorial.tscn"
+		)
+	else if not attached_build_scene:
 		GameManager.get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
 	GameManager.set_game_state(GameState.State.BUILD)
 	_attach_ship_with_hud.call_deferred()
@@ -84,13 +106,14 @@ func load_credits_scene() -> void:
 
 
 func load_lore_scene() -> void:
+	_detach_ship()
 	get_tree().change_scene_to_file("res://scenes/lore_start.tscn")
-	# reset player
-	GameManager.player_ship.queue_free()
-	GameManager.player_ship = default_ship_prefab.instantiate()
+	GameManager.set_game_state(GameState.State.CUTSCENE)
+
 
 func load_settings_scene() -> void:
 	get_tree().change_scene_to_file("res://scenes/settings.tscn")
+
 
 ## detach the ship from the scene tree, to preserve it, when it is changed
 func _detach_ship():

@@ -19,8 +19,8 @@
 [ext_resource type="Script" uid="uid://c7w7ael2yxs4y" path="res://code/enemy/states/rotate/look_at_target_with_object.gd" id="12_7fp2r"]
 [ext_resource type="Script" uid="uid://dig16nwffnibt" path="res://code/enemy/states/supplementary/restore_energy.gd" id="12_tiubj"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="15_vhk6y"]
-[ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_on_ready_player.gd" id="16_mynj6"]
-[ext_resource type="PackedScene" uid="uid://ciecgbtrcy16n" path="res://prefabs/ui/cutscenes/boss_cutscenes/laster_star_cutscene.tscn" id="17_kardv"]
+[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="16_mynj6"]
+[ext_resource type="PackedScene" path="res://prefabs/ui/cutscenes/boss_cutscenes/laster_star_cutscene.tscn" id="17_kardv"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
 radius = 2.375
@@ -222,6 +222,7 @@ max_range = 10000.0
 [node name="Boss Cutscene" type="Node" parent="."]
 script = ExtResource("16_mynj6")
 cutscene_path = ExtResource("17_kardv")
+play_on_ready = true
 
 [connection signal="damaged" from="StaticBody3D/Core/DamageController" to="StaticBody3D/Core" method="take_damage"]
 

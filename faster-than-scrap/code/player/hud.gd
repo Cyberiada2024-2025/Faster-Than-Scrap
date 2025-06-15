@@ -12,7 +12,7 @@ static var instance: Hud
 @export var zoom_strength := 15
 @export var zoom_time := 0.2
 @export var max_zoom := 100
-@export var min_zoom := 50
+@export var min_zoom := 5
 @export var y_pos: float = 25
 
 var _main_camera: Camera3D

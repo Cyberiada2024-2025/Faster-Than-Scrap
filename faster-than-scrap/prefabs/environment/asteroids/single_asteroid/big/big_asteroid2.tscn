@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvng8hdkqm2d6"]
+[gd_scene load_steps=8 format=3 uid="uid://bvng8hdkqm2d6"]
 
 [ext_resource type="Script" uid="uid://chekqae75l00d" path="res://code/evironment/asteroid.gd" id="1_4mv6f"]
 [ext_resource type="PackedScene" uid="uid://pxlntfewdl2l" path="res://art/model_prefabs/asteroids/asteroid_2.tscn" id="2_erwgu"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="3_uqly8"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_or4mp"]
+[ext_resource type="PackedScene" uid="uid://c5h05bkp7b8go" path="res://prefabs/ui/poi/asteroid_poi.tscn" id="5_fkdrx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gro5k"]
 bounce = 1.0
@@ -12,14 +13,14 @@ bounce = 1.0
 
 [node name="Asteroid" type="RigidBody3D"]
 axis_lock_linear_y = true
-mass = 10.0
+mass = 40000.0
 physics_material_override = SubResource("PhysicsMaterial_gro5k")
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 5
 angular_damp_mode = 1
 script = ExtResource("1_4mv6f")
-hp = 10
+hp = 1000
 
 [node name="Asteroid2" parent="." instance=ExtResource("2_erwgu")]
 transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, 0, 0, 0)
@@ -37,6 +38,9 @@ shape = NodePath("../CollisionShape3D")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
 transform = Transform3D(-1.39876e-06, -31.9255, 2.18206, 32, -1.39551e-06, 9.53809e-08, 0, 2.18206, 31.9255, -3.30312, -1.44384e-07, -1.61414)
 shape = SubResource("CapsuleShape3D_nictl")
+
+[node name="Asteroid Poi" parent="." instance=ExtResource("5_fkdrx")]
+transform = Transform3D(65.0282, 0, 0, 0, 32, 0, 0, 0, 32, -3.30265, 0, 0)
 
 [connection signal="damaged" from="DamageController" to="." method="take_damage"]
 

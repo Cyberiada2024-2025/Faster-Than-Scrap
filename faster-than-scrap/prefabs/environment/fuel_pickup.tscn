@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bymii530libmh"]
+[gd_scene load_steps=8 format=3 uid="uid://bymii530libmh"]
 
 [ext_resource type="Script" path="res://code/evironment/pickable.gd" id="1_ts6op"]
 [ext_resource type="Script" uid="uid://druelgornyk4j" path="res://code/missions/fuel_giver.gd" id="2_6pvhe"]
 [ext_resource type="PackedScene" uid="uid://1ajphwg8evpv" path="res://art/model_prefabs/jerrycan/jerrycan.tscn" id="3_6pvhe"]
-[ext_resource type="Script" uid="uid://b0xwjuq1av15m" path="res://code/enemy/states/rotate/constant_rotation.gd" id="4_gr24o"]
+[ext_resource type="Script" uid="uid://bu040yt2rdn0p" path="res://code/boss/rotate.gd" id="4_7xbyb"]
+[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="5_7xbyb"]
+[ext_resource type="PackedScene" uid="uid://cwl3fpu8v7vt2" path="res://prefabs/ui/cutscenes/tutorials/fuel_use_tutorial.tscn" id="6_g1flr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gr24o"]
 radius = 1.0
@@ -16,11 +18,19 @@ metadata/_custom_type_script = "uid://bceg4vylbdwdr"
 script = ExtResource("2_6pvhe")
 fuel_to_give = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_gr24o")
-
 [node name="Jerrycan" parent="." instance=ExtResource("3_6pvhe")]
 transform = Transform3D(-1.74846e-07, -1.74846e-07, 4, -4, -1.74846e-07, -1.74846e-07, 1.74846e-07, -4, -1.74846e-07, 6.75654e-09, 6.75654e-09, 0.154572)
-script = ExtResource("4_gr24o")
+script = ExtResource("4_7xbyb")
+speed = 1.5
+
+[node name="CutscenePlayer" type="Node" parent="."]
+script = ExtResource("5_7xbyb")
+cutscene_path = ExtResource("6_g1flr")
+metadata/_custom_type_script = "uid://c3nbl6g1km3w7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -1.64202e-15, 0, -1.64202e-15, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_gr24o")
 
 [connection signal="on_pick" from="." to="Node" method="_give_fuel"]
+[connection signal="on_pick" from="." to="CutscenePlayer" method="play"]

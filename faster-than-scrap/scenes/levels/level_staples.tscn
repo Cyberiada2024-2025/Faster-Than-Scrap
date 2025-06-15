@@ -36,6 +36,5 @@ autowrap_mode = 3
 script = ExtResource("6_dq8h5")
 
 [node name="VortexWarning" parent="." instance=ExtResource("6_fj3oh")]
-visible = false
 
 [connection signal="pressed" from="Button" to="SceneLoader" method="load_build_ship_scene"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://83pmb3ixecep"]
 
 [ext_resource type="Script" uid="uid://chekqae75l00d" path="res://code/evironment/asteroid.gd" id="1_76agp"]
-[ext_resource type="Script" path="res://code/evironment/droppable.gd" id="2_kaa5q"]
+[ext_resource type="Script" uid="uid://bxvqss31pcw3p" path="res://code/evironment/droppable.gd" id="2_kaa5q"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="3_3d00i"]
 [ext_resource type="PackedScene" uid="uid://bymii530libmh" path="res://prefabs/environment/fuel_pickup.tscn" id="3_4x2we"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_kaa5q"]
@@ -56,6 +56,10 @@ mesh = SubResource("BoxMesh_4x2we")
 skeleton = NodePath("../..")
 
 [node name="DamageController" parent="." instance=ExtResource("4_kaa5q")]
+
+[node name="Damageable" parent="DamageController" index="0"]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
 shape = SubResource("BoxShape3D_vf3at")

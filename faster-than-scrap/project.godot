@@ -109,7 +109,8 @@ use_fuel={
 3d_render/layer_2="Player Ship Sprite"
 3d_render/layer_3="Minimap Sprite"
 3d_physics/layer_1="Physics Collisions"
-3d_physics/layer_2="Damage Layer"
+3d_physics/layer_2="All Damage"
+3d_physics/layer_3="Damage For Enemies"
 
 [rendering]
 

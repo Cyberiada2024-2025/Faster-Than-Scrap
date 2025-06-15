@@ -33,6 +33,10 @@ shape = NodePath("../CollisionShape3D")
 
 [node name="DamageController" parent="." instance=ExtResource("4_h7jgc")]
 
+[node name="Damageable" parent="DamageController" index="0"]
+collision_layer = 6
+collision_mask = 0
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
 shape = SubResource("SphereShape3D_keyhs")
 

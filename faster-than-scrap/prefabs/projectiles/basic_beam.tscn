@@ -92,7 +92,7 @@ mesh = NodePath("VFX holder/MeshInstance3D")
 
 [node name="DamageRaycast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -20)
-collision_mask = 2
+collision_mask = 6
 collide_with_areas = true
 collide_with_bodies = false
 script = ExtResource("2_txvny")

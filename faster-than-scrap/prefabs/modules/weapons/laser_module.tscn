@@ -28,7 +28,7 @@ module_name = "Gun"
 description = "One of basic weapons. Activate to shoot long-range projectile."
 
 [node name="SpawnerWeapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.694184)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.17352)
 script = ExtResource("2_nlg4d")
 muzzle_flash = NodePath("MuzzleFlash")
 energy_cost = 10.0

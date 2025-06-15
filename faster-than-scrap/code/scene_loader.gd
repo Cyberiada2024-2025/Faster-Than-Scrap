@@ -92,7 +92,7 @@ func load_build_ship_scene(tutorial_version = false) -> void:
 		GameManager.get_tree().change_scene_to_file(
 			"res://scenes/tutorials/build_ship_tutorial.tscn"
 		)
-	else if not attached_build_scene:
+	elif not attached_build_scene:
 		GameManager.get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
 	GameManager.set_game_state(GameState.State.BUILD)
 	_attach_ship_with_hud.call_deferred()

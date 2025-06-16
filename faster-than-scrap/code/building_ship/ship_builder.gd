@@ -92,7 +92,7 @@ func _update_lmb_state(event: InputEvent) -> void:
 		lmb_is_pressed = event.is_pressed()
 
 
-func _update_attach_point_index(event: InputEvent) -> void:
+func _update_attach_point_index() -> void:
 	if Input.is_key_pressed(KEY_R):
 		attach_point_index += 1
 	#if event is InputEventMouseButton and event.pressed:
@@ -303,7 +303,7 @@ func _can_module_have_assigned_key(active_module: Module) -> bool:
 func _input(event: InputEvent):
 	_update_lmb_state(event)
 	_update_mouse_3d_position()
-	_update_attach_point_index(event)
+	_update_attach_point_index()
 
 	## TODO add some display in UI in which state the player is
 

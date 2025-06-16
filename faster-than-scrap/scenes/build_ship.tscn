@@ -432,7 +432,7 @@ layout_mode = 0
 offset_left = 5.0
 offset_top = 241.0
 offset_right = 255.0
-offset_bottom = 342.69
+offset_bottom = 375.0
 color = Color(0, 0.051, 0.027, 1)
 
 [node name="Label" type="Label" parent="Control/Prize_display"]
@@ -442,7 +442,8 @@ offset_bottom = 50.0
 text = "Controls:
 LMB: attach/dettach module
 RMB: set activation key
-Scroll: zoom camera"
+Scroll: zoom camera
+R: rotate module"
 label_settings = SubResource("LabelSettings_xqadh")
 horizontal_alignment = 1
 vertical_alignment = 1

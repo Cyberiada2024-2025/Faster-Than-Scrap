@@ -93,11 +93,13 @@ func _update_lmb_state(event: InputEvent) -> void:
 
 
 func _update_attach_point_index(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			attach_point_index += 1
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			attach_point_index -= 1
+	if Input.is_key_pressed(KEY_R):
+		attach_point_index += 1
+	#if event is InputEventMouseButton and event.pressed:
+	#if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+	#attach_point_index += 1
+	#elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+	#attach_point_index -= 1
 
 
 # ----------------raycasts hits ------------------------------------

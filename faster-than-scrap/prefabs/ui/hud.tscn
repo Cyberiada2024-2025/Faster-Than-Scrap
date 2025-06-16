@@ -114,9 +114,10 @@ cull_mask = 1048569
 script = ExtResource("1_x65cj")
 energy_bar = NodePath("HUD/Energy Bar")
 main_camera_offset = Vector3(0, 25, 0)
-module_camera_offset = Vector3(-3.7, 10, -1.11)
+module_camera_offset = Vector3(10, 10, -5)
 
 [node name="ModuleViewport" type="SubViewport" parent="."]
+transparent_bg = true
 use_hdr_2d = true
 canvas_cull_mask = 4293918722
 
@@ -127,7 +128,7 @@ environment = SubResource("Environment_s7i6o")
 projection = 1
 current = true
 fov = 37.8493
-size = 20.0
+size = 32.0
 
 [node name="MinimapViewport" type="SubViewport" parent="."]
 use_hdr_2d = true
@@ -250,11 +251,10 @@ offset_bottom = 383.0
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="HUD"]
 layout_mode = 0
-offset_left = -3.625
-offset_top = 288.04
-offset_right = 124.375
-offset_bottom = 416.04
-scale = Vector2(2.07, 2.07)
+offset_top = 135.0
+offset_right = 128.0
+offset_bottom = 263.0
+scale = Vector2(4, 4)
 stretch_mode = 1
 alignment_horizontal = 0
 alignment_vertical = 2

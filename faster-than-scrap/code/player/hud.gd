@@ -37,8 +37,9 @@ func _module_camera_offset_x() -> float:
 	var center = GameManager.player_ship.position
 
 	for module in GameManager.player_ship.modules:
+		arr.append(center.x + module.position.x)
 		arr.append(center.x - module.position.x)
-	return arr.max()
+	return arr.min()
 
 
 func _module_camera_offset_z() -> float:
@@ -47,6 +48,7 @@ func _module_camera_offset_z() -> float:
 
 	for module in GameManager.player_ship.modules:
 		arr.append(center.z + module.position.z)
+		arr.append(center.z - module.position.z)
 	return arr.max()
 
 

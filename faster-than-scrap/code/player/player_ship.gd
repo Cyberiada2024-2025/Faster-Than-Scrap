@@ -45,14 +45,15 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	super(_delta)
 	$CenterOfMass.position = _center_of_mass()
 
 
 func _center_of_mass() -> Vector3:
 	var center = Vector3.ZERO
 	for mod in GameManager.player_ship.modules:
-		center += mod.global_position
-	center /= GameManager.player_ship.modules.size()
+		center += mod.position
+		center /= GameManager.player_ship.modules.size()
 	return center
 
 

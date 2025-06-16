@@ -55,7 +55,7 @@ script = ExtResource("1_6gb75")
 
 [node name="DustTrails" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 0)
-amount = 200
+amount = 100
 lifetime = 4.0
 process_material = SubResource("ParticleProcessMaterial_klrfn")
 draw_pass_1 = SubResource("PlaneMesh_ogv1v")

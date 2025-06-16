@@ -114,6 +114,7 @@ cull_mask = 1048569
 script = ExtResource("1_x65cj")
 energy_bar = NodePath("HUD/Energy Bar")
 main_camera_offset = Vector3(0, 25, 0)
+module_camera_offset = Vector3(9, 10, -9)
 
 [node name="ModuleViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -250,10 +251,10 @@ offset_bottom = 383.0
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="HUD"]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 281.0
-offset_right = 139.0
-offset_bottom = 409.0
+offset_left = 1.0
+offset_top = 286.0
+offset_right = 129.0
+offset_bottom = 414.0
 scale = Vector2(2.8, 2.8)
 stretch_mode = 1
 alignment_horizontal = 0

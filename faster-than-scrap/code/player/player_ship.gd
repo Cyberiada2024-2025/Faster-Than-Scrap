@@ -36,12 +36,17 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	super()
+	for child in get_children():
+		if child is Module:
+			modules.append(child)
 	GameManager.new_game_state.connect(on_game_change_state)
 	energy_max_change.emit(max_energy)
 	_on_energy_change()
 
+
 func _process(_delta: float) -> void:
 	$CenterOfMass.position = _center_of_mass()
+
 
 func _center_of_mass() -> Vector3:
 	var center = Vector3.ZERO
@@ -49,6 +54,7 @@ func _center_of_mass() -> Vector3:
 		center += mod.global_position
 	center /= GameManager.player_ship.modules.size()
 	return center
+
 
 func on_game_change_state(new_state: GameState.State) -> void:
 	match new_state:

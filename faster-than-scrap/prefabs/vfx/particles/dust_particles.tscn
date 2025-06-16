@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://55masxr1fg7f"]
 
-[ext_resource type="Script" path="res://code/player/copy_player_position.gd" id="1_6gb75"]
+[ext_resource type="Script" uid="uid://qrq4qbo2dpeo" path="res://code/player/copy_player_position.gd" id="1_6gb75"]
 
 [sub_resource type="Gradient" id="Gradient_klrfn"]
 offsets = PackedFloat32Array(0, 0.452381, 0.833333)
@@ -45,13 +45,13 @@ turbulence_noise_strength = 0.2
 cull_mode = 2
 albedo_color = Color(1, 1, 0, 1)
 emission_enabled = true
-emission = Color(1, 0.130127, 0.452517, 1)
+emission = Color(1, 0.75, 0.841667, 1)
 emission_energy_multiplier = 300.0
 use_particle_trails = true
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_02wp2"]
 material = SubResource("StandardMaterial3D_yd2e7")
-size = 0.52
+size = 0.15
 section_length = 0.5
 
 [node name="Dust Particles" type="Node3D"]
@@ -59,7 +59,7 @@ script = ExtResource("1_6gb75")
 
 [node name="DustTrails" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-amount = 100
+amount = 50
 lifetime = 4.0
 trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_6gb75")

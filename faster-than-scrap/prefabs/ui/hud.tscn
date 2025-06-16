@@ -116,6 +116,7 @@ energy_bar = NodePath("HUD/Energy Bar")
 main_camera_offset = Vector3(0, 25, 0)
 
 [node name="ModuleViewport" type="SubViewport" parent="."]
+transparent_bg = true
 use_hdr_2d = true
 canvas_cull_mask = 4293918722
 
@@ -152,10 +153,10 @@ grow_vertical = 2
 [node name="Energy Bar" type="Control" parent="HUD" node_paths=PackedStringArray("bar_main", "bar_under", "overlay", "numbers", "animator")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 8.0
-offset_top = 640.0
-offset_right = 8.0
-offset_bottom = 640.0
+offset_left = 1087.0
+offset_top = 497.0
+offset_right = 1087.0
+offset_bottom = 497.0
 size_flags_horizontal = 0
 script = ExtResource("2_1s2ai")
 change_speed = 25.0
@@ -249,10 +250,11 @@ offset_bottom = 383.0
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="HUD"]
 layout_mode = 0
-offset_left = 74.0
-offset_top = 510.0
-offset_right = 202.0
-offset_bottom = 638.0
+offset_left = 11.0
+offset_top = 281.0
+offset_right = 139.0
+offset_bottom = 409.0
+scale = Vector2(2.8, 2.8)
 stretch_mode = 1
 alignment_horizontal = 0
 alignment_vertical = 2

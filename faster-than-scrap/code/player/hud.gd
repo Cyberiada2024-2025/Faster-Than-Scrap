@@ -7,7 +7,8 @@ static var instance: Hud
 @export var energy_bar: ResourceBar
 
 @export var main_camera_offset: Vector3 = Vector3(0, 40, 0)
-@export var module_camera_offset: Vector3 = Vector3(0, 10, 0)
+@export var module_camera_offset: Vector3 = Vector3(10, 10, -10)
+@export var module_camera_zoom_strength := 5
 @export var minimap_camera_offset: Vector3 = Vector3(0, 30, 0)
 @export var zoom_strength := 15
 @export var zoom_time := 0.2
@@ -31,6 +32,24 @@ func _ready() -> void:
 	_minimap_camera = $MinimapViewport/MinimapCamera
 
 
+func _module_camera_offset_x() -> float:
+	var arr: Array[float] = []
+	var center = GameManager.player_ship.position
+
+	for module in GameManager.player_ship.modules:
+		arr.append(center.x - module.position.x)
+	return arr.max()
+
+
+func _module_camera_offset_z() -> float:
+	var arr: Array[float] = []
+	var center = GameManager.player_ship.position
+
+	for module in GameManager.player_ship.modules:
+		arr.append(center.z + module.position.z)
+	return arr.max()
+
+
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
@@ -39,6 +58,10 @@ func _process(_delta: float) -> void:
 	_main_camera.global_position = player_ship.global_position + main_camera_offset
 	_module_camera.global_position = player_ship.global_position + module_camera_offset
 	_minimap_camera.global_position = player_ship.global_position + minimap_camera_offset
+
+	_module_camera.position.x = _module_camera_offset_x() * -1
+	_module_camera.position.z = _module_camera_offset_z()
+	_module_camera.position += module_camera_offset
 
 	if Input.is_action_just_pressed("zoom_in"):
 		zoom_camera(-zoom_strength)

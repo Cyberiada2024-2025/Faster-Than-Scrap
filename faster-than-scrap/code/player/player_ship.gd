@@ -40,6 +40,15 @@ func _ready() -> void:
 	energy_max_change.emit(max_energy)
 	_on_energy_change()
 
+func _process(_delta: float) -> void:
+	$CenterOfMass.position = _center_of_mass()
+
+func _center_of_mass() -> Vector3:
+	var center = Vector3.ZERO
+	for mod in GameManager.player_ship.modules:
+		center += mod.global_position
+	center /= GameManager.player_ship.modules.size()
+	return center
 
 func on_game_change_state(new_state: GameState.State) -> void:
 	match new_state:

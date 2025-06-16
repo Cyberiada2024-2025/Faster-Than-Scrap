@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://55masxr1fg7f"]
+[gd_scene load_steps=11 format=3 uid="uid://dymvl18l2xv0l"]
 
-[ext_resource type="Script" uid="uid://qrq4qbo2dpeo" path="res://code/player/copy_player_position.gd" id="1_6gb75"]
-[ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="2_swjlv"]
+[ext_resource type="Script" uid="uid://qrq4qbo2dpeo" path="res://code/player/copy_player_position.gd" id="1_rera4"]
 
 [sub_resource type="Gradient" id="Gradient_klrfn"]
 offsets = PackedFloat32Array(0, 0.452381, 0.833333)
@@ -25,37 +24,43 @@ point_count = 3
 [sub_resource type="CurveTexture" id="CurveTexture_klrfn"]
 curve = SubResource("Curve_5v21r")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_klrfn"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6gb75"]
 emission_shape = 3
-emission_box_extents = Vector3(60, 15, 60)
+emission_box_extents = Vector3(60, 0, 60)
 angle_min = 1.07288e-05
 angle_max = 1.07288e-05
-direction = Vector3(0, 0, 0)
+direction = Vector3(0, 1, 0)
 spread = 0.0
-directional_velocity_min = 1.0
-directional_velocity_max = 1.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+directional_velocity_min = 5.99998
+directional_velocity_max = 5.99998
 directional_velocity_curve = SubResource("CurveXYZTexture_c7ni3")
 gravity = Vector3(0, 0, 0)
-scale_min = 0.2
-scale_max = 0.2
 scale_curve = SubResource("CurveTexture_klrfn")
 color_ramp = SubResource("GradientTexture1D_swjlv")
 turbulence_noise_strength = 0.2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mnnw"]
-transparency = 1
-albedo_color = Color(0.48, 0.48, 0.48, 0.439216)
-albedo_texture = ExtResource("2_swjlv")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yd2e7"]
+cull_mode = 2
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.75, 0.841667, 1)
+emission_energy_multiplier = 300.0
+use_particle_trails = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ogv1v"]
-material = SubResource("StandardMaterial3D_4mnnw")
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_02wp2"]
+material = SubResource("StandardMaterial3D_yd2e7")
+size = 0.15
+section_length = 0.5
 
 [node name="Dust Particles" type="Node3D"]
-script = ExtResource("1_6gb75")
+script = ExtResource("1_rera4")
 
 [node name="DustTrails" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 0)
-amount = 200
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+amount = 50
 lifetime = 4.0
-process_material = SubResource("ParticleProcessMaterial_klrfn")
-draw_pass_1 = SubResource("PlaneMesh_ogv1v")
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_6gb75")
+draw_pass_1 = SubResource("RibbonTrailMesh_02wp2")

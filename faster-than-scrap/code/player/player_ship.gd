@@ -46,7 +46,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	super(_delta)
-	$CenterOfMass.position = _center_of_mass()
+	$CollisionShape3D/CenterOfMass.position = _center_of_mass()
 
 
 func _center_of_mass() -> Vector3:

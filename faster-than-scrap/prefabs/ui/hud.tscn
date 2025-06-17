@@ -114,7 +114,7 @@ cull_mask = 1048569
 script = ExtResource("1_x65cj")
 energy_bar = NodePath("HUD/Energy Bar")
 main_camera_offset = Vector3(0, 25, 0)
-module_camera_offset = Vector3(10, 10, -5)
+module_camera_offset = Vector3(13, 10, -13)
 
 [node name="ModuleViewport" type="SubViewport" parent="."]
 transparent_bg = true

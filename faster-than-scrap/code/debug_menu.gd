@@ -8,6 +8,7 @@ signal toggle_player_collisions
 
 var invincibility: bool = false
 var collisions: bool = true
+var money_checks: bool = true
 
 
 func _ready() -> void:
@@ -37,3 +38,7 @@ func _on_invincibility_pressed() -> void:
 func _on_collisions_pressed() -> void:
 	collisions = not collisions
 	toggle_player_collisions.emit()
+
+
+func _on_money_checks_pressed() -> void:
+	money_checks = not money_checks

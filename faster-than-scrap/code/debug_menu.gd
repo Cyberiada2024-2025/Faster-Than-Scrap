@@ -1,14 +1,17 @@
 extends Control
 
+
+signal toggle_player_collisions
+
+
 const BTN_PARENT = NodePath(
 	"ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer"
 )
 
-signal toggle_player_collisions
-
 var invincibility: bool = false
 var collisions: bool = true
 var money_checks: bool = true
+var debug_movement: bool = false
 
 
 func _ready() -> void:
@@ -16,8 +19,10 @@ func _ready() -> void:
 
 
 func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_released("debug_menu") and OS.is_debug_build():
-		print("Working!")
+	if not OS.is_debug_build():
+		return
+
+	if Input.is_action_just_released("debug_menu"):
 		toggle_menu()
 
 
@@ -42,3 +47,7 @@ func _on_collisions_pressed() -> void:
 
 func _on_money_checks_pressed() -> void:
 	money_checks = not money_checks
+
+
+func _on_debug_movement() -> void:
+	debug_movement = not debug_movement

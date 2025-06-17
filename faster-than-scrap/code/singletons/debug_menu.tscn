@@ -74,6 +74,13 @@ theme_override_font_sizes/font_size = 30
 toggle_mode = true
 text = "Disable money checks"
 
+[node name="Btn 4" type="Button" parent="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+text = "Enable debug movement"
+
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 1" to="." method="_on_invincibility_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 2" to="." method="_on_collisions_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 3" to="." method="_on_money_checks_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 4" to="." method="_on_debug_movement"]

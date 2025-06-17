@@ -12,6 +12,7 @@ signal energy_warning(energy: float)
 signal fuel_change(new_value: int)
 
 @export var cockpit: Cockpit
+@export var debug_movement_force: float = 30
 
 ## All modules of the ship (to prevent checking the tree hierarchy).
 ## Mostly used for building phase
@@ -43,9 +44,28 @@ func _ready() -> void:
 
 		if not DebugMenu.collisions:
 			_toggle_collisions()
-	
+
 	energy_max_change.emit(max_energy)
 	_on_energy_change()
+
+
+func _process(delta: float) -> void:
+	super(delta)
+
+	if not (OS.is_debug_build() and DebugMenu.debug_movement):
+		return
+
+	var input_direction = Input.get_vector(
+		"debug_move_left", "debug_move_right", "debug_move_up", "debug_move_down"
+	)
+
+	var force_direction = Vector3(
+		input_direction.x,
+		0,
+		input_direction.y,
+	)
+
+	apply_force(force_direction * debug_movement_force)
 
 
 func on_game_change_state(new_state: GameState.State) -> void:

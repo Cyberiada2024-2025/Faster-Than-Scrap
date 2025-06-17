@@ -4,7 +4,10 @@ const BTN_PARENT = NodePath(
 	"ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer"
 )
 
+signal toggle_player_collisions
+
 var invincibility: bool = false
+var collisions: bool = true
 
 
 func _ready() -> void:
@@ -26,5 +29,11 @@ func toggle_menu() -> void:
 		GameManager._unpause_entities()
 		visible = false
 
+
 func _on_invincibility_pressed() -> void:
 	invincibility = not invincibility
+
+
+func _on_collisions_pressed() -> void:
+	collisions = not collisions
+	toggle_player_collisions.emit()

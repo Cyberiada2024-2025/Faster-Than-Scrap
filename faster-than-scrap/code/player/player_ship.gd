@@ -37,6 +37,13 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	super()
 	GameManager.new_game_state.connect(on_game_change_state)
+
+	if OS.is_debug_build():
+		DebugMenu.toggle_player_collisions.connect(_toggle_collisions)
+
+		if not DebugMenu.collisions:
+			_toggle_collisions()
+	
 	energy_max_change.emit(max_energy)
 	_on_energy_change()
 
@@ -90,3 +97,9 @@ func use_energy(amount: float) -> bool:
 func on_destroy() -> void:
 	super()
 	GameManager.show_death_screen()
+
+
+func _toggle_collisions() -> void:
+	for child in get_children():
+		if child is CollisionShape3D:
+			child.disabled = not child.disabled

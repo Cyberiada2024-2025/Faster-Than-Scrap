@@ -5,7 +5,7 @@ extends Mission
 @export var fuel_position: Node3D
 # TODO: Substitute to fuel spawn
 var fuel_source: Asteroid
-var fuel_source_prefab = preload("res://prefabs/environment/fuel_source.tscn")
+var fuel_source_prefab = preload("res://prefabs/environment/mission_related/fuel_source.tscn")
 
 var fuel_mission_tutorial_cutscene = preload(
 	"res://prefabs/ui/cutscenes/tutorials/missions/fuel_mission_tutorial.tscn"

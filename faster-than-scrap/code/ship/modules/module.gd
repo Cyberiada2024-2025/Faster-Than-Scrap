@@ -115,6 +115,9 @@ func _on_release(_delta: float) -> void:
 
 
 func take_damage(damage: Damage) -> void:
+	if OS.is_debug_build() and DebugMenu.invincibility:
+		return
+	
 	hp -= damage.value
 	update_sprite()
 	if hp <= 0:

@@ -4,6 +4,8 @@ const BTN_PARENT = NodePath(
 	"ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer"
 )
 
+var invincibility: bool = false
+
 
 func _ready() -> void:
 	visible = false
@@ -23,3 +25,6 @@ func toggle_menu() -> void:
 	else:
 		GameManager._unpause_entities()
 		visible = false
+
+func _on_invincibility_pressed() -> void:
+	invincibility = not invincibility

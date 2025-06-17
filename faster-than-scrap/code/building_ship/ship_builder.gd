@@ -7,6 +7,7 @@ extends Node3D
 ## and snapping it to the ship if close enough.
 signal on_module_select(module: Module)
 signal on_module_attach(module: Module)
+signal on_module_detach(module: Module)
 signal on_module_hover(module: Module)
 
 enum State { NONE, DRAGGING, SETTING_BUTTON }
@@ -91,12 +92,9 @@ func _update_lmb_state(event: InputEvent) -> void:
 		lmb_is_pressed = event.is_pressed()
 
 
-func _update_attach_point_index(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			attach_point_index += 1
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			attach_point_index -= 1
+func _update_attach_point_index() -> void:
+	if Input.is_key_pressed(KEY_R):
+		attach_point_index += 1
 
 
 # ----------------raycasts hits ------------------------------------
@@ -278,6 +276,7 @@ func _dettach_module() -> void:
 
 	active_module.set_ship_reference(null)
 	if active_module.parent_module != null:
+		on_module_detach.emit(active_module)
 		active_module.parent_module.child_modules.erase(active_module)
 		active_module.parent_module = null
 
@@ -299,7 +298,7 @@ func _can_module_have_assigned_key(active_module: Module) -> bool:
 func _input(event: InputEvent):
 	_update_lmb_state(event)
 	_update_mouse_3d_position()
-	_update_attach_point_index(event)
+	_update_attach_point_index()
 
 	## TODO add some display in UI in which state the player is
 
@@ -487,6 +486,7 @@ func _on_finish_pressed() -> void:
 
 
 func _on_confirm_pressed() -> void:
+	confirm_finish_message.visible = false
 	scene_loader.load_fly_ship_scene()
 
 

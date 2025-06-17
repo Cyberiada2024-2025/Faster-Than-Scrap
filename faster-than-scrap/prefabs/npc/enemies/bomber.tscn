@@ -546,6 +546,10 @@ shape = SubResource("SphereShape3D_sjc04")
 
 [node name="DamageController" parent="." instance=ExtResource("14_i02ej")]
 
+[node name="Damageable" parent="DamageController" index="0"]
+collision_layer = 4
+collision_mask = 0
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00402832, 0, -0.343613)
 shape = SubResource("BoxShape3D_sjc04")

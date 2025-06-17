@@ -5,7 +5,8 @@ extends Control
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("pause_menu"):
-		change_menu()
+		if not GameManager.game_over:
+			change_menu()
 
 
 func _on_resume_pressed() -> void:

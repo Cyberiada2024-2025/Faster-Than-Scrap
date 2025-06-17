@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dom21c42bbjwl"]
+[gd_scene load_steps=37 format=3 uid="uid://dom21c42bbjwl"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_mjhpt"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="2_esu31"]
@@ -53,23 +53,25 @@ bg_color = Color(0.113725, 1, 0.113725, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jnae"]
 bg_color = Color(0, 0.0509804, 0.027451, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_jtm63"]
+[sub_resource type="BoxMesh" id="BoxMesh_ajkwf"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8di0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s0r3m"]
 transparency = 1
 albedo_color = Color(0, 0, 0, 0.313726)
 emission_enabled = true
 emission = Color(0.19841, 0.491958, 0.131993, 1)
 emission_energy_multiplier = 1.39
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwh47"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_refrl"]
 albedo_color = Color(0, 0, 0, 1)
 emission_enabled = true
 emission = Color(0.111572, 0.616094, 1.92523e-07, 1)
 emission_energy_multiplier = 2.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_cv5l0"]
-size = Vector3(8.32263, 1, 12.5726)
+[sub_resource type="BoxShape3D" id="BoxShape3D_6hn5a"]
+size = Vector3(17.5186, 1, 18.3633)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jtm63"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqadh"]
 transparency = 1
@@ -87,7 +89,7 @@ emission_energy_multiplier = 2.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_xqadh"]
 size = Vector3(0.41153, 1, 20.8868)
 
-[sub_resource type="LabelSettings" id="LabelSettings_xqadh"]
+[sub_resource type="LabelSettings" id="LabelSettings_ajkwf"]
 font_color = Color(0.105882, 1, 0.105882, 1)
 
 [node name="BuildShip" type="Node3D"]
@@ -96,7 +98,7 @@ font_color = Color(0.105882, 1, 0.105882, 1)
 
 [node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "confirm_finish_message")]
 script = ExtResource("2_esu31")
-ignore = [NodePath("../Shop/Area3D"), NodePath("../Ship Max Size/Area3D")]
+ignore = [NodePath("../Ship Max Size/Area3D")]
 ship_borders = NodePath("../Ship Max Size/Area3D")
 outline_mat = ExtResource("3_b0l23")
 flash_mat = ExtResource("4_0f5k8")
@@ -310,35 +312,35 @@ horizontal_alignment = 1
 script = ExtResource("7_rimmj")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
-[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2428, 0, 0)
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_prize_display", "selected_module_display", "selected_module_description")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.897, 0, -3.63634)
 script = ExtResource("8_hc2q3")
-modules = Array[String](["uid://cujiw86wtjlp8", "uid://cujiw86wtjlp8", "uid://cujiw86wtjlp8", "uid://gngfqbur01ep", "uid://gngfqbur01ep", "uid://dbajfkkhivhl0", "uid://dbajfkkhivhl0", "uid://cqkj1jovh07cf", "uid://cqkj1jovh07cf", "uid://taxlqo87sp7s", "uid://15te4x6fjtx4", "uid://b8v177mewyt5j"])
-starting_bank = 3
-size_x = 8.323
-size_z = 12.573
-columns = 4
+starting_bank = 6
+size_x = 10.0
+size_z = 10.0
+columns = 3
 rows = 5
-bank_display = NodePath("Label3D")
+bank_display = NodePath("Inventory4")
 deny_finish = NodePath("../ShipBuilder/Control/Deny finish")
 confirm_finish = NodePath("../ShipBuilder/Control/Confirm finish")
 deny_finish_label = NodePath("../ShipBuilder/Control/Deny finish/Color_Rect/Label")
+selected_module_prize_display = NodePath("")
 selected_module_display = NodePath("../ShipBuilder/Control/Prize_display/RichTextLabel")
 selected_module_description = NodePath("../ShipBuilder/Control/Description_display/RichTextLabel")
 metadata/_custom_type_script = "uid://dsebh10ryevl"
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="Shop"]
-transform = Transform3D(8.28, 0, 0, 0, 0.083, 0, 0, 0, 12.42, 0, 0, 0)
-mesh = SubResource("BoxMesh_jtm63")
-material = SubResource("StandardMaterial3D_d8di0")
+[node name="Inventory2" type="CSGMesh3D" parent="Shop"]
+transform = Transform3D(10, 0, 0, 0, 0.177, 0, 0, 0, 10, -0.0750866, 0.009, -1.22566)
+mesh = SubResource("BoxMesh_ajkwf")
+material = SubResource("StandardMaterial3D_s0r3m")
 
-[node name="CSGMesh3D2" type="CSGMesh3D" parent="Shop/CSGMesh3D"]
-transform = Transform3D(1.01, 0, 0, 0, 0.5, 0, 0, 0, 1.01, 0, 0, 0)
-mesh = SubResource("BoxMesh_jtm63")
-material = SubResource("StandardMaterial3D_bwh47")
+[node name="Inventory" type="CSGMesh3D" parent="Shop/Inventory2"]
+transform = Transform3D(1.02, 0, 0, 0, 1, 0, 0, 0, 1.01, 0, 0, 0)
+mesh = SubResource("BoxMesh_ajkwf")
+material = SubResource("StandardMaterial3D_refrl")
 
-[node name="Label3D" type="Label3D" parent="Shop"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.88895, 5.0121e-08, -6.75637)
+[node name="Inventory4" type="Label3D" parent="Shop"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.77373, -1.36849e-07, -7.08624)
 modulate = Color(0.1, 3, 0, 1)
 text = "0$"
 font = ExtResource("6_hk4jn")
@@ -346,12 +348,13 @@ font_size = 128
 outline_size = 0
 horizontal_alignment = 2
 
-[node name="Area3D" type="Area3D" parent="Shop"]
+[node name="BuildArea" type="Area3D" parent="Shop"]
+transform = Transform3D(1.06696, 0, 0, 0, 3.28825, 0, 0, 0, 1, -15.9539, -0.197084, 1.85123)
 input_ray_pickable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0455933, 0, 0.0821714)
-shape = SubResource("BoxShape3D_cv5l0")
+[node name="Inventory" type="CollisionShape3D" parent="Shop/BuildArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0081991, -0.351958, 1.54273)
+shape = SubResource("BoxShape3D_6hn5a")
 
 [node name="Ship Max Size" type="Node3D" parent="."]
 
@@ -400,23 +403,23 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Prize_display" type="ColorRect" parent="Control"]
-layout_mode = 0
+[node name="Prize_display2" type="ColorRect" parent="Control"]
 offset_left = 5.0
 offset_top = 241.0
 offset_right = 255.0
-offset_bottom = 342.69
+offset_bottom = 375.0
 color = Color(0, 0.051, 0.027, 1)
 
-[node name="Label" type="Label" parent="Control/Prize_display"]
+[node name="Label" type="Label" parent="Control/Prize_display2"]
 layout_mode = 0
 offset_right = 250.0
 offset_bottom = 50.0
 text = "Controls:
 LMB: attach/dettach module
 RMB: set activation key
-Scroll: zoom camera"
-label_settings = SubResource("LabelSettings_xqadh")
+Scroll: zoom camera
+R: rotate module"
+label_settings = SubResource("LabelSettings_ajkwf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -428,12 +431,8 @@ cutscene_path = ExtResource("12_yvpli")
 play_on_ready = true
 
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]
+[connection signal="on_module_detach" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_detach"]
 [connection signal="on_module_hover" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_select"]
-[connection signal="pressed" from="ShipBuilder/Control/Deny finish/Color_Rect/Confirm" to="Shop" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Confirm" to="ShipBuilder" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Deny" to="ShipBuilder" method="_on_deny_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Finish" to="Shop" method="_on_finish_pressed"]
-[connection signal="area_entered" from="Shop/Area3D" to="Shop" method="_on_area_3d_area_entered"]
-[connection signal="area_exited" from="Shop/Area3D" to="Shop" method="_on_area_3d_area_exited"]
-[connection signal="body_entered" from="Shop/Area3D" to="Shop" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Shop/Area3D" to="Shop" method="_on_area_3d_body_exited"]

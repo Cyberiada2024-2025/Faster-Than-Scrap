@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://15te4x6fjtx4"]
+[gd_scene load_steps=26 format=3 uid="uid://15te4x6fjtx4"]
 
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_wqaao"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_wf0w0"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bbplkfi81cc5b" path="res://art/textures/common_gun/common_gun_Normal.png" id="8_1nmv8"]
 [ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="8_kgddl"]
 [ext_resource type="Texture2D" uid="uid://b08thixotsobt" path="res://art/textures/common_gun/common_gun_Roughness.png" id="9_7ufp7"]
+[ext_resource type="PackedScene" uid="uid://bij3qdd0iavi3" path="res://prefabs/modules/functional_components/direction_arrow.tscn" id="15_ojn6j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yf3ku"]
 size = Vector3(1.325, 1, 1.105)
@@ -78,13 +79,14 @@ shape = SubResource("BoxShape3D_yf3ku")
 script = ExtResource("1_wqaao")
 weapon = NodePath("SpawnerWeapon")
 allow_auto_fire = true
-attach_points = [NodePath("AttachPoints/AttachPoint")]
+attach_points = [NodePath("AttachPoints/AttachPoint"), NodePath("AttachPoints/AttachPoint2"), NodePath("AttachPoints/AttachPoint3")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Missile"
-description = "Advanced weapon. Activate to release a slow-moving homing missile."
+prize = 3
+description = "Advanced waepon. Activate to release a slow-moving homing missile."
 
 [node name="SpawnerWeapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.610518)
@@ -120,7 +122,13 @@ material_override = SubResource("StandardMaterial3D_r6e22")
 [node name="AttachPoints" type="Node3D" parent="."]
 
 [node name="AttachPoint" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4399e-08, 0, 0.587799)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4399e-08, 0, 0.652688)
+
+[node name="AttachPoint2" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.75, 0, 0)
+
+[node name="AttachPoint3" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.75, 0, 0)
 
 [node name="DamageController" parent="." instance=ExtResource("4_tjuoy")]
 
@@ -137,6 +145,8 @@ shape = NodePath("../DamageController/Damageable/CollisionShape3D")
 stream = ExtResource("7_sylsa")
 script = ExtResource("8_kgddl")
 metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
+
+[node name="DirectionArrow" parent="." instance=ExtResource("15_ojn6j")]
 
 [connection signal="activated" from="." to="SoundEmitter" method="start_playing"]
 [connection signal="damaged" from="DamageController" to="." method="take_damage"]

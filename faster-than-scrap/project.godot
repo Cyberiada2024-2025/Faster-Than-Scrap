@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+DebugMenu="*res://code/singletons/debug_menu.tscn"
 GameManager="*res://prefabs/singletons/game_manager.tscn"
 MissionManager="*res://prefabs/singletons/mission_manager.tscn"
 BossManager="*res://code/singletons/boss_manager.gd"

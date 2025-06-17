@@ -1,12 +1,17 @@
-[gd_scene format=3 uid="uid://bkfxe1nlfsvs1"]
+[gd_scene load_steps=2 format=3 uid="uid://dscrc7veyfr8e"]
+
+[ext_resource type="Script" uid="uid://c32o3v1exc14b" path="res://code/debug_menu.gd" id="1_r546s"]
 
 [node name="DebugMenu" type="Control"]
+process_mode = 3
+z_index = 999
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_r546s")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -15,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.768627, 0, 0, 0.498039)
+color = Color(0.501961, 0, 0, 0.843137)
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
 layout_mode = 1

@@ -27,6 +27,11 @@ func on_scene_exit() -> void:
 		InventoryManager.save_inventory()
 
 
+func reset() -> void:
+	game_over = false
+	ships = []
+
+
 func set_game_state(new_state: GameState.State) -> void:
 	game_state = new_state
 	new_game_state.emit(new_state)

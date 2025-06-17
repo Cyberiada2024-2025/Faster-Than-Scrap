@@ -24,9 +24,9 @@ team = 0
 leave_animation = NodePath("Cockpit/AnimationPlayer")
 
 [node name="CenterOfMass" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.652941, 0)
 layers = 2
-modulate = Color(0.939147, 0.432882, 3.85046e-07, 0.74902)
+modulate = Color(0.937255, 0.431373, 0, 0.576471)
 texture = ExtResource("2_d3mqs")
 
 [node name="Cockpit" parent="." node_paths=PackedStringArray("ship", "child_modules") instance=ExtResource("2_qrnnh")]

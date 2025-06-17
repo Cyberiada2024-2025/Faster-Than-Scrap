@@ -20,6 +20,7 @@ func _reset_game() -> void:
 	MapGenerator.reset()
 	MapSaver.reset()
 	CutsceneManager.reset_cutscenes()
+	GameManager.reset()
 
 
 #region tutorials

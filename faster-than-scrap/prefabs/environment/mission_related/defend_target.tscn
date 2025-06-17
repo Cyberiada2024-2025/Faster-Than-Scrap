@@ -1,35 +1,31 @@
 [gd_scene load_steps=7 format=3 uid="uid://dtlau4bqcpa4b"]
 
-[ext_resource type="Script" path="res://code/evironment/enemy_spawner.gd" id="1_o3iip"]
-[ext_resource type="PackedScene" uid="uid://c7gr12rhsysjx" path="res://prefabs/ui/poi/mission_poi.tscn" id="1_srhob"]
-[ext_resource type="Material" uid="uid://cyne44ays80ug" path="res://art/materials/environment/control_point_progress.tres" id="3_rnyr5"]
+[ext_resource type="Script" path="res://code/evironment/enemy_spawner.gd" id="1_2es73"]
+[ext_resource type="Material" uid="uid://cyne44ays80ug" path="res://art/materials/environment/control_point_progress.tres" id="2_sxth5"]
+[ext_resource type="PackedScene" uid="uid://c7gr12rhsysjx" path="res://prefabs/ui/poi/mission_poi.tscn" id="3_yfu8v"]
+[ext_resource type="PackedScene" uid="uid://djgyx6valcw83" path="res://prefabs/environment/mission_related/rotating_satelite.tscn" id="4_2ikam"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_gw8ig"]
 inner_radius = 4.7
 outer_radius = 5.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o3iip"]
-radius = 10.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_2gnvc"]
+radius = 11.0
 
 [node name="CapturePoint" type="Area3D" node_paths=PackedStringArray("_progress_mesh")]
-transform = Transform3D(1.6, 0, 0, 0, 1, 0, 0, 0, 1.6, 0, 0, 0)
-script = ExtResource("1_o3iip")
+script = ExtResource("1_2es73")
 _progress_mesh = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-material_override = ExtResource("3_rnyr5")
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)
+material_override = ExtResource("2_sxth5")
 instance_shader_parameters/percentage = 0.085
 mesh = SubResource("TorusMesh_gw8ig")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_o3iip")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(5.5, 0, 0, 0, 1, 0, 0, 0, 5.2, 0, 0, 0)
-mesh = SubResource("BoxMesh_2gnvc")
-skeleton = NodePath("")
+[node name="MissionPoi" parent="." instance=ExtResource("3_yfu8v")]
 
-[node name="MissionPoi" parent="." instance=ExtResource("1_srhob")]
+[node name="RotatingSatelite" parent="." instance=ExtResource("4_2ikam")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, -12.8, 0)

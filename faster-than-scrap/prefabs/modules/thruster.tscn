@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://taxlqo87sp7s"]
+[gd_scene load_steps=15 format=3 uid="uid://taxlqo87sp7s"]
 
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_18ma3"]
 [ext_resource type="Script" uid="uid://crmxerc164n6q" path="res://code/weapons/constant_fire_weapon.gd" id="2_5rd74"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://cl30vhv1agqcr" path="res://sandbox/pisarski/beam_loop_tmp.wav" id="9_sy3m8"]
 [ext_resource type="AudioStream" uid="uid://bq3myi1evd56a" path="res://art/audio/sounds/shield_takingdmg_sound.wav" id="10_p8s52"]
 [ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="11_de7ep"]
+[ext_resource type="PackedScene" uid="uid://bij3qdd0iavi3" path="res://prefabs/modules/functional_components/direction_arrow.tscn" id="12_sy3m8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lwypn"]
 size = Vector3(1.05, 0.935, 1.835)
@@ -89,6 +90,8 @@ script = ExtResource("11_de7ep")
 stop_behaviour = 1
 transition_clip_name = &"end"
 metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
+
+[node name="DirectionArrow" parent="." instance=ExtResource("12_sy3m8")]
 
 [connection signal="activated" from="." to="SoundEmitter" method="start_playing"]
 [connection signal="deactivated" from="." to="SoundEmitter" method="stop_playing"]

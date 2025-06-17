@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bij3qdd0iavi3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sy3m8"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xhd0w"]
+material = SubResource("StandardMaterial3D_sy3m8")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhd0w"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_sy3m8"]
+material = SubResource("StandardMaterial3D_xhd0w")
+top_radius = 0.4
+bottom_radius = 0.0
+height = 1.0
+
+[node name="DirectionArrow" type="Node3D"]
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.56985)
+mesh = SubResource("CylinderMesh_xhd0w")
+skeleton = NodePath("../..")
+
+[node name="Body2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -3.17467)
+mesh = SubResource("CylinderMesh_sy3m8")
+skeleton = NodePath("../..")

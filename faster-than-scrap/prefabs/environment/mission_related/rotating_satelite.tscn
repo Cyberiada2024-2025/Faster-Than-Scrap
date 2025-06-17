@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://djgyx6valcw83"]
+
+[ext_resource type="Script" uid="uid://87y6doe7r33a" path="res://code/utilities/rotate.gd" id="1_tlm6p"]
+[ext_resource type="PackedScene" uid="uid://cqal0i08be8o" path="res://art/model_prefabs/satellite/satellite.tscn" id="2_4vyd5"]
+
+[node name="RotatingSatelite" type="Node3D"]
+
+[node name="Offset_X" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 0, 0)
+
+[node name="Offset" type="Node3D" parent="Offset_X"]
+script = ExtResource("1_tlm6p")
+speed = 1.0
+
+[node name="Satellite" parent="Offset_X/Offset" instance=ExtResource("2_4vyd5")]
+transform = Transform3D(4.37114e-08, 0, -1, -8.74228e-08, -1, 0, -1, 8.74228e-08, -4.37114e-08, 0, 0, 0)

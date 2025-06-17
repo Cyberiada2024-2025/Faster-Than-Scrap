@@ -108,11 +108,6 @@ func _get_module_from_hit(hit: Dictionary) -> Module:
 		# hit[shape] returns index of target's child, so make sure modules are first in tree
 		# its more like hovered over shape
 		var clicked_shape = rigid_body.get_child(hit["shape"])
-		print(clicked_shape.name)
-
-		if rigid_body is PlayerShip:
-			clicked_shape = rigid_body.get_child(hit["shape"] + 1)
-			print(clicked_shape.name)
 		if clicked_shape is Module:
 			return clicked_shape
 		return null

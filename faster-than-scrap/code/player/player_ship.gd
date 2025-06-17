@@ -46,14 +46,17 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	super(_delta)
-	$CollisionShape3D/CenterOfMass.position = _center_of_mass()
+	$CenterOfMass.position = _center_of_mass()
+	# move it down so it won't fiddle with modules (in shop)
+	var children_count = get_children().size()
+	move_child($CenterOfMass, children_count - 1)
 
 
 func _center_of_mass() -> Vector3:
 	var center = Vector3.ZERO
 	for mod in GameManager.player_ship.modules:
 		center += mod.position
-		center /= GameManager.player_ship.modules.size()
+	center /= GameManager.player_ship.modules.size()
 	return center
 
 

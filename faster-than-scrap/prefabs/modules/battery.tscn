@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bqpvtwe8hkr0w" path="res://art/textures/frame/frame_Roughness.png" id="6_5g11m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jnq3k"]
-size = Vector3(0.805, 1, 1.075)
+size = Vector3(0.665, 1, 1.075)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttear"]
 albedo_color = Color(0, 1, 0, 1)
@@ -34,7 +34,7 @@ ao_texture = ExtResource("3_0nt81")
 shape = SubResource("BoxShape3D_jnq3k")
 script = ExtResource("1_aagdk")
 is_activable = false
-attach_points = [NodePath("AttachPoints/AttachPoint1")]
+attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2"), NodePath("AttachPoints/AttachPoint3"), NodePath("AttachPoints/AttachPoint4")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
@@ -58,6 +58,18 @@ mesh = ExtResource("3_6dylh")
 
 [node name="AttachPoint1" type="Node3D" parent="AttachPoints"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.85682e-09, 0, 0.566994)
+metadata/_edit_group_ = true
+
+[node name="AttachPoint2" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.356428, 0, 0)
+metadata/_edit_group_ = true
+
+[node name="AttachPoint3" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.567)
+metadata/_edit_group_ = true
+
+[node name="AttachPoint4" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.356, 0, 0)
 metadata/_edit_group_ = true
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("3_vdvrw")]

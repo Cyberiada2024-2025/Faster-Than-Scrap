@@ -20,7 +20,7 @@ shape = SubResource("BoxShape3D_yf3ku")
 script = ExtResource("1_akoi3")
 weapon = NodePath("SpawnerWeapon")
 allow_auto_fire = true
-attach_points = [NodePath("AttachPoints/AttachPoint")]
+attach_points = [NodePath("AttachPoints/AttachPoint"), NodePath("AttachPoints/AttachPoint2"), NodePath("AttachPoints/AttachPoint3")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
@@ -48,6 +48,12 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0
 
 [node name="AttachPoint" type="Node3D" parent="AttachPoints"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4399e-08, 0, 0.630638)
+
+[node name="AttachPoint2" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.75, 0, 0)
+
+[node name="AttachPoint3" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.75, 0, 0)
 
 [node name="DamageController" parent="." instance=ExtResource("4_nlg4d")]
 

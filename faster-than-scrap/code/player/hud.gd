@@ -8,7 +8,6 @@ static var instance: Hud
 
 @export var main_camera_offset: Vector3 = Vector3(0, 40, 0)
 @export var module_camera_offset: Vector3
-@export var module_camera_zoom_strength := 5
 @export var minimap_camera_offset: Vector3 = Vector3(0, 30, 0)
 @export var zoom_strength := 15
 @export var zoom_time := 0.2

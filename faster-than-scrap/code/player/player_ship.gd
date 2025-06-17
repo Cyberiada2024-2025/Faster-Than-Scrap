@@ -38,18 +38,6 @@ func _ready() -> void:
 	_on_energy_change()
 
 
-## Heals every module by [code]health_fraction * max_hp[/code].
-func heal_modules_by_fraction(health_fraction: float) -> void:
-	for module in Module.find_all_modules(self):
-		module.heal(module.max_hp * health_fraction)
-
-
-## Heals every module by heal_value.
-func heal_modules(heal_value: float) -> void:
-	for module in Module.find_all_modules(self):
-		module.heal(heal_value)
-
-
 func on_game_change_state(new_state: GameState.State) -> void:
 	match new_state:
 		GameState.State.FLY:

@@ -109,7 +109,7 @@ bg_color = Color(0, 0.0509804, 0.027451, 1)
 
 [node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "confirm_finish_message")]
 script = ExtResource("2_esu31")
-ignore = [NodePath("../Ship Max Size/Area3D")]
+ignore = [NodePath("../Shop/BuildArea"), NodePath("../Ship Max Size/Area3D")]
 ship_borders = NodePath("../Ship Max Size/Area3D")
 outline_mat = ExtResource("3_b0l23")
 flash_mat = ExtResource("4_0f5k8")

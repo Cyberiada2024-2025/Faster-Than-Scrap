@@ -57,7 +57,7 @@ _damage_multiplier = 0.75
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("6_hdnec")]
 damageable = NodePath("../DamageController/Damageable")
 shape = NodePath("..")
-flat_damage_reduction = 75.0
+flat_damage_reduction = 100.0
 
 [connection signal="damaged" from="DamageController" to="." method="take_damage"]
 

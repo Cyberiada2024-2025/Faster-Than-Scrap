@@ -111,6 +111,7 @@ use_fuel={
 3d_physics/layer_1="Physics Collisions"
 3d_physics/layer_2="All Damage"
 3d_physics/layer_3="Damage For Enemies"
+3d_physics/layer_4="Illegal attachments"
 
 [rendering]
 

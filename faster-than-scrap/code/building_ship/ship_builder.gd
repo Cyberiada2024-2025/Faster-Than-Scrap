@@ -318,7 +318,7 @@ func _input(event: InputEvent):
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
 					active_module = _get_module_from_hit(hit)
-					if _can_module_have_assigned_key(active_module):
+					if active_module != null and _can_module_have_assigned_key(active_module):
 						state = State.SETTING_BUTTON
 						choose_key_message.visible = true
 						print("new state = setting button")

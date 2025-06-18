@@ -35,15 +35,15 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 metadata/_edit_group_ = true
 
 [node name="AttachPoint2" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.93, 0, 0.241)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.29372, 0, 0.79)
 metadata/_edit_group_ = true
 
 [node name="AttachPoint3" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.93, 0, 0.241)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.93, 0, 0.241)
 metadata/_edit_group_ = true
 
 [node name="AttachPoint4" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.29372, 0, 0.79)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.93, 0, 0.241)
 metadata/_edit_group_ = true
 
 [node name="AttachPoint5" type="Node3D" parent="AttachPoints"]

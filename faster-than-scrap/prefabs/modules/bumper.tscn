@@ -23,8 +23,7 @@ healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Bumper"
 prize = 2
-description = "It's a bumper.
-It [wave amp=50.0 freq=5.0 connected=1]bumps[/wave]."
+description = "Originally designed for interplanetary mining operations, this module is very resistant to collisions and can be used to inflict additional ramming damage"
 
 [node name="BumperModel" parent="." instance=ExtResource("2_sgdr1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.193316)

@@ -172,6 +172,8 @@ func _exit_shop() -> void:
 	$"../ShipBuilder/SceneLoader".load_fly_ship_scene()
 	GameManager.player_ship.money = bank
 
+	repair_button.visible = true  # prevent invisible button when entering the shop
+
 
 func _on_confirm_pressed() -> void:
 	deny_finish.visible = false

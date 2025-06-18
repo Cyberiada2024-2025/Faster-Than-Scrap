@@ -29,6 +29,6 @@ shape = SubResource("SphereShape3D_o3iip")
 [node name="MissionPoi" parent="." instance=ExtResource("3_odygn")]
 
 [node name="RotatingSatelite" parent="." instance=ExtResource("4_r7rxh")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -4.29895, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -7.29895, 0)
 
 [connection signal="on_capture" from="." to="RotatingSatelite" method="play"]

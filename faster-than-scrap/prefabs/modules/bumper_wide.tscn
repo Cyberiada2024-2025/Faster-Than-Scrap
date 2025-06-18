@@ -16,7 +16,7 @@ script = ExtResource("1_cow5v")
 is_activable = false
 max_hp = 200.0
 hp = 200.0
-attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2"), NodePath("AttachPoints/AttachPoint3")]
+attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2"), NodePath("AttachPoints/AttachPoint3"), NodePath("AttachPoints/AttachPoint4"), NodePath("AttachPoints/AttachPoint5")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
@@ -41,6 +41,14 @@ metadata/_edit_group_ = true
 
 [node name="AttachPoint3" type="Node3D" parent="AttachPoints"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.93, 0, 0.241)
+metadata/_edit_group_ = true
+
+[node name="AttachPoint4" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.29372, 0, 0.79)
+metadata/_edit_group_ = true
+
+[node name="AttachPoint5" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.294, 0, 0.79)
 metadata/_edit_group_ = true
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("3_vf8as")]

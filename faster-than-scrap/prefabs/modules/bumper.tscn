@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://ci4ok687xu6h7"]
+
+[ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="1_md83u"]
+[ext_resource type="PackedScene" uid="uid://c6hixpni6xar4" path="res://art/model_prefabs/ship/modules/bumper_model_pf.tscn" id="2_sgdr1"]
+[ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="3_w4brf"]
+[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_6tf8h"]
+[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="5_t36uj"]
+[ext_resource type="PackedScene" uid="uid://bewasbmybcuql" path="res://art/models/modules/bumper/bumper_collision_shape_3d.tscn" id="5_w4brf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jnq3k"]
+size = Vector3(1.01563, 1, 1.36426)
+
+[node name="Bumper" type="CollisionShape3D" node_paths=PackedStringArray("attach_points", "sprite", "label")]
+shape = SubResource("BoxShape3D_jnq3k")
+script = ExtResource("1_md83u")
+is_activable = false
+max_hp = 150.0
+hp = 150.0
+attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2"), NodePath("AttachPoints/AttachPoint3")]
+sprite = NodePath("ModuleDisplay/Sprite3D")
+label = NodePath("ModuleDisplay/Label3D")
+healthy_color = Color(0, 1, 0, 1)
+dead_color = Color(1, 0, 0, 1)
+module_name = "Bumper"
+prize = 2
+description = "It's a bumper.
+It [wave amp=50.0 freq=5.0 connected=1]bumps[/wave]."
+
+[node name="BumperModel" parent="." instance=ExtResource("2_sgdr1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.193316)
+
+[node name="AttachPoints" type="Node3D" parent="."]
+
+[node name="AttachPoint1" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.44121e-08, 0, 0.742767)
+metadata/_edit_group_ = true
+
+[node name="AttachPoint2" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.626, 0, 0.193316)
+metadata/_edit_group_ = true
+
+[node name="AttachPoint3" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.626195, 0, 0.193316)
+metadata/_edit_group_ = true
+
+[node name="ModuleDisplay" parent="." instance=ExtResource("3_w4brf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.193316)
+
+[node name="DamageController" parent="." instance=ExtResource("4_6tf8h")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.193316)
+
+[node name="Damageable" parent="DamageController" index="0"]
+_damage_multiplier = 0.75
+
+[node name="BumperCollisionShape3D" parent="DamageController/Damageable" index="0" instance=ExtResource("5_w4brf")]
+
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("5_t36uj")]
+damageable = NodePath("../DamageController/Damageable")
+shape = NodePath("..")
+flat_damage_reduction = 75.0
+
+[connection signal="damaged" from="DamageController" to="." method="take_damage"]
+
+[editable path="ModuleDisplay"]
+[editable path="DamageController"]

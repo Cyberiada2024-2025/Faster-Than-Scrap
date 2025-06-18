@@ -34,6 +34,12 @@ extends Node3D
 @export var selected_module_display: RichTextLabel
 @export var selected_module_description: RichTextLabel
 
+@export var repair_button: Button
+@export var repair_cost: int = 2
+@export var repair_particles: PackedScene = preload(
+	"res://prefabs/vfx/particles/base_projectile_hit_particles.tscn"
+)
+
 ## actual cash balance
 var bank: int = 0
 var first_frame: bool = true
@@ -47,13 +53,57 @@ func _ready() -> void:
 	# clear current shop when new map
 	MissionManager.map_finished.connect(_clear_shop)
 	MissionManager.map_finished.connect(ShopContents.generate_contents)
+
 	_generate_shop()
+
+	_update_repair_button_visibility()
 
 
 func _clear_shop() -> void:
 	MapGenerator._saved_scene = null  # so scene loader will create new shop
 	queue_free()
 	#should left items be moved to inventory?
+
+
+func _repair_modules() -> void:
+	var modules = _get_all_shop_and_ship_modules()
+
+	for module in modules:
+		if module.hp < module.max_hp and repair_particles != null:
+			var particles: Node3D = repair_particles.instantiate()
+			particles.global_position = module.global_position
+			get_tree().current_scene.add_child(particles)
+		_heal_module_by_fraction(module, 0.25)
+
+	bank -= repair_cost
+	_on_bank_change()
+	_update_repair_button_visibility()
+
+
+## Heals module by [code]health_fraction * max_hp[/code].
+func _heal_module_by_fraction(module: Module, health_fraction: float) -> void:
+	module.heal(module.max_hp * health_fraction)
+
+
+## Heals module by heal_value.
+func _heal_module(module: Module, heal_value: float) -> void:
+	module.heal(heal_value)
+
+
+## Hides the repair button if there are no modules that can be repaired
+func _update_repair_button_visibility() -> void:
+	var modules = _get_all_shop_and_ship_modules()
+	repair_button.visible = false
+	for module in modules:
+		if module.hp < module.max_hp:
+			repair_button.visible = true
+			return
+
+
+func _get_all_shop_and_ship_modules() -> Array[Module]:
+	var shop_modules = Module.find_all_modules(get_tree().current_scene)
+	var ship_modules = Module.find_all_modules(GameManager.player_ship)
+	return shop_modules + ship_modules
 
 
 func _generate_shop() -> void:
@@ -101,6 +151,9 @@ func _enter_tree() -> void:
 
 func _on_bank_change() -> void:
 	bank_display.text = String.num_int64(bank) + "$"
+
+	# disable repair button if can't afford repair
+	repair_button.disabled = (bank < repair_cost)
 
 
 func _on_finish_pressed() -> void:

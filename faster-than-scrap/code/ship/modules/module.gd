@@ -101,6 +101,12 @@ func take_damage(damage: Damage) -> void:
 	damaged.emit()
 
 
+func heal(value: float) -> void:
+	hp += value
+	hp = min(hp, max_hp)
+	update_sprite()
+
+
 func update_sprite() -> void:
 	if sprite != null:
 		sprite.modulate = lerp(dead_color, healthy_color, hp / max_hp)
@@ -247,8 +253,6 @@ func create_ghost() -> ModuleGhost:
 
 
 ## Return all children (even indirect) modules of a given node.
-
-
 static func find_all_modules(node: Node) -> Array[Module]:
 	var result = []
 	for child in node.get_children():

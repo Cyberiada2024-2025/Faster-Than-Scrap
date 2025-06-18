@@ -31,24 +31,69 @@ func _ready() -> void:
 	_minimap_camera = $MinimapViewport/MinimapCamera
 
 
-func _module_camera_offset_x() -> float:
-	var arr: Array[float] = []
-	var center = GameManager.player_ship.position
+class Rect:
+	class Edge:
+		var min: float
+		var max: float
 
-	for module in GameManager.player_ship.modules:
-		arr.append(center.x + module.position.x)
-		arr.append(center.x - module.position.x)
-	return arr.min()
+	var x: Edge
+	var z: Edge
+
+	func _init() -> void:
+		x = Edge.new()
+		z = Edge.new()
+
+	##
+	func squarify() -> void:
+		var lengths: Array[float] = [
+			x.max,
+			-x.min,
+			z.max,
+			-z.min,
+		]
+
+		var _longest_size = lengths.max()
+		x.max = _longest_size
+		x.min = -_longest_size
+		z.max = _longest_size
+		z.min = -_longest_size
 
 
-func _module_camera_offset_z() -> float:
-	var arr: Array[float] = []
-	var center = GameManager.player_ship.position
+## returns the bounding rect of a ship in local or global space
+## of a ship
+func _ship_bounding_rect(is_local: bool = true) -> Rect:
+	var arr: Array[Vector3] = []
 
-	for module in GameManager.player_ship.modules:
-		arr.append(center.z + module.position.z)
-		arr.append(center.z - module.position.z)
-	return arr.max()
+	if is_local:
+		for module in GameManager.player_ship.modules:
+			arr.append(module.position)
+	else:
+		for module in GameManager.player_ship.modules:
+			arr.append(module.global_position)
+
+	var result_rect: Rect = Rect.new()
+	## x min
+	result_rect.x.min = arr.reduce(
+		func(accumulator: float, mod_position: Vector3): return min(accumulator, mod_position.x),
+		INF
+	)
+	## x max
+	result_rect.x.max = arr.reduce(
+		func(accumulator: float, mod_position: Vector3): return max(accumulator, mod_position.x),
+		-INF
+	)
+	## z min
+	result_rect.z.min = arr.reduce(
+		func(accumulator: float, mod_position: Vector3): return min(accumulator, mod_position.z),
+		INF
+	)
+	## z max
+	result_rect.z.max = arr.reduce(
+		func(accumulator: float, mod_position: Vector3): return max(accumulator, mod_position.z),
+		-INF
+	)
+
+	return result_rect
 
 
 func _process(_delta: float) -> void:
@@ -57,12 +102,30 @@ func _process(_delta: float) -> void:
 	# keep camera offsets relatively to player
 	var player_ship = GameManager.player_ship
 	_main_camera.global_position = player_ship.global_position + main_camera_offset
-	_module_camera.global_position = player_ship.global_position + module_camera_offset
 	_minimap_camera.global_position = player_ship.global_position + minimap_camera_offset
 
-	_module_camera.position.x = _module_camera_offset_x()
-	_module_camera.position.z = _module_camera_offset_z()
-	_module_camera.position += module_camera_offset
+	## adaptive version worse effect
+	#var bounding_rect: Rect = _ship_bounding_rect(false)
+	## move camera to look at lower left corner of a ship
+	#_module_camera.global_position.x = bounding_rect.x.min
+	#_module_camera.global_position.y = 0
+	#_module_camera.global_position.z = bounding_rect.z.max
+	## add constant offset so the ship is always in the lower left corner
+	## of a module display
+	#_module_camera.global_position += module_camera_offset
+
+	## static version (stable)
+	# calculate size of a ship
+	var bounding_rect: Rect = _ship_bounding_rect()
+	bounding_rect.squarify()  # make both edges of rectangle the same size
+	# move camera to look at center of player
+	_module_camera.global_position = player_ship.global_position
+	# move camera to look at lower left corner of a ship
+	_module_camera.global_position.x += bounding_rect.x.min
+	_module_camera.global_position.z += bounding_rect.z.max
+	# add constant offset so the ship is always in the lower left corner
+	# of a module display
+	_module_camera.global_position += module_camera_offset
 
 	if Input.is_action_just_pressed("zoom_in"):
 		zoom_camera(-zoom_strength)

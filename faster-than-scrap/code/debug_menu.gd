@@ -12,6 +12,7 @@ var invincibility: bool = false
 var collisions: bool = true
 var money_checks: bool = true
 var debug_movement: bool = false
+var map_node_checks: bool = true
 
 
 func _ready() -> void:
@@ -51,3 +52,7 @@ func _on_money_checks_pressed() -> void:
 
 func _on_debug_movement() -> void:
 	debug_movement = not debug_movement
+
+
+func _on_map_node_checks_pressed() -> void:
+	map_node_checks = not map_node_checks

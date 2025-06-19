@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 			_captured = true
 			on_capture.emit()
 	else:
-		_capture_counter += delta * 3
+		_capture_counter += delta
 		if _capture_counter > capture_time:
 			_capture_counter = capture_time
 

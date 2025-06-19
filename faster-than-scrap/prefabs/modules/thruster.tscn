@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cyw1yf0fdjx1j" path="res://prefabs/modules/functional_components/illegal_placement_zone.tscn" id="13_p8s52"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lwypn"]
-size = Vector3(1.05, 0.935, 1.835)
+size = Vector3(0.783203, 0.935, 1.76978)
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_iwswt"]
 clip_count = 3
@@ -74,13 +74,13 @@ transform = Transform3D(-3.67176e-08, 0, -0.84, 0, 0.84, 0, 0.84, 0, -3.67176e-0
 [node name="AttachPoints" type="Node3D" parent="."]
 
 [node name="AttachPoint" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.985704)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.15564e-09, 0, 0.938169)
 
 [node name="AttachPoint2" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.56, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.424305, 0, -5.93143e-09)
 
 [node name="AttachPoint3" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.56, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.424, 0, 0)
 
 [node name="DamageController" parent="." instance=ExtResource("5_24upk")]
 

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cppo4cvndh0em"]
+
+[ext_resource type="Script" uid="uid://65m4xcjhtor5" path="res://code/effects/timed_particle.gd" id="1_ncc56"]
+[ext_resource type="PackedScene" uid="uid://b3mc1twhji6o7" path="res://prefabs/vfx/particles/basic/directional_sparks.tscn" id="2_ncc56"]
+[ext_resource type="AudioStream" uid="uid://8we4d6d25nk7" path="res://art/audio/sounds/collision.mp3" id="3_e11im"]
+[ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="5_gyb8u"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_e11im"]
+top_radius = 0.0
+bottom_radius = 0.1
+
+[node name="Collision" type="Node3D"]
+script = ExtResource("1_ncc56")
+_lifetime = 5.0
+metadata/_custom_type_script = "uid://65m4xcjhtor5"
+
+[node name="DirectionalSparks" parent="." instance=ExtResource("2_ncc56")]
+
+[node name="SoundEmitter" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_e11im")
+volume_db = 1.0
+pitch_scale = 0.85
+autoplay = true
+script = ExtResource("5_gyb8u")
+allow_multiple_sounds_at_once = false
+min_pitch_scale = 0.75
+max_pitch_scale = 1.25
+metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -4.37114e-08, -1)
+mesh = SubResource("CylinderMesh_e11im")
+skeleton = NodePath("../DirectionalSparks")

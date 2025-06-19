@@ -415,7 +415,8 @@ func _get_intersection() -> Dictionary:
 		return {}
 
 	# check if hit illegal placement (if attach point is on surface of illegal zone)
-	if intersection2.collider.collision_layer & 1 << 3 != 0:
+	const illegal_attachement_layer = 1 << 3
+	if intersection2.collider.collision_layer & illegal_attachement_layer != 0:
 		return {}
 
 	# check if mouse is inside illegal zone collider (because then raycast doesn't work)

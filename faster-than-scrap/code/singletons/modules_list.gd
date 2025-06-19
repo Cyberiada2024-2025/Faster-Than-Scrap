@@ -8,7 +8,9 @@ var modules_and_chances = [
 	[preload("res://prefabs/modules/thruster.tscn"), COMMON],
 	[preload("res://prefabs/modules/weapons/beam_module.tscn"), UNCOMMON],
 	[preload("res://prefabs/modules/weapons/laser_module.tscn"), COMMON],
-	[preload("res://prefabs/modules/weapons/missile_module.tscn"), RARE]
+	[preload("res://prefabs/modules/weapons/missile_module.tscn"), RARE],
+	[preload("res://prefabs/modules/bumper.tscn"), UNCOMMON],
+	[preload("res://prefabs/modules/bumper_wide.tscn"), RARE],
 ]
 
 

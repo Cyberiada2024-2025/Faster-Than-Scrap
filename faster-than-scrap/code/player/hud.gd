@@ -52,11 +52,11 @@ class Rect:
 			-z.min,
 		]
 
-		var _longest_size = lengths.max()
-		x.max = _longest_size
-		x.min = -_longest_size
-		z.max = _longest_size
-		z.min = -_longest_size
+		var longest_size = lengths.max()
+		x.max = longest_size
+		x.min = -longest_size
+		z.max = longest_size
+		z.min = -longest_size
 
 
 ## returns the bounding rect of a ship in local or global space

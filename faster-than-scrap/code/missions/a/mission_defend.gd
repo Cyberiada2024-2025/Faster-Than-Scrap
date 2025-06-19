@@ -62,6 +62,6 @@ func _on_capture() -> void:
 	print("succesfuly defended!")
 	_capture_counter -= 1
 	if _capture_counter == 0:
-		state = MissionState.FINISHED
 		await get_tree().create_timer(2.0).timeout
+		state = MissionState.FINISHED
 		finished.emit(self)

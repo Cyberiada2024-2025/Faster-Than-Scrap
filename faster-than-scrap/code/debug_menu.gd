@@ -8,11 +8,20 @@ const BTN_PARENT = NodePath(
 	"ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer"
 )
 
-var enable_invincibility: bool = false
-var disable_collisions: bool = false
-var disable_money_checks: bool = false
-var enable_debug_movement: bool = false
-var disable_map_node_checks: bool = false
+var enable_invincibility: bool = false:
+	get: return enable_invincibility and is_debug
+
+var disable_collisions: bool = false:
+	get: return disable_collisions and is_debug
+
+var disable_money_checks: bool = false:
+	get: return disable_money_checks and is_debug
+
+var enable_debug_movement: bool = false:
+	get: return enable_debug_movement and is_debug
+
+var disable_map_node_checks: bool = false:
+	get: return disable_map_node_checks and is_debug
 
 @onready var scene_loader: SceneLoader = $SceneLoader
 @onready var is_debug: bool = OS.is_debug_build()

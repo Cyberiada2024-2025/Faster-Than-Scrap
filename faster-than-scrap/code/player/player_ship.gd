@@ -39,7 +39,7 @@ func _ready() -> void:
 	super()
 	GameManager.new_game_state.connect(on_game_change_state)
 
-	if OS.is_debug_build():
+	if DebugMenu.is_debug:
 		DebugMenu.toggle_player_collisions.connect(_toggle_collisions)
 
 		if DebugMenu.disable_collisions:
@@ -52,7 +52,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super(delta)
 
-	if not (OS.is_debug_build() and DebugMenu.enable_debug_movement):
+	if not DebugMenu.enable_debug_movement:
 		return
 
 	var input_direction = Input.get_vector(

@@ -115,7 +115,7 @@ func _on_release(_delta: float) -> void:
 
 
 func take_damage(damage: Damage) -> void:
-	if OS.is_debug_build() and DebugMenu.enable_invincibility:
+	if DebugMenu.enable_invincibility:
 		return
 
 	hp -= damage.value

@@ -40,7 +40,7 @@ func _on_release(_delta: float) -> void:
 
 
 func _recoil(force_multiplier: float) -> void:
-	if OS.is_debug_build() and DebugMenu.enable_debug_movement:
+	if DebugMenu.enable_debug_movement:
 		return
 
 	ship.apply_force(

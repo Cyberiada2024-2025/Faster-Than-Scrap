@@ -14,13 +14,21 @@ func load_main_menu_scene() -> void:
 
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	GameManager.set_game_state(GameState.State.MAIN_MENU)
+
+
+func _reset_game() -> void:
+	MapGenerator.reset()
+	MapSaver.reset()
 	CutsceneManager.reset_cutscenes()
+	GameManager.reset()
 
 
 #region tutorials
 
 
 func load_movement_tutorial() -> void:
+	_reset_game()
+
 	HudSpawner.spawn_hud = true
 	GameManager.set_game_state(GameState.State.FLY)
 	get_tree().change_scene_to_file("res://scenes/tutorials/basic_movement_tutorial.tscn")
@@ -102,7 +110,6 @@ func load_credits_scene() -> void:
 	GameManager.on_scene_exit()
 	get_tree().change_scene_to_file("res://scenes/credits.tscn")
 	GameManager.set_game_state(GameState.State.MAIN_MENU)
-	MapGenerator.reset()
 
 
 func load_lore_scene() -> void:

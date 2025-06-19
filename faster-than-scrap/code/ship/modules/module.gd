@@ -12,6 +12,12 @@ signal destroyed
 
 const NOT_ACTIVABLE_KEYS: Array[Key] = [KEY_ENTER, KEY_ESCAPE]
 
+const EXPLOSION_MAX_RANDOM_SPEED = 2
+const EXPLOSION_MAX_RANDOM_ROTATION = 1
+
+const EXPLOSION_SPEED_MULTIPLIER = 1
+const EXPLOSION_DISTANCE_EXPONENT = 1
+
 @export_category("Settings")
 @export var activation_key: Key = KEY_NONE
 @export var is_activable: bool = true
@@ -95,6 +101,12 @@ func take_damage(damage: Damage) -> void:
 	damaged.emit()
 
 
+func heal(value: float) -> void:
+	hp += value
+	hp = min(hp, max_hp)
+	update_sprite()
+
+
 func update_sprite() -> void:
 	if sprite != null:
 		sprite.modulate = lerp(dead_color, healthy_color, hp / max_hp)
@@ -117,7 +129,7 @@ func _on_destroy() -> void:
 		parent_module.child_modules.erase(self)
 	_explode()
 
-	detach_all_children()
+	detach_all_children(global_position)
 
 	if parent_module != null:
 		on_detach()
@@ -126,17 +138,35 @@ func _on_destroy() -> void:
 	destroyed.emit()
 
 
-func detach_all_children() -> void:
+func detach_all_children(explosion_center: Vector3) -> void:
 	for child in child_modules:
 		var rb: RigidBody3D = module_rigidbody_prefab.instantiate()
 		get_tree().current_scene.add_child(rb)  # attach floating modules to scene
 		child.reparent(rb)
 		rb.linear_velocity = ship.linear_velocity
-		rb.linear_velocity += Vector3(randf_range(-2, 2), 0, randf_range(-2, 2))
+
+		rb.linear_velocity += Vector3(
+			randf_range(-EXPLOSION_MAX_RANDOM_SPEED, EXPLOSION_MAX_RANDOM_SPEED),
+			0,
+			randf_range(-EXPLOSION_MAX_RANDOM_SPEED, EXPLOSION_MAX_RANDOM_SPEED)
+		)
+
+		rb.linear_velocity += (
+			explosion_center.direction_to(child.global_position)
+			* pow(explosion_center.distance_to(child.global_position), EXPLOSION_DISTANCE_EXPONENT)
+			* EXPLOSION_SPEED_MULTIPLIER
+		)
+
+		rb.angular_velocity = Vector3(
+			randf_range(-EXPLOSION_MAX_RANDOM_ROTATION, EXPLOSION_MAX_RANDOM_ROTATION),
+			randf_range(-EXPLOSION_MAX_RANDOM_ROTATION, EXPLOSION_MAX_RANDOM_ROTATION),
+			randf_range(-EXPLOSION_MAX_RANDOM_ROTATION, EXPLOSION_MAX_RANDOM_ROTATION)
+		)
+
 		child.deactivate()
 		child.on_detach()
 
-		child.detach_all_children()
+		child.detach_all_children(explosion_center)
 
 
 ## Called when the module is attached to the ship
@@ -234,8 +264,6 @@ func create_ghost() -> ModuleGhost:
 
 
 ## Return all children (even indirect) modules of a given node.
-
-
 static func find_all_modules(node: Node) -> Array[Module]:
 	var result = []
 	for child in node.get_children():

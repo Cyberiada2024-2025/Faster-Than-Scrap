@@ -63,7 +63,7 @@ func reserve_keys_from_actions(actions: Array[String]):
 
 
 func reserve_keys():
-	if OS.is_debug_build():
+	if DebugMenu.is_debug:
 		reserve_keys_from_actions(["debug_menu"])
 
 	reserve_keys_from_actions([

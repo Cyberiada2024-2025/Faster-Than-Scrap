@@ -31,7 +31,7 @@ enum StopBehaviour {
 @export var max_pitch_scale: float = 1
 
 ## When the sound emitter starts playing the sound, the audio will start playing from point randomly
-## chosen between [member min_random_start_offset] and [member max_random_start_offset] (in seconds).
+## chosen between [member min_random_start_offset] and [member max_random_start_offset] (in seconds)
 ## [br][br]
 ##
 ## [b]Note:[/b] Not tested with sub-streamable audio streams (such as [AudioStreamInteractive],

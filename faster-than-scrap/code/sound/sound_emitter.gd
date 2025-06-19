@@ -50,6 +50,13 @@ enum StopBehaviour {
 @export var transition_clip_name: StringName = ""
 
 
+func _ready():
+	# override the base autoplay behaviour, to include random pitch shifting and offset
+	if autoplay:
+		stop()
+		start_playing()
+
+
 func _can_play() -> bool:
 	if playing and not allow_multiple_sounds_at_once:
 		return false

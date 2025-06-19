@@ -11,7 +11,7 @@ enum StopBehaviour {
 }
 
 ## Controls whether or not this emmitter allows multiple sounds to be played at the same time.
-## If set to true, all [method start_playing] calls
+## If set to false, all [method start_playing] calls
 ## will be ignored if the emitter is already playing. [br][br]
 ##
 ## For more control over the number of sounds played at once, see:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dscrc7veyfr8e"]
+[gd_scene load_steps=3 format=3 uid="uid://dscrc7veyfr8e"]
 
 [ext_resource type="Script" uid="uid://c32o3v1exc14b" path="res://code/debug_menu.gd" id="1_r546s"]
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_fmo40"]
 
 [node name="DebugMenu" type="Control"]
 process_mode = 3
@@ -86,8 +87,17 @@ theme_override_font_sizes/font_size = 30
 toggle_mode = true
 text = "Disable map node checks"
 
+[node name="Btn 6" type="Button" parent="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Enter map select screen"
+
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource("2_fmo40")
+
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 1" to="." method="_on_invincibility_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 2" to="." method="_on_collisions_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 3" to="." method="_on_money_checks_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 4" to="." method="_on_debug_movement"]
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 5" to="." method="_on_map_node_checks_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 6" to="." method="_on_map_select_pressed"]

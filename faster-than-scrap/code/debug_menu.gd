@@ -8,11 +8,15 @@ const BTN_PARENT = NodePath(
 	"ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer"
 )
 
+
 var invincibility: bool = false
 var collisions: bool = true
 var money_checks: bool = true
 var debug_movement: bool = false
 var map_node_checks: bool = true
+
+
+@onready var scene_loader: SceneLoader = $SceneLoader
 
 
 func _ready() -> void:
@@ -56,3 +60,7 @@ func _on_debug_movement() -> void:
 
 func _on_map_node_checks_pressed() -> void:
 	map_node_checks = not map_node_checks
+
+
+func _on_map_select_pressed() -> void:
+	scene_loader.load_map_selector_scene()

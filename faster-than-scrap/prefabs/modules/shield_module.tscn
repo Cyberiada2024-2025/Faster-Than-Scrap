@@ -20,6 +20,7 @@
 size = Vector3(0.78, 1, 1.085)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qjp2t"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("7_rwr3c")
 shader_parameter/anim_hit = 1.0

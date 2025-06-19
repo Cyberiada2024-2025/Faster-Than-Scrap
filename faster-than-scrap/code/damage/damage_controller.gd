@@ -30,6 +30,9 @@ enum DamageMode {
 ## See [enum DamageMode] for possible values.
 @export var _damage_mode: DamageMode = DamageMode.LOWEST
 
+## Spaghetti
+@export var _damaged_sound_emitter: SoundEmitter
+
 var _damage: Dictionary = {}
 
 
@@ -56,21 +59,33 @@ func _process(_delta):
 	if Engine.is_editor_hint():
 		return
 
-	var total_damage: Damage = Damage.new(0)
+	var total_damage: Damage = null
 	for source in _damage:
 		var damage_list = _damage[source]
+		var damage_to_add: Damage
 		match _damage_mode:
 			DamageMode.LOWEST:
-				total_damage = total_damage.add(ArrayUtils.min_custom(damage_list, Damage.compare))
+				damage_to_add = ArrayUtils.min_custom(damage_list, Damage.compare)
 			DamageMode.HIGHEST:
-				total_damage = total_damage.add(ArrayUtils.max_custom(damage_list, Damage.compare))
+				damage_to_add = ArrayUtils.max_custom(damage_list, Damage.compare)
 			DamageMode.ALL:
 				for damage in damage_list:
-					total_damage = total_damage.add(damage)
+					if damage_to_add == null:
+						damage_to_add = damage
+					else:
+						damage_to_add = damage_to_add.add(damage)
+		if total_damage == null:
+			total_damage = damage_to_add
+		else:
+			total_damage = total_damage.add(damage_to_add)
 
-	if total_damage.value > 0:
+	if total_damage != null and total_damage.value > 0:
 		damaged.emit(total_damage)
 		_damage = {}
+
+		# spaghetti
+		if _damaged_sound_emitter != null and total_damage.type == Damage.Type.NORMAL:
+			_damaged_sound_emitter.start_playing()
 
 
 func _get_configuration_warnings():

@@ -94,7 +94,7 @@ func calculate_damage(me: Node, oponent: Node) -> Damage:
 		self_dmg_mult *= oponet_calculator.dealt_damage_multiplier
 
 	# return result
-	var damage: Damage = Damage.new(base_damage * self_dmg_mult)
+	var damage: Damage = Damage.new(base_damage * self_dmg_mult, Damage.Type.COLLISION)
 	if "mass" in oponent:
 		damage.value *= oponent.mass / (me.mass + oponent.mass)
 

@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvdu57kxdkwq"]
+
+[ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_vpkxe"]
+[ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_5430q"]
+[ext_resource type="Texture2D" uid="uid://drxpv7w6wu3p1" path="res://art/textures/ui/mapselect/Boss.png" id="3_4pwt0"]
+[ext_resource type="Script" uid="uid://bmhwp67vae4gu" path="res://code/missions/info/mission_info.gd" id="3_4x7dd"]
+
+[sub_resource type="Resource" id="Resource_83pbw"]
+script = ExtResource("3_4x7dd")
+about = ""
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[node name="MissionKillEnemies" type="TextureButton"]
+modulate = Color(2.93598e-06, 0.635492, 0.537048, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("1_vpkxe")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("2_5430q")
+mission_info = SubResource("Resource_83pbw")
+modulate_color = Color(0, 0, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.462291, 0.462291, 0.462291, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 147.0
+offset_top = 260.0
+offset_right = 147.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_4pwt0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(0.462291, 0.462291, 0.462291, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 427.0
+offset_top = 260.0
+offset_right = 427.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_4pwt0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+modulate = Color(0.462291, 0.462291, 0.462291, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 287.0
+offset_right = 287.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_4pwt0")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="." to="." method="on_click"]

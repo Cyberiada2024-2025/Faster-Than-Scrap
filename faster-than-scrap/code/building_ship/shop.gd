@@ -23,7 +23,7 @@ extends Node3D
 @export var columns: int
 @export var rows: int
 ## display of cash balance
-@export var bank_display: Label3D
+@export var bank_display: RichTextLabel
 @export var inventory_limit_display: Label3D
 
 @export var deny_finish: Control
@@ -150,7 +150,10 @@ func _enter_tree() -> void:
 
 
 func _on_bank_change() -> void:
-	bank_display.text = String.num_int64(bank) + "$"
+	bank_display.text = (
+		String.num_int64(bank)
+		+ "[img width=24 height=24 ]res://art/textures/other_icons/screws.png[/img]"
+	)
 
 	# disable repair button if can't afford repair
 	repair_button.disabled = (bank < repair_cost)
@@ -187,7 +190,10 @@ func _on_ship_builder_on_module_select(module: Module) -> void:
 		selected_module_description.text = ""
 		return
 	selected_module_display.text = "[b]" + module.module_name + ":[/b] "
-	selected_module_display.text += String.num_int64(module.prize) + "$"
+	selected_module_display.text += (
+		String.num_int64(module.prize)
+		+ "[img width=24 height=24]res://art/textures/other_icons/nuts-3d-watermarked.png[/img]"
+	)
 
 	selected_module_description.text = module.description
 

@@ -42,7 +42,7 @@ func _ready() -> void:
 	if OS.is_debug_build():
 		DebugMenu.toggle_player_collisions.connect(_toggle_collisions)
 
-		if not DebugMenu.collisions:
+		if DebugMenu.disable_collisions:
 			_toggle_collisions()
 
 	energy_max_change.emit(max_energy)
@@ -52,7 +52,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super(delta)
 
-	if not (OS.is_debug_build() and DebugMenu.debug_movement):
+	if not (OS.is_debug_build() and DebugMenu.enable_debug_movement):
 		return
 
 	var input_direction = Input.get_vector(

@@ -41,7 +41,7 @@ func on_leave_button_clicked() -> void:
 		return
 
 	if selected_node.is_after_node(active_node) \
-		or (OS.is_debug_build() and not DebugMenu.map_node_checks):
+		or (OS.is_debug_build() and DebugMenu.disable_map_node_checks):
 		MapGenerator.set_node(selected_node)
 		MapSaver.save_map()
 		selected_node.change_scene(scene_loader)

@@ -8,16 +8,14 @@ const BTN_PARENT = NodePath(
 	"ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer"
 )
 
-
-var invincibility: bool = false
-var collisions: bool = true
-var money_checks: bool = true
-var debug_movement: bool = false
-var map_node_checks: bool = true
-
+var enable_invincibility: bool = false
+var disable_collisions: bool = false
+var disable_money_checks: bool = false
+var enable_debug_movement: bool = false
+var disable_map_node_checks: bool = false
 
 @onready var scene_loader: SceneLoader = $SceneLoader
-
+@onready var is_debug: bool = OS.is_debug_build()
 
 func _ready() -> void:
 	visible = false
@@ -42,24 +40,24 @@ func toggle_menu() -> void:
 
 
 func _on_invincibility_pressed() -> void:
-	invincibility = not invincibility
+	enable_invincibility = not enable_invincibility
 
 
 func _on_collisions_pressed() -> void:
-	collisions = not collisions
+	disable_collisions = not disable_collisions
 	toggle_player_collisions.emit()
 
 
 func _on_money_checks_pressed() -> void:
-	money_checks = not money_checks
+	disable_money_checks = not disable_money_checks
 
 
 func _on_debug_movement() -> void:
-	debug_movement = not debug_movement
+	enable_debug_movement = not enable_debug_movement
 
 
 func _on_map_node_checks_pressed() -> void:
-	map_node_checks = not map_node_checks
+	disable_map_node_checks = not disable_map_node_checks
 
 
 func _on_map_select_pressed() -> void:

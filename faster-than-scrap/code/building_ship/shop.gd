@@ -157,7 +157,7 @@ func _on_bank_change() -> void:
 
 
 func _on_finish_pressed() -> void:
-	if OS.is_debug_build() and not DebugMenu.money_checks:
+	if OS.is_debug_build() and DebugMenu.disable_money_checks:
 		_exit_shop()
 
 	if bank < 0:

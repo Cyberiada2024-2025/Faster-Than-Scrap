@@ -30,6 +30,17 @@ enum StopBehaviour {
 ## See: [member min_pitch_scale]
 @export var max_pitch_scale: float = 1
 
+## When the sound emitter starts playing the sound, the audio will start playing from point randomly
+## chosen between [member min_random_start_offset] and [member max_random_start_offset] (in seconds).
+## [br][br]
+##
+## [b]Note:[/b] Not tested with sub-streamable audio streams (such as [AudioStreamInteractive],
+## [AudioStreamPlaylist], [AudioStreamSynchronized]) - may not work, or behave unexpectedly.
+@export var min_random_start_offset: float = 0
+
+## See: [member min_random_start_offset]
+@export var max_random_start_offset: float = 0
+
 ## Specifies behaviour of sound emitter when [method stop_playing] is called.
 @export var stop_behaviour: StopBehaviour = StopBehaviour.STOP_IMMEDIATELY
 
@@ -63,7 +74,8 @@ func start_playing(_arg1 = null, _arg2 = null, _arg3 = null, _arg4 = null) -> vo
 		return
 
 	_set_random_pitch_scale()
-	play()
+	var random_start_offset = randf_range(min_random_start_offset, max_random_start_offset)
+	play(random_start_offset)
 
 
 ## Stops playing the sound. The exact behaviour is controlled by [member stop_behaviour]. [br][br]

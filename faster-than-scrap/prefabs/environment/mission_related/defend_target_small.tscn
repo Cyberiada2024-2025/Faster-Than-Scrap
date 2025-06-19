@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkbg1gqlrntx6"]
+
+[ext_resource type="Script" uid="uid://diheai0ulsufp" path="res://code/evironment/capture_point.gd" id="1_tdef4"]
+[ext_resource type="Material" uid="uid://cyne44ays80ug" path="res://art/materials/environment/control_point_progress.tres" id="2_pxhvh"]
+[ext_resource type="PackedScene" uid="uid://c7gr12rhsysjx" path="res://prefabs/ui/poi/mission_poi.tscn" id="3_odygn"]
+[ext_resource type="PackedScene" uid="uid://djgyx6valcw83" path="res://prefabs/environment/mission_related/rotating_satelite.tscn" id="4_r7rxh"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_gw8ig"]
+inner_radius = 4.7
+outer_radius = 5.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o3iip"]
+radius = 11.25
+
+[node name="CapturePoint" type="Area3D" node_paths=PackedStringArray("_progress_mesh")]
+script = ExtResource("1_tdef4")
+capture_time = 15.0
+_progress_mesh = NodePath("MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0, 0, 0)
+material_override = ExtResource("2_pxhvh")
+instance_shader_parameters/percentage = 0.085
+mesh = SubResource("TorusMesh_gw8ig")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_o3iip")
+
+[node name="MissionPoi" parent="." instance=ExtResource("3_odygn")]
+
+[node name="RotatingSatelite" parent="." instance=ExtResource("4_r7rxh")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -7.29895, 0)
+
+[connection signal="on_capture" from="." to="RotatingSatelite" method="play"]

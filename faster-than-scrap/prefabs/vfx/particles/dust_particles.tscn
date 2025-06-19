@@ -1,0 +1,61 @@
+[gd_scene load_steps=12 format=3 uid="uid://55masxr1fg7f"]
+
+[ext_resource type="Script" uid="uid://qrq4qbo2dpeo" path="res://code/player/copy_player_position.gd" id="1_6gb75"]
+[ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="2_swjlv"]
+
+[sub_resource type="Gradient" id="Gradient_klrfn"]
+offsets = PackedFloat32Array(0, 0.452381, 0.833333)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0.194779, 0.140256, 1, 0, 1, 0.566667, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_swjlv"]
+gradient = SubResource("Gradient_klrfn")
+
+[sub_resource type="Curve" id="Curve_ycsar"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.258929, -1), 0.0, 0.0, 0, 0, Vector2(0.714286, -0.280899), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_c7ni3"]
+curve_y = SubResource("Curve_ycsar")
+
+[sub_resource type="Curve" id="Curve_5v21r"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_klrfn"]
+curve = SubResource("Curve_5v21r")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_klrfn"]
+emission_shape = 3
+emission_box_extents = Vector3(60, 15, 60)
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(0, 0, 0)
+spread = 0.0
+directional_velocity_min = 1.0
+directional_velocity_max = 1.0
+directional_velocity_curve = SubResource("CurveXYZTexture_c7ni3")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_klrfn")
+color_ramp = SubResource("GradientTexture1D_swjlv")
+turbulence_noise_strength = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mnnw"]
+transparency = 1
+albedo_color = Color(0.48, 0.48, 0.48, 0.439216)
+albedo_texture = ExtResource("2_swjlv")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ogv1v"]
+material = SubResource("StandardMaterial3D_4mnnw")
+
+[node name="Dust Particles" type="Node3D"]
+script = ExtResource("1_6gb75")
+
+[node name="DustTrails" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 0)
+amount = 100
+lifetime = 4.0
+process_material = SubResource("ParticleProcessMaterial_klrfn")
+draw_pass_1 = SubResource("PlaneMesh_ogv1v")

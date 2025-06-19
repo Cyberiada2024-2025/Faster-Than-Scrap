@@ -13,17 +13,17 @@
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="6_ion51"]
 [ext_resource type="Script" uid="uid://c14j6cdbgt38o" path="res://code/enemy/states/rotate/look_at_target.gd" id="6_xr00f"]
 [ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="7_a8moe"]
-[ext_resource type="PackedScene" path="res://prefabs/projectiles/boss_projectiles/juggernaut_ball_flash.tscn" id="7_qln4k"]
+[ext_resource type="PackedScene" uid="uid://6mrvum8tjctj" path="res://prefabs/projectiles/boss_projectiles/juggernaut_ball_flash.tscn" id="7_qln4k"]
 [ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="8_1irkd"]
-[ext_resource type="PackedScene" path="res://prefabs/projectiles/boss_projectiles/juggernaut_bullet_flash.tscn" id="8_qln4k"]
+[ext_resource type="PackedScene" uid="uid://cl32aepiu0lax" path="res://prefabs/projectiles/boss_projectiles/juggernaut_bullet_flash.tscn" id="8_qln4k"]
 [ext_resource type="Script" uid="uid://dig16nwffnibt" path="res://code/enemy/states/supplementary/restore_energy.gd" id="9_ion51"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="10_6fxl0"]
 [ext_resource type="Script" uid="uid://crp1vxubokrt" path="res://code/enemy/states/move/move_to_orbit_place.gd" id="10_clgev"]
-[ext_resource type="PackedScene" path="res://prefabs/projectiles/boss_projectiles/star_beam_flash.tscn" id="10_qln4k"]
+[ext_resource type="PackedScene" uid="uid://cf4qlk85kdwxg" path="res://prefabs/projectiles/boss_projectiles/star_beam_flash.tscn" id="10_qln4k"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="11_clgev"]
-[ext_resource type="PackedScene" path="res://prefabs/projectiles/boss_projectiles/juggernaut_shotgun_flash.tscn" id="11_qln4k"]
-[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="22_1nvpg"]
-[ext_resource type="PackedScene" path="res://prefabs/ui/cutscenes/boss_cutscenes/juggernaut_cutscene.tscn" id="23_j2cd8"]
+[ext_resource type="PackedScene" uid="uid://c02tg8vmx2ibt" path="res://prefabs/projectiles/boss_projectiles/juggernaut_shotgun_flash.tscn" id="11_qln4k"]
+[ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_player.gd" id="22_1nvpg"]
+[ext_resource type="PackedScene" uid="uid://bh1max67hf46s" path="res://prefabs/ui/cutscenes/boss_cutscenes/juggernaut_cutscene.tscn" id="23_j2cd8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_km21v"]
 size = Vector3(5, 1, 5)
@@ -52,6 +52,10 @@ metadata/_custom_type_script = "uid://cs6qd5cf3gviv"
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="DamageController" parent="StaticBody3D/Body" instance=ExtResource("10_6fxl0")]
+
+[node name="Damageable" parent="StaticBody3D/Body/DamageController" index="0"]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="0"]
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)

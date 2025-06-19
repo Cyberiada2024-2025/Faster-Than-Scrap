@@ -2,15 +2,20 @@ class_name Shop
 
 extends Node3D
 
-## modules in the shop. Don't place them in the editor! Place them here!
-@export_dir var modules: Array[String] = []
+## TODO
+# prevent generating too many of the same module
+# add rarities
+
+## Areas should have negative y coordinate
+## otherwise, engine module might not be selectable
+
 ## set starting cash here
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var starting_bank: int = 0
-#@export var root: Node3D
+@export var max_items_count = 10
 
 @export_category("Visuals")
 ## shop size X
-@export_custom(PROPERTY_HINT_NONE, "suffix:m") var size_x: float = 10
+@export_custom(PROPERTY_HINT_NONE, "suffix:m") var size_x: float = 0
 ## shop size Y
 @export_custom(PROPERTY_HINT_NONE, "suffix:m") var size_z: float = 15
 ## distance X between shop and inventory
@@ -29,32 +34,101 @@ extends Node3D
 @export var selected_module_display: RichTextLabel
 @export var selected_module_description: RichTextLabel
 
+@export var repair_button: Button
+@export var repair_cost: int = 2
+@export var repair_particles: PackedScene = preload(
+	"res://prefabs/vfx/particles/base_projectile_hit_particles.tscn"
+)
+
 ## actual cash balance
 var bank: int = 0
 var first_frame: bool = true
 
 var areas: Array[Area3D] = []
 
+var all_modules: Array[SceneData]
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	var i: int = 0
-	for dir in modules:
-		var clone = load(dir)
-		var mod = clone.instantiate()
+	# clear current shop when new map
+	MissionManager.map_finished.connect(_clear_shop)
+	MissionManager.map_finished.connect(ShopContents.generate_contents)
+
+	_generate_shop()
+
+	_update_repair_button_visibility()
+
+
+func _clear_shop() -> void:
+	MapGenerator._saved_scene = null  # so scene loader will create new shop
+	queue_free()
+	#should left items be moved to inventory?
+
+
+func _repair_modules() -> void:
+	var modules = _get_all_shop_and_ship_modules()
+
+	for module in modules:
+		if module.hp < module.max_hp and repair_particles != null:
+			var particles: Node3D = repair_particles.instantiate()
+			particles.global_position = module.global_position
+			get_tree().current_scene.add_child(particles)
+		_heal_module_by_fraction(module, 0.25)
+
+	bank -= repair_cost
+	_on_bank_change()
+	_update_repair_button_visibility()
+
+
+## Heals module by [code]health_fraction * max_hp[/code].
+func _heal_module_by_fraction(module: Module, health_fraction: float) -> void:
+	module.heal(module.max_hp * health_fraction)
+
+
+## Heals module by heal_value.
+func _heal_module(module: Module, heal_value: float) -> void:
+	module.heal(heal_value)
+
+
+## Hides the repair button if there are no modules that can be repaired
+func _update_repair_button_visibility() -> void:
+	var modules = _get_all_shop_and_ship_modules()
+	repair_button.visible = false
+	for module in modules:
+		if module.hp < module.max_hp:
+			repair_button.visible = true
+			return
+
+
+func _get_all_shop_and_ship_modules() -> Array[Module]:
+	var shop_modules = Module.find_all_modules(get_tree().current_scene)
+	var ship_modules = Module.find_all_modules(GameManager.player_ship)
+	return shop_modules + ship_modules
+
+
+func _generate_shop() -> void:
+	all_modules = ShopContents.shop_modules
+	var i = 0
+	for module_data in all_modules:
+		var module = module_data.packed_scene.instantiate()
 		var area = Area3D.new()
 		add_child(area)
-		area.add_child(mod)
-		mod.position = Vector3.ZERO
+		area.add_child(module)
+		module.position = Vector3.ZERO
 		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2
 		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
 		area.position = Vector3(x, 0, z)
 		i += 1
-	i = 0
+
+
+func _generate_inventory() -> void:
+	var i = 0
 	for obj in InventoryManager.inventory:
 		add_child(obj)
-		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2 + distance
-		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
+		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2
+		var z: float = (
+			size_z / rows / 2 + i / columns * size_z / rows - size_z / 2 + $Inventory.position.z
+		)
 		obj.position = Vector3(x, 0, z)
 		obj.get_child(0).position = Vector3(0, 0, 0)
 		i += 1
@@ -67,12 +141,19 @@ func _process(delta: float) -> void:
 		## linter will burn my house down if I don't use delta somewhere in this function
 		first_frame = 0 * delta
 		first_frame = false
-		bank = starting_bank
+		bank = starting_bank + GameManager.player_ship.money
 		_on_bank_change()
+
+
+func _enter_tree() -> void:
+	_generate_inventory()
 
 
 func _on_bank_change() -> void:
 	bank_display.text = String.num_int64(bank) + "$"
+
+	# disable repair button if can't afford repair
+	repair_button.disabled = (bank < repair_cost)
 
 
 func _on_finish_pressed() -> void:
@@ -83,7 +164,15 @@ func _on_finish_pressed() -> void:
 		deny_finish.visible = true
 		deny_finish_label.text = "Your inventory has too many items!"
 	else:
-		confirm_finish.visible = true
+		_exit_shop()
+
+
+func _exit_shop() -> void:
+	#confirm_finish.visible = true
+	$"../ShipBuilder/SceneLoader".load_fly_ship_scene()
+	GameManager.player_ship.money = bank
+
+	repair_button.visible = true  # prevent invisible button when entering the shop
 
 
 func _on_confirm_pressed() -> void:
@@ -101,34 +190,6 @@ func _on_ship_builder_on_module_select(module: Module) -> void:
 	selected_module_display.text += String.num_int64(module.prize) + "$"
 
 	selected_module_description.text = module.description
-
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	for child in body.get_children():
-		if child is Module:
-			var mod: Module = child
-			bank += mod.prize
-			_on_bank_change()
-			if !areas.has(body):
-				areas.push_back(body)
-
-
-func _on_area_3d_body_exited(body: Node3D) -> void:
-	if areas.has(body):
-		for child in body.get_children():
-			if child is Module:
-				var mod: Module = child
-				bank -= mod.prize
-				_on_bank_change()
-				areas.remove_at(areas.find(body))
-
-
-func _on_area_3d_area_entered(area: Area3D) -> void:
-	_on_area_3d_body_entered(area)
-
-
-func _on_area_3d_area_exited(area: Area3D) -> void:
-	_on_area_3d_body_exited(area)
 
 
 func _on_inventory_entered(body: Area3D) -> void:
@@ -157,4 +218,10 @@ func _display_inventory_number() -> void:
 
 
 func _on_module_attached(module: Module) -> void:
-	_on_area_3d_body_exited(module.get_parent())
+	bank -= module.prize
+	_on_bank_change()
+
+
+func _on_ship_builder_on_module_detach(module: Module) -> void:
+	bank += module.prize
+	_on_bank_change()

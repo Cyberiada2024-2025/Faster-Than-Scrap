@@ -14,12 +14,12 @@ size = Vector3(0.74, 1, 1)
 shape = SubResource("BoxShape3D_4r7dq")
 script = ExtResource("1_q5512")
 is_activable = false
+sprite = NodePath("ModuleDisplay/Sprite3D")
+label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Cockpit"
 description = "Thin metal box standing between you and blood-boiling void."
-sprite = NodePath("ModuleDisplay/Sprite3D")
-label = NodePath("ModuleDisplay/Label3D")
 
 [node name="CabinModel" parent="." instance=ExtResource("2_bb6ao")]
 transform = Transform3D(-1.55175e-08, 0, -0.355, 0, 0.355, 0, 0.355, 0, -1.55175e-08, 0, 0, 0)

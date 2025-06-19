@@ -1,6 +1,7 @@
 class_name EnterShop
 
 extends PlayerDetector
+signal shop_entered
 
 var scene_loader: SceneLoader
 
@@ -18,3 +19,4 @@ func _show_ui() -> void:
 
 func _enter_shop() -> void:
 	scene_loader.load_build_ship_scene()
+	shop_entered.emit()

@@ -14,13 +14,21 @@ func load_main_menu_scene() -> void:
 
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	GameManager.set_game_state(GameState.State.MAIN_MENU)
+
+
+func _reset_game() -> void:
+	MapGenerator.reset()
+	MapSaver.reset()
 	CutsceneManager.reset_cutscenes()
+	GameManager.reset()
 
 
 #region tutorials
 
 
 func load_movement_tutorial() -> void:
+	_reset_game()
+
 	HudSpawner.spawn_hud = true
 	GameManager.set_game_state(GameState.State.FLY)
 	get_tree().change_scene_to_file("res://scenes/tutorials/basic_movement_tutorial.tscn")
@@ -46,17 +54,17 @@ func load_fly_ship_scene(
 	rot: Vector3 = Vector3.ZERO,
 	use_saved_pos_rot: bool = true
 ) -> void:
+	var attached_fly_scene: bool = false
+
 	_detach_ship()
 	GameManager.on_scene_exit()
-
 	if scene_to_load != null:
 		get_tree().change_scene_to_file(scene_to_load.resource_path)
 	else:
-		var attached_fly_scene: bool = false
 		if GameManager.game_state == GameState.State.BUILD:
-			attached_fly_scene = MapGenerator.try_attach_saved_scene()
+			attached_fly_scene = MapGenerator.swap_saved_and_current_scene()
 		if not attached_fly_scene:
-			get_tree().change_scene_to_file("res://scenes/levels/start_level.tscn")
+			GameManager.get_tree().change_scene_to_file("res://scenes/levels/start_level.tscn")
 			use_saved_pos_rot = false
 
 	GameManager.set_game_state(GameState.State.FLY)
@@ -83,15 +91,16 @@ func load_build_ship_scene(tutorial_version = false) -> void:
 	GameManager.player_ship.save_rotation()
 	_detach_ship()
 
+	var attached_build_scene: bool = false
 	if GameManager.game_state == GameState.State.FLY:
-		MapGenerator.detach_and_save_current_scene()
+		attached_build_scene = MapGenerator.swap_saved_and_current_scene()
 
 	GameManager.on_scene_exit()
 	if tutorial_version:
 		GameManager.get_tree().change_scene_to_file(
 			"res://scenes/tutorials/build_ship_tutorial.tscn"
 		)
-	else:
+	elif not attached_build_scene:
 		GameManager.get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
 	GameManager.set_game_state(GameState.State.BUILD)
 	_attach_ship_with_hud.call_deferred()
@@ -101,7 +110,6 @@ func load_credits_scene() -> void:
 	GameManager.on_scene_exit()
 	get_tree().change_scene_to_file("res://scenes/credits.tscn")
 	GameManager.set_game_state(GameState.State.MAIN_MENU)
-	MapGenerator.reset()
 
 
 func load_lore_scene() -> void:

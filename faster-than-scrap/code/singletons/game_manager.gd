@@ -12,6 +12,8 @@ signal new_game_state(new_state: GameState.State)
 var player_ship: PlayerShip
 var ships: Array[Ship] = []
 
+var game_over: bool = false
+
 # Called when the node enters the scene tree for the first time.
 
 
@@ -23,6 +25,11 @@ func on_scene_exit() -> void:
 	ships = []
 	if game_state == GameState.State.BUILD:
 		InventoryManager.save_inventory()
+
+
+func reset() -> void:
+	game_over = false
+	ships = []
 
 
 func set_game_state(new_state: GameState.State) -> void:
@@ -60,6 +67,7 @@ func turn_player_modules(on: bool):
 
 
 func show_death_screen():
+	game_over = true
 	var death_screen_scene = death_screen.instantiate()
 	GameManager.get_tree().current_scene.add_child(death_screen_scene)
 

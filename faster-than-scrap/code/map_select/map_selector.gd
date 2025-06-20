@@ -4,7 +4,7 @@ extends HBoxContainer
 
 @export var active_node: MapNode
 
-@export var label: Label
+@export var label: RichTextLabel
 @export var scene_loader: SceneLoader
 
 var layers: Array[MapLayer] = []

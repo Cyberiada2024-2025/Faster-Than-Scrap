@@ -50,7 +50,8 @@ metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_dlw72"]
 script = ExtResource("6_0a6x0")
-about = "[rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]RIP AND TEAR UNTIL IT IS DONE[/rainbow]"
+about = "[rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]RIP AND TEAR
+UNTIL IT IS DONE[/rainbow]"
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 

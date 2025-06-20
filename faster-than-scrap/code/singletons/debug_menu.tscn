@@ -73,7 +73,7 @@ text = "Disable player collision"
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 toggle_mode = true
-text = "Disable money checks"
+text = "Disable money and inventory checks"
 
 [node name="Btn 4" type="Button" parent="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer"]
 layout_mode = 2

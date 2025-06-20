@@ -21,6 +21,7 @@ stream = ExtResource("3_e11im")
 volume_db = 1.0
 pitch_scale = 0.85
 autoplay = true
+bus = &"SFX"
 script = ExtResource("5_gyb8u")
 allow_multiple_sounds_at_once = false
 min_pitch_scale = 0.75

@@ -247,6 +247,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_gyg23")
 
 [node name="SoundEmitter" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_gyg23")
+bus = &"SFX"
 script = ExtResource("4_dq18v")
 allow_multiple_sounds_at_once = false
 min_random_start_offset = 0.5

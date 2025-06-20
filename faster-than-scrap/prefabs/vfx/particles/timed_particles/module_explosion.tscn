@@ -50,6 +50,7 @@ process_material = SubResource("ParticleProcessMaterial_nh6hu")
 [node name="SoundEmitter" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_nh6hu")
 autoplay = true
+bus = &"SFX"
 script = ExtResource("5_8e5kv")
 allow_multiple_sounds_at_once = false
 min_pitch_scale = 0.85

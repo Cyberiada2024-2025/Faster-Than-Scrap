@@ -63,6 +63,7 @@ self_damage_multiplier = 10.0
 
 [node name="SoundEmitter" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_gyi6c")
+bus = &"SFX"
 script = ExtResource("11_de7ep")
 allow_multiple_sounds_at_once = false
 max_pitch_scale = 1.2

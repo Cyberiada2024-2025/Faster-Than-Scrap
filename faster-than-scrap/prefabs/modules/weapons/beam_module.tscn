@@ -69,6 +69,7 @@ shape = NodePath("../DamageController/Damageable/CollisionShape3D")
 [node name="SoundEmitter" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("10_3d6pv")
 volume_db = 1.0
+bus = &"SFX"
 script = ExtResource("11_3d6pv")
 allow_multiple_sounds_at_once = false
 max_random_start_offset = 10.0

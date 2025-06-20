@@ -17,6 +17,7 @@ script = ExtResource("2_ot1re")
 [node name="SoundEmitter" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_g455v")
 max_polyphony = 5
+bus = &"SFX"
 script = ExtResource("4_n3v8k")
 min_pitch_scale = 0.75
 max_pitch_scale = 1.15

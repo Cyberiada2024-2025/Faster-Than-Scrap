@@ -65,11 +65,11 @@ func _ready() -> void:
 
 
 func _enter_tree() -> void:
-	freeze_ship(true)
+	set_freeze_mode(true)
 
 
 func _exit_tree() -> void:
-	freeze_ship(false)
+	set_freeze_mode(false)
 
 
 # ---------------mouse ---------------------------------------------
@@ -502,5 +502,5 @@ func _on_deny_pressed() -> void:
 	confirm_finish_message.visible = false
 
 
-func freeze_ship(if_freeze: bool):
-	GameManager.player_ship.freeze = if_freeze
+func set_freeze_mode(is_frozen: bool):
+	GameManager.player_ship.freeze = is_frozen

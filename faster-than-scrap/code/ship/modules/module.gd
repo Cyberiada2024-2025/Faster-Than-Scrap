@@ -95,7 +95,7 @@ func _on_release(_delta: float) -> void:
 
 
 func take_damage(damage: Damage) -> void:
-	if DebugMenu.enable_invincibility:
+	if DebugMenu.enable_invincibility and ship == GameManager.player_ship:
 		return
 
 	hp -= damage.value

@@ -12,7 +12,7 @@ signal energy_warning(energy: float)
 signal fuel_change(new_value: int)
 
 @export var cockpit: Cockpit
-@export var debug_movement_force: float = 30
+@export var debug_movement_force: float = 20
 
 ## All modules of the ship (to prevent checking the tree hierarchy).
 ## Mostly used for building phase
@@ -49,9 +49,7 @@ func _ready() -> void:
 	_on_energy_change()
 
 
-func _process(delta: float) -> void:
-	super(delta)
-
+func _physics_process(_delta: float) -> void:
 	if not DebugMenu.enable_debug_movement:
 		return
 

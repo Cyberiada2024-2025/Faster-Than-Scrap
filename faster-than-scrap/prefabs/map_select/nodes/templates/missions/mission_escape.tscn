@@ -1,17 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6sug4hxemhdp"]
+[gd_scene load_steps=8 format=3 uid="uid://c6sug4hxemhdp"]
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_v0x5j"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_2h3km"]
 [ext_resource type="Script" uid="uid://bmhwp67vae4gu" path="res://code/missions/info/mission_info.gd" id="3_v0x5j"]
 [ext_resource type="Texture2D" uid="uid://b13ef553h7ss7" path="res://art/textures/ui/mapselect/vortex.png" id="4_v0x5j"]
+[ext_resource type="PackedScene" uid="uid://bu7xth2x7rywt" path="res://prefabs/map_select/nodes/node_connections.tscn" id="5_2h3km"]
+[ext_resource type="Script" uid="uid://50o55qmu5g5c" path="res://code/map_select/cross.gd" id="6_vn0no"]
 
 [sub_resource type="Resource" id="Resource_2h3km"]
 script = ExtResource("3_v0x5j")
 about = ""
 difficulty = 0
 
-[node name="MissionEscape" type="TextureButton"]
-modulate = Color(0, 0, 1, 1)
+[node name="MissionEscape" type="TextureButton" node_paths=PackedStringArray("icon", "cross")]
+self_modulate = Color(0, 0, 1, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,6 +26,8 @@ stretch_mode = 5
 script = ExtResource("2_2h3km")
 mission_info = SubResource("Resource_2h3km")
 modulate_color = Color(0, 0, 1, 1)
+icon = NodePath("TextureRect")
+cross = NodePath("Cross")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.462291, 0.462291, 0.462291, 1)
@@ -36,5 +40,20 @@ grow_vertical = 2
 texture = ExtResource("4_v0x5j")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="NodeConnections" parent="." node_paths=PackedStringArray("node") instance=ExtResource("5_2h3km")]
+layout_mode = 1
+node = NodePath("..")
+
+[node name="Cross" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_vn0no")
+metadata/_custom_type_script = "uid://50o55qmu5g5c"
 
 [connection signal="pressed" from="." to="." method="on_click"]

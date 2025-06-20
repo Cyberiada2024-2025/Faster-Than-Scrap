@@ -52,26 +52,6 @@ var module_explosion_prefab = preload(
 )
 
 
-func keycode_from_input_map(event_name: String) -> Key:
-	return (InputMap.action_get_events(event_name)[0] as InputEventKey) \
-			.get_physical_keycode_with_modifiers()
-
-
-func reserve_keys_from_actions(actions: Array[String]):
-	for action in actions:
-		reserved_keys.append(keycode_from_input_map(action))
-
-
-func reserve_keys():
-	if DebugMenu.is_debug:
-		reserve_keys_from_actions(["debug_menu"])
-
-	reserve_keys_from_actions([
-		"pause_menu",
-		"Skip Cutscene"
-	])
-
-
 func _ready() -> void:
 	reserve_keys()
 	activation_key_saved = activation_key
@@ -286,3 +266,23 @@ static func find_all_modules(node: Node) -> Array[Module]:
 	var modules: Array[Module] = []
 	modules.assign(result)	# create module typed array
 	return modules
+
+
+func keycode_from_input_map(event_name: String) -> Key:
+	return (InputMap.action_get_events(event_name)[0] as InputEventKey) \
+			.get_physical_keycode_with_modifiers()
+
+
+func reserve_keys_from_actions(actions: Array[String]):
+	for action in actions:
+		reserved_keys.append(keycode_from_input_map(action))
+
+
+func reserve_keys():
+	if DebugMenu.is_debug:
+		reserve_keys_from_actions(["debug_menu"])
+
+	reserve_keys_from_actions([
+		"pause_menu",
+		"Skip Cutscene"
+	])

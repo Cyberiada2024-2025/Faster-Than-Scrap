@@ -69,9 +69,10 @@ func load_fly_ship_scene(
 
 	GameManager.set_game_state(GameState.State.FLY)
 
-	if use_saved_pos_rot:
+	if use_saved_pos_rot and GameManager.player_ship != null:
 		pos = GameManager.player_ship.get_saved_position()
 		rot = GameManager.player_ship.get_saved_rotation()
+
 	_attach_ship_with_hud.call_deferred(pos, rot)
 
 	_set_vortex_preserve(false)

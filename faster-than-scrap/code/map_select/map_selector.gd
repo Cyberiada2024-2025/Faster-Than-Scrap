@@ -37,7 +37,10 @@ func on_node_clicked(clicked_node: MapNode) -> void:
 
 
 func on_leave_button_clicked() -> void:
-	if selected_node != null and selected_node.is_after_node(active_node):
+	if selected_node == null:
+		return
+
+	if selected_node.is_after_node(active_node) or DebugMenu.disable_map_node_checks:
 		MapGenerator.set_node(selected_node)
 		MapSaver.save_map()
 		selected_node.change_scene(scene_loader)

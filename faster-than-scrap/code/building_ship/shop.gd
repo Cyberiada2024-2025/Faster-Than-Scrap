@@ -157,6 +157,9 @@ func _on_bank_change() -> void:
 
 
 func _on_finish_pressed() -> void:
+	if DebugMenu.disable_money_checks:
+		_exit_shop()
+
 	if bank < 0:
 		deny_finish.visible = true
 		deny_finish_label.text = "You cannot leave without paying for modules!"

@@ -12,6 +12,7 @@ signal energy_warning(energy: float)
 signal fuel_change(new_value: int)
 
 @export var cockpit: Cockpit
+@export var debug_movement_force: float = 20
 
 ## All modules of the ship (to prevent checking the tree hierarchy).
 ## Mostly used for building phase
@@ -37,8 +38,32 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	super()
 	GameManager.new_game_state.connect(on_game_change_state)
+
+	if DebugMenu.is_debug:
+		DebugMenu.toggle_player_collisions.connect(_toggle_collisions)
+
+		if DebugMenu.disable_collisions:
+			_toggle_collisions()
+
 	energy_max_change.emit(max_energy)
 	_on_energy_change()
+
+
+func _physics_process(_delta: float) -> void:
+	if not DebugMenu.enable_debug_movement:
+		return
+
+	var input_direction = Input.get_vector(
+		"debug_move_left", "debug_move_right", "debug_move_up", "debug_move_down"
+	)
+
+	var force_direction = Vector3(
+		input_direction.x,
+		0,
+		input_direction.y,
+	)
+
+	apply_force(force_direction * debug_movement_force)
 
 
 func on_game_change_state(new_state: GameState.State) -> void:
@@ -90,3 +115,9 @@ func use_energy(amount: float) -> bool:
 func on_destroy() -> void:
 	super()
 	GameManager.show_death_screen()
+
+
+func _toggle_collisions() -> void:
+	for child in get_children():
+		if child is CollisionShape3D:
+			child.disabled = not child.disabled

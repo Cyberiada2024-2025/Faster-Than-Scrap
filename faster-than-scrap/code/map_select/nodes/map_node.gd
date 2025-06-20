@@ -14,10 +14,18 @@ signal clicked(MapNode)
 ## if player came through that node
 @export var finished: bool = false
 
+@export var icon: TextureRect
+@export var cross: Cross
+
 var selected: bool = false
 
 var angle: float = 0
 var arc_count: int = 10
+
+
+func _ready() -> void:
+	if finished:
+		cross.show_cross()
 
 
 func _process(_delta: float) -> void:
@@ -29,56 +37,22 @@ func _process(_delta: float) -> void:
 
 func _draw() -> void:
 	_set_color()
-	_draw_connections()
 	if selected:
 		draw_selected()
-
-
-func _draw_connections() -> void:
-	var local_start = get_rect().get_center() - get_rect().position
-	for next_node in next_map_nodes:
-		if next_node != null:
-			var offset = (
-				# offset between beggings of rects
-				Vector2(next_node.global_position.x - global_position.x, 0)
-				# offset to center of next node
-				+ (next_node.get_rect().get_center() - next_node.get_rect().position)
-				+ next_node.get_rect().position
-				- get_rect().position
-			)
-			draw_line(local_start, offset, Color.BLACK, 8.0)
 
 
 ## change color according to node type
 func _set_color() -> void:
 	if active:
-		modulate = Color.WHITE
+		self_modulate = Color.WHITE
 		draw_active()
 		return
 	if finished:
-		modulate = Color.GRAY
-		draw_finished()
+		self_modulate = Color.GRAY
 
-
-func draw_finished():
-	var local_start = get_rect().get_center() - get_rect().position
-	var radius = get_rect().size.x / 2
-
-	# draw / line
-	draw_line(
-		local_start + Vector2(-radius, -radius),
-		local_start + Vector2(radius, radius),
-		Color.RED,
-		8.0
-	)
-
-	# draw \ line
-	draw_line(
-		local_start + Vector2(-radius, radius),
-		local_start + Vector2(radius, -radius),
-		Color.RED,
-		8.0
-	)
+	if icon == null:
+		return
+	icon.modulate = self_modulate * Color(0.5, 0.5, 0.5)
 
 
 func draw_active():
@@ -102,9 +76,14 @@ func draw_active():
 
 func draw_selected():
 	var local_start = get_rect().get_center() - get_rect().position
-	var radius = (get_rect().size.x / 2) * (3.0 / 4)
+	var min_radius = get_rect().size.x * 2 / 3
+	var max_radius = get_rect().size.x
 
-	draw_arc(local_start, radius, angle, 2 * PI + angle, 5, Color.GRAY, 8)
+	const frequency: float = 5
+	var t = sin(angle * frequency) / 2 + 0.5
+	var radius = lerp(min_radius, max_radius, t)
+
+	draw_arc(local_start, radius, angle, 2 * PI + angle, 20, Color.GRAY, 4)
 
 
 func on_click() -> void:

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu7xth2x7rywt"]
+
+[ext_resource type="Script" uid="uid://dfeunmcfaojd7" path="res://code/map_select/node_connections.gd" id="1_ktbm6"]
+
+[node name="NodeConnections" type="Control"]
+z_index = -1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ktbm6")
+metadata/_custom_type_script = "uid://dfeunmcfaojd7"

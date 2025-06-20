@@ -61,7 +61,7 @@ func _on_money_checks_pressed() -> void:
 	disable_money_checks = not disable_money_checks
 
 
-func _on_debug_movement() -> void:
+func _on_debug_movement_pressed() -> void:
 	enable_debug_movement = not enable_debug_movement
 
 

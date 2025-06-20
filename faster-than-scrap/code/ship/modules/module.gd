@@ -39,7 +39,7 @@ const EXPLOSION_DISTANCE_EXPONENT = 1
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var prize: int = 1
 @export_multiline var description: String
 
-var reserved_keys: Array[Key] = [KEY_ENTER, KEY_ESCAPE]
+var reserved_keys: Array[Key]
 
 var was_key_pressed: bool = false
 

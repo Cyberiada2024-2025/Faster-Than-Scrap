@@ -98,6 +98,6 @@ script = ExtResource("2_fmo40")
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 1" to="." method="_on_invincibility_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 2" to="." method="_on_collisions_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 3" to="." method="_on_money_checks_pressed"]
-[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 4" to="." method="_on_debug_movement"]
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 4" to="." method="_on_debug_movement_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 5" to="." method="_on_map_node_checks_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 6" to="." method="_on_map_select_pressed"]

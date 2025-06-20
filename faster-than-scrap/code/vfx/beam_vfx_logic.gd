@@ -8,13 +8,15 @@ const END_ANIM: String = "Off"
 
 var animation_check: bool
 
+
 func _ready() -> void:
 	animation_check = player.has_animation(START_ANIM) && player.has_animation(END_ANIM)
 	if animation_check:
 		player.play(START_ANIM)
 
+
 func _notification(notification):
-	if (notification == NOTIFICATION_PREDELETE):
+	if notification == NOTIFICATION_PREDELETE and get_parent() != null:
 		holder.reparent(get_parent())
 		if animation_check:
 			player.play(END_ANIM)

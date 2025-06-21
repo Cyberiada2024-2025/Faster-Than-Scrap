@@ -4,10 +4,16 @@ extends Mission
 
 @export var vortex_center: Node3D
 
+var _kill_enemies_tutorial_cutscene = preload(
+	"res://prefabs/ui/cutscenes/tutorials/missions/kill_enemies_tutorial.tscn"
+)
+
 
 func setup() -> void:
 	super()
 	_spawn_vortex(vortex_center.global_position)
+
+	CutsceneManager.play_cutscene(_kill_enemies_tutorial_cutscene)
 
 
 func _process(_delta: float) -> void:

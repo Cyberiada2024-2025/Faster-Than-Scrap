@@ -51,3 +51,10 @@ func try_deactivate() -> bool:
 	if muzzle_flash != null:
 		muzzle_flash.emitting = false
 	return true
+
+
+func force_deactivate() -> void:
+	if active_projectile == null:
+		return
+	active_projectile.get_parent().remove_child(active_projectile)
+	active_projectile.queue_free()

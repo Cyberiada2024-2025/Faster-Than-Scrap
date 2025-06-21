@@ -1,12 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://0txf83d46q4j"]
+[gd_scene load_steps=5 format=3 uid="uid://0txf83d46q4j"]
 
 [ext_resource type="Script" uid="uid://k3n7j0mjfmxt" path="res://code/damage/damage_controller.gd" id="1_a5jg1"]
 [ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://code/damage/damageable.gd" id="2_ot1re"]
+[ext_resource type="AudioStream" uid="uid://b3yhuj0eups7i" path="res://art/audio/sounds/dmg_taken.mp3" id="3_g455v"]
+[ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="4_n3v8k"]
 
-[node name="DamageController" type="Node3D"]
+[node name="DamageController" type="Node3D" node_paths=PackedStringArray("_damaged_sound_emitter")]
 script = ExtResource("1_a5jg1")
+_damaged_sound_emitter = NodePath("SoundEmitter")
 
 [node name="Damageable" type="Area3D" parent="." groups=["affected by vortex"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("2_ot1re")
+
+[node name="SoundEmitter" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_g455v")
+max_polyphony = 5
+bus = &"SFX"
+script = ExtResource("4_n3v8k")
+min_pitch_scale = 0.75
+max_pitch_scale = 1.15
+metadata/_custom_type_script = "uid://b1ghhc3fukfu3"

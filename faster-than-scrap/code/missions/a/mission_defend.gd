@@ -5,12 +5,14 @@ extends Mission
 @export_category("Main defendable")
 @export var defendable_position: Node3D
 @export var time_to_defend: float = 20
-@export var defend_prefab = preload("res://prefabs/environment/defend_target.tscn")
+@export var defend_prefab = preload("res://prefabs/environment/mission_related/defend_target.tscn")
 
 @export_category("Small defendables")
 @export var small_defendable_position: Array[Node3D] = []
 @export var small_time_to_defend: float = 5
-@export var small_defend_prefab = preload("res://prefabs/environment/defend_target_small.tscn")
+@export var small_defend_prefab = preload(
+	"res://prefabs/environment/mission_related/defend_target_small.tscn"
+)
 
 var _capture_counter: int = 1
 
@@ -60,5 +62,6 @@ func _on_capture() -> void:
 	print("succesfuly defended!")
 	_capture_counter -= 1
 	if _capture_counter == 0:
+		await get_tree().create_timer(2.0).timeout
 		state = MissionState.FINISHED
 		finished.emit(self)

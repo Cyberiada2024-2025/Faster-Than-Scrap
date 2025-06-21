@@ -43,5 +43,9 @@ func try_deactivate() -> bool:
 	return false
 
 
+func force_deactivate():
+	pass
+
+
 func _spawn_projectile() -> Node3D:
 	return projectile.instantiate()

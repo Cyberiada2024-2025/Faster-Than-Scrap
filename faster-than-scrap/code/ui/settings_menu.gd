@@ -1,6 +1,5 @@
 extends Control
 
-var scene_loader: SceneLoader
 var brakes_check_box: CheckBox
 var air_resistance_check_box: CheckBox
 var skip_cutscenes_check_box: CheckBox
@@ -11,14 +10,13 @@ func _enter_tree() -> void:
 	air_resistance_check_box = $VBoxContainer/HBoxContainer/Buttons/AirResistanceCheckBox
 	skip_cutscenes_check_box = $VBoxContainer/HBoxContainer/Buttons/SkipCutscenesCheckBox
 
-	scene_loader = $SceneLoader
 	brakes_check_box.button_pressed = SettingsManager.brakes_enabled
 	air_resistance_check_box.button_pressed = SettingsManager.air_resistance
 	skip_cutscenes_check_box.button_pressed = SettingsManager.skip_cutscenes
 
 
 func _on_button_pressed() -> void:
-	scene_loader.load_main_menu_scene()
+	visible = false
 
 
 func _on_brakes_check_box_pressed() -> void:

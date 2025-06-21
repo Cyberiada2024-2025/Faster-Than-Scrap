@@ -6,7 +6,7 @@ extends Resource
 ## It does not process the progress of a mission.
 ## Supposed to be used in the map select.
 
-@export var about: String = ""
+@export_multiline var about: String = ""
 @export var difficulty: int
 
 

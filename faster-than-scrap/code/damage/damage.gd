@@ -18,7 +18,7 @@ func _init(damage_value: float = 0, damage_type: Type = Type.NORMAL):
 
 
 func _to_string():
-	return "Damage " + str(value) + " (" + str(type) + ")"
+	return "Damage " + str(value) + " (" + str(Type.keys()[type]) + ")"
 
 
 ## Returns damage increased by [code]other_damage[/code].

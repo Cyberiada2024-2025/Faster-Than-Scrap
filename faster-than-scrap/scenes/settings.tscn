@@ -97,4 +97,5 @@ script = ExtResource("8_oe2nd")
 
 [connection signal="pressed" from="Buttons/BrakesCheckBox" to="." method="_on_brakes_check_box_pressed"]
 [connection signal="pressed" from="Buttons/AirResistanceCheckBox" to="." method="_on_air_resistance_check_box_pressed"]
+[connection signal="pressed" from="Buttons/SkipCutscenesCheckBox" to="." method="_on_skip_cutscenes_check_box_pressed"]
 [connection signal="pressed" from="Buttons/ReturnButton" to="." method="_on_button_pressed"]

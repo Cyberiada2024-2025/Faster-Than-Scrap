@@ -64,6 +64,14 @@ func _ready() -> void:
 		ignore_rid.push_back(ig.get_rid())
 
 
+func _enter_tree() -> void:
+	set_freeze_mode(true)
+
+
+func _exit_tree() -> void:
+	set_freeze_mode(false)
+
+
 # ---------------mouse ---------------------------------------------
 func _update_mouse_3d_position():
 	var camera = get_viewport().get_camera_3d()
@@ -492,3 +500,7 @@ func _on_confirm_pressed() -> void:
 
 func _on_deny_pressed() -> void:
 	confirm_finish_message.visible = false
+
+
+func set_freeze_mode(is_frozen: bool):
+	GameManager.player_ship.freeze = is_frozen

@@ -6,7 +6,7 @@ const DEFAULT_MAP_SELECT = preload("res://prefabs/map_select/full_maps/map1.tscn
 
 @export var map_container: Control
 @export var button: Button
-@export var label: Label
+@export var label: RichTextLabel
 @export var scene_loader: SceneLoader
 
 

@@ -61,6 +61,9 @@ self_damage_multiplier = 10.0
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("4_putpi")]
 
+[node name="Sprite3D" parent="ModuleDisplay" index="0"]
+transform = Transform3D(0.45, 0, 0, 0, -3.43134e-08, 0.45, 0, -0.785, -1.96701e-08, 0, 0, 0)
+
 [node name="SoundEmitter" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_gyi6c")
 bus = &"SFX"

@@ -24,6 +24,8 @@ var skip_circle: CircleProgressBar
 
 
 func _enter_tree() -> void:
+	if SettingsManager.skip_cutscenes:
+		queue_free()
 	slides.assign(find_children("*", "Slide"))
 	modulate = WHITE_TRANSPARENT
 	process_mode = Node.PROCESS_MODE_ALWAYS

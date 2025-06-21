@@ -19,4 +19,4 @@ func _on_start_button_pressed() -> void:
 
 
 func _on_settings_button_pressed() -> void:
-	scene_loader.load_settings_scene()
+	$Settings.visible = true

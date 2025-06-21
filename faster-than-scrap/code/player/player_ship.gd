@@ -11,6 +11,9 @@ signal energy_warning(energy: float)
 
 signal fuel_change(new_value: int)
 
+@export var linear_damp_value := 0.4
+@export var angular_damp_value := 1.5
+
 @export var cockpit: Cockpit
 @export var debug_movement_force: float = 20
 
@@ -37,6 +40,9 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	super()
+	if SettingsManager.air_resistance:
+		linear_damp = linear_damp_value
+		angular_damp = angular_damp_value
 	GameManager.new_game_state.connect(on_game_change_state)
 
 	if DebugMenu.is_debug:

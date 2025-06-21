@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyj46rbaohfnw"]
+[gd_scene load_steps=10 format=3 uid="uid://dyj46rbaohfnw"]
 
 [ext_resource type="Script" uid="uid://bk270qnughqkv" path="res://code/main_menu.gd" id="1_4xnjd"]
 [ext_resource type="Texture2D" uid="uid://d4ea46ajcslyj" path="res://art/textures/main_menu/map_select_background.png" id="2_tbmy8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://go1u7xe1f41q" path="res://art/textures/main_menu/background_mask.png" id="5_lgwnu"]
 [ext_resource type="Script" uid="uid://b8kgrdxasqvq0" path="res://code/main_menu/background_light.gd" id="6_flqon"]
 [ext_resource type="Texture2D" uid="uid://cvsc1hfn6jjb" path="res://art/textures/main_menu/main_title.png" id="7_rcqid"]
+[ext_resource type="PackedScene" uid="uid://36s8658cgl8t" path="res://scenes/settings.tscn" id="9_jk1qb"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -94,6 +95,10 @@ text = "EXIT"
 
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("3_0uprt")
+
+[node name="Settings" parent="." instance=ExtResource("9_jk1qb")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="Buttons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]

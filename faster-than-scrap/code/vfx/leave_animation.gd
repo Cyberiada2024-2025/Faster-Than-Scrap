@@ -2,6 +2,7 @@ class_name LeavingAnimation
 
 extends Node3D
 
+@export var jump_sound_emitter: SoundEmitter
 @export_category("Animation")
 @export var prepare_particles: GPUParticles3D
 @export var anim_player: AnimationPlayer
@@ -46,6 +47,9 @@ func start_animation(ending_method: Callable) -> void:
 		animating = true
 		saved_transform = player.transform
 		anim_timer = 0
+
+		if jump_sound_emitter:
+			jump_sound_emitter.start_playing()
 
 
 func _on_animation_finished(anim_name: StringName) -> void:

@@ -77,7 +77,7 @@ func _damage_objects(delta: float) -> void:
 		if not is_instance_valid(damageable):
 			damageables_in_vortex.remove_at(i)
 			continue
-		damageable.take_damage(Damage.new(DAMAGE * delta), self)
+		damageable.take_damage(Damage.new(DAMAGE * delta, Damage.Type.VORTEX), self)
 
 
 func _on_body_exited(body: Node3D) -> void:

@@ -101,32 +101,35 @@ theme_override_font_sizes/font_size = 30
 text = "Skip cutscenes"
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="Sliders" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="general_label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="general_label" type="Label" parent="VBoxContainer/HBoxContainer/Sliders"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "General"
 
-[node name="General" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("8_am25x")]
+[node name="General" parent="VBoxContainer/HBoxContainer/Sliders" instance=ExtResource("8_am25x")]
 layout_mode = 2
+bus_name = "Master"
 
-[node name="music_label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="music_label" type="Label" parent="VBoxContainer/HBoxContainer/Sliders"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Music"
 
-[node name="Music" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("8_am25x")]
+[node name="Music" parent="VBoxContainer/HBoxContainer/Sliders" instance=ExtResource("8_am25x")]
 layout_mode = 2
+bus_name = "Music"
 
-[node name="sfx_label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="sfx_label" type="Label" parent="VBoxContainer/HBoxContainer/Sliders"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Sound Effects"
 
-[node name="sfx" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("8_am25x")]
+[node name="sfx" parent="VBoxContainer/HBoxContainer/Sliders" instance=ExtResource("8_am25x")]
 layout_mode = 2
+bus_name = "SFX"
 
 [node name="ReturnButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2

@@ -14,8 +14,7 @@ func _ready() -> void:
 
 func enter(_previous_state_path: String, _data := {}) -> void:
 	# start playing in each animator
-	for animator: AnimationTree in animators:
-		animator.set("parameters/conditions/" + condition_name, 1)
+	_set_param(1)
 	frame_counter = 2
 
 
@@ -23,11 +22,23 @@ func _process(delta: float) -> void:
 	frame_counter -= 1
 	if frame_counter == 0:
 		# remove the flag, the animator will continue
-		for animator: AnimationTree in animators:
-			animator.set("parameters/conditions/" + condition_name, 0)
+		_set_param(0)
 
 
 func exit() -> void:
 	# in case remove the flag
+	_set_param(0)
+
+
+func _set_param(value) -> void:
+	var animators_to_remove = []
+
 	for animator: AnimationTree in animators:
-		animator.set("parameters/conditions/" + condition_name, 0)
+		if is_instance_valid(animator):
+			animator.set("parameters/conditions/" + condition_name, value)
+		else:
+			animators_to_remove.append(animator)
+
+	# remove deleleted animators
+	for animator in animators_to_remove:
+		animators.erase(animator)

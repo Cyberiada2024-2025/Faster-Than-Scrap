@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bt8d0ddaju6v3"]
 
 [ext_resource type="PackedScene" uid="uid://c3eya106w3wa6" path="res://art/models/bosses/vortex boss/vortex_spike.fbx" id="1_eq0nt"]
-[ext_resource type="Material" uid="uid://bgam2oq63dvfq" path="res://art/materials/bosses/vortex_boss/vortex_boss_material.tres" id="2_yqgks"]
+[ext_resource type="Material" uid="uid://cxj16ewr2gn5r" path="res://art/materials/bosses/vortex_boss/vortex_boss_material_spike.tres" id="2_yqgks"]
 
 [node name="vortex_spike" instance=ExtResource("1_eq0nt")]
 

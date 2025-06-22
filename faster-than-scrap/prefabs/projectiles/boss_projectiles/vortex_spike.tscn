@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_ne3qg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ybhc0"]
+size = Vector3(0.6, 1.925, 0.6)
 
 [sub_resource type="Resource" id="Resource_ybhc0"]
 script = ExtResource("3_ne3qg")
@@ -14,9 +15,11 @@ type = 0
 metadata/_custom_type_script = "uid://cukcjob61wwp7"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ne3qg"]
+size = Vector3(0.5, 1.555, 0.5)
 
 [node name="VortexSpike" type="StaticBody3D"]
 script = ExtResource("1_b8qmk")
+max_scale = Vector3(5, 5, 45)
 grow_time = 2.0
 
 [node name="vortex_spike2" parent="." instance=ExtResource("2_ybhc0")]

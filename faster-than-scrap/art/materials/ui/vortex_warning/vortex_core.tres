@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bqtfmrm0qrb2y"]
+
+[ext_resource type="Shader" uid="uid://by0fsgs3u77r1" path="res://art/shaders/graphs/vortex_core.tres" id="1_lcvuh"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_lcvuh")
+shader_parameter/Noise_scale = Vector2(15, 15)
+shader_parameter/Noise_speed = Vector2(0, 3)
+shader_parameter/Noise_Strength = 0.299
+shader_parameter/Fresnel_Power = 0.585
+shader_parameter/Alpha_clip = 0.73
+shader_parameter/Outline_Color_Clip = 0.862
+shader_parameter/Main_Color = Color(0.652972, 0.148271, 0.520074, 1)
+shader_parameter/Outline_Color = Color(0.92, 0, 0, 1)
+shader_parameter/Emmision_strength = 10.74

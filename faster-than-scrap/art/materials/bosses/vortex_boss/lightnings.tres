@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c3u3hwswb2tnq"]
+
+[ext_resource type="Shader" uid="uid://b2idmkcjnpd2b" path="res://art/shaders/graphs/lightnings.tres" id="1_ljnh7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ljnh7")
+shader_parameter/Noise_scale = Vector2(4, 4)
+shader_parameter/Lightning_width = 0.483
+shader_parameter/Color = Color(0.888376, 6.00672e-05, 0.678164, 1)
+shader_parameter/Speed = 0.405
+shader_parameter/Frequency = 4.0
+shader_parameter/Pulse_Width = 0.2

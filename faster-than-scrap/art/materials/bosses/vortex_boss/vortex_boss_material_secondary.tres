@@ -5,10 +5,11 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_f841q")
-shader_parameter/Scale = Vector2(6, 1)
-shader_parameter/Speed = 0.75
-shader_parameter/Detail_width = 0.02
+shader_parameter/Scale = Vector2(5, 0.25)
+shader_parameter/Speed = 0.208
+shader_parameter/Detail_width = 0.034
 shader_parameter/Alpha_threshold = 0.405
-shader_parameter/Main_Color = Color(0, 0, 0, 1)
-shader_parameter/Detail = Color(0.872362, 0.000201187, 0.760625, 1)
-shader_parameter/Emission_strength = 49.46
+shader_parameter/Main_Color = Color(0.174812, 0.0116334, 0.0886759, 1)
+shader_parameter/Detail = Color(0.94, 0, 0.0156664, 1)
+shader_parameter/Emission_strength = 0.5
+shader_parameter/Bump_strength = 2.0

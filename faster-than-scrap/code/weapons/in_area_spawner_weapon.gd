@@ -19,7 +19,7 @@ func try_activate() -> Node3D:
 
 	# spawn multiple if needed
 	for index in range(spawn_count - 2):
-		var copy: Node3D = created_projectile.duplicate()
+		var copy: Node3D = _spawn_projectile()
 		copy.position += get_random_point_in_donut()
 
 	return created_projectile

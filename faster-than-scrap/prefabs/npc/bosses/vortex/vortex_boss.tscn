@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://butrr4i156xbg" path="res://prefabs/npc/bosses/vortex/lightnings.tscn" id="5_lqxhd"]
 [ext_resource type="Script" path="res://code/weapons/on_target_spawner_weapon.gd" id="5_pqq2h"]
 [ext_resource type="Script" uid="uid://cdwjrb230l0qw" path="res://code/enemy/states/move/teleport.gd" id="6_yljnl"]
-[ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://art/textures/damageable.gd" id="7_bac5w"]
+[ext_resource type="Script" path="res://code/damage/damageable.gd" id="7_bac5w"]
 [ext_resource type="Script" path="res://code/enemy/transitions/transition_on_state_finish.gd" id="7_yfy1f"]
 [ext_resource type="Script" uid="uid://sb0nfuqj50k0" path="res://code/weapons/in_area_spawner_weapon.gd" id="8_kr82f"]
 [ext_resource type="PackedScene" path="res://prefabs/projectiles/boss_projectiles/vortex_spike_flash.tscn" id="9_2hnf7"]
@@ -71,6 +71,7 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 [node name="Damageable" parent="StaticBody3D/Core/DamageController" index="0"]
 collision_layer = 4
 collision_mask = 0
+script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Core/DamageController/Damageable" index="0"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -95,7 +96,6 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("7_bac5w")
-metadata/_custom_type_script = "uid://b7c5dxlqsxtlt"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Ring/Physics collision/Ring/Weapon invulerability"]
 shape = SubResource("SphereShape3D_ivemq")

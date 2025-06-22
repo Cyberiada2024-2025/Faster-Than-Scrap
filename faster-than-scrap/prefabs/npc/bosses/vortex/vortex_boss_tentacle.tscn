@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bh8v13whyy4yi" path="res://art/model_prefabs/bosses/vortex_boss/vortex_boss_tentacle.tscn" id="1_h2ybq"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="2_yvsoy"]
 [ext_resource type="PackedScene" uid="uid://b18x1myvqvjyg" path="res://prefabs/npc/bosses/vortex/vortex_core.tscn" id="3_yvsoy"]
-[ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://art/textures/damageable.gd" id="4_yvsoy"]
+[ext_resource type="Script" path="res://code/damage/damageable.gd" id="4_yvsoy"]
 
 [sub_resource type="Resource" id="Resource_2lbfk"]
 script = ExtResource("2_yvsoy")
@@ -40,13 +40,13 @@ metadata/_custom_type_script = "uid://df3sgcpdwrckg"
 [node name="vortex_boss_tentacle" parent="." instance=ExtResource("1_h2ybq")]
 
 [node name="Skeleton3D" parent="vortex_boss_tentacle/Armature_007" index="0"]
-bones/0/rotation = Quaternion(0.679294, 0.196366, -0.679294, 0.196366)
-bones/1/rotation = Quaternion(-0.337369, -1.48158e-08, 2.21606e-08, 0.941373)
-bones/2/rotation = Quaternion(-0.201373, -5.53354e-09, 2.69161e-08, 0.979515)
-bones/3/rotation = Quaternion(0.0556373, 7.89963e-09, 2.54597e-08, 0.998451)
+bones/0/rotation = Quaternion(0.698389, -0.11069, -0.698389, -0.11069)
+bones/1/rotation = Quaternion(0.324804, 2.27932e-09, 2.65595e-08, 0.945781)
+bones/2/rotation = Quaternion(0.304725, 8.37353e-09, 2.61721e-08, 0.95244)
+bones/3/rotation = Quaternion(0.107496, 9.21322e-09, 2.50144e-08, 0.994206)
 
 [node name="TentacleHitbox1" type="BoneAttachment3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D" index="1"]
-transform = Transform3D(0, 0.53356, -0.845762, -8.9407e-08, -0.845762, -0.53356, -1, 5.96046e-08, 0, 0, 0, 0)
+transform = Transform3D(1.78814e-07, -0.309219, -0.950991, 1.49012e-08, -0.950991, 0.309219, -1, -5.96046e-08, -2.38419e-07, 0, 0, 0)
 bone_name = "Bone"
 bone_idx = 0
 
@@ -70,7 +70,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 8.88178e-16, 1.49012e-08, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_yvsoy")
 
 [node name="TentacleHitbox2" type="BoneAttachment3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D" index="2"]
-transform = Transform3D(1.66499e-08, 0.949314, -0.31433, -1.40055e-07, -0.31433, -0.949314, -1, 7.77625e-08, 8.07066e-08, 0.0111684, -0.0177034, 1.24764e-09)
+transform = Transform3D(1.50514e-07, -0.828252, -0.560356, -3.02818e-08, -0.560356, 0.828252, -1, -1.44751e-07, -1.73058e-07, -0.00647254, -0.0199061, -1.24764e-09)
 bone_name = "Bone.001"
 bone_idx = 1
 
@@ -93,7 +93,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 8.88178e-16, 1.49012e-08, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_2lbfk")
 
 [node name="TentacleHitbox3" type="BoneAttachment3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D" index="3"]
-transform = Transform3D(6.88222e-08, 0.996324, 0.0856633, -1.5733e-07, 0.0856633, -0.996324, -1, 9.01182e-08, 1.26519e-07, 0.0377901, -0.0265182, 3.42834e-09)
+transform = Transform3D(1.04995e-07, -0.9997, 0.0244811, -6.10779e-08, 0.0244812, 0.9997, -1, -1.73571e-07, -8.87965e-08, -0.0296992, -0.0356202, -5.30691e-09)
 bone_name = "Bone.002"
 bone_idx = 2
 
@@ -116,7 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 8.88178e-16, 1.49012e-08, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_kgmdp")
 
 [node name="TentacleHitbox4" type="BoneAttachment3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D" index="4"]
-transform = Transform3D(1.19243e-07, 0.999673, -0.0255609, -1.40005e-07, -0.0255609, -0.999673, -1, 1.53578e-07, 9.71154e-08, 0.0681496, -0.0239079, 6.17437e-09)
+transform = Transform3D(5.29738e-08, -0.971363, 0.237598, -7.27496e-08, 0.237598, 0.971364, -1, -1.40782e-07, -7.33416e-08, -0.0601616, -0.0348742, -1.05959e-08)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -139,7 +139,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 8.88178e-16, 1.49012e-08, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_5pbi6")
 
 [node name="Core weakpoint" type="BoneAttachment3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D" index="5"]
-transform = Transform3D(0, 0.53356, -0.845762, -8.9407e-08, -0.845762, -0.53356, -1, 5.96046e-08, 0, 0, 0, 0)
+transform = Transform3D(1.78814e-07, -0.309219, -0.950991, 1.49012e-08, -0.950991, 0.309219, -1, -5.96046e-08, -2.38419e-07, 0, 0, 0)
 bone_name = "Bone"
 bone_idx = 0
 
@@ -155,7 +155,7 @@ max_hp = 10.0
 hp = 10.0
 
 [node name="Core weakpoint2" type="BoneAttachment3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D" index="6"]
-transform = Transform3D(6.88222e-08, 0.996324, 0.0856633, -1.5733e-07, 0.0856633, -0.996324, -1, 9.01182e-08, 1.26519e-07, 0.0377901, -0.0265182, 3.42834e-09)
+transform = Transform3D(1.04995e-07, -0.9997, 0.0244811, -6.10779e-08, 0.0244812, 0.9997, -1, -1.73571e-07, -8.87965e-08, -0.0296992, -0.0356202, -5.30691e-09)
 bone_name = "Bone.002"
 bone_idx = 2
 

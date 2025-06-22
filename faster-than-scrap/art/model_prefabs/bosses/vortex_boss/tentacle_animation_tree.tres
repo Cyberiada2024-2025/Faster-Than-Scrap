@@ -1,0 +1,39 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=8 format=3 uid="uid://bjf44yvkg7vej"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bl6gg"]
+animation = &"Tentacle idle"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_7tviw"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_twx4p"]
+graph_offset = Vector2(-203, 0)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_bl6gg")
+nodes/Animation/position = Vector2(-120, 160)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_7tviw")
+nodes/TimeScale/position = Vector2(100, 140)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wggro"]
+animation = &"Spike warning"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kxu3s"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7wghn"]
+xfade_time = 0.8
+advance_mode = 2
+advance_condition = &"spike_warning"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bhhkq"]
+xfade_time = 2.0
+switch_mode = 2
+advance_mode = 2
+
+[resource]
+states/End/position = Vector2(862, 121)
+states/Idle/node = SubResource("AnimationNodeBlendTree_twx4p")
+states/Idle/position = Vector2(388, 121)
+"states/Spike warning/node" = SubResource("AnimationNodeAnimation_wggro")
+"states/Spike warning/position" = Vector2(613, 121)
+states/Start/position = Vector2(194, 121)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_kxu3s"), "Idle", "Spike warning", SubResource("AnimationNodeStateMachineTransition_7wghn"), "Spike warning", "Idle", SubResource("AnimationNodeStateMachineTransition_bhhkq")]

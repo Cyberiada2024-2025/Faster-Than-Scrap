@@ -2,17 +2,15 @@
 
 [ext_resource type="Script" uid="uid://dhqxa3bvfn8gj" path="res://code/weapons/projectiles/growable.gd" id="1_b8qmk"]
 [ext_resource type="Script" uid="uid://7rxxtodxpx1d" path="res://code/damage/damage_area_3d.gd" id="2_xhgwa"]
+[ext_resource type="PackedScene" uid="uid://bt8d0ddaju6v3" path="res://art/model_prefabs/bosses/vortex_boss/vortex_spike.tscn" id="2_ybhc0"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_ne3qg"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_xhgwa"]
-top_radius = 0.0
-radial_segments = 4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ybhc0"]
 
 [sub_resource type="Resource" id="Resource_ybhc0"]
 script = ExtResource("3_ne3qg")
 value = 1000.0
+type = 0
 metadata/_custom_type_script = "uid://cukcjob61wwp7"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ne3qg"]
@@ -21,10 +19,8 @@ metadata/_custom_type_script = "uid://cukcjob61wwp7"
 script = ExtResource("1_b8qmk")
 grow_time = 2.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, 8.74228e-08, -1)
-mesh = SubResource("CylinderMesh_xhgwa")
-skeleton = NodePath("../..")
+[node name="vortex_spike2" parent="." instance=ExtResource("2_ybhc0")]
+transform = Transform3D(0.8, 0, 0, 0, -2.22491e-08, 0.8, 0, -0.509, -3.49691e-08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.8, 0, 0, 0, -6.99382e-08, -0.8, 0, 1.6, -3.49691e-08, 0, 0.01, -1)

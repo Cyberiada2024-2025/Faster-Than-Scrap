@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg5w5w51gfb67"]
+
+[ext_resource type="PackedScene" uid="uid://diqy3r0wvanxs" path="res://art/models/bosses/vortex boss/vortex_pore.fbx" id="1_wqkcp"]
+[ext_resource type="Material" uid="uid://bgam2oq63dvfq" path="res://art/materials/bosses/vortex_boss/vortex_boss_material.tres" id="2_32grd"]
+
+[node name="vortex_pore" instance=ExtResource("1_wqkcp")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/0/scale = Vector3(0, 0, 0)
+bones/1/position = Vector3(0, 0, 0)
+bones/1/rotation = Quaternion(0, 0, 0, 1)
+bones/1/scale = Vector3(0, 0, 0)
+bones/2/position = Vector3(0, 0, 0)
+bones/2/rotation = Quaternion(0, 0, 0, 1)
+bones/2/scale = Vector3(0, 0, 0)
+bones/4/rotation = Quaternion(0, 0, 0, -1)
+bones/4/scale = Vector3(0, 0, 0)
+bones/5/position = Vector3(9.53674e-09, 0, 0)
+bones/5/rotation = Quaternion(0, 0, 0, -1)
+bones/5/scale = Vector3(0, 0, 0)
+bones/6/position = Vector3(9.53674e-09, 0, 0)
+bones/6/rotation = Quaternion(0, 0, 0, -1)
+bones/6/scale = Vector3(0, 0, 0)
+bones/8/rotation = Quaternion(0, 0, 0, 1)
+bones/8/scale = Vector3(0, 0, 0)
+bones/9/position = Vector3(0, 0, 0)
+bones/9/rotation = Quaternion(0, 0, 0, 1)
+bones/9/scale = Vector3(0, 0, 0)
+bones/10/position = Vector3(0, -1.86265e-09, 0)
+bones/10/rotation = Quaternion(0, 0, 0, 1)
+bones/10/scale = Vector3(0, 0, 0)
+bones/12/rotation = Quaternion(0, 0, 0, 1)
+bones/12/scale = Vector3(0, 0, 0)
+bones/13/position = Vector3(0, 1.11759e-08, 0)
+bones/13/rotation = Quaternion(0, 0, 0, -1)
+bones/13/scale = Vector3(0, 0, 0)
+bones/14/position = Vector3(0, 9.31323e-09, 0)
+bones/14/rotation = Quaternion(0, 0, 0, -1)
+bones/14/scale = Vector3(0, 0, 0)
+
+[node name="Pore" parent="Armature/Skeleton3D" index="0"]
+material_override = ExtResource("2_32grd")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Pore action"

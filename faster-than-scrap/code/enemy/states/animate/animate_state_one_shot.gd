@@ -18,7 +18,7 @@ func enter(_previous_state_path: String, _data := {}) -> void:
 	frame_counter = 2
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	frame_counter -= 1
 	if frame_counter == 0:
 		# remove the flag, the animator will continue

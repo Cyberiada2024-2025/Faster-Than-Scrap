@@ -1,19 +1,20 @@
-[gd_scene load_steps=29 format=3 uid="uid://1x45q2a5nnee"]
+[gd_scene load_steps=35 format=3 uid="uid://1x45q2a5nnee"]
 
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_bnu5o"]
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_cs180"]
 [ext_resource type="Script" path="res://code/ship/modules/explodable.gd" id="3_mclyr"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_treuf"]
+[ext_resource type="PackedScene" uid="uid://ba6bvjt5dyf6b" path="res://art/model_prefabs/bosses/vortex_boss/vortex_core.tscn" id="4_xtho6"]
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="5_bk2yy"]
-[ext_resource type="Script" uid="uid://bnjdv1cll5kvy" path="res://code/weapons/on_target_spawner_weapon.gd" id="5_pqq2h"]
-[ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="6_2hnf7"]
+[ext_resource type="PackedScene" uid="uid://butrr4i156xbg" path="res://prefabs/npc/bosses/vortex/lightnings.tscn" id="5_lqxhd"]
+[ext_resource type="Script" path="res://code/weapons/on_target_spawner_weapon.gd" id="5_pqq2h"]
 [ext_resource type="Script" uid="uid://cdwjrb230l0qw" path="res://code/enemy/states/move/teleport.gd" id="6_yljnl"]
-[ext_resource type="PackedScene" uid="uid://clbtrvxx10t1h" path="res://prefabs/npc/bosses/vortex/vortex_spike_warning.tscn" id="7_osa2j"]
-[ext_resource type="Script" uid="uid://clbayyulct4as" path="res://code/enemy/transitions/transition_on_state_finish.gd" id="7_yfy1f"]
+[ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://art/textures/damageable.gd" id="7_bac5w"]
+[ext_resource type="Script" path="res://code/enemy/transitions/transition_on_state_finish.gd" id="7_yfy1f"]
 [ext_resource type="Script" uid="uid://sb0nfuqj50k0" path="res://code/weapons/in_area_spawner_weapon.gd" id="8_kr82f"]
-[ext_resource type="PackedScene" uid="uid://coiccskokh2q6" path="res://prefabs/projectiles/boss_projectiles/vortex_spike_flash.tscn" id="9_2hnf7"]
-[ext_resource type="PackedScene" uid="uid://ncfq5uokthtd" path="res://prefabs/projectiles/boss_projectiles/vortex_cloud_flash.tscn" id="11_2hnf7"]
-[ext_resource type="PackedScene" uid="uid://b2xl30r0e0ece" path="res://prefabs/projectiles/boss_projectiles/vortex_spawn_flash.tscn" id="12_2hnf7"]
+[ext_resource type="PackedScene" path="res://prefabs/projectiles/boss_projectiles/vortex_spike_flash.tscn" id="9_2hnf7"]
+[ext_resource type="PackedScene" uid="uid://bqcsqeowaiij4" path="res://prefabs/projectiles/boss_projectiles/vortex_cloud_flash.tscn" id="11_2hnf7"]
+[ext_resource type="PackedScene" path="res://prefabs/projectiles/boss_projectiles/vortex_spawn_flash.tscn" id="12_2hnf7"]
 [ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="12_4qxwn"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="12_cbrw2"]
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="13_3aeiy"]
@@ -23,15 +24,21 @@
 [ext_resource type="Script" uid="uid://bwe8glgj1swy" path="res://code/enemy/transitions/boss_specific_transitions/damage_taken.gd" id="19_p6xao"]
 [ext_resource type="Script" uid="uid://b7v5naphnvff4" path="res://code/enemy/transitions/boss_specific_transitions/damage_memory.gd" id="20_pkmkm"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="21_hho6b"]
+[ext_resource type="Script" uid="uid://bi4im5upc3uyx" path="res://code/enemy/states/animate/animate_state_one_shot.gd" id="22_mbsxu"]
 [ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_player.gd" id="24_osa2j"]
-[ext_resource type="PackedScene" uid="uid://d307oss2yr4s5" path="res://prefabs/ui/cutscenes/boss_cutscenes/vortex_boss_cutscene.tscn" id="25_q7a2e"]
+[ext_resource type="PackedScene" path="res://prefabs/ui/cutscenes/boss_cutscenes/vortex_boss_cutscene.tscn" id="25_q7a2e"]
+[ext_resource type="PackedScene" uid="uid://ckxcfr4vlxbr1" path="res://prefabs/npc/bosses/vortex/vortex_boss_tentacle.tscn" id="26_mbsxu"]
+[ext_resource type="PackedScene" uid="uid://ixlivfkj2s1o" path="res://art/model_prefabs/bosses/vortex_boss/vortex_boss_tentacle_warning.tscn" id="27_xtho6"]
+[ext_resource type="PackedScene" uid="uid://jstvt3uuo0mv" path="res://art/model_prefabs/bosses/vortex_boss/vortex_boss_tentacle_secondary.tscn" id="28_ivemq"]
+[ext_resource type="PackedScene" uid="uid://j2dyy6flaq5t" path="res://art/model_prefabs/bosses/vortex_boss/vortex_ring.tscn" id="29_ivemq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_km21v"]
 size = Vector3(5, 1, 5)
 
-[sub_resource type="SphereMesh" id="SphereMesh_v24uf"]
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_8b1eu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ivemq"]
+radius = 7.0
 
 [node name="Vortex Boss" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
 script = ExtResource("1_bnu5o")
@@ -45,42 +52,55 @@ max_hp = 100.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="Body" type="CollisionShape3D" parent="StaticBody3D" node_paths=PackedStringArray("child_modules")]
+[node name="Core" type="CollisionShape3D" parent="StaticBody3D" node_paths=PackedStringArray("child_modules")]
 shape = SubResource("BoxShape3D_km21v")
 script = ExtResource("3_mclyr")
+max_hp = 20.0
+hp = 20.0
 child_modules = [null, null, null, null, null, null]
 metadata/_custom_type_script = "uid://cs6qd5cf3gviv"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/Body"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("SphereMesh_v24uf")
-skeleton = NodePath("")
+[node name="VortexCore" parent="StaticBody3D/Core" instance=ExtResource("4_xtho6")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
-[node name="DamageController" parent="StaticBody3D/Body" instance=ExtResource("4_treuf")]
+[node name="Lightnings" parent="StaticBody3D/Core" instance=ExtResource("5_lqxhd")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 
-[node name="Damageable" parent="StaticBody3D/Body/DamageController" index="0"]
+[node name="DamageController" parent="StaticBody3D/Core" instance=ExtResource("4_treuf")]
+
+[node name="Damageable" parent="StaticBody3D/Core/DamageController" index="0"]
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Core/DamageController/Damageable" index="0"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("SphereShape3D_8b1eu")
 
+[node name="Ring" type="Node3D" parent="StaticBody3D"]
+
+[node name="Physics collision" type="StaticBody3D" parent="StaticBody3D/Ring"]
+
+[node name="Ring" type="CollisionShape3D" parent="StaticBody3D/Ring/Physics collision" node_paths=PackedStringArray("child_modules")]
+shape = SubResource("SphereShape3D_ivemq")
+script = ExtResource("3_mclyr")
+max_hp = 250.0
+hp = 250.0
+child_modules = [null, null, null, null, null, null]
+metadata/_custom_type_script = "uid://cs6qd5cf3gviv"
+
+[node name="Mesh" parent="StaticBody3D/Ring/Physics collision/Ring" instance=ExtResource("29_ivemq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Weapon invulerability" type="Area3D" parent="StaticBody3D/Ring/Physics collision/Ring"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("7_bac5w")
+metadata/_custom_type_script = "uid://b7c5dxlqsxtlt"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Ring/Physics collision/Ring/Weapon invulerability"]
+shape = SubResource("SphereShape3D_ivemq")
+
 [node name="Weapons" type="Node3D" parent="StaticBody3D"]
-
-[node name="Spike warning shooter module" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
-script = ExtResource("5_bk2yy")
-weapon = NodePath("SpikeWarningShooter")
-max_hp = 0.0
-hp = 0.0
-ship = NodePath("../../../Boss")
-metadata/_custom_type_script = "uid://6f2yjn6wgcun"
-
-[node name="SpikeWarningShooter" type="Node3D" parent="StaticBody3D/Weapons/Spike warning shooter module"]
-script = ExtResource("6_2hnf7")
-cooldown = 2.0
-projectile = ExtResource("7_osa2j")
-metadata/_custom_type_script = "uid://bin0oxv424iww"
 
 [node name="Spike shooter module2" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
 script = ExtResource("5_bk2yy")
@@ -143,6 +163,7 @@ new_state = NodePath("../../RandomTransition After idle")
 
 [node name="DamageTaken" type="Node" parent="StateMachineNPC/Idle" node_paths=PackedStringArray("damage_memory", "new_state")]
 script = ExtResource("19_p6xao")
+health_percentage_taken = 0.18
 damage_memory = NodePath("../../Damage Memory")
 new_state = NodePath("../../Teleport")
 
@@ -157,17 +178,18 @@ weight = 6
 [node name="Weight to Cloud attack" type="Node" parent="StateMachineNPC/RandomTransition After idle" node_paths=PackedStringArray("state")]
 script = ExtResource("15_0jnmf")
 state = NodePath("../../Cloud Attack")
-weight = 3
+weight = 6
 
 [node name="Weight to Spawn enemies" type="Node" parent="StateMachineNPC/RandomTransition After idle" node_paths=PackedStringArray("state")]
 script = ExtResource("15_0jnmf")
 state = NodePath("../../Spawn enemies")
-weight = 1
 
 [node name="Teleport" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("node_to_scale", "_transition_to_call")]
 script = ExtResource("6_yljnl")
-teleport_radius = 40.0
-node_to_scale = NodePath("../../StaticBody3D")
+teleport_radius = 60.0
+max_angle_diff = 90.0
+scale_animation_time = 1.5
+node_to_scale = NodePath("../..")
 _transition_to_call = NodePath("OnStateFinish")
 
 [node name="OnStateFinish" type="Node" parent="StateMachineNPC/Teleport" node_paths=PackedStringArray("new_state")]
@@ -177,10 +199,10 @@ new_state = NodePath("../../Idle")
 [node name="Spike Warning" type="Node" parent="StateMachineNPC"]
 script = ExtResource("13_3aeiy")
 
-[node name="Shooting" type="Node" parent="StateMachineNPC/Spike Warning" node_paths=PackedStringArray("weapons")]
-script = ExtResource("12_4qxwn")
-weapons = [NodePath("../../../StaticBody3D/Weapons/Spike warning shooter module/SpikeWarningShooter")]
-metadata/_custom_type_script = "uid://c70pkbnps6ysy"
+[node name="Animate" type="Node" parent="StateMachineNPC/Spike Warning" node_paths=PackedStringArray("animators_root")]
+script = ExtResource("22_mbsxu")
+animators_root = NodePath("../../../Tentacles")
+condition_name = "spike_warning"
 
 [node name="TimedTransition" type="Node" parent="StateMachineNPC/Spike Warning" node_paths=PackedStringArray("new_state")]
 script = ExtResource("16_6qrt1")
@@ -189,6 +211,7 @@ new_state = NodePath("../../Spike attack")
 
 [node name="DamageTaken" type="Node" parent="StateMachineNPC/Spike Warning" node_paths=PackedStringArray("damage_memory", "new_state")]
 script = ExtResource("19_p6xao")
+health_percentage_taken = 0.18
 damage_memory = NodePath("../../Damage Memory")
 new_state = NodePath("../../Teleport")
 
@@ -207,6 +230,7 @@ new_state = NodePath("../../Idle")
 
 [node name="DamageTaken" type="Node" parent="StateMachineNPC/Spike attack" node_paths=PackedStringArray("damage_memory", "new_state")]
 script = ExtResource("19_p6xao")
+health_percentage_taken = 0.18
 damage_memory = NodePath("../../Damage Memory")
 new_state = NodePath("../../Teleport")
 
@@ -225,6 +249,7 @@ new_state = NodePath("../../Idle")
 
 [node name="DamageTaken" type="Node" parent="StateMachineNPC/Cloud Attack" node_paths=PackedStringArray("damage_memory", "new_state")]
 script = ExtResource("19_p6xao")
+health_percentage_taken = 0.18
 damage_memory = NodePath("../../Damage Memory")
 new_state = NodePath("../../Teleport")
 
@@ -243,6 +268,7 @@ new_state = NodePath("../../Idle")
 
 [node name="DamageTaken" type="Node" parent="StateMachineNPC/Spawn enemies" node_paths=PackedStringArray("damage_memory", "new_state")]
 script = ExtResource("19_p6xao")
+health_percentage_taken = 0.18
 damage_memory = NodePath("../../Damage Memory")
 new_state = NodePath("../../Teleport")
 
@@ -260,6 +286,65 @@ script = ExtResource("24_osa2j")
 cutscene_path = ExtResource("25_q7a2e")
 play_on_ready = true
 
-[connection signal="damaged" from="StaticBody3D/Body/DamageController" to="StaticBody3D/Body" method="take_damage"]
+[node name="Tentacles" type="Node3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
-[editable path="StaticBody3D/Body/DamageController"]
+[node name="Main layer" type="Node3D" parent="Tentacles"]
+
+[node name="VortexBossTentacle" parent="Tentacles/Main layer" node_paths=PackedStringArray("damage_target") instance=ExtResource("26_mbsxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.02779)
+damage_target = NodePath("../../../StaticBody3D/Ring/Physics collision/Ring")
+
+[node name="VortexBossTentacle2" parent="Tentacles/Main layer" node_paths=PackedStringArray("damage_target") instance=ExtResource("26_mbsxu")]
+transform = Transform3D(0.309017, 0, 0.951057, 0, 1, 0, -0.951057, 0, 0.309017, 1.92854, 0, 0.626622)
+damage_target = NodePath("../../../StaticBody3D/Ring/Physics collision/Ring")
+
+[node name="VortexBossTentacle3" parent="Tentacles/Main layer" node_paths=PackedStringArray("damage_target") instance=ExtResource("26_mbsxu")]
+transform = Transform3D(-0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, -0.809017, 1.19191, 0, -1.64052)
+damage_target = NodePath("../../../StaticBody3D/Ring/Physics collision/Ring")
+
+[node name="VortexBossTentacle4" parent="Tentacles/Main layer" node_paths=PackedStringArray("damage_target") instance=ExtResource("26_mbsxu")]
+transform = Transform3D(-0.809017, 0, -0.587785, 0, 1, 0, 0.587785, 0, -0.809017, -1.19191, 0, -1.64052)
+damage_target = NodePath("../../../StaticBody3D/Ring/Physics collision/Ring")
+
+[node name="VortexBossTentacle5" parent="Tentacles/Main layer" node_paths=PackedStringArray("damage_target") instance=ExtResource("26_mbsxu")]
+transform = Transform3D(0.309017, 0, -0.951056, 0, 1, 0, 0.951056, 0, 0.309017, -1.92854, 0, 0.626622)
+damage_target = NodePath("../../../StaticBody3D/Ring/Physics collision/Ring")
+
+[node name="Secondary layer" type="Node3D" parent="Tentacles"]
+transform = Transform3D(1.5, 0, 0, 0, -1.5, -2.26494e-07, 0, 2.26494e-07, -1.5, 0, -1.40446, -3.74403e-07)
+
+[node name="vortex_boss_tentacle" parent="Tentacles/Secondary layer" instance=ExtResource("28_ivemq")]
+
+[node name="vortex_boss_tentacle2" parent="Tentacles/Secondary layer" instance=ExtResource("28_ivemq")]
+transform = Transform3D(0.309017, 0, 0.951057, 0, 1, 0, -0.951057, 0, 0.309017, 0, 0, 0)
+
+[node name="vortex_boss_tentacle3" parent="Tentacles/Secondary layer" instance=ExtResource("28_ivemq")]
+transform = Transform3D(-0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, -0.809017, 0, 0, 0)
+
+[node name="vortex_boss_tentacle4" parent="Tentacles/Secondary layer" instance=ExtResource("28_ivemq")]
+transform = Transform3D(-0.809017, 0, -0.587785, 0, 1, 0, 0.587785, 0, -0.809017, 0, 0, 0)
+
+[node name="vortex_boss_tentacle5" parent="Tentacles/Secondary layer" instance=ExtResource("28_ivemq")]
+transform = Transform3D(0.309017, 0, -0.951056, 0, 1, 0, 0.951056, 0, 0.309017, 0, 0, 0)
+
+[node name="Warning Layer" type="Node3D" parent="Tentacles"]
+transform = Transform3D(1.20208, 0, 1.20208, 0, 1.7, 0, -1.20208, 0, 1.20208, 0, -0.58284, 0)
+
+[node name="vortex_boss_tentacle_warning" parent="Tentacles/Warning Layer" instance=ExtResource("27_xtho6")]
+
+[node name="vortex_boss_tentacle_warning2" parent="Tentacles/Warning Layer" instance=ExtResource("27_xtho6")]
+transform = Transform3D(0.309017, 0, 0.951057, 0, 1, 0, -0.951057, 0, 0.309017, 0, 0, 0)
+
+[node name="vortex_boss_tentacle_warning3" parent="Tentacles/Warning Layer" instance=ExtResource("27_xtho6")]
+transform = Transform3D(-0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, -0.809017, 0, 0, 0)
+
+[node name="vortex_boss_tentacle_warning4" parent="Tentacles/Warning Layer" instance=ExtResource("27_xtho6")]
+transform = Transform3D(-0.809017, 0, -0.587785, 0, 1, 0, 0.587785, 0, -0.809017, 0, 0, 0)
+
+[node name="vortex_boss_tentacle_warning5" parent="Tentacles/Warning Layer" instance=ExtResource("27_xtho6")]
+transform = Transform3D(0.309017, 0, -0.951056, 0, 1, 0, 0.951056, 0, 0.309017, 0, 0, 0)
+
+[connection signal="damaged" from="StaticBody3D/Core/DamageController" to="StaticBody3D/Core" method="take_damage"]
+
+[editable path="StaticBody3D/Core/DamageController"]

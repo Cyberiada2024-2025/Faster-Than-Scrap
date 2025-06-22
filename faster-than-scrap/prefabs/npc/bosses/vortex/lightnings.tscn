@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://butrr4i156xbg"]
+
+[ext_resource type="Material" uid="uid://c3u3hwswb2tnq" path="res://art/materials/bosses/vortex_boss/lightnings.tres" id="1_o4sp6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o4sp6"]
+
+[node name="Lightnings" type="MeshInstance3D"]
+material_override = ExtResource("1_o4sp6")
+mesh = SubResource("PlaneMesh_o4sp6")

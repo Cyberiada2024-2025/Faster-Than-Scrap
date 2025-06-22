@@ -32,6 +32,7 @@ height = 0.4
 
 [node name="Explosion" type="GPUParticles3D"]
 material_override = SubResource("StandardMaterial3D_o3xl1")
+emitting = false
 amount = 128
 lifetime = 3.0
 one_shot = true

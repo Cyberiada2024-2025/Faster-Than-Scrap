@@ -2,6 +2,8 @@ class_name MapSelector
 
 extends HBoxContainer
 
+signal on_node_selected(invalid: bool)
+
 @export var active_node: MapNode
 
 @export var label: RichTextLabel
@@ -34,6 +36,39 @@ func on_node_clicked(clicked_node: MapNode) -> void:
 	selected_node = clicked_node
 	selected_node.selected = true
 	label.text = selected_node.get_description()
+
+	var is_valid = _valid_node(clicked_node)
+
+	on_node_selected.emit(not is_valid)
+
+
+## return whether given node is selectable as next mission
+func _valid_node(target_node: MapNode) -> bool:
+	var previous_nodes = _get_previous_nodes(target_node)
+
+	# find if any of nodes is active
+	for node in previous_nodes:
+		if node.active:
+			return true
+
+	return false
+
+
+func _get_previous_nodes(target_node: MapNode) -> Array[MapNode]:
+	# find layer where target node is
+	var target_layer: MapLayer
+	for layer: MapLayer in layers:
+		if layer.nodes.has(target_node):
+			target_layer = layer
+			break
+
+	# find all previous nodes connected to target node
+	var previous_layer = layers[layers.find(target_layer) - 1]
+	var previous_nodes: Array[MapNode] = []
+	for node: MapNode in previous_layer.nodes:
+		if node.next_map_nodes.has(target_node):
+			previous_nodes.append(node)
+	return previous_nodes
 
 
 func on_leave_button_clicked() -> void:

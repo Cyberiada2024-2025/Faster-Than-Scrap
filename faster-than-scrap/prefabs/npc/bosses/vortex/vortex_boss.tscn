@@ -147,6 +147,10 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 
 [node name="DamageControllerHostileDamage" parent="StaticBody3D/Core" instance=ExtResource("6_y47uf")]
 
+[node name="Damageable" parent="StaticBody3D/Core/DamageControllerHostileDamage" index="0"]
+collision_layer = 4
+collision_mask = 4
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Core/DamageControllerHostileDamage/Damageable" index="0"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("SphereShape3D_8b1eu")

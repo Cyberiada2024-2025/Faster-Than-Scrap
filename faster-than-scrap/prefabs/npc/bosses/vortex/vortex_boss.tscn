@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_bnu5o"]
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_cs180"]
 [ext_resource type="Script" path="res://code/ship/modules/explodable.gd" id="3_mclyr"]
-[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_treuf"]
 [ext_resource type="PackedScene" uid="uid://ba6bvjt5dyf6b" path="res://art/model_prefabs/bosses/vortex_boss/vortex_core.tscn" id="4_xtho6"]
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="5_bk2yy"]
-[ext_resource type="PackedScene" uid="uid://butrr4i156xbg" path="res://prefabs/npc/bosses/vortex/lightnings.tscn" id="5_lqxhd"]
+[ext_resource type="PackedScene" path="res://prefabs/npc/bosses/vortex/lightnings.tscn" id="5_lqxhd"]
 [ext_resource type="Script" path="res://code/weapons/on_target_spawner_weapon.gd" id="5_pqq2h"]
+[ext_resource type="PackedScene" uid="uid://cueuhnoh0g75p" path="res://prefabs/modules/functional_components/damage_controller_hostile_damage.tscn" id="6_y47uf"]
 [ext_resource type="Script" uid="uid://cdwjrb230l0qw" path="res://code/enemy/states/move/teleport.gd" id="6_yljnl"]
 [ext_resource type="Script" path="res://code/damage/damageable.gd" id="7_bac5w"]
 [ext_resource type="Script" path="res://code/enemy/transitions/transition_on_state_finish.gd" id="7_yfy1f"]
@@ -24,14 +24,14 @@
 [ext_resource type="Script" uid="uid://bwe8glgj1swy" path="res://code/enemy/transitions/boss_specific_transitions/damage_taken.gd" id="19_p6xao"]
 [ext_resource type="Script" uid="uid://b7v5naphnvff4" path="res://code/enemy/transitions/boss_specific_transitions/damage_memory.gd" id="20_pkmkm"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="21_hho6b"]
-[ext_resource type="Script" uid="uid://bi4im5upc3uyx" path="res://code/enemy/states/animate/animate_state_one_shot.gd" id="22_mbsxu"]
+[ext_resource type="Script" path="res://code/enemy/states/animate/animate_state_one_shot.gd" id="22_mbsxu"]
 [ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_player.gd" id="24_osa2j"]
 [ext_resource type="PackedScene" path="res://prefabs/ui/cutscenes/boss_cutscenes/vortex_boss_cutscene.tscn" id="25_q7a2e"]
-[ext_resource type="PackedScene" uid="uid://ckxcfr4vlxbr1" path="res://prefabs/npc/bosses/vortex/vortex_boss_tentacle.tscn" id="26_mbsxu"]
+[ext_resource type="PackedScene" path="res://prefabs/npc/bosses/vortex/vortex_boss_tentacle.tscn" id="26_mbsxu"]
 [ext_resource type="PackedScene" uid="uid://ixlivfkj2s1o" path="res://art/model_prefabs/bosses/vortex_boss/vortex_boss_tentacle_warning.tscn" id="27_xtho6"]
 [ext_resource type="PackedScene" uid="uid://jstvt3uuo0mv" path="res://art/model_prefabs/bosses/vortex_boss/vortex_boss_tentacle_secondary.tscn" id="28_ivemq"]
 [ext_resource type="PackedScene" uid="uid://j2dyy6flaq5t" path="res://art/model_prefabs/bosses/vortex_boss/vortex_ring.tscn" id="29_ivemq"]
-[ext_resource type="Script" uid="uid://btpdstvgw55fd" path="res://code/utilities/auto_reparent.gd" id="32_y47uf"]
+[ext_resource type="Script" path="res://code/utilities/auto_reparent.gd" id="32_y47uf"]
 [ext_resource type="Shader" uid="uid://h7vm553px534" path="res://art/shaders/graphs/vortex.tres" id="33_2xp31"]
 [ext_resource type="Texture2D" uid="uid://cc70v8is7a6lc" path="res://art/textures/vfxy/vortex/Clouds1.png" id="34_v2k46"]
 [ext_resource type="Texture2D" uid="uid://cdnuaoleepsqv" path="res://art/textures/vfxy/vortex/Clouds2.png" id="35_ot5ry"]
@@ -42,6 +42,7 @@
 size = Vector3(5, 1, 5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8b1eu"]
+radius = 1.03
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ivemq"]
 radius = 7.0
@@ -92,13 +93,11 @@ max_hp = 100.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="Core" type="CollisionShape3D" parent="StaticBody3D" node_paths=PackedStringArray("child_modules")]
+[node name="Core" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_km21v")
 script = ExtResource("3_mclyr")
-max_hp = 20.0
-hp = 20.0
-child_modules = [null, null, null, null, null, null]
-metadata/_custom_type_script = "uid://cs6qd5cf3gviv"
+max_hp = 30.0
+hp = 30.0
 
 [node name="VortexCore" parent="StaticBody3D/Core" instance=ExtResource("4_xtho6")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
@@ -106,14 +105,9 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 [node name="Lightnings" parent="StaticBody3D/Core" instance=ExtResource("5_lqxhd")]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 
-[node name="DamageController" parent="StaticBody3D/Core" instance=ExtResource("4_treuf")]
+[node name="DamageControllerHostileDamage" parent="StaticBody3D/Core" instance=ExtResource("6_y47uf")]
 
-[node name="Damageable" parent="StaticBody3D/Core/DamageController" index="0"]
-collision_layer = 4
-collision_mask = 0
-script = null
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Core/DamageController/Damageable" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Core/DamageControllerHostileDamage/Damageable" index="0"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("SphereShape3D_8b1eu")
 
@@ -395,6 +389,6 @@ double_sided = false
 render_priority = 4
 texture = SubResource("GradientTexture2D_40l5p")
 
-[connection signal="damaged" from="StaticBody3D/Core/DamageController" to="StaticBody3D/Core" method="take_damage"]
+[connection signal="damaged" from="StaticBody3D/Core/DamageControllerHostileDamage" to="StaticBody3D/Core" method="take_damage"]
 
-[editable path="StaticBody3D/Core/DamageController"]
+[editable path="StaticBody3D/Core/DamageControllerHostileDamage"]

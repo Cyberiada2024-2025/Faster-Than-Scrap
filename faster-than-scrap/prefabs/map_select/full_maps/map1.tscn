@@ -179,7 +179,7 @@ layout_mode = 2
 
 [node name="MapNode" parent="MapLayer" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("3_s8emc")]
 layout_mode = 2
-next_map_nodes = [NodePath("../../MapLayer4/MissionEscapeFewDrones"), NodePath("../../MapLayer4/MissionDefendFewDrones"), NodePath("../../MapLayer4/MissionEscapeAsteroidsCramped"), NodePath("../../MapLayer4/MissionKillEnemies")]
+next_map_nodes = [NodePath("../../MapLayer4/MissionEscapeFewDrones"), NodePath("../../MapLayer4/MissionDefendFewDrones"), NodePath("../../MapLayer4/MissionEscapeAsteroidsCramped"), NodePath("../../MapLayer4/MissionKillEnemies"), NodePath("../../MapLayer4/MissionEscapeAsteroidsCramped2")]
 active = true
 
 [node name="MapMargin" parent="." instance=ExtResource("4_nrfml")]
@@ -211,6 +211,12 @@ layout_mode = 2
 mission_info = SubResource("Resource_5jnkn")
 level_prefab = ExtResource("10_sau2r")
 next_map_nodes = [NodePath("../../MapLayer5/MissionDefendFewTurretGuns")]
+
+[node name="MissionEscapeAsteroidsCramped2" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
+layout_mode = 2
+mission_info = SubResource("Resource_5jnkn")
+level_prefab = ExtResource("10_sau2r")
+next_map_nodes = [NodePath("../../MapLayer9/MissionDefendLasers2")]
 
 [node name="MapMargin4" parent="." instance=ExtResource("4_nrfml")]
 layout_mode = 2
@@ -320,6 +326,12 @@ mission_info = SubResource("Resource_r4xfp")
 level_prefab = ExtResource("23_mxsq4")
 next_map_nodes = [NodePath("../../MapLayer10/MissionDefendAsteroidsSquares")]
 
+[node name="MissionDefendLasers2" parent="MapLayer9" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
+layout_mode = 2
+mission_info = SubResource("Resource_r4xfp")
+level_prefab = ExtResource("23_mxsq4")
+next_map_nodes = [NodePath("../../MapLayer14/MissionFuelSwarms")]
+
 [node name="MapMargin9" parent="." instance=ExtResource("4_nrfml")]
 layout_mode = 2
 
@@ -402,6 +414,12 @@ next_map_nodes = [NodePath("../../MapLayer15/BossNode")]
 layout_mode = 2
 mission_info = SubResource("Resource_wqn4u")
 level_prefab = ExtResource("30_0a6x0")
+next_map_nodes = [NodePath("../../MapLayer15/BossNode")]
+
+[node name="MissionFuelSwarms" parent="MapLayer14" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("13_rwq3m")]
+layout_mode = 2
+mission_info = SubResource("Resource_6ev6g")
+level_prefab = ExtResource("19_mxsq4")
 next_map_nodes = [NodePath("../../MapLayer15/BossNode")]
 
 [node name="MapMargin14" parent="." instance=ExtResource("4_nrfml")]

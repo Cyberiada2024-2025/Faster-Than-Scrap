@@ -65,7 +65,7 @@ func _draw_finished_sector_line(start: Vector2, end: Vector2) -> void:
 
 func _draw_default_line(start: Vector2, end: Vector2) -> void:
 	const SEGMENT_LENGTH: float = 4.0
-	const increment_factor: float = 5  # how many segment length should be added to cursor
+	const INCREMENT_FACTOR: float = 5  # how many segment length should be added to cursor
 	var line_length = (end - start).length()
 	var cursor: Vector2 = start
 	var draw_direction = (end - start).normalized()
@@ -74,6 +74,6 @@ func _draw_default_line(start: Vector2, end: Vector2) -> void:
 
 	while start.distance_to(cursor) <= line_length:
 		draw_line(cursor, cursor + draw_direction * SEGMENT_LENGTH, Color.PAPAYA_WHIP, 4.0)
-		cursor += draw_direction * SEGMENT_LENGTH * increment_factor
+		cursor += draw_direction * SEGMENT_LENGTH * INCREMENT_FACTOR
 
 #endregion

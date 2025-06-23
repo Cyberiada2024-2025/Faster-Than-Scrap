@@ -11,6 +11,8 @@ static var boss_spawner: BossSpawner
 var _bosses: Array[Boss] = []
 var _scene_loader: SceneLoader
 
+var _boss_dying: bool = false
+
 
 func _enter_tree() -> void:
 	boss_spawner = self
@@ -30,9 +32,12 @@ func _process(_delta: float) -> void:
 				_scene_loader.load_map_selector_scene
 			)
 		else:
-			GameManager.player_ship.leave_animation.start_animation(
-				_scene_loader.load_credits_scene
-			)
+			if not _boss_dying:
+				_boss_dying = true
+				await get_tree().create_timer(10).timeout
+				GameManager.player_ship.leave_animation.start_animation(
+					_scene_loader.load_credits_scene
+				)
 
 
 func _spawn_boss(boss_prefab: PackedScene) -> void:

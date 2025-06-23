@@ -359,15 +359,17 @@ func _input(event: InputEvent):
 					print("new state = none")
 
 
+#region finding point to attach
 #        +------------+
 #        |     .      |
 #        +----/|------+
 #          | / V normal vector
 #   second |/ first raycast
 #          .
-# find intersection point to snap module
-func _get_intersection() -> Dictionary:
-	# first find intersection with the attach target to find the face normal
+
+
+## the first raycast. Raycast goes from mouse to module origin
+func _get_intersection_naive() -> Dictionary:
 	var space_state = get_world_3d().direct_space_state
 	var query = (
 		PhysicsRayQueryParameters3D
@@ -377,12 +379,12 @@ func _get_intersection() -> Dictionary:
 			~0,  # collision mask: ~0 means 0xFFFFFFFF (full collision mask)
 		)
 	)
-	var intersection = space_state.intersect_ray(query)
+	return space_state.intersect_ray(query)
 
-	if intersection.size() == 0:
-		return intersection
 
-	# now find the intersection using the face normal
+## the second raycast. Raycast goes from mouse along the previously hit face normal
+func _get_intersection_using_normal(intersection: Dictionary) -> Dictionary:
+	var space_state = get_world_3d().direct_space_state
 	var query2 = (
 		PhysicsRayQueryParameters3D
 		. create(
@@ -391,15 +393,57 @@ func _get_intersection() -> Dictionary:
 			~0,  # collision mask: ~0 means 0xFFFFFFFF (full collision mask)
 		)
 	)
-	var intersection2 = space_state.intersect_ray(query2)
+	return space_state.intersect_ray(query2)
+
+
+## Try checking if tiny sphere intersects with any illegal zone
+func _is_mouse_inside_illegal_attachment_zone() -> bool:
+	var space_state = get_world_3d().direct_space_state
+	var sphere_shape = SphereShape3D.new()
+	sphere_shape.radius = 0.01  # small radius
+
+	var query = PhysicsShapeQueryParameters3D.new()
+	query.shape = sphere_shape
+	query.transform.origin = mouse_position_3d
+	query.collide_with_bodies = true
+	query.collision_mask = 1 << 3  # Illegal attachement layer
+
+	var result = space_state.intersect_shape(query)
+	if result.size() != 0:
+		return true
+	return false
+
+
+# find intersection point to snap module
+func _get_intersection() -> Dictionary:
+	# first find intersection with the attach target to find the face normal
+	var intersection = _get_intersection_naive()
+
+	if intersection.size() == 0:
+		return intersection
+
+	# now find the intersection using the face normal
+	var intersection2 = _get_intersection_using_normal(intersection)
 
 	if intersection2.size() == 0:
-		return intersection2
+		return {}
+
+	# check if hit illegal placement (if attach point is on surface of illegal zone)
+	const ILLEGAL_ATTACHMENT_LAYER = 1 << 3
+	if intersection2.collider.collision_layer & ILLEGAL_ATTACHMENT_LAYER != 0:
+		return {}
+
+	# check if mouse is inside illegal zone collider (because then raycast doesn't work)
+	if _is_mouse_inside_illegal_attachment_zone():
+		return {}
 
 	var second_hit: Module = _get_module_from_hit(intersection2)
 	if second_hit == attach_target:
 		return intersection2
 	return {}
+
+
+#endregion
 
 
 # check whether the active module collides with other modules

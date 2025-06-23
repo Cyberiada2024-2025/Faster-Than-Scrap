@@ -12,4 +12,4 @@ shader_parameter/Alpha_threshold = 0.485
 shader_parameter/Main_Color = Color(1, 1, 1, 1)
 shader_parameter/Detail = Color(0, 0.856112, 0.925692, 1)
 shader_parameter/Emission_strength = 3.0
-shader_parameter/FloatParameter = 0.885
+shader_parameter/Bump_strength = 1.0

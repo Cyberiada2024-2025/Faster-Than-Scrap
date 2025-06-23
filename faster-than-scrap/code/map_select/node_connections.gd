@@ -60,7 +60,7 @@ func _draw_next_sector_line(start: Vector2, end: Vector2) -> void:
 
 
 func _draw_finished_sector_line(start: Vector2, end: Vector2) -> void:
-	draw_line(start, end, Color.CYAN, 8.0)
+	draw_line(start, end, Color.CYAN, 4.0)
 
 
 func _draw_default_line(start: Vector2, end: Vector2) -> void:

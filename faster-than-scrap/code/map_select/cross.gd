@@ -14,13 +14,15 @@ func _draw() -> void:
 		return
 
 	var local_start = get_rect().get_center() - get_rect().position
-	var radius = get_rect().size.x / 2
+	var radius = get_rect().size.x / 3
+
+	const CROSS_COLOR = Color.CRIMSON
 
 	# draw / line
 	draw_line(
 		local_start + Vector2(-radius, -radius),
 		local_start + Vector2(radius, radius),
-		Color.RED,
+		CROSS_COLOR,
 		8.0
 	)
 
@@ -28,6 +30,6 @@ func _draw() -> void:
 	draw_line(
 		local_start + Vector2(-radius, radius),
 		local_start + Vector2(radius, -radius),
-		Color.RED,
+		CROSS_COLOR,
 		8.0
 	)

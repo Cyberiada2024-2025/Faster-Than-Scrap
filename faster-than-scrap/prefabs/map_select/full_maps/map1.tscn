@@ -36,15 +36,15 @@
 [ext_resource type="PackedScene" uid="uid://dsiunhrpghlkd" path="res://scenes/levels/final/hard/corruption_defend.tscn" id="29_rwq3m"]
 [ext_resource type="PackedScene" uid="uid://cxu20ysf6eu7q" path="res://scenes/levels/final/hard/lots_of_heavy_enemies_defend.tscn" id="30_0a6x0"]
 
-[sub_resource type="Resource" id="Resource_pgkvg"]
-script = ExtResource("6_0a6x0")
-about = "Escape from the space!"
-difficulty = 0
-metadata/_custom_type_script = "uid://bmhwp67vae4gu"
-
 [sub_resource type="Resource" id="Resource_pki7u"]
 script = ExtResource("6_0a6x0")
 about = "DEFEND THE TARGET!"
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[sub_resource type="Resource" id="Resource_pgkvg"]
+script = ExtResource("6_0a6x0")
+about = "Escape from the space!"
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
@@ -163,8 +163,9 @@ difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [node name="Map1" type="HBoxContainer" node_paths=PackedStringArray("active_node")]
-offset_right = 994.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -187,17 +188,17 @@ layout_mode = 2
 [node name="MapLayer4" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="MissionEscapeFewDrones" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
-layout_mode = 2
-mission_info = SubResource("Resource_pgkvg")
-level_prefab = ExtResource("7_uee5q")
-next_map_nodes = [NodePath("../../MapLayer5/Shotgunners")]
-
 [node name="MissionDefendFewDrones" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
 layout_mode = 2
 mission_info = SubResource("Resource_pki7u")
 level_prefab = ExtResource("9_dlw72")
 next_map_nodes = [NodePath("../../MapLayer5/MissionDefendShotgunners"), NodePath("../../MapLayer5/Shotgunners")]
+
+[node name="MissionEscapeFewDrones" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
+layout_mode = 2
+mission_info = SubResource("Resource_pgkvg")
+level_prefab = ExtResource("7_uee5q")
+next_map_nodes = [NodePath("../../MapLayer5/Shotgunners")]
 
 [node name="MissionKillEnemies" parent="MapLayer4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("10_mxsq4")]
 layout_mode = 2

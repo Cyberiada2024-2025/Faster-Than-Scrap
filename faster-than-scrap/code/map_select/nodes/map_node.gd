@@ -79,8 +79,8 @@ func draw_selected():
 	var min_radius = get_rect().size.x * 2 / 3
 	var max_radius = get_rect().size.x
 
-	const frequency: float = 5
-	var t = sin(angle * frequency) / 2 + 0.5
+	const FREQUENCY: float = 5
+	var t = sin(angle * FREQUENCY) / 2 + 0.5
 	var radius = lerp(min_radius, max_radius, t)
 
 	draw_arc(local_start, radius, angle, 2 * PI + angle, 20, Color.GRAY, 4)

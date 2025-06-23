@@ -45,18 +45,18 @@ func _draw_connection(start: Vector2, end: Vector2, next_node: MapNode) -> void:
 
 
 func _draw_next_sector_line(start: Vector2, end: Vector2) -> void:
-	const segment_length: float = 10.0
-	const frequency: float = 1
+	const SEGMENT_LENGTH: float = 10.0
+	const FREQUENCY: float = 1
 	var line_length = (end - start).length()
 	var cursor: Vector2 = start
-	var segment_offset = 2 * segment_length * fmod(time, frequency) / frequency
+	var segment_offset = 2 * SEGMENT_LENGTH * fmod(time, FREQUENCY) / FREQUENCY
 	var draw_direction = (end - start).normalized()
 
 	cursor += segment_offset * draw_direction
 
 	while start.distance_to(cursor) <= line_length:
-		draw_line(cursor, cursor + draw_direction * segment_length, Color.CORAL, 8.0)
-		cursor += draw_direction * segment_length * 2
+		draw_line(cursor, cursor + draw_direction * SEGMENT_LENGTH, Color.CORAL, 8.0)
+		cursor += draw_direction * SEGMENT_LENGTH * 2
 
 
 func _draw_finished_sector_line(start: Vector2, end: Vector2) -> void:
@@ -64,9 +64,8 @@ func _draw_finished_sector_line(start: Vector2, end: Vector2) -> void:
 
 
 func _draw_default_line(start: Vector2, end: Vector2) -> void:
-	const segment_length: float = 4.0
+	const SEGMENT_LENGTH: float = 4.0
 	const increment_factor: float = 5  # how many segment length should be added to cursor
-	const frequency: float = 1
 	var line_length = (end - start).length()
 	var cursor: Vector2 = start
 	var draw_direction = (end - start).normalized()
@@ -74,7 +73,7 @@ func _draw_default_line(start: Vector2, end: Vector2) -> void:
 	cursor += draw_direction
 
 	while start.distance_to(cursor) <= line_length:
-		draw_line(cursor, cursor + draw_direction * segment_length, Color.PAPAYA_WHIP, 4.0)
-		cursor += draw_direction * segment_length * increment_factor
+		draw_line(cursor, cursor + draw_direction * SEGMENT_LENGTH, Color.PAPAYA_WHIP, 4.0)
+		cursor += draw_direction * SEGMENT_LENGTH * increment_factor
 
 #endregion

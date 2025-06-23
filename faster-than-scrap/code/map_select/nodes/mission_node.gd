@@ -15,7 +15,6 @@ func _set_color() -> void:
 		# Totally don't know why this line prints error in tool
 		# (shows error Nonexistent function, even though it exists :/)
 		self_modulate = modulate_color
-		pass
 	super()
 
 

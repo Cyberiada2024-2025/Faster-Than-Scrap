@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/laser_beam.mp3-7dd6343786aad2bcaf854f1128300a
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

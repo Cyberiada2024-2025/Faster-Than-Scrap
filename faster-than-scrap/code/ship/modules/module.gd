@@ -10,8 +10,6 @@ signal deactivated
 signal damaged
 signal destroyed
 
-const NOT_ACTIVABLE_KEYS: Array[Key] = [KEY_ENTER, KEY_ESCAPE]
-
 const EXPLOSION_MAX_RANDOM_SPEED = 2
 const EXPLOSION_MAX_RANDOM_ROTATION = 1
 
@@ -41,6 +39,8 @@ const EXPLOSION_DISTANCE_EXPONENT = 1
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var prize: int = 1
 @export_multiline var description: String
 
+var reserved_keys: Array[Key]
+
 var was_key_pressed: bool = false
 
 var module_rigidbody_prefab = preload("res://prefabs/modules/module_rigidbody.tscn")
@@ -53,6 +53,7 @@ var module_explosion_prefab = preload(
 
 
 func _ready() -> void:
+	reserve_keys()
 	activation_key_saved = activation_key
 	_on_key_change()
 	update_sprite()
@@ -94,6 +95,9 @@ func _on_release(_delta: float) -> void:
 
 
 func take_damage(damage: Damage) -> void:
+	if DebugMenu.enable_invincibility and ship == GameManager.player_ship:
+		return
+
 	hp -= damage.value
 	update_sprite()
 	if hp <= 0:
@@ -112,8 +116,19 @@ func update_sprite() -> void:
 		sprite.modulate = lerp(dead_color, healthy_color, hp / max_hp)
 
 
+func hide_on_module_camera() -> void:
+	sprite.set_layer_mask_value(2, false)
+	label.set_layer_mask_value(2, false)
+
+
+func show_on_module_camera() -> void:
+	sprite.set_layer_mask_value(2, true)
+	label.set_layer_mask_value(2, true)
+
+
 ## Destroy self and detach children
 func _on_destroy() -> void:
+	GameManager.player_ship.modules.erase(self)
 	if parent_module != null:
 		parent_module.child_modules.erase(self)
 	_explode()
@@ -260,5 +275,25 @@ static func find_all_modules(node: Node) -> Array[Module]:
 			result.append(child)
 		result.append_array(find_all_modules(child))  # Recurse
 	var modules: Array[Module] = []
-	modules.assign(result)  # create module typed array
+	modules.assign(result)	# create module typed array
 	return modules
+
+
+func keycode_from_input_map(event_name: String) -> Key:
+	return (InputMap.action_get_events(event_name)[0] as InputEventKey) \
+			.get_physical_keycode_with_modifiers()
+
+
+func reserve_keys_from_actions(actions: Array[String]):
+	for action in actions:
+		reserved_keys.append(keycode_from_input_map(action))
+
+
+func reserve_keys():
+	if DebugMenu.is_debug:
+		reserve_keys_from_actions(["debug_menu"])
+
+	reserve_keys_from_actions([
+		"pause_menu",
+		"Skip Cutscene"
+	])

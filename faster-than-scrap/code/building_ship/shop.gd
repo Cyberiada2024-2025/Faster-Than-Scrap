@@ -115,6 +115,7 @@ func _generate_shop() -> void:
 		add_child(area)
 		area.add_child(module)
 		module.position = Vector3.ZERO
+		module.hide_on_module_camera()
 		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2
 		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
 		area.position = Vector3(x, 0, z)
@@ -131,6 +132,7 @@ func _generate_inventory() -> void:
 		)
 		obj.position = Vector3(x, 0, z)
 		obj.get_child(0).position = Vector3(0, 0, 0)
+		obj.hide_on_module_camera()
 		i += 1
 	_display_inventory_number()
 
@@ -157,6 +159,9 @@ func _on_bank_change() -> void:
 
 
 func _on_finish_pressed() -> void:
+	if DebugMenu.disable_money_checks:
+		_exit_shop()
+
 	if bank < 0:
 		deny_finish.visible = true
 		deny_finish_label.text = "You cannot leave without paying for modules!"

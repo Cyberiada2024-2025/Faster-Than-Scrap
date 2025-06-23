@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://djgm5s1ld5wgr"]
+[gd_scene load_steps=8 format=3 uid="uid://djgm5s1ld5wgr"]
 
 [ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/player/player_ship.gd" id="1_y502x"]
+[ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="2_d3mqs"]
 [ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="2_qrnnh"]
 [ext_resource type="PackedScene" uid="uid://5lsgaj0hoqfu" path="res://prefabs/vfx/leave_animation.tscn" id="3_p382y"]
 [ext_resource type="PackedScene" uid="uid://dbajfkkhivhl0" path="res://prefabs/modules/weapons/laser_module.tscn" id="4_067ro"]
@@ -21,6 +22,12 @@ cockpit = NodePath("Cockpit")
 modules = [NodePath("Cockpit"), NodePath("Thruster Backward"), NodePath("Thruster Right"), NodePath("Thruster Left"), NodePath("Thruster Forward"), NodePath("Frame Center"), NodePath("Frame Center2"), NodePath("Frame Center3"), NodePath("Frame Left Inner"), NodePath("Frame Left Outer"), NodePath("Frame Right Inner"), NodePath("Frame Right Outer"), NodePath("Laser Right"), NodePath("Laser Left")]
 team = 0
 leave_animation = NodePath("Cockpit/AnimationPlayer")
+
+[node name="CenterOfMass" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.652941, 0)
+layers = 2
+modulate = Color(0.937255, 0.431373, 0, 0.576471)
+texture = ExtResource("2_d3mqs")
 
 [node name="Cockpit" parent="." node_paths=PackedStringArray("ship", "child_modules") instance=ExtResource("2_qrnnh")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -0.052)

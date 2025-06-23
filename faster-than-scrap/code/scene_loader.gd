@@ -57,21 +57,23 @@ func load_fly_ship_scene(
 	var attached_fly_scene: bool = false
 
 	_detach_ship()
-	GameManager.on_scene_exit()
 	if scene_to_load != null:
+		GameManager.on_scene_exit()
 		get_tree().change_scene_to_file(scene_to_load.resource_path)
 	else:
 		if GameManager.game_state == GameState.State.BUILD:
 			attached_fly_scene = MapGenerator.swap_saved_and_current_scene()
 		if not attached_fly_scene:
+			GameManager.on_scene_exit()
 			GameManager.get_tree().change_scene_to_file("res://scenes/levels/start_level.tscn")
 			use_saved_pos_rot = false
 
 	GameManager.set_game_state(GameState.State.FLY)
 
-	if use_saved_pos_rot:
+	if use_saved_pos_rot and GameManager.player_ship != null:
 		pos = GameManager.player_ship.get_saved_position()
 		rot = GameManager.player_ship.get_saved_rotation()
+
 	_attach_ship_with_hud.call_deferred(pos, rot)
 
 	_set_vortex_preserve(false)
@@ -95,7 +97,6 @@ func load_build_ship_scene(tutorial_version = false) -> void:
 	if GameManager.game_state == GameState.State.FLY:
 		attached_build_scene = MapGenerator.swap_saved_and_current_scene()
 
-	GameManager.on_scene_exit()
 	if tutorial_version:
 		GameManager.get_tree().change_scene_to_file(
 			"res://scenes/tutorials/build_ship_tutorial.tscn"

@@ -64,6 +64,14 @@ func _ready() -> void:
 		ignore_rid.push_back(ig.get_rid())
 
 
+func _enter_tree() -> void:
+	set_freeze_mode(true)
+
+
+func _exit_tree() -> void:
+	set_freeze_mode(false)
+
+
 # ---------------mouse ---------------------------------------------
 func _update_mouse_3d_position():
 	var camera = get_viewport().get_camera_3d()
@@ -102,6 +110,8 @@ func _get_module_from_hit(hit: Dictionary) -> Module:
 	var rigid_body = hit.get("collider")
 	if rigid_body != null:
 		# may click shop area
+		# hit[shape] returns index of target's child, so make sure modules are first in tree
+		# its more like hovered over shape
 		var clicked_shape = rigid_body.get_child(hit["shape"])
 		if clicked_shape is Module:
 			return clicked_shape
@@ -249,6 +259,8 @@ func _attach_module() -> void:
 		# so module is clickable
 		var area_parent = active_module.get_parent()
 		on_module_attach.emit(active_module)
+		GameManager.player_ship.modules.append(active_module)
+		active_module.show_on_module_camera()
 		active_module.reparent(attach_target.ship)
 		area_parent.queue_free()
 	else:
@@ -276,9 +288,11 @@ func _dettach_module() -> void:
 
 	active_module.set_ship_reference(null)
 	if active_module.parent_module != null:
+		active_module.hide_on_module_camera()
 		on_module_detach.emit(active_module)
 		active_module.parent_module.child_modules.erase(active_module)
 		active_module.parent_module = null
+		GameManager.player_ship.modules.erase(active_module)
 
 		# add some area3d as a root of the module, to allow clicking it
 		active_module.reparent(get_tree().get_root())
@@ -338,7 +352,7 @@ func _input(event: InputEvent):
 			## check if keyboard pressed
 			if event is InputEventKey and event.pressed:
 				var key_event: InputEventKey = event
-				if not key_event.keycode in active_module.NOT_ACTIVABLE_KEYS:
+				if not key_event.keycode in active_module.reserved_keys:
 					active_module.change_key(key_event.keycode)
 					state = State.NONE
 					choose_key_message.visible = false
@@ -492,3 +506,7 @@ func _on_confirm_pressed() -> void:
 
 func _on_deny_pressed() -> void:
 	confirm_finish_message.visible = false
+
+
+func set_freeze_mode(is_frozen: bool):
+	GameManager.player_ship.freeze = is_frozen

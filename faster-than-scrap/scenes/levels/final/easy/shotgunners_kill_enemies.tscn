@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://m8fjw7j6a2mk"]
+
+[ext_resource type="Script" uid="uid://cv8qkmxin552e" path="res://code/missions/a/mission_kill_enemies.gd" id="1_ffdc2"]
+[ext_resource type="PackedScene" uid="uid://d2nutk07rp8dw" path="res://scenes/levels/templates/easy/shotgunners.tscn" id="2_svtar"]
+
+[node name="ShotgunnersEscape" type="Node3D"]
+
+[node name="MissionKillEnemies" type="Node" parent="." node_paths=PackedStringArray("vortex_center")]
+script = ExtResource("1_ffdc2")
+vortex_center = NodePath("../VortexCenter")
+metadata/_custom_type_script = "uid://cv8qkmxin552e"
+
+[node name="VortexCenter" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09447, 0, 0.159653)
+
+[node name="Shotgunners" parent="." instance=ExtResource("2_svtar")]

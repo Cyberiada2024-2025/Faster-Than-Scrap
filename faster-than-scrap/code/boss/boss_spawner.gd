@@ -34,7 +34,7 @@ func _process(_delta: float) -> void:
 		else:
 			if not _boss_dying:
 				_boss_dying = true
-				await get_tree().create_timer(10).timeout
+				await get_tree().create_timer(8).timeout
 				GameManager.player_ship.leave_animation.start_animation(
 					_scene_loader.load_credits_scene
 				)

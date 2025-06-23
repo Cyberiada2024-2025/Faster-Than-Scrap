@@ -69,7 +69,7 @@ func draw_active():
 			start_angle + angle,
 			start_angle + delta_angle + angle,
 			5,
-			Color.GRAY,
+			Color.CORAL,
 			8
 		)
 

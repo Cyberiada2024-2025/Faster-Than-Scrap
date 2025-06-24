@@ -24,4 +24,7 @@ func _ready() -> void:
 
 
 func on_node_selected(invalid: bool) -> void:
+	if DebugMenu.disable_map_node_checks:
+		button.disabled = false
+		return
 	button.disabled = invalid

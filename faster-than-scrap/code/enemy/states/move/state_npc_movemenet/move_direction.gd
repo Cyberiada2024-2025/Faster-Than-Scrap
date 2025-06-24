@@ -1,4 +1,4 @@
-class_name MovementDIrection extends StateNPC
+class_name MovementDirection extends StateNPC
 
 @export var acceleration: Vector3 = Vector3(0, -1, 0)
 

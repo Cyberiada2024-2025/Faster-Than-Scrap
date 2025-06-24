@@ -181,7 +181,7 @@ func _on_finish_pressed() -> void:
 		deny_finish_label.text = "Your inventory has too many items!"
 	else:
 		for m in GameManager.player_ship.modules:
-			if m.activation_key == KEY_NONE and m.is_activable:
+			if m.activation_key_saved == KEY_NONE and m.is_activable:
 				confirm_finish_message_with_unusigned_keys.visible = true
 				return
 		_exit_shop()

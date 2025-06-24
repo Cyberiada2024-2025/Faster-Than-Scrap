@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ska6812npmde"]
+[gd_scene load_steps=5 format=3 uid="uid://ska6812npmde"]
 
-[ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/UI/MapSelect/circle.png" id="1_s0rms"]
-[ext_resource type="Script" path="res://code/map_select/nodes/map_node.gd" id="2_51kiq"]
+[ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_s0rms"]
+[ext_resource type="Script" uid="uid://cwpnhx3le7627" path="res://code/map_select/nodes/map_node.gd" id="2_51kiq"]
+[ext_resource type="PackedScene" uid="uid://bu7xth2x7rywt" path="res://prefabs/map_select/nodes/node_connections.tscn" id="3_0aurf"]
+[ext_resource type="Script" uid="uid://50o55qmu5g5c" path="res://code/map_select/cross.gd" id="4_efkt5"]
 
-[node name="MapNode" type="TextureButton"]
+[node name="MapNode" type="TextureButton" node_paths=PackedStringArray("cross")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,3 +16,19 @@ texture_normal = ExtResource("1_s0rms")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_51kiq")
+cross = NodePath("Cross")
+metadata/_custom_type_script = "uid://cwpnhx3le7627"
+
+[node name="NodeConnections" parent="." node_paths=PackedStringArray("node") instance=ExtResource("3_0aurf")]
+layout_mode = 1
+node = NodePath("..")
+
+[node name="Cross" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_efkt5")
+metadata/_custom_type_script = "uid://50o55qmu5g5c"

@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ci7ns2p5tsax6"]
+[gd_scene load_steps=6 format=3 uid="uid://ci7ns2p5tsax6"]
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_gx4xb"]
 [ext_resource type="Script" uid="uid://5kbda1reqim5" path="res://code/map_select/nodes/boss_node.gd" id="2_hj7hi"]
 [ext_resource type="Texture2D" uid="uid://drxpv7w6wu3p1" path="res://art/textures/ui/mapselect/Boss.png" id="3_ufxmx"]
+[ext_resource type="PackedScene" uid="uid://bu7xth2x7rywt" path="res://prefabs/map_select/nodes/node_connections.tscn" id="4_hj7hi"]
+[ext_resource type="Script" uid="uid://50o55qmu5g5c" path="res://code/map_select/cross.gd" id="5_ufxmx"]
 
-[node name="BossNode" type="TextureButton"]
-modulate = Color(1, 0, 0, 1)
+[node name="BossNode" type="TextureButton" node_paths=PackedStringArray("icon", "cross")]
+self_modulate = Color(1, 0, 0, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,9 +18,11 @@ texture_normal = ExtResource("1_gx4xb")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_hj7hi")
+icon = NodePath("TextureRect")
+cross = NodePath("Cross")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0.462291, 0.462291, 0.462291, 1)
+modulate = Color(0.5, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,5 +32,20 @@ grow_vertical = 2
 texture = ExtResource("3_ufxmx")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="NodeConnections" parent="." node_paths=PackedStringArray("node") instance=ExtResource("4_hj7hi")]
+layout_mode = 1
+node = NodePath("..")
+
+[node name="Cross" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_ufxmx")
+metadata/_custom_type_script = "uid://50o55qmu5g5c"
 
 [connection signal="pressed" from="." to="." method="on_click"]

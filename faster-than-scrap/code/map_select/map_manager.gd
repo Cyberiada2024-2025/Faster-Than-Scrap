@@ -19,5 +19,12 @@ func _ready() -> void:
 	button.pressed.connect(map.on_leave_button_clicked)
 	map.label = label
 	map.scene_loader = scene_loader
-
+	map.on_node_selected.connect(on_node_selected)
 	map.update_self()
+
+
+func on_node_selected(invalid: bool) -> void:
+	if DebugMenu.disable_map_node_checks:
+		button.disabled = false
+		return
+	button.disabled = invalid

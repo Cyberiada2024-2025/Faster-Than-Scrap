@@ -1,0 +1,28 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=6 format=3 uid="uid://byvd7to8pr6yh"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xl3ix"]
+animation = &"spike from below warning "
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_762up"]
+animation = &"spike from below warning scale 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ynrlw"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mb1e6"]
+advance_mode = 2
+advance_condition = &"spike_warning"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xl3ix"]
+switch_mode = 2
+advance_mode = 2
+
+[resource]
+states/End/position = Vector2(862, 121)
+states/Start/position = Vector2(82, 146)
+"states/spike from below warning /node" = SubResource("AnimationNodeAnimation_xl3ix")
+"states/spike from below warning /position" = Vector2(626, 146)
+"states/spike from below warning scale 0/node" = SubResource("AnimationNodeAnimation_762up")
+"states/spike from below warning scale 0/position" = Vector2(273, 146)
+transitions = ["Start", "spike from below warning scale 0", SubResource("AnimationNodeStateMachineTransition_ynrlw"), "spike from below warning scale 0", "spike from below warning ", SubResource("AnimationNodeStateMachineTransition_mb1e6"), "spike from below warning ", "spike from below warning scale 0", SubResource("AnimationNodeStateMachineTransition_xl3ix")]
+graph_offset = Vector2(-66, 12)

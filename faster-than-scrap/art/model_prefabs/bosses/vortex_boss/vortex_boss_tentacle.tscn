@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh8v13whyy4yi"]
+
+[ext_resource type="PackedScene" uid="uid://rwnx60naufuc" path="res://art/models/bosses/vortex boss/vortex_boss_tentacle.fbx" id="1_crdqi"]
+[ext_resource type="Material" uid="uid://bgam2oq63dvfq" path="res://art/materials/bosses/vortex_boss/vortex_boss_material.tres" id="2_34n52"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bjf44yvkg7vej" path="res://art/model_prefabs/bosses/vortex_boss/tentacle_animation_tree.tres" id="2_rbvsy"]
+
+[node name="vortex_boss_tentacle" instance=ExtResource("1_crdqi")]
+
+[node name="Skeleton3D" parent="Armature_007" index="0"]
+bones/0/rotation = Quaternion(0.704555, -0.0600214, -0.704555, -0.0600214)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(0.293556, 1.40552e-09, 2.662e-08, 0.955942)
+bones/2/rotation = Quaternion(0.331196, 9.10094e-09, 2.59281e-08, 0.943562)
+bones/3/rotation = Quaternion(0.176822, 1.09415e-08, 2.43081e-08, 0.984243)
+
+[node name="BezierCurve_005" parent="Armature_007/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_34n52")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Tentacle idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = ExtResource("2_rbvsy")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/spike_warning = false
+parameters/Idle/TimeScale/scale = 0.25

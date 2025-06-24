@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba6bvjt5dyf6b"]
+
+[ext_resource type="Material" uid="uid://bqtfmrm0qrb2y" path="res://art/materials/ui/vortex_warning/vortex_core.tres" id="1_21h2w"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_v24uf"]
+
+[node name="VortexCore" type="MeshInstance3D"]
+material_override = ExtResource("1_21h2w")
+mesh = SubResource("SphereMesh_v24uf")

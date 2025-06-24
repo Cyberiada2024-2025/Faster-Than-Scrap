@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ncfq5uokthtd"]
+[gd_scene load_steps=11 format=3 uid="uid://bqcsqeowaiij4"]
 
-[ext_resource type="Script" uid="uid://spw30bieh03o" path="res://code/weapons/projectiles/projectile_warning.gd" id="1_3jl4w"]
+[ext_resource type="Script" path="res://code/weapons/projectiles/projectile_warning.gd" id="1_3jl4w"]
 [ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/ui/minimap/placeholder/Enemy.png" id="2_6fpqi"]
 [ext_resource type="PackedScene" uid="uid://dxlsr82xkj688" path="res://prefabs/projectiles/boss_projectiles/vortex_cloud.tscn" id="2_ub8t8"]
 [ext_resource type="Shader" uid="uid://fmj6au2uao1y" path="res://art/shaders/graphs/warnings/warning_aoe.tres" id="3_ub8t8"]
+[ext_resource type="PackedScene" uid="uid://bg5w5w51gfb67" path="res://art/model_prefabs/bosses/vortex_boss/vortex_pore.tscn" id="5_pqmki"]
+[ext_resource type="Script" uid="uid://bb30wnfdnkcgy" path="res://code/utilities/wait_free_auto.gd" id="6_44nxb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pqmki"]
 resource_local_to_scene = true
@@ -77,6 +79,7 @@ _data = {
 
 [node name="Warning" type="Node3D" node_paths=PackedStringArray("animator")]
 script = ExtResource("1_3jl4w")
+warning_time = 3.0
 animator = NodePath("Graphics/Sprite3D/AnimationPlayer")
 projectile = ExtResource("2_ub8t8")
 
@@ -94,3 +97,11 @@ texture = ExtResource("2_6fpqi")
 libraries = {
 &"": SubResource("AnimationLibrary_rqmtl")
 }
+
+[node name="WaitFree" type="Node3D" parent="."]
+script = ExtResource("6_44nxb")
+wait = 12.0
+metadata/_custom_type_script = "uid://bb30wnfdnkcgy"
+
+[node name="vortex_pore" parent="WaitFree" instance=ExtResource("5_pqmki")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -62.3634, 0)

@@ -40,6 +40,8 @@ extends Node3D
 	"res://prefabs/vfx/particles/base_projectile_hit_particles.tscn"
 )
 
+@export var confirm_finish_message_with_unusigned_keys: Control
+
 ## actual cash balance
 var bank: int = 0
 var first_frame: bool = true
@@ -158,6 +160,15 @@ func _on_bank_change() -> void:
 	repair_button.disabled = (bank < repair_cost)
 
 
+func _on_missing_key_confirm_pressed() -> void:
+	confirm_finish_message_with_unusigned_keys.visible = false
+	_exit_shop()
+
+
+func _on_missing_key_deny_pressed() -> void:
+	confirm_finish_message_with_unusigned_keys.visible = false
+
+
 func _on_finish_pressed() -> void:
 	if DebugMenu.disable_money_checks:
 		_exit_shop()
@@ -169,6 +180,10 @@ func _on_finish_pressed() -> void:
 		deny_finish.visible = true
 		deny_finish_label.text = "Your inventory has too many items!"
 	else:
+		for m in GameManager.player_ship.modules:
+			if m.activation_key == KEY_NONE and m.is_activable:
+				confirm_finish_message_with_unusigned_keys.visible = true
+				return
 		_exit_shop()
 
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://creq1gbmemif6"]
+[gd_scene load_steps=8 format=3 uid="uid://creq1gbmemif6"]
 
 [ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/player/player_ship.gd" id="1_keeht"]
 [ext_resource type="PackedScene" uid="uid://dqaprpym1uev" path="res://prefabs/modules/cockpit.tscn" id="1_odfy5"]
+[ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="2_k6ncr"]
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="3_ymjaj"]
 [ext_resource type="PackedScene" uid="uid://5lsgaj0hoqfu" path="res://prefabs/vfx/leave_animation.tscn" id="5_oqsi0"]
 [ext_resource type="PackedScene" uid="uid://cujiw86wtjlp8" path="res://prefabs/modules/frame1.tscn" id="6_4jqhl"]
@@ -21,6 +22,11 @@ cockpit = NodePath("Cockpit")
 modules = [null, null, null, null, null]
 team = 0
 leave_animation = NodePath("Cockpit/AnimationPlayer")
+
+[node name="CenterOfMass" type="Sprite3D" parent="."]
+layers = 2
+modulate = Color(0.939147, 0.432882, 3.85046e-07, 0.74902)
+texture = ExtResource("2_k6ncr")
 
 [node name="Cockpit" parent="." node_paths=PackedStringArray("ship", "child_modules") instance=ExtResource("1_odfy5")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0248848, 0, -0.0520686)

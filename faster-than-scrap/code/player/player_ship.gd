@@ -41,6 +41,9 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	super()
 	change_air_resistance()
+	for child in get_children():
+		if child is Module:
+			modules.append(child)
 	GameManager.new_game_state.connect(on_game_change_state)
 
 	if DebugMenu.is_debug:
@@ -53,6 +56,21 @@ func _ready() -> void:
 	_on_energy_change()
 
 
+func _process(_delta: float) -> void:
+	super(_delta)
+	$CenterOfMass.position = _center_of_mass()
+	# move it down so it won't fiddle with modules (in shop)
+	var children_count = get_children().size()
+	move_child($CenterOfMass, children_count - 1)
+
+
+func _center_of_mass() -> Vector3:
+	var center = Vector3.ZERO
+	center.y = 1
+	for mod in GameManager.player_ship.modules:
+		center += mod.position
+	center /= GameManager.player_ship.modules.size()
+	return center
 func _physics_process(_delta: float) -> void:
 	if not DebugMenu.enable_debug_movement:
 		return

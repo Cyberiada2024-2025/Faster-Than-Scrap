@@ -1,0 +1,173 @@
+[gd_scene load_steps=12 format=3 uid="uid://ckxcfr4vlxbr1"]
+
+[ext_resource type="Script" uid="uid://df3sgcpdwrckg" path="res://code/boss/weak_point.gd" id="1_7kaww"]
+[ext_resource type="PackedScene" uid="uid://bh8v13whyy4yi" path="res://art/model_prefabs/bosses/vortex_boss/vortex_boss_tentacle.tscn" id="1_h2ybq"]
+[ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="2_yvsoy"]
+[ext_resource type="PackedScene" uid="uid://b18x1myvqvjyg" path="res://prefabs/npc/bosses/vortex/vortex_core.tscn" id="3_yvsoy"]
+[ext_resource type="Script" path="res://code/damage/damageable.gd" id="4_yvsoy"]
+
+[sub_resource type="Resource" id="Resource_2lbfk"]
+script = ExtResource("2_yvsoy")
+value = 50.0
+type = 0
+metadata/_custom_type_script = "uid://cukcjob61wwp7"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yvsoy"]
+size = Vector3(0.01, 0.025, 0.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2lbfk"]
+size = Vector3(0.01, 0.025, 0.008)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kgmdp"]
+size = Vector3(0.01, 0.025, 0.005)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5pbi6"]
+size = Vector3(0.01, 0.035, 0.003)
+
+[sub_resource type="Resource" id="Resource_7kaww"]
+script = ExtResource("2_yvsoy")
+value = 25.0
+type = 0
+metadata/_custom_type_script = "uid://cukcjob61wwp7"
+
+[node name="VortexBossTentacle" type="CollisionShape3D"]
+script = ExtResource("1_7kaww")
+damage = SubResource("Resource_2lbfk")
+max_hp = 50.0
+hp = 50.0
+metadata/_custom_type_script = "uid://df3sgcpdwrckg"
+
+[node name="vortex_boss_tentacle" parent="." instance=ExtResource("1_h2ybq")]
+
+[node name="Skeleton3D" parent="vortex_boss_tentacle/Armature_007" index="0"]
+bones/0/rotation = Quaternion(0.698389, -0.11069, -0.698389, -0.11069)
+bones/1/rotation = Quaternion(0.324804, 2.27932e-09, 2.65595e-08, 0.945781)
+bones/2/rotation = Quaternion(0.304725, 8.37353e-09, 2.61721e-08, 0.95244)
+bones/3/rotation = Quaternion(0.107496, 9.21322e-09, 2.50144e-08, 0.994206)
+
+[node name="TentacleHitbox1" type="BoneAttachment3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D" index="1"]
+transform = Transform3D(1.78814e-07, -0.309219, -0.950991, 1.49012e-08, -0.950991, 0.309219, -1, -5.96046e-08, -2.38419e-07, 0, 0, 0)
+bone_name = "Bone"
+bone_idx = 0
+
+[node name="Collision" type="StaticBody3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/TentacleHitbox1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77556e-17, 0.0101841, 2.91038e-11)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/TentacleHitbox1/Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 8.88178e-16, 1.49012e-08, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_yvsoy")
+
+[node name="Weapon Invulnerability" type="Area3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/TentacleHitbox1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77556e-17, 0.0101841, 2.91038e-11)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_yvsoy")
+_damage_multiplier = 0.0
+metadata/_custom_type_script = "uid://b7c5dxlqsxtlt"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/TentacleHitbox1/Weapon Invulnerability"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 8.88178e-16, 1.49012e-08, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_yvsoy")
+
+[node name="TentacleHitbox2" type="BoneAttachment3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D" index="2"]
+transform = Transform3D(1.50514e-07, -0.828252, -0.560356, -3.02818e-08, -0.560356, 0.828252, -1, -1.44751e-07, -1.73058e-07, -0.00647254, -0.0199061, -1.24764e-09)
+bone_name = "Bone.001"
+bone_idx = 1
+
+[node name="Collision" type="StaticBody3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/TentacleHitbox2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77556e-17, 0.0101841, 2.91038e-11)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/TentacleHitbox2/Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 8.88178e-16, 1.49012e-08, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_2lbfk")
+
+[node name="Weapon Invulnerability" type="Area3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/TentacleHitbox2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77556e-17, 0.0101841, 2.91038e-11)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("4_yvsoy")
+metadata/_custom_type_script = "uid://b7c5dxlqsxtlt"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/TentacleHitbox2/Weapon Invulnerability"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 8.88178e-16, 1.49012e-08, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_2lbfk")
+
+[node name="TentacleHitbox3" type="BoneAttachment3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D" index="3"]
+transform = Transform3D(1.04995e-07, -0.9997, 0.0244811, -6.10779e-08, 0.0244812, 0.9997, -1, -1.73571e-07, -8.87965e-08, -0.0296992, -0.0356202, -5.30691e-09)
+bone_name = "Bone.002"
+bone_idx = 2
+
+[node name="Collision" type="StaticBody3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/TentacleHitbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77556e-17, 0.0101841, 2.91038e-11)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/TentacleHitbox3/Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 8.88178e-16, 1.49012e-08, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_kgmdp")
+
+[node name="Weapon Invulnerability" type="Area3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/TentacleHitbox3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77556e-17, 0.0101841, 2.91038e-11)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("4_yvsoy")
+metadata/_custom_type_script = "uid://b7c5dxlqsxtlt"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/TentacleHitbox3/Weapon Invulnerability"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 8.88178e-16, 1.49012e-08, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_kgmdp")
+
+[node name="TentacleHitbox4" type="BoneAttachment3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D" index="4"]
+transform = Transform3D(5.29738e-08, -0.971363, 0.237598, -7.27496e-08, 0.237598, 0.971364, -1, -1.40782e-07, -7.33416e-08, -0.0601616, -0.0348742, -1.05959e-08)
+bone_name = "Bone.003"
+bone_idx = 3
+
+[node name="Collision" type="StaticBody3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/TentacleHitbox4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77556e-17, 0.0101841, 2.91038e-11)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/TentacleHitbox4/Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 8.88178e-16, 1.49012e-08, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_5pbi6")
+
+[node name="Weapon Invulnerability" type="Area3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/TentacleHitbox4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77556e-17, 0.0101841, 2.91038e-11)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_yvsoy")
+metadata/_custom_type_script = "uid://b7c5dxlqsxtlt"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/TentacleHitbox4/Weapon Invulnerability"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 8.88178e-16, 1.49012e-08, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_5pbi6")
+
+[node name="Core weakpoint" type="BoneAttachment3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D" index="5"]
+transform = Transform3D(1.78814e-07, -0.309219, -0.950991, 1.49012e-08, -0.950991, 0.309219, -1, -5.96046e-08, -2.38419e-07, 0, 0, 0)
+bone_name = "Bone"
+bone_idx = 0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/Core weakpoint"]
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, -5.88418e-17, 0.0147954, 0.00500905)
+collision_layer = 5
+
+[node name="WeakPoint" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/Core weakpoint/StaticBody3D" node_paths=PackedStringArray("damage_target") instance=ExtResource("3_yvsoy")]
+transform = Transform3D(-6.06607e-09, 1.36106e-08, -1, 0.407087, -0.91339, -1.36106e-08, -0.91339, -0.407087, -6.06606e-09, 0, -0.0101841, 4.65661e-10)
+damage = SubResource("Resource_7kaww")
+damage_target = NodePath("../../../../../..")
+max_hp = 10.0
+hp = 10.0
+
+[node name="Core weakpoint2" type="BoneAttachment3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D" index="6"]
+transform = Transform3D(1.04995e-07, -0.9997, 0.0244811, -6.10779e-08, 0.0244812, 0.9997, -1, -1.73571e-07, -8.87965e-08, -0.0296992, -0.0356202, -5.30691e-09)
+bone_name = "Bone.002"
+bone_idx = 2
+
+[node name="StaticBody3D" type="StaticBody3D" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/Core weakpoint2"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -7.88258e-17, 0.0147954, -0.00285875)
+collision_layer = 5
+
+[node name="WeakPoint" parent="vortex_boss_tentacle/Armature_007/Skeleton3D/Core weakpoint2/StaticBody3D" node_paths=PackedStringArray("damage_target") instance=ExtResource("3_yvsoy")]
+transform = Transform3D(-6.06607e-09, 1.36106e-08, -1, 0.407087, -0.91339, -1.36106e-08, -0.91339, -0.407087, -6.06606e-09, 0, -0.0101841, 4.65661e-10)
+damage = SubResource("Resource_7kaww")
+damage_target = NodePath("../../../../../..")
+max_hp = 10.0
+hp = 10.0
+
+[editable path="vortex_boss_tentacle"]

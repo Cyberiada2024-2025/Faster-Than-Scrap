@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://j2dyy6flaq5t"]
+
+[ext_resource type="PackedScene" uid="uid://co61eqagfwyxh" path="res://art/models/bosses/vortex boss/vortex_ring.fbx" id="1_wa42x"]
+[ext_resource type="Material" uid="uid://bgam2oq63dvfq" path="res://art/materials/bosses/vortex_boss/vortex_boss_material.tres" id="2_lhmem"]
+
+[node name="vortex_ring" instance=ExtResource("1_wa42x")]
+
+[node name="Vortex Ring" parent="." index="0"]
+material_override = ExtResource("2_lhmem")

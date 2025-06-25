@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://b18x1myvqvjyg"]
+
+[ext_resource type="Script" uid="uid://df3sgcpdwrckg" path="res://code/boss/weak_point.gd" id="1_h6qhd"]
+[ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="2_0qaid"]
+[ext_resource type="PackedScene" uid="uid://ba6bvjt5dyf6b" path="res://art/model_prefabs/bosses/vortex_boss/vortex_core.tscn" id="3_yq4up"]
+[ext_resource type="PackedScene" uid="uid://cueuhnoh0g75p" path="res://prefabs/modules/functional_components/damage_controller_hostile_damage.tscn" id="4_0qaid"]
+[ext_resource type="AudioStream" uid="uid://b3yhuj0eups7i" path="res://art/audio/sounds/dmg_taken.mp3" id="5_1igj6"]
+[ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="6_swdi3"]
+[ext_resource type="Script" uid="uid://cfktryndjqsf1" path="res://code/ship/missile_target.gd" id="7_swdi3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h6qhd"]
+
+[sub_resource type="Resource" id="Resource_0qaid"]
+script = ExtResource("2_0qaid")
+value = 50.0
+type = 0
+metadata/_custom_type_script = "uid://cukcjob61wwp7"
+
+[node name="WeakPoint" type="CollisionShape3D"]
+shape = SubResource("SphereShape3D_h6qhd")
+script = ExtResource("1_h6qhd")
+damage = SubResource("Resource_0qaid")
+metadata/_custom_type_script = "uid://df3sgcpdwrckg"
+
+[node name="VortexCore" parent="." instance=ExtResource("3_yq4up")]
+skeleton = NodePath("../..")
+
+[node name="DamageControllerHostileDamage" parent="." instance=ExtResource("4_0qaid")]
+
+[node name="Damageable" parent="DamageControllerHostileDamage" index="0"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageControllerHostileDamage/Damageable" index="0"]
+shape = SubResource("SphereShape3D_h6qhd")
+
+[node name="SoundEmitter" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_1igj6")
+max_polyphony = 5
+bus = &"SFX"
+script = ExtResource("6_swdi3")
+min_pitch_scale = 0.75
+max_pitch_scale = 1.15
+metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
+
+[node name="Missile target" type="RigidBody3D" parent="."]
+script = ExtResource("7_swdi3")
+metadata/_custom_type_script = "uid://cfktryndjqsf1"
+
+[connection signal="damaged" from="DamageControllerHostileDamage" to="." method="take_damage"]
+
+[editable path="DamageControllerHostileDamage"]

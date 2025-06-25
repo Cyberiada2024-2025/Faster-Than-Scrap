@@ -9,6 +9,7 @@
 [sub_resource type="Resource" id="Resource_tl6w7"]
 script = ExtResource("2_s55wj")
 value = 30.0
+type = 0
 metadata/_custom_type_script = "uid://cukcjob61wwp7"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d74el"]

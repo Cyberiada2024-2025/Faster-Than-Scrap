@@ -1,16 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://dddwy3hs5k7dp"]
+[gd_scene load_steps=7 format=3 uid="uid://dddwy3hs5k7dp"]
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_wvb6r"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_488uq"]
 [ext_resource type="Script" uid="uid://bmhwp67vae4gu" path="res://code/missions/info/mission_info.gd" id="3_3wl7g"]
 [ext_resource type="PackedScene" uid="uid://b00xgnuawg5tk" path="res://scenes/levels/level_dummy.tscn" id="3_lgfqs"]
+[ext_resource type="Script" uid="uid://50o55qmu5g5c" path="res://code/map_select/cross.gd" id="5_w6cgn"]
 
 [sub_resource type="Resource" id="Resource_w6cgn"]
 script = ExtResource("3_3wl7g")
 about = ""
 difficulty = 0
 
-[node name="MissionNode" type="TextureButton"]
+[node name="MissionNode" type="TextureButton" node_paths=PackedStringArray("cross")]
 modulate = Color(0, 0, 1, 1)
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,5 +25,18 @@ stretch_mode = 5
 script = ExtResource("2_488uq")
 mission_info = SubResource("Resource_w6cgn")
 level_prefab = ExtResource("3_lgfqs")
+cross = NodePath("Cross")
+metadata/_custom_type_script = "uid://cwpnhx3le7627"
+
+[node name="Cross" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_w6cgn")
+metadata/_custom_type_script = "uid://50o55qmu5g5c"
 
 [connection signal="pressed" from="." to="." method="on_click"]

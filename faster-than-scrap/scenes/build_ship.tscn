@@ -185,6 +185,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Confirm" type="Button" parent="ShipBuilder/Control/Confirm finish/Color_Rect"]
+visible = false
 layout_mode = 0
 offset_left = 390.0
 offset_top = 76.0
@@ -311,7 +312,7 @@ horizontal_alignment = 1
 script = ExtResource("7_jtm63")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
-[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "inventory_limit_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description", "repair_button")]
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "inventory_limit_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description", "repair_button", "confirm_finish_message_with_unusigned_keys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.897, 0, -3.63634)
 script = ExtResource("11_jtm63")
 starting_bank = 6
@@ -327,6 +328,7 @@ deny_finish_label = NodePath("../ShipBuilder/Control/Deny finish/Color_Rect/Labe
 selected_module_display = NodePath("../ShipBuilder/Control/Prize_display/RichTextLabel")
 selected_module_description = NodePath("../ShipBuilder/Control/Description_display/RichTextLabel")
 repair_button = NodePath("../Control/RepairModules")
+confirm_finish_message_with_unusigned_keys = NodePath("../Control/Confirm missing keys")
 metadata/_custom_type_script = "uid://dsebh10ryevl"
 
 [node name="Inventory2" type="CSGMesh3D" parent="Shop"]
@@ -470,6 +472,67 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5jnae")
 text = "Repair - 2$
 25%HP / mod"
 
+[node name="Confirm missing keys" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 0.9)
+
+[node name="Color_Rect" type="ColorRect" parent="Control/Confirm missing keys"]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 242.0
+offset_right = 898.0
+offset_bottom = 392.0
+color = Color(0, 0.051, 0.027, 1)
+
+[node name="Label" type="Label" parent="Control/Confirm missing keys/Color_Rect"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 50.0
+text = "WARNING: 
+you have modules with unusigned keys"
+label_settings = SubResource("LabelSettings_x5wpm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Confirm" type="Button" parent="Control/Confirm missing keys/Color_Rect"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 76.0
+offset_right = 608.0
+offset_bottom = 114.0
+theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
+theme_override_fonts/font = ExtResource("6_au3vu")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ppglm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_istkh")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xrmp7")
+text = "Proceed"
+
+[node name="Deny" type="Button" parent="Control/Confirm missing keys/Color_Rect"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 76.0
+offset_right = 238.0
+offset_bottom = 114.0
+theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
+theme_override_fonts/font = ExtResource("6_au3vu")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ppglm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_istkh")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xrmp7")
+text = "Go Back"
+
 [node name="PauseMenu" parent="." instance=ExtResource("11_d8di0")]
 
 [node name="Node" type="Node" parent="."]
@@ -487,3 +550,5 @@ play_on_ready = true
 [connection signal="area_entered" from="Shop/Inventory/Area3D" to="Shop" method="_on_inventory_entered"]
 [connection signal="area_exited" from="Shop/Inventory/Area3D" to="Shop" method="_on_inventory_exited"]
 [connection signal="pressed" from="Control/RepairModules" to="Shop" method="_repair_modules"]
+[connection signal="pressed" from="Control/Confirm missing keys/Color_Rect/Confirm" to="Shop" method="_on_missing_key_confirm_pressed"]
+[connection signal="pressed" from="Control/Confirm missing keys/Color_Rect/Deny" to="Shop" method="_on_missing_key_deny_pressed"]

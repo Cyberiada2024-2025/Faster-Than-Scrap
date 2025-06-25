@@ -1,3 +1,4 @@
+class_name CompositeState
 extends StateNPC
 
 var child_states: Array[State] = []

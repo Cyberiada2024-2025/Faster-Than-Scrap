@@ -9,7 +9,7 @@ extends MapNode
 
 
 func _set_color() -> void:
-	modulate = Color.RED
+	self_modulate = Color.RED
 	super()
 
 

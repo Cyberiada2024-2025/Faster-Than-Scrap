@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://hkalytsvm87o"]
+
+[ext_resource type="Shader" uid="uid://bn6cp3vsuotqb" path="res://art/shaders/graphs/vortex_boss.tres" id="1_f841q"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_f841q")
+shader_parameter/Scale = Vector2(5, 0.25)
+shader_parameter/Speed = 0.208
+shader_parameter/Detail_width = 0.034
+shader_parameter/Alpha_threshold = 0.405
+shader_parameter/Main_Color = Color(0.174812, 0.0116334, 0.0886759, 1)
+shader_parameter/Detail = Color(0.94, 0, 0.0156664, 1)
+shader_parameter/Emission_strength = 0.5
+shader_parameter/Bump_strength = 2.0

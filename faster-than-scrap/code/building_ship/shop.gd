@@ -40,6 +40,8 @@ extends Node3D
 	"res://prefabs/vfx/particles/base_projectile_hit_particles.tscn"
 )
 
+@export var confirm_finish_message_with_unusigned_keys: Control
+
 ## actual cash balance
 var bank: int = 0
 var first_frame: bool = true
@@ -115,6 +117,7 @@ func _generate_shop() -> void:
 		add_child(area)
 		area.add_child(module)
 		module.position = Vector3.ZERO
+		module.hide_on_module_camera()
 		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2
 		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
 		area.position = Vector3(x, 0, z)
@@ -131,6 +134,7 @@ func _generate_inventory() -> void:
 		)
 		obj.position = Vector3(x, 0, z)
 		obj.get_child(0).position = Vector3(0, 0, 0)
+		obj.hide_on_module_camera()
 		i += 1
 	_display_inventory_number()
 
@@ -156,6 +160,15 @@ func _on_bank_change() -> void:
 	repair_button.disabled = (bank < repair_cost)
 
 
+func _on_missing_key_confirm_pressed() -> void:
+	confirm_finish_message_with_unusigned_keys.visible = false
+	_exit_shop()
+
+
+func _on_missing_key_deny_pressed() -> void:
+	confirm_finish_message_with_unusigned_keys.visible = false
+
+
 func _on_finish_pressed() -> void:
 	if DebugMenu.disable_money_checks:
 		_exit_shop()
@@ -167,6 +180,10 @@ func _on_finish_pressed() -> void:
 		deny_finish.visible = true
 		deny_finish_label.text = "Your inventory has too many items!"
 	else:
+		for m in GameManager.player_ship.modules:
+			if m.activation_key_saved == KEY_NONE and m.is_activable:
+				confirm_finish_message_with_unusigned_keys.visible = true
+				return
 		_exit_shop()
 
 

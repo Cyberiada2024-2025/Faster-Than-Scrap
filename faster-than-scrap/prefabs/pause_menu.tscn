@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8vq1jqmowcwf"]
+[gd_scene load_steps=5 format=3 uid="uid://b8vq1jqmowcwf"]
 
 [ext_resource type="Script" uid="uid://cntqnnyriiru2" path="res://code/pause_menu.gd" id="1_hf53u"]
+[ext_resource type="PackedScene" uid="uid://36s8658cgl8t" path="res://scenes/settings.tscn" id="2_atv5q"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_iyb4f"]
 [ext_resource type="Script" path="res://code/evironment/reset.gd" id="2_ntkjb"]
 
@@ -57,6 +58,10 @@ theme_override_font_sizes/font_size = 30
 text = "EXIT TO MAIN MENU
 "
 script = ExtResource("2_ntkjb")
+
+[node name="Settings" parent="." instance=ExtResource("2_atv5q")]
+visible = false
+layout_mode = 1
 
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("2_iyb4f")

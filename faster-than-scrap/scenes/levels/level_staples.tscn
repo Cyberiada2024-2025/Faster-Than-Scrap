@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnp5ctgr2bm66"]
+[gd_scene load_steps=9 format=3 uid="uid://bnp5ctgr2bm66"]
 
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="2_g7p6o"]
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="3_40ga3"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="5_w06h8"]
 [ext_resource type="Script" uid="uid://f6d84uyul237" path="res://code/evironment/generate_nebulas.gd" id="6_dq8h5"]
 [ext_resource type="PackedScene" uid="uid://bv13odmw2deac" path="res://prefabs/ui/vortex_warning.tscn" id="6_fj3oh"]
-[ext_resource type="PackedScene" uid="uid://36s8658cgl8t" path="res://scenes/settings.tscn" id="6_ho1km"]
 [ext_resource type="AudioStream" uid="uid://dca4vlll603e5" path="res://art/audio/music/music_fly_ship.mp3" id="7_f6qu4"]
 [ext_resource type="PackedScene" uid="uid://55masxr1fg7f" path="res://prefabs/vfx/particles/dust_particles.tscn" id="7_r20ym"]
 
@@ -36,10 +35,6 @@ text = "Build
 autowrap_mode = 3
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_w06h8")]
-
-[node name="Settings" parent="PauseMenu" instance=ExtResource("6_ho1km")]
-visible = false
-layout_mode = 1
 
 [node name="Background" type="Node3D" parent="."]
 script = ExtResource("6_dq8h5")

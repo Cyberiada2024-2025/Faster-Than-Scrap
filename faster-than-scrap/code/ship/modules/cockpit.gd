@@ -32,4 +32,5 @@ func _on_key(_delta: float) -> void:
 
 func _on_release(_delta: float) -> void:
 	# TODO Set this to default state (could be different, depending on air resistance)
-	ship.linear_damp = 0
+	ship.linear_damp = ship.linear_damp_value
+	ship.angular_damp = ship.angular_damp_value

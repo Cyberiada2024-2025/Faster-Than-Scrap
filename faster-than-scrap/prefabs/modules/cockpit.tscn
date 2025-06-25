@@ -13,6 +13,7 @@ size = Vector3(0.74, 1, 1)
 [node name="Cockpit" type="CollisionShape3D" node_paths=PackedStringArray("sprite", "label")]
 shape = SubResource("BoxShape3D_4r7dq")
 script = ExtResource("1_q5512")
+activation_key = 81
 is_activable = false
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")

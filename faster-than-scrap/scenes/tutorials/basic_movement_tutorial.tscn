@@ -153,8 +153,9 @@ script = ExtResource("8_6xv7r")
 cutscene_path = ExtResource("13_jcith")
 
 [node name="Portal Cutscene player" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.820221, 0.576202, -381.002)
 script = ExtResource("12_8j6x4")
+show_tutorial_delay = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Portal Cutscene player"]
 shape = SubResource("SphereShape3D_83mrs")

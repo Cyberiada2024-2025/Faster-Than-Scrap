@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://go1u7xe1f41q" path="res://art/textures/main_menu/background_mask.png" id="5_1g033"]
 [ext_resource type="Script" uid="uid://b8kgrdxasqvq0" path="res://code/main_menu/background_light.gd" id="6_01roj"]
 [ext_resource type="Texture2D" uid="uid://cvsc1hfn6jjb" path="res://art/textures/main_menu/main_title.png" id="7_wqwn7"]
-[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="8_oe2nd"]
+[ext_resource type="PackedScene" path="res://prefabs/ui/volume_slider.tscn" id="8_am25x"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -19,6 +19,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_gjs24")
+metadata/_edit_horizontal_guides_ = [517.0]
 
 [node name="background" type="Sprite2D" parent="."]
 show_behind_parent = true
@@ -34,7 +35,7 @@ follow_speed = 2.0
 
 [node name="BackgroundLight" type="Sprite2D" parent="LightMask"]
 self_modulate = Color(0.865093, 0.536184, 0, 1)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.599204, 0.6)
 texture = ExtResource("5_1g033")
 centered = false
 script = ExtResource("6_01roj")
@@ -54,47 +55,101 @@ grow_vertical = 2
 texture = ExtResource("7_wqwn7")
 expand_mode = 3
 
-[node name="Buttons" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = 46.0
-offset_right = 90.0
-offset_bottom = 161.0
+anchor_bottom = 1.0
+offset_left = -307.0
+offset_top = -371.0
+offset_right = 309.0
+offset_bottom = -23.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 54
+
+[node name="Buttons" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 15
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="BrakesCheckBox" type="CheckBox" parent="Buttons"]
+[node name="BrakesCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/Buttons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Inertial Dampers"
+text = "Cockpit brakes"
+alignment = 1
+icon_alignment = 2
 
-[node name="AirResistanceCheckBox" type="CheckBox" parent="Buttons"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Buttons"]
+layout_mode = 2
+text = "Assign Key to cockpit for easier stopping"
+vertical_alignment = 1
+
+[node name="AirResistanceCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/Buttons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Void resistance WIP"
+text = "Void resistance"
+alignment = 1
 
-[node name="SkipCutscenesCheckBox" type="CheckBox" parent="Buttons"]
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Buttons"]
+layout_mode = 2
+text = "Ship is always stopping"
+horizontal_alignment = 1
+
+[node name="SkipCutscenesCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/Buttons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Skip Cutscenes WIP"
+text = "Skip cutscenes"
+alignment = 1
 
-[node name="ReturnButton" type="Button" parent="Buttons"]
+[node name="SlidersLabels" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="general_label" type="Label" parent="VBoxContainer/HBoxContainer/SlidersLabels"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "General"
+
+[node name="General" parent="VBoxContainer/HBoxContainer/SlidersLabels" instance=ExtResource("8_am25x")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="music_label" type="Label" parent="VBoxContainer/HBoxContainer/SlidersLabels"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Music"
+
+[node name="Music" parent="VBoxContainer/HBoxContainer/SlidersLabels" instance=ExtResource("8_am25x")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="sfx_label" type="Label" parent="VBoxContainer/HBoxContainer/SlidersLabels"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Sound Effects"
+
+[node name="sfx" parent="VBoxContainer/HBoxContainer/SlidersLabels" instance=ExtResource("8_am25x")]
+layout_mode = 2
+bus_name = "SFX"
+
+[node name="Sliders" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="ReturnButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "RETURN"
 
-[node name="SceneLoader" type="Node" parent="."]
-script = ExtResource("8_oe2nd")
-
-[connection signal="pressed" from="Buttons/BrakesCheckBox" to="." method="_on_brakes_check_box_pressed"]
-[connection signal="pressed" from="Buttons/AirResistanceCheckBox" to="." method="_on_air_resistance_check_box_pressed"]
-[connection signal="pressed" from="Buttons/ReturnButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Buttons/BrakesCheckBox" to="." method="_on_brakes_check_box_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Buttons/AirResistanceCheckBox" to="." method="_on_air_resistance_check_box_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Buttons/SkipCutscenesCheckBox" to="." method="_on_skip_cutscenes_check_box_pressed"]
+[connection signal="pressed" from="VBoxContainer/ReturnButton" to="." method="_on_button_pressed"]

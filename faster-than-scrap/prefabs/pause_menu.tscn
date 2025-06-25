@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8vq1jqmowcwf"]
+[gd_scene load_steps=5 format=3 uid="uid://b8vq1jqmowcwf"]
 
 [ext_resource type="Script" uid="uid://cntqnnyriiru2" path="res://code/pause_menu.gd" id="1_hf53u"]
+[ext_resource type="PackedScene" uid="uid://36s8658cgl8t" path="res://scenes/settings.tscn" id="2_atv5q"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_iyb4f"]
-[ext_resource type="Script" uid="uid://bpibk0iyedtwk" path="res://code/evironment/reset.gd" id="2_ntkjb"]
+[ext_resource type="Script" path="res://code/evironment/reset.gd" id="2_ntkjb"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -44,6 +45,11 @@ theme_override_font_sizes/font_size = 30
 text = "RESUME
 "
 
+[node name="SettingsButton" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "SETTINGS"
+
 [node name="Exit" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Resume")
@@ -53,8 +59,13 @@ text = "EXIT TO MAIN MENU
 "
 script = ExtResource("2_ntkjb")
 
+[node name="Settings" parent="." instance=ExtResource("2_atv5q")]
+visible = false
+layout_mode = 1
+
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("2_iyb4f")
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

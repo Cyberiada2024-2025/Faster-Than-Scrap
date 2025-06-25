@@ -11,6 +11,9 @@ signal energy_warning(energy: float)
 
 signal fuel_change(new_value: int)
 
+@export var linear_damp_value := 0.4
+@export var angular_damp_value := 1.5
+
 @export var cockpit: Cockpit
 @export var debug_movement_force: float = 20
 
@@ -37,6 +40,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	super()
+	change_air_resistance()
 	for child in get_children():
 		if child is Module:
 			modules.append(child)
@@ -82,6 +86,15 @@ func _physics_process(_delta: float) -> void:
 	)
 
 	apply_force(force_direction * debug_movement_force)
+
+
+func change_air_resistance() -> void:
+	if SettingsManager.air_resistance:
+		linear_damp = linear_damp_value
+		angular_damp = angular_damp_value
+	else:
+		linear_damp = 0
+		angular_damp = 0
 
 
 func on_game_change_state(new_state: GameState.State) -> void:

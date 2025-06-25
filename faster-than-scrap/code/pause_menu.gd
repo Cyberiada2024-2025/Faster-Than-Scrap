@@ -18,6 +18,10 @@ func _on_exit_pressed() -> void:
 	scene_loader.load_main_menu_scene()
 
 
+func _on_settings_button_pressed() -> void:
+	$Settings.visible = true
+
+
 func change_menu() -> void:
 	if visible:
 		visible = false

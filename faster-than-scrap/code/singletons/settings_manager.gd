@@ -1,3 +1,5 @@
 extends Node
 
-var brakes_enabled:=true
+var brakes_enabled := false
+var air_resistance := true
+var skip_cutscenes := false

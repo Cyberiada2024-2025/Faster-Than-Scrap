@@ -26,10 +26,17 @@ func detachable() -> bool:
 
 
 func _on_key(_delta: float) -> void:
-	ship.linear_damp = 2
-	ship.angular_damp = 2
+	if SettingsManager.brakes_enabled:
+		ship.linear_damp = 2
+		ship.angular_damp = 2
 
 
 func _on_release(_delta: float) -> void:
-	# TODO Set this to default state (could be different, depending on air resistance)
-	ship.linear_damp = 0
+	if !SettingsManager.brakes_enabled:
+		return
+	if SettingsManager.air_resistance:
+		ship.linear_damp = ship.linear_damp_value
+		ship.angular_damp = ship.angular_damp_value
+	else:
+		ship.linear_damp = 0
+		ship.angular_damp = 0

@@ -4,6 +4,9 @@ var alread_played_cutscenes: Array[String] = []
 
 
 func play_cutscene(cutscene_packed_scene: PackedScene) -> void:
+	if SettingsManager.skip_cutscenes:
+		await Engine.get_main_loop().process_frame
+		return
 	var cutscene: Cutscene = cutscene_packed_scene.instantiate()
 	var name = cutscene.cutscene_name
 	if not name in alread_played_cutscenes:

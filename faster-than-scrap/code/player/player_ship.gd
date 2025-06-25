@@ -40,9 +40,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	super()
-	if SettingsManager.air_resistance:
-		linear_damp = linear_damp_value
-		angular_damp = angular_damp_value
+	change_air_resistance()
 	GameManager.new_game_state.connect(on_game_change_state)
 
 	if DebugMenu.is_debug:
@@ -70,6 +68,15 @@ func _physics_process(_delta: float) -> void:
 	)
 
 	apply_force(force_direction * debug_movement_force)
+
+
+func change_air_resistance() -> void:
+	if SettingsManager.air_resistance:
+		linear_damp = linear_damp_value
+		angular_damp = angular_damp_value
+	else:
+		linear_damp = 0
+		angular_damp = 0
 
 
 func on_game_change_state(new_state: GameState.State) -> void:

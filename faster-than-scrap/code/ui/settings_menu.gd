@@ -25,6 +25,8 @@ func _on_brakes_check_box_pressed() -> void:
 
 func _on_air_resistance_check_box_pressed() -> void:
 	SettingsManager.air_resistance = air_resistance_check_box.is_pressed()
+	if GameManager.player_ship != null:
+		GameManager.player_ship.change_air_resistance()
 
 
 func _on_skip_cutscenes_check_box_pressed() -> void:

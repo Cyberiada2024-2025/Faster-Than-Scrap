@@ -516,6 +516,7 @@ func _create_outline(parent: Node3D) -> Array[MeshInstance3D]:
 		#var mesh = MeshInstance3D.new()
 		var mesh: MeshInstance3D = module_mesh.duplicate()
 		parent.add_child(mesh)
+		mesh.position = parent.to_local(module_mesh.global_position)
 		mesh.material_override = outline_mat
 		mesh.global_rotation = module_mesh.global_rotation
 		mesh.global_scale(module_mesh.global_transform.basis.get_scale())

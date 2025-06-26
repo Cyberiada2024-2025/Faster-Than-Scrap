@@ -1,25 +1,20 @@
-[gd_scene load_steps=28 format=3 uid="uid://15te4x6fjtx4"]
+[gd_scene load_steps=24 format=3 uid="uid://15te4x6fjtx4"]
 
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_wqaao"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_wf0w0"]
 [ext_resource type="PackedScene" uid="uid://dyn1ks7ebosel" path="res://prefabs/projectiles/homing_missile.tscn" id="3_duybm"]
-[ext_resource type="PackedScene" uid="uid://dwlfvellnrf75" path="res://art/model_prefabs/ship/modules/common_gun_model_pf.tscn" id="4_ssbkt"]
+[ext_resource type="PackedScene" uid="uid://nurptglh2vv7" path="res://art/model_prefabs/ship/modules/missile_launcher_pf.tscn" id="4_kgddl"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_tjuoy"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="5_5u5s7"]
-[ext_resource type="Texture2D" uid="uid://2gjyanubtuq0" path="res://art/textures/common_gun/common_gun_Albedo.png" id="5_ojn6j"]
-[ext_resource type="Texture2D" uid="uid://cfbuewvtj0krm" path="res://art/textures/common_gun/common_gun_AO.png" id="6_bdmed"]
+[ext_resource type="PackedScene" uid="uid://dehh21syyi8w4" path="res://art/models/modules/missille_launcher/missile_launcher_collider_3d.tscn" id="6_kgddl"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="6_qts7g"]
-[ext_resource type="Texture2D" uid="uid://d17p4g3iue8i4" path="res://art/textures/common_gun/common_gun_Metalness.png" id="7_j4nm5"]
-[ext_resource type="Texture2D" uid="uid://bbplkfi81cc5b" path="res://art/textures/common_gun/common_gun_Normal.png" id="8_1nmv8"]
 [ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="8_kgddl"]
-[ext_resource type="Texture2D" uid="uid://b08thixotsobt" path="res://art/textures/common_gun/common_gun_Roughness.png" id="9_7ufp7"]
-[ext_resource type="PackedScene" path="res://prefabs/modules/functional_components/direction_arrow.tscn" id="15_ojn6j"]
-[ext_resource type="PackedScene" uid="uid://cyw1yf0fdjx1j" path="res://prefabs/modules/functional_components/illegal_placement_zone.tscn" id="16_bdmed"]
 [ext_resource type="AudioStream" uid="uid://f8l5fjo3pvre" path="res://art/audio/sounds/rocket.mp3" id="13_ojn6j"]
 [ext_resource type="PackedScene" uid="uid://bij3qdd0iavi3" path="res://prefabs/modules/functional_components/direction_arrow.tscn" id="15_ojn6j"]
+[ext_resource type="PackedScene" uid="uid://cyw1yf0fdjx1j" path="res://prefabs/modules/functional_components/illegal_placement_zone.tscn" id="16_bdmed"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yf3ku"]
-size = Vector3(1.325, 1, 1.105)
+size = Vector3(1.325, 1, 2.165)
 
 [sub_resource type="Curve" id="Curve_qoroq"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -65,26 +60,18 @@ material = SubResource("StandardMaterial3D_b7ty2")
 size = 0.05
 curve = SubResource("Curve_pg335")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6e22"]
-albedo_color = Color(1, 0, 0, 1)
-albedo_texture = ExtResource("5_ojn6j")
-metallic = 1.0
-metallic_texture = ExtResource("7_j4nm5")
-roughness_texture = ExtResource("9_7ufp7")
-normal_enabled = true
-normal_texture = ExtResource("8_1nmv8")
-ao_enabled = true
-ao_texture = ExtResource("6_bdmed")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_j4nm5"]
-size = Vector3(1.425, 0.81, 0.315)
+size = Vector3(1.36719, 0.81, 0.195627)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kgddl"]
+size = Vector3(1.92773, 0.81, 0.195627)
 
 [node name="MissileModule" type="CollisionShape3D" node_paths=PackedStringArray("weapon", "attach_points", "sprite", "label")]
 shape = SubResource("BoxShape3D_yf3ku")
 script = ExtResource("1_wqaao")
 weapon = NodePath("SpawnerWeapon")
 allow_auto_fire = true
-attach_points = [NodePath("AttachPoints/AttachPoint"), NodePath("AttachPoints/AttachPoint2"), NodePath("AttachPoints/AttachPoint3")]
+attach_points = [NodePath("AttachPoints/AttachPoint")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
@@ -94,7 +81,7 @@ prize = 3
 description = "Advanced waepon. Activate to release a slow-moving homing missile."
 
 [node name="SpawnerWeapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.610518)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.14689)
 script = ExtResource("2_wf0w0")
 muzzle_flash = NodePath("MuzzleFlash")
 energy_cost = 25.0
@@ -117,32 +104,22 @@ trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_b5ybg")
 draw_pass_1 = SubResource("RibbonTrailMesh_7shuu")
 
-[node name="CommonGunModel" parent="." instance=ExtResource("4_ssbkt")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.01, 0)
-
-[node name="CommonGun" parent="CommonGunModel" index="0"]
-transform = Transform3D(0.999996, 0.00099188, -0.00265222, -0.000994776, 0.999999, -0.00109618, 0.00265113, 0.0010988, 0.999996, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_r6e22")
+[node name="MissileLauncher" parent="." instance=ExtResource("4_kgddl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.341e-08, 0, 0.535558)
 
 [node name="AttachPoints" type="Node3D" parent="."]
 
 [node name="AttachPoint" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4399e-08, 0, 0.652688)
-
-[node name="AttachPoint2" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.75, 0, 0)
-
-[node name="AttachPoint3" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.75, 0, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.22118e-08, 0, 1.08522)
 
 [node name="DamageController" parent="." instance=ExtResource("4_tjuoy")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00500476, -0.00528124, -0.00144887)
-shape = SubResource("BoxShape3D_yf3ku")
+[node name="MissileLauncherCollider" parent="DamageController/Damageable" index="0" instance=ExtResource("6_kgddl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.51293e-08, 0, 0.574891)
 
-[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("shape") instance=ExtResource("5_5u5s7")]
-shape = NodePath("../DamageController/Damageable/CollisionShape3D")
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("5_5u5s7")]
+damageable = NodePath("../DamageController/Damageable")
+shape = NodePath("../DamageController/Damageable/MissileLauncherCollider")
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("6_qts7g")]
 
@@ -160,12 +137,19 @@ metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
 [node name="Illegal Placement Zone" parent="." instance=ExtResource("16_bdmed")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Illegal Placement Zone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.561483)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.07969)
 shape = SubResource("BoxShape3D_j4nm5")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Illegal Placement Zone"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.644183, 0, -0.0247587)
+shape = SubResource("BoxShape3D_kgddl")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Illegal Placement Zone"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.644, 0, -0.025)
+shape = SubResource("BoxShape3D_kgddl")
 
 [connection signal="activated" from="." to="SoundEmitter" method="start_playing"]
 [connection signal="damaged" from="DamageController" to="." method="take_damage"]
 
-[editable path="CommonGunModel"]
 [editable path="DamageController"]
 [editable path="ModuleDisplay"]

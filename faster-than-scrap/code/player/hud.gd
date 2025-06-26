@@ -30,6 +30,9 @@ func _ready() -> void:
 	_module_camera = $ModuleViewport/ModuleCamera
 	_minimap_camera = $MinimapViewport/MinimapCamera
 
+	if SettingsManager.zoom_level != 0:
+		_main_camera.fov = SettingsManager.zoom_level
+
 
 class Rect:
 	class Edge:
@@ -138,5 +141,6 @@ func _process(_delta: float) -> void:
 
 func zoom_camera(strength: int) -> void:
 	var fov = clampf(_main_camera.fov + strength, min_zoom, max_zoom)
+	SettingsManager.zoom_level = fov
 	_tween = create_tween()
 	_tween.tween_property(_main_camera, "fov", fov, zoom_time)

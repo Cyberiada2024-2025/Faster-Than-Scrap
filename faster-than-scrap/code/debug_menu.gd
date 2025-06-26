@@ -1,8 +1,6 @@
 extends Control
 
-
 signal toggle_player_collisions
-
 
 const BTN_PARENT = NodePath(
 	"ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer"
@@ -71,3 +69,7 @@ func _on_map_node_checks_pressed() -> void:
 
 func _on_map_select_pressed() -> void:
 	scene_loader.load_map_selector_scene()
+
+
+func _on_ship_builder_pressed() -> void:
+	scene_loader.load_build_ship_scene()

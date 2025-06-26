@@ -92,6 +92,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Enter map select screen"
 
+[node name="Btn 7" type="Button" parent="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Enter ship builder
+"
+
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("2_fmo40")
 
@@ -101,3 +107,4 @@ script = ExtResource("2_fmo40")
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 4" to="." method="_on_debug_movement_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 5" to="." method="_on_map_node_checks_pressed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 6" to="." method="_on_map_select_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer/Btn 7" to="." method="_on_ship_builder_pressed"]

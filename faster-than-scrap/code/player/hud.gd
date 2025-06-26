@@ -141,6 +141,6 @@ func _process(_delta: float) -> void:
 
 func zoom_camera(strength: int) -> void:
 	var fov = clampf(_main_camera.fov + strength, min_zoom, max_zoom)
+	SettingsManager.zoom_level = fov
 	_tween = create_tween()
 	_tween.tween_property(_main_camera, "fov", fov, zoom_time)
-	_tween.parallel().tween_property(SettingsManager, "zoom_level", fov, zoom_time)

@@ -1,5 +1,8 @@
 extends Node
 
+## All collision damage will be multiplied by this value
+const DAMAGE_MULTIPLIER = 10.0
+
 @export var collision_particles: PackedScene = preload(
 	"res://prefabs/vfx/particles/timed_particles/collision.tscn"
 )
@@ -85,11 +88,10 @@ func calculate_damage(me: Node, oponent: Node) -> Damage:
 		v2 = Vector3(0, 0, 0)
 	else:
 		v2 = oponet_calculator.pre_collision_velocity
-	var base_damage: float = (v1 - v2).dot(direction)
+	var base_damage: float = (v1 - v2).dot(direction) * DAMAGE_MULTIPLIER
 
 	# get multiplies
-	var self_dmg_mult: float = 1
-	self_dmg_mult *= self.self_damage_multiplier
+	var self_dmg_mult = self.self_damage_multiplier
 	if oponet_calculator != null:
 		self_dmg_mult *= oponet_calculator.dealt_damage_multiplier
 

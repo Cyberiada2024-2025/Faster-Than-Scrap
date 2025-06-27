@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bh1max67hf46s"]
+[gd_scene load_steps=8 format=3 uid="uid://dnqt5dsa6jb20"]
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_xtrno"]
 [ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_xxfpo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Curve" uid="uid://ckfbcwspulxjs" path="res://prefabs/ui/cutscenes/curves/snap.tres" id="4_nh75e"]
 [ext_resource type="Script" uid="uid://iwk1g8ku76ys" path="res://code/ui/cutscenes/slide_elements/slide_element_scale.gd" id="5_6a47g"]
 [ext_resource type="Script" uid="uid://decpi0ok1lasp" path="res://code/ui/cutscenes/slide_elements/slide_element_rotate.gd" id="6_jox1w"]
+[ext_resource type="Texture2D" uid="uid://c8cn324f1an8b" path="res://art/textures/ui/cutscenes/boss_images/juggernaut2.PNG" id="7_xxfpo"]
 
 [node name="BossCutsceneExample" type="ColorRect"]
 anchors_preset = 15
@@ -59,25 +60,15 @@ rotation_speed = -0.05
 element_speed = ExtResource("4_nh75e")
 metadata/_custom_type_script = "uid://decpi0ok1lasp"
 
-[node name="ColorRect" type="ColorRect" parent="Slide/Move/SlideElementScale/SlideElementRotate"]
+[node name="ColorRect" type="TextureRect" parent="Slide/Move/SlideElementScale/SlideElementRotate"]
 layout_mode = 0
 offset_left = -250.0
 offset_top = -250.0
-offset_right = 250.0
+offset_right = 350.0
 offset_bottom = 250.0
-color = Color(0.28485, 0.28485, 0.28485, 1)
-
-[node name="Label2" type="Label" parent="Slide/Move/SlideElementScale/SlideElementRotate/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 40
-text = "IMAGE PLACEHOLDER"
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("7_xxfpo")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="SlideElementMove" type="Control" parent="Slide"]
 anchors_preset = 0

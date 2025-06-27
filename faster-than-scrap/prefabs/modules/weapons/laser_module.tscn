@@ -67,7 +67,7 @@ shape = SubResource("BoxShape3D_yf3ku")
 
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("6_cxsht")]
 damageable = NodePath("../DamageController/Damageable")
-shape = NodePath("../DamageController/Damageable/CollisionShape3D")
+shape = NodePath("..")
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("7_fkld4")]
 

@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://k3n7j0mjfmxt" path="res://code/damage/damage_controller.gd" id="5_pmgy0"]
 [ext_resource type="AudioStream" uid="uid://bq3myi1evd56a" path="res://art/audio/sounds/shield_takingdmg_sound.wav" id="5_ul8cr"]
 [ext_resource type="PackedScene" uid="uid://3a5vwad6lsnu" path="res://prefabs/vfx/shield_vfx.tscn" id="6_gvryf"]
-[ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://code/damage/damageable.gd" id="6_usejs"]
+[ext_resource type="Script" path="res://code/damage/damageable.gd" id="6_usejs"]
 [ext_resource type="Shader" uid="uid://ohokcopb2fdp" path="res://art/shaders/graphs/Shield.tres" id="7_rwr3c"]
 [ext_resource type="PackedScene" uid="uid://dxvfp7amvdy7k" path="res://art/model_prefabs/shield_module_model_pf.tscn" id="7_usejs"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="8_e18hx"]
@@ -19,7 +19,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_x6hs4"]
 size = Vector3(0.78, 1, 1.085)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjp2t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wec70"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("7_rwr3c")
 shader_parameter/anim_hit = 1.0
@@ -145,18 +146,24 @@ prize = 2
 description = "Activate to project protective energy field. Drains energy on activation, slowly over time, and per absorbed damage."
 metadata/_custom_type_script = "uid://dsdbrxhbn35w7"
 
-[node name="Shield2" type="Node3D" parent="." node_paths=PackedStringArray("animator", "collider")]
+[node name="Shield2" type="Node3D" parent="." node_paths=PackedStringArray("close_animator", "hit_animator", "collider")]
 transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 0, 0, 0)
 script = ExtResource("2_yota5")
-animator = NodePath("Shield_VFX/AnimationPlayer")
+close_animator = NodePath("Shield_VFX/CloseAnimationPlayer")
+hit_animator = NodePath("Shield_VFX/HitAnimationPlayer")
 collider = NodePath("ShieldDamageController/Damageable2/CollisionShape3D")
 
 [node name="Shield_VFX" parent="Shield2" instance=ExtResource("6_gvryf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-material_override = SubResource("ShaderMaterial_qjp2t")
+material_override = SubResource("ShaderMaterial_wec70")
 skeleton = NodePath("../../..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Shield2/Shield_VFX"]
+[node name="CloseAnimationPlayer" type="AnimationPlayer" parent="Shield2/Shield_VFX"]
+libraries = {
+&"": SubResource("AnimationLibrary_22x73")
+}
+
+[node name="HitAnimationPlayer" type="AnimationPlayer" parent="Shield2/Shield_VFX"]
 libraries = {
 &"": SubResource("AnimationLibrary_22x73")
 }
@@ -170,7 +177,6 @@ metadata/_custom_type_script = "uid://k3n7j0mjfmxt"
 transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 0, 0, 0)
 collision_layer = 2
 script = ExtResource("6_usejs")
-metadata/_custom_type_script = "uid://b7c5dxlqsxtlt"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shield2/ShieldDamageController/Damageable2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)

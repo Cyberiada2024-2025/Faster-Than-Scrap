@@ -90,8 +90,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_4ttu0")
 theme_override_font_sizes/font_size = 20
 text = "Follow the blue map marker 
-and escape through
- hyperspace portal"
+and escape through the hyperspace portal"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

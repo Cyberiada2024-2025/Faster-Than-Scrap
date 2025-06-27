@@ -111,7 +111,7 @@ theme_override_font_sizes/font_size = 20
 text = "Automatic flight assist 
 is turned on. 
 
-You can change it in settings."
+You can change it in the settings."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

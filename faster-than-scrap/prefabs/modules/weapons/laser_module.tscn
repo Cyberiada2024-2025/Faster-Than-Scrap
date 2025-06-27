@@ -9,10 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="6_cxsht"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="7_fkld4"]
 [ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="9_kru4r"]
-[ext_resource type="PackedScene" path="res://prefabs/modules/functional_components/direction_arrow.tscn" id="11_w1vj3"]
-[ext_resource type="PackedScene" uid="uid://cyw1yf0fdjx1j" path="res://prefabs/modules/functional_components/illegal_placement_zone.tscn" id="12_cxsht"]
 [ext_resource type="AudioStream" uid="uid://cy4i3t1anj5cb" path="res://art/audio/sounds/blaster.mp3" id="9_w1vj3"]
 [ext_resource type="PackedScene" uid="uid://bij3qdd0iavi3" path="res://prefabs/modules/functional_components/direction_arrow.tscn" id="11_w1vj3"]
+[ext_resource type="PackedScene" uid="uid://cyw1yf0fdjx1j" path="res://prefabs/modules/functional_components/illegal_placement_zone.tscn" id="12_cxsht"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yf3ku"]
 size = Vector3(1.35, 1, 1.155)

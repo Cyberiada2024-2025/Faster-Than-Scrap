@@ -50,7 +50,8 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_jchy1")
 theme_override_font_sizes/font_size = 20
 text = "This sector’s hyperlane is unstable. 
-Hack nearby satellites to stabilize it."
+
+Approach the satellites to hack them and stabilize your escape route."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

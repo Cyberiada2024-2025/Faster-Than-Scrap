@@ -110,15 +110,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_01i7v")
-text = "
-
-Attaching module
+text = "Attaching module
  costs Scrap.
 
 Detaching module 
 refunds full cost.
 
-In every Shipyard you will find some Scrap and a few new modules."
+In every Shipyard you will find Scrap and a few new modules."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

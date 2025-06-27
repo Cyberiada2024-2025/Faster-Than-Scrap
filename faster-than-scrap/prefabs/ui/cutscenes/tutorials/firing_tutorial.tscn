@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://31y5kdihtoxf"]
+[gd_scene load_steps=6 format=3 uid="uid://31y5kdihtoxf"]
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_yfpjr"]
 [ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_vbvgk"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="3_4v6fl"]
 [ext_resource type="PackedScene" uid="uid://c78jp45hhpqhd" path="res://prefabs/ui/cutscenes/skip_info_text.tscn" id="4_rswdh"]
+[ext_resource type="Texture2D" uid="uid://ddm80lnoo3ty7" path="res://art/textures/ui/arrow.png" id="4_vbvgk"]
 
 [node name="EnergyTutorialCutscene" type="ColorRect"]
 anchors_preset = 15
@@ -54,6 +55,25 @@ to get to the Scrapyard."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="Slide"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.434
+anchor_top = 0.562
+anchor_right = 0.505
+anchor_bottom = 0.7
+offset_left = -252.968
+offset_top = 55.824
+offset_right = -248.76
+offset_bottom = 52.4
+grow_vertical = 0
+rotation = 0.924168
+scale = Vector2(0.707474, 1)
+texture = ExtResource("4_vbvgk")
+expand_mode = 1
+flip_v = true
 
 [node name="SkipInfoText" parent="." instance=ExtResource("4_rswdh")]
 layout_mode = 1

@@ -64,8 +64,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.75,
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
 shape = SubResource("BoxShape3D_yf3ku")
 
-[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("shape") instance=ExtResource("6_5nrh6")]
-shape = NodePath("../DamageController/Damageable/CollisionShape3D")
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("6_5nrh6")]
+damageable = NodePath("../DamageController/Damageable")
+shape = NodePath("..")
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("7_a44b7")]
 

@@ -6,6 +6,5 @@
 [node name="MissileLauncher" type="Node3D"]
 
 [node name="MissileLauncher" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.189852, 0, 0)
 material_override = ExtResource("1_shas0")
 mesh = ExtResource("6_xqx46")

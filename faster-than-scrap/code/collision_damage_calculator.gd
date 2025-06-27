@@ -27,10 +27,26 @@ var pre_collision_velocity: Vector3
 
 
 func _ready() -> void:
+	GameManager.new_game_state.connect(_on_game_manager_new_game_state)
+
+	find_calculated_body()
+
+
+func _on_game_manager_new_game_state(_new_state: GameState.State):
+	find_calculated_body()
+
+
+func find_calculated_body():
+	if calculated_body != null:
+		calculated_body.body_shape_entered.disconnect(_find_parent_collision)
+	calculated_body = null
+
 	# check if parent is PhysicsBody3D, to make it work with module ghosts
 	if shape.get_parent_node_3d() is not PhysicsBody3D:
 		set_process(false)
 		return
+	else:
+		set_process(true)
 
 	calculated_body = shape.get_parent_node_3d()
 	calculated_body.set_meta("collision_damage_calculator", self)
@@ -74,7 +90,7 @@ func _find_parent_collision(
 
 
 func calculate_damage(me: Node, oponent: Node) -> Damage:
-	var oponet_calculator: Node
+	var oponet_calculator
 	if oponent.has_meta("collision_damage_calculator"):
 		oponet_calculator = oponent.get_meta("collision_damage_calculator")
 	else:

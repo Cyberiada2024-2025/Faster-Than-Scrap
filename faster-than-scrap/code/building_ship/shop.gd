@@ -40,7 +40,7 @@ extends Node3D
 	"res://prefabs/vfx/particles/base_projectile_hit_particles.tscn"
 )
 
-@export var confirm_finish_message_with_unusigned_keys: Control
+@export var confirm_finish_message_with_unassigned_keys: Control
 
 ## actual cash balance
 var bank: int = 0
@@ -161,12 +161,12 @@ func _on_bank_change() -> void:
 
 
 func _on_missing_key_confirm_pressed() -> void:
-	confirm_finish_message_with_unusigned_keys.visible = false
+	confirm_finish_message_with_unassigned_keys.visible = false
 	_exit_shop()
 
 
 func _on_missing_key_deny_pressed() -> void:
-	confirm_finish_message_with_unusigned_keys.visible = false
+	confirm_finish_message_with_unassigned_keys.visible = false
 
 
 func _on_finish_pressed() -> void:
@@ -182,7 +182,7 @@ func _on_finish_pressed() -> void:
 	else:
 		for m in GameManager.player_ship.modules:
 			if m.activation_key_saved == KEY_NONE and m.is_activable:
-				confirm_finish_message_with_unusigned_keys.visible = true
+				confirm_finish_message_with_unassigned_keys.visible = true
 				return
 		_exit_shop()
 

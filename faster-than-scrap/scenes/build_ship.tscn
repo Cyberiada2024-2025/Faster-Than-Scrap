@@ -312,7 +312,7 @@ horizontal_alignment = 1
 script = ExtResource("7_jtm63")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
-[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "inventory_limit_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description", "repair_button", "confirm_finish_message_with_unusigned_keys")]
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "inventory_limit_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description", "repair_button", "confirm_finish_message_with_unassigned_keys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.897, 0, -3.63634)
 script = ExtResource("11_jtm63")
 starting_bank = 6
@@ -328,7 +328,7 @@ deny_finish_label = NodePath("../ShipBuilder/Control/Deny finish/Color_Rect/Labe
 selected_module_display = NodePath("../ShipBuilder/Control/Prize_display/RichTextLabel")
 selected_module_description = NodePath("../ShipBuilder/Control/Description_display/RichTextLabel")
 repair_button = NodePath("../Control/RepairModules")
-confirm_finish_message_with_unusigned_keys = NodePath("../Control/Confirm missing keys")
+confirm_finish_message_with_unassigned_keys = NodePath("../Control/Confirm missing keys")
 metadata/_custom_type_script = "uid://dsebh10ryevl"
 
 [node name="Inventory2" type="CSGMesh3D" parent="Shop"]
@@ -489,19 +489,19 @@ color = Color(0, 0.051, 0.027, 1)
 
 [node name="Label" type="Label" parent="Control/Confirm missing keys/Color_Rect"]
 layout_mode = 0
-offset_right = 250.0
+offset_right = 650.0
 offset_bottom = 50.0
 text = "WARNING: 
-you have modules with unusigned keys"
+You have modules with unassigned keys"
 label_settings = SubResource("LabelSettings_x5wpm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Confirm" type="Button" parent="Control/Confirm missing keys/Color_Rect"]
 layout_mode = 0
-offset_left = 390.0
+offset_left = 325.0
 offset_top = 76.0
-offset_right = 608.0
+offset_right = 650.0
 offset_bottom = 114.0
 theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
@@ -517,9 +517,8 @@ text = "Proceed"
 
 [node name="Deny" type="Button" parent="Control/Confirm missing keys/Color_Rect"]
 layout_mode = 0
-offset_left = 20.0
 offset_top = 76.0
-offset_right = 238.0
+offset_right = 325.0
 offset_bottom = 114.0
 theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)

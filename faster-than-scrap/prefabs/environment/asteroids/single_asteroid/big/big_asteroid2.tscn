@@ -21,11 +21,11 @@ angular_damp_mode = 1
 script = ExtResource("1_4mv6f")
 hp = 1000
 
-[node name="Asteroid2" parent="." instance=ExtResource("2_erwgu")]
-transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, 0, 0, 0)
-
 [node name="asteroid_2_collider" parent="." instance=ExtResource("3_ir7qr")]
 transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, -6.304, 0, 10.592)
+
+[node name="Asteroid2" parent="." instance=ExtResource("2_erwgu")]
+transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, 0, 0, 0)
 
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("3_uqly8")]
 damageable = NodePath("../DamageController/Damageable")

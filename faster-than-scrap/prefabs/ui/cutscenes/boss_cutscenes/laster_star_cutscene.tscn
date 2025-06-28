@@ -16,6 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("1_lx7v8")
+cutscene_name = "LaserStar"
 metadata/_custom_type_script = "uid://bn8cfyemp6axl"
 
 [node name="Slide" type="ColorRect" parent="."]

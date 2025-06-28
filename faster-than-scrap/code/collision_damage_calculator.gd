@@ -74,8 +74,6 @@ func _handle_collision(
 
 func _spawn_collision_particles() -> void:
 	var body_direct_state = PhysicsServer3D.body_get_direct_state(calculated_body.get_rid())
-	var contact_count = body_direct_state.get_contact_count()
-
 	var collision_parameters = _calculate_average_collision_values(body_direct_state)
 
 	var average_normal: Vector3 = collision_parameters["average_normal"]

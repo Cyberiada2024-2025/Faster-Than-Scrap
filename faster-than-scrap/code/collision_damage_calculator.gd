@@ -68,9 +68,11 @@ func _handle_collision(
 	var damage: Damage = calculate_damage(calculated_body, body)
 	damageable.take_damage(damage, body)
 
-	if collision_particles == null:
-		return
+	if collision_particles != null:
+		_spawn_collision_particles()
 
+
+func _spawn_collision_particles() -> void:
 	var body_direct_state = PhysicsServer3D.body_get_direct_state(calculated_body.get_rid())
 	var contact_count = body_direct_state.get_contact_count()
 

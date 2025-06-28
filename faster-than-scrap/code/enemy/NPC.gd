@@ -8,6 +8,9 @@ var weapon: BaseWeapon
 
 
 func _ready() -> void:
+	gravity_scale = 0
+	linear_damp = 20
+	angular_damp = 20
 	if weapons.size() > 0:
 		weapon = weapons[0]
 		for w in weapons:

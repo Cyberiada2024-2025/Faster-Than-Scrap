@@ -449,7 +449,9 @@ shader_parameter/Noise = ExtResource("19_2j1rv")
 shader_parameter/Gradient = ExtResource("18_7x6ag")
 shader_parameter/Glow_Strength = 3.0
 
-[node name="Drone" type="CharacterBody3D" node_paths=PackedStringArray("weapons", "ship")]
+[node name="Drone" type="RigidBody3D" node_paths=PackedStringArray("weapons", "ship")]
+linear_damp = 10.0
+angular_damp = 10.0
 script = ExtResource("1_nsuwi")
 rotation_speed = 0.06
 weapons = [NodePath("Weapon")]

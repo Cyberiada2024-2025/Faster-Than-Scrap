@@ -380,7 +380,7 @@ shader_parameter/Noise = ExtResource("19_7pmuj")
 shader_parameter/Gradient = ExtResource("18_668tx")
 shader_parameter/Glow_Strength = 3.0
 
-[node name="Shotgunner" type="CharacterBody3D" node_paths=PackedStringArray("weapons", "ship")]
+[node name="Shotgunner" type="RigidBody3D" node_paths=PackedStringArray("weapons", "ship")]
 script = ExtResource("1_ok4vr")
 speed = 6
 rotation_speed = 0.03

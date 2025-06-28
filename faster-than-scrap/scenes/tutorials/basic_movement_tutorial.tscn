@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://buaupty5vjbs5"]
+[gd_scene load_steps=25 format=3 uid="uid://buaupty5vjbs5"]
 
 [ext_resource type="PackedScene" uid="uid://djgm5s1ld5wgr" path="res://prefabs/ships/flyable_ship_tutorial.tscn" id="1_8fkjt"]
 [ext_resource type="PackedScene" uid="uid://dm1qlo34r16co" path="res://prefabs/environment/shop_miniature_tutorial.tscn" id="2_8fkjt"]
@@ -14,6 +14,10 @@
 [ext_resource type="Script" uid="uid://bceg4vylbdwdr" path="res://code/evironment/player_detector.gd" id="12_8j6x4"]
 [ext_resource type="PackedScene" uid="uid://31y5kdihtoxf" path="res://prefabs/ui/cutscenes/tutorials/firing_tutorial.tscn" id="13_jcith"]
 [ext_resource type="PackedScene" uid="uid://crti8uuwttken" path="res://prefabs/ui/cutscenes/tutorials/near_shop_tutorial.tscn" id="14_416px"]
+[ext_resource type="PackedScene" uid="uid://st0p1n6f1ygk" path="res://prefabs/npc/enemies/assault.tscn" id="15_ngx30"]
+[ext_resource type="PackedScene" uid="uid://dsbr8a55sppml" path="res://prefabs/npc/enemies/drone.tscn" id="16_phkkj"]
+[ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="17_tkgtl"]
+[ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/npc/enemies/shotgunner.tscn" id="18_7xu24"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uf04d"]
 size = Vector3(800, 1, 1)
@@ -162,6 +166,18 @@ shape = SubResource("SphereShape3D_83mrs")
 [node name="Portal cutscene player" type="Node" parent="Portal Cutscene player"]
 script = ExtResource("8_6xv7r")
 cutscene_path = ExtResource("14_416px")
+
+[node name="Assault" parent="." instance=ExtResource("15_ngx30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.358585, 0, -16.3704)
+
+[node name="Drone" parent="." instance=ExtResource("16_phkkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.35995, 0, -9.65375)
+
+[node name="Turret Sniper" parent="." instance=ExtResource("17_tkgtl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1584, 0, -8.83086)
+
+[node name="Shotgunner" parent="." instance=ExtResource("18_7xu24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73171, 0, 4.37028)
 
 [connection signal="player_entered" from="ShopMiniatureTutorial/EnterShop" to="ShopMiniatureTutorial/SceneLoader" method="load_lore_scene"]
 [connection signal="player_low_energy" from="Energy cutscene player/Detect player low energy" to="Energy cutscene player" method="play"]

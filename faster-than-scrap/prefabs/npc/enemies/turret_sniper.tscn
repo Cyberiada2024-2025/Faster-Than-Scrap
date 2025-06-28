@@ -417,7 +417,7 @@ shader_parameter/Noise = ExtResource("18_ey57i")
 shader_parameter/Gradient = ExtResource("17_slfyb")
 shader_parameter/Glow_Strength = 3.0
 
-[node name="Turret Sniper" type="CharacterBody3D" node_paths=PackedStringArray("weapons", "ship")]
+[node name="Turret Sniper" type="RigidBody3D" node_paths=PackedStringArray("weapons", "ship")]
 script = ExtResource("1_2kswb")
 speed = 0
 rotation_speed = 0.02

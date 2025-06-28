@@ -5,6 +5,7 @@ extends Node3D
 @export var max_range: float
 @export var sprite: Sprite3D
 @export var arrow: Sprite3D
+@export var arrow_inverse_size := 25
 
 var arrow_shown: bool = false
 
@@ -91,7 +92,7 @@ func _set_arrow_transform() -> void:
 
 	# set scale
 	var distance = camera_center.distance_to(poi_center)
-	var arrow_size_max = Vector3.ONE * map_camera.size / 50
+	var arrow_size_max = Vector3.ONE * map_camera.size / arrow_inverse_size
 	arrow.scale = arrow_size_max * (1.0 - (distance - radius) / (max_range - radius))
 
 

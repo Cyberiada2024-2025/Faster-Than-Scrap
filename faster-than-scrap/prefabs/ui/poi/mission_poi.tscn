@@ -9,16 +9,15 @@ script = ExtResource("1_tpbuq")
 max_range = 10000.0
 sprite = NodePath("Close")
 arrow = NodePath("Arrow")
-metadata/_custom_type_script = "uid://bcapkc4tl2hrc"
 
 [node name="Close" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 1, 0, -2, -4.37114e-08, 0, 0, 0)
 layers = 4
-modulate = Color(0, 0, 1, 1)
+modulate = Color(0, 1, 0, 1)
 texture = ExtResource("2_isrgf")
 
 [node name="Arrow" type="Sprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 2, 0, -3, -8.74228e-08, 0, 0, 0)
 layers = 4
-modulate = Color(0, 0, 1, 1)
+modulate = Color(0, 1, 0, 1)
 texture = ExtResource("3_ecrmy")

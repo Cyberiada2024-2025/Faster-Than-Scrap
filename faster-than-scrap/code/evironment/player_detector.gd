@@ -7,6 +7,7 @@ signal player_entered
 ## The player detector will not emit any signals for this number of seconds after entering the tree,
 ## regardless of whether the player has entered the tree or not.
 @export var instantiated_cooldown: float = 0
+@export var show_tutorial_delay: float = 0
 
 var _time_instantiated: float
 
@@ -25,4 +26,5 @@ func _check_if_player(body: Node3D) -> void:
 		return
 
 	if body == GameManager.player_ship:
+		await get_tree().create_timer(show_tutorial_delay).timeout
 		player_entered.emit()

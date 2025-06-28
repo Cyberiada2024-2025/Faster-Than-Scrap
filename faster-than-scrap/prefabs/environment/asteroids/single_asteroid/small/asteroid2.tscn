@@ -8,7 +8,9 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gro5k"]
 bounce = 1.0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_keyhs"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0351a"]
+radius = 0.447987
+height = 2.12803
 
 [node name="Asteroid" type="RigidBody3D"]
 axis_lock_linear_y = true
@@ -20,10 +22,11 @@ angular_damp_mode = 1
 script = ExtResource("1_n8w1b")
 hp = 5
 
-[node name="Asteroid2" parent="." instance=ExtResource("2_n8w1b")]
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_keyhs")
+transform = Transform3D(-0.0279217, -0.995694, 0.0883904, 0.99961, -0.0278123, 0.00246897, 0, 0.0884249, 0.996083, -0.0923008, 0.0316356, -0.0343292)
+shape = SubResource("CapsuleShape3D_0351a")
+
+[node name="Asteroid2" parent="." instance=ExtResource("2_n8w1b")]
 
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("3_lg46a")]
 damageable = NodePath("../DamageController/Damageable")
@@ -36,7 +39,8 @@ collision_layer = 6
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
-shape = SubResource("SphereShape3D_keyhs")
+transform = Transform3D(-0.0279217, -0.995694, 0.0883904, 0.99961, -0.0278123, 0.00246897, 0, 0.0884249, 0.996083, -0.0923008, 0.0316356, -0.0343292)
+shape = SubResource("CapsuleShape3D_0351a")
 
 [connection signal="damaged" from="DamageController" to="." method="take_damage"]
 

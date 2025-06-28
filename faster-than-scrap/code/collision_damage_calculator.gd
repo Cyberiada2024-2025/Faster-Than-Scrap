@@ -32,8 +32,9 @@ func _ready() -> void:
 	find_calculated_body()
 
 
-func _on_game_manager_new_game_state(_new_state: GameState.State):
-	find_calculated_body()
+func _on_game_manager_new_game_state(new_state: GameState.State):
+	if new_state == GameState.State.FLY:
+		find_calculated_body()
 
 
 func find_calculated_body():

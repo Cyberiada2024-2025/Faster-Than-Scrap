@@ -8,6 +8,7 @@ shader = ExtResource("1_ljnh7")
 shader_parameter/Noise_scale = Vector2(4, 4)
 shader_parameter/Lightning_width = 0.483
 shader_parameter/Color = Color(0.888376, 6.00672e-05, 0.678164, 1)
+shader_parameter/Color_intensity = 1.0
 shader_parameter/Speed = 0.405
 shader_parameter/Frequency = 4.0
 shader_parameter/Pulse_Width = 0.2

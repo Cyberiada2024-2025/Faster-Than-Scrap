@@ -45,8 +45,7 @@ func find_calculated_body():
 	if shape.get_parent_node_3d() is not PhysicsBody3D:
 		set_process(false)
 		return
-	else:
-		set_process(true)
+	set_process(true)
 
 	calculated_body = shape.get_parent_node_3d()
 	calculated_body.set_meta("collision_damage_calculator", self)

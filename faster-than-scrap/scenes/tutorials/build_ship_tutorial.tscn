@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dom21c42bbjwl"]
+[gd_scene load_steps=44 format=3 uid="uid://dom21c42bbjwl"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_mjhpt"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="2_esu31"]
@@ -8,8 +8,6 @@
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="6_hk4jn"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_rimmj"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="8_hc2q3"]
-[ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="9_ja3cf"]
-[ext_resource type="PackedScene" uid="uid://cujiw86wtjlp8" path="res://prefabs/modules/frame1.tscn" id="10_y4ww1"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_0pnhb"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="12_esu31"]
 [ext_resource type="PackedScene" uid="uid://dfqok04svlmok" path="res://prefabs/ui/cutscenes/build_tutorial_cutscene.tscn" id="12_yvpli"]
@@ -412,16 +410,6 @@ shape = SubResource("BoxShape3D_xqadh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ship Max Size/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3246, 0, 0.0656614)
 shape = SubResource("BoxShape3D_xqadh")
-
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.57239, 0, 3.31371)
-
-[node name="Thruster" parent="Area3D" instance=ExtResource("9_ja3cf")]
-
-[node name="Area3D2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56951, 0, 8.0293)
-
-[node name="Frame" parent="Area3D2" instance=ExtResource("10_y4ww1")]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

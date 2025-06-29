@@ -134,7 +134,8 @@ func _on_destroy() -> void:
 
 	detach_all_children(global_position)
 
-	on_detach()
+	if ship != null:
+		on_detach()
 
 	queue_free()  # delete self as an object
 	destroyed.emit()
@@ -179,6 +180,7 @@ func on_attach() -> void:
 ## Called just before the module is detached from the ship
 func on_detach() -> void:
 	GameManager.player_ship.modules.erase(self)
+	ship = null  # clear refence of a ship
 
 
 ## Called when the module is attached to a different part of the ship than it previously was

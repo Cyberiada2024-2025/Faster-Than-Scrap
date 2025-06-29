@@ -23,8 +23,6 @@ func _enter_tree() -> void:
 
 func on_scene_exit() -> void:
 	ships = []
-	if game_state == GameState.State.BUILD:
-		InventoryManager.save_inventory()
 
 
 func reset() -> void:

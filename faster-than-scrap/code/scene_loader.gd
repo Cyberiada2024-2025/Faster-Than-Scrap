@@ -56,6 +56,9 @@ func load_fly_ship_scene(
 ) -> void:
 	var attached_fly_scene: bool = false
 
+	if GameManager.game_state == GameState.State.BUILD:
+		InventoryManager.save_inventory()
+
 	_detach_ship()
 	if scene_to_load != null:
 		GameManager.on_scene_exit()
@@ -97,6 +100,7 @@ func load_build_ship_scene(tutorial_version = false) -> void:
 	if GameManager.game_state == GameState.State.FLY:
 		attached_build_scene = MapGenerator.swap_saved_and_current_scene()
 
+	InventoryManager.save_inventory()
 	if tutorial_version:
 		GameManager.get_tree().change_scene_to_file(
 			"res://scenes/tutorials/build_ship_tutorial.tscn"

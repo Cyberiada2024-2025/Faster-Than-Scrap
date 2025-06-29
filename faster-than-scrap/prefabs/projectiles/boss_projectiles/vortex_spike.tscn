@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://cukcjob61wwp7"
 [sub_resource type="BoxShape3D" id="BoxShape3D_ne3qg"]
 size = Vector3(0.5, 1.555, 0.5)
 
-[node name="VortexSpike" type="StaticBody3D"]
+[node name="VortexSpike" type="Node3D"]
 script = ExtResource("1_b8qmk")
 max_scale = Vector3(5, 5, 45)
 grow_time = 2.0

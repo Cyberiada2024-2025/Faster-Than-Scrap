@@ -30,9 +30,6 @@ extends Node3D
 @export var confirm_finish: Control
 
 @export var deny_finish_label: Label
-@export var selected_module_prize_display: Label
-@export var selected_module_display: RichTextLabel
-@export var selected_module_description: RichTextLabel
 
 @export var repair_button: Button
 @export var repair_cost: int = 2
@@ -197,19 +194,6 @@ func _exit_shop() -> void:
 
 func _on_confirm_pressed() -> void:
 	deny_finish.visible = false
-
-
-func _on_ship_builder_on_module_select(module: Module) -> void:
-	if module == null:
-		# hide description, because mouse is not over module
-		selected_module_display.text = ""
-		selected_module_display.text += ""
-		selected_module_description.text = ""
-		return
-	selected_module_display.text = "[b]" + module.module_name + ":[/b] "
-	selected_module_display.text += String.num_int64(module.prize) + "$"
-
-	selected_module_description.text = module.description
 
 
 func _on_inventory_entered(body: Area3D) -> void:

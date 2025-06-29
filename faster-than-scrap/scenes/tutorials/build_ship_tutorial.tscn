@@ -288,54 +288,11 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5jnae")
 text = "Finish
 Building"
 
-[node name="Description_display" type="ColorRect" parent="ShipBuilder/Control"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 83.0
-offset_right = 256.0
-offset_bottom = 224.0
-color = Color(0, 0.051, 0.027, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ShipBuilder/Control/Description_display"]
-layout_mode = 0
-offset_left = 4.0
-offset_right = 247.0
-offset_bottom = 137.0
-theme_override_colors/default_color = Color(0.101961, 0.964706, 0.101961, 1)
-theme_override_font_sizes/bold_italics_font_size = 0
-theme_override_font_sizes/italics_font_size = 0
-theme_override_font_sizes/mono_font_size = 0
-theme_override_font_sizes/normal_font_size = 0
-theme_override_font_sizes/bold_font_size = 0
-bbcode_enabled = true
-
-[node name="Prize_display" type="ColorRect" parent="ShipBuilder/Control"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 57.0
-offset_right = 255.0
-offset_bottom = 81.0
-color = Color(0, 0.051, 0.027, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ShipBuilder/Control/Prize_display"]
-layout_mode = 0
-offset_left = 4.0
-offset_right = 247.0
-offset_bottom = 23.0
-theme_override_colors/default_color = Color(0.101961, 0.964706, 0.101961, 1)
-theme_override_font_sizes/bold_italics_font_size = 0
-theme_override_font_sizes/italics_font_size = 0
-theme_override_font_sizes/mono_font_size = 0
-theme_override_font_sizes/normal_font_size = 0
-theme_override_font_sizes/bold_font_size = 0
-bbcode_enabled = true
-horizontal_alignment = 1
-
 [node name="SceneLoader" type="Node" parent="ShipBuilder"]
 script = ExtResource("7_rimmj")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
-[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description", "repair_button", "confirm_finish_message_with_unusigned_keys")]
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish", "deny_finish_label", "repair_button", "confirm_finish_message_with_unusigned_keys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.897, 0, -3.63634)
 script = ExtResource("8_hc2q3")
 starting_bank = 6
@@ -347,8 +304,6 @@ bank_display = NodePath("Inventory4")
 deny_finish = NodePath("../ShipBuilder/Control/Deny finish")
 confirm_finish = NodePath("../ShipBuilder/Control/Confirm finish")
 deny_finish_label = NodePath("../ShipBuilder/Control/Deny finish/Color_Rect/Label")
-selected_module_display = NodePath("../ShipBuilder/Control/Prize_display/RichTextLabel")
-selected_module_description = NodePath("../ShipBuilder/Control/Description_display/RichTextLabel")
 repair_button = NodePath("../Control/RepairModules")
 confirm_finish_message_with_unusigned_keys = NodePath("../Control/Confirm missing keys")
 metadata/_custom_type_script = "uid://dsebh10ryevl"

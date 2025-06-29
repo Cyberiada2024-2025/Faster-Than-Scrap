@@ -15,6 +15,7 @@ func _ready() -> void:
 	#hide()
 	#set_process(false)
 	$ToolView.queue_free()  #remove Tool view
+	$DebugView.queue_free()  #remove Debug view
 
 
 func _process(delta: float) -> void:

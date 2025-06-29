@@ -19,18 +19,23 @@ var destination: Vector3
 func enter(_previous_state_path: String, _data := {}) -> void:
 	target = GameManager.find_closest_ship(ship_controller.ship)
 	var direction_from_target = (
-		(self.ship_controller.ship.global_position - self.target.global_position).normalized()
+		self.ship_controller.ship.global_position - self.target.global_position
 	)
+	direction_from_target.y = 0
+	direction_from_target = direction_from_target.normalized()
+
 	var rng = RandomNumberGenerator.new()
 	var rotation = deg_to_rad(rng.randf_range(-max_angle_diff, max_angle_diff))
 	direction_from_target = direction_from_target.rotated(Vector3.UP, rotation)
 
 	destination = self.target.global_position + direction_from_target * orbit_radius
+	destination.y = 0
 
 
 ## Called by the state machine on the engine's main loop tick.
 func state_physics_update(_delta: float) -> void:
 	var direction = destination - self.ship_controller.ship.global_position
+	direction.y = 0
 
 	ship_controller.velocity = direction * lerp_strength
 	ship_controller.move_and_slide()

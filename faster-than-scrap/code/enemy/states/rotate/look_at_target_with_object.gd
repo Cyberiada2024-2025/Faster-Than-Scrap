@@ -19,6 +19,7 @@ func state_physics_update(_delta: float) -> void:
 
 	# calculate target rotation
 	var look_direction = self.target.global_position - self.ship_controller.global_position
+	look_direction.y = 0
 	var rotation = ship_controller.rotation  # already global
 
 	var target_rot = atan2(-look_direction.x, -look_direction.z) + rotation_offset
@@ -36,6 +37,7 @@ func _select_look_object() -> void:
 			objects.remove_at(index)
 		# check angle between forward and direction to target
 		var direction_to_target = self.target.global_position - object.global_position
+		direction_to_target.y = 0
 		var forward = -object.global_transform.basis.z  # in godot forward is [0,0,-1]
 		var angle = direction_to_target.angle_to(forward)
 

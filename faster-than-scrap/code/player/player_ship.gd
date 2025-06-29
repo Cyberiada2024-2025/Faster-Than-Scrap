@@ -141,6 +141,10 @@ func on_destroy() -> void:
 	GameManager.show_death_screen()
 
 
+func _shoud_be_freed() -> bool:
+	return false
+
+
 func _toggle_collisions() -> void:
 	for child in get_children():
 		if child is CollisionShape3D:

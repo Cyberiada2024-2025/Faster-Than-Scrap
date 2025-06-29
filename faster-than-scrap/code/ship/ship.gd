@@ -80,7 +80,7 @@ func on_destroy() -> void:
 	_explode()
 	destroyed.emit(self)
 	# if enemy delete yourself, player should be kept
-	if owner != null:
+	if not self is PlayerShip:
 		owner.queue_free()
 
 

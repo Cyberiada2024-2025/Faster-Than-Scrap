@@ -41,6 +41,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	super()
 	change_air_resistance()
+	change_cockpit_icon()
 	for child in get_children():
 		if child is Module:
 			modules.append(child)
@@ -71,6 +72,8 @@ func _center_of_mass() -> Vector3:
 		center += mod.position
 	center /= GameManager.player_ship.modules.size()
 	return center
+
+
 func _physics_process(_delta: float) -> void:
 	if not DebugMenu.enable_debug_movement:
 		return
@@ -95,6 +98,15 @@ func change_air_resistance() -> void:
 	else:
 		linear_damp = 0
 		angular_damp = 0
+
+
+func change_cockpit_icon() -> void:
+	if SettingsManager.brakes_enabled:
+		cockpit.cockpit_sprite.texture = cockpit.default_texture
+		cockpit.cockpit_label.visible = true
+	else:
+		cockpit.cockpit_sprite.texture = cockpit.cockpit_texture
+		cockpit.cockpit_label.visible = false
 
 
 func on_game_change_state(new_state: GameState.State) -> void:

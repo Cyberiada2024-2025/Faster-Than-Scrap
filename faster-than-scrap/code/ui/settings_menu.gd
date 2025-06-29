@@ -21,6 +21,8 @@ func _on_button_pressed() -> void:
 
 func _on_brakes_check_box_pressed() -> void:
 	SettingsManager.brakes_enabled = brakes_check_box.is_pressed()
+	if GameManager.player_ship != null:
+		GameManager.player_ship.change_cockpit_icon()
 
 
 func _on_air_resistance_check_box_pressed() -> void:

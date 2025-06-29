@@ -50,5 +50,4 @@ func _on_game_change_state(new_state: GameState.State) -> void:
 func _make_custom_tooltip(for_text: String) -> Object:
 	var tooltip = preload("res://prefabs/ui/module_tooltip.tscn").instantiate()
 	tooltip.config(parent_module)
-	print("TOOLTIP")
 	return tooltip

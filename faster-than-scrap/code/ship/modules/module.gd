@@ -128,7 +128,6 @@ func show_on_module_camera() -> void:
 
 ## Destroy self and detach children
 func _on_destroy() -> void:
-	GameManager.player_ship.modules.erase(self)
 	if parent_module != null:
 		parent_module.child_modules.erase(self)
 	_explode()
@@ -180,7 +179,7 @@ func on_attach() -> void:
 
 ## Called just before the module is detached from the ship
 func on_detach() -> void:
-	pass
+	GameManager.player_ship.modules.erase(self)
 
 
 ## Called when the module is attached to a different part of the ship than it previously was

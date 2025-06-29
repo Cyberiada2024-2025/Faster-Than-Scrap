@@ -19,7 +19,7 @@ signal fuel_change(new_value: int)
 
 ## All modules of the ship (to prevent checking the tree hierarchy).
 ## Mostly used for building phase
-@export var modules: Array[Module] = []
+var modules: Array[Module] = []
 var money: int = 0
 var current_fuel: int = 0:
 	get:
@@ -71,6 +71,8 @@ func _center_of_mass() -> Vector3:
 		center += mod.position
 	center /= GameManager.player_ship.modules.size()
 	return center
+
+
 func _physics_process(_delta: float) -> void:
 	if not DebugMenu.enable_debug_movement:
 		return

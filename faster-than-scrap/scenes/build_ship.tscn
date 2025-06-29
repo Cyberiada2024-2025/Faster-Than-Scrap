@@ -1,11 +1,14 @@
-[gd_scene load_steps=35 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=37 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="3_7x66o"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_sra6p"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
+[ext_resource type="Theme" uid="uid://ctuhc2002838x" path="res://prefabs/ui/themes/build_ship_theme.tres" id="7_d8di0"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_jtm63"]
+[ext_resource type="Script" uid="uid://bcm4vfgdqrr2t" path="res://code/ui/tooltip.gd" id="8_bwh47"]
+[ext_resource type="PackedScene" uid="uid://cc0to5vstp8vs" path="res://prefabs/ui/build_ship_help_tooltip.tscn" id="9_cv5l0"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="10_xqadh"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
@@ -87,9 +90,6 @@ emission_energy_multiplier = 2.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xqadh"]
 size = Vector3(0.41153, 1, 20.8868)
-
-[sub_resource type="LabelSettings" id="LabelSettings_xqadh"]
-font_color = Color(0.105882, 1, 0.105882, 1)
 
 [node name="BuildShip" type="Node3D"]
 
@@ -266,6 +266,26 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5jnae")
 text = "Finish
 Building"
 
+[node name="Help" type="ColorRect" parent="ShipBuilder/Control"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 83.0
+offset_right = 81.0
+offset_bottom = 123.0
+theme = ExtResource("7_d8di0")
+color = Color(0, 0, 0, 1)
+script = ExtResource("8_bwh47")
+tooltip_to_show = ExtResource("9_cv5l0")
+
+[node name="Label" type="Label" parent="ShipBuilder/Control/Help"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("7_d8di0")
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="SceneLoader" type="Node" parent="ShipBuilder"]
 script = ExtResource("7_jtm63")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
@@ -386,27 +406,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="Prize_display" type="ColorRect" parent="Control"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 241.0
-offset_right = 255.0
-offset_bottom = 375.0
-color = Color(0, 0.051, 0.027, 1)
-
-[node name="Label" type="Label" parent="Control/Prize_display"]
-layout_mode = 0
-offset_right = 250.0
-offset_bottom = 50.0
-text = "Controls:
-LMB: attach/dettach module
-RMB: set activation key
-Scroll: zoom camera
-R: rotate module"
-label_settings = SubResource("LabelSettings_xqadh")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="RepairModules" type="Button" parent="Control"]
 layout_mode = 0

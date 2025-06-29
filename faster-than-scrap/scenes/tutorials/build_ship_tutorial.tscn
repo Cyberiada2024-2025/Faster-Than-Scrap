@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dom21c42bbjwl"]
+[gd_scene load_steps=43 format=3 uid="uid://dom21c42bbjwl"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_mjhpt"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="2_esu31"]
@@ -86,9 +86,6 @@ emission_energy_multiplier = 2.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xqadh"]
 size = Vector3(0.41153, 1, 20.8868)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ajkwf"]
-font_color = Color(0.105882, 1, 0.105882, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ajkwf"]
 
@@ -372,27 +369,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
-
-[node name="Prize_display2" type="ColorRect" parent="Control"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 241.0
-offset_right = 255.0
-offset_bottom = 375.0
-color = Color(0, 0.051, 0.027, 1)
-
-[node name="Label" type="Label" parent="Control/Prize_display2"]
-layout_mode = 0
-offset_right = 250.0
-offset_bottom = 50.0
-text = "Controls:
-LMB: attach/dettach module
-RMB: set activation key
-Scroll: zoom camera
-R: rotate module"
-label_settings = SubResource("LabelSettings_ajkwf")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="RepairModules" type="Button" parent="Control"]
 layout_mode = 0

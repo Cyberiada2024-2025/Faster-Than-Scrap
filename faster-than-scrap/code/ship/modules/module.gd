@@ -134,8 +134,7 @@ func _on_destroy() -> void:
 
 	detach_all_children(global_position)
 
-	if parent_module != null:
-		on_detach()
+	on_detach()
 
 	queue_free()  # delete self as an object
 	destroyed.emit()

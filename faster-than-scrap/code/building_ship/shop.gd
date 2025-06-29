@@ -134,7 +134,7 @@ func _generate_inventory() -> void:
 		)
 		obj.position = Vector3(x, 0, z)
 		obj.get_child(0).position = Vector3(0, 0, 0)
-		obj.hide_on_module_camera()
+		obj.get_child(0).hide_on_module_camera()
 		i += 1
 	_display_inventory_number()
 

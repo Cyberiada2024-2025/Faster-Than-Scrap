@@ -100,13 +100,14 @@ func load_build_ship_scene(tutorial_version = false) -> void:
 	if GameManager.game_state == GameState.State.FLY:
 		attached_build_scene = MapGenerator.swap_saved_and_current_scene()
 
-	InventoryManager.save_inventory()
-	if tutorial_version:
-		GameManager.get_tree().change_scene_to_file(
-			"res://scenes/tutorials/build_ship_tutorial.tscn"
-		)
-	elif not attached_build_scene:
-		GameManager.get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
+	if not attached_build_scene:
+		if tutorial_version:
+			GameManager.get_tree().change_scene_to_file(
+				"res://scenes/tutorials/build_ship_tutorial.tscn"
+			)
+		else:
+			GameManager.get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
+
 	GameManager.set_game_state(GameState.State.BUILD)
 	_attach_ship_with_hud.call_deferred()
 

@@ -10,6 +10,17 @@ var _scene: Node
 var _saved_scene: Node
 
 
+func _ready():
+	GameManager.game_reset.connect(_on_game_manager_reset)
+
+
+# called when game's ended
+func _on_game_manager_reset():
+	_map_node = null
+	_scene = null
+	_saved_scene = null
+
+
 func _spawn_vortex(mission_info: MissionInfo) -> void:
 	SpaceVortex.spawn_vortex(mission_info.get_mission_final_target_position())
 
@@ -45,10 +56,4 @@ func swap_saved_and_current_scene() -> bool:
 
 func set_node(new_node: MapNode) -> void:
 	_map_node = new_node
-	_scene = null
-
-
-## called when the game's ended
-func reset() -> void:
-	_map_node = null
 	_scene = null

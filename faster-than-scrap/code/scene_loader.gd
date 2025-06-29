@@ -10,16 +10,13 @@ var default_ship_prefab = preload("res://prefabs/ships/flyable_ship.tscn")
 
 
 func load_main_menu_scene() -> void:
-	GameManager.on_scene_exit()
+	GameManager.reset()
 
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	GameManager.set_game_state(GameState.State.MAIN_MENU)
 
 
 func _reset_game() -> void:
-	MapGenerator.reset()
-	MapSaver.reset()
-	CutsceneManager.reset_cutscenes()
 	GameManager.reset()
 
 
@@ -27,8 +24,6 @@ func _reset_game() -> void:
 
 
 func load_movement_tutorial() -> void:
-	_reset_game()
-
 	HudSpawner.spawn_hud = true
 	GameManager.set_game_state(GameState.State.FLY)
 	get_tree().change_scene_to_file("res://scenes/tutorials/basic_movement_tutorial.tscn")

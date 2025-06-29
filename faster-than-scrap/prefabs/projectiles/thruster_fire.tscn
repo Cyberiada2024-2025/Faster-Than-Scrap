@@ -70,14 +70,15 @@ player = NodePath("exhaust fire/AnimationPlayer")
 holder = NodePath("exhaust fire")
 
 [node name="DamageRaycast3D" type="RayCast3D" parent="."]
-target_position = Vector3(0, 0, -1)
+target_position = Vector3(0, 0, -1.6)
+collision_mask = 6
 collide_with_areas = true
 collide_with_bodies = false
 script = ExtResource("2_728c8")
 _damage = SubResource("Resource_7ctxp")
 
 [node name="exhaust fire" type="CSGCylinder3D" parent="."]
-transform = Transform3D(-6.61657e-11, -4.36557e-08, -1, -1, -4.37722e-08, 3.18323e-12, -4.4005e-08, 1, -4.3714e-08, -0.000116827, 0.00618755, -0.550639)
+transform = Transform3D(-6.61657e-11, -4.36557e-08, -1, -1, -4.37722e-08, 3.18323e-12, -4.4005e-08, 1, -4.3714e-08, 0, 0, -1)
 radius = 0.25
 smooth_faces = false
 material = ExtResource("4_nqy7r")

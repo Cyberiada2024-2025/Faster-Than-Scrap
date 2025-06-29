@@ -21,13 +21,17 @@ var time_accumulator: float
 func enter(_previous_state_path: String, _data := {}) -> void:
 	target = GameManager.find_closest_ship(ship_controller.ship)
 	var direction_from_target = (
-		(self.ship_controller.ship.global_position - self.target.global_position).normalized()
+		self.ship_controller.ship.global_position - self.target.global_position
 	)
+	direction_from_target.y = 0
+	direction_from_target = direction_from_target.normalized()
+
 	var rng = RandomNumberGenerator.new()
 	var rotation = deg_to_rad(rng.randf_range(-max_angle_diff, max_angle_diff))
 	direction_from_target = direction_from_target.rotated(Vector3.UP, rotation)
 
 	destination = self.target.global_position + direction_from_target * teleport_radius
+	destination.y = 0
 	time_accumulator = 0
 
 	# shrink

@@ -554,4 +554,6 @@ func _on_deny_pressed() -> void:
 
 
 func set_freeze_mode(is_frozen: bool):
+	if GameManager.player_ship == null:
+		return  # player ship can be null here if we exited to the main menu from the shop scene
 	GameManager.player_ship.freeze = is_frozen

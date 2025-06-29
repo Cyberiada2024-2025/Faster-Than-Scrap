@@ -45,7 +45,6 @@ func _transition_to_next_state(target_state_path: String, data: Dictionary = {})
 	# start each transition
 	for t in state.transitions:
 		t.enter(previous_state_path, data)
-	print(owner.name + "Changed state to " + state.name)
 
 
 func _process(delta: float) -> void:

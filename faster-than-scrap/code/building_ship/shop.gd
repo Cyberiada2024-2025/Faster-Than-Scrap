@@ -134,16 +134,13 @@ func _generate_inventory() -> void:
 		)
 		obj.position = Vector3(x, 0, z)
 		obj.get_child(0).position = Vector3(0, 0, 0)
-		obj.hide_on_module_camera()
+		obj.get_child(0).hide_on_module_camera()
 		i += 1
 	_display_inventory_number()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if first_frame:
-		## linter will burn my house down if I don't use delta somewhere in this function
-		first_frame = 0 * delta
 		first_frame = false
 		bank = starting_bank + GameManager.player_ship.money
 		_on_bank_change()

@@ -22,6 +22,7 @@ material = ExtResource("1_q6rdy")
 
 [node name="Shiny" type="GPUParticles3D"]
 transform = Transform3D(0.999976, 0.0037943, -0.00586796, -0.00380285, 0.999992, -0.00144701, 0.00586243, 0.00146926, 0.999982, 0, 0, 0)
+cast_shadow = 0
 amount = 30
 lifetime = 10.0
 process_material = SubResource("ParticleProcessMaterial_pl0tl")

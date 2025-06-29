@@ -21,9 +21,11 @@ script = ExtResource("1_n4lrr")
 hp = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("SphereShape3D_keyhs")
 
 [node name="Asteroid1" parent="." instance=ExtResource("2_knmsk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("3_nkg7o")]
 damageable = NodePath("../DamageController/Damageable")

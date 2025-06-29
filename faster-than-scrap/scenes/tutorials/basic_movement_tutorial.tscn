@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://buaupty5vjbs5"]
+[gd_scene load_steps=22 format=3 uid="uid://buaupty5vjbs5"]
 
 [ext_resource type="PackedScene" uid="uid://djgm5s1ld5wgr" path="res://prefabs/ships/flyable_ship_tutorial.tscn" id="1_8fkjt"]
 [ext_resource type="PackedScene" uid="uid://dm1qlo34r16co" path="res://prefabs/environment/shop_miniature_tutorial.tscn" id="2_8fkjt"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bceg4vylbdwdr" path="res://code/evironment/player_detector.gd" id="12_8j6x4"]
 [ext_resource type="PackedScene" uid="uid://31y5kdihtoxf" path="res://prefabs/ui/cutscenes/tutorials/firing_tutorial.tscn" id="13_jcith"]
 [ext_resource type="PackedScene" uid="uid://crti8uuwttken" path="res://prefabs/ui/cutscenes/tutorials/near_shop_tutorial.tscn" id="14_416px"]
+[ext_resource type="PackedScene" uid="uid://b7d6dp7jrytp3" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group.tscn" id="15_ngx30"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uf04d"]
 size = Vector3(800, 1, 1)
@@ -163,6 +164,15 @@ shape = SubResource("SphereShape3D_83mrs")
 [node name="Portal cutscene player" type="Node" parent="Portal Cutscene player"]
 script = ExtResource("8_6xv7r")
 cutscene_path = ExtResource("14_416px")
+
+[node name="AsteroidGroupCircle" parent="." instance=ExtResource("15_ngx30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.256836, 0, -27.6219)
+
+[node name="AsteroidGroupCircle2" parent="." instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.817547, 0, -0.575862, 0, 1, 0, 0.575862, 0, 0.817547, 60.002, 0, -17.8963)
+
+[node name="AsteroidGroupCircle3" parent="." instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.754767, 0, 0.655993, 0, 1, 0, -0.655993, 0, 0.754767, 89.7917, 0, -68.4295)
 
 [connection signal="player_entered" from="ShopMiniatureTutorial/EnterShop" to="ShopMiniatureTutorial/SceneLoader" method="load_lore_scene"]
 [connection signal="player_low_energy" from="Energy cutscene player/Detect player low energy" to="Energy cutscene player" method="play"]

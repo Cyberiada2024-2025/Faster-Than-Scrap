@@ -134,5 +134,4 @@ func calculate_damage(me: Node, oponent: Node) -> Damage:
 	damage.value -= flat_damage_reduction
 	if damage.value <= 0:
 		damage.value = 0
-	print(damage)
 	return damage

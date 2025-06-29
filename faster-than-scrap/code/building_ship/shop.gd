@@ -139,11 +139,8 @@ func _generate_inventory() -> void:
 	_display_inventory_number()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if first_frame:
-		## linter will burn my house down if I don't use delta somewhere in this function
-		first_frame = 0 * delta
 		first_frame = false
 		bank = starting_bank + GameManager.player_ship.money
 		_on_bank_change()

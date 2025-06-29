@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc0to5vstp8vs"]
+
+[ext_resource type="Script" uid="uid://dcnclgbxs8cwv" path="res://code/ui/module_tooltip.gd" id="1_3itme"]
+[ext_resource type="Theme" uid="uid://ctuhc2002838x" path="res://prefabs/ui/themes/build_ship_theme.tres" id="2_yxjux"]
+
+[node name="BuildShipHelpTooltip" type="Control"]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3itme")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_yxjux")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_yxjux")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_yxjux")
+bbcode_enabled = true
+text = "Controls:
+LMB: attach/dettach module
+RMB: set activation key
+Scroll: zoom camera
+R: rotate module"

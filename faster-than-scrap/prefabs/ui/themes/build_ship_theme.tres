@@ -4,6 +4,8 @@
 bg_color = Color(0, 0, 0, 1)
 
 [resource]
+Label/colors/font_color = Color(0.105882, 1, 0.105882, 1)
+Label/font_sizes/font_size = 25
 MarginContainer/constants/margin_bottom = 20
 MarginContainer/constants/margin_left = 20
 MarginContainer/constants/margin_right = 20

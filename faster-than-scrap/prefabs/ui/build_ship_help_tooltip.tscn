@@ -4,11 +4,8 @@
 [ext_resource type="Theme" uid="uid://ctuhc2002838x" path="res://prefabs/ui/themes/build_ship_theme.tres" id="2_yxjux"]
 
 [node name="BuildShipHelpTooltip" type="Control"]
-custom_minimum_size = Vector2(400, 300)
+custom_minimum_size = Vector2(270, 175)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3itme")
@@ -35,8 +32,8 @@ theme = ExtResource("2_yxjux")
 layout_mode = 2
 theme = ExtResource("2_yxjux")
 bbcode_enabled = true
-text = "Controls:
-LMB: attach/dettach module
-RMB: set activation key
-Scroll: zoom camera
-R: rotate module"
+text = "[b]Controls:[/b]
+[b]LMB:[/b] attach/dettach module
+[b]RMB:[/b] set activation key
+[b]Scroll:[/b] zoom camera
+[b]R:[/b] rotate module"

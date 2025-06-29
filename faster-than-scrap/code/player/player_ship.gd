@@ -66,6 +66,10 @@ func _process(_delta: float) -> void:
 
 func _center_of_mass() -> Vector3:
 	var center = Vector3.ZERO
+	# avoid division by zero
+	if GameManager.player_ship.modules.size() == 0:
+		return center
+
 	center.y = 1
 	for mod in GameManager.player_ship.modules:
 		center += mod.position

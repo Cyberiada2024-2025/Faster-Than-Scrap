@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtc3u2risx08r"]
 
-[ext_resource type="Script" uid="uid://di6cf2wmxwl82" path="res://code/ui/module_tooltip_shower.gd" id="1_ur8n3"]
+[ext_resource type="Script" uid="uid://di6cf2wmxwl82" path="res://code/ui/module_tooltip_shower.gd" id="1_dl645"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ur8n3"]
 
@@ -13,7 +13,7 @@ offset_right = -1069.0
 offset_bottom = -583.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ur8n3")
+script = ExtResource("1_dl645")
 hover_size = Vector2(1.5, 1)
 
 [node name="DebugView" type="ColorRect" parent="."]

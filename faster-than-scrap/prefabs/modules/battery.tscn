@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b8v177mewyt5j"]
+[gd_scene load_steps=16 format=3 uid="uid://b8v177mewyt5j"]
 
 [ext_resource type="Script" uid="uid://urjr40lajiyq" path="res://code/ship/modules/battery_module.gd" id="1_aagdk"]
 [ext_resource type="PackedScene" uid="uid://dqpqw2adjm7qg" path="res://art/model_prefabs/battery/battery.tscn" id="2_0nt81"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="5_mgd80"]
 [ext_resource type="Texture2D" uid="uid://cjv8e2sijiql6" path="res://art/textures/frame/frame_Normal.png" id="5_nemdb"]
 [ext_resource type="Texture2D" uid="uid://bqpvtwe8hkr0w" path="res://art/textures/frame/frame_Roughness.png" id="6_5g11m"]
+[ext_resource type="PackedScene" uid="uid://dtc3u2risx08r" path="res://prefabs/modules/functional_components/module_tooltip_shower.tscn" id="12_7p43c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jnq3k"]
 size = Vector3(0.665, 1, 1.075)
@@ -83,6 +84,9 @@ shape = SubResource("SphereShape3D_e1j53")
 damageable = NodePath("../DamageController2/Damageable")
 shape = NodePath("..")
 self_damage_multiplier = 5.0
+
+[node name="ModuleTooltip" parent="." instance=ExtResource("12_7p43c")]
+hover_size = Vector2(0.625, 1)
 
 [connection signal="damaged" from="DamageController2" to="." method="take_damage"]
 

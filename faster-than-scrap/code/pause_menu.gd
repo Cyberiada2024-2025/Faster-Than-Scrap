@@ -31,3 +31,7 @@ func change_menu() -> void:
 			visible = true
 			$ColorRect/VBoxContainer/Resume.grab_focus()
 			GameManager._pause_entities()
+
+
+func focus() -> void:
+	$ColorRect/VBoxContainer/Resume.grab_focus()

@@ -167,9 +167,9 @@ func detach_all_children(explosion_center: Vector3) -> void:
 		)
 
 		child.deactivate()
-		child.on_detach()
-
 		child.detach_all_children(explosion_center)
+		child.on_detach()
+	child_modules = []
 
 
 ## Called when the module is attached to the ship

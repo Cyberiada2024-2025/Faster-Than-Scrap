@@ -175,12 +175,12 @@ func detach_all_children(explosion_center: Vector3) -> void:
 
 ## Called when the module is attached to the ship
 func on_attach() -> void:
-	pass
+	GameManager.player_ship.modules.append(self)
 
 
 ## Called just before the module is detached from the ship
 func on_detach() -> void:
-	pass
+	GameManager.player_ship.modules.erase(self)
 
 
 ## Called when the module is attached to a different part of the ship than it previously was

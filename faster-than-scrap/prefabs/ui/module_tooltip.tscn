@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://ctuhc2002838x" path="res://prefabs/ui/themes/build_ship_theme.tres" id="2_elxrw"]
 
 [node name="ModuleTooltip" type="Control"]
-custom_minimum_size = Vector2(300, 200)
+custom_minimum_size = Vector2(300, 225)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,4 +35,5 @@ theme = ExtResource("2_elxrw")
 layout_mode = 2
 theme = ExtResource("2_elxrw")
 bbcode_enabled = true
-text = "AAAAAAAAAAA"
+text = "Basic movement module. Activate to push ship forward (relative to thruster)."
+scroll_active = false

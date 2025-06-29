@@ -44,7 +44,6 @@ func _ready() -> void:
 	for child in get_children():
 		if child is Module:
 			modules.append(child)
-	GameManager.new_game_state.connect(on_game_change_state)
 
 	if DebugMenu.is_debug:
 		DebugMenu.toggle_player_collisions.connect(_toggle_collisions)
@@ -71,6 +70,8 @@ func _center_of_mass() -> Vector3:
 		center += mod.position
 	center /= GameManager.player_ship.modules.size()
 	return center
+
+
 func _physics_process(_delta: float) -> void:
 	if not DebugMenu.enable_debug_movement:
 		return
@@ -95,18 +96,6 @@ func change_air_resistance() -> void:
 	else:
 		linear_damp = 0
 		angular_damp = 0
-
-
-func on_game_change_state(new_state: GameState.State) -> void:
-	match new_state:
-		GameState.State.FLY:
-			pass
-		GameState.State.PAUSE:
-			pass
-		GameState.State.BUILD:
-			pass
-		GameState.State.MAIN_MENU:
-			pass
 
 
 func save_position():

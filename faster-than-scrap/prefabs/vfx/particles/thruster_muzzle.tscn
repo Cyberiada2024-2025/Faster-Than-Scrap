@@ -44,9 +44,9 @@ curve = SubResource("Curve_a44b7")
 [node name="Thruster_Muzzle" type="GPUParticles3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.00325)
 cast_shadow = 0
+emitting = false
 amount = 200
 lifetime = 0.23
-preprocess = 0.2
 local_coords = true
 transform_align = 3
 trail_enabled = true

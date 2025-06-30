@@ -54,6 +54,7 @@ amount = 10
 lifetime = 0.5
 one_shot = true
 explosiveness = 0.85
+fixed_fps = 60
 interpolate = false
 process_material = SubResource("ParticleProcessMaterial_o6jcs")
 draw_pass_1 = ExtResource("2_vemdo")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=37 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="12_bwh47"]
+[ext_resource type="AudioStream" uid="uid://5865x8bmeaa" path="res://art/audio/sounds/repair.mp3" id="12_cv5l0"]
 [ext_resource type="PackedScene" uid="uid://dgcndntkhn2hh" path="res://prefabs/ui/cutscenes/inventory_tutorial_cutscene.tscn" id="13_bwh47"]
+[ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="13_hbg4l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
 font = ExtResource("6_au3vu")
@@ -539,6 +541,14 @@ script = ExtResource("12_bwh47")
 cutscene_path = ExtResource("13_bwh47")
 play_on_ready = true
 
+[node name="RepairSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("12_cv5l0")
+volume_db = 2.0
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("13_hbg4l")
+metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
+
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]
 [connection signal="on_module_detach" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_detach"]
 [connection signal="on_module_hover" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_select"]
@@ -549,5 +559,6 @@ play_on_ready = true
 [connection signal="area_entered" from="Shop/Inventory/Area3D" to="Shop" method="_on_inventory_entered"]
 [connection signal="area_exited" from="Shop/Inventory/Area3D" to="Shop" method="_on_inventory_exited"]
 [connection signal="pressed" from="Control/RepairModules" to="Shop" method="_repair_modules"]
+[connection signal="pressed" from="Control/RepairModules" to="RepairSound" method="start_playing"]
 [connection signal="pressed" from="Control/Confirm missing keys/Color_Rect/Confirm" to="Shop" method="_on_missing_key_confirm_pressed"]
 [connection signal="pressed" from="Control/Confirm missing keys/Color_Rect/Deny" to="Shop" method="_on_missing_key_deny_pressed"]

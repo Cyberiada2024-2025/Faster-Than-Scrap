@@ -264,6 +264,9 @@ func create_ghost() -> ModuleGhost:
 	duplicate_node.prize = 0
 	ghost.module_to_ignore = self
 
+	# delete tooltip
+	duplicate_node.find_child("ModuleTooltip").free()
+
 	return ghost
 
 

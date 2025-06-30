@@ -578,16 +578,16 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="RotateSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_o146e")
+max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-allow_multiple_sounds_at_once = false
 metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="CannotRotateSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_eeway")
+max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-allow_multiple_sounds_at_once = false
 metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="AttachSound" type="AudioStreamPlayer" parent="."]

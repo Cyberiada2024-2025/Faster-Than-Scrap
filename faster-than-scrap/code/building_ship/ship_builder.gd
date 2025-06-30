@@ -110,13 +110,12 @@ func _update_lmb_state(event: InputEvent) -> void:
 
 
 func _update_attach_point_index() -> void:
-	if Input.is_key_pressed(KEY_R):
-		attach_point_index += 1
-		if active_module != null:
-			if len(active_module.attach_points) > 1:
-				rotate_sound.start_playing()
-			else:
-				cannot_rotate_sound.start_playing()
+	attach_point_index += 1
+	if active_module != null:
+		if len(active_module.attach_points) > 1:
+			rotate_sound.start_playing()
+		else:
+			cannot_rotate_sound.start_playing()
 
 
 # ----------------raycasts hits ------------------------------------
@@ -334,7 +333,8 @@ func _can_module_have_assigned_key(active_module: Module) -> bool:
 func _input(event: InputEvent):
 	_update_lmb_state(event)
 	_update_mouse_3d_position()
-	_update_attach_point_index()
+	if event is InputEventKey and event.pressed == true:
+		_update_attach_point_index()
 
 	## TODO add some display in UI in which state the player is
 

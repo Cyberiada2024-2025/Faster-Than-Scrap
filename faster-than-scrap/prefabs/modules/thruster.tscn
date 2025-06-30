@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_18ma3"]
 [ext_resource type="Script" uid="uid://crmxerc164n6q" path="res://code/weapons/constant_fire_weapon.gd" id="2_5rd74"]
 [ext_resource type="PackedScene" uid="uid://cybvhv36ih1j6" path="res://art/model_prefabs/ship/modules/thruster_model_pf.tscn" id="2_br7jh"]
-[ext_resource type="PackedScene" uid="uid://4ct5vtkfetun" path="res://prefabs/projectiles/thruster_fire.tscn" id="3_24upk"]
+[ext_resource type="PackedScene" uid="uid://bx0real1iddvi" path="res://prefabs/projectiles/thruster_fire.tscn" id="3_xhd0w"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="4_putpi"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="5_24upk"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="6_24upk"]
@@ -37,7 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.898123)
 script = ExtResource("2_5rd74")
 energy_cost = 10.0
 recoil_force = 400.0
-projectile = ExtResource("3_24upk")
+projectile = ExtResource("3_xhd0w")
 
 [node name="ThrusterModel" parent="." instance=ExtResource("2_br7jh")]
 transform = Transform3D(-3.67176e-08, 0, -0.84, 0, 0.84, 0, 0.84, 0, -3.67176e-08, -2.70104e-09, 0, 0.206793)

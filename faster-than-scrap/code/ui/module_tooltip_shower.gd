@@ -18,7 +18,7 @@ func _ready() -> void:
 	$DebugView.free()  #remove Debug view
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		$ToolView.scale.x = hover_size.x / 2
 		$ToolView.scale.z = hover_size.y / 2
@@ -49,7 +49,7 @@ func _on_game_change_state(new_state: GameState.State) -> void:
 		set_process(false)
 
 
-func _make_custom_tooltip(for_text: String) -> Object:
+func _make_custom_tooltip(_for_text: String) -> Object:
 	var tooltip = preload("res://prefabs/ui/module_tooltip.tscn").instantiate()
 	tooltip.config(parent_module)
 	return tooltip

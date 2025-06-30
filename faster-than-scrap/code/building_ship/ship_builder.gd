@@ -34,6 +34,17 @@ const RAY_LENGTH = 1000.0
 @export var choose_key_message: Control
 @export var confirm_finish_message: Control
 
+@export_group("Sounds")
+@export var pick_sound: SoundEmitterGlobal
+@export var cannot_pick_sound: SoundEmitterGlobal
+@export var rotate_sound: SoundEmitterGlobal
+@export var cannot_rotate_sound: SoundEmitterGlobal
+@export var attach_sound: SoundEmitterGlobal
+@export var place_sound: SoundEmitterGlobal
+@export var cannot_place_sound: SoundEmitterGlobal
+@export var start_assigning_key_sound: SoundEmitterGlobal
+@export var assign_key_sound: SoundEmitterGlobal
+
 var outline: Array[MeshInstance3D]
 
 var state = State.NONE
@@ -101,8 +112,12 @@ func _update_lmb_state(event: InputEvent) -> void:
 
 
 func _update_attach_point_index() -> void:
-	if Input.is_key_pressed(KEY_R):
-		attach_point_index += 1
+	attach_point_index += 1
+	if active_module != null:
+		if len(active_module.attach_points) > 1:
+			rotate_sound.start_playing()
+		else:
+			cannot_rotate_sound.start_playing()
 
 
 # ----------------raycasts hits ------------------------------------
@@ -214,6 +229,7 @@ func _on_module_clicked(clicked_module: Module) -> bool:
 		attach_point_index = 0
 
 		on_module_select.emit(clicked_module)
+		pick_sound.start_playing()
 		return true
 	if clicked_module is Cockpit:
 		_flash_module(clicked_module)
@@ -221,19 +237,25 @@ func _on_module_clicked(clicked_module: Module) -> bool:
 		# flash each child module
 		for child in clicked_module.child_modules:
 			_flash_module(child)
+	cannot_pick_sound.start_playing()
 	return false
 
 
 func _on_lmb_release() -> void:
 	# if legal position, set the module's position
-	if legal and active_module_ghost != null:
+	if active_module_ghost == null:
+		return
+
+	if legal:
 		active_module.global_position = active_module_ghost.global_position
 		active_module.global_rotation = active_module_ghost.global_rotation
 		# if there is a attach target, reparent to it
 		if attach_target != null:
 			_attach_module()
+			attach_sound.start_playing()
 		else:
 			_dettach_module()
+			place_sound.start_playing()
 		# if exist delete ghost
 		if active_module_ghost != null:
 			active_module_ghost.queue_free()
@@ -248,6 +270,7 @@ func _on_lmb_release() -> void:
 		var overlapping = _get_ghost_colliding_modules()
 		for module in overlapping:
 			_flash_module(module)
+		cannot_place_sound.start_playing()
 
 
 ## Function for setting up the module, when it is to be attached
@@ -312,7 +335,13 @@ func _can_module_have_assigned_key(active_module: Module) -> bool:
 func _input(event: InputEvent):
 	_update_lmb_state(event)
 	_update_mouse_3d_position()
-	_update_attach_point_index()
+	if (
+		event is InputEventKey
+		and event.pressed == true
+		and event.keycode == KEY_R
+		and state == State.DRAGGING
+	):
+		_update_attach_point_index()
 
 	## TODO add some display in UI in which state the player is
 
@@ -336,6 +365,7 @@ func _input(event: InputEvent):
 						state = State.SETTING_BUTTON
 						choose_key_message.visible = true
 						print("new state = setting button")
+						start_assigning_key_sound.start_playing()
 			elif event is InputEventMouse:
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
@@ -357,6 +387,7 @@ func _input(event: InputEvent):
 					state = State.NONE
 					choose_key_message.visible = false
 					print("new state = none")
+					assign_key_sound.start_playing()
 
 
 #region finding point to attach

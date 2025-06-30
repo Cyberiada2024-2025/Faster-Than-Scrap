@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dom21c42bbjwl"]
+[gd_scene load_steps=58 format=3 uid="uid://dom21c42bbjwl"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_mjhpt"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="2_esu31"]
@@ -13,6 +13,18 @@
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_0pnhb"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="12_esu31"]
 [ext_resource type="PackedScene" uid="uid://dfqok04svlmok" path="res://prefabs/ui/cutscenes/build_tutorial_cutscene.tscn" id="12_yvpli"]
+[ext_resource type="AudioStream" uid="uid://p6ddq3n2aw7m" path="res://art/audio/sounds/ui/ship_builder/repair.mp3" id="14_flqfh"]
+[ext_resource type="Script" uid="uid://c6mohg4o53eqe" path="res://code/sound/sound_emitter_global.gd" id="15_n2k3n"]
+[ext_resource type="AudioStream" uid="uid://c5x8fjlikxyw7" path="res://art/audio/sounds/ui/ship_builder/pick.mp3" id="16_sx58i"]
+[ext_resource type="AudioStream" uid="uid://bw7fx4gi1ocds" path="res://art/audio/sounds/ui/ship_builder/cannot_pick.mp3" id="17_ic7qf"]
+[ext_resource type="AudioStream" uid="uid://bx7vsv554fmbm" path="res://art/audio/sounds/ui/ship_builder/rotate.mp3" id="18_1pqie"]
+[ext_resource type="AudioStream" uid="uid://bddg1pxnxaptn" path="res://art/audio/sounds/ui/ship_builder/cannot_rotate.mp3" id="19_lin0t"]
+[ext_resource type="AudioStream" uid="uid://iyrhvmygvv6w" path="res://art/audio/sounds/ui/ship_builder/attach.mp3" id="20_exbvy"]
+[ext_resource type="AudioStream" uid="uid://dhpinui81c05q" path="res://art/audio/sounds/ui/ship_builder/place.mp3" id="21_wliym"]
+[ext_resource type="AudioStream" uid="uid://xefnexmkmf2d" path="res://art/audio/sounds/ui/ship_builder/cannot_place.mp3" id="22_5v3t7"]
+[ext_resource type="AudioStream" uid="uid://bqfy3xdpwhyn1" path="res://art/audio/sounds/ui/ship_builder/start_assigning_key.wav" id="23_mrbaw"]
+[ext_resource type="AudioStream" uid="uid://3lbdd6ghs0mg" path="res://art/audio/sounds/ui/ship_builder/assign_key.wav" id="24_tijld"]
+[ext_resource type="AudioStream" uid="uid://mavrm3tbmwii" path="res://art/audio/sounds/illegal_position_sound.wav" id="25_1yq7s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
 font = ExtResource("6_hk4jn")
@@ -121,7 +133,7 @@ bg_color = Color(0.105882, 1, 0.105882, 1)
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_mjhpt")]
 
-[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "confirm_finish_message")]
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "confirm_finish_message", "pick_sound", "cannot_pick_sound", "rotate_sound", "cannot_rotate_sound", "attach_sound", "place_sound", "cannot_place_sound", "start_assigning_key_sound", "assign_key_sound")]
 script = ExtResource("2_esu31")
 ignore = [NodePath("../Shop/BuildArea"), NodePath("../Ship Max Size/Area3D")]
 ship_borders = NodePath("../Ship Max Size/Area3D")
@@ -130,6 +142,15 @@ flash_mat = ExtResource("4_0f5k8")
 flash_time = 0.5
 choose_key_message = NodePath("Control/Choose_key")
 confirm_finish_message = NodePath("Control/Confirm finish")
+pick_sound = NodePath("../PickSound")
+cannot_pick_sound = NodePath("../CannotPickSound")
+rotate_sound = NodePath("../RotateSound")
+cannot_rotate_sound = NodePath("../CannotRotateSound")
+attach_sound = NodePath("../AttachSound")
+place_sound = NodePath("../PlaceSound")
+cannot_place_sound = NodePath("../CannotPlaceSound")
+start_assigning_key_sound = NodePath("../StartAssigningKeySound")
+assign_key_sound = NodePath("../AssignKeySound")
 
 [node name="HudSpawner" type="Node" parent="ShipBuilder"]
 script = ExtResource("5_3ax24")
@@ -337,7 +358,7 @@ horizontal_alignment = 1
 script = ExtResource("7_rimmj")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
-[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description", "repair_button", "confirm_finish_message_with_unassigned_keys")]
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description", "repair_button", "confirm_finish_message_with_unassigned_keys", "warning_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.897, 0, -3.63634)
 script = ExtResource("8_hc2q3")
 starting_bank = 6
@@ -353,6 +374,7 @@ selected_module_display = NodePath("../ShipBuilder/Control/Prize_display/RichTex
 selected_module_description = NodePath("../ShipBuilder/Control/Description_display/RichTextLabel")
 repair_button = NodePath("../Control/RepairModules")
 confirm_finish_message_with_unassigned_keys = NodePath("../Control/Confirm missing keys")
+warning_sound = NodePath("../WarningSound")
 metadata/_custom_type_script = "uid://dsebh10ryevl"
 
 [node name="Inventory2" type="CSGMesh3D" parent="Shop"]
@@ -537,6 +559,93 @@ script = ExtResource("12_esu31")
 cutscene_path = ExtResource("12_yvpli")
 play_on_ready = true
 
+[node name="RepairSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_flqfh")
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("15_n2k3n")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="PickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_sx58i")
+volume_db = 3.0
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("15_n2k3n")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="CannotPickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_ic7qf")
+volume_db = -3.0
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("15_n2k3n")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="RotateSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_1pqie")
+volume_db = -3.0
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("15_n2k3n")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="CannotRotateSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_lin0t")
+volume_db = -3.0
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("15_n2k3n")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="AttachSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_exbvy")
+volume_db = -3.0
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("15_n2k3n")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="PlaceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_wliym")
+volume_db = 3.0
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("15_n2k3n")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="CannotPlaceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_5v3t7")
+volume_db = -3.0
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("15_n2k3n")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="StartAssigningKeySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_mrbaw")
+volume_db = -5.0
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("15_n2k3n")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="AssignKeySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_tijld")
+volume_db = -5.0
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("15_n2k3n")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="WarningSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_1yq7s")
+volume_db = -5.0
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("15_n2k3n")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]
 [connection signal="on_module_detach" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_detach"]
 [connection signal="on_module_hover" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_select"]
@@ -545,5 +654,6 @@ play_on_ready = true
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Deny" to="ShipBuilder" method="_on_deny_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Finish" to="Shop" method="_on_finish_pressed"]
 [connection signal="pressed" from="Control/RepairModules" to="Shop" method="_repair_modules"]
+[connection signal="pressed" from="Control/RepairModules" to="RepairSound" method="start_playing"]
 [connection signal="pressed" from="Control/Confirm missing keys/Color_Rect/Confirm" to="Shop" method="_on_missing_key_confirm_pressed"]
 [connection signal="pressed" from="Control/Confirm missing keys/Color_Rect/Deny" to="Shop" method="_on_missing_key_deny_pressed"]

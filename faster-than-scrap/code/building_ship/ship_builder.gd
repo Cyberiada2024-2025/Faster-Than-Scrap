@@ -42,6 +42,8 @@ const RAY_LENGTH = 1000.0
 @export var attach_sound: SoundEmitterGlobal
 @export var place_sound: SoundEmitterGlobal
 @export var cannot_place_sound: SoundEmitterGlobal
+@export var start_assigning_key_sound: SoundEmitterGlobal
+@export var assign_key_sound: SoundEmitterGlobal
 
 var outline: Array[MeshInstance3D]
 
@@ -337,7 +339,7 @@ func _input(event: InputEvent):
 		event is InputEventKey
 		and event.pressed == true
 		and event.keycode == KEY_R
-		and active_module != null
+		and state == State.DRAGGING
 	):
 		_update_attach_point_index()
 
@@ -363,6 +365,7 @@ func _input(event: InputEvent):
 						state = State.SETTING_BUTTON
 						choose_key_message.visible = true
 						print("new state = setting button")
+						start_assigning_key_sound.start_playing()
 			elif event is InputEventMouse:
 				var hit := _get_raycast_hit(event)
 				if hit.size() > 0:
@@ -384,6 +387,7 @@ func _input(event: InputEvent):
 					state = State.NONE
 					choose_key_message.visible = false
 					print("new state = none")
+					assign_key_sound.start_playing()
 
 
 #region finding point to attach

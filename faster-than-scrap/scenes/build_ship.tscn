@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=46 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -20,6 +20,8 @@
 [ext_resource type="AudioStream" uid="uid://iyrhvmygvv6w" path="res://art/audio/sounds/ui/ship_builder/attach.mp3" id="18_6rel0"]
 [ext_resource type="AudioStream" uid="uid://dhpinui81c05q" path="res://art/audio/sounds/ui/ship_builder/place.mp3" id="19_dpesc"]
 [ext_resource type="AudioStream" uid="uid://xefnexmkmf2d" path="res://art/audio/sounds/ui/ship_builder/cannot_place.mp3" id="20_r6xpi"]
+[ext_resource type="AudioStream" uid="uid://bqfy3xdpwhyn1" path="res://art/audio/sounds/ui/ship_builder/start_assigning_key.wav" id="21_rkphg"]
+[ext_resource type="AudioStream" uid="uid://3lbdd6ghs0mg" path="res://art/audio/sounds/ui/ship_builder/assign_key.wav" id="22_o146e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
 font = ExtResource("6_au3vu")
@@ -104,7 +106,7 @@ font_color = Color(0.105882, 1, 0.105882, 1)
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_8ccmg")]
 
-[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "confirm_finish_message", "pick_sound", "cannot_pick_sound", "rotate_sound", "cannot_rotate_sound", "attach_sound", "place_sound", "cannot_place_sound")]
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "confirm_finish_message", "pick_sound", "cannot_pick_sound", "rotate_sound", "cannot_rotate_sound", "attach_sound", "place_sound", "cannot_place_sound", "start_assigning_key_sound", "assign_key_sound")]
 script = ExtResource("1_d5jmr")
 ignore = [NodePath("../Shop/BuildArea"), NodePath("../Shop/Inventory/Area3D"), NodePath("../Ship Max Size/Area3D")]
 ship_borders = NodePath("../Ship Max Size/Area3D")
@@ -120,6 +122,8 @@ cannot_rotate_sound = NodePath("../CannotRotateSound")
 attach_sound = NodePath("../AttachSound")
 place_sound = NodePath("../PlaceSound")
 cannot_place_sound = NodePath("../CannotPlaceSound")
+start_assigning_key_sound = NodePath("../StartAssigningKeySound")
+assign_key_sound = NodePath("../AssignKeySound")
 
 [node name="HudSpawner" type="Node" parent="ShipBuilder"]
 script = ExtResource("10_xqadh")
@@ -612,6 +616,21 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="CannotPlaceSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_r6xpi")
+volume_db = -3.0
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("13_sy1ma")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="StartAssigningKeySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_rkphg")
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("13_sy1ma")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="AssignKeySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_o146e")
 volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"

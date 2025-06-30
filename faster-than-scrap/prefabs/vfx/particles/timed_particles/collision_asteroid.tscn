@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2rns0sxx87ar"]
+
+[ext_resource type="Script" uid="uid://65m4xcjhtor5" path="res://code/effects/timed_particle.gd" id="1_wxx85"]
+[ext_resource type="PackedScene" uid="uid://oc4aeydutf6e" path="res://prefabs/vfx/particles/basic/directional_rocks.tscn" id="2_wxx85"]
+[ext_resource type="AudioStream" uid="uid://4wi5f65otlhh" path="res://art/audio/sounds/asteroid_collision.mp3" id="3_m7ded"]
+[ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="4_426gd"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_e11im"]
+top_radius = 0.0
+bottom_radius = 0.1
+
+[node name="CollisionAsteroid" type="Node3D"]
+script = ExtResource("1_wxx85")
+_lifetime = 5.0
+metadata/_custom_type_script = "uid://65m4xcjhtor5"
+
+[node name="DirectionalRocks" parent="." instance=ExtResource("2_wxx85")]
+
+[node name="SoundEmitter" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_m7ded")
+volume_db = -2.0
+autoplay = true
+bus = &"SFX"
+script = ExtResource("4_426gd")
+allow_multiple_sounds_at_once = false
+min_pitch_scale = 0.7
+max_pitch_scale = 1.1
+metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -4.37114e-08, -1)
+mesh = SubResource("CylinderMesh_e11im")
+skeleton = NodePath("")

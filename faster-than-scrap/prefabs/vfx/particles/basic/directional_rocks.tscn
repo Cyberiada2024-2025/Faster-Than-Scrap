@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://oc4aeydutf6e"]
+
+[ext_resource type="Texture2D" uid="uid://b5rruyfg2d4w" path="res://art/textures/asteroids/asteroid_3/asteroid_3_albedo_lighter.png" id="1_0f5fi"]
+[ext_resource type="ArrayMesh" uid="uid://wybk2shl0x7e" path="res://art/models/asteroids/asteroid_3/asteroid_3.obj" id="2_vemdo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6jcs"]
+shading_mode = 2
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_0f5fi")
+
+[sub_resource type="Curve" id="Curve_5n7gc"]
+_data = [Vector2(0, 0.993215), 0.0, -0.959507, 0, 0, Vector2(1, 0), -1.01634, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1or7c"]
+curve = SubResource("Curve_5n7gc")
+
+[sub_resource type="Curve" id="Curve_0f5fi"]
+_limits = [0.0, 50.0, 0.0, 1.0]
+_data = [Vector2(0, 50), 0.0, -72.9116, 0, 0, Vector2(0.356784, 23.0337), -58.8409, -58.8409, 0, 0, Vector2(1, 0), -3.04903, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vemdo"]
+curve = SubResource("Curve_0f5fi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o6jcs"]
+lifetime_randomness = 0.1
+particle_flag_rotate_y = true
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 0, -1)
+spread = 75.0
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+angular_velocity_min = -1440.0
+angular_velocity_max = 1440.0
+velocity_limit_curve = SubResource("CurveTexture_vemdo")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.75
+scale_curve = SubResource("CurveTexture_1or7c")
+anim_speed_min = 2.43
+anim_speed_max = 2.73
+
+[sub_resource type="Skin" id="Skin_c2e1b"]
+
+[node name="DirectionalRocks" type="GPUParticles3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_o6jcs")
+cast_shadow = 0
+amount = 10
+lifetime = 0.5
+speed_scale = 0.1
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_o6jcs")
+draw_pass_1 = ExtResource("2_vemdo")
+draw_skin = SubResource("Skin_c2e1b")

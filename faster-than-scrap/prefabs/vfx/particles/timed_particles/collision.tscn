@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://65m4xcjhtor5" path="res://code/effects/timed_particle.gd" id="1_ncc56"]
 [ext_resource type="PackedScene" uid="uid://b3mc1twhji6o7" path="res://prefabs/vfx/particles/basic/directional_sparks.tscn" id="2_ncc56"]
-[ext_resource type="AudioStream" uid="uid://4wi5f65otlhh" path="res://art/audio/sounds/asteroid_collision.mp3" id="3_e11im"]
+[ext_resource type="AudioStream" uid="uid://de5xvlep7ytiw" path="res://art/audio/sounds/collision_short.mp3" id="3_e11im"]
 [ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="5_gyb8u"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_e11im"]

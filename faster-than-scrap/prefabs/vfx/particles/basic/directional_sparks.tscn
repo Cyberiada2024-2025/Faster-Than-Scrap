@@ -31,10 +31,13 @@ anim_speed_max = 2.73
 [sub_resource type="CylinderMesh" id="CylinderMesh_c2e1b"]
 top_radius = 0.25
 bottom_radius = 0.25
+radial_segments = 4
+rings = 0
 
 [sub_resource type="Skin" id="Skin_c2e1b"]
 
 [node name="DirectionalSparks" type="GPUParticles3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_o6jcs")
 cast_shadow = 0
 emitting = false

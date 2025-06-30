@@ -624,6 +624,7 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="StartAssigningKeySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_mrbaw")
+volume_db = -5.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("15_n2k3n")
@@ -631,7 +632,7 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="AssignKeySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_tijld")
-volume_db = -3.0
+volume_db = -5.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("15_n2k3n")
@@ -639,7 +640,7 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="WarningSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("25_1yq7s")
-volume_db = -3.0
+volume_db = -5.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("15_n2k3n")

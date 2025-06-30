@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=44 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -9,12 +9,17 @@
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="10_xqadh"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
+[ext_resource type="AudioStream" uid="uid://p6ddq3n2aw7m" path="res://art/audio/sounds/ui/ship_builder/repair.mp3" id="12_1npui"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="12_bwh47"]
-[ext_resource type="AudioStream" uid="uid://5865x8bmeaa" path="res://art/audio/sounds/repair.mp3" id="12_cv5l0"]
 [ext_resource type="PackedScene" uid="uid://dgcndntkhn2hh" path="res://prefabs/ui/cutscenes/inventory_tutorial_cutscene.tscn" id="13_bwh47"]
 [ext_resource type="Script" uid="uid://c6mohg4o53eqe" path="res://code/sound/sound_emitter_global.gd" id="13_sy1ma"]
-[ext_resource type="AudioStream" uid="uid://chhc7p2aubei5" path="res://art/audio/sounds/ui_confirm.mp3" id="14_sy1ma"]
-[ext_resource type="AudioStream" uid="uid://e7gdumf4uq4" path="res://art/audio/sounds/module_attach.mp3" id="17_1npui"]
+[ext_resource type="AudioStream" uid="uid://d1s5jgp2uba6t" path="res://art/audio/sounds/ui/ship_builder/pick.mp3" id="14_iq7ln"]
+[ext_resource type="AudioStream" uid="uid://bw7fx4gi1ocds" path="res://art/audio/sounds/ui/ship_builder/cannot_pick.mp3" id="15_rkphg"]
+[ext_resource type="AudioStream" uid="uid://bx7vsv554fmbm" path="res://art/audio/sounds/ui/ship_builder/rotate.mp3" id="16_o146e"]
+[ext_resource type="AudioStream" uid="uid://bddg1pxnxaptn" path="res://art/audio/sounds/ui/ship_builder/cannot_rotate.mp3" id="17_eeway"]
+[ext_resource type="AudioStream" uid="uid://iyrhvmygvv6w" path="res://art/audio/sounds/ui/ship_builder/attach.mp3" id="18_6rel0"]
+[ext_resource type="AudioStream" uid="uid://p1mleicnv4lw" path="res://art/audio/sounds/ui/ship_builder/place.mp3" id="19_dpesc"]
+[ext_resource type="AudioStream" uid="uid://xefnexmkmf2d" path="res://art/audio/sounds/ui/ship_builder/cannot_place.mp3" id="20_r6xpi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
 font = ExtResource("6_au3vu")
@@ -551,67 +556,59 @@ cutscene_path = ExtResource("13_bwh47")
 play_on_ready = true
 
 [node name="RepairSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_cv5l0")
+stream = ExtResource("12_1npui")
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
 metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="PickSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_sy1ma")
+stream = ExtResource("14_iq7ln")
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
 metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="CannotPickSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_sy1ma")
+stream = ExtResource("15_rkphg")
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-min_pitch_scale = 0.5
-max_pitch_scale = 0.5
 metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="RotateSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("17_1npui")
+stream = ExtResource("16_o146e")
 bus = &"UI"
 script = ExtResource("13_sy1ma")
 allow_multiple_sounds_at_once = false
-min_pitch_scale = 1.85
-max_pitch_scale = 1.85
 metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="CannotRotateSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_sy1ma")
+stream = ExtResource("17_eeway")
 bus = &"UI"
 script = ExtResource("13_sy1ma")
 allow_multiple_sounds_at_once = false
-min_pitch_scale = 0.5
-max_pitch_scale = 0.5
 metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="AttachSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("17_1npui")
+stream = ExtResource("18_6rel0")
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
 metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="PlaceSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_sy1ma")
+stream = ExtResource("19_dpesc")
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
 metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="CannotPlaceSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_sy1ma")
+stream = ExtResource("20_r6xpi")
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-min_pitch_scale = 0.5
-max_pitch_scale = 0.5
 metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]

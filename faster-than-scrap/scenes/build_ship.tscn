@@ -13,12 +13,12 @@
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="12_bwh47"]
 [ext_resource type="PackedScene" uid="uid://dgcndntkhn2hh" path="res://prefabs/ui/cutscenes/inventory_tutorial_cutscene.tscn" id="13_bwh47"]
 [ext_resource type="Script" uid="uid://c6mohg4o53eqe" path="res://code/sound/sound_emitter_global.gd" id="13_sy1ma"]
-[ext_resource type="AudioStream" uid="uid://d1s5jgp2uba6t" path="res://art/audio/sounds/ui/ship_builder/pick.mp3" id="14_iq7ln"]
+[ext_resource type="AudioStream" uid="uid://c5x8fjlikxyw7" path="res://art/audio/sounds/ui/ship_builder/pick.mp3" id="14_iq7ln"]
 [ext_resource type="AudioStream" uid="uid://bw7fx4gi1ocds" path="res://art/audio/sounds/ui/ship_builder/cannot_pick.mp3" id="15_rkphg"]
 [ext_resource type="AudioStream" uid="uid://bx7vsv554fmbm" path="res://art/audio/sounds/ui/ship_builder/rotate.mp3" id="16_o146e"]
 [ext_resource type="AudioStream" uid="uid://bddg1pxnxaptn" path="res://art/audio/sounds/ui/ship_builder/cannot_rotate.mp3" id="17_eeway"]
 [ext_resource type="AudioStream" uid="uid://iyrhvmygvv6w" path="res://art/audio/sounds/ui/ship_builder/attach.mp3" id="18_6rel0"]
-[ext_resource type="AudioStream" uid="uid://p1mleicnv4lw" path="res://art/audio/sounds/ui/ship_builder/place.mp3" id="19_dpesc"]
+[ext_resource type="AudioStream" uid="uid://dhpinui81c05q" path="res://art/audio/sounds/ui/ship_builder/place.mp3" id="19_dpesc"]
 [ext_resource type="AudioStream" uid="uid://xefnexmkmf2d" path="res://art/audio/sounds/ui/ship_builder/cannot_place.mp3" id="20_r6xpi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
@@ -564,6 +564,7 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="PickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_iq7ln")
+volume_db = 3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
@@ -571,6 +572,7 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="CannotPickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_rkphg")
+volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
@@ -578,6 +580,7 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="RotateSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_o146e")
+volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
@@ -585,6 +588,7 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="CannotRotateSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_eeway")
+volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
@@ -592,6 +596,7 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="AttachSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_6rel0")
+volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
@@ -599,6 +604,7 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="PlaceSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_dpesc")
+volume_db = 3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
@@ -606,6 +612,7 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="CannotPlaceSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_r6xpi")
+volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")

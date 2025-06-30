@@ -333,7 +333,12 @@ func _can_module_have_assigned_key(active_module: Module) -> bool:
 func _input(event: InputEvent):
 	_update_lmb_state(event)
 	_update_mouse_3d_position()
-	if event is InputEventKey and event.pressed == true:
+	if (
+		event is InputEventKey
+		and event.pressed == true
+		and event.keycode == KEY_R
+		and active_module != null
+	):
 		_update_attach_point_index()
 
 	## TODO add some display in UI in which state the player is

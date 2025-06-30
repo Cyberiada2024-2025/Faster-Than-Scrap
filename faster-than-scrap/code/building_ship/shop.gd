@@ -154,7 +154,7 @@ func _on_bank_change() -> void:
 	bank_display.text = String.num_int64(bank) + "$"
 
 	# disable repair button if can't afford repair
-	repair_button.disabled = (bank < repair_cost)
+	repair_button.disabled = (bank < repair_cost) && not DebugMenu.disable_money_checks
 
 
 func _on_missing_key_confirm_pressed() -> void:

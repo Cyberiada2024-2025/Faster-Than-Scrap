@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8s7l1ii2n8ir"]
+[gd_scene load_steps=9 format=3 uid="uid://b8s7l1ii2n8ir"]
 
 [ext_resource type="Script" uid="uid://iii7qu2px6lf" path="res://code/boss/boss_spawner.gd" id="1_3tnet"]
 [ext_resource type="PackedScene" uid="uid://d2oshlh57wf02" path="res://prefabs/npc/bosses/boss_ui.tscn" id="1_j87ic"]
 [ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="3_eglc8"]
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="4_lg3fv"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="5_xnu4p"]
+[ext_resource type="Script" uid="uid://f6d84uyul237" path="res://code/evironment/generate_nebulas.gd" id="6_itccy"]
+[ext_resource type="AudioStream" uid="uid://e8tnjp7mfohh" path="res://art/audio/sounds/music_fight.mp3" id="7_ydhkx"]
+[ext_resource type="PackedScene" uid="uid://55masxr1fg7f" path="res://prefabs/vfx/particles/dust_particles.tscn" id="8_qadxt"]
 
 [node name="BossScene" type="Node3D"]
 script = ExtResource("1_3tnet")
@@ -21,3 +24,14 @@ metadata/_custom_type_script = "uid://ckk7d55t1hi01"
 [node name="SpaceEnvironment" parent="." instance=ExtResource("4_lg3fv")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_xnu4p")]
+
+[node name="Background" type="Node3D" parent="."]
+script = ExtResource("6_itccy")
+
+[node name="FlySceneMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("7_ydhkx")
+autoplay = true
+bus = &"Music"
+
+[node name="Dust Particles2" parent="." instance=ExtResource("8_qadxt")]

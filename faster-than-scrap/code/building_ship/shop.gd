@@ -42,6 +42,9 @@ extends Node3D
 
 @export var confirm_finish_message_with_unassigned_keys: Control
 
+@export_group("Sounds")
+@export var warning_sound: SoundEmitterGlobal
+
 ## actual cash balance
 var bank: int = 0
 var first_frame: bool = true
@@ -173,13 +176,17 @@ func _on_finish_pressed() -> void:
 	if bank < 0:
 		deny_finish.visible = true
 		deny_finish_label.text = "You cannot leave without paying for modules!"
+		warning_sound.start_playing()
+
 	elif InventoryManager.if_overflow():
 		deny_finish.visible = true
 		deny_finish_label.text = "Your inventory has too many items!"
+		warning_sound.start_playing()
 	else:
 		for m in GameManager.player_ship.modules:
 			if m.activation_key_saved == KEY_NONE and m.is_activable:
 				confirm_finish_message_with_unassigned_keys.visible = true
+				warning_sound.start_playing()
 				return
 		_exit_shop()
 

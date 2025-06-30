@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=47 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dgcndntkhn2hh" path="res://prefabs/ui/cutscenes/inventory_tutorial_cutscene.tscn" id="13_bwh47"]
 [ext_resource type="Script" uid="uid://c6mohg4o53eqe" path="res://code/sound/sound_emitter_global.gd" id="13_sy1ma"]
 [ext_resource type="AudioStream" uid="uid://c5x8fjlikxyw7" path="res://art/audio/sounds/ui/ship_builder/pick.mp3" id="14_iq7ln"]
+[ext_resource type="AudioStream" uid="uid://mavrm3tbmwii" path="res://art/audio/sounds/illegal_position_sound.wav" id="15_o6u5m"]
 [ext_resource type="AudioStream" uid="uid://bw7fx4gi1ocds" path="res://art/audio/sounds/ui/ship_builder/cannot_pick.mp3" id="15_rkphg"]
 [ext_resource type="AudioStream" uid="uid://bx7vsv554fmbm" path="res://art/audio/sounds/ui/ship_builder/rotate.mp3" id="16_o146e"]
 [ext_resource type="AudioStream" uid="uid://bddg1pxnxaptn" path="res://art/audio/sounds/ui/ship_builder/cannot_rotate.mp3" id="17_eeway"]
@@ -332,7 +333,7 @@ horizontal_alignment = 1
 script = ExtResource("7_jtm63")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
-[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "inventory_limit_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description", "repair_button", "confirm_finish_message_with_unassigned_keys")]
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "inventory_limit_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description", "repair_button", "confirm_finish_message_with_unassigned_keys", "warning_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.897, 0, -3.63634)
 script = ExtResource("11_jtm63")
 starting_bank = 6
@@ -349,6 +350,7 @@ selected_module_display = NodePath("../ShipBuilder/Control/Prize_display/RichTex
 selected_module_description = NodePath("../ShipBuilder/Control/Description_display/RichTextLabel")
 repair_button = NodePath("../Control/RepairModules")
 confirm_finish_message_with_unassigned_keys = NodePath("../Control/Confirm missing keys")
+warning_sound = NodePath("../WarningSound")
 metadata/_custom_type_script = "uid://dsebh10ryevl"
 
 [node name="Inventory2" type="CSGMesh3D" parent="Shop"]
@@ -631,6 +633,14 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="AssignKeySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_o146e")
+volume_db = -3.0
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("13_sy1ma")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="WarningSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_o6u5m")
 volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"

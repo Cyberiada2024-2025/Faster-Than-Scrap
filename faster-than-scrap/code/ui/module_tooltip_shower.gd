@@ -27,6 +27,8 @@ func _process(delta: float) -> void:
 	var world_corner_pos = world_pos + Vector3(hover_size.x, 0, -hover_size.y)
 
 	var camera: Camera3D = get_viewport().get_camera_3d()
+	if camera == null:
+		return
 	var screen_pos = camera.unproject_position(world_pos)
 	var screen_corner_pos = camera.unproject_position(world_corner_pos)
 

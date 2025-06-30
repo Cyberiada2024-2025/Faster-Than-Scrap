@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=39 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -12,7 +12,9 @@
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="12_bwh47"]
 [ext_resource type="AudioStream" uid="uid://5865x8bmeaa" path="res://art/audio/sounds/repair.mp3" id="12_cv5l0"]
 [ext_resource type="PackedScene" uid="uid://dgcndntkhn2hh" path="res://prefabs/ui/cutscenes/inventory_tutorial_cutscene.tscn" id="13_bwh47"]
-[ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="13_hbg4l"]
+[ext_resource type="Script" uid="uid://c6mohg4o53eqe" path="res://code/sound/sound_emitter_global.gd" id="13_sy1ma"]
+[ext_resource type="AudioStream" uid="uid://chhc7p2aubei5" path="res://art/audio/sounds/ui_confirm.mp3" id="14_sy1ma"]
+[ext_resource type="AudioStream" uid="uid://e7gdumf4uq4" path="res://art/audio/sounds/module_attach.mp3" id="17_1npui"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
 font = ExtResource("6_au3vu")
@@ -97,7 +99,7 @@ font_color = Color(0.105882, 1, 0.105882, 1)
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_8ccmg")]
 
-[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "confirm_finish_message")]
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "confirm_finish_message", "pick_sound", "cannot_pick_sound", "rotate_sound", "cannot_rotate_sound", "attach_sound", "place_sound", "cannot_place_sound")]
 script = ExtResource("1_d5jmr")
 ignore = [NodePath("../Shop/BuildArea"), NodePath("../Shop/Inventory/Area3D"), NodePath("../Ship Max Size/Area3D")]
 ship_borders = NodePath("../Ship Max Size/Area3D")
@@ -106,6 +108,13 @@ flash_mat = ExtResource("4_sra6p")
 flash_time = 0.5
 choose_key_message = NodePath("Control/Choose_key")
 confirm_finish_message = NodePath("Control/Confirm finish")
+pick_sound = NodePath("../PickSound")
+cannot_pick_sound = NodePath("../CannotPickSound")
+rotate_sound = NodePath("../RotateSound")
+cannot_rotate_sound = NodePath("../CannotRotateSound")
+attach_sound = NodePath("../AttachSound")
+place_sound = NodePath("../PlaceSound")
+cannot_place_sound = NodePath("../CannotPlaceSound")
 
 [node name="HudSpawner" type="Node" parent="ShipBuilder"]
 script = ExtResource("10_xqadh")
@@ -541,13 +550,69 @@ script = ExtResource("12_bwh47")
 cutscene_path = ExtResource("13_bwh47")
 play_on_ready = true
 
-[node name="RepairSound" type="AudioStreamPlayer3D" parent="."]
+[node name="RepairSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_cv5l0")
-volume_db = 2.0
 max_polyphony = 4
-bus = &"SFX"
-script = ExtResource("13_hbg4l")
-metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
+bus = &"UI"
+script = ExtResource("13_sy1ma")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="PickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_sy1ma")
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("13_sy1ma")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="CannotPickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_sy1ma")
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("13_sy1ma")
+min_pitch_scale = 0.5
+max_pitch_scale = 0.5
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="RotateSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_1npui")
+bus = &"UI"
+script = ExtResource("13_sy1ma")
+allow_multiple_sounds_at_once = false
+min_pitch_scale = 1.85
+max_pitch_scale = 1.85
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="CannotRotateSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_sy1ma")
+bus = &"UI"
+script = ExtResource("13_sy1ma")
+allow_multiple_sounds_at_once = false
+min_pitch_scale = 0.5
+max_pitch_scale = 0.5
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="AttachSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_1npui")
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("13_sy1ma")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="PlaceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_sy1ma")
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("13_sy1ma")
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="CannotPlaceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_sy1ma")
+max_polyphony = 4
+bus = &"UI"
+script = ExtResource("13_sy1ma")
+min_pitch_scale = 0.5
+max_pitch_scale = 0.5
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]
 [connection signal="on_module_detach" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_detach"]

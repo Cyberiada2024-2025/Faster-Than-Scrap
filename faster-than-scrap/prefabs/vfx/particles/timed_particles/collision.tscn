@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://65m4xcjhtor5"
 
 [node name="SoundEmitter" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_e11im")
-volume_db = -2.0
+volume_db = 3.0
 autoplay = true
 bus = &"SFX"
 script = ExtResource("5_gyb8u")

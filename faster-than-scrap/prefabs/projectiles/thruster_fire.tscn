@@ -171,3 +171,4 @@ movie_quit_on_finish = true
 
 [node name="Thruster_Muzzle" parent="BeamHolder/exhaust fire" instance=ExtResource("6_dhf0v")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 9.22953e-08, -0.737683, -6.00502e-08)
+visible = false

@@ -29,7 +29,6 @@ extends Node3D
 @export var inventory_limit_display: Label3D
 
 @export var deny_finish: Control
-@export var confirm_finish: Control
 
 @export var deny_finish_label: Label
 @export var selected_module_prize_display: Label
@@ -202,7 +201,6 @@ func _show_warning(warning_text: String) -> void:
 
 
 func _exit_shop() -> void:
-	#confirm_finish.visible = true
 	$"../ShipBuilder/SceneLoader".load_fly_ship_scene()
 	GameManager.player_ship.money = bank
 

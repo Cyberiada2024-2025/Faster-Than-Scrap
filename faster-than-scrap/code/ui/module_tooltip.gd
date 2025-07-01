@@ -4,7 +4,7 @@ var module: Module
 
 
 func config(module: Module) -> void:
-	var rich_text: RichTextLabel = $Panel/MarginContainer/RichTextLabel
+	var rich_text: RichTextLabel = $MarginContainer/RichTextLabel
 
 	rich_text.text = "[b]" + module.module_name + ":[/b] "
 	rich_text.text += String.num_int64(module.prize) + "$\n"

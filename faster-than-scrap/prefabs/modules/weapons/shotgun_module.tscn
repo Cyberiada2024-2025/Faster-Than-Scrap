@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cyw1yf0fdjx1j" path="res://prefabs/modules/functional_components/illegal_placement_zone.tscn" id="13_b63yx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yf3ku"]
-size = Vector3(1.35, 1, 1.155)
+size = Vector3(1.35, 1, 1.7523)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fkld4"]
 size = Vector3(1.555, 0.81, 0.215)
@@ -34,7 +34,7 @@ module_name = "Gun"
 description = "One of basic weapons. Activate to shoot long-range projectile."
 
 [node name="SpawnerWeapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.17352)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.67212)
 script = ExtResource("2_sw0by")
 muzzle_flash = NodePath("MuzzleFlash")
 energy_cost = 10.0
@@ -67,6 +67,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.75,
 [node name="DamageController" parent="." instance=ExtResource("7_14n02")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.48422)
 shape = SubResource("BoxShape3D_yf3ku")
 
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("8_bc3s3")]

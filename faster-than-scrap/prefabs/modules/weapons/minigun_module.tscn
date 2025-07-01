@@ -15,10 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://cyw1yf0fdjx1j" path="res://prefabs/modules/functional_components/illegal_placement_zone.tscn" id="12_wa7d3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yf3ku"]
-size = Vector3(1.35, 1, 1.155)
+size = Vector3(0.844092, 1, 1.63772)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fkld4"]
-size = Vector3(1.555, 0.81, 0.215)
+size = Vector3(0.794194, 0.81, 0.88041)
 
 [node name="MinigunModule" type="CollisionShape3D" node_paths=PackedStringArray("weapon", "attach_points", "sprite", "label")]
 shape = SubResource("BoxShape3D_yf3ku")
@@ -34,7 +34,7 @@ module_name = "Gun"
 description = "One of basic weapons. Activate to shoot long-range projectile."
 
 [node name="SpawnerWeapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.17352)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.39122)
 script = ExtResource("2_v5fri")
 muzzle_flash = NodePath("MuzzleFlash")
 energy_cost = 10.0
@@ -59,14 +59,15 @@ mesh = ExtResource("6_ms1tc")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4399e-08, 0, 0.630638)
 
 [node name="AttachPoint2" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.75, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.366758, 0, -1.67521e-08)
 
 [node name="AttachPoint3" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.75, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.432764, 0, -1.38668e-08)
 
 [node name="DamageController" parent="." instance=ExtResource("6_v3r3g")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0612061, 0, -0.327596)
 shape = SubResource("BoxShape3D_yf3ku")
 
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("7_xgn8p")]
@@ -89,7 +90,7 @@ metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
 [node name="Illegal Placement Zone" parent="." instance=ExtResource("12_wa7d3")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Illegal Placement Zone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.584905)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0881454, 0, -0.91761)
 shape = SubResource("BoxShape3D_fkld4")
 
 [connection signal="activated" from="." to="SoundEmitter" method="start_playing"]

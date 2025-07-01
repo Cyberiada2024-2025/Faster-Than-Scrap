@@ -1,7 +1,7 @@
 extends Node
 
-## A helper script that connects "button_down" signal to GlobalSoundManager.play_click_sound() method
-## in the parent node and all of its children (if they have this signal)
+## A helper script that connects "button_down" signal to GlobalSoundManager.play_click_sound()
+## method in the parent node and all of its children (if they have this signal)
 
 
 func _ready() -> void:

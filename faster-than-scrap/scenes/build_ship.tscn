@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=38 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -69,9 +69,6 @@ emission_enabled = true
 emission = Color(0.111572, 0.616094, 1.92523e-07, 1)
 emission_energy_multiplier = 2.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kf4id"]
-size = Vector3(28, 1, 28)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cv5l0"]
 transparency = 1
 albedo_color = Color(0, 0, 0, 0.313726)
@@ -110,7 +107,7 @@ size = Vector3(0.41153, 1, 20.8868)
 
 [node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "confirm_finish_message")]
 script = ExtResource("1_d5jmr")
-ignore = [NodePath("../Shop/BuildArea"), NodePath("../Shop/Inventory/Area3D"), NodePath("../Ship Max Size/Area3D")]
+ignore = [NodePath(""), NodePath("../Shop/Inventory/Area3D"), NodePath("../Ship Max Size/Area3D")]
 ship_borders = NodePath("../Ship Max Size/Area3D")
 outline_mat = ExtResource("3_7x66o")
 flash_mat = ExtResource("4_sra6p")
@@ -341,14 +338,6 @@ material = SubResource("StandardMaterial3D_d8di0")
 transform = Transform3D(1.02, 0, 0, 0, 1, 0, 0, 0, 1.01, 0, 0, 0)
 mesh = SubResource("BoxMesh_jtm63")
 material = SubResource("StandardMaterial3D_bwh47")
-
-[node name="BuildArea" type="Area3D" parent="Shop"]
-transform = Transform3D(1.06696, 0, 0, 0, 3.28825, 0, 0, 0, 1, 0, 0, 0)
-input_ray_pickable = false
-
-[node name="Inventory" type="CollisionShape3D" parent="Shop/BuildArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.1173, 0, -1)
-shape = SubResource("BoxShape3D_kf4id")
 
 [node name="Inventory" type="Node3D" parent="Shop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3126, 0, -5)

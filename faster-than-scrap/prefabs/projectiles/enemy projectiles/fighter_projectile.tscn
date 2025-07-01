@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://blsmln7x7do0p"]
+[gd_scene load_steps=18 format=3 uid="uid://blsmln7x7do0p"]
 
 [ext_resource type="Script" uid="uid://2uexqgp76p1n" path="res://code/weapons/projectiles/projectile.gd" id="1_1j4kn"]
 [ext_resource type="Script" uid="uid://7rxxtodxpx1d" path="res://code/damage/damage_area_3d.gd" id="2_3apnb"]
+[ext_resource type="PackedScene" uid="uid://bdjjqvk70o0g7" path="res://prefabs/vfx/particles/timed_particles/hit particles/gun_hit_particles.tscn" id="2_npo6u"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_wi3nc"]
 [ext_resource type="Script" uid="uid://2p7oc4a3141y" path="res://code/utilities/wait_free.gd" id="4_j7osq"]
 
@@ -24,6 +25,7 @@ height = 1.0
 [sub_resource type="Resource" id="Resource_x6y5o"]
 script = ExtResource("3_wi3nc")
 value = 5.0
+type = 0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2fpck"]
 height = 1.0
@@ -70,6 +72,7 @@ velocity_multiplier = 30.0
 lifetime = 2.0
 particle_holder = NodePath("ParticleHolder")
 particles = [NodePath("ParticleHolder/Trail")]
+hit_particle_prefab = ExtResource("2_npo6u")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.5)

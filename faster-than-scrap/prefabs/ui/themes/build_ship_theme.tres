@@ -1,18 +1,19 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://ctuhc2002838x"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://ctuhc2002838x"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhk2d"]
-bg_color = Color(0, 0, 0, 1)
+[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="1_wepap"]
+[ext_resource type="StyleBox" uid="uid://ii4x7274uyex" path="res://prefabs/ui/themes/colors/hover.tres" id="2_xg5l7"]
+[ext_resource type="StyleBox" uid="uid://cbsmvv6poi1bg" path="res://prefabs/ui/themes/colors/normal.tres" id="3_6kbv8"]
+[ext_resource type="StyleBox" uid="uid://dpq5n4k4uv73i" path="res://prefabs/ui/themes/colors/pressed.tres" id="3_wepap"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xg5l7"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ic85"]
-bg_color = Color(1, 0.29867, 0.51444, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m0rvv"]
-bg_color = Color(0, 0.713378, 0.436868, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dbg7u"]
 
 [resource]
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_wepap")
+Button/styles/focus = SubResource("StyleBoxEmpty_dbg7u")
+Button/styles/hover = ExtResource("2_xg5l7")
+Button/styles/normal = ExtResource("3_6kbv8")
+Button/styles/pressed = ExtResource("3_wepap")
 Label/colors/font_color = Color(0.105882, 1, 0.105882, 1)
 Label/colors/font_outline_color = Color(0.553216, 0.118146, 0, 1)
 Label/constants/outline_size = 6
@@ -21,9 +22,7 @@ MarginContainer/constants/margin_bottom = 20
 MarginContainer/constants/margin_left = 20
 MarginContainer/constants/margin_right = 20
 MarginContainer/constants/margin_top = 20
-Panel/styles/panel = SubResource("StyleBoxFlat_nhk2d")
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_xg5l7")
-RichTextLabel/colors/default_color = Color(0.105882, 1, 0.105882, 1)
+Panel/styles/panel = ExtResource("3_6kbv8")
+PanelContainer/styles/panel = ExtResource("3_6kbv8")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
 RichTextLabel/font_sizes/normal_font_size = 19
-TooltipPanel/styles/embedded_border = SubResource("StyleBoxFlat_3ic85")
-TooltipPanel/styles/panel = SubResource("StyleBoxFlat_m0rvv")

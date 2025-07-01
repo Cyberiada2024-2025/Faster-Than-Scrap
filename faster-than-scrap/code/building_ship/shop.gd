@@ -60,9 +60,16 @@ func _ready() -> void:
 	MissionManager.map_finished.connect(_clear_shop)
 	MissionManager.map_finished.connect(ShopContents.generate_contents)
 
+	GameManager.new_game_state.connect(_on_game_manager_new_game_state)
+
 	_generate_shop()
 
 	_update_repair_button_visibility()
+
+
+func _on_game_manager_new_game_state(new_state: GameState.State) -> void:
+	if new_state == GameState.State.BUILD:
+		_update_repair_button_visibility()
 
 
 func _clear_shop() -> void:

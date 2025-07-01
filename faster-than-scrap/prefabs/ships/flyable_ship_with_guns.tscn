@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b6fx656pcno7s" path="res://prefabs/modules/shield_module.tscn" id="5_4ovpx"]
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="6_2tpst"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="7_bgch1"]
-[ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/enemy projectiles/test_projectile.tscn" id="8_gpila"]
+[ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/enemy projectiles/boss_projectile.tscn" id="8_gpila"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="9_1rivq"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="10_pbbxw"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="11_hk0k3"]

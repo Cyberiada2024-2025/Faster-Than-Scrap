@@ -1,7 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckx4pgnacau0i"]
+[gd_scene load_steps=21 format=3 uid="uid://ckx4pgnacau0i"]
 
 [ext_resource type="Script" uid="uid://y01yp5jqupge" path="res://code/player/hud.gd" id="1_x65cj"]
 [ext_resource type="Script" uid="uid://hpmnb8n3f0n" path="res://code/player/resource_bar.gd" id="2_1s2ai"]
+[ext_resource type="Texture2D" uid="uid://ckq5tf4xlv4v" path="res://art/textures/ui/battery_level_empty.png" id="2_ggpsi"]
+[ext_resource type="Texture2D" uid="uid://7rlfp1kyqex2" path="res://art/textures/ui/battery_level.png" id="3_3xm3k"]
 [ext_resource type="Texture2D" uid="uid://b2wcjw2km4vjf" path="res://art/textures/ui/battery2.png" id="3_6m4ql"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="4_5fqad"]
 [ext_resource type="Texture2D" uid="uid://bmw35cwms6w7t" path="res://art/textures/ui/mapselect/Canister.png" id="5_ektdj"]
@@ -150,6 +152,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="New Energy Bar" type="Control" parent="HUD"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD/New Energy Bar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 300.0
+step = 10.0
+value = 200.0
+fill_mode = 1
+texture_under = ExtResource("2_ggpsi")
+texture_progress = ExtResource("3_3xm3k")
 
 [node name="Energy Bar" type="Control" parent="HUD" node_paths=PackedStringArray("bar_main", "bar_under", "overlay", "numbers", "animator")]
 layout_mode = 3

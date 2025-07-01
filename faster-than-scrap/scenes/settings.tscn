@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://go1u7xe1f41q" path="res://art/textures/main_menu/background_mask.png" id="5_1g033"]
 [ext_resource type="Script" uid="uid://b8kgrdxasqvq0" path="res://code/main_menu/background_light.gd" id="6_01roj"]
 [ext_resource type="Texture2D" uid="uid://cvsc1hfn6jjb" path="res://art/textures/main_menu/main_title.png" id="7_wqwn7"]
-[ext_resource type="PackedScene" path="res://prefabs/ui/volume_slider.tscn" id="8_am25x"]
+[ext_resource type="PackedScene" uid="uid://b62j1li7psxce" path="res://prefabs/ui/volume_slider.tscn" id="8_am25x"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3

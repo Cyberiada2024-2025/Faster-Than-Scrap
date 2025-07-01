@@ -58,6 +58,8 @@ func _ready() -> void:
 	_on_key_change()
 	update_sprite()
 
+	visibility_changed.connect(set_tooltip_visibility)
+
 
 func _process(_delta: float) -> void:
 	if was_key_pressed:
@@ -268,6 +270,13 @@ func create_ghost() -> ModuleGhost:
 	duplicate_node.find_child("ModuleTooltip").free()
 
 	return ghost
+
+
+func set_tooltip_visibility() -> void:
+	if visible:
+		find_child("ModuleTooltip").show()
+	else:
+		find_child("ModuleTooltip").hide()
 
 
 ## Return all children (even indirect) modules of a given node.

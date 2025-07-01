@@ -37,6 +37,7 @@ bottom_radius = 0.25
 
 [node name="Sparks" type="GPUParticles3D"]
 material_override = SubResource("StandardMaterial3D_o6jcs")
+cast_shadow = 0
 lifetime = 0.1
 trail_lifetime = 0.01
 process_material = SubResource("ParticleProcessMaterial_o6jcs")

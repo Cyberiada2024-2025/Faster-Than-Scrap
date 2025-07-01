@@ -10,18 +10,14 @@ radius = 3.5
 [node name="ShopMiniature" type="Node3D"]
 
 [node name="ScrapShop" parent="." instance=ExtResource("1_qgjcn")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-
-[node name="Label" type="Label3D" parent="ScrapShop"]
-transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 7.94038)
-text = "WORKSHOP"
-font_size = 180
+transform = Transform3D(2.5, 0, 0, 0, 1.555, 0, 0, 0, 2.5, 0, 0, 0)
 
 [node name="EnterShop" type="Area3D" parent="."]
 script = ExtResource("1_hgafx")
 instantiated_cooldown = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnterShop"]
+transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_seei7")
 
 [node name="ShopPoi" parent="." instance=ExtResource("2_hgafx")]

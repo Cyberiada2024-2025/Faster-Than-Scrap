@@ -54,7 +54,6 @@ shape = SubResource("SphereShape3D_e1j53")
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("5_v7s2g")]
 damageable = NodePath("../DamageController2/Damageable")
 shape = NodePath("..")
-self_damage_multiplier = 5.0
 
 [connection signal="damaged" from="DamageController2" to="." method="take_damage"]
 

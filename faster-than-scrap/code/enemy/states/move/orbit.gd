@@ -11,6 +11,7 @@ var orbit_radial_speed: float
 func enter(_previous_state_path: String, _data := {}) -> void:
 	target = GameManager.find_closest_ship(ship_controller.ship)
 	direction_from_target = self.ship_controller.ship.global_position - self.target.global_position
+	direction_from_target.y = 0
 	orbit_radial_speed = deg_to_rad(orbit_angular_speed)
 
 
@@ -22,7 +23,10 @@ func state_physics_update(delta: float) -> void:
 
 	# calculate direct pos
 	var direct_pos = self.target.global_position + direction_from_target * orbit_radius
+	direct_pos.y = 0
 
 	var direction = direct_pos - self.ship_controller.ship.global_position
+	direction.y = 0
+
 	ship_controller.velocity = direction * lerp_strength
 	ship_controller.move_and_slide()

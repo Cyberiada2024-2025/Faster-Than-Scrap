@@ -17,10 +17,12 @@ var direction: Vector3
 func enter(_previous_state_path: String, _data := {}) -> void:
 	counter = 0
 	start_pos = ship_controller.global_position
+	start_pos.y = 0
 	var copied_points = points.duplicate()
 	copied_points.erase(target_node)  # actual position
 	target_node = copied_points.pick_random()  # select new position
 	direction = target_node.global_position - start_pos
+	direction.y = 0
 	direction /= duration
 
 

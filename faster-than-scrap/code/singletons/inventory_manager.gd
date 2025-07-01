@@ -5,6 +5,15 @@ var max_items = 8
 var item_number = 0
 
 
+func _ready():
+	GameManager.game_reset.connect(_on_game_manager_reset)
+
+
+func _on_game_manager_reset():
+	inventory.clear()
+	item_number = 0
+
+
 func save_inventory() -> void:
 	for i in range(inventory.size()):
 		var item = inventory[i]

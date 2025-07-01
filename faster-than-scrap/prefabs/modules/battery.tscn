@@ -83,7 +83,6 @@ shape = SubResource("SphereShape3D_e1j53")
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("5_mgd80")]
 damageable = NodePath("../DamageController2/Damageable")
 shape = NodePath("..")
-self_damage_multiplier = 5.0
 
 [node name="ModuleTooltip" parent="." instance=ExtResource("12_7p43c")]
 hover_size = Vector2(0.625, 1)

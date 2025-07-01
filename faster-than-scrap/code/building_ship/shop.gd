@@ -38,7 +38,10 @@ extends Node3D
 	"res://prefabs/vfx/particles/base_projectile_hit_particles.tscn"
 )
 
-@export var confirm_finish_message_with_unusigned_keys: Control
+@export var confirm_finish_message_with_unassigned_keys: Control
+
+@export_group("Sounds")
+@export var warning_sound: SoundEmitterGlobal
 
 ## actual cash balance
 var bank: int = 0
@@ -136,16 +139,13 @@ func _generate_inventory() -> void:
 		)
 		obj.position = Vector3(x, 0, z)
 		obj.get_child(0).position = Vector3(0, 0, 0)
-		obj.hide_on_module_camera()
+		obj.get_child(0).hide_on_module_camera()
 		i += 1
 	_display_inventory_number()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if first_frame:
-		## linter will burn my house down if I don't use delta somewhere in this function
-		first_frame = 0 * delta
 		first_frame = false
 		bank = starting_bank + GameManager.player_ship.money
 		_on_bank_change()
@@ -159,16 +159,16 @@ func _on_bank_change() -> void:
 	bank_display.text = String.num_int64(bank) + "$"
 
 	# disable repair button if can't afford repair
-	repair_button.disabled = (bank < repair_cost)
+	repair_button.disabled = (bank < repair_cost) && not DebugMenu.disable_money_checks
 
 
 func _on_missing_key_confirm_pressed() -> void:
-	confirm_finish_message_with_unusigned_keys.visible = false
+	confirm_finish_message_with_unassigned_keys.visible = false
 	_exit_shop()
 
 
 func _on_missing_key_deny_pressed() -> void:
-	confirm_finish_message_with_unusigned_keys.visible = false
+	confirm_finish_message_with_unassigned_keys.visible = false
 
 
 func _on_finish_pressed() -> void:
@@ -178,13 +178,17 @@ func _on_finish_pressed() -> void:
 	if bank < 0:
 		deny_finish.visible = true
 		deny_finish_label.text = "You cannot leave without paying for modules!"
+		warning_sound.start_playing()
+
 	elif InventoryManager.if_overflow():
 		deny_finish.visible = true
 		deny_finish_label.text = "Your inventory has too many items!"
+		warning_sound.start_playing()
 	else:
 		for m in GameManager.player_ship.modules:
 			if m.activation_key_saved == KEY_NONE and m.is_activable:
-				confirm_finish_message_with_unusigned_keys.visible = true
+				confirm_finish_message_with_unassigned_keys.visible = true
+				warning_sound.start_playing()
 				return
 		_exit_shop()
 

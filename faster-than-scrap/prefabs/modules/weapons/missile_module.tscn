@@ -120,7 +120,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5129
 
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("5_5u5s7")]
 damageable = NodePath("../DamageController/Damageable")
-shape = NodePath("../DamageController/Damageable/MissileLauncherCollider")
+shape = NodePath("..")
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("6_qts7g")]
 

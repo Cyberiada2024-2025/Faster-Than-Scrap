@@ -17,102 +17,7 @@ script = ExtResource("1_c7aa7")
 cutscene_name = "Movement tutorial"
 metadata/_custom_type_script = "uid://bn8cfyemp6axl"
 
-[node name="Slide" type="ColorRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-script = ExtResource("2_s1ex1")
-duration = 999.0
-metadata/_custom_type_script = "uid://c8potv0p1705d"
-
-[node name="ColorRect" type="ColorRect" parent="Slide"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.2
-anchor_right = 0.8
-anchor_bottom = 0.8
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.292656, 0.388731, 0.540954, 1)
-
-[node name="Label" type="Label" parent="Slide/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_jrdi4")
-theme_override_font_sizes/font_size = 20
-text = "You are now in the cosmic journey.
-Your ship is barely holding itself.
-
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="Slide3" type="ColorRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-script = ExtResource("2_s1ex1")
-duration = 999.0
-metadata/_custom_type_script = "uid://c8potv0p1705d"
-
-[node name="ColorRect" type="ColorRect" parent="Slide3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.2
-anchor_right = 0.8
-anchor_bottom = 0.8
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.292656, 0.388731, 0.540954, 1)
-
-[node name="Label" type="Label" parent="Slide3/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_jrdi4")
-theme_override_font_sizes/font_size = 20
-text = "You need to find the ship hangar to modify it. The ship hangar is displayed by yellow arrow on the minimap."
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="TextureRect" type="TextureRect" parent="Slide3"]
-modulate = Color(1, 0, 0, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.8
-anchor_top = 0.75
-anchor_right = 0.867
-anchor_bottom = 0.88
-grow_vertical = 0
-rotation = -0.728834
-scale = Vector2(0.707474, 1)
-texture = ExtResource("4_5yjj4")
-expand_mode = 1
-flip_v = true
-
 [node name="Slide2" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -144,14 +49,76 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_jrdi4")
 theme_override_font_sizes/font_size = 20
-text = "To move use WASD buttons."
+text = "Modules are building blocks of your ship. 
+
+Cockpit in the center is your life. Once it's gone your mission is over.
+
+Other modules are replaceable."
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Slide" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_s1ex1")
+duration = 999.0
+metadata/_custom_type_script = "uid://c8potv0p1705d"
+
+[node name="TextureRect2" type="TextureRect" parent="Slide"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.179
+anchor_top = 0.71
+anchor_right = 0.285
+anchor_bottom = 0.805
+grow_vertical = 0
+rotation = 0.935066
+scale = Vector2(0.707474, 1)
+texture = ExtResource("4_5yjj4")
+expand_mode = 1
+flip_v = true
+
+[node name="ColorRect" type="ColorRect" parent="Slide"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.292656, 0.388731, 0.540954, 1)
+
+[node name="Label" type="Label" parent="Slide/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_jrdi4")
+theme_override_font_sizes/font_size = 20
+text = "Your ship's preview shows
+ each module's health and
+ its keybinds. 
+
+Try them out!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="SkipInfoText" parent="." instance=ExtResource("4_4gsco")]
 layout_mode = 1
 
 [node name="Slide4" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -183,22 +150,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_jrdi4")
 theme_override_font_sizes/font_size = 20
-text = "In case you forget, you can check the key bindings in the ship preview."
+text = "Automatic flight assist 
+is turned on. 
+
+You can change it in the settings."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
-
-[node name="TextureRect2" type="TextureRect" parent="Slide4"]
-modulate = Color(1, 0, 0, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.179
-anchor_top = 0.71
-anchor_right = 0.285
-anchor_bottom = 0.805
-grow_vertical = 0
-rotation = 0.935066
-scale = Vector2(0.707474, 1)
-texture = ExtResource("4_5yjj4")
-expand_mode = 1
-flip_v = true

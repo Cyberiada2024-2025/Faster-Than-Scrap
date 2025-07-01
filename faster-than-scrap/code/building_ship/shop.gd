@@ -156,7 +156,7 @@ func _enter_tree() -> void:
 
 
 func _on_bank_change() -> void:
-	bank_display.text = String.num_int64(bank) + "$"
+	bank_display.text = String.num_int64(bank) + "[img={width=valign}]res://art/fonts/cog.png[/img]"
 
 	# disable repair button if can't afford repair
 	repair_button.disabled = (bank < repair_cost) && not DebugMenu.disable_money_checks

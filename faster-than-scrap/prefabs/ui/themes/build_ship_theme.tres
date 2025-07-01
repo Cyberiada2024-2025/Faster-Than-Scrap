@@ -1,9 +1,11 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bsbjem43ux80p"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bsbjem43ux80p"]
 
+[ext_resource type="FontFile" uid="uid://clhrhnhrv4lq2" path="res://art/fonts/Orbitron-VariableFont_wght.ttf" id="1_6kbv8"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="1_wepap"]
 [ext_resource type="StyleBox" uid="uid://ii4x7274uyex" path="res://prefabs/ui/themes/colors/hover.tres" id="2_xg5l7"]
 [ext_resource type="StyleBox" uid="uid://cbsmvv6poi1bg" path="res://prefabs/ui/themes/colors/normal.tres" id="3_6kbv8"]
 [ext_resource type="StyleBox" uid="uid://dpq5n4k4uv73i" path="res://prefabs/ui/themes/colors/pressed.tres" id="3_wepap"]
+[ext_resource type="FontFile" uid="uid://c5684ddhvkomb" path="res://art/fonts/Orbitron-Bold.ttf" id="5_dbg7u"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dbg7u"]
 
@@ -13,8 +15,8 @@ Button/colors/font_focus_color = Color(0.113725, 1, 0.113725, 1)
 Button/colors/font_hover_color = Color(0.113725, 1, 0.113725, 1)
 Button/colors/font_hover_pressed_color = Color(0.113725, 1, 0.113725, 1)
 Button/colors/font_pressed_color = Color(0.537255, 1, 0.505882, 1)
-Button/font_sizes/font_size = 20
-Button/fonts/font = ExtResource("1_wepap")
+Button/font_sizes/font_size = 22
+Button/fonts/font = ExtResource("1_6kbv8")
 Button/styles/focus = SubResource("StyleBoxEmpty_dbg7u")
 Button/styles/hover = ExtResource("2_xg5l7")
 Button/styles/normal = ExtResource("3_6kbv8")
@@ -22,7 +24,8 @@ Button/styles/pressed = ExtResource("3_wepap")
 Label/colors/font_color = Color(0.105882, 1, 0.105882, 1)
 Label/colors/font_outline_color = Color(0.151276, 0.151276, 0.151276, 1)
 Label/constants/outline_size = 12
-Label/font_sizes/font_size = 15
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_6kbv8")
 MarginContainer/constants/margin_bottom = 20
 MarginContainer/constants/margin_left = 20
 MarginContainer/constants/margin_right = 20
@@ -30,8 +33,9 @@ MarginContainer/constants/margin_top = 20
 Panel/styles/panel = ExtResource("3_6kbv8")
 PanelContainer/styles/panel = ExtResource("3_6kbv8")
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
-RichTextLabel/font_sizes/normal_font_size = 19
-RichTextLabel/fonts/bold_font = ExtResource("1_wepap")
+RichTextLabel/font_sizes/bold_font_size = 24
+RichTextLabel/font_sizes/normal_font_size = 16
+RichTextLabel/fonts/bold_font = ExtResource("5_dbg7u")
 RichTextLabel/fonts/bold_italics_font = ExtResource("1_wepap")
-RichTextLabel/fonts/italics_font = ExtResource("1_wepap")
-RichTextLabel/fonts/normal_font = ExtResource("1_wepap")
+RichTextLabel/fonts/italics_font = ExtResource("1_6kbv8")
+RichTextLabel/fonts/normal_font = ExtResource("1_6kbv8")

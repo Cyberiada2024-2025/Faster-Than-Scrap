@@ -8,10 +8,10 @@ func config(module: Module) -> void:
 
 	rich_text.text = "[b]" + module.module_name + ":[/b] "
 	rich_text.text += (
-		String.num_int64(module.prize) + "[img={width=20}]res://art/fonts/cog.png[/img]
+		"[b]" + String.num_int64(module.prize)  + ":[/b] " + "[img={width=20}]res://art/fonts/cog.png[/img]
 		[img={width=20}]res://art/fonts/cog2.png[/img]
 		[img={width=20}]res://art/fonts/cog3.png[/img]
 		[img={width=20}]res://art/fonts/cog4.png[/img]\n"
 	)
 
-	rich_text.text += module.description
+	rich_text.text += "[b]" + module.description + ":[/b] "

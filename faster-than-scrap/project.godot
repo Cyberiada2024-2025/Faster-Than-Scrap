@@ -45,6 +45,7 @@ enabled=PackedStringArray("res://addons/format_on_save/plugin.cfg")
 
 timers/tooltip_delay_sec=0.1
 theme/custom="uid://d37mji7qf4y73"
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=35 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -44,15 +44,6 @@ bg_color = Color(0.105882, 1, 0.105882, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xrmp7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w40mu"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vun1v"]
-bg_color = Color(0, 0.23, 0.122667, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5v62e"]
-bg_color = Color(0.113725, 1, 0.113725, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jnae"]
-bg_color = Color(0, 0.0509804, 0.027451, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jtm63"]
 
@@ -262,17 +253,13 @@ anchor_left = 0.4
 anchor_right = 0.6
 offset_bottom = 40.0
 grow_horizontal = 2
+theme = ExtResource("7_d8di0")
 theme_override_colors/font_hover_pressed_color = Color(0.109804, 0.988235, 0.113725, 1)
 theme_override_colors/font_hover_color = Color(0.113725, 1, 0.113725, 1)
 theme_override_colors/font_color = Color(0.113725, 1, 0.113725, 1)
 theme_override_colors/font_focus_color = Color(0.113725, 1, 0.113725, 1)
 theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_fonts/font = ExtResource("6_au3vu")
-theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxEmpty_w40mu")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vun1v")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_5v62e")
-theme_override_styles/normal = SubResource("StyleBoxFlat_5jnae")
 text = "Finish
 Building"
 
@@ -422,6 +409,7 @@ anchors_preset = -1
 anchor_left = 0.2
 anchor_right = 0.3
 grow_horizontal = 2
+theme = ExtResource("7_d8di0")
 theme_override_colors/font_hover_pressed_color = Color(0.109804, 0.988235, 0.113725, 1)
 theme_override_colors/font_hover_color = Color(0.113725, 1, 0.113725, 1)
 theme_override_colors/font_color = Color(0.113725, 1, 0.113725, 1)
@@ -429,10 +417,6 @@ theme_override_colors/font_focus_color = Color(0.113725, 1, 0.113725, 1)
 theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
 theme_override_fonts/font = ExtResource("6_au3vu")
 theme_override_font_sizes/font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxEmpty_w40mu")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vun1v")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_5v62e")
-theme_override_styles/normal = SubResource("StyleBoxFlat_5jnae")
 text = "Repair - 2$
 25%HP / mod"
 

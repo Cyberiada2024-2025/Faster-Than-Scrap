@@ -128,14 +128,13 @@ func show_on_module_camera() -> void:
 
 ## Destroy self and detach children
 func _on_destroy() -> void:
-	GameManager.player_ship.modules.erase(self)
 	if parent_module != null:
 		parent_module.child_modules.erase(self)
 	_explode()
 
 	detach_all_children(global_position)
 
-	if parent_module != null:
+	if ship != null:
 		on_detach()
 
 	queue_free()  # delete self as an object
@@ -168,9 +167,9 @@ func detach_all_children(explosion_center: Vector3) -> void:
 		)
 
 		child.deactivate()
-		child.on_detach()
-
 		child.detach_all_children(explosion_center)
+		child.on_detach()
+	child_modules = []
 
 
 ## Called when the module is attached to the ship
@@ -180,7 +179,9 @@ func on_attach() -> void:
 
 ## Called just before the module is detached from the ship
 func on_detach() -> void:
-	pass
+	GameManager.player_ship.modules.erase(self)
+	ship = null  # clear refence of a ship
+	hide_on_module_camera()
 
 
 ## Called when the module is attached to a different part of the ship than it previously was
@@ -275,13 +276,15 @@ static func find_all_modules(node: Node) -> Array[Module]:
 			result.append(child)
 		result.append_array(find_all_modules(child))  # Recurse
 	var modules: Array[Module] = []
-	modules.assign(result)	# create module typed array
+	modules.assign(result)  # create module typed array
 	return modules
 
 
 func keycode_from_input_map(event_name: String) -> Key:
-	return (InputMap.action_get_events(event_name)[0] as InputEventKey) \
-			.get_physical_keycode_with_modifiers()
+	return (
+		(InputMap.action_get_events(event_name)[0] as InputEventKey)
+		. get_physical_keycode_with_modifiers()
+	)
 
 
 func reserve_keys_from_actions(actions: Array[String]):
@@ -293,7 +296,4 @@ func reserve_keys():
 	if DebugMenu.is_debug:
 		reserve_keys_from_actions(["debug_menu"])
 
-	reserve_keys_from_actions([
-		"pause_menu",
-		"Skip Cutscene"
-	])
+	reserve_keys_from_actions(["pause_menu", "Skip Cutscene"])

@@ -27,6 +27,7 @@ color_ramp = SubResource("GradientTexture1D_308ir")
 
 [node name="Ring" type="GPUParticles3D"]
 material_override = ExtResource("1_14nmt")
+cast_shadow = 0
 emitting = false
 amount = 1
 one_shot = true

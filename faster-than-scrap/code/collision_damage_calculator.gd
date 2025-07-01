@@ -75,6 +75,9 @@ func _handle_collision(
 
 func _spawn_collision_particles() -> void:
 	var body_direct_state = PhysicsServer3D.body_get_direct_state(calculated_body.get_rid())
+	if body_direct_state == null:
+		return
+
 	var collision_parameters = _calculate_average_collision_values(body_direct_state)
 
 	var average_normal: Vector3 = collision_parameters["average_normal"]
@@ -110,6 +113,9 @@ func calculate_damage(me: Node, oponent: Node) -> Damage:
 
 	# calculate base damage
 	var body_direct_state = PhysicsServer3D.body_get_direct_state(calculated_body.get_rid())
+	if body_direct_state == null:
+		return Damage.new(0, Damage.Type.COLLISION)
+
 	var collision_parameters = _calculate_average_collision_values(body_direct_state)
 
 	var direction: Vector3 = -collision_parameters["average_normal"]
@@ -134,5 +140,4 @@ func calculate_damage(me: Node, oponent: Node) -> Damage:
 	damage.value -= flat_damage_reduction
 	if damage.value <= 0:
 		damage.value = 0
-	print(damage)
 	return damage

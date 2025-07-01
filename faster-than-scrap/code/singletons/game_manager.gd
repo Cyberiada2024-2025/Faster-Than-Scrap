@@ -5,6 +5,7 @@ extends Node
 ## It is autoloaded and always available to be called from everywhere!
 
 signal new_game_state(new_state: GameState.State)
+signal game_reset
 
 @export var game_state: GameState.State = GameState.State.MAIN_MENU
 @export var death_screen: PackedScene
@@ -23,13 +24,16 @@ func _enter_tree() -> void:
 
 func on_scene_exit() -> void:
 	ships = []
-	if game_state == GameState.State.BUILD:
-		InventoryManager.save_inventory()
 
 
 func reset() -> void:
+	game_reset.emit()
+
 	game_over = false
 	ships = []
+
+	player_ship.queue_free()
+	player_ship = null
 
 
 func set_game_state(new_state: GameState.State) -> void:

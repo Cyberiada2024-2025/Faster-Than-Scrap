@@ -18,8 +18,8 @@ func _enter_tree() -> void:
 
 
 func _on_destroy() -> void:
-	super()  # call base
 	ship.on_destroy()  # inform ship of death
+	super()  # call base
 
 
 ## overriden method

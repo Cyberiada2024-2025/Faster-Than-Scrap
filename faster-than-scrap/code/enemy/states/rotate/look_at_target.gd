@@ -11,6 +11,7 @@ func enter(_previous_state_path: String, _data := {}) -> void:
 func state_physics_update(_delta: float) -> void:
 	# calculat target rotation
 	var look_direction = self.target.global_position - self.ship_controller.global_position
+	look_direction.y = 0
 	var rotation = ship_controller.rotation
 
 	ship_controller.rotation.y = lerp_angle(

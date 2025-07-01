@@ -578,7 +578,6 @@ func _on_finish_pressed() -> void:
 func _on_asign_key_cancel_pressed() -> void:
 	state = State.NONE
 	choose_key_message.visible = false
-	print("new state = none")
 
 
 func _on_confirm_pressed() -> void:

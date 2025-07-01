@@ -31,3 +31,4 @@ Panel/styles/panel = ExtResource("3_6kbv8")
 PanelContainer/styles/panel = ExtResource("3_6kbv8")
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
 RichTextLabel/font_sizes/normal_font_size = 19
+RichTextLabel/fonts/normal_font = ExtResource("1_wepap")

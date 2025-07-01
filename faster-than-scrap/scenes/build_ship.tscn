@@ -15,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://p6ddq3n2aw7m" path="res://art/audio/sounds/ui/ship_builder/repair.mp3" id="12_1npui"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="12_bwh47"]
 [ext_resource type="PackedScene" uid="uid://dgcndntkhn2hh" path="res://prefabs/ui/cutscenes/inventory_tutorial_cutscene.tscn" id="13_bwh47"]
-[ext_resource type="Script" uid="uid://c6mohg4o53eqe" path="res://code/sound/sound_emitter_global.gd" id="13_sy1ma"]
+[ext_resource type="Script" path="res://code/sound/sound_emitter_global.gd" id="13_sy1ma"]
 [ext_resource type="AudioStream" uid="uid://c5x8fjlikxyw7" path="res://art/audio/sounds/ui/ship_builder/pick.mp3" id="14_iq7ln"]
 [ext_resource type="AudioStream" uid="uid://mavrm3tbmwii" path="res://art/audio/sounds/illegal_position_sound.wav" id="15_o6u5m"]
 [ext_resource type="AudioStream" uid="uid://bw7fx4gi1ocds" path="res://art/audio/sounds/ui/ship_builder/cannot_pick.mp3" id="15_rkphg"]
@@ -79,10 +79,10 @@ emission_enabled = true
 emission = Color(0.583757, 0.306818, 3.85046e-07, 1)
 emission_energy_multiplier = 1.39
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbg4l"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpesc"]
 albedo_color = Color(0, 0, 0, 1)
 emission_enabled = true
-emission = Color(0.560577, 0.28025, 0, 1)
+emission = Color(0.583757, 0.306818, 3.85046e-07, 1)
 emission_energy_multiplier = 2.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cv5l0"]
@@ -332,11 +332,10 @@ tooltip_to_show = ExtResource("9_cv5l0")
 script = ExtResource("7_jtm63")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
-[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "inventory_limit_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description", "repair_button", "confirm_finish_message_with_unassigned_keys", "warning_sound")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.897, 0, -3.63634)
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("shop_area", "bank_display", "inventory_limit_display", "deny_finish", "confirm_finish", "deny_finish_label", "repair_button", "confirm_finish_message_with_unassigned_keys", "warning_sound")]
 script = ExtResource("11_jtm63")
 starting_bank = 6
-shop_area = NodePath("Inventory2")
+shop_area = NodePath("Shop area")
 size_x = 7.5
 size_z = 20.0
 columns = 3
@@ -351,12 +350,12 @@ confirm_finish_message_with_unassigned_keys = NodePath("../Control/Confirm missi
 warning_sound = NodePath("../WarningSound")
 metadata/_custom_type_script = "uid://dsebh10ryevl"
 
-[node name="Inventory2" type="CSGMesh3D" parent="Shop"]
+[node name="Shop area" type="CSGMesh3D" parent="Shop"]
 transform = Transform3D(10, 0, 0, 0, 0.265, 0, 0, 0, 20, 15.2471, 0, 0)
 mesh = SubResource("BoxMesh_jtm63")
 material = SubResource("StandardMaterial3D_d8di0")
 
-[node name="Inventory" type="CSGMesh3D" parent="Shop/Inventory2"]
+[node name="Inventory" type="CSGMesh3D" parent="Shop/Shop area"]
 transform = Transform3D(1.02, 0, 0, 0, 1, 0, 0, 0, 1.01, 0, 0, 0)
 mesh = SubResource("BoxMesh_jtm63")
 material = SubResource("StandardMaterial3D_bwh47")
@@ -372,15 +371,7 @@ material = SubResource("StandardMaterial3D_cv5l0")
 [node name="CSGMesh3D2" type="CSGMesh3D" parent="Shop/Inventory/InventoryItems"]
 transform = Transform3D(1.01, 0, 0, 0, 1, 0, 0, 0, 1.02, 0, 0, 0)
 mesh = SubResource("BoxMesh_jtm63")
-material = SubResource("StandardMaterial3D_bwh47")
-
-[node name="InventoryLabel" type="Label3D" parent="Shop/Inventory"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.50409e-07, 5.83589)
-modulate = Color(0.1, 3, 0, 1)
-text = "Cargo Hold"
-font = ExtResource("6_au3vu")
-font_size = 128
-outline_size = 0
+material = SubResource("StandardMaterial3D_dpesc")
 
 [node name="Area3D" type="Area3D" parent="Shop/Inventory"]
 input_ray_pickable = false
@@ -390,9 +381,9 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.0713987, 0, 0.259615)
 shape = SubResource("BoxShape3D_cv5l0")
 
 [node name="InventoryLabel" type="Label3D" parent="Shop/Inventory"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 5.83589)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.50409e-07, 5.83589)
 modulate = Color(0.1, 3, 0, 1)
-text = "Inventory"
+text = "Cargo Hold"
 font = ExtResource("6_au3vu")
 font_size = 128
 outline_size = 0
@@ -530,7 +521,6 @@ stream = ExtResource("12_1npui")
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="PickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_iq7ln")
@@ -538,7 +528,6 @@ volume_db = 3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="CannotPickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_rkphg")
@@ -546,7 +535,6 @@ volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="RotateSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_o146e")
@@ -554,7 +542,6 @@ volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="CannotRotateSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_eeway")
@@ -562,7 +549,6 @@ volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="AttachSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_6rel0")
@@ -570,7 +556,6 @@ volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="PlaceSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_dpesc")
@@ -578,7 +563,6 @@ volume_db = 3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="CannotPlaceSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_r6xpi")
@@ -586,7 +570,6 @@ volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="StartAssigningKeySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_rkphg")
@@ -594,7 +577,6 @@ volume_db = -5.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="AssignKeySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_o146e")
@@ -602,7 +584,6 @@ volume_db = -5.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="WarningSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_o6u5m")
@@ -610,7 +591,6 @@ volume_db = -5.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]
 [connection signal="on_module_detach" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_detach"]

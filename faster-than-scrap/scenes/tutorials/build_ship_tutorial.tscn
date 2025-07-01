@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dom21c42bbjwl"]
+[gd_scene load_steps=63 format=3 uid="uid://dom21c42bbjwl"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_mjhpt"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="2_esu31"]
@@ -53,6 +53,20 @@ bg_color = Color(0, 0.2, 0.106667, 1)
 bg_color = Color(0.105882, 1, 0.105882, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xrmp7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_flqfh"]
+font = ExtResource("6_hk4jn")
+font_color = Color(0.105882, 1, 0.105882, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n2k3n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sx58i"]
+bg_color = Color(0, 0.2, 0.106667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ic7qf"]
+bg_color = Color(0.105882, 1, 0.105882, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1pqie"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w40mu"]
 
@@ -279,7 +293,7 @@ layout_mode = 0
 offset_left = 425.0
 offset_top = 300.0
 offset_right = 675.0
-offset_bottom = 350.0
+offset_bottom = 425.0
 color = Color(0, 0.051, 0.027, 1)
 
 [node name="Label" type="Label" parent="ShipBuilder/Control/Choose_key/Color_Rect"]
@@ -287,9 +301,27 @@ layout_mode = 0
 offset_right = 250.0
 offset_bottom = 50.0
 text = "Choose a key"
-label_settings = SubResource("LabelSettings_x5wpm")
+label_settings = SubResource("LabelSettings_flqfh")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Cancel" type="Button" parent="ShipBuilder/Control/Choose_key/Color_Rect"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 68.0
+offset_right = 235.0
+offset_bottom = 106.0
+theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
+theme_override_fonts/font = ExtResource("6_hk4jn")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n2k3n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sx58i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ic7qf")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1pqie")
+text = "Cancel"
 
 [node name="Finish" type="Button" parent="ShipBuilder/Control"]
 layout_mode = 0
@@ -652,6 +684,7 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 [connection signal="pressed" from="ShipBuilder/Control/Deny finish/Color_Rect/Confirm" to="Shop" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Confirm" to="ShipBuilder" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Deny" to="ShipBuilder" method="_on_deny_pressed"]
+[connection signal="pressed" from="ShipBuilder/Control/Choose_key/Color_Rect/Cancel" to="ShipBuilder" method="_on_asign_key_cancel_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Finish" to="Shop" method="_on_finish_pressed"]
 [connection signal="pressed" from="Control/RepairModules" to="Shop" method="_repair_modules"]
 [connection signal="pressed" from="Control/RepairModules" to="RepairSound" method="start_playing"]

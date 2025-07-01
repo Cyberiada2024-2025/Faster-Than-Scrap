@@ -22,6 +22,7 @@ height = 2.0
 [sub_resource type="Resource" id="Resource_x6y5o"]
 script = ExtResource("3_xoudu")
 value = 50.0
+type = 0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_47qli"]
 radius = 1.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c45jvpijx82or"]
 
 [ext_resource type="Script" uid="uid://dcnclgbxs8cwv" path="res://code/ui/module_tooltip.gd" id="1_iirp5"]
-[ext_resource type="Theme" uid="uid://ctuhc2002838x" path="res://prefabs/ui/themes/build_ship_theme.tres" id="2_elxrw"]
+[ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="2_elxrw"]
 
 [node name="ModuleTooltip" type="PanelContainer"]
 anchors_preset = 15

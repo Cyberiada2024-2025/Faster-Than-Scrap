@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtc3u2risx08r"]
+[gd_scene load_steps=3 format=3 uid="uid://crd4yhjatue7c"]
 
-[ext_resource type="Script" uid="uid://di6cf2wmxwl82" path="res://code/ui/module_tooltip_shower.gd" id="1_dl645"]
+[ext_resource type="Script" path="res://code/ui/module_tooltip_shower.gd" id="1_dl645"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ur8n3"]
 

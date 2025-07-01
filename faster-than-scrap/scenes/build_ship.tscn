@@ -9,7 +9,7 @@
 [ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="7_d8di0"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_jtm63"]
 [ext_resource type="Script" path="res://code/ui/tooltip.gd" id="8_bwh47"]
-[ext_resource type="PackedScene" uid="uid://cc0to5vstp8vs" path="res://prefabs/ui/build_ship_help_tooltip.tscn" id="9_cv5l0"]
+[ext_resource type="PackedScene" path="res://prefabs/ui/build_ship_help_tooltip.tscn" id="9_cv5l0"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
 [ext_resource type="AudioStream" uid="uid://p6ddq3n2aw7m" path="res://art/audio/sounds/ui/ship_builder/repair.mp3" id="12_1npui"]
@@ -447,6 +447,13 @@ theme = ExtResource("7_d8di0")
 theme_override_fonts/font = ExtResource("6_au3vu")
 theme_override_font_sizes/font_size = 20
 text = "Repair - 2$
+25%HP / mod"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/RepairModules"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "Repair - 2 [img={width=20}]res://art/fonts/cog.png[/img
 25%HP / mod"
 
 [node name="Confirm missing keys" type="ColorRect" parent="Control"]

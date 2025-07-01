@@ -24,7 +24,7 @@ extends Node3D
 
 @export_category("Visuals")
 ## display of cash balance
-@export var bank_display: Label
+@export var bank_display: RichTextLabel
 @export var inventory_limit_display: Label3D
 
 @export var deny_finish: Control

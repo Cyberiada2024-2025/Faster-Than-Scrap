@@ -4,12 +4,12 @@
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="3_7x66o"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_sra6p"]
-[ext_resource type="PackedScene" path="res://prefabs/ui/build_ship_hud.tscn" id="5_cv5l0"]
+[ext_resource type="PackedScene" uid="uid://mjgnhxxmjro3" path="res://prefabs/ui/build_ship_hud.tscn" id="5_cv5l0"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
 [ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="7_d8di0"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_jtm63"]
 [ext_resource type="Script" path="res://code/ui/tooltip.gd" id="8_bwh47"]
-[ext_resource type="PackedScene" path="res://prefabs/ui/build_ship_help_tooltip.tscn" id="9_cv5l0"]
+[ext_resource type="PackedScene" uid="uid://cc0to5vstp8vs" path="res://prefabs/ui/build_ship_help_tooltip.tscn" id="9_cv5l0"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
 [ext_resource type="AudioStream" uid="uid://p6ddq3n2aw7m" path="res://art/audio/sounds/ui/ship_builder/repair.mp3" id="12_1npui"]
@@ -440,21 +440,25 @@ mouse_filter = 2
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2
+anchor_left = 0.15
 anchor_right = 0.3
 grow_horizontal = 2
 theme = ExtResource("7_d8di0")
 theme_override_fonts/font = ExtResource("6_au3vu")
 theme_override_font_sizes/font_size = 20
-text = "Repair - 2$
-25%HP / mod"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/RepairModules"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-text = "Repair - 2 [img={width=20}]res://art/fonts/cog.png[/img
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "Repair - 2 [img={width=20}]res://art/fonts/cog.png[/img]
 25%HP / mod"
+fit_content = true
+horizontal_alignment = 1
 
 [node name="Confirm missing keys" type="ColorRect" parent="Control"]
 visible = false

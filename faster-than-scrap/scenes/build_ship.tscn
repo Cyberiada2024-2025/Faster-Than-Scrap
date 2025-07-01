@@ -107,7 +107,7 @@ size = Vector3(0.41153, 1, 20.8868)
 
 [node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "confirm_finish_message")]
 script = ExtResource("1_d5jmr")
-ignore = [NodePath(""), NodePath("../Shop/Inventory/Area3D"), NodePath("../Ship Max Size/Area3D")]
+ignore = [NodePath("../Shop/Inventory/Area3D"), NodePath("../Ship Max Size/Area3D")]
 ship_borders = NodePath("../Ship Max Size/Area3D")
 outline_mat = ExtResource("3_7x66o")
 flash_mat = ExtResource("4_sra6p")

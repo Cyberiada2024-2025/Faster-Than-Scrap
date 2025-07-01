@@ -575,6 +575,11 @@ func _on_finish_pressed() -> void:
 	confirm_finish_message.visible = true
 
 
+func _on_asign_key_cancel_pressed() -> void:
+	state = State.NONE
+	choose_key_message.visible = false
+
+
 func _on_confirm_pressed() -> void:
 	confirm_finish_message.visible = false
 	scene_loader.load_fly_ship_scene()

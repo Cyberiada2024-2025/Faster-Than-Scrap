@@ -1,7 +1,8 @@
-[gd_scene load_steps=47 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=48 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
+[ext_resource type="Script" uid="uid://smw6vyfefqxn" path="res://code/ui/connect_sound_to_all_clickables.gd" id="1_eeway"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="3_7x66o"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_sra6p"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
@@ -104,6 +105,9 @@ size = Vector3(0.41153, 1, 20.8868)
 font_color = Color(0.105882, 1, 0.105882, 1)
 
 [node name="BuildShip" type="Node3D"]
+
+[node name="ConnectSoundToParentAndAllChildren" type="Node" parent="."]
+script = ExtResource("1_eeway")
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_8ccmg")]
 

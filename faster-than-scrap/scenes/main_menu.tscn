@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyj46rbaohfnw"]
+[gd_scene load_steps=11 format=3 uid="uid://dyj46rbaohfnw"]
 
 [ext_resource type="Script" uid="uid://bk270qnughqkv" path="res://code/main_menu.gd" id="1_4xnjd"]
+[ext_resource type="Script" uid="uid://smw6vyfefqxn" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_5dd4i"]
 [ext_resource type="Texture2D" uid="uid://d4ea46ajcslyj" path="res://art/textures/main_menu/map_select_background.png" id="2_tbmy8"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="3_0uprt"]
 [ext_resource type="Texture2D" uid="uid://ic7d4huaalha" path="res://art/textures/main_menu/light_mask.png" id="3_jk1qb"]
@@ -20,6 +21,9 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_4xnjd")
+
+[node name="ConnectSoundToParentAndAllChildren" type="Node" parent="."]
+script = ExtResource("2_5dd4i")
 
 [node name="background" type="Sprite2D" parent="."]
 show_behind_parent = true

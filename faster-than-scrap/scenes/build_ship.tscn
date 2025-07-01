@@ -4,11 +4,11 @@
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="3_7x66o"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_sra6p"]
-[ext_resource type="PackedScene" uid="uid://mjgnhxxmjro3" path="res://prefabs/ui/build_ship_hud.tscn" id="5_cv5l0"]
+[ext_resource type="PackedScene" path="res://prefabs/ui/build_ship_hud.tscn" id="5_cv5l0"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
-[ext_resource type="Theme" uid="uid://ctuhc2002838x" path="res://prefabs/ui/themes/build_ship_theme.tres" id="7_d8di0"]
+[ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="7_d8di0"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_jtm63"]
-[ext_resource type="Script" uid="uid://bcm4vfgdqrr2t" path="res://code/ui/tooltip.gd" id="8_bwh47"]
+[ext_resource type="Script" path="res://code/ui/tooltip.gd" id="8_bwh47"]
 [ext_resource type="PackedScene" uid="uid://cc0to5vstp8vs" path="res://prefabs/ui/build_ship_help_tooltip.tscn" id="9_cv5l0"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
@@ -254,11 +254,6 @@ anchor_right = 0.6
 offset_bottom = 40.0
 grow_horizontal = 2
 theme = ExtResource("7_d8di0")
-theme_override_colors/font_hover_pressed_color = Color(0.109804, 0.988235, 0.113725, 1)
-theme_override_colors/font_hover_color = Color(0.113725, 1, 0.113725, 1)
-theme_override_colors/font_color = Color(0.113725, 1, 0.113725, 1)
-theme_override_colors/font_focus_color = Color(0.113725, 1, 0.113725, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_w40mu")
 text = "Finish
 Building"
@@ -410,11 +405,6 @@ anchor_left = 0.2
 anchor_right = 0.3
 grow_horizontal = 2
 theme = ExtResource("7_d8di0")
-theme_override_colors/font_hover_pressed_color = Color(0.109804, 0.988235, 0.113725, 1)
-theme_override_colors/font_hover_color = Color(0.113725, 1, 0.113725, 1)
-theme_override_colors/font_color = Color(0.113725, 1, 0.113725, 1)
-theme_override_colors/font_focus_color = Color(0.113725, 1, 0.113725, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
 theme_override_fonts/font = ExtResource("6_au3vu")
 theme_override_font_sizes/font_size = 20
 text = "Repair - 2$

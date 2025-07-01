@@ -135,7 +135,7 @@ func _on_destroy() -> void:
 		parent_module.child_modules.erase(self)
 	_explode()
 
-	detach_all_children(global_position)
+	_detach_all_children(global_position)
 
 	if parent_module != null:
 		on_detach()
@@ -144,7 +144,7 @@ func _on_destroy() -> void:
 	destroyed.emit()
 
 
-func detach_all_children(explosion_center: Vector3) -> void:
+func _detach_all_children(explosion_center: Vector3) -> void:
 	for child in child_modules:
 		var rb: RigidBody3D = module_rigidbody_prefab.instantiate()
 		get_tree().current_scene.add_child(rb)  # attach floating modules to scene
@@ -172,7 +172,7 @@ func detach_all_children(explosion_center: Vector3) -> void:
 		child.deactivate()
 		child.on_detach()
 
-		child.detach_all_children(explosion_center)
+		child._detach_all_children(explosion_center)
 
 
 ## Called when the module is attached to the ship
@@ -287,13 +287,15 @@ static func find_all_modules(node: Node) -> Array[Module]:
 			result.append(child)
 		result.append_array(find_all_modules(child))  # Recurse
 	var modules: Array[Module] = []
-	modules.assign(result)	# create module typed array
+	modules.assign(result)  # create module typed array
 	return modules
 
 
 func keycode_from_input_map(event_name: String) -> Key:
-	return (InputMap.action_get_events(event_name)[0] as InputEventKey) \
-			.get_physical_keycode_with_modifiers()
+	return (
+		(InputMap.action_get_events(event_name)[0] as InputEventKey)
+		. get_physical_keycode_with_modifiers()
+	)
 
 
 func reserve_keys_from_actions(actions: Array[String]):
@@ -305,7 +307,4 @@ func reserve_keys():
 	if DebugMenu.is_debug:
 		reserve_keys_from_actions(["debug_menu"])
 
-	reserve_keys_from_actions([
-		"pause_menu",
-		"Skip Cutscene"
-	])
+	reserve_keys_from_actions(["pause_menu", "Skip Cutscene"])

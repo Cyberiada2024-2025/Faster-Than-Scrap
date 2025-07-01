@@ -64,6 +64,10 @@ var rmb_was_pressed: bool = false
 var ignore_rid: Array[RID]
 var scene_loader: SceneLoader
 
+## set to false when there are menus or messages displayed on the screen
+## (e.g. "you cannot leave without paying")
+var can_interact_with_modules: bool = true
+
 
 func _ready() -> void:
 	scene_loader = $SceneLoader
@@ -335,6 +339,10 @@ func _can_module_have_assigned_key(active_module: Module) -> bool:
 func _input(event: InputEvent):
 	_update_lmb_state(event)
 	_update_mouse_3d_position()
+
+	if not can_interact_with_modules:
+		return
+
 	if (
 		event is InputEventKey
 		and event.pressed == true
@@ -578,6 +586,7 @@ func _on_finish_pressed() -> void:
 func _on_asign_key_cancel_pressed() -> void:
 	state = State.NONE
 	choose_key_message.visible = false
+	print("new state = none")
 
 
 func _on_confirm_pressed() -> void:

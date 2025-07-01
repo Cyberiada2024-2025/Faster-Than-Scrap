@@ -390,9 +390,10 @@ horizontal_alignment = 1
 script = ExtResource("7_rimmj")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
-[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("bank_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description", "repair_button", "confirm_finish_message_with_unassigned_keys", "warning_sound")]
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("ship_builder", "bank_display", "deny_finish", "confirm_finish", "deny_finish_label", "selected_module_display", "selected_module_description", "repair_button", "confirm_finish_message_with_unassigned_keys", "warning_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.897, 0, -3.63634)
 script = ExtResource("8_hc2q3")
+ship_builder = NodePath("../ShipBuilder")
 starting_bank = 6
 size_x = 10.0
 size_z = 10.0

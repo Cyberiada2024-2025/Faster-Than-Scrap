@@ -43,19 +43,21 @@ alignment = 1
 [node name="Resume" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Exit")
-focus_neighbor_bottom = NodePath("../Exit")
+focus_neighbor_bottom = NodePath("../SettingsButton")
 theme_override_font_sizes/font_size = 30
 text = "RESUME
 "
 
 [node name="SettingsButton" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Resume")
+focus_neighbor_bottom = NodePath("../Exit")
 theme_override_font_sizes/font_size = 30
 text = "SETTINGS"
 
 [node name="Exit" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Resume")
+focus_neighbor_top = NodePath("../SettingsButton")
 focus_neighbor_bottom = NodePath("../Resume")
 theme_override_font_sizes/font_size = 30
 text = "EXIT TO MAIN MENU

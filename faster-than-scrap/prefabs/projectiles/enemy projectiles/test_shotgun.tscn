@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dqr2x28shkw41"]
 
-[ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/enemy projectiles/test_projectile.tscn" id="1_4lutw"]
+[ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/enemy projectiles/boss_projectile.tscn" id="1_4lutw"]
 
 [node name="test_shotgun" type="Node3D"]
 

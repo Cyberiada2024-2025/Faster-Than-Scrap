@@ -67,9 +67,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -307.0
-offset_top = -371.0
+offset_top = -344.0
 offset_right = 309.0
-offset_bottom = -23.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -86,6 +86,8 @@ alignment = 1
 
 [node name="BrakesCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/Buttons"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../../ReturnButton")
+focus_neighbor_bottom = NodePath("../AirResistanceCheckBox")
 theme_override_font_sizes/font_size = 30
 text = "Cockpit brakes"
 alignment = 1
@@ -98,6 +100,8 @@ vertical_alignment = 1
 
 [node name="AirResistanceCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/Buttons"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../BrakesCheckBox")
+focus_neighbor_bottom = NodePath("../SkipCutscenesCheckBox")
 theme_override_font_sizes/font_size = 30
 text = "Void resistance"
 alignment = 1
@@ -109,6 +113,8 @@ horizontal_alignment = 1
 
 [node name="SkipCutscenesCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/Buttons"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../AirResistanceCheckBox")
+focus_neighbor_bottom = NodePath("../../../ReturnButton")
 theme_override_font_sizes/font_size = 30
 text = "Skip cutscenes"
 alignment = 1
@@ -150,9 +156,12 @@ theme_override_constants/separation = 24
 
 [node name="ReturnButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../HBoxContainer/Buttons/SkipCutscenesCheckBox")
+focus_neighbor_bottom = NodePath("../HBoxContainer/Buttons/BrakesCheckBox")
 theme_override_font_sizes/font_size = 30
 text = "RETURN"
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Buttons/BrakesCheckBox" to="." method="_on_brakes_check_box_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Buttons/AirResistanceCheckBox" to="." method="_on_air_resistance_check_box_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Buttons/SkipCutscenesCheckBox" to="." method="_on_skip_cutscenes_check_box_pressed"]

@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://bh2umqanhcw1l"]
+
+[ext_resource type="Script" uid="uid://65m4xcjhtor5" path="res://code/effects/timed_particle.gd" id="1_l206c"]
+
+[sub_resource type="Curve" id="Curve_qoroq"]
+_data = [Vector2(0.256619, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bntxj"]
+curve = SubResource("Curve_qoroq")
+
+[sub_resource type="Curve" id="Curve_bntxj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_b5ybg"]
+curve = SubResource("Curve_bntxj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b5ybg"]
+direction = Vector3(0, 0, -1)
+spread = 90.0
+flatness = 0.2
+initial_velocity_max = 7.0
+gravity = Vector3(0, 0, 0)
+damping_min = 10.0
+damping_max = 15.0
+scale_curve = SubResource("CurveTexture_b5ybg")
+alpha_curve = SubResource("CurveTexture_bntxj")
+
+[sub_resource type="Curve" id="Curve_pg335"]
+_data = [Vector2(0, 0), 0.0, 5.7583, 0, 0, Vector2(0.244898, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7ty2"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.682353, 0, 1)
+emission_enabled = true
+emission = Color(0.803495, 0.69185, 0.226226, 1)
+emission_energy_multiplier = 8.0
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_7shuu"]
+material = SubResource("StandardMaterial3D_b7ty2")
+size = 0.06
+curve = SubResource("Curve_pg335")
+
+[node name="GunHitParticles" type="Node3D"]
+script = ExtResource("1_l206c")
+_lifetime = 5.0
+
+[node name="MuzzleFlash" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 50
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+transform_align = 3
+trail_enabled = true
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_b5ybg")
+draw_pass_1 = SubResource("RibbonTrailMesh_7shuu")

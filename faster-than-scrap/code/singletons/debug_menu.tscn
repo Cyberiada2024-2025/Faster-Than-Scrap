@@ -59,6 +59,7 @@ alignment = 1
 
 [node name="Btn 1" type="Button" parent="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Btn 7")
 theme_override_font_sizes/font_size = 30
 toggle_mode = true
 text = "Enable invincibility"
@@ -94,6 +95,7 @@ text = "Enter map select screen"
 
 [node name="Btn 7" type="Button" parent="ColorRect/MarginContainer/VBoxContainer2/CenterContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../Btn 1")
 theme_override_font_sizes/font_size = 30
 text = "Enter ship builder
 "

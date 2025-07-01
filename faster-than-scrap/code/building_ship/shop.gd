@@ -9,6 +9,8 @@ extends Node3D
 ## Areas should have negative y coordinate
 ## otherwise, engine module might not be selectable
 
+@export var ship_builder: ShipBuilder
+
 ## set starting cash here
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var starting_bank: int = 0
 @export var max_items_count = 10
@@ -27,7 +29,6 @@ extends Node3D
 @export var inventory_limit_display: Label3D
 
 @export var deny_finish: Control
-@export var confirm_finish: Control
 
 @export var deny_finish_label: Label
 @export var selected_module_prize_display: Label
@@ -59,9 +60,16 @@ func _ready() -> void:
 	MissionManager.map_finished.connect(_clear_shop)
 	MissionManager.map_finished.connect(ShopContents.generate_contents)
 
+	GameManager.new_game_state.connect(_on_game_manager_new_game_state)
+
 	_generate_shop()
 
 	_update_repair_button_visibility()
+
+
+func _on_game_manager_new_game_state(new_state: GameState.State) -> void:
+	if new_state == GameState.State.BUILD:
+		_update_repair_button_visibility()
 
 
 func _clear_shop() -> void:
@@ -167,40 +175,49 @@ func _on_missing_key_confirm_pressed() -> void:
 
 func _on_missing_key_deny_pressed() -> void:
 	confirm_finish_message_with_unassigned_keys.visible = false
+	ship_builder.can_interact_with_modules = true
 
 
 func _on_finish_pressed() -> void:
+	if ship_builder.state != ship_builder.State.NONE:
+		return
+
 	if DebugMenu.disable_money_checks:
 		_exit_shop()
 
 	if bank < 0:
-		deny_finish.visible = true
-		deny_finish_label.text = "You cannot leave without paying for modules!"
-		warning_sound.start_playing()
+		_show_warning("You cannot leave without paying for modules!")
 
 	elif InventoryManager.if_overflow():
-		deny_finish.visible = true
-		deny_finish_label.text = "Your inventory has too many items!"
-		warning_sound.start_playing()
+		_show_warning("Your inventory has too many items!")
 	else:
 		for m in GameManager.player_ship.modules:
 			if m.activation_key_saved == KEY_NONE and m.is_activable:
 				confirm_finish_message_with_unassigned_keys.visible = true
+				ship_builder.can_interact_with_modules = false
 				warning_sound.start_playing()
 				return
 		_exit_shop()
 
 
+func _show_warning(warning_text: String) -> void:
+	deny_finish.visible = true
+	ship_builder.can_interact_with_modules = false
+	deny_finish_label.text = warning_text
+	warning_sound.start_playing()
+
+
 func _exit_shop() -> void:
-	#confirm_finish.visible = true
 	$"../ShipBuilder/SceneLoader".load_fly_ship_scene()
 	GameManager.player_ship.money = bank
 
 	repair_button.visible = true  # prevent invisible button when entering the shop
+	ship_builder.can_interact_with_modules = true
 
 
 func _on_confirm_pressed() -> void:
 	deny_finish.visible = false
+	ship_builder.can_interact_with_modules = true
 
 
 func _on_ship_builder_on_module_select(module: Module) -> void:

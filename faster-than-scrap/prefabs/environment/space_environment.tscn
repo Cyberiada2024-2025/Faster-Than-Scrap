@@ -31,24 +31,30 @@ script = ExtResource("3_2xw8w")
 
 [node name="RedNebulaLight" type="DirectionalLight3D" parent="NebulaLights"]
 transform = Transform3D(0.390731, 0.644043, 0.657676, 0, -0.714473, 0.699663, 0.920505, -0.27338, -0.279167, 0, 0, 0)
+visible = false
 light_color = Color(0.80896, 0.586373, 0.738075, 1)
-light_energy = 0.5
+light_energy = 0.01
 shadow_enabled = true
 
 [node name="BlueNebulaLight" type="DirectionalLight3D" parent="NebulaLights"]
 transform = Transform3D(0.716229, 1.06726e-08, -0.697865, -0.254986, 0.930858, -0.261696, 0.649614, 0.36538, 0.666708, 0, 0, 0)
+visible = false
 light_color = Color(0.584561, 0.843877, 0.882863, 1)
-light_energy = 0.5
+light_energy = 0.01
 shadow_enabled = true
 
 [node name="WhiteNebulaLight" type="DirectionalLight3D" parent="NebulaLights"]
-transform = Transform3D(-0.911403, 0.210713, 0.353474, 0, 0.85896, -0.512043, -0.411514, -0.466678, -0.782859, 0, 0, 0)
+transform = Transform3D(-0.837218, 0.339592, -0.428653, 0.231393, 0.930185, 0.284979, 0.495503, 0.139403, -0.857347, 0, 0, 0)
 light_color = Color(0.854642, 0.845302, 0.842967, 1)
-light_energy = 2.0
+light_energy = 25.0
+light_volumetric_fog_energy = 2.405
+light_specular = 0.8
 shadow_enabled = true
+shadow_normal_bias = 0.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="NebulaLights"]
 transform = Transform3D(0.978704, 0.0383074, -0.201673, 0.192606, -0.511209, 0.837597, -0.071011, -0.858602, -0.5077, 0, 0, 0)
+visible = false
 light_color = Color(0.915499, 0.985235, 0.977985, 1)
-light_energy = 1.6
+light_energy = 0.01
 shadow_enabled = true

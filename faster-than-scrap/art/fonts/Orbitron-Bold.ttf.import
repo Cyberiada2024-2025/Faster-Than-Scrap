@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c46lihhopk2wc"
-path="res://.godot/imported/PressStart2P-Regular.ttf-450f56391dc23df387f3f2fece8f6e92.fontdata"
+uid="uid://c5684ddhvkomb"
+path="res://.godot/imported/Orbitron-Bold.ttf-0ca22dfe7fb49af21706581e56a5b1c1.fontdata"
 
 [deps]
 
-source_file="res://art/fonts/PressStart2P-Regular.ttf"
-dest_files=["res://.godot/imported/PressStart2P-Regular.ttf-450f56391dc23df387f3f2fece8f6e92.fontdata"]
+source_file="res://art/fonts/Orbitron-Bold.ttf"
+dest_files=["res://.godot/imported/Orbitron-Bold.ttf-0ca22dfe7fb49af21706581e56a5b1c1.fontdata"]
 
 [params]
 
@@ -16,14 +16,14 @@ Rendering=null
 antialiasing=0
 generate_mipmaps=false
 disable_embedded_bitmaps=true
-multichannel_signed_distance_field=false
+multichannel_signed_distance_field=true
 msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=1
 subpixel_positioning=0
-keep_rounding_remainders=false
+keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]
@@ -33,8 +33,7 @@ preload=[{
 "chars": [],
 "glyphs": [],
 "name": "New Configuration",
-"size": Vector2i(16, 0),
-&"variation_embolden": 0.0
+"size": Vector2i(16, 0)
 }]
 language_support={}
 script_support={}

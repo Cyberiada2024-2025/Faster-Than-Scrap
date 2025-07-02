@@ -1,19 +1,23 @@
-[gd_scene load_steps=49 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=50 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
 [ext_resource type="Script" path="res://code/ui/connect_sound_to_all_clickables.gd" id="1_eeway"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="3_7x66o"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_sra6p"]
+[ext_resource type="PackedScene" uid="uid://mjgnhxxmjro3" path="res://prefabs/ui/build_ship_hud.tscn" id="5_cv5l0"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
+[ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="7_d8di0"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_jtm63"]
-[ext_resource type="Script" uid="uid://ckk7d55t1hi01" path="res://code/evironment/hud_spawner.gd" id="10_xqadh"]
+[ext_resource type="Script" uid="uid://bcm4vfgdqrr2t" path="res://code/ui/tooltip.gd" id="8_bwh47"]
+[ext_resource type="PackedScene" uid="uid://cc0to5vstp8vs" path="res://prefabs/ui/build_ship_help_tooltip.tscn" id="9_cv5l0"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
 [ext_resource type="AudioStream" uid="uid://p6ddq3n2aw7m" path="res://art/audio/sounds/ui/ship_builder/repair.mp3" id="12_1npui"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="12_bwh47"]
+[ext_resource type="FontFile" uid="uid://c5684ddhvkomb" path="res://art/fonts/Orbitron-Bold.ttf" id="12_r6xpi"]
 [ext_resource type="PackedScene" uid="uid://dgcndntkhn2hh" path="res://prefabs/ui/cutscenes/inventory_tutorial_cutscene.tscn" id="13_bwh47"]
-[ext_resource type="Script" uid="uid://c6mohg4o53eqe" path="res://code/sound/sound_emitter_global.gd" id="13_sy1ma"]
+[ext_resource type="Script" path="res://code/sound/sound_emitter_global.gd" id="13_sy1ma"]
 [ext_resource type="AudioStream" uid="uid://c5x8fjlikxyw7" path="res://art/audio/sounds/ui/ship_builder/pick.mp3" id="14_iq7ln"]
 [ext_resource type="AudioStream" uid="uid://mavrm3tbmwii" path="res://art/audio/sounds/illegal_position_sound.wav" id="15_o6u5m"]
 [ext_resource type="AudioStream" uid="uid://bw7fx4gi1ocds" path="res://art/audio/sounds/ui/ship_builder/cannot_pick.mp3" id="15_rkphg"]
@@ -56,15 +60,6 @@ bg_color = Color(0.105882, 1, 0.105882, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w40mu"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vun1v"]
-bg_color = Color(0, 0.23, 0.122667, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5v62e"]
-bg_color = Color(0.113725, 1, 0.113725, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jnae"]
-bg_color = Color(0, 0.0509804, 0.027451, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_jtm63"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8di0"]
@@ -80,11 +75,21 @@ emission_enabled = true
 emission = Color(0.111572, 0.616094, 1.92523e-07, 1)
 emission_energy_multiplier = 2.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kf4id"]
-size = Vector3(17.5186, 1, 18.3633)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cv5l0"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.313726)
+emission_enabled = true
+emission = Color(0.583757, 0.306818, 3.85046e-07, 1)
+emission_energy_multiplier = 1.39
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpesc"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.583757, 0.306818, 3.85046e-07, 1)
+emission_energy_multiplier = 2.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cv5l0"]
-size = Vector3(9.33811, 1, 9.40362)
+size = Vector3(9.338, 1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqadh"]
 transparency = 1
@@ -102,9 +107,6 @@ emission_energy_multiplier = 2.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_xqadh"]
 size = Vector3(0.41153, 1, 20.8868)
 
-[sub_resource type="LabelSettings" id="LabelSettings_xqadh"]
-font_color = Color(0.105882, 1, 0.105882, 1)
-
 [node name="BuildShip" type="Node3D"]
 
 [node name="ConnectSoundToParentAndAllChildren" type="Node" parent="."]
@@ -114,7 +116,7 @@ script = ExtResource("1_eeway")
 
 [node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "pick_sound", "cannot_pick_sound", "rotate_sound", "cannot_rotate_sound", "attach_sound", "place_sound", "cannot_place_sound", "start_assigning_key_sound", "assign_key_sound")]
 script = ExtResource("1_d5jmr")
-ignore = [NodePath("../Shop/BuildArea"), NodePath("../Shop/Inventory/Area3D"), NodePath("../Ship Max Size/Area3D")]
+ignore = [NodePath("../Shop/Inventory/Area3D"), NodePath("../Ship Max Size/Area3D")]
 ship_borders = NodePath("../Ship Max Size/Area3D")
 outline_mat = ExtResource("3_7x66o")
 flash_mat = ExtResource("4_sra6p")
@@ -130,9 +132,7 @@ cannot_place_sound = NodePath("../CannotPlaceSound")
 start_assigning_key_sound = NodePath("../StartAssigningKeySound")
 assign_key_sound = NodePath("../AssignKeySound")
 
-[node name="HudSpawner" type="Node" parent="ShipBuilder"]
-script = ExtResource("10_xqadh")
-metadata/_custom_type_script = "uid://ckk7d55t1hi01"
+[node name="HUD" parent="ShipBuilder" instance=ExtResource("5_cv5l0")]
 
 [node name="Control" type="Control" parent="ShipBuilder"]
 layout_mode = 3
@@ -141,6 +141,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Deny finish" type="ColorRect" parent="ShipBuilder/Control"]
 visible = false
@@ -228,139 +229,95 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_xrmp7")
 text = "Cancel"
 
 [node name="Finish" type="Button" parent="ShipBuilder/Control"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 2.0
-offset_right = 244.0
-offset_bottom = 18.0
-theme_override_colors/font_hover_pressed_color = Color(0.109804, 0.988235, 0.113725, 1)
-theme_override_colors/font_hover_color = Color(0.113725, 1, 0.113725, 1)
-theme_override_colors/font_color = Color(0.113725, 1, 0.113725, 1)
-theme_override_colors/font_focus_color = Color(0.113725, 1, 0.113725, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_fonts/font = ExtResource("6_au3vu")
-theme_override_font_sizes/font_size = 20
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_right = 0.6
+offset_bottom = 40.0
+grow_horizontal = 2
+theme = ExtResource("7_d8di0")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_w40mu")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vun1v")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_5v62e")
-theme_override_styles/normal = SubResource("StyleBoxFlat_5jnae")
 text = "Finish
 Building"
 
-[node name="Description_display" type="ColorRect" parent="ShipBuilder/Control"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 83.0
-offset_right = 256.0
-offset_bottom = 224.0
-color = Color(0, 0.051, 0.027, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ShipBuilder/Control/Description_display"]
-layout_mode = 0
-offset_left = 4.0
-offset_right = 247.0
-offset_bottom = 137.0
-theme_override_colors/default_color = Color(0.101961, 0.964706, 0.101961, 1)
-theme_override_font_sizes/bold_italics_font_size = 0
-theme_override_font_sizes/italics_font_size = 0
-theme_override_font_sizes/mono_font_size = 0
-theme_override_font_sizes/normal_font_size = 0
-theme_override_font_sizes/bold_font_size = 0
-bbcode_enabled = true
-
-[node name="Prize_display" type="ColorRect" parent="ShipBuilder/Control"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 57.0
-offset_right = 255.0
-offset_bottom = 81.0
-color = Color(0, 0.051, 0.027, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ShipBuilder/Control/Prize_display"]
-layout_mode = 0
-offset_left = 4.0
-offset_right = 247.0
-offset_bottom = 23.0
-theme_override_colors/default_color = Color(0.101961, 0.964706, 0.101961, 1)
-theme_override_font_sizes/bold_italics_font_size = 0
-theme_override_font_sizes/italics_font_size = 0
-theme_override_font_sizes/mono_font_size = 0
-theme_override_font_sizes/normal_font_size = 0
-theme_override_font_sizes/bold_font_size = 0
-bbcode_enabled = true
+[node name="Help" type="Label" parent="ShipBuilder/Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_right = 0.1
+offset_bottom = 50.0
+mouse_filter = 0
+theme = ExtResource("7_d8di0")
+theme_override_font_sizes/font_size = 30
+text = "?"
 horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_bwh47")
+tooltip_to_show = ExtResource("9_cv5l0")
+
+[node name="Money" type="RichTextLabel" parent="ShipBuilder/Control"]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65
+anchor_right = 0.65
+offset_right = 50.0
+offset_bottom = 50.0
+theme = ExtResource("7_d8di0")
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "[b]-21[/b] [img={width=40} color=#cc4214]res://art/fonts/cog.png[/img]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SceneLoader" type="Node" parent="ShipBuilder"]
 script = ExtResource("7_jtm63")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
-[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("ship_builder", "bank_display", "inventory_limit_display", "deny_finish", "deny_finish_label", "selected_module_display", "selected_module_description", "repair_button", "confirm_finish_message_with_unassigned_keys", "warning_sound")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.897, 0, -3.63634)
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("ship_builder", "shop_area", "bank_display", "inventory_limit_display", "deny_finish", "deny_finish_label", "repair_button", "confirm_finish_message_with_unassigned_keys", "warning_sound")]
 script = ExtResource("11_jtm63")
 ship_builder = NodePath("../ShipBuilder")
 starting_bank = 6
-size_x = 10.0
-size_z = 10.0
+shop_area = NodePath("Shop area")
+size_x = 7.5
+size_z = 20.0
 columns = 3
 rows = 5
-bank_display = NodePath("Inventory4")
+bank_display = NodePath("../ShipBuilder/Control/Money")
 inventory_limit_display = NodePath("Inventory/InventoryLimitLabel")
 deny_finish = NodePath("../ShipBuilder/Control/Deny finish")
 deny_finish_label = NodePath("../ShipBuilder/Control/Deny finish/Color_Rect/Label")
-selected_module_display = NodePath("../ShipBuilder/Control/Prize_display/RichTextLabel")
-selected_module_description = NodePath("../ShipBuilder/Control/Description_display/RichTextLabel")
 repair_button = NodePath("../Control/RepairModules")
 confirm_finish_message_with_unassigned_keys = NodePath("../Control/Confirm missing keys")
 warning_sound = NodePath("../WarningSound")
 metadata/_custom_type_script = "uid://dsebh10ryevl"
 
-[node name="Inventory2" type="CSGMesh3D" parent="Shop"]
-transform = Transform3D(10, 0, 0, 0, 0.177, 0, 0, 0, 10, -0.0750866, 0.009, -1.22566)
+[node name="Shop area" type="CSGMesh3D" parent="Shop"]
+transform = Transform3D(10, 0, 0, 0, 0.265, 0, 0, 0, 20, 15.2471, 0, 0)
 mesh = SubResource("BoxMesh_jtm63")
 material = SubResource("StandardMaterial3D_d8di0")
 
-[node name="Inventory" type="CSGMesh3D" parent="Shop/Inventory2"]
+[node name="Inventory" type="CSGMesh3D" parent="Shop/Shop area"]
 transform = Transform3D(1.02, 0, 0, 0, 1, 0, 0, 0, 1.01, 0, 0, 0)
 mesh = SubResource("BoxMesh_jtm63")
 material = SubResource("StandardMaterial3D_bwh47")
 
-[node name="Inventory4" type="Label3D" parent="Shop"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.77373, -1.36849e-07, -7.08624)
-modulate = Color(0.1, 3, 0, 1)
-text = "0$"
-font = ExtResource("6_au3vu")
-font_size = 128
-outline_size = 0
-horizontal_alignment = 2
-
-[node name="BuildArea" type="Area3D" parent="Shop"]
-transform = Transform3D(1.06696, 0, 0, 0, 3.28825, 0, 0, 0, 1, -15.9539, -0.197084, 1.85123)
-input_ray_pickable = false
-
-[node name="Inventory" type="CollisionShape3D" parent="Shop/BuildArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0081991, -0.351958, 1.54273)
-shape = SubResource("BoxShape3D_kf4id")
-
 [node name="Inventory" type="Node3D" parent="Shop"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0750866, 0.009, 8.9829)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3126, 0, -5)
 
 [node name="InventoryItems" type="CSGMesh3D" parent="Shop/Inventory"]
 transform = Transform3D(10, 0, 0, 0, 0.177, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("BoxMesh_jtm63")
-material = SubResource("StandardMaterial3D_d8di0")
+material = SubResource("StandardMaterial3D_cv5l0")
 
 [node name="CSGMesh3D2" type="CSGMesh3D" parent="Shop/Inventory/InventoryItems"]
 transform = Transform3D(1.01, 0, 0, 0, 1, 0, 0, 0, 1.02, 0, 0, 0)
 mesh = SubResource("BoxMesh_jtm63")
-material = SubResource("StandardMaterial3D_bwh47")
-
-[node name="InventoryLabel" type="Label3D" parent="Shop/Inventory"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.50409e-07, 5.83589)
-modulate = Color(0.1, 3, 0, 1)
-text = "Cargo Hold"
-font = ExtResource("6_au3vu")
-font_size = 128
-outline_size = 0
+material = SubResource("StandardMaterial3D_dpesc")
 
 [node name="Area3D" type="Area3D" parent="Shop/Inventory"]
 input_ray_pickable = false
@@ -369,11 +326,19 @@ input_ray_pickable = false
 transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.0713987, 0, 0.259615)
 shape = SubResource("BoxShape3D_cv5l0")
 
+[node name="InventoryLabel" type="Label3D" parent="Shop/Inventory"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.50409e-07, 5.83589)
+modulate = Color(0.1, 3, 0, 1)
+text = "Cargo Hold"
+font = ExtResource("12_r6xpi")
+font_size = 128
+outline_size = 0
+
 [node name="InventoryLimitLabel" type="Label3D" parent="Shop/Inventory"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 6.756)
 modulate = Color(0.1, 1, 0, 1)
 text = "0/4"
-font = ExtResource("6_au3vu")
+font = ExtResource("12_r6xpi")
 font_size = 128
 outline_size = 0
 
@@ -410,50 +375,38 @@ shape = SubResource("BoxShape3D_xqadh")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Prize_display" type="ColorRect" parent="Control"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 241.0
-offset_right = 255.0
-offset_bottom = 375.0
-color = Color(0, 0.051, 0.027, 1)
-
-[node name="Label" type="Label" parent="Control/Prize_display"]
-layout_mode = 0
-offset_right = 250.0
-offset_bottom = 50.0
-text = "Controls:
-LMB: attach/dettach module
-RMB: set activation key
-Scroll: zoom camera
-R: rotate module"
-label_settings = SubResource("LabelSettings_xqadh")
-horizontal_alignment = 1
-vertical_alignment = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="RepairModules" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 391.0
-offset_right = 248.0
-offset_bottom = 439.0
-theme_override_colors/font_hover_pressed_color = Color(0.109804, 0.988235, 0.113725, 1)
-theme_override_colors/font_hover_color = Color(0.113725, 1, 0.113725, 1)
-theme_override_colors/font_color = Color(0.113725, 1, 0.113725, 1)
-theme_override_colors/font_focus_color = Color(0.113725, 1, 0.113725, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_right = 0.35
+grow_horizontal = 2
+theme = ExtResource("7_d8di0")
 theme_override_fonts/font = ExtResource("6_au3vu")
 theme_override_font_sizes/font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxEmpty_w40mu")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vun1v")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_5v62e")
-theme_override_styles/normal = SubResource("StyleBoxFlat_5jnae")
-text = "Repair - 2$
-25%HP / mod"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/RepairModules"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[b]Repair - 2 [img={width=25} color=#cc4214]res://art/fonts/cog.png[/img]
+25%HP / mod[/b]"
+fit_content = true
+horizontal_alignment = 1
 
 [node name="Confirm missing keys" type="ColorRect" parent="Control"]
 visible = false
@@ -527,7 +480,6 @@ stream = ExtResource("12_1npui")
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="PickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_iq7ln")
@@ -535,7 +487,6 @@ volume_db = 3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="CannotPickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_rkphg")
@@ -543,7 +494,6 @@ volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="RotateSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_o146e")
@@ -551,7 +501,6 @@ volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="CannotRotateSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_eeway")
@@ -559,7 +508,6 @@ volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="AttachSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_6rel0")
@@ -567,7 +515,6 @@ volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="PlaceSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_dpesc")
@@ -575,7 +522,6 @@ volume_db = 3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="CannotPlaceSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_r6xpi")
@@ -583,7 +529,6 @@ volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="StartAssigningKeySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_rkphg")
@@ -591,7 +536,6 @@ volume_db = -5.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="AssignKeySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_o146e")
@@ -599,7 +543,6 @@ volume_db = -5.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="WarningSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_o6u5m")
@@ -607,7 +550,6 @@ volume_db = -5.0
 max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
-metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 process_mode = 3

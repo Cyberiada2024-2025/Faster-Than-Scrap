@@ -35,8 +35,7 @@ radius = 22.121
 
 [node name="BasicMovementTutorial" type="Node3D"]
 
-[node name="FlyableShip" parent="." node_paths=PackedStringArray("modules") instance=ExtResource("1_8fkjt")]
-modules = []
+[node name="FlyableShip" parent="." instance=ExtResource("1_8fkjt")]
 
 [node name="ShopMiniatureTutorial" parent="." instance=ExtResource("2_8fkjt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380)
@@ -49,31 +48,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380)
 
 [node name="Asteroid" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.0614, 0, -155.991)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.02
 
 [node name="Asteroid5" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.871, 0, -72.1861)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.02
 
 [node name="Asteroid6" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -186.8, 0, -72.1861)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.02
 
 [node name="Asteroid3" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.9386, 0, -155.991)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.02
 
 [node name="Asteroid2" parent="Asteroids/Big Asteroids" instance=ExtResource("5_phkkj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01693, 0, -74.1182)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.0
 
 [node name="Asteroid4" parent="Asteroids/Big Asteroids" instance=ExtResource("6_tkgtl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -221.78)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.0
 

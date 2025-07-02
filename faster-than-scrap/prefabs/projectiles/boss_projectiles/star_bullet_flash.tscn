@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dk6bney68owq3"]
 
 [ext_resource type="Script" uid="uid://spw30bieh03o" path="res://code/weapons/projectiles/projectile_warning.gd" id="1_ngwie"]
-[ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/enemy projectiles/test_projectile.tscn" id="2_8ed0w"]
+[ext_resource type="PackedScene" uid="uid://whj7or7t81c0" path="res://prefabs/projectiles/enemy projectiles/boss_projectile.tscn" id="2_8ed0w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngwie"]
 transparency = 1

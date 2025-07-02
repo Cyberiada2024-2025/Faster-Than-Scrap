@@ -41,6 +41,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	super()
 	change_air_resistance()
+	change_cockpit_icon()
 	for child in get_children():
 		if child is Module:
 			modules.append(child)
@@ -100,6 +101,15 @@ func change_air_resistance() -> void:
 	else:
 		linear_damp = 0
 		angular_damp = 0
+
+
+func change_cockpit_icon() -> void:
+	if SettingsManager.brakes_enabled:
+		cockpit.cockpit_sprite.texture = cockpit.default_texture
+		cockpit.cockpit_label.visible = true
+	else:
+		cockpit.cockpit_sprite.texture = cockpit.cockpit_texture
+		cockpit.cockpit_label.visible = false
 
 
 func save_position():

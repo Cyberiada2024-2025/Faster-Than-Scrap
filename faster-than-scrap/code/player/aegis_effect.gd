@@ -9,4 +9,3 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	vortex.set_shader_parameter(param_name, Vector2(global_position.x, global_position.z))
-	print(vortex.get_shader_parameter(param_name))

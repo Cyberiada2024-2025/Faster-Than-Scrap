@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://c45jvpijx82or"]
+
+[ext_resource type="Script" uid="uid://dcnclgbxs8cwv" path="res://code/ui/module_tooltip.gd" id="1_iirp5"]
+[ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="2_elxrw"]
+
+[node name="ModuleTooltip" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1000.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_elxrw")
+script = ExtResource("1_iirp5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("2_elxrw")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme = ExtResource("2_elxrw")
+bbcode_enabled = true
+text = "Basic movement module. Activate to push ship forward (relative to thruster)."
+fit_content = true
+scroll_active = false

@@ -1,34 +1,36 @@
-[gd_scene load_steps=44 format=3 uid="uid://dugqeyqbubw6n"]
+[gd_scene load_steps=46 format=3 uid="uid://dfoh6ok7s6jld"]
 
-[ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8hehi"]
-[ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="2_j7i8i"]
-[ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="3_t6clv"]
-[ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_8wcn2"]
-[ext_resource type="PackedScene" uid="uid://mjgnhxxmjro3" path="res://prefabs/ui/build_ship_hud.tscn" id="5_pj0jo"]
-[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="6_u5eix"]
-[ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="7_g23dl"]
-[ext_resource type="Script" uid="uid://bcm4vfgdqrr2t" path="res://code/ui/tooltip.gd" id="8_3kh5p"]
-[ext_resource type="PackedScene" uid="uid://cc0to5vstp8vs" path="res://prefabs/ui/build_ship_help_tooltip.tscn" id="9_nia07"]
-[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="10_ddyhu"]
-[ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_copo5"]
-[ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="13_qh7j6"]
-[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="14_pb4nb"]
-[ext_resource type="PackedScene" uid="uid://dgcndntkhn2hh" path="res://prefabs/ui/cutscenes/inventory_tutorial_cutscene.tscn" id="15_iyhax"]
-[ext_resource type="AudioStream" uid="uid://p6ddq3n2aw7m" path="res://art/audio/sounds/ui/ship_builder/repair.mp3" id="16_mxww3"]
-[ext_resource type="Script" path="res://code/sound/sound_emitter_global.gd" id="17_pfpp4"]
-[ext_resource type="AudioStream" uid="uid://c5x8fjlikxyw7" path="res://art/audio/sounds/ui/ship_builder/pick.mp3" id="18_dbuuk"]
-[ext_resource type="AudioStream" uid="uid://bw7fx4gi1ocds" path="res://art/audio/sounds/ui/ship_builder/cannot_pick.mp3" id="19_1io85"]
-[ext_resource type="AudioStream" uid="uid://bx7vsv554fmbm" path="res://art/audio/sounds/ui/ship_builder/rotate.mp3" id="20_mxk4f"]
-[ext_resource type="AudioStream" uid="uid://bddg1pxnxaptn" path="res://art/audio/sounds/ui/ship_builder/cannot_rotate.mp3" id="21_y14ly"]
-[ext_resource type="AudioStream" uid="uid://iyrhvmygvv6w" path="res://art/audio/sounds/ui/ship_builder/attach.mp3" id="22_y0546"]
-[ext_resource type="AudioStream" uid="uid://dhpinui81c05q" path="res://art/audio/sounds/ui/ship_builder/place.mp3" id="23_b1ffx"]
-[ext_resource type="AudioStream" uid="uid://xefnexmkmf2d" path="res://art/audio/sounds/ui/ship_builder/cannot_place.mp3" id="24_fbt34"]
-[ext_resource type="AudioStream" uid="uid://bqfy3xdpwhyn1" path="res://art/audio/sounds/ui/ship_builder/start_assigning_key.wav" id="25_x6uny"]
-[ext_resource type="AudioStream" uid="uid://3lbdd6ghs0mg" path="res://art/audio/sounds/ui/ship_builder/assign_key.wav" id="26_btnn5"]
-[ext_resource type="AudioStream" uid="uid://mavrm3tbmwii" path="res://art/audio/sounds/illegal_position_sound.wav" id="27_2h2oc"]
+[ext_resource type="Script" path="res://code/ui/connect_sound_to_all_clickables.gd" id="1_t6clv"]
+[ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="2_8wcn2"]
+[ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="3_pj0jo"]
+[ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="4_u5eix"]
+[ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="5_g23dl"]
+[ext_resource type="PackedScene" uid="uid://mjgnhxxmjro3" path="res://prefabs/ui/build_ship_hud.tscn" id="6_3kh5p"]
+[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="7_nia07"]
+[ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="8_ddyhu"]
+[ext_resource type="Script" uid="uid://bcm4vfgdqrr2t" path="res://code/ui/tooltip.gd" id="9_copo5"]
+[ext_resource type="PackedScene" uid="uid://cc0to5vstp8vs" path="res://prefabs/ui/build_ship_help_tooltip.tscn" id="10_g40sc"]
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="11_qh7j6"]
+[ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="12_pb4nb"]
+[ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="14_mxww3"]
+[ext_resource type="PackedScene" uid="uid://dfqok04svlmok" path="res://prefabs/ui/cutscenes/build_tutorial_cutscene.tscn" id="15_ic7qf"]
+[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="15_pfpp4"]
+[ext_resource type="AudioStream" uid="uid://p6ddq3n2aw7m" path="res://art/audio/sounds/ui/ship_builder/repair.mp3" id="17_1io85"]
+[ext_resource type="Script" path="res://code/sound/sound_emitter_global.gd" id="18_mxk4f"]
+[ext_resource type="AudioStream" uid="uid://c5x8fjlikxyw7" path="res://art/audio/sounds/ui/ship_builder/pick.mp3" id="19_y14ly"]
+[ext_resource type="AudioStream" uid="uid://bw7fx4gi1ocds" path="res://art/audio/sounds/ui/ship_builder/cannot_pick.mp3" id="20_y0546"]
+[ext_resource type="AudioStream" uid="uid://bx7vsv554fmbm" path="res://art/audio/sounds/ui/ship_builder/rotate.mp3" id="21_b1ffx"]
+[ext_resource type="AudioStream" uid="uid://bddg1pxnxaptn" path="res://art/audio/sounds/ui/ship_builder/cannot_rotate.mp3" id="22_fbt34"]
+[ext_resource type="AudioStream" uid="uid://iyrhvmygvv6w" path="res://art/audio/sounds/ui/ship_builder/attach.mp3" id="23_x6uny"]
+[ext_resource type="AudioStream" uid="uid://dhpinui81c05q" path="res://art/audio/sounds/ui/ship_builder/place.mp3" id="24_btnn5"]
+[ext_resource type="AudioStream" uid="uid://xefnexmkmf2d" path="res://art/audio/sounds/ui/ship_builder/cannot_place.mp3" id="25_2h2oc"]
+[ext_resource type="AudioStream" uid="uid://bqfy3xdpwhyn1" path="res://art/audio/sounds/ui/ship_builder/start_assigning_key.wav" id="26_ov8s2"]
+[ext_resource type="AudioStream" uid="uid://3lbdd6ghs0mg" path="res://art/audio/sounds/ui/ship_builder/assign_key.wav" id="27_847p8"]
+[ext_resource type="AudioStream" uid="uid://mavrm3tbmwii" path="res://art/audio/sounds/illegal_position_sound.wav" id="28_c0svu"]
+[ext_resource type="AudioStream" uid="uid://bxe0wuk54krhi" path="res://art/audio/music/Groove Grove.mp3" id="29_3gbwf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
-font = ExtResource("6_u5eix")
+font = ExtResource("7_nia07")
 font_color = Color(0.105882, 1, 0.105882, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bwh47"]
@@ -42,7 +44,7 @@ bg_color = Color(0.105882, 1, 0.105882, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q6ms4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x5wpm"]
-font = ExtResource("6_u5eix")
+font = ExtResource("7_nia07")
 font_color = Color(0.105882, 1, 0.105882, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ukoue"]
@@ -88,19 +90,21 @@ emission_energy_multiplier = 2.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_xqadh"]
 size = Vector3(0.41153, 1, 20.8868)
 
-[node name="BuildShipTutorial" type="Node3D"]
+[node name="BuildShip" type="Node3D"]
 
-[node name="SpaceEnvironment" parent="." instance=ExtResource("1_8hehi")]
+[node name="ConnectSoundToParentAndAllChildren" type="Node" parent="."]
+script = ExtResource("1_t6clv")
 
-[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "confirm_finish_message", "pick_sound", "cannot_pick_sound", "rotate_sound", "cannot_rotate_sound", "attach_sound", "place_sound", "cannot_place_sound", "start_assigning_key_sound", "assign_key_sound")]
-script = ExtResource("2_j7i8i")
+[node name="SpaceEnvironment" parent="." instance=ExtResource("2_8wcn2")]
+
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "pick_sound", "cannot_pick_sound", "rotate_sound", "cannot_rotate_sound", "attach_sound", "place_sound", "cannot_place_sound", "start_assigning_key_sound", "assign_key_sound")]
+script = ExtResource("3_pj0jo")
 ignore = [NodePath("../Ship Max Size/Area3D")]
 ship_borders = NodePath("../Ship Max Size/Area3D")
-outline_mat = ExtResource("3_t6clv")
-flash_mat = ExtResource("4_8wcn2")
+outline_mat = ExtResource("4_u5eix")
+flash_mat = ExtResource("5_g23dl")
 flash_time = 0.5
 choose_key_message = NodePath("Control/Choose_key")
-confirm_finish_message = NodePath("Control/Confirm finish")
 pick_sound = NodePath("../PickSound")
 cannot_pick_sound = NodePath("../CannotPickSound")
 rotate_sound = NodePath("../RotateSound")
@@ -111,7 +115,7 @@ cannot_place_sound = NodePath("../CannotPlaceSound")
 start_assigning_key_sound = NodePath("../StartAssigningKeySound")
 assign_key_sound = NodePath("../AssignKeySound")
 
-[node name="HUD" parent="ShipBuilder" instance=ExtResource("5_pj0jo")]
+[node name="HUD" parent="ShipBuilder" instance=ExtResource("6_3kh5p")]
 
 [node name="Control" type="Control" parent="ShipBuilder"]
 layout_mode = 3
@@ -157,73 +161,13 @@ theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_fonts/font = ExtResource("6_u5eix")
+theme_override_fonts/font = ExtResource("7_nia07")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bwh47")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cv5l0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_hbg4l")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_q6ms4")
 text = "OK"
-
-[node name="Confirm finish" type="ColorRect" parent="ShipBuilder/Control"]
-visible = false
-layout_mode = 0
-offset_right = 1150.0
-offset_bottom = 650.0
-color = Color(0, 0, 0, 0.9)
-
-[node name="Color_Rect" type="ColorRect" parent="ShipBuilder/Control/Confirm finish"]
-layout_mode = 0
-offset_left = 248.0
-offset_top = 242.0
-offset_right = 898.0
-offset_bottom = 392.0
-color = Color(0, 0.051, 0.027, 1)
-
-[node name="Label" type="Label" parent="ShipBuilder/Control/Confirm finish/Color_Rect"]
-layout_mode = 0
-offset_right = 250.0
-offset_bottom = 50.0
-text = "WARNING: Unattached modules will be lost"
-label_settings = SubResource("LabelSettings_x5wpm")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Confirm" type="Button" parent="ShipBuilder/Control/Confirm finish/Color_Rect"]
-layout_mode = 0
-offset_left = 390.0
-offset_top = 76.0
-offset_right = 608.0
-offset_bottom = 114.0
-theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_fonts/font = ExtResource("6_u5eix")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ppglm")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_istkh")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_xrmp7")
-text = "Proceed"
-
-[node name="Deny" type="Button" parent="ShipBuilder/Control/Confirm finish/Color_Rect"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 76.0
-offset_right = 238.0
-offset_bottom = 114.0
-theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_fonts/font = ExtResource("6_u5eix")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ppglm")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_istkh")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_xrmp7")
-text = "Go Back"
 
 [node name="Choose_key" type="ColorRect" parent="ShipBuilder/Control"]
 visible = false
@@ -259,7 +203,7 @@ theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_fonts/font = ExtResource("6_u5eix")
+theme_override_fonts/font = ExtResource("7_nia07")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ppglm")
@@ -275,7 +219,7 @@ anchor_left = 0.4
 anchor_right = 0.6
 offset_bottom = 40.0
 grow_horizontal = 2
-theme = ExtResource("7_g23dl")
+theme = ExtResource("8_ddyhu")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_w40mu")
 text = "Finish
 Building"
@@ -288,13 +232,13 @@ anchor_left = 0.05
 anchor_right = 0.1
 offset_bottom = 50.0
 mouse_filter = 0
-theme = ExtResource("7_g23dl")
+theme = ExtResource("8_ddyhu")
 theme_override_font_sizes/font_size = 30
 text = "?"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("8_3kh5p")
-tooltip_to_show = ExtResource("9_nia07")
+script = ExtResource("9_copo5")
+tooltip_to_show = ExtResource("10_g40sc")
 
 [node name="Money" type="RichTextLabel" parent="ShipBuilder/Control"]
 custom_minimum_size = Vector2(150, 60)
@@ -304,21 +248,22 @@ anchor_left = 0.65
 anchor_right = 0.65
 offset_right = 50.0
 offset_bottom = 50.0
-theme = ExtResource("7_g23dl")
+theme = ExtResource("8_ddyhu")
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/normal_font_size = 40
 theme_override_font_sizes/bold_font_size = 40
 bbcode_enabled = true
-text = "[b]-25[/b] [img={width=40} color=#cc4214]res://art/fonts/cog.png[/img]"
+text = "[b]-21[/b] [img={width=40} color=#cc4214]res://art/fonts/cog.png[/img]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SceneLoader" type="Node" parent="ShipBuilder"]
-script = ExtResource("10_ddyhu")
+script = ExtResource("11_qh7j6")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
-[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("shop_area", "bank_display", "inventory_limit_display", "deny_finish", "confirm_finish", "deny_finish_label", "repair_button", "confirm_finish_message_with_unassigned_keys", "warning_sound")]
-script = ExtResource("11_copo5")
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("ship_builder", "shop_area", "bank_display", "deny_finish", "deny_finish_label", "repair_button", "confirm_finish_message_with_unassigned_keys", "warning_sound")]
+script = ExtResource("12_pb4nb")
+ship_builder = NodePath("../ShipBuilder")
 starting_bank = 6
 shop_area = NodePath("Shop area")
 size_x = 7.5
@@ -326,9 +271,7 @@ size_z = 20.0
 columns = 3
 rows = 5
 bank_display = NodePath("../ShipBuilder/Control/Money")
-inventory_limit_display = NodePath("")
 deny_finish = NodePath("../ShipBuilder/Control/Deny finish")
-confirm_finish = NodePath("../ShipBuilder/Control/Confirm finish")
 deny_finish_label = NodePath("../ShipBuilder/Control/Deny finish/Color_Rect/Label")
 repair_button = NodePath("../Control/RepairModules")
 confirm_finish_message_with_unassigned_keys = NodePath("../Control/Confirm missing keys")
@@ -392,8 +335,8 @@ anchors_preset = -1
 anchor_left = 0.15
 anchor_right = 0.35
 grow_horizontal = 2
-theme = ExtResource("7_g23dl")
-theme_override_fonts/font = ExtResource("6_u5eix")
+theme = ExtResource("8_ddyhu")
+theme_override_fonts/font = ExtResource("7_nia07")
 theme_override_font_sizes/font_size = 20
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/RepairModules"]
@@ -446,7 +389,7 @@ theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_fonts/font = ExtResource("6_u5eix")
+theme_override_fonts/font = ExtResource("7_nia07")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ppglm")
@@ -463,7 +406,7 @@ theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
 theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_fonts/font = ExtResource("6_u5eix")
+theme_override_fonts/font = ExtResource("7_nia07")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ppglm")
@@ -471,95 +414,100 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_istkh")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xrmp7")
 text = "Go Back"
 
-[node name="PauseMenu" parent="." instance=ExtResource("13_qh7j6")]
+[node name="PauseMenu" parent="." instance=ExtResource("14_mxww3")]
 
 [node name="Node" type="Node" parent="."]
-script = ExtResource("14_pb4nb")
-cutscene_path = ExtResource("15_iyhax")
+script = ExtResource("15_pfpp4")
+cutscene_path = ExtResource("15_ic7qf")
 play_on_ready = true
 
 [node name="RepairSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("16_mxww3")
+stream = ExtResource("17_1io85")
 max_polyphony = 4
 bus = &"UI"
-script = ExtResource("17_pfpp4")
+script = ExtResource("18_mxk4f")
 
 [node name="PickSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("18_dbuuk")
+stream = ExtResource("19_y14ly")
 volume_db = 3.0
 max_polyphony = 4
 bus = &"UI"
-script = ExtResource("17_pfpp4")
+script = ExtResource("18_mxk4f")
 
 [node name="CannotPickSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("19_1io85")
+stream = ExtResource("20_y0546")
 volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
-script = ExtResource("17_pfpp4")
+script = ExtResource("18_mxk4f")
 
 [node name="RotateSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("20_mxk4f")
+stream = ExtResource("21_b1ffx")
 volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
-script = ExtResource("17_pfpp4")
+script = ExtResource("18_mxk4f")
 
 [node name="CannotRotateSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("21_y14ly")
+stream = ExtResource("22_fbt34")
 volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
-script = ExtResource("17_pfpp4")
+script = ExtResource("18_mxk4f")
 
 [node name="AttachSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("22_y0546")
+stream = ExtResource("23_x6uny")
 volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
-script = ExtResource("17_pfpp4")
+script = ExtResource("18_mxk4f")
 
 [node name="PlaceSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("23_b1ffx")
+stream = ExtResource("24_btnn5")
 volume_db = 3.0
 max_polyphony = 4
 bus = &"UI"
-script = ExtResource("17_pfpp4")
+script = ExtResource("18_mxk4f")
 
 [node name="CannotPlaceSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("24_fbt34")
+stream = ExtResource("25_2h2oc")
 volume_db = -3.0
 max_polyphony = 4
 bus = &"UI"
-script = ExtResource("17_pfpp4")
+script = ExtResource("18_mxk4f")
 
 [node name="StartAssigningKeySound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("25_x6uny")
+stream = ExtResource("26_ov8s2")
 volume_db = -5.0
 max_polyphony = 4
 bus = &"UI"
-script = ExtResource("17_pfpp4")
+script = ExtResource("18_mxk4f")
 
 [node name="AssignKeySound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("26_btnn5")
+stream = ExtResource("27_847p8")
 volume_db = -5.0
 max_polyphony = 4
 bus = &"UI"
-script = ExtResource("17_pfpp4")
+script = ExtResource("18_mxk4f")
 
 [node name="WarningSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("27_2h2oc")
+stream = ExtResource("28_c0svu")
 volume_db = -5.0
 max_polyphony = 4
 bus = &"UI"
-script = ExtResource("17_pfpp4")
+script = ExtResource("18_mxk4f")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("29_3gbwf")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]
 [connection signal="on_module_detach" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_detach"]
 [connection signal="on_module_hover" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_select"]
 [connection signal="pressed" from="ShipBuilder/Control/Deny finish/Color_Rect/Confirm" to="Shop" method="_on_confirm_pressed"]
-[connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Confirm" to="ShipBuilder" method="_on_confirm_pressed"]
-[connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Deny" to="ShipBuilder" method="_on_deny_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Choose_key/Color_Rect/Cancel" to="ShipBuilder" method="_on_asign_key_cancel_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Finish" to="Shop" method="_on_finish_pressed"]
 [connection signal="pressed" from="Control/RepairModules" to="Shop" method="_repair_modules"]

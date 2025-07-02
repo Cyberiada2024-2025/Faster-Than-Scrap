@@ -119,13 +119,17 @@ func update_sprite() -> void:
 
 
 func hide_on_module_camera() -> void:
-	sprite.set_layer_mask_value(2, false)
-	label.set_layer_mask_value(2, false)
+	if sprite != null:
+		sprite.set_layer_mask_value(2, false)
+	if label != null:
+		label.set_layer_mask_value(2, false)
 
 
 func show_on_module_camera() -> void:
-	sprite.set_layer_mask_value(2, true)
-	label.set_layer_mask_value(2, true)
+	if sprite != null:
+		sprite.set_layer_mask_value(2, true)
+	if label != null:
+		label.set_layer_mask_value(2, true)
 
 
 ## Destroy self and detach children

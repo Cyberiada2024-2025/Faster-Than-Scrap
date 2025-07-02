@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="3_nw4ur"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_nmyu5"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="5_v7s2g"]
-[ext_resource type="PackedScene" uid="uid://dtc3u2risx08r" path="res://prefabs/modules/functional_components/module_tooltip_shower.tscn" id="6_tgi1g"]
+[ext_resource type="PackedScene" uid="uid://bi504wqk2wtoy" path="res://prefabs/modules/functional_components/module_tooltip_shower.tscn" id="6_tgi1g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jnq3k"]
 size = Vector3(0.87, 1, 1.015)
@@ -21,7 +21,7 @@ sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
-module_name = "Frame var. 2"
+module_name = "Frame"
 description = "One of the available variants of basic frame. Holds more important pieces together and withstands [i]some[/i] fire."
 
 [node name="Frame1Model" parent="." instance=ExtResource("2_ajn0b")]

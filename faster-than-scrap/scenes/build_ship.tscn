@@ -323,11 +323,9 @@ offset_right = 50.0
 offset_bottom = 50.0
 theme = ExtResource("7_d8di0")
 bbcode_enabled = true
-text = "2$"
+text = "2 [img={width=20}]res://art/fonts/cog.png[/img]"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("8_bwh47")
-tooltip_to_show = ExtResource("9_cv5l0")
 
 [node name="SceneLoader" type="Node" parent="ShipBuilder"]
 script = ExtResource("7_jtm63")
@@ -341,7 +339,7 @@ size_x = 7.5
 size_z = 20.0
 columns = 3
 rows = 5
-bank_display = NodePath("../ShipBuilder/Control/Money")
+bank_display = NodePath("")
 inventory_limit_display = NodePath("Inventory/InventoryLimitLabel")
 deny_finish = NodePath("../ShipBuilder/Control/Deny finish")
 confirm_finish = NodePath("../ShipBuilder/Control/Confirm finish")

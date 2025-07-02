@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://buaupty5vjbs5"]
+[gd_scene load_steps=21 format=3 uid="uid://buaupty5vjbs5"]
 
 [ext_resource type="PackedScene" uid="uid://djgm5s1ld5wgr" path="res://prefabs/ships/flyable_ship_tutorial.tscn" id="1_8fkjt"]
 [ext_resource type="PackedScene" uid="uid://dm1qlo34r16co" path="res://prefabs/environment/shop_miniature_tutorial.tscn" id="2_8fkjt"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dfco2h1p5vdx1" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid1.tscn" id="4_6bw2y"]
 [ext_resource type="PackedScene" uid="uid://bvng8hdkqm2d6" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid2.tscn" id="5_phkkj"]
 [ext_resource type="PackedScene" uid="uid://cs2m7lumvnaot" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid3.tscn" id="6_tkgtl"]
-[ext_resource type="PackedScene" uid="uid://cdq5hecjw2uki" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_group.tscn" id="7_7xu24"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="8_6xv7r"]
 [ext_resource type="PackedScene" uid="uid://dsc8yod53e2qk" path="res://prefabs/ui/cutscenes/tutorials/movement_tutorial.tscn" id="9_l855j"]
 [ext_resource type="PackedScene" uid="uid://dpdbniaaphy1t" path="res://prefabs/ui/cutscenes/tutorials/energy_tutorial.tscn" id="10_aa5ti"]
@@ -36,8 +35,7 @@ radius = 22.121
 
 [node name="BasicMovementTutorial" type="Node3D"]
 
-[node name="FlyableShip" parent="." node_paths=PackedStringArray("modules") instance=ExtResource("1_8fkjt")]
-modules = []
+[node name="FlyableShip" parent="." instance=ExtResource("1_8fkjt")]
 
 [node name="ShopMiniatureTutorial" parent="." instance=ExtResource("2_8fkjt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380)
@@ -50,48 +48,66 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380)
 
 [node name="Asteroid" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.0614, 0, -155.991)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.02
 
 [node name="Asteroid5" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.871, 0, -72.1861)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.02
 
 [node name="Asteroid6" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -186.8, 0, -72.1861)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.02
 
 [node name="Asteroid3" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.9386, 0, -155.991)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.02
 
 [node name="Asteroid2" parent="Asteroids/Big Asteroids" instance=ExtResource("5_phkkj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01693, 0, -74.1182)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.0
 
 [node name="Asteroid4" parent="Asteroids/Big Asteroids" instance=ExtResource("6_tkgtl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -221.78)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.0
 
 [node name="Groups" type="Node3D" parent="Asteroids"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380.205)
 
-[node name="AsteroidBigGroup" parent="Asteroids/Groups" instance=ExtResource("7_7xu24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.526077, -0.224533, 56.1773)
+[node name="AsteroidGroupCircle" parent="Asteroids" instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.804044, 0, 0.59457, 0, 1, 0, -0.59457, 0, 0.804044, -62.0615, -0.00012207, -384.996)
 
-[node name="AsteroidBigGroup2" parent="Asteroids/Groups" instance=ExtResource("7_7xu24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -56.5887)
+[node name="AsteroidGroupCircle2" parent="Asteroids" instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.908676, 0, -0.417502, 0, 1, 0, 0.417502, 0, 0.908676, -45.4108, -0.00012207, -336.432)
 
-[node name="AsteroidBigGroup3" parent="Asteroids/Groups" instance=ExtResource("7_7xu24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.8234, 0, 3.36975)
+[node name="AsteroidGroupCircle5" parent="Asteroids" instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.908676, 0, -0.417502, 0, 1, 0, 0.417502, 0, 0.908676, 40.8652, -0.00012207, -317.468)
 
-[node name="AsteroidBigGroup4" parent="Asteroids/Groups" instance=ExtResource("7_7xu24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.3829, 0, 2.2291)
+[node name="AsteroidGroupCircle6" parent="Asteroids" instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.927452, 0, -0.373943, 0, 1, 0, 0.373943, 0, 0.927452, -27.1663, -0.00012207, -429.647)
+
+[node name="AsteroidGroupCircle3" parent="Asteroids" instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.97278, 0, -0.231731, 0, 1, 0, 0.231731, 0, 0.97278, 47.6686, 0.00012207, -419.293)
+
+[node name="AsteroidGroupCircle4" parent="Asteroids" instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.734773, 0, 0.678314, 0, 1, 0, -0.678314, 0, 0.734773, 84.8653, -0.00012207, -401.299)
+
+[node name="AsteroidGroupCircle7" parent="Asteroids" instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.734773, 0, 0.678314, 0, 1, 0, -0.678314, 0, 0.734773, 63.9077, -0.00012207, -365.795)
+
+[node name="AsteroidGroupCircle8" parent="Asteroids" instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.734773, 0, 0.678314, 0, 1, 0, -0.678314, 0, 0.734773, -9.92151, 0, -308.302)
 
 [node name="SpaceLimit" type="Node3D" parent="."]
 
@@ -164,15 +180,6 @@ shape = SubResource("SphereShape3D_83mrs")
 [node name="Portal cutscene player" type="Node" parent="Portal Cutscene player"]
 script = ExtResource("8_6xv7r")
 cutscene_path = ExtResource("14_416px")
-
-[node name="AsteroidGroupCircle" parent="." instance=ExtResource("15_ngx30")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.256836, 0, -27.6219)
-
-[node name="AsteroidGroupCircle2" parent="." instance=ExtResource("15_ngx30")]
-transform = Transform3D(0.817547, 0, -0.575862, 0, 1, 0, 0.575862, 0, 0.817547, 60.002, 0, -17.8963)
-
-[node name="AsteroidGroupCircle3" parent="." instance=ExtResource("15_ngx30")]
-transform = Transform3D(0.754767, 0, 0.655993, 0, 1, 0, -0.655993, 0, 0.754767, 89.7917, 0, -68.4295)
 
 [connection signal="player_entered" from="ShopMiniatureTutorial/EnterShop" to="ShopMiniatureTutorial/SceneLoader" method="load_lore_scene"]
 [connection signal="player_low_energy" from="Energy cutscene player/Detect player low energy" to="Energy cutscene player" method="play"]

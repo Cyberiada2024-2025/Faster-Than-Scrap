@@ -58,6 +58,8 @@ func _ready() -> void:
 	_on_key_change()
 	update_sprite()
 
+	visibility_changed.connect(set_tooltip_visibility)
+
 
 func _process(_delta: float) -> void:
 	if was_key_pressed:
@@ -132,7 +134,7 @@ func _on_destroy() -> void:
 		parent_module.child_modules.erase(self)
 	_explode()
 
-	detach_all_children(global_position)
+	_detach_all_children(global_position)
 
 	if ship != null:
 		on_detach()
@@ -141,7 +143,7 @@ func _on_destroy() -> void:
 	destroyed.emit()
 
 
-func detach_all_children(explosion_center: Vector3) -> void:
+func _detach_all_children(explosion_center: Vector3) -> void:
 	for child in child_modules:
 		var rb: RigidBody3D = module_rigidbody_prefab.instantiate()
 		get_tree().current_scene.add_child(rb)  # attach floating modules to scene
@@ -168,6 +170,7 @@ func detach_all_children(explosion_center: Vector3) -> void:
 
 		child.deactivate()
 		child.detach_all_children(explosion_center)
+
 		child.on_detach()
 	child_modules = []
 
@@ -265,7 +268,17 @@ func create_ghost() -> ModuleGhost:
 	duplicate_node.prize = 0
 	ghost.module_to_ignore = self
 
+	# delete tooltip
+	duplicate_node.find_child("ModuleTooltip").free()
+
 	return ghost
+
+
+func set_tooltip_visibility() -> void:
+	if visible:
+		find_child("ModuleTooltip").show()
+	else:
+		find_child("ModuleTooltip").hide()
 
 
 ## Return all children (even indirect) modules of a given node.

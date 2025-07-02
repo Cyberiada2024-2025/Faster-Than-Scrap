@@ -1,15 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckx4pgnacau0i"]
+[gd_scene load_steps=18 format=3 uid="uid://mjgnhxxmjro3"]
 
-[ext_resource type="Script" uid="uid://y01yp5jqupge" path="res://code/player/hud.gd" id="1_x65cj"]
-[ext_resource type="Script" uid="uid://hpmnb8n3f0n" path="res://code/player/resource_bar.gd" id="2_1s2ai"]
-[ext_resource type="Texture2D" uid="uid://b2wcjw2km4vjf" path="res://art/textures/ui/battery2.png" id="3_6m4ql"]
-[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="4_5fqad"]
-[ext_resource type="Texture2D" uid="uid://bmw35cwms6w7t" path="res://art/textures/ui/mapselect/Canister.png" id="5_ektdj"]
-[ext_resource type="Script" uid="uid://durs6dd5ncgap" path="res://code/player/fuel_display.gd" id="5_jtpgg"]
+[ext_resource type="Script" uid="uid://y01yp5jqupge" path="res://code/player/hud.gd" id="1_w0hyp"]
+[ext_resource type="Script" uid="uid://hpmnb8n3f0n" path="res://code/player/resource_bar.gd" id="2_ga8k1"]
+[ext_resource type="Texture2D" uid="uid://b2wcjw2km4vjf" path="res://art/textures/ui/battery2.png" id="3_7hupo"]
+[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="4_7yov6"]
+[ext_resource type="Script" uid="uid://durs6dd5ncgap" path="res://code/player/fuel_display.gd" id="5_iqdg1"]
+[ext_resource type="Texture2D" uid="uid://bmw35cwms6w7t" path="res://art/textures/ui/mapselect/Canister.png" id="6_bskxl"]
 
 [sub_resource type="Environment" id="Environment_s7i6o"]
 background_mode = 1
-background_color = Color(0.273677, 0.0869388, 0.245879, 1)
+background_color = Color(0, 0.0392157, 0.0196078, 1)
 ambient_light_source = 1
 reflected_light_source = 1
 glow_enabled = true
@@ -94,7 +94,7 @@ bg_color = Color(1, 1, 0, 1)
 corner_detail = 1
 
 [sub_resource type="FontVariation" id="FontVariation_lfv0r"]
-base_font = ExtResource("4_5fqad")
+base_font = ExtResource("4_7yov6")
 
 [sub_resource type="LabelSettings" id="LabelSettings_iqvll"]
 font = SubResource("FontVariation_lfv0r")
@@ -105,14 +105,10 @@ shadow_size = 0
 [sub_resource type="ViewportTexture" id="ViewportTexture_5rj5o"]
 viewport_path = NodePath("ModuleViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_77x52"]
-viewport_path = NodePath("MinimapViewport")
-
 [node name="MainCamera" type="Camera3D" node_paths=PackedStringArray("energy_bar")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
 cull_mask = 1048569
-fov = 87.0
-script = ExtResource("1_x65cj")
+script = ExtResource("1_w0hyp")
 energy_bar = NodePath("HUD/Energy Bar")
 main_camera_offset = Vector3(0, 25, 0)
 module_camera_offset = Vector3(13, 10, -13)
@@ -156,12 +152,12 @@ mouse_filter = 2
 [node name="Energy Bar" type="Control" parent="HUD" node_paths=PackedStringArray("bar_main", "bar_under", "overlay", "numbers", "animator")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 1087.0
-offset_top = 497.0
-offset_right = 1087.0
-offset_bottom = 497.0
+offset_left = 1101.0
+offset_top = 500.0
+offset_right = 1101.0
+offset_bottom = 500.0
 size_flags_horizontal = 0
-script = ExtResource("2_1s2ai")
+script = ExtResource("2_ga8k1")
 change_speed = 25.0
 change_wait = 1.2
 base_max_value = 100.0
@@ -218,7 +214,7 @@ offset_right = 905.0
 offset_bottom = 731.0
 grow_horizontal = 2
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_6m4ql")
+texture = ExtResource("3_7hupo")
 patch_margin_left = 475
 patch_margin_top = 200
 patch_margin_right = 475
@@ -268,22 +264,6 @@ layout_mode = 2
 texture = SubResource("ViewportTexture_5rj5o")
 expand_mode = 2
 
-[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="HUD"]
-layout_mode = 2
-offset_left = 1013.0
-offset_top = 509.0
-offset_right = 1141.0
-offset_bottom = 637.0
-stretch_mode = 1
-alignment_horizontal = 0
-alignment_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="HUD/AspectRatioContainer2"]
-custom_minimum_size = Vector2(0, 64)
-layout_mode = 2
-texture = SubResource("ViewportTexture_77x52")
-expand_mode = 2
-
 [node name="Fuel indicator" type="ColorRect" parent="HUD" node_paths=PackedStringArray("fuel_display")]
 layout_mode = 1
 anchors_preset = 1
@@ -293,7 +273,7 @@ offset_left = -95.0
 offset_bottom = 44.0
 grow_horizontal = 0
 color = Color(0, 0, 0, 1)
-script = ExtResource("5_jtpgg")
+script = ExtResource("5_iqdg1")
 fuel_display = NodePath("HBoxContainer/Fuel Label")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/Fuel indicator"]
@@ -308,7 +288,7 @@ grow_vertical = 2
 modulate = Color(0.514008, 0.191253, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("5_ektdj")
+texture = ExtResource("6_bskxl")
 expand_mode = 4
 stretch_mode = 4
 

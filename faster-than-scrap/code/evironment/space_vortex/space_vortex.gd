@@ -10,15 +10,17 @@ const RADIUS: String = "Safe_Radius"
 
 static var instance: SpaceVortex = null
 
+@export var miniboss: bool = false
+
 @export var graphics: GeometryInstance3D
 @export var mat: ShaderMaterial
 
-var damageables_in_vortex: Array[Damageable] = []
-
 # vortex parameters
-var start_scale: float = 100
-var min_scale: float = 0.001
-var shrinking_time: float = 3 * 60  # in seconds
+@export var start_scale: float = 100
+@export var min_scale: float = 0.001
+@export var shrinking_time: float = 3 * 60  # in seconds
+
+var damageables_in_vortex: Array[Damageable] = []
 
 ## variable for reacting on scene change. Godot treats detaching the scene
 ## as on collision exit, and calls on_body_exit even though the relative positions
@@ -49,7 +51,8 @@ static func spawn_vortex(
 
 
 func _ready() -> void:
-	graphics.reparent(GameManager.get_tree().current_scene)
+	if !miniboss:
+		graphics.reparent(GameManager.get_tree().current_scene)
 	_shrink_speed = (start_scale - min_scale) / shrinking_time
 	scale.x = start_scale
 	scale.z = start_scale

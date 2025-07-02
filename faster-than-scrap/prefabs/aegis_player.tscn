@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d3ymfvsg2t4v6" path="res://prefabs/constant_rotation.gd" id="2_2o1a8"]
 
 [sub_resource type="Curve" id="Curve_itp45"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.707317, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.51993), 0.0, 0.0, 0, 0, Vector2(0.707317, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_2o1a8"]

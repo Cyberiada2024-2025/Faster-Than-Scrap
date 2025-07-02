@@ -3,6 +3,14 @@ extends Node
 var alread_played_cutscenes: Array[String] = []
 
 
+func _ready():
+	GameManager.game_reset.connect(_on_game_manager_reset)
+
+
+func _on_game_manager_reset():
+	alread_played_cutscenes.clear()
+
+
 func play_cutscene(cutscene_packed_scene: PackedScene) -> void:
 	if SettingsManager.skip_cutscenes:
 		await Engine.get_main_loop().process_frame
@@ -17,7 +25,3 @@ func play_cutscene(cutscene_packed_scene: PackedScene) -> void:
 		await cutscene.play()
 	# whatever the result delete it
 	cutscene.queue_free()
-
-
-func reset_cutscenes() -> void:
-	alread_played_cutscenes.clear()

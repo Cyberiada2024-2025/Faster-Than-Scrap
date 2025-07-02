@@ -44,6 +44,7 @@ size = 0.1
 curve = SubResource("Curve_pg335")
 
 [node name="MuzzleFlash" type="GPUParticles3D"]
+cast_shadow = 0
 emitting = false
 amount = 100
 lifetime = 0.15

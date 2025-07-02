@@ -59,6 +59,7 @@ script = ExtResource("1_rera4")
 
 [node name="DustTrails" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+cast_shadow = 0
 amount = 50
 lifetime = 4.0
 trail_enabled = true

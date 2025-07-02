@@ -2,7 +2,7 @@ class_name Asteroid
 extends RigidBody3D
 
 @export_category("Stats")
-@export var hp: int = 100
+@export var hp: float = 100
 @export_group("StartValues")
 # parameters of start rotation speed, to prevent being static and dull
 @export var start_speed_range: float = 1

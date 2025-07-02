@@ -30,6 +30,7 @@ color_ramp = SubResource("GradientTexture1D_h5qc5")
 
 [node name="Explosion" type="GPUParticles3D"]
 material_override = SubResource("StandardMaterial3D_o3xl1")
+cast_shadow = 0
 process_material = SubResource("ParticleProcessMaterial_tsekn")
 draw_pass_1 = SubResource("SphereMesh_fht6s")
 script = ExtResource("1_r6oit")

@@ -10,16 +10,13 @@ var default_ship_prefab = preload("res://prefabs/ships/flyable_ship.tscn")
 
 
 func load_main_menu_scene() -> void:
-	GameManager.on_scene_exit()
+	GameManager.reset()
 
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	GameManager.set_game_state(GameState.State.MAIN_MENU)
 
 
 func _reset_game() -> void:
-	MapGenerator.reset()
-	MapSaver.reset()
-	CutsceneManager.reset_cutscenes()
 	GameManager.reset()
 
 
@@ -27,8 +24,6 @@ func _reset_game() -> void:
 
 
 func load_movement_tutorial() -> void:
-	_reset_game()
-
 	HudSpawner.spawn_hud = true
 	GameManager.set_game_state(GameState.State.FLY)
 	get_tree().change_scene_to_file("res://scenes/tutorials/basic_movement_tutorial.tscn")
@@ -55,6 +50,9 @@ func load_fly_ship_scene(
 	use_saved_pos_rot: bool = true
 ) -> void:
 	var attached_fly_scene: bool = false
+
+	if GameManager.game_state == GameState.State.BUILD:
+		InventoryManager.save_inventory()
 
 	_detach_ship()
 	if scene_to_load != null:
@@ -97,12 +95,14 @@ func load_build_ship_scene(tutorial_version = false) -> void:
 	if GameManager.game_state == GameState.State.FLY:
 		attached_build_scene = MapGenerator.swap_saved_and_current_scene()
 
-	if tutorial_version:
-		GameManager.get_tree().change_scene_to_file(
-			"res://scenes/tutorials/build_ship_tutorial.tscn"
-		)
-	elif not attached_build_scene:
-		GameManager.get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
+	if not attached_build_scene:
+		if tutorial_version:
+			GameManager.get_tree().change_scene_to_file(
+				"res://scenes/tutorials/build_ship_tutorial.tscn"
+			)
+		else:
+			GameManager.get_tree().change_scene_to_file("res://scenes/build_ship.tscn")
+
 	GameManager.set_game_state(GameState.State.BUILD)
 	_attach_ship_with_hud.call_deferred()
 

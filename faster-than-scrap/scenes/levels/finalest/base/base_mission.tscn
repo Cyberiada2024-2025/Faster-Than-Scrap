@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_0i8eu"]
 [ext_resource type="PackedScene" uid="uid://cgx7bdd0f2rhg" path="res://prefabs/environment/shop_miniature.tscn" id="2_m871v"]
 
-[node name="MisssionOneEscape" type="Node3D"]
+[node name="MisssionBase" type="Node3D"]
 
 [node name="LevelStaples" parent="." instance=ExtResource("1_0i8eu")]
 
@@ -11,4 +11,14 @@
 
 [node name="Asteroids" type="Node3D" parent="."]
 
+[node name="Group1" type="Node3D" parent="Asteroids"]
+
+[node name="Group2" type="Node3D" parent="Asteroids"]
+
+[node name="Group3" type="Node3D" parent="Asteroids"]
+
 [node name="Enemies" type="Node3D" parent="."]
+
+[node name="ShopEnemies" type="Node3D" parent="Enemies"]
+
+[node name="ObjectiveEnemies" type="Node3D" parent="Enemies"]

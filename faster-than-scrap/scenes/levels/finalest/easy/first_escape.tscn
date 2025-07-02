@@ -1,8 +1,100 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfpb44ynxnh40"]
+[gd_scene load_steps=14 format=3 uid="uid://diru2u2s3kmy6"]
 
-[ext_resource type="PackedScene" uid="uid://diru2u2s3kmy6" path="res://scenes/levels/finalest/base/base_mission_escape.tscn" id="1_jqt68"]
+[ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_atawr"]
+[ext_resource type="PackedScene" uid="uid://cgx7bdd0f2rhg" path="res://prefabs/environment/shop_miniature.tscn" id="2_f13vp"]
+[ext_resource type="PackedScene" uid="uid://bvng8hdkqm2d6" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid2.tscn" id="3_on7h1"]
+[ext_resource type="PackedScene" uid="uid://dfco2h1p5vdx1" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid1.tscn" id="4_g8833"]
+[ext_resource type="PackedScene" uid="uid://b8ggfura4533j" path="res://prefabs/environment/asteroids/asteroid_small_groups/big_asteroid_group.tscn" id="5_m0rg2"]
+[ext_resource type="PackedScene" uid="uid://dn3mypfoixbpt" path="res://prefabs/environment/asteroids/single_asteroid/small/asteroid1.tscn" id="6_oaeco"]
+[ext_resource type="PackedScene" uid="uid://dxbwuxdfu600q" path="res://prefabs/npc/enemies/turret_laser.tscn" id="7_f13vp"]
+[ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/npc/enemies/shotgunner.tscn" id="7_o2cvx"]
+[ext_resource type="PackedScene" uid="uid://st0p1n6f1ygk" path="res://prefabs/npc/enemies/assault.tscn" id="9_atawr"]
+[ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/npc/enemies/fighter.tscn" id="9_r1hfd"]
+[ext_resource type="PackedScene" uid="uid://ceu6i6ji4q3oq" path="res://prefabs/npc/enemies/turret_gun.tscn" id="10_hswym"]
+[ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="11_yhsao"]
+[ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="12_je32r"]
 
-[node name="MisssionOneEscape" instance=ExtResource("1_jqt68")]
+[node name="MisssionOneEscape" type="Node3D"]
 
-[node name="PortalPosition" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -54.4826)
+[node name="LevelStaples" parent="." instance=ExtResource("1_atawr")]
+
+[node name="ShopMiniature" parent="." instance=ExtResource("2_f13vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.6088, -7.62939e-06, -140.796)
+
+[node name="Asteroids" type="Node3D" parent="."]
+
+[node name="Asteroid" parent="Asteroids" instance=ExtResource("3_on7h1")]
+transform = Transform3D(0.955742, 0, -0.294207, 0, 1, 0, 0.294207, 0, 0.955742, 62.4676, -1.52588e-05, -70.1306)
+hp = 100.0
+
+[node name="Asteroid2" parent="Asteroids" instance=ExtResource("4_g8833")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.281, 3.8147e-05, -89.8291)
+hp = 100.0
+
+[node name="AsteroidGroupCircle" parent="Asteroids" instance=ExtResource("5_m0rg2")]
+transform = Transform3D(0.547257, 0, -0.836965, 0, 1, 0, 0.836965, 0, 0.547257, 127.118, 0, -70.0868)
+
+[node name="Asteroid3" parent="Asteroids" instance=ExtResource("6_oaeco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.09, 0, -188.281)
+hp = 100.0
+
+[node name="Asteroid4" parent="Asteroids" instance=ExtResource("6_oaeco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.303, -7.62939e-06, -201.671)
+hp = 100.0
+
+[node name="Asteroid5" parent="Asteroids" instance=ExtResource("6_oaeco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.734, -7.62939e-06, -203.299)
+hp = 100.0
+
+[node name="Asteroid6" parent="Asteroids" instance=ExtResource("6_oaeco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.0943, -7.62939e-06, -182.498)
+hp = 100.0
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="shop" type="Node3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.4756, 0, -99.0442)
+
+[node name="Turret Laser2" parent="Enemies/shop" instance=ExtResource("7_f13vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7766, 0, -82.4624)
+
+[node name="Turret Laser" parent="Enemies/shop" instance=ExtResource("7_f13vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.9973, 0, -64.2955)
+
+[node name="Turret Laser3" parent="Enemies/shop" instance=ExtResource("7_f13vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.2033, 7.62939e-06, -25.8711)
+
+[node name="Shotgunner" parent="Enemies/shop" instance=ExtResource("7_o2cvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.62682, 0, -2.884)
+
+[node name="Fighter" parent="Enemies/shop" instance=ExtResource("9_r1hfd")]
+transform = Transform3D(-0.65648, 0, -0.754343, 0, 1, 0, 0.754343, 0, -0.65648, 40.9965, 0, -100.215)
+
+[node name="Assault" parent="Enemies/shop" instance=ExtResource("9_atawr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8657, 0, 5.52847)
+
+[node name="portal" type="Node3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.142, 0, -223.325)
+
+[node name="Turret Gun" parent="Enemies/portal" instance=ExtResource("10_hswym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8288, 7.62939e-06, -9.75452)
+
+[node name="Turret Gun3" parent="Enemies/portal" instance=ExtResource("10_hswym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.99432, 0, -43.7351)
+
+[node name="Turret Gun2" parent="Enemies/portal" instance=ExtResource("10_hswym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.6667, 7.62939e-06, -5.3942)
+
+[node name="MissionEscape" type="Node" parent="." node_paths=PackedStringArray("portal_position")]
+script = ExtResource("11_yhsao")
+portal_position = NodePath("../PortalPosition")
+metadata/_custom_type_script = "uid://bq0dwhdq76qw"
+
+[node name="PortalPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1395, 0, -77.6059)
+script = ExtResource("12_je32r")
+metadata/_custom_type_script = "uid://inuu5gi20l6r"
+
+[node name="Marker3D" type="Marker3D" parent="PortalPosition"]
+transform = Transform3D(3.23549, 0, 2.86252, 0, 4.32, 0, -2.86252, 0, 3.23549, 61.5959, 0, -143.64)
+gizmo_extents = 10.0

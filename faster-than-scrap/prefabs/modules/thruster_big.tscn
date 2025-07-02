@@ -37,7 +37,7 @@ description = "Basic movement module. Activate to push ship forward (relative to
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.39691)
 script = ExtResource("2_lkw4n")
 energy_cost = 10.0
-recoil_force = 400.0
+recoil_force = 4000.0
 projectile = ExtResource("3_b0qkt")
 
 [node name="ThrusterModel" type="Node3D" parent="."]

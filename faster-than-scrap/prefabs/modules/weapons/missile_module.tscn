@@ -87,7 +87,7 @@ script = ExtResource("2_wf0w0")
 muzzle_flash = NodePath("MuzzleFlash")
 energy_cost = 25.0
 cooldown = 1.0
-recoil_force = 75.0
+recoil_force = 750.0
 projectile = ExtResource("3_duybm")
 metadata/_custom_type_script = "uid://crmxerc164n6q"
 

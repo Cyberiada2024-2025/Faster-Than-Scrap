@@ -16,10 +16,6 @@
 script = ExtResource("2_g7p6o")
 metadata/_custom_type_script = "uid://ckk7d55t1hi01"
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.26226, 2.66942, -2.54272)
-visible = false
-
 [node name="SpaceEnvironment" parent="." instance=ExtResource("3_40ga3")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_w06h8")]

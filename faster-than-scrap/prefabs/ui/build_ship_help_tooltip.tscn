@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cc0to5vstp8vs"]
 
-[ext_resource type="Theme" uid="uid://ctuhc2002838x" path="res://prefabs/ui/themes/build_ship_theme.tres" id="2_yxjux"]
+[ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="2_yxjux"]
 
 [node name="BuildShipHelpTooltip" type="PanelContainer"]
-custom_minimum_size = Vector2(270, 175)
+custom_minimum_size = Vector2(270, 0)
 offset_left = -135.0
 offset_top = -87.5
 offset_right = 135.0
@@ -25,3 +25,4 @@ text = "[b]Controls:[/b]
 [b]RMB:[/b] set activation key
 [b]Scroll:[/b] zoom camera
 [b]R:[/b] rotate module"
+fit_content = true

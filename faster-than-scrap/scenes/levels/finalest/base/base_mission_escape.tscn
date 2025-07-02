@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://diru2u2s3kmy6"]
+
+[ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_yl347"]
+[ext_resource type="PackedScene" uid="uid://cgx7bdd0f2rhg" path="res://prefabs/environment/shop_miniature.tscn" id="2_hqhpf"]
+[ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="3_m0rei"]
+[ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="4_qdde0"]
+
+[node name="MisssionOneEscape" type="Node3D"]
+
+[node name="LevelStaples" parent="." instance=ExtResource("1_yl347")]
+
+[node name="ShopMiniature" parent="." instance=ExtResource("2_hqhpf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.3792, -7.62939e-06, -86.8102)
+
+[node name="Asteroids" type="Node3D" parent="."]
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="MissionEscape" type="Node" parent="." node_paths=PackedStringArray("portal_position")]
+script = ExtResource("3_m0rei")
+portal_position = NodePath("../PortalPosition")
+metadata/_custom_type_script = "uid://bq0dwhdq76qw"
+
+[node name="PortalPosition" type="Node3D" parent="."]
+script = ExtResource("4_qdde0")
+metadata/_custom_type_script = "uid://inuu5gi20l6r"

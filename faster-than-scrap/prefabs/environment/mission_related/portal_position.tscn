@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh03h55a62t41"]
+
+[ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="1_yggpr"]
+
+[node name="Portal Position" type="Node3D"]
+script = ExtResource("1_yggpr")

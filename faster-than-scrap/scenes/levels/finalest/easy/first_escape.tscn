@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfpb44ynxnh40"]
+
+[ext_resource type="PackedScene" uid="uid://diru2u2s3kmy6" path="res://scenes/levels/finalest/base/base_mission_escape.tscn" id="1_jqt68"]
+
+[node name="MisssionOneEscape" instance=ExtResource("1_jqt68")]
+
+[node name="PortalPosition" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -54.4826)

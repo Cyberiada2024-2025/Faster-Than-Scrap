@@ -1,0 +1,2 @@
+class_name PortalPosition
+extends Node3D

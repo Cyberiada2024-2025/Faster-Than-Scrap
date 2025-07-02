@@ -9,9 +9,11 @@ func config(module: Module) -> void:
 	rich_text.text = "[b]" + module.module_name + " :[/b] "
 	rich_text.text += (
 		"[b]"
+		+ "[color=#be601e]"
 		+ String.num_int64(module.prize)
+		+ " [img={width=25} color=#be601e]res://art/fonts/cog.png[/img]"
+		+ "[/color]"
 		+ "[/b] "
-		+ "[img={width=25} color=#cc4214]res://art/fonts/cog.png[/img]"
 		+ "\n"
 	)
 

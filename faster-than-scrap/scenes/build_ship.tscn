@@ -1,8 +1,8 @@
-[gd_scene load_steps=48 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=49 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
-[ext_resource type="Script" uid="uid://smw6vyfefqxn" path="res://code/ui/connect_sound_to_all_clickables.gd" id="1_eeway"]
+[ext_resource type="Script" path="res://code/ui/connect_sound_to_all_clickables.gd" id="1_eeway"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="3_7x66o"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_sra6p"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://xefnexmkmf2d" path="res://art/audio/sounds/ui/ship_builder/cannot_place.mp3" id="20_r6xpi"]
 [ext_resource type="AudioStream" uid="uid://bqfy3xdpwhyn1" path="res://art/audio/sounds/ui/ship_builder/start_assigning_key.wav" id="21_rkphg"]
 [ext_resource type="AudioStream" uid="uid://3lbdd6ghs0mg" path="res://art/audio/sounds/ui/ship_builder/assign_key.wav" id="22_o146e"]
+[ext_resource type="AudioStream" uid="uid://bxe0wuk54krhi" path="res://art/audio/music/Groove Grove.mp3" id="25_6rel0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
 font = ExtResource("6_au3vu")
@@ -607,6 +608,13 @@ max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
 metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("25_6rel0")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]
 [connection signal="on_module_detach" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_detach"]

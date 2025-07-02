@@ -1,6 +1,7 @@
-[gd_scene load_steps=58 format=3 uid="uid://dom21c42bbjwl"]
+[gd_scene load_steps=60 format=3 uid="uid://dom21c42bbjwl"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_mjhpt"]
+[ext_resource type="Script" path="res://code/ui/connect_sound_to_all_clickables.gd" id="1_sx58i"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="2_esu31"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="3_b0l23"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_0f5k8"]
@@ -25,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://bqfy3xdpwhyn1" path="res://art/audio/sounds/ui/ship_builder/start_assigning_key.wav" id="23_mrbaw"]
 [ext_resource type="AudioStream" uid="uid://3lbdd6ghs0mg" path="res://art/audio/sounds/ui/ship_builder/assign_key.wav" id="24_tijld"]
 [ext_resource type="AudioStream" uid="uid://mavrm3tbmwii" path="res://art/audio/sounds/illegal_position_sound.wav" id="25_1yq7s"]
+[ext_resource type="AudioStream" uid="uid://bxe0wuk54krhi" path="res://art/audio/music/Groove Grove.mp3" id="26_n2k3n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
 font = ExtResource("6_hk4jn")
@@ -130,6 +132,9 @@ bg_color = Color(0.105882, 1, 0.105882, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kcynp"]
 
 [node name="BuildShip" type="Node3D"]
+
+[node name="ConnectSoundToParentAndAllChildren" type="Node" parent="."]
+script = ExtResource("1_sx58i")
 
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_mjhpt")]
 
@@ -602,6 +607,13 @@ max_polyphony = 4
 bus = &"UI"
 script = ExtResource("15_n2k3n")
 metadata/_custom_type_script = "uid://c6mohg4o53eqe"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("26_n2k3n")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]
 [connection signal="on_module_detach" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_detach"]

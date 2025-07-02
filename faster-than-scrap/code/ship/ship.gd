@@ -96,3 +96,7 @@ func _explode() -> void:
 
 func leave_map() -> void:
 	pass
+
+
+func update_mass() -> void:
+	pass

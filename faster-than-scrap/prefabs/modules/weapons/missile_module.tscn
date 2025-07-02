@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dehh21syyi8w4" path="res://art/models/modules/missille_launcher/missile_launcher_collider_3d.tscn" id="6_kgddl"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="6_qts7g"]
 [ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="8_kgddl"]
-[ext_resource type="PackedScene" uid="uid://dtc3u2risx08r" path="res://prefabs/modules/functional_components/module_tooltip_shower.tscn" id="13_1smov"]
+[ext_resource type="PackedScene" uid="uid://bi504wqk2wtoy" path="res://prefabs/modules/functional_components/module_tooltip_shower.tscn" id="13_1smov"]
 [ext_resource type="AudioStream" uid="uid://f8l5fjo3pvre" path="res://art/audio/sounds/rocket.mp3" id="13_ojn6j"]
 [ext_resource type="PackedScene" uid="uid://bij3qdd0iavi3" path="res://prefabs/modules/functional_components/direction_arrow.tscn" id="15_ojn6j"]
 [ext_resource type="PackedScene" uid="uid://cyw1yf0fdjx1j" path="res://prefabs/modules/functional_components/illegal_placement_zone.tscn" id="16_bdmed"]
@@ -79,7 +79,7 @@ healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Missile"
 prize = 3
-description = "Advanced waepon. Activate to release a slow-moving homing missile."
+description = "Advanced weapon. Activate to release a slow-moving homing missile."
 
 [node name="SpawnerWeapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.14689)

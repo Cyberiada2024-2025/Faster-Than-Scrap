@@ -16,7 +16,7 @@ layout_mode = 2
 theme = ExtResource("2_yxjux")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 theme = ExtResource("2_yxjux")
 bbcode_enabled = true

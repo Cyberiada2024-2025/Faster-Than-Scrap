@@ -8,6 +8,7 @@ var weapon: BaseWeapon
 
 
 func _ready() -> void:
+	axis_lock_linear_y = true
 	if weapons.size() > 0:
 		weapon = weapons[0]
 		for w in weapons:

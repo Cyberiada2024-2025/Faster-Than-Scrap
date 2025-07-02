@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://noejc02505g0"]
+
+[ext_resource type="Texture2D" uid="uid://tat6r4gwxhe" path="res://art/textures/ui/minimap/placeholder/vortex.png" id="1_mx13s"]
+
+[node name="VortexPOI" type="Sprite3D"]
+transform = Transform3D(0.525, 0, 0, 0, -2.29485e-08, 0.525, 0, -0.525, -2.29485e-08, 0, 0, 0)
+layers = 4
+sorting_offset = -100.0
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("1_mx13s")

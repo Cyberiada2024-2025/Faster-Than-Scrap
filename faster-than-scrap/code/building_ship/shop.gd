@@ -15,25 +15,23 @@ extends Node3D
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var starting_bank: int = 0
 @export var max_items_count = 10
 
-@export_category("Visuals")
+@export_category("Shop modules")
+@export var shop_area: Node3D
 ## shop size X
 @export_custom(PROPERTY_HINT_NONE, "suffix:m") var size_x: float = 0
 ## shop size Y
 @export_custom(PROPERTY_HINT_NONE, "suffix:m") var size_z: float = 15
-## distance X between shop and inventory
-@export_custom(PROPERTY_HINT_NONE, "suffix:m") var distance: float = 12
 @export var columns: int
 @export var rows: int
+
+@export_category("Visuals")
 ## display of cash balance
-@export var bank_display: Label3D
+@export var bank_display: RichTextLabel
 @export var inventory_limit_display: Label3D
 
 @export var deny_finish: Control
 
 @export var deny_finish_label: Label
-@export var selected_module_prize_display: Label
-@export var selected_module_display: RichTextLabel
-@export var selected_module_description: RichTextLabel
 
 @export var repair_button: Button
 @export var repair_cost: int = 2
@@ -131,6 +129,10 @@ func _generate_shop() -> void:
 		module.hide_on_module_camera()
 		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2
 		var z: float = size_z / rows / 2 + i / columns * size_z / rows - size_z / 2
+
+		x += shop_area.global_position.x
+		z += shop_area.global_position.z
+
 		area.position = Vector3(x, 0, z)
 		i += 1
 
@@ -162,7 +164,12 @@ func _enter_tree() -> void:
 
 
 func _on_bank_change() -> void:
-	bank_display.text = String.num_int64(bank) + "$"
+	bank_display.text = (
+		"[color=#be601e]"
+		+ String.num_int64(bank)
+		+ " [img={width=40} color=#be601e]res://art/fonts/cog.png[/img]"
+		+ "[/color]"
+	)
 
 	# disable repair button if can't afford repair
 	repair_button.disabled = (bank < repair_cost) && not DebugMenu.disable_money_checks
@@ -218,19 +225,6 @@ func _exit_shop() -> void:
 func _on_confirm_pressed() -> void:
 	deny_finish.visible = false
 	ship_builder.can_interact_with_modules = true
-
-
-func _on_ship_builder_on_module_select(module: Module) -> void:
-	if module == null:
-		# hide description, because mouse is not over module
-		selected_module_display.text = ""
-		selected_module_display.text += ""
-		selected_module_description.text = ""
-		return
-	selected_module_display.text = "[b]" + module.module_name + ":[/b] "
-	selected_module_display.text += String.num_int64(module.prize) + "$"
-
-	selected_module_description.text = module.description
 
 
 func _on_inventory_entered(body: Area3D) -> void:

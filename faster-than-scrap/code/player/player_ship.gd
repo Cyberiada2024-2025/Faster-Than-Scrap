@@ -36,6 +36,7 @@ var _saved_rotation: Vector3 = Vector3.ZERO
 
 func _enter_tree() -> void:
 	GameManager.player_ship = self
+	center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
 
 
 func _ready() -> void:
@@ -55,26 +56,30 @@ func _ready() -> void:
 	energy_max_change.emit(max_energy)
 	_on_energy_change()
 
+	update_mass()
+
 
 func _process(_delta: float) -> void:
 	super(_delta)
-	$CenterOfMass.position = _center_of_mass()
+	$CenterOfMass.position = center_of_mass
 	# move it down so it won't fiddle with modules (in shop)
 	var children_count = get_children().size()
 	move_child($CenterOfMass, children_count - 1)
 
 
-func _center_of_mass() -> Vector3:
-	var center = Vector3.ZERO
+func update_mass() -> void:
+	var center = Vector3(0, 1, 0)
+	var total_mass = 0
 	# avoid division by zero
-	if GameManager.player_ship.modules.size() == 0:
-		return center
+	if modules.size() == 0:
+		return
 
-	center.y = 1
-	for mod in GameManager.player_ship.modules:
-		center += mod.position
-	center /= GameManager.player_ship.modules.size()
-	return center
+	for mod in modules:
+		center += mod.position * mod.mass
+		total_mass += mod.mass
+	center /= total_mass
+	mass = total_mass
+	center_of_mass = center
 
 
 func _physics_process(_delta: float) -> void:

@@ -271,7 +271,6 @@ weight = 3
 [node name="Weight to Spawn enemies" type="Node" parent="StateMachineNPC/RandomTransition After idle" node_paths=PackedStringArray("state")]
 script = ExtResource("15_0jnmf")
 state = NodePath("../../Spawn enemies")
-weight = 1
 
 [node name="Teleport" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("node_to_scale", "_transition_to_call")]
 script = ExtResource("6_yljnl")

@@ -13,7 +13,7 @@ bounce = 1.0
 
 [node name="Asteroid" type="RigidBody3D"]
 axis_lock_linear_y = true
-mass = 40000.0
+mass = 400000.0
 physics_material_override = SubResource("PhysicsMaterial_gro5k")
 gravity_scale = 0.0
 contact_monitor = true

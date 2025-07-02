@@ -44,7 +44,9 @@ enabled=PackedStringArray("res://addons/format_on_save/plugin.cfg")
 
 [gui]
 
+timers/tooltip_delay_sec=0.1
 theme/custom="uid://d37mji7qf4y73"
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 
@@ -143,5 +145,6 @@ debug_move_right={
 
 [rendering]
 
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=4
 viewport/hdr_2d=true
 anti_aliasing/quality/msaa_3d=2

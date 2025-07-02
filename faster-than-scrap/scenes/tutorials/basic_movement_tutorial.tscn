@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://buaupty5vjbs5"]
+[gd_scene load_steps=22 format=3 uid="uid://buaupty5vjbs5"]
 
 [ext_resource type="PackedScene" uid="uid://djgm5s1ld5wgr" path="res://prefabs/ships/flyable_ship_tutorial.tscn" id="1_8fkjt"]
+[ext_resource type="PackedScene" uid="uid://noejc02505g0" path="res://prefabs/ui/poi/vortex_poi.tscn" id="1_ngx30"]
 [ext_resource type="PackedScene" uid="uid://dm1qlo34r16co" path="res://prefabs/environment/shop_miniature_tutorial.tscn" id="2_8fkjt"]
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="2_ngx30"]
 [ext_resource type="PackedScene" uid="uid://dfco2h1p5vdx1" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid1.tscn" id="4_6bw2y"]
@@ -35,8 +36,10 @@ radius = 22.121
 
 [node name="BasicMovementTutorial" type="Node3D"]
 
-[node name="FlyableShip" parent="." node_paths=PackedStringArray("modules") instance=ExtResource("1_8fkjt")]
-modules = []
+[node name="FakeNoVortexPOI" parent="." instance=ExtResource("1_ngx30")]
+transform = Transform3D(1000, 0, 0, 0, -4.37114e-05, 1000, 0, -1000, -4.37114e-05, 0, 0, 0)
+
+[node name="FlyableShip" parent="." instance=ExtResource("1_8fkjt")]
 
 [node name="ShopMiniatureTutorial" parent="." instance=ExtResource("2_8fkjt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380)
@@ -49,31 +52,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380)
 
 [node name="Asteroid" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.0614, 0, -155.991)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.02
 
 [node name="Asteroid5" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.871, 0, -72.1861)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.02
 
 [node name="Asteroid6" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -186.8, 0, -72.1861)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.02
 
 [node name="Asteroid3" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.9386, 0, -155.991)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.02
 
 [node name="Asteroid2" parent="Asteroids/Big Asteroids" instance=ExtResource("5_phkkj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01693, 0, -74.1182)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.0
 
 [node name="Asteroid4" parent="Asteroids/Big Asteroids" instance=ExtResource("6_tkgtl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -221.78)
+hp = 100.0
 start_speed_range = 0.0
 start_angular_speed_range = 0.0
 

@@ -285,7 +285,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_xrmp7")
 text = "Cancel"
 
 [node name="Finish" type="Button" parent="ShipBuilder/Control"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4
@@ -314,7 +314,7 @@ script = ExtResource("8_bwh47")
 tooltip_to_show = ExtResource("9_cv5l0")
 
 [node name="Money" type="RichTextLabel" parent="ShipBuilder/Control"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(75, 50)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.65
@@ -323,7 +323,7 @@ offset_right = 50.0
 offset_bottom = 50.0
 theme = ExtResource("7_d8di0")
 bbcode_enabled = true
-text = "2 [img={width=20}]res://art/fonts/cog.png[/img]"
+text = "[b]2[/b] [img={width=20}]res://art/fonts/cog.png[/img]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -436,11 +436,11 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="RepairModules" type="Button" parent="Control"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.15
-anchor_right = 0.3
+anchor_right = 0.35
 grow_horizontal = 2
 theme = ExtResource("7_d8di0")
 theme_override_fonts/font = ExtResource("6_au3vu")
@@ -451,11 +451,12 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "Repair - 2 [img={width=20}]res://art/fonts/cog.png[/img]
-25%HP / mod"
+text = "[b]Repair - 2 [img={width=20}]res://art/fonts/cog.png[/img]
+25%HP / mod[/b]"
 fit_content = true
 horizontal_alignment = 1
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk1g8kstnrxxk"]
+[gd_scene load_steps=7 format=3 uid="uid://dk1g8kstnrxxk"]
 
 [ext_resource type="Script" uid="uid://bdljn5ooj2ryy" path="res://code/evironment/space_vortex/space_vortex.gd" id="1_8f7e2"]
 [ext_resource type="Material" uid="uid://dsr4i8f5btjud" path="res://art/materials/vfx/Vortex.tres" id="2_ivlmu"]
+[ext_resource type="PackedScene" uid="uid://noejc02505g0" path="res://prefabs/ui/poi/vortex_poi.tscn" id="3_u6ya2"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cujf5"]
 radius = 0.65
@@ -28,6 +29,9 @@ material_override = ExtResource("2_ivlmu")
 double_sided = false
 render_priority = 4
 texture = SubResource("GradientTexture2D_egdpg")
+
+[node name="VortexPOI" parent="." instance=ExtResource("3_u6ya2")]
+transform = Transform3D(0.525, 0, 0, 0, -2.29485e-08, 0.525, 0, -0.525, -2.29485e-08, 0, 0, 0)
 
 [connection signal="area_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_exited" from="." to="." method="_on_body_exited"]

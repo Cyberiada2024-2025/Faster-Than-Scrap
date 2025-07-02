@@ -297,7 +297,7 @@ script = ExtResource("8_3kh5p")
 tooltip_to_show = ExtResource("9_nia07")
 
 [node name="Money" type="RichTextLabel" parent="ShipBuilder/Control"]
-custom_minimum_size = Vector2(100, 60)
+custom_minimum_size = Vector2(150, 60)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.65
@@ -309,7 +309,7 @@ theme_override_constants/outline_size = 12
 theme_override_font_sizes/normal_font_size = 40
 theme_override_font_sizes/bold_font_size = 40
 bbcode_enabled = true
-text = "[b]2[/b] [img={width=40} color=#cc4214]res://art/fonts/cog.png[/img]"
+text = "[b]-25[/b] [img={width=40} color=#cc4214]res://art/fonts/cog.png[/img]"
 horizontal_alignment = 1
 vertical_alignment = 1
 

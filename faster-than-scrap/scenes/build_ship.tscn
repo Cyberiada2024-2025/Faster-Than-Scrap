@@ -4,11 +4,11 @@
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="3_7x66o"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_sra6p"]
-[ext_resource type="PackedScene" path="res://prefabs/ui/build_ship_hud.tscn" id="5_cv5l0"]
+[ext_resource type="PackedScene" uid="uid://mjgnhxxmjro3" path="res://prefabs/ui/build_ship_hud.tscn" id="5_cv5l0"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
 [ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="7_d8di0"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_jtm63"]
-[ext_resource type="Script" path="res://code/ui/tooltip.gd" id="8_bwh47"]
+[ext_resource type="Script" uid="uid://bcm4vfgdqrr2t" path="res://code/ui/tooltip.gd" id="8_bwh47"]
 [ext_resource type="PackedScene" uid="uid://cc0to5vstp8vs" path="res://prefabs/ui/build_ship_help_tooltip.tscn" id="9_cv5l0"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
@@ -314,7 +314,7 @@ script = ExtResource("8_bwh47")
 tooltip_to_show = ExtResource("9_cv5l0")
 
 [node name="Money" type="RichTextLabel" parent="ShipBuilder/Control"]
-custom_minimum_size = Vector2(100, 60)
+custom_minimum_size = Vector2(150, 60)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.65
@@ -326,7 +326,7 @@ theme_override_constants/outline_size = 12
 theme_override_font_sizes/normal_font_size = 40
 theme_override_font_sizes/bold_font_size = 40
 bbcode_enabled = true
-text = "[b]2[/b] [img={width=40} color=#cc4214]res://art/fonts/cog.png[/img]"
+text = "[b]-21[/b] [img={width=40} color=#cc4214]res://art/fonts/cog.png[/img]"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DebugMenu="*res://code/singletons/debug_menu.tscn"
+DebugMenu="*res://prefabs/singletons/debug_menu.tscn"
 GameManager="*res://prefabs/singletons/game_manager.tscn"
 MissionManager="*res://prefabs/singletons/mission_manager.tscn"
 BossManager="*res://code/singletons/boss_manager.gd"
@@ -28,6 +28,7 @@ CutsceneManager="*res://code/singletons/cutscene_manager.gd"
 ModulesList="*res://prefabs/singletons/modules_list.tscn"
 ShopContents="*res://code/singletons/shop_contents.gd"
 SettingsManager="*res://code/singletons/settings_manager.gd"
+GlobalSoundManager="*res://prefabs/singletons/global_sound_manager.tscn"
 
 [display]
 

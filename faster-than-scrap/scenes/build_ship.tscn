@@ -1,7 +1,8 @@
-[gd_scene load_steps=48 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=49 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
+[ext_resource type="Script" path="res://code/ui/connect_sound_to_all_clickables.gd" id="1_eeway"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="3_7x66o"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_sra6p"]
 [ext_resource type="PackedScene" path="res://prefabs/ui/build_ship_hud.tscn" id="5_cv5l0"]
@@ -27,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://xefnexmkmf2d" path="res://art/audio/sounds/ui/ship_builder/cannot_place.mp3" id="20_r6xpi"]
 [ext_resource type="AudioStream" uid="uid://bqfy3xdpwhyn1" path="res://art/audio/sounds/ui/ship_builder/start_assigning_key.wav" id="21_rkphg"]
 [ext_resource type="AudioStream" uid="uid://3lbdd6ghs0mg" path="res://art/audio/sounds/ui/ship_builder/assign_key.wav" id="22_o146e"]
+[ext_resource type="AudioStream" uid="uid://bxe0wuk54krhi" path="res://art/audio/music/Groove Grove.mp3" id="25_6rel0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8di0"]
 font = ExtResource("6_au3vu")
@@ -107,9 +109,12 @@ size = Vector3(0.41153, 1, 20.8868)
 
 [node name="BuildShip" type="Node3D"]
 
+[node name="ConnectSoundToParentAndAllChildren" type="Node" parent="."]
+script = ExtResource("1_eeway")
+
 [node name="SpaceEnvironment" parent="." instance=ExtResource("1_8ccmg")]
 
-[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "confirm_finish_message", "pick_sound", "cannot_pick_sound", "rotate_sound", "cannot_rotate_sound", "attach_sound", "place_sound", "cannot_place_sound", "start_assigning_key_sound", "assign_key_sound")]
+[node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ignore", "ship_borders", "choose_key_message", "pick_sound", "cannot_pick_sound", "rotate_sound", "cannot_rotate_sound", "attach_sound", "place_sound", "cannot_place_sound", "start_assigning_key_sound", "assign_key_sound")]
 script = ExtResource("1_d5jmr")
 ignore = [NodePath("../Shop/Inventory/Area3D"), NodePath("../Ship Max Size/Area3D")]
 ship_borders = NodePath("../Ship Max Size/Area3D")
@@ -117,7 +122,6 @@ outline_mat = ExtResource("3_7x66o")
 flash_mat = ExtResource("4_sra6p")
 flash_time = 0.5
 choose_key_message = NodePath("Control/Choose_key")
-confirm_finish_message = NodePath("Control/Confirm finish")
 pick_sound = NodePath("../PickSound")
 cannot_pick_sound = NodePath("../CannotPickSound")
 rotate_sound = NodePath("../RotateSound")
@@ -181,66 +185,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_cv5l0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_hbg4l")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_q6ms4")
 text = "OK"
-
-[node name="Confirm finish" type="ColorRect" parent="ShipBuilder/Control"]
-visible = false
-layout_mode = 0
-offset_right = 1150.0
-offset_bottom = 650.0
-color = Color(0, 0, 0, 0.9)
-
-[node name="Color_Rect" type="ColorRect" parent="ShipBuilder/Control/Confirm finish"]
-layout_mode = 0
-offset_left = 248.0
-offset_top = 242.0
-offset_right = 898.0
-offset_bottom = 392.0
-color = Color(0, 0.051, 0.027, 1)
-
-[node name="Label" type="Label" parent="ShipBuilder/Control/Confirm finish/Color_Rect"]
-layout_mode = 0
-offset_right = 250.0
-offset_bottom = 50.0
-text = "WARNING: Unattached modules will be lost"
-label_settings = SubResource("LabelSettings_x5wpm")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Confirm" type="Button" parent="ShipBuilder/Control/Confirm finish/Color_Rect"]
-layout_mode = 0
-offset_left = 390.0
-offset_top = 76.0
-offset_right = 608.0
-offset_bottom = 114.0
-theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_fonts/font = ExtResource("6_au3vu")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ppglm")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_istkh")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_xrmp7")
-text = "Proceed"
-
-[node name="Deny" type="Button" parent="ShipBuilder/Control/Confirm finish/Color_Rect"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 76.0
-offset_right = 238.0
-offset_bottom = 114.0
-theme_override_colors/font_hover_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_focus_color = Color(0.105882, 1, 0.105882, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.0509804, 0.027451, 1)
-theme_override_fonts/font = ExtResource("6_au3vu")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ukoue")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ppglm")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_istkh")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_xrmp7")
-text = "Go Back"
 
 [node name="Choose_key" type="ColorRect" parent="ShipBuilder/Control"]
 visible = false
@@ -334,8 +278,9 @@ vertical_alignment = 1
 script = ExtResource("7_jtm63")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
-[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("shop_area", "bank_display", "inventory_limit_display", "deny_finish", "confirm_finish", "deny_finish_label", "repair_button", "confirm_finish_message_with_unassigned_keys", "warning_sound")]
+[node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("ship_builder", "bank_display", "inventory_limit_display", "deny_finish", "deny_finish_label", "selected_module_display", "selected_module_description", "repair_button", "confirm_finish_message_with_unassigned_keys", "warning_sound")]
 script = ExtResource("11_jtm63")
+ship_builder = NodePath("../ShipBuilder")
 starting_bank = 6
 shop_area = NodePath("Shop area")
 size_x = 7.5
@@ -345,7 +290,6 @@ rows = 5
 bank_display = NodePath("../ShipBuilder/Control/Money")
 inventory_limit_display = NodePath("Inventory/InventoryLimitLabel")
 deny_finish = NodePath("../ShipBuilder/Control/Deny finish")
-confirm_finish = NodePath("../ShipBuilder/Control/Confirm finish")
 deny_finish_label = NodePath("../ShipBuilder/Control/Deny finish/Color_Rect/Label")
 repair_button = NodePath("../Control/RepairModules")
 confirm_finish_message_with_unassigned_keys = NodePath("../Control/Confirm missing keys")
@@ -607,12 +551,17 @@ max_polyphony = 4
 bus = &"UI"
 script = ExtResource("13_sy1ma")
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("25_6rel0")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+
 [connection signal="on_module_attach" from="ShipBuilder" to="Shop" method="_on_module_attached"]
 [connection signal="on_module_detach" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_detach"]
 [connection signal="on_module_hover" from="ShipBuilder" to="Shop" method="_on_ship_builder_on_module_select"]
 [connection signal="pressed" from="ShipBuilder/Control/Deny finish/Color_Rect/Confirm" to="Shop" method="_on_confirm_pressed"]
-[connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Confirm" to="ShipBuilder" method="_on_confirm_pressed"]
-[connection signal="pressed" from="ShipBuilder/Control/Confirm finish/Color_Rect/Deny" to="ShipBuilder" method="_on_deny_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Choose_key/Color_Rect/Cancel" to="ShipBuilder" method="_on_asign_key_cancel_pressed"]
 [connection signal="pressed" from="ShipBuilder/Control/Finish" to="Shop" method="_on_finish_pressed"]
 [connection signal="area_entered" from="Shop/Inventory/Area3D" to="Shop" method="_on_inventory_entered"]

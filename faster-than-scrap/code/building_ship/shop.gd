@@ -157,7 +157,7 @@ func _enter_tree() -> void:
 
 func _on_bank_change() -> void:
 	bank_display.text = (
-		String.num_int64(bank) + " [img={width=25} color=#cc4214]res://art/fonts/cog.png[/img]"
+		String.num_int64(bank) + " [img={width=40} color=#cc4214]res://art/fonts/cog.png[/img]"
 	)
 
 	# disable repair button if can't afford repair

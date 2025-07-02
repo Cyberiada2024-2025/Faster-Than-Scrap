@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://crbesxqkbf1ss" path="res://scenes/levels/final/easy/few_drones_defend.tscn" id="9_dlw72"]
 [ext_resource type="PackedScene" uid="uid://diru2u2s3kmy6" path="res://scenes/levels/finalest/easy/first_escape.tscn" id="10_uee5q"]
 [ext_resource type="PackedScene" uid="uid://1ipl2ppnmckf" path="res://scenes/levels/final/easy/shotgunners_escape.tscn" id="11_f40e2"]
-[ext_resource type="PackedScene" uid="uid://cbtbiqg2rf01i" path="res://scenes/levels/final/easy/shotgunners_defend.tscn" id="11_uee5q"]
+[ext_resource type="PackedScene" uid="uid://ce6o6d7fo8n7x" path="res://scenes/levels/finalest/easy/second_escape.tscn" id="11_uee5q"]
 [ext_resource type="PackedScene" uid="uid://pgmnuirpnvwb" path="res://scenes/levels/final/easy/few_turret_guns_defend.tscn" id="12_4e3x0"]
 [ext_resource type="PackedScene" uid="uid://c03u0pmq5d36y" path="res://prefabs/map_select/nodes/templates/missions/mission_fuel.tscn" id="13_rwq3m"]
 [ext_resource type="PackedScene" uid="uid://dcem0fucmljrh" path="res://scenes/levels/final/easy/asteroids_cramped_get_fuel.tscn" id="14_0a6x0"]

@@ -180,7 +180,7 @@ func on_attach() -> void:
 
 ## Called just before the module is detached from the ship
 func on_detach() -> void:
-	GameManager.player_ship.modules.erase(self)
+	ship.modules.erase(self)
 	ship.update_mass()
 	ship = null  # clear refence of a ship
 	hide_on_module_camera()

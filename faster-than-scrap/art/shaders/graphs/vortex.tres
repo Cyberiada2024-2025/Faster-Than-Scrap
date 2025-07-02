@@ -131,6 +131,7 @@ attached_nodes = PackedInt32Array(75, 74, 76)
 
 [sub_resource type="VisualShaderNodeReroute" id="VisualShaderNodeReroute_wltsk"]
 
+
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_ujj3x"]
 size = Vector2(1044, 308)
 title = "Spike length in UV coordinates"
@@ -143,6 +144,7 @@ attached_nodes = PackedInt32Array(6)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_ev5ty"]
 size = Vector2(1985, 654)
+
 title = "Cuttting out transparent portions"
 attached_nodes = PackedInt32Array(71, 67, 32, 201, 202, 204)
 
@@ -166,6 +168,7 @@ attached_nodes = PackedInt32Array(78, 101, 102, 98, 96, 93, 92, 91, 90, 89, 88, 
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_ourj4"]
 size = Vector2(5503, 1828)
+
 title = "Lightning weights"
 attached_nodes = PackedInt32Array(122, 124, 123, 113, 106, 118, 105, 121, 119, 117, 116, 115, 114, 112, 111, 110, 109, 108, 107, 209, 7)
 

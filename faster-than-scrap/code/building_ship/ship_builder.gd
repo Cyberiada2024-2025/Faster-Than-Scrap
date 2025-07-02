@@ -32,7 +32,6 @@ const RAY_LENGTH = 1000.0
 ## time of warning flash animation
 @export_custom(PROPERTY_HINT_NONE, "suffix:sec") var flash_time: float
 @export var choose_key_message: Control
-@export var confirm_finish_message: Control
 
 @export_group("Sounds")
 @export var pick_sound: SoundEmitterGlobal
@@ -63,6 +62,10 @@ var lmb_is_pressed: bool = false
 var rmb_was_pressed: bool = false
 var ignore_rid: Array[RID]
 var scene_loader: SceneLoader
+
+## set to false when there are menus or messages displayed on the screen
+## (e.g. "you cannot leave without paying")
+var can_interact_with_modules: bool = true
 
 
 func _ready() -> void:
@@ -335,6 +338,10 @@ func _can_module_have_assigned_key(active_module: Module) -> bool:
 func _input(event: InputEvent):
 	_update_lmb_state(event)
 	_update_mouse_3d_position()
+
+	if not can_interact_with_modules:
+		return
+
 	if (
 		event is InputEventKey
 		and event.pressed == true
@@ -347,7 +354,7 @@ func _input(event: InputEvent):
 
 	match state:
 		State.NONE:
-			if confirm_finish_message.visible || choose_key_message.visible:
+			if choose_key_message.visible:
 				return
 			if _lmb_just_pressed():
 				var hit := _get_raycast_hit(event)
@@ -374,7 +381,7 @@ func _input(event: InputEvent):
 				else:
 					on_module_hover.emit(null)
 		State.DRAGGING:
-			if confirm_finish_message.visible || choose_key_message.visible:
+			if choose_key_message.visible:
 				return
 			if _lmb_just_pressed():
 				_on_lmb_release()
@@ -571,22 +578,10 @@ func _flash_module(module: Module) -> void:
 		tween.play()
 
 
-func _on_finish_pressed() -> void:
-	confirm_finish_message.visible = true
-
-
 func _on_asign_key_cancel_pressed() -> void:
 	state = State.NONE
 	choose_key_message.visible = false
-
-
-func _on_confirm_pressed() -> void:
-	confirm_finish_message.visible = false
-	scene_loader.load_fly_ship_scene()
-
-
-func _on_deny_pressed() -> void:
-	confirm_finish_message.visible = false
+	print("new state = none")
 
 
 func set_freeze_mode(is_frozen: bool):

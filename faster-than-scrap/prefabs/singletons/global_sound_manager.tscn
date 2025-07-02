@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4hcbp5k6f4mo"]
+
+[ext_resource type="Script" uid="uid://daq1lru0x2olh" path="res://code/singletons/global_sound_manager.gd" id="1_atn46"]
+[ext_resource type="AudioStream" uid="uid://chhc7p2aubei5" path="res://art/audio/sounds/ui/ui_confirm.mp3" id="2_hmm1v"]
+[ext_resource type="Script" uid="uid://c6mohg4o53eqe" path="res://code/sound/sound_emitter_global.gd" id="3_84hho"]
+
+[node name="GlobalSoundManager" type="Node" node_paths=PackedStringArray("click_sound_emitter")]
+script = ExtResource("1_atn46")
+click_sound_emitter = NodePath("SoundEmitterGlobal")
+
+[node name="SoundEmitterGlobal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hmm1v")
+volume_db = -10.0
+bus = &"UI"
+script = ExtResource("3_84hho")
+min_pitch_scale = 1.1
+max_pitch_scale = 1.1
+metadata/_custom_type_script = "uid://c6mohg4o53eqe"

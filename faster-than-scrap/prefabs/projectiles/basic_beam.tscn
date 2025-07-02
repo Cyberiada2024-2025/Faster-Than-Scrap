@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjjq5xb448ybe"]
+[gd_scene load_steps=15 format=3 uid="uid://cjjq5xb448ybe"]
 
 [ext_resource type="Script" uid="uid://b86vmkhkjsh2k" path="res://code/weapons/projectiles/beam.gd" id="1_062iq"]
+[ext_resource type="PackedScene" uid="uid://c47ehydba1o46" path="res://prefabs/vfx/particles/timed_particles/hit particles/beam_player_hit.tscn" id="2_bggkw"]
 [ext_resource type="Script" uid="uid://buwehho3rx3g0" path="res://code/damage/damage_raycast_3d.gd" id="2_txvny"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_lmcyq"]
 [ext_resource type="Script" uid="uid://2p7oc4a3141y" path="res://code/utilities/wait_free.gd" id="4_kgxhj"]
@@ -10,6 +11,7 @@
 [sub_resource type="Resource" id="Resource_7ctxp"]
 script = ExtResource("3_lmcyq")
 value = 10.0
+type = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kj8pf"]
 resource_local_to_scene = true
@@ -89,6 +91,7 @@ beam_indicator = NodePath("VFX holder")
 player = NodePath("VFX holder/AnimationPlayer")
 holder = NodePath("VFX holder")
 mesh = NodePath("VFX holder/MeshInstance3D")
+hit_particle_prefab = ExtResource("2_bggkw")
 
 [node name="DamageRaycast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -20)

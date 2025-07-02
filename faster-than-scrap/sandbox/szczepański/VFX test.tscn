@@ -6,5 +6,7 @@
 [node name="VfxTest" type="Node3D"]
 
 [node name="SpaceVortex" parent="." instance=ExtResource("1_26cs5")]
+collision_layer = 2
+collision_mask = 2
 
 [node name="Aegis" parent="." instance=ExtResource("2_nhrox")]

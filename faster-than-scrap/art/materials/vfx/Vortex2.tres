@@ -1,54 +1,9 @@
-[gd_scene load_steps=186 format=3 uid="uid://1x45q2a5nnee"]
+[gd_resource type="ShaderMaterial" load_steps=141 format=3 uid="uid://642l3ejv8i5d"]
 
-[ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_bnu5o"]
-[ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_cs180"]
-[ext_resource type="Script" uid="uid://dc42aagfm4o0o" path="res://code/ship/modules/explodable.gd" id="3_mclyr"]
-[ext_resource type="PackedScene" uid="uid://ba6bvjt5dyf6b" path="res://art/model_prefabs/bosses/vortex_boss/vortex_core.tscn" id="4_xtho6"]
-[ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="5_bk2yy"]
-[ext_resource type="PackedScene" uid="uid://butrr4i156xbg" path="res://prefabs/npc/bosses/vortex/lightnings.tscn" id="5_lqxhd"]
-[ext_resource type="Script" uid="uid://bnjdv1cll5kvy" path="res://code/weapons/on_target_spawner_weapon.gd" id="5_pqq2h"]
-[ext_resource type="PackedScene" uid="uid://cueuhnoh0g75p" path="res://prefabs/modules/functional_components/damage_controller_hostile_damage.tscn" id="6_y47uf"]
-[ext_resource type="Script" uid="uid://cdwjrb230l0qw" path="res://code/enemy/states/move/teleport.gd" id="6_yljnl"]
-[ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://code/damage/damageable.gd" id="7_bac5w"]
-[ext_resource type="Script" uid="uid://clbayyulct4as" path="res://code/enemy/transitions/transition_on_state_finish.gd" id="7_yfy1f"]
-[ext_resource type="Script" uid="uid://sb0nfuqj50k0" path="res://code/weapons/in_area_spawner_weapon.gd" id="8_kr82f"]
-[ext_resource type="PackedScene" uid="uid://coiccskokh2q6" path="res://prefabs/projectiles/boss_projectiles/vortex_spike_flash.tscn" id="9_2hnf7"]
-[ext_resource type="PackedScene" uid="uid://bqcsqeowaiij4" path="res://prefabs/projectiles/boss_projectiles/vortex_cloud_flash.tscn" id="11_2hnf7"]
-[ext_resource type="PackedScene" uid="uid://b2xl30r0e0ece" path="res://prefabs/projectiles/boss_projectiles/vortex_spawn_flash.tscn" id="12_2hnf7"]
-[ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="12_4qxwn"]
-[ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="12_cbrw2"]
-[ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="13_3aeiy"]
-[ext_resource type="Script" uid="uid://dm7n818e46apw" path="res://code/enemy/transitions/random_transitions/random_transition.gd" id="14_erpum"]
-[ext_resource type="Script" uid="uid://bhyxhxybm21hs" path="res://code/enemy/transitions/random_transitions/weighted_state.gd" id="15_0jnmf"]
-[ext_resource type="Script" uid="uid://p2tfapf0egxl" path="res://code/enemy/transitions/timed_transition.gd" id="16_6qrt1"]
-[ext_resource type="Script" uid="uid://cmxs42wfn06xe" path="res://code/enemy/transitions/boss_specific_transitions/boss_dead.gd" id="19_ot5ry"]
-[ext_resource type="Script" uid="uid://bwe8glgj1swy" path="res://code/enemy/transitions/boss_specific_transitions/damage_taken.gd" id="19_p6xao"]
-[ext_resource type="Script" uid="uid://b7v5naphnvff4" path="res://code/enemy/transitions/boss_specific_transitions/damage_memory.gd" id="20_pkmkm"]
-[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="21_hho6b"]
-[ext_resource type="Script" uid="uid://bi4im5upc3uyx" path="res://code/enemy/states/animate/animate_state_one_shot.gd" id="22_mbsxu"]
-[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="24_osa2j"]
-[ext_resource type="Script" uid="uid://c1f25eathho6h" path="res://code/enemy/states/move/state_npc_movemenet/move_direction.gd" id="25_2xp31"]
-[ext_resource type="PackedScene" uid="uid://b6daqms6qnhjg" path="res://prefabs/ui/cutscenes/boss_cutscenes/vortex_boss_cutscene.tscn" id="25_q7a2e"]
-[ext_resource type="PackedScene" uid="uid://ckxcfr4vlxbr1" path="res://prefabs/npc/bosses/vortex/vortex_boss_tentacle.tscn" id="26_mbsxu"]
-[ext_resource type="Script" uid="uid://chca257un8ebl" path="res://code/enemy/states/animate/on_enter_animate.gd" id="26_v2k46"]
-[ext_resource type="PackedScene" uid="uid://ixlivfkj2s1o" path="res://art/model_prefabs/bosses/vortex_boss/vortex_boss_tentacle_warning.tscn" id="27_xtho6"]
-[ext_resource type="PackedScene" uid="uid://jstvt3uuo0mv" path="res://art/model_prefabs/bosses/vortex_boss/vortex_boss_tentacle_secondary.tscn" id="28_ivemq"]
-[ext_resource type="PackedScene" uid="uid://j2dyy6flaq5t" path="res://art/model_prefabs/bosses/vortex_boss/vortex_ring.tscn" id="29_ivemq"]
-[ext_resource type="Script" uid="uid://btpdstvgw55fd" path="res://code/utilities/auto_reparent.gd" id="32_y47uf"]
-[ext_resource type="Texture2D" uid="uid://cc70v8is7a6lc" path="res://art/textures/vfxy/vortex/Clouds1.png" id="34_v2k46"]
-[ext_resource type="Texture2D" uid="uid://cdnuaoleepsqv" path="res://art/textures/vfxy/vortex/Clouds2.png" id="35_ot5ry"]
-[ext_resource type="Texture2D" uid="uid://cc5xh0wvgum0i" path="res://art/textures/vfxy/vortex/lightning.png" id="36_q2gdo"]
-[ext_resource type="Texture2D" uid="uid://cquo67pcvbos0" path="res://art/textures/vfxy/vortex/lightning cutout.png" id="37_nokj6"]
-[ext_resource type="PackedScene" uid="uid://b2r347fipfles" path="res://prefabs/aegis_player.tscn" id="41_q2gdo"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_km21v"]
-size = Vector3(5, 1, 5)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_8b1eu"]
-radius = 1.03
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_ivemq"]
-radius = 7.0
+[ext_resource type="Texture2D" uid="uid://cc70v8is7a6lc" path="res://art/textures/vfxy/vortex/Clouds1.png" id="1_e5k7s"]
+[ext_resource type="Texture2D" uid="uid://cdnuaoleepsqv" path="res://art/textures/vfxy/vortex/Clouds2.png" id="2_p1xre"]
+[ext_resource type="Texture2D" uid="uid://cc5xh0wvgum0i" path="res://art/textures/vfxy/vortex/lightning.png" id="3_gu8tx"]
+[ext_resource type="Texture2D" uid="uid://cquo67pcvbos0" path="res://art/textures/vfxy/vortex/lightning cutout.png" id="4_5yy4r"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_tfonm"]
 linked_parent_graph_frame = 155
@@ -159,7 +114,7 @@ parameter_name = "Lightning_Color"
 [sub_resource type="VisualShaderNodeReroute" id="VisualShaderNodeReroute_2v25o"]
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_3noyx"]
-size = Vector2(684, 302)
+size = Vector2(684, 412)
 title = "Spike Rotation"
 attached_nodes = PackedInt32Array(75, 74, 76)
 
@@ -182,22 +137,22 @@ attached_nodes = PackedInt32Array(75, 74, 76)
 [sub_resource type="VisualShaderNodeReroute" id="VisualShaderNodeReroute_wltsk"]
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_ujj3x"]
-size = Vector2(1044, 162)
+size = Vector2(1044, 308)
 title = "Spike length in UV coordinates"
 attached_nodes = PackedInt32Array(63, 65, 66)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_x6xsr"]
-size = Vector2(317, 122)
+size = Vector2(317, 232)
 title = "Hard radius in UV coordinates"
 attached_nodes = PackedInt32Array(6)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_ev5ty"]
-size = Vector2(1984, 442)
+size = Vector2(1985, 654)
 title = "Cuttting out transparent portions"
 attached_nodes = PackedInt32Array(71, 67, 32, 201, 202, 204)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_wxdmm"]
-size = Vector2(244, 122)
+size = Vector2(244, 161)
 title = "Neutral/transparent"
 attached_nodes = PackedInt32Array(35)
 
@@ -210,22 +165,22 @@ default_input_values = [0, Vector4(0, 0, 0, 0)]
 port_type = 5
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_jphte"]
-size = Vector2(2624, 1862)
+size = Vector2(2624, 2145)
 title = "Cloud weights"
 attached_nodes = PackedInt32Array(78, 101, 102, 98, 96, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 80, 79)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_ourj4"]
-size = Vector2(5404, 1682)
+size = Vector2(5503, 1828)
 title = "Lightning weights"
 attached_nodes = PackedInt32Array(122, 124, 123, 113, 106, 118, 105, 121, 119, 117, 116, 115, 114, 112, 111, 110, 109, 108, 107, 209, 7)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_7senu"]
-size = Vector2(824, 322)
+size = Vector2(824, 465)
 title = "Clouds + lightning colors"
 attached_nodes = PackedInt32Array(100, 125, 126)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_ay36t"]
-size = Vector2(804, 242)
+size = Vector2(804, 385)
 title = "Clouds + lightning + main colors"
 attached_nodes = PackedInt32Array(28, 99)
 
@@ -1412,7 +1367,7 @@ nodes/fragment/209/node = SubResource("VisualShaderNodeFloatParameter_p31ju")
 nodes/fragment/209/position = Vector2(-1080, 520)
 nodes/fragment/connections = PackedInt32Array(26, 0, 25, 0, 47, 0, 62, 0, 66, 0, 65, 0, 63, 0, 66, 1, 69, 0, 70, 0, 62, 0, 70, 1, 75, 0, 74, 0, 76, 0, 74, 1, 6, 0, 24, 0, 73, 0, 47, 0, 32, 0, 67, 0, 24, 0, 67, 2, 70, 0, 71, 2, 71, 0, 32, 1, 64, 0, 32, 2, 78, 0, 80, 2, 82, 0, 80, 0, 84, 0, 86, 1, 79, 0, 85, 2, 88, 0, 82, 2, 90, 0, 82, 0, 83, 0, 90, 1, 89, 0, 88, 0, 87, 0, 88, 1, 86, 0, 92, 0, 92, 0, 85, 0, 91, 0, 92, 2, 87, 0, 91, 0, 93, 0, 91, 1, 80, 0, 96, 0, 85, 0, 96, 1, 98, 0, 96, 2, 99, 0, 71, 0, 99, 0, 67, 1, 28, 0, 99, 1, 96, 0, 101, 2, 101, 0, 99, 2, 102, 1, 101, 0, 102, 2, 101, 1, 107, 0, 108, 1, 108, 0, 110, 0, 109, 0, 110, 2, 111, 0, 109, 0, 112, 0, 109, 1, 110, 0, 113, 0, 105, 0, 113, 2, 118, 0, 114, 1, 114, 0, 119, 0, 115, 0, 119, 2, 116, 0, 115, 0, 117, 0, 115, 1, 119, 0, 121, 0, 106, 0, 121, 2, 121, 0, 122, 0, 113, 0, 122, 1, 100, 0, 125, 0, 125, 0, 99, 0, 124, 0, 125, 2, 126, 0, 125, 1, 122, 0, 124, 2, 123, 1, 124, 0, 123, 2, 124, 1, 3, 0, 4, 0, 4, 1, 128, 0, 128, 0, 129, 0, 129, 0, 69, 0, 129, 0, 130, 0, 130, 0, 64, 1, 130, 0, 131, 0, 131, 0, 24, 2, 44, 0, 135, 0, 135, 0, 66, 0, 135, 0, 26, 0, 135, 0, 136, 0, 136, 0, 6, 0, 138, 0, 6, 1, 138, 0, 139, 0, 139, 0, 25, 1, 139, 0, 140, 0, 140, 0, 65, 1, 25, 0, 141, 0, 141, 0, 69, 2, 141, 0, 143, 0, 143, 0, 24, 1, 65, 0, 144, 0, 144, 0, 69, 1, 144, 0, 145, 0, 145, 0, 64, 0, 35, 0, 151, 0, 151, 0, 71, 1, 151, 0, 152, 0, 152, 0, 32, 0, 45, 0, 163, 0, 163, 0, 26, 1, 4, 2, 164, 0, 164, 0, 77, 1, 2, 0, 44, 0, 48, 0, 49, 0, 49, 0, 77, 0, 168, 0, 169, 0, 168, 0, 170, 0, 170, 0, 171, 0, 171, 0, 172, 0, 172, 0, 173, 0, 141, 0, 174, 0, 174, 0, 175, 0, 175, 0, 168, 0, 169, 0, 176, 0, 173, 0, 176, 1, 74, 0, 73, 2, 176, 0, 49, 1, 51, 0, 73, 1, 77, 0, 73, 0, 182, 0, 181, 0, 183, 0, 185, 0, 185, 0, 182, 0, 185, 0, 186, 0, 187, 0, 188, 0, 188, 0, 181, 1, 184, 0, 191, 0, 191, 0, 182, 1, 178, 0, 183, 0, 186, 0, 193, 0, 187, 0, 193, 1, 194, 1, 196, 0, 193, 0, 196, 1, 198, 0, 199, 0, 195, 0, 200, 0, 199, 0, 200, 1, 67, 0, 201, 0, 201, 0, 202, 0, 202, 0, 0, 0, 194, 1, 203, 0, 204, 0, 201, 1, 203, 0, 201, 2, 196, 0, 202, 2, 151, 0, 202, 1, 205, 1, 206, 0, 205, 3, 206, 1, 206, 0, 207, 0, 200, 0, 208, 0, 208, 0, 194, 0, 207, 0, 208, 1, 209, 0, 138, 0, 7, 0, 187, 0, 187, 0, 199, 1, 187, 0, 207, 1, 181, 0, 203, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a17kq"]
+[resource]
 render_priority = 0
 shader = SubResource("VisualShader_do01d")
 shader_parameter/Clouds_Color = Color(0, 0, 0, 1)
@@ -1420,20 +1375,20 @@ shader_parameter/Lightning_Color = Color(1.5, 0, 0, 1)
 shader_parameter/Lightning_Edges = Vector2(0.4, 0.5)
 shader_parameter/Cutout_Scale = 15.0
 shader_parameter/Cutout_Speed = Vector2(0.308, -0.215)
-shader_parameter/Lightning_Cutout = ExtResource("37_nokj6")
+shader_parameter/Lightning_Cutout = ExtResource("4_5yy4r")
 shader_parameter/Lightning_Scale = 15.0
 shader_parameter/Ligthning_Speed = Vector2(-0.01, 0.025)
-shader_parameter/Lightning = ExtResource("36_q2gdo")
+shader_parameter/Lightning = ExtResource("3_gu8tx")
 shader_parameter/Main_Color = Color(0.85, 0.00849999, 0.695725, 1)
 shader_parameter/Cloud_Edges = Vector2(0.3, 0.8)
 shader_parameter/Clouds1_Scale = 6.22
 shader_parameter/Clouds1_Speed = Vector2(-0.008, -0.011)
-shader_parameter/Clouds1 = ExtResource("34_v2k46")
+shader_parameter/Clouds1 = ExtResource("1_e5k7s")
 shader_parameter/Clouds2_Scale = 9.18
 shader_parameter/Clouds2_Speed = Vector2(0.068, 0.04)
-shader_parameter/Clouds2 = ExtResource("35_ot5ry")
+shader_parameter/Clouds2 = ExtResource("2_p1xre")
 shader_parameter/Clouds_Mix = 0.5
-shader_parameter/Safe_Radius = 0.0
+shader_parameter/Safe_Radius = 10.0
 shader_parameter/Spike_Length = 30.0
 shader_parameter/Plane_Size2 = 2000.0
 shader_parameter/Softness = 1.0
@@ -1442,404 +1397,5 @@ shader_parameter/Spike_Rotation = 20.0
 shader_parameter/Aegis_Color = Color(4.986, 4.116, 1.296, 1)
 shader_parameter/Aegis_Position = Vector2(0, 0)
 shader_parameter/Plane_Size = 1280.0
-shader_parameter/Aegis_Radius = 50.0
-shader_parameter/Aegis_softness = 2.0
-
-[sub_resource type="Gradient" id="Gradient_q2gdo"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_40l5p"]
-gradient = SubResource("Gradient_q2gdo")
-
-[sub_resource type="Animation" id="Animation_q2gdo"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material_override:shader_parameter/Safe_Radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_ot5ry"]
-resource_name = "clear_world"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material_override:shader_parameter/Safe_Radius")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 2000.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nokj6"]
-_data = {
-&"RESET": SubResource("Animation_q2gdo"),
-&"clear_world": SubResource("Animation_ot5ry")
-}
-
-[node name="Vortex Boss" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
-script = ExtResource("1_bnu5o")
-ship = NodePath("Boss")
-metadata/_custom_type_script = "uid://deimdflghl67a"
-
-[node name="Boss" type="RigidBody3D" parent="."]
-gravity_scale = 0.0
-script = ExtResource("2_cs180")
-max_hp = 100.0
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="Core" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_km21v")
-script = ExtResource("3_mclyr")
-max_hp = 30.0
-hp = 30.0
-
-[node name="VortexCore" parent="StaticBody3D/Core" instance=ExtResource("4_xtho6")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-
-[node name="Lightnings" parent="StaticBody3D/Core" instance=ExtResource("5_lqxhd")]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
-
-[node name="DamageControllerHostileDamage" parent="StaticBody3D/Core" instance=ExtResource("6_y47uf")]
-
-[node name="Damageable" parent="StaticBody3D/Core/DamageControllerHostileDamage" index="0"]
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Core/DamageControllerHostileDamage/Damageable" index="0"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
-shape = SubResource("SphereShape3D_8b1eu")
-
-[node name="Ring" type="Node3D" parent="StaticBody3D"]
-
-[node name="Physics collision" type="StaticBody3D" parent="StaticBody3D/Ring"]
-
-[node name="Ring" type="CollisionShape3D" parent="StaticBody3D/Ring/Physics collision" node_paths=PackedStringArray("child_modules")]
-shape = SubResource("SphereShape3D_ivemq")
-script = ExtResource("3_mclyr")
-max_hp = 250.0
-hp = 250.0
-child_modules = [null, null, null, null, null, null]
-metadata/_custom_type_script = "uid://cs6qd5cf3gviv"
-
-[node name="Mesh" parent="StaticBody3D/Ring/Physics collision/Ring" instance=ExtResource("29_ivemq")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-
-[node name="Weapon invulerability" type="Area3D" parent="StaticBody3D/Ring/Physics collision/Ring"]
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("7_bac5w")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Ring/Physics collision/Ring/Weapon invulerability"]
-shape = SubResource("SphereShape3D_ivemq")
-
-[node name="Weapons" type="Node3D" parent="StaticBody3D"]
-
-[node name="Spike shooter module2" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
-script = ExtResource("5_bk2yy")
-weapon = NodePath("SpikeShooter")
-max_hp = 0.0
-hp = 0.0
-ship = NodePath("../../../Boss")
-metadata/_custom_type_script = "uid://6f2yjn6wgcun"
-
-[node name="SpikeShooter" type="Node3D" parent="StaticBody3D/Weapons/Spike shooter module2"]
-script = ExtResource("5_pqq2h")
-y_offset = -100.0
-base_radius = 20.0
-cooldown = 0.5
-projectile = ExtResource("9_2hnf7")
-
-[node name="Cloud shooter module" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
-script = ExtResource("5_bk2yy")
-weapon = NodePath("Cloud shooter")
-max_hp = 0.0
-hp = 0.0
-ship = NodePath("../../../Boss")
-metadata/_custom_type_script = "uid://6f2yjn6wgcun"
-
-[node name="Cloud shooter" type="Node3D" parent="StaticBody3D/Weapons/Cloud shooter module"]
-script = ExtResource("8_kr82f")
-spawn_count = 3
-min_range = 15.0
-max_range = 40.0
-cooldown = 0.5
-projectile = ExtResource("11_2hnf7")
-
-[node name="Enemy Spawner module" type="CollisionShape3D" parent="StaticBody3D/Weapons" node_paths=PackedStringArray("weapon", "ship")]
-script = ExtResource("5_bk2yy")
-weapon = NodePath("Enemy spawner")
-max_hp = 0.0
-hp = 0.0
-ship = NodePath("../../../Boss")
-metadata/_custom_type_script = "uid://6f2yjn6wgcun"
-
-[node name="Enemy spawner" type="Node3D" parent="StaticBody3D/Weapons/Enemy Spawner module"]
-script = ExtResource("8_kr82f")
-spawn_count = 3
-min_range = 15.0
-max_range = 40.0
-cooldown = 0.5
-projectile = ExtResource("12_2hnf7")
-
-[node name="StateMachineNPC" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("12_cbrw2")
-initial_state = NodePath("Idle")
-
-[node name="Idle" type="Node" parent="StateMachineNPC"]
-script = ExtResource("13_3aeiy")
-
-[node name="TimedTransition" type="Node" parent="StateMachineNPC/Idle" node_paths=PackedStringArray("new_state")]
-script = ExtResource("16_6qrt1")
-duration = 2.0
-new_state = NodePath("../../RandomTransition After idle")
-
-[node name="DamageTaken" type="Node" parent="StateMachineNPC/Idle" node_paths=PackedStringArray("damage_memory", "new_state")]
-script = ExtResource("19_p6xao")
-health_percentage_taken = 0.18
-damage_memory = NodePath("../../Damage Memory")
-new_state = NodePath("../../Teleport")
-
-[node name="Dead" type="Node" parent="StateMachineNPC/Idle" node_paths=PackedStringArray("new_state")]
-script = ExtResource("19_ot5ry")
-new_state = NodePath("../../Fall into abyss")
-
-[node name="RandomTransition After idle" type="Node" parent="StateMachineNPC"]
-script = ExtResource("14_erpum")
-
-[node name="Weight to Spike attack" type="Node" parent="StateMachineNPC/RandomTransition After idle" node_paths=PackedStringArray("state")]
-script = ExtResource("15_0jnmf")
-state = NodePath("../../Spike Warning")
-weight = 6
-
-[node name="Weight to Cloud attack" type="Node" parent="StateMachineNPC/RandomTransition After idle" node_paths=PackedStringArray("state")]
-script = ExtResource("15_0jnmf")
-state = NodePath("../../Cloud Attack")
-weight = 3
-
-[node name="Weight to Spawn enemies" type="Node" parent="StateMachineNPC/RandomTransition After idle" node_paths=PackedStringArray("state")]
-script = ExtResource("15_0jnmf")
-state = NodePath("../../Spawn enemies")
-
-[node name="Teleport" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("node_to_scale", "_transition_to_call")]
-script = ExtResource("6_yljnl")
-teleport_radius = 60.0
-max_angle_diff = 90.0
-scale_animation_time = 1.5
-node_to_scale = NodePath("../..")
-_transition_to_call = NodePath("OnStateFinish")
-
-[node name="OnStateFinish" type="Node" parent="StateMachineNPC/Teleport" node_paths=PackedStringArray("new_state")]
-script = ExtResource("7_yfy1f")
-new_state = NodePath("../../Idle")
-
-[node name="Spike Warning" type="Node" parent="StateMachineNPC"]
-script = ExtResource("13_3aeiy")
-
-[node name="Animate" type="Node" parent="StateMachineNPC/Spike Warning" node_paths=PackedStringArray("animators_root")]
-script = ExtResource("22_mbsxu")
-animators_root = NodePath("../../../Tentacles")
-condition_name = "spike_warning"
-
-[node name="TimedTransition" type="Node" parent="StateMachineNPC/Spike Warning" node_paths=PackedStringArray("new_state")]
-script = ExtResource("16_6qrt1")
-duration = 2.0
-new_state = NodePath("../../Spike attack")
-
-[node name="DamageTaken" type="Node" parent="StateMachineNPC/Spike Warning" node_paths=PackedStringArray("damage_memory", "new_state")]
-script = ExtResource("19_p6xao")
-health_percentage_taken = 0.18
-damage_memory = NodePath("../../Damage Memory")
-new_state = NodePath("../../Teleport")
-
-[node name="Dead" type="Node" parent="StateMachineNPC/Spike Warning" node_paths=PackedStringArray("new_state")]
-script = ExtResource("19_ot5ry")
-new_state = NodePath("../../Fall into abyss")
-
-[node name="Spike attack" type="Node" parent="StateMachineNPC"]
-script = ExtResource("13_3aeiy")
-
-[node name="Shooting" type="Node" parent="StateMachineNPC/Spike attack" node_paths=PackedStringArray("weapons")]
-script = ExtResource("12_4qxwn")
-weapons = [NodePath("../../../StaticBody3D/Weapons/Spike shooter module2/SpikeShooter")]
-metadata/_custom_type_script = "uid://c70pkbnps6ysy"
-
-[node name="TimedTransition" type="Node" parent="StateMachineNPC/Spike attack" node_paths=PackedStringArray("new_state")]
-script = ExtResource("16_6qrt1")
-duration = 10.0
-new_state = NodePath("../../Idle")
-
-[node name="DamageTaken" type="Node" parent="StateMachineNPC/Spike attack" node_paths=PackedStringArray("damage_memory", "new_state")]
-script = ExtResource("19_p6xao")
-health_percentage_taken = 0.18
-damage_memory = NodePath("../../Damage Memory")
-new_state = NodePath("../../Teleport")
-
-[node name="Dead" type="Node" parent="StateMachineNPC/Spike attack" node_paths=PackedStringArray("new_state")]
-script = ExtResource("19_ot5ry")
-new_state = NodePath("../../Fall into abyss")
-
-[node name="Cloud Attack" type="Node" parent="StateMachineNPC"]
-script = ExtResource("13_3aeiy")
-
-[node name="Shooting" type="Node" parent="StateMachineNPC/Cloud Attack" node_paths=PackedStringArray("weapons")]
-script = ExtResource("12_4qxwn")
-weapons = [NodePath("../../../StaticBody3D/Weapons/Cloud shooter module/Cloud shooter")]
-metadata/_custom_type_script = "uid://c70pkbnps6ysy"
-
-[node name="TimedTransition" type="Node" parent="StateMachineNPC/Cloud Attack" node_paths=PackedStringArray("new_state")]
-script = ExtResource("16_6qrt1")
-duration = 2.0
-new_state = NodePath("../../Idle")
-
-[node name="DamageTaken" type="Node" parent="StateMachineNPC/Cloud Attack" node_paths=PackedStringArray("damage_memory", "new_state")]
-script = ExtResource("19_p6xao")
-health_percentage_taken = 0.18
-damage_memory = NodePath("../../Damage Memory")
-new_state = NodePath("../../Teleport")
-
-[node name="Dead" type="Node" parent="StateMachineNPC/Cloud Attack" node_paths=PackedStringArray("new_state")]
-script = ExtResource("19_ot5ry")
-new_state = NodePath("../../Fall into abyss")
-
-[node name="Spawn enemies" type="Node" parent="StateMachineNPC"]
-script = ExtResource("13_3aeiy")
-
-[node name="Shooting" type="Node" parent="StateMachineNPC/Spawn enemies" node_paths=PackedStringArray("weapons")]
-script = ExtResource("12_4qxwn")
-weapons = [NodePath("../../../StaticBody3D/Weapons/Enemy Spawner module/Enemy spawner")]
-metadata/_custom_type_script = "uid://c70pkbnps6ysy"
-
-[node name="TimedTransition" type="Node" parent="StateMachineNPC/Spawn enemies" node_paths=PackedStringArray("new_state")]
-script = ExtResource("16_6qrt1")
-duration = 1.0
-new_state = NodePath("../../Idle")
-
-[node name="DamageTaken" type="Node" parent="StateMachineNPC/Spawn enemies" node_paths=PackedStringArray("damage_memory", "new_state")]
-script = ExtResource("19_p6xao")
-health_percentage_taken = 0.18
-damage_memory = NodePath("../../Damage Memory")
-new_state = NodePath("../../Teleport")
-
-[node name="Dead" type="Node" parent="StateMachineNPC/Spawn enemies" node_paths=PackedStringArray("new_state")]
-script = ExtResource("19_ot5ry")
-new_state = NodePath("../../Fall into abyss")
-
-[node name="Fall into abyss" type="Node" parent="StateMachineNPC"]
-script = ExtResource("13_3aeiy")
-metadata/_custom_type_script = "uid://d204dtgxrsbc"
-
-[node name="Fall" type="Node" parent="StateMachineNPC/Fall into abyss"]
-script = ExtResource("25_2xp31")
-acceleration = Vector3(0, -100, 0)
-
-[node name="Clear world" type="Node" parent="StateMachineNPC/Fall into abyss" node_paths=PackedStringArray("animator")]
-script = ExtResource("26_v2k46")
-animator = NodePath("../../../Vortex background/Sprite3D/AnimationPlayer")
-animation_name = "clear_world"
-
-[node name="TODO vortex closure attack" type="Node" parent="StateMachineNPC"]
-script = ExtResource("13_3aeiy")
-
-[node name="Damage Memory" type="Node" parent="StateMachineNPC"]
-script = ExtResource("20_pkmkm")
-
-[node name="EnemyPoi" parent="." instance=ExtResource("21_hho6b")]
-max_range = 10000.0
-
-[node name="Boss Cutscene" type="Node" parent="."]
-script = ExtResource("24_osa2j")
-cutscene_path = ExtResource("25_q7a2e")
-play_on_ready = true
-
-[node name="Tentacles" type="Node3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
-
-[node name="Main layer" type="Node3D" parent="Tentacles"]
-
-[node name="VortexBossTentacle" parent="Tentacles/Main layer" node_paths=PackedStringArray("damage_target") instance=ExtResource("26_mbsxu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.02779)
-damage_target = NodePath("../../../StaticBody3D/Ring/Physics collision/Ring")
-
-[node name="VortexBossTentacle2" parent="Tentacles/Main layer" node_paths=PackedStringArray("damage_target") instance=ExtResource("26_mbsxu")]
-transform = Transform3D(0.309017, 0, 0.951057, 0, 1, 0, -0.951057, 0, 0.309017, 1.92854, 0, 0.626622)
-damage_target = NodePath("../../../StaticBody3D/Ring/Physics collision/Ring")
-
-[node name="VortexBossTentacle3" parent="Tentacles/Main layer" node_paths=PackedStringArray("damage_target") instance=ExtResource("26_mbsxu")]
-transform = Transform3D(-0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, -0.809017, 1.19191, 0, -1.64052)
-damage_target = NodePath("../../../StaticBody3D/Ring/Physics collision/Ring")
-
-[node name="VortexBossTentacle4" parent="Tentacles/Main layer" node_paths=PackedStringArray("damage_target") instance=ExtResource("26_mbsxu")]
-transform = Transform3D(-0.809017, 0, -0.587785, 0, 1, 0, 0.587785, 0, -0.809017, -1.19191, 0, -1.64052)
-damage_target = NodePath("../../../StaticBody3D/Ring/Physics collision/Ring")
-
-[node name="VortexBossTentacle5" parent="Tentacles/Main layer" node_paths=PackedStringArray("damage_target") instance=ExtResource("26_mbsxu")]
-transform = Transform3D(0.309017, 0, -0.951056, 0, 1, 0, 0.951056, 0, 0.309017, -1.92854, 0, 0.626622)
-damage_target = NodePath("../../../StaticBody3D/Ring/Physics collision/Ring")
-
-[node name="Secondary layer" type="Node3D" parent="Tentacles"]
-transform = Transform3D(1.5, 0, 0, 0, -1.5, -2.26494e-07, 0, 2.26494e-07, -1.5, 0, -3.25069, -9.56303e-08)
-
-[node name="vortex_boss_tentacle" parent="Tentacles/Secondary layer" instance=ExtResource("28_ivemq")]
-
-[node name="vortex_boss_tentacle2" parent="Tentacles/Secondary layer" instance=ExtResource("28_ivemq")]
-transform = Transform3D(0.309017, 0, 0.951057, 0, 1, 0, -0.951057, 0, 0.309017, 0, 0, 0)
-
-[node name="vortex_boss_tentacle3" parent="Tentacles/Secondary layer" instance=ExtResource("28_ivemq")]
-transform = Transform3D(-0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, -0.809017, 0, 0, 0)
-
-[node name="vortex_boss_tentacle4" parent="Tentacles/Secondary layer" instance=ExtResource("28_ivemq")]
-transform = Transform3D(-0.809017, 0, -0.587785, 0, 1, 0, 0.587785, 0, -0.809017, 0, 0, 0)
-
-[node name="vortex_boss_tentacle5" parent="Tentacles/Secondary layer" instance=ExtResource("28_ivemq")]
-transform = Transform3D(0.309017, 0, -0.951056, 0, 1, 0, 0.951056, 0, 0.309017, 0, 0, 0)
-
-[node name="Warning Layer" type="Node3D" parent="Tentacles"]
-transform = Transform3D(1.20208, 0, 1.20208, 0, 1.7, 0, -1.20208, 0, 1.20208, 0, -0.58284, 0)
-
-[node name="vortex_boss_tentacle_warning" parent="Tentacles/Warning Layer" instance=ExtResource("27_xtho6")]
-
-[node name="vortex_boss_tentacle_warning2" parent="Tentacles/Warning Layer" instance=ExtResource("27_xtho6")]
-transform = Transform3D(0.309017, 0, 0.951057, 0, 1, 0, -0.951057, 0, 0.309017, 0, 0, 0)
-
-[node name="vortex_boss_tentacle_warning3" parent="Tentacles/Warning Layer" instance=ExtResource("27_xtho6")]
-transform = Transform3D(-0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, -0.809017, 0, 0, 0)
-
-[node name="vortex_boss_tentacle_warning4" parent="Tentacles/Warning Layer" instance=ExtResource("27_xtho6")]
-transform = Transform3D(-0.809017, 0, -0.587785, 0, 1, 0, 0.587785, 0, -0.809017, 0, 0, 0)
-
-[node name="vortex_boss_tentacle_warning5" parent="Tentacles/Warning Layer" instance=ExtResource("27_xtho6")]
-transform = Transform3D(0.309017, 0, -0.951056, 0, 1, 0, 0.951056, 0, 0.309017, 0, 0, 0)
-
-[node name="Vortex background" type="Node3D" parent="."]
-script = ExtResource("32_y47uf")
-
-[node name="Sprite3D" type="Sprite3D" parent="Vortex background"]
-transform = Transform3D(2000, 0, 0, 0, -8.74228e-05, 2000, 0, -2000, -8.74228e-05, 0, -67.8014, 2.74514e-06)
-material_override = SubResource("ShaderMaterial_a17kq")
-double_sided = false
-render_priority = 4
-texture = SubResource("GradientTexture2D_40l5p")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Vortex background/Sprite3D"]
-libraries = {
-&"": SubResource("AnimationLibrary_nokj6")
-}
-
-[node name="Aegis" parent="Vortex background" instance=ExtResource("41_q2gdo")]
-
-[connection signal="damaged" from="StaticBody3D/Core/DamageControllerHostileDamage" to="StaticBody3D/Core" method="take_damage"]
-
-[editable path="StaticBody3D/Core/DamageControllerHostileDamage"]
+shader_parameter/Aegis_Radius = 10.0
+shader_parameter/Aegis_softness = 0.2

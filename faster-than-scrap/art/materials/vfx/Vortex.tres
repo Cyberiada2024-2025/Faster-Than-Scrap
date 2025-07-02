@@ -36,5 +36,5 @@ shader_parameter/Spike_Rotation = 20.0
 shader_parameter/Aegis_Color = Color(4.986, 4.116, 1.296, 1)
 shader_parameter/Aegis_Position = Vector2(0, 0)
 shader_parameter/Plane_Size = 1280.0
-shader_parameter/Aegis_Radius = 20.0
-shader_parameter/Aegis_softness = 2.0
+shader_parameter/Aegis_Radius = 10.0
+shader_parameter/Aegis_softness = 0.2

@@ -42,7 +42,7 @@ curve = SubResource("Curve_2o1a8")
 script = ExtResource("1_itp45")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-amount = 500
+amount = 200
 lifetime = 2.2
 preprocess = 2.3
 local_coords = true

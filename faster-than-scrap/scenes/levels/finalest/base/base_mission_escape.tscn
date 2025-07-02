@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://pwsixhrj0x1o" path="res://scenes/levels/finalest/base/base_mission.tscn" id="1_hqhpf"]
 [ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="3_m0rei"]
-[ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="4_qdde0"]
+[ext_resource type="Script" path="res://prefabs/environment/mission_related/portal_position.gd" id="4_qdde0"]
 
 [node name="EscapeMisssionBase" instance=ExtResource("1_hqhpf")]
 

@@ -23,7 +23,6 @@ func _ready() -> void:
 	add_child(_scene_loader)
 	for boss_prefab in BossManager.bosses_to_spawn:
 		_spawn_boss(boss_prefab)
-	
 
 
 func _process(_delta: float) -> void:

@@ -50,7 +50,7 @@ transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -107.266)
 
 [node name="ShopMiniatureTutorial" parent="." instance=ExtResource("7_0pcpl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.72222)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.0403)
 
 [node name="EnterShop" parent="ShopMiniatureTutorial" index="1"]
 instantiated_cooldown = 2.0

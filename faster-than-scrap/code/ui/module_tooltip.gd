@@ -11,7 +11,7 @@ func config(module: Module) -> void:
 		"[b]"
 		+ String.num_int64(module.prize)
 		+ "[/b] "
-		+ "[img={width=20}]res://art/fonts/cog3.png[/img]"
+		+ "[img={width=25} color=#cc4214]res://art/fonts/cog.png[/img]"
 		+ "\n"
 	)
 

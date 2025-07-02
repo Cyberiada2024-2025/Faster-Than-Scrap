@@ -324,7 +324,7 @@ offset_bottom = 50.0
 theme = ExtResource("7_d8di0")
 theme_override_constants/outline_size = 12
 bbcode_enabled = true
-text = "[b]2[/b] [img={width=20}]res://art/fonts/cog.png[/img]"
+text = "[b]2[/b] [img={width=25} color=#cc4214]res://art/fonts/cog.png[/img]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -457,7 +457,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 bbcode_enabled = true
-text = "[b]Repair - 2 [img={width=20}]res://art/fonts/cog.png[/img]
+text = "[b]Repair - 2 [img={width=25} color=#cc4214]res://art/fonts/cog.png[/img]
 25%HP / mod[/b]"
 fit_content = true
 horizontal_alignment = 1

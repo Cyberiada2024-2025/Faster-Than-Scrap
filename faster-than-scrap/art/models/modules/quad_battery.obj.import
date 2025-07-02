@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://by3dga3fjvp1d"
+path="res://.godot/imported/quad_battery.obj-79988f1795b3dfdf723ac4e935acbe11.mesh"
+
+[deps]
+
+files=["res://.godot/imported/quad_battery.obj-79988f1795b3dfdf723ac4e935acbe11.mesh"]
+
+source_file="res://art/models/modules/quad_battery.obj"
+dest_files=["res://.godot/imported/quad_battery.obj-79988f1795b3dfdf723ac4e935acbe11.mesh", "res://.godot/imported/quad_battery.obj-79988f1795b3dfdf723ac4e935acbe11.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

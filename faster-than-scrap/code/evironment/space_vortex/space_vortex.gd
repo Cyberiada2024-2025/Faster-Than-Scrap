@@ -55,6 +55,7 @@ func _ready() -> void:
 	scale.z = start_scale
 	instance = self
 	mat.set_shader_parameter(RADIUS, start_scale)
+	mat.set_shader_parameter("Aegis_Position", Vector2(3000.0, 3000.0))
 
 
 func _process(delta: float) -> void:

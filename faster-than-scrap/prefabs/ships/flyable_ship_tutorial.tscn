@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://djgm5s1ld5wgr"]
+[gd_scene load_steps=9 format=3 uid="uid://djgm5s1ld5wgr"]
 
 [ext_resource type="Script" uid="uid://dlssaqrdqhvay" path="res://code/player/player_ship.gd" id="1_y502x"]
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="2_d3mqs"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://5lsgaj0hoqfu" path="res://prefabs/vfx/leave_animation.tscn" id="3_p382y"]
 [ext_resource type="PackedScene" uid="uid://dbajfkkhivhl0" path="res://prefabs/modules/weapons/laser_module.tscn" id="4_067ro"]
 [ext_resource type="PackedScene" uid="uid://taxlqo87sp7s" path="res://prefabs/modules/thruster.tscn" id="4_vxcau"]
+[ext_resource type="Script" uid="uid://ca3g5r4yj0pc3" path="res://code/player/aegis_effect.gd" id="5_ueyw3"]
 [ext_resource type="PackedScene" uid="uid://cujiw86wtjlp8" path="res://prefabs/modules/frame1.tscn" id="6_bq2yq"]
 
 [node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "leave_animation")]
@@ -39,6 +40,9 @@ double_sided = false
 no_depth_test = true
 
 [node name="AnimationPlayer" parent="Cockpit" instance=ExtResource("3_p382y")]
+
+[node name="Aegis" type="Node3D" parent="Cockpit"]
+script = ExtResource("5_ueyw3")
 
 [node name="Thruster Backward" parent="." node_paths=PackedStringArray("ship", "parent_module") instance=ExtResource("4_vxcau")]
 transform = Transform3D(1, 0, -1.62921e-07, 0, 1, 0, 1.62921e-07, 0, 1, -0.0103829, 0, -6.0019)

@@ -7,38 +7,38 @@
 [node name="AsteroidGroupCircle" type="Node3D"]
 
 [node name="Asteroid" parent="." instance=ExtResource("1_qjb6c")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -3.33053, 0, 13.0665)
-hp = 100
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -23.4938, 0, 11.4591)
+hp = 100.0
 start_speed_range = 0.5
 
 [node name="Asteroid4" parent="." instance=ExtResource("1_qjb6c")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 1.60059, 0, -5.01415)
-hp = 100
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 58.4464, 0, -31.1265)
+hp = 100.0
 start_speed_range = 0.5
 
 [node name="Asteroid2" parent="." instance=ExtResource("2_wmdj2")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -20.0479, 0, 7.88724)
-hp = 100
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -94.2576, 0, -21.8774)
+hp = 100.0
 start_speed_range = 0.5
 
 [node name="Asteroid6" parent="." instance=ExtResource("2_wmdj2")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 27.4989, 0, 1.94927)
-hp = 100
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 80.5768, 0, 15.7607)
+hp = 100.0
 start_speed_range = 0.5
 
 [node name="Asteroid8" parent="." instance=ExtResource("2_wmdj2")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 5.1772, 0, -18.266)
-hp = 100
+transform = Transform3D(-1.95737, -6.45906, 4.29526, 2.67843, -4.72022, -5.87754, 7.27975, 0, 3.31742, -31.9264, 0, -72.4196)
+hp = 100.0
 start_speed_range = 0.5
 
 [node name="Asteroid3" parent="." instance=ExtResource("3_hmhvq")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -18.1809, 0, -10.8892)
-hp = 100
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -85.9915, 0, 21.8399)
+hp = 100.0
 
 [node name="Asteroid7" parent="." instance=ExtResource("3_hmhvq")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 25.7825, 0, -14.9098)
-hp = 100
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 25.7825, 0, -72.151)
+hp = 100.0
 
 [node name="Asteroid9" parent="." instance=ExtResource("3_hmhvq")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 11.2737, 0, 12.5346)
-hp = 100
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 9.04167, 0, 57.4844)
+hp = 100.0

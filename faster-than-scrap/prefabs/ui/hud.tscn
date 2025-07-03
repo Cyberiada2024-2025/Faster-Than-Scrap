@@ -9,7 +9,7 @@
 
 [sub_resource type="Environment" id="Environment_s7i6o"]
 background_mode = 1
-background_color = Color(0, 0.0392157, 0.0196078, 1)
+background_color = Color(0.273677, 0.0869388, 0.245879, 1)
 ambient_light_source = 1
 reflected_light_source = 1
 glow_enabled = true

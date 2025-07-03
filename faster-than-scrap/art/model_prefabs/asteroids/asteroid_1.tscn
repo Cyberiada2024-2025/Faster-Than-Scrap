@@ -5,6 +5,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dl5jy44rkjgrr" path="res://art/models/asteroids/asteroid_1/asteroid1.obj" id="3_s7mof"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1dyhg"]
+albedo_color = Color(0.74978, 0.74978, 0.74978, 1)
 albedo_texture = ExtResource("1_c7lx2")
 roughness_texture = ExtResource("1_c7lx2")
 normal_enabled = true

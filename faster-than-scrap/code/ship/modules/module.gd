@@ -21,6 +21,7 @@ const EXPLOSION_DISTANCE_EXPONENT = 1
 @export var is_activable: bool = true
 @export var max_hp: float = 100
 @export var hp: float = 100
+@export var mass: float = 1
 @export_category("References")
 @export var ship: Ship
 @export var attach_points: Array[Node3D] = []
@@ -119,13 +120,17 @@ func update_sprite() -> void:
 
 
 func hide_on_module_camera() -> void:
-	sprite.set_layer_mask_value(2, false)
-	label.set_layer_mask_value(2, false)
+	if sprite != null:
+		sprite.set_layer_mask_value(2, false)
+	if label != null:
+		label.set_layer_mask_value(2, false)
 
 
 func show_on_module_camera() -> void:
-	sprite.set_layer_mask_value(2, true)
-	label.set_layer_mask_value(2, true)
+	if sprite != null:
+		sprite.set_layer_mask_value(2, true)
+	if label != null:
+		label.set_layer_mask_value(2, true)
 
 
 ## Destroy self and detach children
@@ -169,7 +174,7 @@ func _detach_all_children(explosion_center: Vector3) -> void:
 		)
 
 		child.deactivate()
-		child.detach_all_children(explosion_center)
+		child._detach_all_children(explosion_center)
 
 		child.on_detach()
 	child_modules = []
@@ -177,19 +182,20 @@ func _detach_all_children(explosion_center: Vector3) -> void:
 
 ## Called when the module is attached to the ship
 func on_attach() -> void:
-	pass
+	ship.update_mass()
 
 
 ## Called just before the module is detached from the ship
 func on_detach() -> void:
-	GameManager.player_ship.modules.erase(self)
+	ship.modules.erase(self)
+	ship.update_mass()
 	ship = null  # clear refence of a ship
 	hide_on_module_camera()
 
 
 ## Called when the module is attached to a different part of the ship than it previously was
 func on_reattach() -> void:
-	pass
+	ship.update_mass()
 
 
 func deactivate() -> void:

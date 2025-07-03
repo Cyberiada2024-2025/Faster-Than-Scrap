@@ -1,24 +1,24 @@
 [gd_scene load_steps=9 format=3 uid="uid://du6pm1c27imvg"]
 
 [ext_resource type="PackedScene" uid="uid://pwsixhrj0x1o" path="res://scenes/levels/finalest/base/base_mission.tscn" id="1_6hxda"]
-[ext_resource type="PackedScene" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_cramped_group.tscn" id="2_jqovc"]
+[ext_resource type="PackedScene" uid="uid://cc818ge6m4to5" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_cramped_group.tscn" id="2_jqovc"]
 [ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/npc/enemies/fighter.tscn" id="6_0p8mm"]
 [ext_resource type="PackedScene" uid="uid://dsbr8a55sppml" path="res://prefabs/npc/enemies/drone.tscn" id="6_6hxda"]
 [ext_resource type="PackedScene" uid="uid://dxbwuxdfu600q" path="res://prefabs/npc/enemies/turret_laser.tscn" id="7_qujcq"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="8_f74t2"]
 [ext_resource type="Script" uid="uid://cne5mpb7d4xce" path="res://code/missions/a/mission_fuel.gd" id="9_6hxda"]
-[ext_resource type="Script" path="res://prefabs/environment/mission_related/portal_position.gd" id="10_ol25r"]
+[ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="10_ol25r"]
 
 [node name="EscapeMisssionBase" instance=ExtResource("1_6hxda")]
 
 [node name="Enemies_ObjectiveEnemies#Fighter" parent="." index="0" instance=ExtResource("6_0p8mm")]
-transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 6.19575, 0, 1.49278)
+transform = Transform3D(0.210335, 0, 0.977629, 0, 1, 0, -0.977629, 0, 0.210335, 44.9777, 3.8147e-06, -68.0285)
 
 [node name="Enemies_ObjectiveEnemies#Drone" parent="." index="1" instance=ExtResource("6_6hxda")]
-transform = Transform3D(0.993317, 0, -0.115423, 0, 1, 0, 0.115423, 0, 0.993317, 0, 0, 0)
+transform = Transform3D(0.32177, 0, 0.946818, 0, 1, 0, -0.946818, 0, 0.32177, 42.2151, 3.8147e-06, -62.2854)
 
 [node name="Enemies_ObjectiveEnemies#Drone2" parent="." index="2" instance=ExtResource("6_6hxda")]
-transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 10.9076, 0, -5.32045)
+transform = Transform3D(0.210335, 0, 0.977629, 0, 1, 0, -0.977629, 0, 0.210335, 39.308, 3.8147e-06, -74.068)
 
 [node name="LevelStaples" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.007, 0, -218.774)

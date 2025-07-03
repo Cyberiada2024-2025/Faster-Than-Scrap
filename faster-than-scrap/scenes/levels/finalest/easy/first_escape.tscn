@@ -91,10 +91,10 @@ portal_position = NodePath("../PortalPosition")
 metadata/_custom_type_script = "uid://bq0dwhdq76qw"
 
 [node name="PortalPosition" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1395, 0, -77.6059)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.726, 0, -224.33)
 script = ExtResource("12_je32r")
 metadata/_custom_type_script = "uid://inuu5gi20l6r"
 
 [node name="Marker3D" type="Marker3D" parent="PortalPosition"]
-transform = Transform3D(3.23549, 0, 2.86252, 0, 4.32, 0, -2.86252, 0, 3.23549, 61.5959, 0, -143.64)
+transform = Transform3D(3.23549, 0, 2.86252, 0, 4.32, 0, -2.86252, 0, 3.23549, 0, 0, 0)
 gizmo_extents = 10.0

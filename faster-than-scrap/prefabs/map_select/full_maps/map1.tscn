@@ -238,13 +238,13 @@ next_map_nodes = [NodePath("../../MapLayer9/killall")]
 layout_mode = 2
 mission_info = SubResource("Resource_vsw54")
 level_prefab = ExtResource("20_sau2r")
-next_map_nodes = [NodePath(""), NodePath("")]
+next_map_nodes = [null, null]
 
 [node name="rockyfuel" parent="6" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("13_rwq3m")]
 layout_mode = 2
 mission_info = SubResource("Resource_6ev6g")
 level_prefab = ExtResource("21_f40e2")
-next_map_nodes = [NodePath("")]
+next_map_nodes = [null]
 
 [node name="MapMargin8" parent="." instance=ExtResource("4_nrfml")]
 layout_mode = 2

@@ -15,6 +15,8 @@ static var instance: Hud
 @export var min_zoom := 5
 @export var y_pos: float = 25
 
+@export var use_saved_fov: bool = true
+
 var _main_camera: Camera3D
 var _module_camera: Camera3D
 var _minimap_camera: Camera3D
@@ -30,7 +32,7 @@ func _ready() -> void:
 	_module_camera = $ModuleViewport/ModuleCamera
 	_minimap_camera = $MinimapViewport/MinimapCamera
 
-	if SettingsManager.zoom_level != 0:
+	if use_saved_fov and SettingsManager.zoom_level != 0:
 		_main_camera.fov = SettingsManager.zoom_level
 
 
@@ -141,6 +143,7 @@ func _process(_delta: float) -> void:
 
 func zoom_camera(strength: int) -> void:
 	var fov = clampf(_main_camera.fov + strength, min_zoom, max_zoom)
-	SettingsManager.zoom_level = fov
+	if use_saved_fov:
+		SettingsManager.zoom_level = fov
 	_tween = create_tween()
 	_tween.tween_property(_main_camera, "fov", fov, zoom_time)

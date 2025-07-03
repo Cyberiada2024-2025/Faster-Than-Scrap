@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_bnu5o"]
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_cs180"]
-[ext_resource type="Script" uid="uid://dc42aagfm4o0o" path="res://code/ship/modules/explodable.gd" id="3_mclyr"]
+[ext_resource type="Script" path="res://code/ship/modules/explodable.gd" id="3_mclyr"]
 [ext_resource type="PackedScene" uid="uid://ba6bvjt5dyf6b" path="res://art/model_prefabs/bosses/vortex_boss/vortex_core.tscn" id="4_xtho6"]
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="5_bk2yy"]
 [ext_resource type="PackedScene" uid="uid://butrr4i156xbg" path="res://prefabs/npc/bosses/vortex/lightnings.tscn" id="5_lqxhd"]
@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="13_3aeiy"]
 [ext_resource type="Script" uid="uid://dm7n818e46apw" path="res://code/enemy/transitions/random_transitions/random_transition.gd" id="14_erpum"]
 [ext_resource type="Script" uid="uid://bhyxhxybm21hs" path="res://code/enemy/transitions/random_transitions/weighted_state.gd" id="15_0jnmf"]
-[ext_resource type="Script" uid="uid://p2tfapf0egxl" path="res://code/enemy/transitions/timed_transition.gd" id="16_6qrt1"]
+[ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="16_6qrt1"]
 [ext_resource type="Script" uid="uid://cmxs42wfn06xe" path="res://code/enemy/transitions/boss_specific_transitions/boss_dead.gd" id="19_ot5ry"]
 [ext_resource type="Script" uid="uid://bwe8glgj1swy" path="res://code/enemy/transitions/boss_specific_transitions/damage_taken.gd" id="19_p6xao"]
 [ext_resource type="Script" uid="uid://b7v5naphnvff4" path="res://code/enemy/transitions/boss_specific_transitions/damage_memory.gd" id="20_pkmkm"]
@@ -1488,13 +1488,19 @@ _data = {
 &"clear_world": SubResource("Animation_ot5ry")
 }
 
-[node name="Vortex Boss" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
+[node name="Vortex Boss" type="RigidBody3D" node_paths=PackedStringArray("ship")]
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 1000.0
+gravity_scale = 0.0
 script = ExtResource("1_bnu5o")
 ship = NodePath("Boss")
 metadata/_custom_type_script = "uid://deimdflghl67a"
 
 [node name="Boss" type="RigidBody3D" parent="."]
 gravity_scale = 0.0
+freeze = true
 script = ExtResource("2_cs180")
 max_hp = 100.0
 

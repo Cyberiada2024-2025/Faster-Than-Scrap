@@ -8,4 +8,4 @@ func enter(_previous_state_path: String, _data := {}) -> void:
 
 func state_physics_update(_delta: float) -> void:
 	pass
-	# idle movement
+	# don't change any forces - free rigidbody movement

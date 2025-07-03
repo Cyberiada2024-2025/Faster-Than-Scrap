@@ -5,11 +5,13 @@ class_name movementState extends StateNPC
 ## in dead_zone do we stop in place [false] or keep circling [true]
 @export var circle_target: bool = false
 
-## we will check for new target every X ms
+## we will check for new target every X s
 @export var recheck_time: float = 5
 var _recheck_timer: float = 999999
 
 
+## Finds the closest ship that is an enemy of this NPC and sets it as target
+## The check only happens once every [member recheck_time] seconds.
 func check_target(_delta: float):
 	_recheck_timer += _delta
 	if _recheck_timer >= recheck_time:
@@ -21,7 +23,9 @@ func move_target_spotted(min_range_to_target: int) -> void:
 	if !is_instance_valid(target):
 		#force target recheck if target is not valid
 		check_target(INF)
+		print("Not valid - rechecking target")
 		return
+
 	var vector_to_target = target.global_position - ship_controller.global_position
 	vector_to_target.y = 0
 	var direction = vector_to_target.normalized()

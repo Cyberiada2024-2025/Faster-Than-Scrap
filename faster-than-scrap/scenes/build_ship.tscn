@@ -133,6 +133,8 @@ start_assigning_key_sound = NodePath("../StartAssigningKeySound")
 assign_key_sound = NodePath("../AssignKeySound")
 
 [node name="HUD" parent="ShipBuilder" instance=ExtResource("5_cv5l0")]
+fov = 54.0
+max_zoom = 54
 use_saved_fov = false
 
 [node name="Control" type="Control" parent="ShipBuilder"]

@@ -18,6 +18,8 @@ func setup() -> void:
 	MissionManager.get_tree().current_scene.add_child.call_deferred(portal)
 
 	# position it
+	if portal_position == null:
+		portal_position = get_parent().get_node("PortalPosition")
 	portal.global_position = portal_position.global_position
 	_spawn_vortex(portal_position.global_position)
 

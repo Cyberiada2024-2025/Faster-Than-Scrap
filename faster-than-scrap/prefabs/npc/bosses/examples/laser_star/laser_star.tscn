@@ -12,15 +12,15 @@
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="7_xvv2n"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="8_jstny"]
 [ext_resource type="PackedScene" uid="uid://bwji2ay2xd5bf" path="res://prefabs/npc/bosses/examples/laser_star/flow_bottom.tscn" id="9_ame6i"]
-[ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="9_k4714"]
+[ext_resource type="Script" uid="uid://p2tfapf0egxl" path="res://code/enemy/transitions/timed_transition.gd" id="9_k4714"]
 [ext_resource type="PackedScene" uid="uid://bpp1eb4sc4f8q" path="res://prefabs/npc/bosses/examples/laser_star/flow_top.tscn" id="10_8xa4f"]
 [ext_resource type="Script" uid="uid://b0xwjuq1av15m" path="res://code/enemy/states/rotate/constant_rotation.gd" id="10_vhk6y"]
 [ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="11_vp012"]
 [ext_resource type="Script" uid="uid://c7w7ael2yxs4y" path="res://code/enemy/states/rotate/look_at_target_with_object.gd" id="12_7fp2r"]
 [ext_resource type="Script" uid="uid://dig16nwffnibt" path="res://code/enemy/states/supplementary/restore_energy.gd" id="12_tiubj"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="15_vhk6y"]
-[ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_player.gd" id="16_mynj6"]
-[ext_resource type="PackedScene" uid="uid://ciecgbtrcy16n" path="res://prefabs/ui/cutscenes/boss_cutscenes/laster_star_cutscene.tscn" id="17_kardv"]
+[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="16_mynj6"]
+[ext_resource type="PackedScene" uid="uid://dlck66uao16fg" path="res://prefabs/ui/cutscenes/boss_cutscenes/laster_star_cutscene.tscn" id="17_kardv"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
 radius = 2.375

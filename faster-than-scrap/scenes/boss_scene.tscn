@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="4_lg3fv"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="5_xnu4p"]
 [ext_resource type="Script" uid="uid://f6d84uyul237" path="res://code/evironment/generate_nebulas.gd" id="6_itccy"]
-[ext_resource type="AudioStream" uid="uid://e8tnjp7mfohh" path="res://art/audio/sounds/music_fight.mp3" id="7_ydhkx"]
+[ext_resource type="AudioStream" uid="uid://e8tnjp7mfohh" path="res://art/audio/music/music_fight.mp3" id="7_ydhkx"]
 [ext_resource type="PackedScene" uid="uid://55masxr1fg7f" path="res://prefabs/vfx/particles/dust_particles.tscn" id="8_qadxt"]
 
 [node name="BossScene" type="Node3D"]

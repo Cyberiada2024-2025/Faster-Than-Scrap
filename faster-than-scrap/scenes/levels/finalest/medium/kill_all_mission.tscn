@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cbpcw4xut260y"]
+[gd_scene load_steps=13 format=3 uid="uid://cbpcw4xut260y"]
 
 [ext_resource type="PackedScene" uid="uid://pwsixhrj0x1o" path="res://scenes/levels/finalest/base/base_mission.tscn" id="1_josab"]
 [ext_resource type="PackedScene" uid="uid://dlp3fs4qym6g2" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group_straight_line.tscn" id="2_bsq6s"]
 [ext_resource type="PackedScene" uid="uid://cdq5hecjw2uki" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_group.tscn" id="3_0disa"]
 [ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="3_4a71x"]
-[ext_resource type="PackedScene" uid="uid://b8ggfura4533j" path="res://prefabs/environment/asteroids/asteroid_small_groups/big_asteroid_group.tscn" id="4_pwg3e"]
+[ext_resource type="PackedScene" uid="uid://bvng8hdkqm2d6" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid2.tscn" id="4_5q5tw"]
+[ext_resource type="PackedScene" uid="uid://dfco2h1p5vdx1" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid1.tscn" id="5_gvg6c"]
 [ext_resource type="Script" uid="uid://cv8qkmxin552e" path="res://code/missions/a/mission_kill_enemies.gd" id="5_t8l1y"]
+[ext_resource type="PackedScene" uid="uid://cs2m7lumvnaot" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid3.tscn" id="6_or8db"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="7_t8l1y"]
 [ext_resource type="PackedScene" uid="uid://do0sasbjik8fp" path="res://prefabs/npc/enemies/corrupted.tscn" id="8_iu4xl"]
 [ext_resource type="PackedScene" uid="uid://dsbr8a55sppml" path="res://prefabs/npc/enemies/drone.tscn" id="9_5q5tw"]
@@ -14,7 +16,7 @@
 [node name="EscapeMisssionBase" instance=ExtResource("1_josab")]
 
 [node name="ShopMiniature" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.507, 0, -83.6972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.953, 0, -82.9538)
 
 [node name="AsteroidGroupStraightLine" parent="Asteroids/Group1" index="0" instance=ExtResource("2_bsq6s")]
 transform = Transform3D(0.00382227, 0, -0.999993, 0, 1, 0, 0.999993, 0, 0.00382227, -90.3331, 0, 13.5194)
@@ -43,11 +45,17 @@ transform = Transform3D(0.770747, 0, 0.637142, 0, 1, 0, -0.637142, 0, 0.770747, 
 [node name="AsteroidBigGroup" parent="Asteroids/Group2" index="0" instance=ExtResource("3_0disa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -63.2718)
 
-[node name="AsteroidGroupCircle" parent="Asteroids/Group2" index="1" instance=ExtResource("4_pwg3e")]
-transform = Transform3D(0.60603, 0, -0.795442, 0, 1, 0, 0.795442, 0, 0.60603, -117.016, 0, 9.2431)
-
-[node name="AsteroidBigGroup2" parent="Asteroids/Group2" index="2" instance=ExtResource("3_0disa")]
+[node name="AsteroidBigGroup2" parent="Asteroids/Group2" index="1" instance=ExtResource("3_0disa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 62.7651)
+
+[node name="Asteroid" parent="Asteroids/Group3" index="0" instance=ExtResource("4_5q5tw")]
+transform = Transform3D(0.53063, 0, 0.847604, 0, 1, 0, -0.847604, 0, 0.53063, -71.5634, 0, 80.9213)
+
+[node name="Asteroid2" parent="Asteroids/Group3" index="1" instance=ExtResource("5_gvg6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.0708, -7.62939e-06, -14.2216)
+
+[node name="Asteroid3" parent="Asteroids/Group3" index="2" instance=ExtResource("6_or8db")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.126, 0, 0)
 
 [node name="MissionEscape" type="Node" parent="." index="4" node_paths=PackedStringArray("vortex_center")]
 script = ExtResource("5_t8l1y")
@@ -62,10 +70,10 @@ transform = Transform3D(0.671009, 0, -0.741449, 0, 1, 0, 0.741449, 0, 0.671009, 
 gizmo_extents = 23.8
 
 [node name="Turret Sniper" parent="." index="6" instance=ExtResource("7_t8l1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -137.431, 0, -20.2792)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134.418, 0, -32.1894)
 
 [node name="Turret Sniper2" parent="." index="7" instance=ExtResource("7_t8l1y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136.518, 0, 13.1586)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132.567, 0, 47.7219)
 
 [node name="Corrupted" parent="." index="8" instance=ExtResource("8_iu4xl")]
 transform = Transform3D(-0.980095, 0, -0.19853, 0, 1, 0, 0.19853, 0, -0.980095, -65.6623, 0, -12.187)

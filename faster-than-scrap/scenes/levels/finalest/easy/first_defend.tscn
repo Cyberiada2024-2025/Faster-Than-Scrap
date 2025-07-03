@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://st0p1n6f1ygk" path="res://prefabs/npc/enemies/assault.tscn" id="9_1w75s"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="10_afyjx"]
 [ext_resource type="Script" uid="uid://4w17qx65voq6" path="res://code/missions/a/mission_defend.gd" id="11_a1x0n"]
-[ext_resource type="Script" path="res://prefabs/environment/mission_related/portal_position.gd" id="12_jq35s"]
+[ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="12_jq35s"]
 
 [node name="MisssionOneDefend" type="Node3D"]
 

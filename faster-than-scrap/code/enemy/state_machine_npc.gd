@@ -3,6 +3,10 @@ class_name StateMachineNPC extends Node
 ## The initial state of the state machine. If not set, the first child node is used.
 @export var initial_state: State = null
 
+@export var can_be_knocked_out: bool = false
+
+@export var knocked_out_state: State = null
+
 #onready - children (states) are available
 #anonymous function to make sure starting state is set (with fallback)
 #call - invoke anonymous function
@@ -19,6 +23,12 @@ func _ready() -> void:
 	# Give every state a reference to the state machine.
 	for state_node: State in find_children("*", "State"):
 		state_node.finished.connect(_transition_to_next_state)
+
+	if can_be_knocked_out:
+		owner.contact_monitor = true
+		if owner.max_contacts_reported <= 0:
+			owner.max_contacts_reported = 10
+		owner.body_entered.connect(_on_owner_body_entered)
 
 	# State machines usually access data from the root node of the scene they're part of: the owner.
 	# We wait for the owner to be ready to guarantee all the data and nodes the states may need
@@ -56,3 +66,7 @@ func _physics_process(delta: float) -> void:
 	for t in state.transitions:
 		t.state_physics_update(delta)
 		t.condition()
+
+
+func _on_owner_body_entered(body: Node) -> void:
+	_transition_to_next_state(get_path_to(knocked_out_state))

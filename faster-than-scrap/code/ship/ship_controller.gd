@@ -1,9 +1,8 @@
 class_name ShipController
 
-extends CharacterBody3D
+extends RigidBody3D
 
 ## class used mostly for enemy to allow compatibility
-## with player implementation and to allow CharacteroBody3D
-## control of the enemy.
+## with player implementation and to allow control of the enemy.
 
 @export var ship: Ship

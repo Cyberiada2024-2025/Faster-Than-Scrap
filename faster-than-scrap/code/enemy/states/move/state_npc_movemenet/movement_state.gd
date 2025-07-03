@@ -40,10 +40,10 @@ func move_target_spotted(min_range_to_target: int) -> void:
 		ship_controller.basis = ship_controller.basis.slerp(
 			target_basis, ship_controller.rotation_speed
 		)
-		ship_controller.velocity = ship_controller.speed * ship_controller.basis.z * -1
+		ship_controller.linear_velocity = ship_controller.speed * ship_controller.basis.z * -1
 	# if we are in dead zone and not circling, then stop moving, and rotate towards target
 	elif !circle_target:
-		ship_controller.velocity = ship_controller.velocity.lerp(Vector3.ZERO, 0.04)
+		ship_controller.linear_velocity = ship_controller.linear_velocity.lerp(Vector3.ZERO, 0.04)
 		target_basis = Basis.looking_at(direction)
 		ship_controller.basis = ship_controller.basis.slerp(
 			target_basis, ship_controller.rotation_speed
@@ -52,5 +52,5 @@ func move_target_spotted(min_range_to_target: int) -> void:
 	# we will leave the dead zone, return to it and again move in a line
 	# not bad illusion of flying in a circle around target
 	else:
-		ship_controller.velocity = ship_controller.speed * ship_controller.basis.z * -1
-	ship_controller.move_and_slide()
+		ship_controller.linear_velocity = ship_controller.speed * ship_controller.basis.z * -1
+	#ship_controller.move_and_slide()

@@ -14,6 +14,7 @@ func enter(_previous_state_path: String, _data := {}) -> void:
 
 ## Called by the state machine on the engine's main loop tick.
 func state_physics_update(_delta: float) -> void:
+	super(_delta)
 	if not is_instance_valid(look_object):
 		_select_look_object()
 

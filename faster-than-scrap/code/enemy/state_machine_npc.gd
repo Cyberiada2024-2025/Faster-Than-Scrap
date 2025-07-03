@@ -69,4 +69,4 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_owner_body_entered(body: Node) -> void:
-	_transition_to_next_state(get_path_to(knocked_out_state))
+	_transition_to_next_state(knocked_out_state.name)

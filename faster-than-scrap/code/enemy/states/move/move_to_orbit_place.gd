@@ -34,6 +34,7 @@ func enter(_previous_state_path: String, _data := {}) -> void:
 
 ## Called by the state machine on the engine's main loop tick.
 func state_physics_update(_delta: float) -> void:
+	super(_delta)
 	var direction = destination - self.ship_controller.ship.global_position
 	direction.y = 0
 

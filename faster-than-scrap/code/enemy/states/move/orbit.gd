@@ -17,6 +17,7 @@ func enter(_previous_state_path: String, _data := {}) -> void:
 
 ## Called by the state machine on the engine's main loop tick.
 func state_physics_update(delta: float) -> void:
+	super(delta)
 	# rotate direction vector
 	direction_from_target = direction_from_target.rotated(Vector3.UP, orbit_radial_speed * delta)
 	direction_from_target = direction_from_target.normalized()

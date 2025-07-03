@@ -1,5 +1,5 @@
 class_name KnockedOut
-extends movementState
+extends StateNPC
 
 
 func enter(_previous_state_path: String, _data := {}) -> void:
@@ -8,4 +8,5 @@ func enter(_previous_state_path: String, _data := {}) -> void:
 
 func state_physics_update(_delta: float) -> void:
 	pass
-	# don't change any forces - free rigidbody movement
+	# don't change any forces
+	# (not calling super of StateNPC.state_physics_update method) - free rigidbody movement

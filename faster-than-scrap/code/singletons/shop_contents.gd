@@ -5,6 +5,11 @@ var shop_modules: Array[SceneData]
 
 
 func _ready() -> void:
+	GameManager.game_reset.connect(_on_game_manager_reset)
+	generate_contents()
+
+
+func _on_game_manager_reset():
 	generate_contents()
 
 

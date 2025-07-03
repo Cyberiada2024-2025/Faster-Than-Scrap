@@ -523,6 +523,8 @@ shader_parameter/Gradient = ExtResource("18_ny7hi")
 shader_parameter/Glow_Strength = 3.0
 
 [node name="Machine Gunner" type="RigidBody3D" node_paths=PackedStringArray("weapons", "ship") groups=["enemy"]]
+mass = 7.0
+gravity_scale = 0.0
 script = ExtResource("1_2mnim")
 speed = 5
 rotation_speed = 0.03
@@ -538,6 +540,7 @@ shape = SubResource("SphereShape3D_rj4bm")
 ignore_groups = Array[StringName]([&"asteroid", &"enemy"])
 damageable = NodePath("../DamageController/Damageable")
 shape = NodePath("../ControlerCollider")
+self_damage_multiplier = 0.25
 
 [node name="Weapon1" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, -2.756)

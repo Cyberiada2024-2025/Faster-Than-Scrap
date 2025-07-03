@@ -488,6 +488,8 @@ shader_parameter/Gradient = ExtResource("17_gwugi")
 shader_parameter/Glow_Strength = 3.0
 
 [node name="Turret Laser" type="RigidBody3D" node_paths=PackedStringArray("weapons", "ship") groups=["enemy"]]
+mass = 20.0
+gravity_scale = 0.0
 script = ExtResource("1_lyj0c")
 speed = 0
 rotation_speed = 0.02
@@ -503,6 +505,7 @@ shape = SubResource("SphereShape3D_s16g2")
 ignore_groups = Array[StringName]([&"asteroid", &"enemy"])
 damageable = NodePath("../DamageController/Damageable")
 shape = NodePath("../ControlerCollider")
+self_damage_multiplier = 0.4
 
 [node name="Weapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.66462)

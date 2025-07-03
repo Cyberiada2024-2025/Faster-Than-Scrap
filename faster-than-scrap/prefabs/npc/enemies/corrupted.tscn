@@ -766,6 +766,8 @@ _data = {
 }
 
 [node name="Corrupted" type="RigidBody3D" node_paths=PackedStringArray("weapons", "ship") groups=["enemy"]]
+mass = 6.0
+gravity_scale = 0.0
 script = ExtResource("1_x225i")
 rotation_speed = 0.06
 weapons = [NodePath("Weapon")]
@@ -780,6 +782,7 @@ shape = SubResource("SphereShape3D_sjc04")
 ignore_groups = Array[StringName]([&"asteroid", &"enemy"])
 damageable = NodePath("../DamageController/Damageable")
 shape = NodePath("../ControlerCollider")
+self_damage_multiplier = 0.2
 
 [node name="Weapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.64815)

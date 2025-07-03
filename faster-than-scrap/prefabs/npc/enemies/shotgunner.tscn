@@ -383,7 +383,7 @@ shader_parameter/Noise = ExtResource("19_7pmuj")
 shader_parameter/Gradient = ExtResource("18_668tx")
 shader_parameter/Glow_Strength = 3.0
 
-[node name="Shotgunner" type="RigidBody3D" node_paths=PackedStringArray("weapons", "ship")]
+[node name="Shotgunner" type="RigidBody3D" node_paths=PackedStringArray("weapons", "ship") groups=["enemy"]]
 script = ExtResource("1_ok4vr")
 speed = 6
 rotation_speed = 0.03
@@ -396,7 +396,7 @@ transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, -0.68
 shape = SubResource("SphereShape3D_rj4bm")
 
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("2_23gon")]
-ignore_groups = Array[StringName]([&"asteroid"])
+ignore_groups = Array[StringName]([&"asteroid", &"enemy"])
 damageable = NodePath("../DamageController/Damageable")
 shape = NodePath("../ControlerCollider")
 

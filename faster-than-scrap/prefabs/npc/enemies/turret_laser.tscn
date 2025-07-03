@@ -487,7 +487,7 @@ shader_parameter/Noise = ExtResource("18_ebrlx")
 shader_parameter/Gradient = ExtResource("17_gwugi")
 shader_parameter/Glow_Strength = 3.0
 
-[node name="Turret Laser" type="RigidBody3D" node_paths=PackedStringArray("weapons", "ship")]
+[node name="Turret Laser" type="RigidBody3D" node_paths=PackedStringArray("weapons", "ship") groups=["enemy"]]
 script = ExtResource("1_lyj0c")
 speed = 0
 rotation_speed = 0.02
@@ -500,7 +500,7 @@ transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, -0.28
 shape = SubResource("SphereShape3D_s16g2")
 
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("2_gup3d")]
-ignore_groups = Array[StringName]([&"asteroid"])
+ignore_groups = Array[StringName]([&"asteroid", &"enemy"])
 damageable = NodePath("../DamageController/Damageable")
 shape = NodePath("../ControlerCollider")
 

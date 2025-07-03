@@ -765,7 +765,7 @@ _data = {
 &"on": SubResource("Animation_stlrq")
 }
 
-[node name="Corrupted" type="RigidBody3D" node_paths=PackedStringArray("weapons", "ship")]
+[node name="Corrupted" type="RigidBody3D" node_paths=PackedStringArray("weapons", "ship") groups=["enemy"]]
 script = ExtResource("1_x225i")
 rotation_speed = 0.06
 weapons = [NodePath("Weapon")]
@@ -777,7 +777,7 @@ transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, -0.33
 shape = SubResource("SphereShape3D_sjc04")
 
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("2_2xlc8")]
-ignore_groups = Array[StringName]([&"asteroid"])
+ignore_groups = Array[StringName]([&"asteroid", &"enemy"])
 damageable = NodePath("../DamageController/Damageable")
 shape = NodePath("../ControlerCollider")
 

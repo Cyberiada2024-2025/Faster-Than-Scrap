@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=4 uid="uid://fijjj7y4ie3w"]
+[gd_scene load_steps=81 format=4 uid="uid://fijjj7y4ie3w"]
 
 [ext_resource type="Script" uid="uid://do6r4sdoiglip" path="res://code/enemy/NPC.gd" id="1_2mnim"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_e5imm"]
@@ -18,7 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="14_fbjbq"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="15_c60k2"]
 [ext_resource type="Script" uid="uid://ckopxl7ibocoa" path="res://code/vfx/damaged_skin.gd" id="16_eq1o7"]
+[ext_resource type="Script" uid="uid://bu4oxed632vj6" path="res://code/enemy/states/move/state_npc_movemenet/knocked_out.gd" id="16_fbjbq"]
 [ext_resource type="PackedScene" uid="uid://cslkg7x0muy4u" path="res://prefabs/vfx/particles/basic/fire.tscn" id="17_11tdu"]
+[ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="17_c60k2"]
 [ext_resource type="Shader" uid="uid://daw8hb8ypy7ri" path="res://art/shaders/Enemies.tres" id="17_iyc0x"]
 [ext_resource type="Texture2D" uid="uid://ckjg0c7xp6hni" path="res://art/models/enemies/enemy_2/enemy_model_2_2skrzyproccolor.png" id="18_gmv6q"]
 [ext_resource type="Texture2D" uid="uid://2c1a1ogf3sa1" path="res://art/textures/vfxy/fire_gradient_weird.png" id="18_ny7hi"]
@@ -519,12 +521,13 @@ shader_parameter/Noise = ExtResource("19_7a8wh")
 shader_parameter/Gradient = ExtResource("18_ny7hi")
 shader_parameter/Glow_Strength = 3.0
 
-[node name="Machine Gunner" type="CharacterBody3D" node_paths=PackedStringArray("weapons", "ship")]
+[node name="Machine Gunner" type="RigidBody3D" node_paths=PackedStringArray("weapons", "ship")]
 script = ExtResource("1_2mnim")
 speed = 5
 rotation_speed = 0.03
 weapons = [NodePath("Weapon1"), NodePath("Weapon2")]
 ship = NodePath("Ship")
+metadata/_custom_type_script = "uid://do6r4sdoiglip"
 
 [node name="Weapon1" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, -2.756)
@@ -576,9 +579,11 @@ script = ExtResource("4_00pjq")
 restore = 0.0
 max_hp = 40.0
 
-[node name="StateMachineEnemy" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachineEnemy" type="Node" parent="." node_paths=PackedStringArray("initial_state", "knocked_out_state")]
 script = ExtResource("5_omjb1")
 initial_state = NodePath("Idle")
+can_be_knocked_out = true
+knocked_out_state = NodePath("KnockedOut")
 
 [node name="Shooting" type="Node" parent="StateMachineEnemy"]
 script = ExtResource("6_iyc0x")
@@ -636,6 +641,14 @@ script = ExtResource("13_1glmj")
 script = ExtResource("10_eq1o7")
 range_treshold = 50
 new_state = NodePath("../../Aggressive")
+
+[node name="KnockedOut" type="Node" parent="StateMachineEnemy"]
+script = ExtResource("16_fbjbq")
+
+[node name="TimedTransition" type="Node" parent="StateMachineEnemy/KnockedOut" node_paths=PackedStringArray("new_state")]
+script = ExtResource("17_c60k2")
+duration = 2.0
+new_state = NodePath("../../Idle")
 
 [node name="ControlerCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, -0.687797)

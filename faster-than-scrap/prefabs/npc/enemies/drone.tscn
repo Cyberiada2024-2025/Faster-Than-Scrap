@@ -488,6 +488,7 @@ max_hp = 5.0
 [node name="StateMachineEnemy" type="Node" parent="." node_paths=PackedStringArray("initial_state", "knocked_out_state")]
 script = ExtResource("5_n5sfj")
 initial_state = NodePath("Idle")
+can_be_knocked_out = true
 knocked_out_state = NodePath("KnockedOut")
 
 [node name="AggressiveShooting" type="Node" parent="StateMachineEnemy"]

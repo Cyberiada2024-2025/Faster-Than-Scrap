@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://bko3jm751dtjg"]
 
 [ext_resource type="PackedScene" uid="uid://pwsixhrj0x1o" path="res://scenes/levels/finalest/base/base_mission.tscn" id="1_aeqbh"]
-[ext_resource type="PackedScene" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_cramped_group.tscn" id="2_52ndu"]
+[ext_resource type="PackedScene" uid="uid://cc818ge6m4to5" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_cramped_group.tscn" id="2_52ndu"]
 [ext_resource type="PackedScene" uid="uid://chtuqjjikj2f" path="res://prefabs/npc/enemies/bomber.tscn" id="5_cc0ju"]
 [ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/npc/enemies/fighter.tscn" id="6_s7pqe"]
 [ext_resource type="PackedScene" uid="uid://dxbwuxdfu600q" path="res://prefabs/npc/enemies/turret_laser.tscn" id="7_hmbvn"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="8_4ujij"]
 [ext_resource type="PackedScene" uid="uid://do0sasbjik8fp" path="res://prefabs/npc/enemies/corrupted.tscn" id="9_52ndu"]
-[ext_resource type="Script" path="res://prefabs/environment/mission_related/portal_position.gd" id="10_ggd34"]
+[ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="10_ggd34"]
 [ext_resource type="Script" uid="uid://4w17qx65voq6" path="res://code/missions/a/mission_defend.gd" id="10_y5ahc"]
 
 [node name="EscapeMisssionBase" instance=ExtResource("1_aeqbh")]

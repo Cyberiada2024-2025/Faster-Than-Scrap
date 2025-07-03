@@ -85,6 +85,7 @@ func _damage_objects(delta: float) -> void:
 
 
 func _on_body_exited(body: Node3D) -> void:
+	print("!!!!!")
 	if not preserve_target and body.is_in_group("affected by vortex"):
 		damageables_in_vortex.append(body)
 

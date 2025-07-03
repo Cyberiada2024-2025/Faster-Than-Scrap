@@ -1,67 +1,61 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxuab0bqfjkxo"]
+[gd_scene load_steps=8 format=3 uid="uid://bxuab0bqfjkxo"]
 
 [ext_resource type="PackedScene" uid="uid://pwsixhrj0x1o" path="res://scenes/levels/finalest/base/base_mission.tscn" id="1_queop"]
 [ext_resource type="PackedScene" uid="uid://b7d6dp7jrytp3" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group.tscn" id="2_2nxrt"]
+[ext_resource type="Script" uid="uid://4w17qx65voq6" path="res://code/missions/a/mission_defend.gd" id="2_2q6n5"]
 [ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/npc/enemies/fighter.tscn" id="3_3v03v"]
-[ext_resource type="PackedScene" uid="uid://ceu6i6ji4q3oq" path="res://prefabs/npc/enemies/turret_gun.tscn" id="4_5kvag"]
-[ext_resource type="PackedScene" uid="uid://st0p1n6f1ygk" path="res://prefabs/npc/enemies/assault.tscn" id="5_4kgvv"]
 [ext_resource type="PackedScene" uid="uid://chtuqjjikj2f" path="res://prefabs/npc/enemies/bomber.tscn" id="6_vao8f"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="7_wsok0"]
-[ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="8_wobvk"]
-[ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="9_0k700"]
+[ext_resource type="Script" path="res://prefabs/environment/mission_related/portal_position.gd" id="9_0k700"]
 
 [node name="EscapeMisssionBase" instance=ExtResource("1_queop")]
 
-[node name="ShopMiniature" parent="." index="1"]
+[node name="MissionEscape" type="Node" parent="." index="0" node_paths=PackedStringArray("defendable_position")]
+script = ExtResource("2_2q6n5")
+defendable_position = NodePath("../PortalPosition")
+metadata/_custom_type_script = "uid://4w17qx65voq6"
+
+[node name="PortalPosition" type="Node3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13194, 3.05176e-05, -245.092)
+script = ExtResource("9_0k700")
+
+[node name="Marker3D" type="Marker3D" parent="PortalPosition" index="0"]
+transform = Transform3D(0.804863, 0, -0.593461, 0, 1, 0, 0.593461, 0, 0.804863, 0, 0, 0)
+gizmo_extents = 20.0
+
+[node name="ShopMiniature" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.64978, 0, -163.997)
 
 [node name="Group1" parent="Asteroids" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.3275)
 
 [node name="AsteroidGroupCircle" parent="Asteroids/Group1" index="0" instance=ExtResource("2_2nxrt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10724, -3.8147e-06, -71.608)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.286597, -3.8147e-06, -70.99)
 
 [node name="AsteroidGroupCircle" parent="Asteroids/Group1/AsteroidGroupCircle" index="8" instance=ExtResource("2_2nxrt")]
 transform = Transform3D(-0.728909, 0, -0.684611, 0, 1, 0, 0.684611, 0, -0.728909, -4.65243, 7.62939e-06, 43.5799)
 
 [node name="AsteroidGroupCircle2" parent="Asteroids/Group1/AsteroidGroupCircle" index="9" instance=ExtResource("2_2nxrt")]
-transform = Transform3D(-0.943709, 0, 0.330778, 0, 1, 0, -0.330778, 0, -0.943709, 24.0044, 1.90735e-05, 31.4528)
+transform = Transform3D(-0.943709, 0, 0.330778, 0, 1, 0, -0.330778, 0, -0.943709, 17.9518, 1.90735e-05, 35.9106)
+
+[node name="AsteroidGroupCircle3" parent="Asteroids/Group1/AsteroidGroupCircle" index="10" instance=ExtResource("2_2nxrt")]
+transform = Transform3D(-0.943709, 0, 0.330778, 0, 1, 0, -0.330778, 0, -0.943709, 22.7838, 1.90735e-05, 11.0966)
 
 [node name="AsteroidGroupCircle2" parent="Asteroids/Group1" index="1" instance=ExtResource("2_2nxrt")]
-transform = Transform3D(0.461424, 0, -0.88718, 0, 1, 0, 0.88718, 0, 0.461424, -54.6926, 0, -41.8288)
+transform = Transform3D(0.461424, 0, -0.88718, 0, 1, 0, 0.88718, 0, 0.461424, -15.4253, 0, -47.7952)
 
-[node name="ShopEnemies" parent="Enemies" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4084, 1.52588e-05, -178.658)
-
-[node name="Fighter" parent="Enemies/ShopEnemies" index="0" instance=ExtResource("3_3v03v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4179, -7.62939e-06, 28.8176)
-
-[node name="ShopEnemies2" type="Node3D" parent="Enemies" index="1"]
+[node name="ShopEnemies2" type="Node3D" parent="Enemies" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.3175, 1.52588e-05, -178.658)
 
 [node name="Fighter" parent="Enemies/ShopEnemies2" index="0" instance=ExtResource("3_3v03v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.8775, 0, 14.7183)
 
-[node name="ShopEnemies3" type="Node3D" parent="Enemies" index="2"]
+[node name="ShopEnemies3" type="Node3D" parent="Enemies" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2775, 2.28882e-05, -131.079)
 
 [node name="Fighter" parent="Enemies/ShopEnemies3" index="0" instance=ExtResource("3_3v03v")]
 
-[node name="ObjectiveEnemies" parent="Enemies" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9058, -7.62939e-06, -265.831)
-
-[node name="Turret Gun" parent="Enemies/ObjectiveEnemies" index="0" instance=ExtResource("4_5kvag")]
-
-[node name="Turret Gun2" parent="Enemies/ObjectiveEnemies" index="1" instance=ExtResource("4_5kvag")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488792, 0, 45.167)
-
-[node name="Turret Gun3" parent="Enemies/ObjectiveEnemies" index="2" instance=ExtResource("4_5kvag")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.4632, 0, 18.9758)
-
-[node name="Assault" parent="Enemies/ObjectiveEnemies" index="3" instance=ExtResource("5_4kgvv")]
-transform = Transform3D(0.772767, 0, 0.63469, 0, 1, 0, -0.63469, 0, 0.772767, 23.1291, 0, 25.1202)
-
-[node name="Other" type="Node3D" parent="Enemies" index="4"]
+[node name="Other" type="Node3D" parent="Enemies" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.519, 0, -62.1078)
 
 [node name="Fighter3" parent="Enemies/Other" index="0" instance=ExtResource("3_3v03v")]
@@ -81,17 +75,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5123, 0, -25.5961)
 
 [node name="Turret Sniper" parent="Enemies/Other" index="5" instance=ExtResource("7_wsok0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.983, -7.62939e-06, -0.643494)
-
-[node name="MissionEscape" type="Node" parent="." index="4" node_paths=PackedStringArray("portal_position")]
-script = ExtResource("8_wobvk")
-portal_position = NodePath("../PortalPosition")
-metadata/_custom_type_script = "uid://bq0dwhdq76qw"
-
-[node name="PortalPosition" type="Node3D" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13194, 3.05176e-05, -245.092)
-script = ExtResource("9_0k700")
-metadata/_custom_type_script = "uid://inuu5gi20l6r"
-
-[node name="Marker3D" type="Marker3D" parent="PortalPosition" index="0"]
-transform = Transform3D(0.804863, 0, -0.593461, 0, 1, 0, 0.593461, 0, 0.804863, 0, 0, 0)
-gizmo_extents = 20.0

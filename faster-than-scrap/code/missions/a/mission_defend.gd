@@ -4,7 +4,7 @@ extends Mission
 
 @export_category("Main defendable")
 @export var defendable_position: Node3D
-@export var time_to_defend: float = 20
+@export var time_to_defend: float = 10
 @export var defend_prefab = preload("res://prefabs/environment/mission_related/defend_target.tscn")
 
 @export_category("Small defendables")

@@ -19,6 +19,6 @@
 
 [node name="Enemies" type="Node3D" parent="."]
 
-[node name="ShopEnemies" type="Node3D" parent="Enemies"]
+[node name="ShopEnemies" type="Node3D" parent="."]
 
-[node name="ObjectiveEnemies" type="Node3D" parent="Enemies"]
+[node name="ObjectiveEnemies" type="Node3D" parent="."]

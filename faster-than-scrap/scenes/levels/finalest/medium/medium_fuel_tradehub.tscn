@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://du6pm1c27imvg"]
+[gd_scene load_steps=9 format=3 uid="uid://du6pm1c27imvg"]
 
 [ext_resource type="PackedScene" uid="uid://pwsixhrj0x1o" path="res://scenes/levels/finalest/base/base_mission.tscn" id="1_6hxda"]
-[ext_resource type="PackedScene" uid="uid://cc818ge6m4to5" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_cramped_group.tscn" id="2_jqovc"]
-[ext_resource type="PackedScene" uid="uid://creq1gbmemif6" path="res://prefabs/ships/flyable_ship.tscn" id="4_lp458"]
+[ext_resource type="PackedScene" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_cramped_group.tscn" id="2_jqovc"]
 [ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/npc/enemies/fighter.tscn" id="6_0p8mm"]
 [ext_resource type="PackedScene" uid="uid://dsbr8a55sppml" path="res://prefabs/npc/enemies/drone.tscn" id="6_6hxda"]
 [ext_resource type="PackedScene" uid="uid://dxbwuxdfu600q" path="res://prefabs/npc/enemies/turret_laser.tscn" id="7_qujcq"]
@@ -90,17 +89,14 @@ transform = Transform3D(-0.997426, 0, 0.0717063, 0, 1, 0, -0.0717063, 0, -0.9974
 [node name="AsteroidBigGroup5" parent="Asteroids/Group1/Group3" index="4" instance=ExtResource("2_jqovc")]
 transform = Transform3D(0.999994, 0, -0.00349075, 0, 1, 0, 0.00349075, 0, 0.999994, -35.5524, 0, 45.889)
 
-[node name="FlyableShip" parent="Asteroids" index="1" instance=ExtResource("4_lp458")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89525, 3.8147e-06, 7.69228)
-
-[node name="Group3" parent="Asteroids" index="3"]
+[node name="Group3" parent="Asteroids" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 53.8823)
 
-[node name="Group4" type="Node3D" parent="Asteroids" index="4"]
+[node name="Group4" type="Node3D" parent="Asteroids" index="3"]
 
-[node name="Group5" type="Node3D" parent="Asteroids" index="5"]
+[node name="Group5" type="Node3D" parent="Asteroids" index="4"]
 
-[node name="Group6" type="Node3D" parent="Asteroids" index="6"]
+[node name="Group6" type="Node3D" parent="Asteroids" index="5"]
 
 [node name="ObjectiveEnemies" parent="Enemies" index="1"]
 transform = Transform3D(-0.48287, 0, 0.875692, 0, 1, 0, -0.875692, 0, -0.48287, 69.9569, 0, -79.9196)
@@ -135,8 +131,9 @@ transform = Transform3D(-0.981424, 0, -0.191854, 0, 1, 0, 0.191854, 0, -0.981424
 [node name="Turret Sniper4" parent="Enemies/Node3D" index="5" instance=ExtResource("8_f74t2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8126, 0, -14.8431)
 
-[node name="MissionEscape" type="Node" parent="." index="4"]
+[node name="MissionEscape" type="Node" parent="." index="4" node_paths=PackedStringArray("fuel_position")]
 script = ExtResource("9_6hxda")
+fuel_position = NodePath("../PortalPosition")
 metadata/_custom_type_script = "uid://cne5mpb7d4xce"
 
 [node name="PortalPosition" type="Node3D" parent="." index="5"]

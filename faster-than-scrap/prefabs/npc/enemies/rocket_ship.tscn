@@ -1,7 +1,8 @@
-[gd_scene load_steps=62 format=3 uid="uid://dusrity80tka3"]
+[gd_scene load_steps=63 format=3 uid="uid://dusrity80tka3"]
 
 [ext_resource type="Script" uid="uid://do6r4sdoiglip" path="res://code/enemy/NPC.gd" id="1_bti25"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_j2re0"]
+[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="2_lixke"]
 [ext_resource type="PackedScene" uid="uid://bryatpspob0wr" path="res://prefabs/projectiles/enemy projectiles/enemy_missile.tscn" id="3_bti25"]
 [ext_resource type="Script" uid="uid://dpubtuvds874u" path="res://code/ship/ship.gd" id="4_lixke"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="5_qfcoj"]
@@ -393,6 +394,11 @@ metadata/_custom_type_script = "uid://do6r4sdoiglip"
 [node name="ControlerCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, -0.687797)
 shape = SubResource("SphereShape3D_rj4bm")
+
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("2_lixke")]
+ignore_groups = Array[StringName]([&"asteroid"])
+damageable = NodePath("../DamageController/Damageable")
+shape = NodePath("../ControlerCollider")
 
 [node name="Weapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.87423)

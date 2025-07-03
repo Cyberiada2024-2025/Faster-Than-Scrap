@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=4 uid="uid://dsbr8a55sppml"]
+[gd_scene load_steps=73 format=4 uid="uid://dsbr8a55sppml"]
 
 [ext_resource type="Script" uid="uid://do6r4sdoiglip" path="res://code/enemy/NPC.gd" id="1_nsuwi"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_06abb"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="15_0cu7i"]
 [ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="15_iylvd"]
 [ext_resource type="Script" uid="uid://ckopxl7ibocoa" path="res://code/vfx/damaged_skin.gd" id="16_ihdcd"]
+[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="17_hde6p"]
 [ext_resource type="PackedScene" uid="uid://cslkg7x0muy4u" path="res://prefabs/vfx/particles/basic/fire.tscn" id="17_mtjpu"]
 [ext_resource type="Shader" uid="uid://daw8hb8ypy7ri" path="res://art/shaders/Enemies.tres" id="17_pvqdt"]
 [ext_resource type="Texture2D" uid="uid://2c1a1ogf3sa1" path="res://art/textures/vfxy/fire_gradient_weird.png" id="18_7x6ag"]
@@ -461,6 +462,11 @@ metadata/_custom_type_script = "uid://do6r4sdoiglip"
 [node name="ControlerCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, -0.188556)
 shape = SubResource("SphereShape3D_sjc04")
+
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("17_hde6p")]
+ignore_groups = Array[StringName]([&"asteroid"])
+damageable = NodePath("../DamageController/Damageable")
+shape = NodePath("../ControlerCollider")
 
 [node name="Weapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.64815)

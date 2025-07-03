@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dl25rxjflhw6g"]
+[gd_scene load_steps=2 format=3 uid="uid://jcygg3arfg0r"]
 
-[ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="1_blqjj"]
+[ext_resource type="Script" path="res://prefabs/environment/mission_related/portal_position.gd" id="1_blqjj"]
 
 [node name="Portal Position" type="Node3D"]
 script = ExtResource("1_blqjj")

@@ -14,7 +14,6 @@ func setup() -> void:
 
 	# create escape object
 	portal = portal_prefab.instantiate()
-	portal.add_child(create_label("EXIT"))
 	MissionManager.get_tree().current_scene.add_child.call_deferred(portal)
 
 	# position it

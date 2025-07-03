@@ -40,6 +40,9 @@ func _spawn_defendable() -> void:
 	# main defendable
 	var defendable: CapturePoint = defend_prefab.instantiate()
 	MissionManager.get_tree().current_scene.add_child.call_deferred(defendable)
+	if defendable_position == null:
+		defendable_position = get_parent().get_node("PortalPosition")
+
 	defendable.global_position = defendable_position.global_position
 	defendable.on_capture.connect(_on_capture)
 	defendable.capture_time = time_to_defend

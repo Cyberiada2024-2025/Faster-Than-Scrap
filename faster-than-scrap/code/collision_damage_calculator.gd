@@ -7,6 +7,8 @@ const DAMAGE_MULTIPLIER = 10.0
 	"res://prefabs/vfx/particles/timed_particles/collision.tscn"
 )
 
+@export var ignore_groups: Array[StringName]
+
 @export_category("CollisionCalculator")
 ## Target to which the damage will be dealt
 @export var damageable: Damageable
@@ -66,8 +68,15 @@ func _handle_collision(
 ) -> void:
 	if not include_other_shapes and calculated_body.get_child(local_shape_index) != shape:
 		return
-	var damage: Damage = calculate_damage(calculated_body, body)
-	damageable.take_damage(damage, body)
+
+	var should_take_damage = true
+	for group_name in ignore_groups:
+		if body.is_in_group(group_name):
+			should_take_damage = false
+
+	if should_take_damage:
+		var damage: Damage = calculate_damage(calculated_body, body)
+		damageable.take_damage(damage, body)
 
 	if collision_particles != null:
 		_spawn_collision_particles()
@@ -140,4 +149,5 @@ func calculate_damage(me: Node, oponent: Node) -> Damage:
 	damage.value -= flat_damage_reduction
 	if damage.value <= 0:
 		damage.value = 0
+	print(damage, " to ", calculated_body)
 	return damage

@@ -413,6 +413,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_7shuu")
 
 [node name="Ship" type="RigidBody3D" parent="."]
 gravity_scale = 0.0
+freeze = true
 script = ExtResource("4_eb5v7")
 
 [node name="StateMachineEnemy" type="Node" parent="." node_paths=PackedStringArray("initial_state", "knocked_out_state")]

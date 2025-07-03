@@ -795,6 +795,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_g31i6")
 
 [node name="Ship" type="RigidBody3D" parent="."]
 gravity_scale = 0.0
+freeze = true
 script = ExtResource("4_oewmq")
 restore = 0.0
 max_hp = 20.0

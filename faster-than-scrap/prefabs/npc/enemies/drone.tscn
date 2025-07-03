@@ -482,6 +482,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_7shuu")
 
 [node name="Ship" type="RigidBody3D" parent="."]
 gravity_scale = 0.0
+freeze = true
 script = ExtResource("4_3ftud")
 max_hp = 5.0
 

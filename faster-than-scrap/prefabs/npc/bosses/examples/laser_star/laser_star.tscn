@@ -19,18 +19,32 @@
 [ext_resource type="Script" uid="uid://c7w7ael2yxs4y" path="res://code/enemy/states/rotate/look_at_target_with_object.gd" id="12_7fp2r"]
 [ext_resource type="Script" uid="uid://dig16nwffnibt" path="res://code/enemy/states/supplementary/restore_energy.gd" id="12_tiubj"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="15_vhk6y"]
-[ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_player.gd" id="16_mynj6"]
-[ext_resource type="PackedScene" uid="uid://ciecgbtrcy16n" path="res://prefabs/ui/cutscenes/boss_cutscenes/laster_star_cutscene.tscn" id="17_kardv"]
+[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="16_mynj6"]
+[ext_resource type="PackedScene" uid="uid://dlck66uao16fg" path="res://prefabs/ui/cutscenes/boss_cutscenes/laster_star_cutscene.tscn" id="17_kardv"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
 radius = 2.375
 
-[node name="LaserStar" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
+[node name="LaserStar" type="RigidBody3D" node_paths=PackedStringArray("ship")]
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 1e+06
+gravity_scale = 0.0
 script = ExtResource("1_nesmw")
 ship = NodePath("Boss")
+metadata/_custom_type_script = "uid://deimdflghl67a"
 
 [node name="Boss" type="RigidBody3D" parent="."]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 gravity_scale = 0.0
+freeze = true
 script = ExtResource("2_s6qyd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

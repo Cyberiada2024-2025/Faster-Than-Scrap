@@ -2,39 +2,39 @@
 
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_bnu5o"]
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_cs180"]
-[ext_resource type="Script" path="res://code/ship/modules/explodable.gd" id="3_mclyr"]
+[ext_resource type="Script" uid="uid://dc42aagfm4o0o" path="res://code/ship/modules/explodable.gd" id="3_mclyr"]
 [ext_resource type="PackedScene" uid="uid://ba6bvjt5dyf6b" path="res://art/model_prefabs/bosses/vortex_boss/vortex_core.tscn" id="4_xtho6"]
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="5_bk2yy"]
 [ext_resource type="PackedScene" uid="uid://butrr4i156xbg" path="res://prefabs/npc/bosses/vortex/lightnings.tscn" id="5_lqxhd"]
-[ext_resource type="Script" path="res://code/weapons/on_target_spawner_weapon.gd" id="5_pqq2h"]
+[ext_resource type="Script" uid="uid://bnjdv1cll5kvy" path="res://code/weapons/on_target_spawner_weapon.gd" id="5_pqq2h"]
 [ext_resource type="PackedScene" uid="uid://cueuhnoh0g75p" path="res://prefabs/modules/functional_components/damage_controller_hostile_damage.tscn" id="6_y47uf"]
 [ext_resource type="Script" uid="uid://cdwjrb230l0qw" path="res://code/enemy/states/move/teleport.gd" id="6_yljnl"]
-[ext_resource type="Script" path="res://code/damage/damageable.gd" id="7_bac5w"]
-[ext_resource type="Script" path="res://code/enemy/transitions/transition_on_state_finish.gd" id="7_yfy1f"]
+[ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://code/damage/damageable.gd" id="7_bac5w"]
+[ext_resource type="Script" uid="uid://clbayyulct4as" path="res://code/enemy/transitions/transition_on_state_finish.gd" id="7_yfy1f"]
 [ext_resource type="Script" uid="uid://sb0nfuqj50k0" path="res://code/weapons/in_area_spawner_weapon.gd" id="8_kr82f"]
-[ext_resource type="PackedScene" path="res://prefabs/projectiles/boss_projectiles/vortex_spike_flash.tscn" id="9_2hnf7"]
+[ext_resource type="PackedScene" uid="uid://coiccskokh2q6" path="res://prefabs/projectiles/boss_projectiles/vortex_spike_flash.tscn" id="9_2hnf7"]
 [ext_resource type="PackedScene" uid="uid://bqcsqeowaiij4" path="res://prefabs/projectiles/boss_projectiles/vortex_cloud_flash.tscn" id="11_2hnf7"]
-[ext_resource type="PackedScene" path="res://prefabs/projectiles/boss_projectiles/vortex_spawn_flash.tscn" id="12_2hnf7"]
+[ext_resource type="PackedScene" uid="uid://b2xl30r0e0ece" path="res://prefabs/projectiles/boss_projectiles/vortex_spawn_flash.tscn" id="12_2hnf7"]
 [ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="12_4qxwn"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="12_cbrw2"]
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="13_3aeiy"]
 [ext_resource type="Script" uid="uid://dm7n818e46apw" path="res://code/enemy/transitions/random_transitions/random_transition.gd" id="14_erpum"]
 [ext_resource type="Script" uid="uid://bhyxhxybm21hs" path="res://code/enemy/transitions/random_transitions/weighted_state.gd" id="15_0jnmf"]
-[ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="16_6qrt1"]
+[ext_resource type="Script" uid="uid://p2tfapf0egxl" path="res://code/enemy/transitions/timed_transition.gd" id="16_6qrt1"]
 [ext_resource type="Script" uid="uid://cmxs42wfn06xe" path="res://code/enemy/transitions/boss_specific_transitions/boss_dead.gd" id="19_ot5ry"]
 [ext_resource type="Script" uid="uid://bwe8glgj1swy" path="res://code/enemy/transitions/boss_specific_transitions/damage_taken.gd" id="19_p6xao"]
 [ext_resource type="Script" uid="uid://b7v5naphnvff4" path="res://code/enemy/transitions/boss_specific_transitions/damage_memory.gd" id="20_pkmkm"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="21_hho6b"]
-[ext_resource type="Script" path="res://code/enemy/states/animate/animate_state_one_shot.gd" id="22_mbsxu"]
-[ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_player.gd" id="24_osa2j"]
+[ext_resource type="Script" uid="uid://bi4im5upc3uyx" path="res://code/enemy/states/animate/animate_state_one_shot.gd" id="22_mbsxu"]
+[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="24_osa2j"]
 [ext_resource type="Script" uid="uid://c1f25eathho6h" path="res://code/enemy/states/move/state_npc_movemenet/move_direction.gd" id="25_2xp31"]
-[ext_resource type="PackedScene" path="res://prefabs/ui/cutscenes/boss_cutscenes/vortex_boss_cutscene.tscn" id="25_q7a2e"]
+[ext_resource type="PackedScene" uid="uid://b6daqms6qnhjg" path="res://prefabs/ui/cutscenes/boss_cutscenes/vortex_boss_cutscene.tscn" id="25_q7a2e"]
 [ext_resource type="PackedScene" uid="uid://ckxcfr4vlxbr1" path="res://prefabs/npc/bosses/vortex/vortex_boss_tentacle.tscn" id="26_mbsxu"]
 [ext_resource type="Script" uid="uid://chca257un8ebl" path="res://code/enemy/states/animate/on_enter_animate.gd" id="26_v2k46"]
 [ext_resource type="PackedScene" uid="uid://ixlivfkj2s1o" path="res://art/model_prefabs/bosses/vortex_boss/vortex_boss_tentacle_warning.tscn" id="27_xtho6"]
 [ext_resource type="PackedScene" uid="uid://jstvt3uuo0mv" path="res://art/model_prefabs/bosses/vortex_boss/vortex_boss_tentacle_secondary.tscn" id="28_ivemq"]
 [ext_resource type="PackedScene" uid="uid://j2dyy6flaq5t" path="res://art/model_prefabs/bosses/vortex_boss/vortex_ring.tscn" id="29_ivemq"]
-[ext_resource type="Script" path="res://code/utilities/auto_reparent.gd" id="32_y47uf"]
+[ext_resource type="Script" uid="uid://btpdstvgw55fd" path="res://code/utilities/auto_reparent.gd" id="32_y47uf"]
 [ext_resource type="Shader" uid="uid://h7vm553px534" path="res://art/shaders/graphs/vortex.tres" id="33_2xp31"]
 [ext_resource type="Texture2D" uid="uid://cc70v8is7a6lc" path="res://art/textures/vfxy/vortex/Clouds1.png" id="34_v2k46"]
 [ext_resource type="Texture2D" uid="uid://cdnuaoleepsqv" path="res://art/textures/vfxy/vortex/Clouds2.png" id="35_ot5ry"]
@@ -84,6 +84,21 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_40l5p"]
 gradient = SubResource("Gradient_ivlmu")
 
+[sub_resource type="Animation" id="Animation_q2gdo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material_override:shader_parameter/Safe_Radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_ot5ry"]
 resource_name = "clear_world"
 length = 5.0
@@ -100,28 +115,13 @@ tracks/0/keys = {
 "values": [0.0, 2000.0]
 }
 
-[sub_resource type="Animation" id="Animation_q2gdo"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material_override:shader_parameter/Safe_Radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nokj6"]
 _data = {
 &"RESET": SubResource("Animation_q2gdo"),
 &"clear_world": SubResource("Animation_ot5ry")
 }
 
-[node name="Vortex Boss" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
+[node name="ELDRITCH ABOMINATION" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
 script = ExtResource("1_bnu5o")
 ship = NodePath("Boss")
 metadata/_custom_type_script = "uid://deimdflghl67a"

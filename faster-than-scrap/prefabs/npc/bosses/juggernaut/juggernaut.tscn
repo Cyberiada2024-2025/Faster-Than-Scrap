@@ -4,12 +4,12 @@
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_byxk3"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="3_5ov2f"]
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="3_a8moe"]
-[ext_resource type="Script" path="res://code/ship/modules/explodable.gd" id="3_qln4k"]
+[ext_resource type="Script" uid="uid://dc42aagfm4o0o" path="res://code/ship/modules/explodable.gd" id="3_qln4k"]
 [ext_resource type="Script" uid="uid://crmxerc164n6q" path="res://code/weapons/constant_fire_weapon.gd" id="4_1irkd"]
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="4_clgev"]
 [ext_resource type="PackedScene" uid="uid://bgpoyw23tdb7h" path="res://art/model_prefabs/bosses/juggernaut/juggernaut.tscn" id="4_t21y8"]
 [ext_resource type="Script" uid="uid://befj25g2qfhr7" path="res://code/enemy/states/move/orbit.gd" id="5_5ov2f"]
-[ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="6_cla4x"]
+[ext_resource type="Script" uid="uid://p2tfapf0egxl" path="res://code/enemy/transitions/timed_transition.gd" id="6_cla4x"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="6_ion51"]
 [ext_resource type="Script" uid="uid://c14j6cdbgt38o" path="res://code/enemy/states/rotate/look_at_target.gd" id="6_xr00f"]
 [ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="7_a8moe"]
@@ -22,15 +22,15 @@
 [ext_resource type="PackedScene" uid="uid://cf4qlk85kdwxg" path="res://prefabs/projectiles/boss_projectiles/star_beam_flash.tscn" id="10_qln4k"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="11_clgev"]
 [ext_resource type="PackedScene" uid="uid://c02tg8vmx2ibt" path="res://prefabs/projectiles/boss_projectiles/juggernaut_shotgun_flash.tscn" id="11_qln4k"]
-[ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_player.gd" id="22_1nvpg"]
-[ext_resource type="PackedScene" uid="uid://bh1max67hf46s" path="res://prefabs/ui/cutscenes/boss_cutscenes/juggernaut_cutscene.tscn" id="23_j2cd8"]
+[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="22_1nvpg"]
+[ext_resource type="PackedScene" uid="uid://dnqt5dsa6jb20" path="res://prefabs/ui/cutscenes/boss_cutscenes/juggernaut_cutscene.tscn" id="23_j2cd8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_km21v"]
 size = Vector3(5, 1, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qln4k"]
 
-[node name="Juggernaut" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
+[node name="JUGGERNAUT" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
 script = ExtResource("1_yarj2")
 ship = NodePath("Boss")
 metadata/_custom_type_script = "uid://deimdflghl67a"

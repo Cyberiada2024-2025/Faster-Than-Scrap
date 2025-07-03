@@ -43,17 +43,23 @@ func start_animation(ending_method: Callable) -> void:
 	if callable:
 		callable = false
 		ending = ending_method
-		anim_player.play(prepare_anim_name, -1, 1 / prepare_time)
-		animating = true
-		saved_transform = player.transform
+		if get_tree().current_scene.name == "BossScene":
+			anim_player.play("aegis", -1, 1)
+		else:
+			anim_player.play(prepare_anim_name, -1, 1 / prepare_time)
+			animating = true
+			saved_transform = player.transform
 		anim_timer = 0
-
 		if jump_sound_emitter:
 			jump_sound_emitter.start_playing()
 
 
 func _on_animation_finished(anim_name: StringName) -> void:
-	if anim_name == prepare_anim_name:
+	if anim_name == "aegis":
+		anim_player.play(prepare_anim_name, -1, 1 / prepare_time)
+		animating = true
+		saved_transform = player.transform
+	elif anim_name == prepare_anim_name:
 		anim_player.play(jump_anim_name, -1, 1 / jump_time)
 	elif anim_name == jump_anim_name:
 		callable = true

@@ -68,5 +68,5 @@ func _physics_process(delta: float) -> void:
 		t.condition()
 
 
-func _on_owner_body_entered(body: Node) -> void:
+func _on_owner_body_entered(_body: Node) -> void:
 	_transition_to_next_state(knocked_out_state.name)

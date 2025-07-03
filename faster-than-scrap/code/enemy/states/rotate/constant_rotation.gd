@@ -4,5 +4,5 @@ extends StateNPC
 
 
 ## Called by the state machine on the engine's main loop tick.
-func state_update(delta: float) -> void:
-	ship_controller.rotation += Vector3(0, deg_to_rad(y_rotation_speed), 0) * delta
+func state_physics_update(delta: float) -> void:
+	ship_controller.angular_velocity = Vector3(0, deg_to_rad(y_rotation_speed), 0)

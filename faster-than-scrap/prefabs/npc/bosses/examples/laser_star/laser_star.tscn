@@ -28,7 +28,6 @@ radius = 2.375
 [node name="LaserStar" type="RigidBody3D" node_paths=PackedStringArray("ship")]
 axis_lock_linear_y = true
 axis_lock_angular_x = true
-axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 1e+06
 gravity_scale = 0.0

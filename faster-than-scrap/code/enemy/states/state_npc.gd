@@ -2,13 +2,14 @@ class_name StateNPC extends State
 
 var ship_controller: ShipController
 var transitions: Array[baseTransition]
+
 # player or another npc
 @onready var target: Ship
 
 
 ## Called by the state machine on the engine's physics update tick.
 func state_physics_update(_delta: float) -> void:
-	if ship_controller != null:
+	if ship_controller.should_reset_velocities and ship_controller != null:
 		ship_controller.linear_velocity = Vector3.ZERO
 		ship_controller.angular_velocity = Vector3.ZERO
 

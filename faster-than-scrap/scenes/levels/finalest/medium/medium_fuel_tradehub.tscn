@@ -11,13 +11,35 @@
 
 [node name="EscapeMisssionBase" instance=ExtResource("1_6hxda")]
 
-[node name="LevelStaples" parent="." index="0"]
+[node name="Enemies_ObjectiveEnemies#Fighter" parent="." index="0" instance=ExtResource("6_0p8mm")]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 6.19575, 0, 1.49278)
+
+[node name="Enemies_ObjectiveEnemies#Drone" parent="." index="1" instance=ExtResource("6_6hxda")]
+transform = Transform3D(0.993317, 0, -0.115423, 0, 1, 0, 0.115423, 0, 0.993317, 0, 0, 0)
+
+[node name="Enemies_ObjectiveEnemies#Drone2" parent="." index="2" instance=ExtResource("6_6hxda")]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 10.9076, 0, -5.32045)
+
+[node name="LevelStaples" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.007, 0, -218.774)
 
-[node name="ShopMiniature" parent="." index="1"]
+[node name="MissionEscape" type="Node" parent="." index="4" node_paths=PackedStringArray("fuel_position")]
+script = ExtResource("9_6hxda")
+fuel_position = NodePath("../PortalPosition")
+metadata/_custom_type_script = "uid://cne5mpb7d4xce"
+
+[node name="PortalPosition" type="Node3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.7497, -0.137329, -71.0415)
+script = ExtResource("10_ol25r")
+
+[node name="Marker3D" type="Marker3D" parent="PortalPosition" index="0"]
+transform = Transform3D(0.671009, 0, -0.741449, 0, 1, 0, 0.741449, 0, 0.671009, 0, 0, 0)
+gizmo_extents = 23.8
+
+[node name="ShopMiniature" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.1511, 0, -65.317)
 
-[node name="Asteroids" parent="." index="2"]
+[node name="Asteroids" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.7775)
 
 [node name="AsteroidBigGroup" parent="Asteroids/Group1" index="0" instance=ExtResource("2_jqovc")]
@@ -98,48 +120,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 53.8823)
 
 [node name="Group6" type="Node3D" parent="Asteroids" index="5"]
 
-[node name="ObjectiveEnemies" parent="Enemies" index="1"]
-transform = Transform3D(-0.48287, 0, 0.875692, 0, 1, 0, -0.875692, 0, -0.48287, 69.9569, 0, -79.9196)
+[node name="Turret Laser2" parent="Enemies" index="0" instance=ExtResource("7_qujcq")]
+transform = Transform3D(0.651834, 0, -0.758362, 0, 1, 0, 0.758362, 0, 0.651834, -64.2627, 0, -42.2676)
 
-[node name="Fighter" parent="Enemies/ObjectiveEnemies" index="0" instance=ExtResource("6_0p8mm")]
-transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 6.19575, 0, 1.49278)
+[node name="Turret Sniper2" parent="Enemies" index="1" instance=ExtResource("8_f74t2")]
+transform = Transform3D(-0.423488, 0, 0.905902, 0, 1, 0, -0.905902, 0, -0.423488, 14.1395, 0, -59.4895)
 
-[node name="Drone" parent="Enemies/ObjectiveEnemies" index="1" instance=ExtResource("6_6hxda")]
-transform = Transform3D(0.993317, 0, -0.115423, 0, 1, 0, 0.115423, 0, 0.993317, 0, 0, 0)
+[node name="Turret Laser" parent="Enemies" index="2" instance=ExtResource("7_qujcq")]
+transform = Transform3D(-0.664749, 0, -0.747068, 0, 1, 0, 0.747068, 0, -0.664749, -59.4611, 0, -87.8539)
 
-[node name="Drone2" parent="Enemies/ObjectiveEnemies" index="2" instance=ExtResource("6_6hxda")]
-transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 10.9076, 0, -5.32045)
+[node name="Turret Sniper3" parent="Enemies" index="3" instance=ExtResource("8_f74t2")]
+transform = Transform3D(0.10911, 0, 0.99403, 0, 1, 0, -0.99403, 0, 0.10911, -7.04039, 0, -91.2585)
 
-[node name="Node3D" type="Node3D" parent="Enemies" index="2"]
-transform = Transform3D(0.10911, 0, 0.99403, 0, 1, 0, -0.99403, 0, 0.10911, 46.2503, 0, -73.2015)
+[node name="Turret Sniper5" parent="Enemies" index="4" instance=ExtResource("8_f74t2")]
+transform = Transform3D(0.0836255, 0, -0.996498, 0, 1, 0, 0.996498, 0, 0.0836255, -24.0817, 0, -49.0781)
 
-[node name="Turret Laser2" parent="Enemies/Node3D" index="0" instance=ExtResource("7_qujcq")]
-transform = Transform3D(-0.682713, 0, -0.730687, 0, 1, 0, 0.730687, 0, -0.682713, -42.8073, 0, -106.478)
-
-[node name="Turret Sniper2" parent="Enemies/Node3D" index="1" instance=ExtResource("8_f74t2")]
-transform = Transform3D(0.854286, 0, 0.519802, 0, 1, 0, -0.519802, 0, 0.854286, -17.1337, 0, -30.423)
-
-[node name="Turret Laser" parent="Enemies/Node3D" index="2" instance=ExtResource("7_qujcq")]
-transform = Transform3D(-0.815138, 0, 0.579267, 0, 1, 0, -0.579267, 0, -0.815138, 3.03075, 0, -106.679)
-
-[node name="Turret Sniper3" parent="Enemies/Node3D" index="3" instance=ExtResource("8_f74t2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1346, 0, -54.9427)
-
-[node name="Turret Sniper5" parent="Enemies/Node3D" index="4" instance=ExtResource("8_f74t2")]
-transform = Transform3D(-0.981424, 0, -0.191854, 0, 1, 0, 0.191854, 0, -0.981424, -31.6533, 0, -67.28)
-
-[node name="Turret Sniper4" parent="Enemies/Node3D" index="5" instance=ExtResource("8_f74t2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8126, 0, -14.8431)
-
-[node name="MissionEscape" type="Node" parent="." index="4" node_paths=PackedStringArray("fuel_position")]
-script = ExtResource("9_6hxda")
-fuel_position = NodePath("../PortalPosition")
-metadata/_custom_type_script = "uid://cne5mpb7d4xce"
-
-[node name="PortalPosition" type="Node3D" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.7497, -0.137329, -71.0415)
-script = ExtResource("10_ol25r")
-
-[node name="Marker3D" type="Marker3D" parent="PortalPosition" index="0"]
-transform = Transform3D(0.671009, 0, -0.741449, 0, 1, 0, 0.741449, 0, 0.671009, 0, 0, 0)
-gizmo_extents = 23.8
+[node name="Turret Sniper4" parent="Enemies" index="5" instance=ExtResource("8_f74t2")]
+transform = Transform3D(0.10911, 0, 0.99403, 0, 1, 0, -0.99403, 0, 0.10911, 33.0029, 0, -88.5512)

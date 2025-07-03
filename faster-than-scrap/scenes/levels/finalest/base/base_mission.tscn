@@ -18,7 +18,3 @@
 [node name="Group3" type="Node3D" parent="Asteroids"]
 
 [node name="Enemies" type="Node3D" parent="."]
-
-[node name="ShopEnemies" type="Node3D" parent="."]
-
-[node name="ObjectiveEnemies" type="Node3D" parent="."]

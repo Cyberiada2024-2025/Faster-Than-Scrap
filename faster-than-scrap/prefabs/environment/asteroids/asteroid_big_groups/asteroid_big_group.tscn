@@ -5,16 +5,16 @@
 [node name="AsteroidBigGroup" type="Node3D"]
 
 [node name="AsteroidGroupCircle" parent="." instance=ExtResource("1_jxbfn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.4245, 0, -26.7626)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.1895, 0, -14.5484)
 
 [node name="AsteroidGroupCircle6" parent="." instance=ExtResource("1_jxbfn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.0255, 0, -30.7774)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1792, 0, -19.3828)
 
 [node name="AsteroidGroupCircle7" parent="." instance=ExtResource("1_jxbfn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5145, 0, 13.8045)
+transform = Transform3D(0.574477, 0, 0.818521, 0, 1, 0, -0.818521, 0, 0.574477, 26.6229, -3.8147e-06, 6.73439)
 
 [node name="AsteroidGroupCircle8" parent="." instance=ExtResource("1_jxbfn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.39771, 0, 7.61675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.35977, 0, 7.61675)
 
 [node name="AsteroidGroupCircle9" parent="." instance=ExtResource("1_jxbfn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.2858, -0.0788498, 23.6221)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.928, -0.0788498, 18.905)

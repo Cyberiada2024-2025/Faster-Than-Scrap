@@ -7,23 +7,23 @@
 [node name="AsteroidGroupCircle" type="Node3D"]
 
 [node name="Asteroid" parent="." instance=ExtResource("1_rfenr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6031, 0, 17.96)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1179, 0, 0.783615)
 start_speed_range = 0.5
 
 [node name="Asteroid5" parent="." instance=ExtResource("1_rfenr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.49481, 0, 16.7794)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00531, 0, 11.6957)
 start_speed_range = 0.5
 
 [node name="Asteroid7" parent="." instance=ExtResource("2_e3gh6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9121, 0, -5.49689)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9841, 0, -4.90379)
 start_speed_range = 0.5
 
 [node name="Asteroid8" parent="." instance=ExtResource("2_e3gh6")]
-transform = Transform3D(0.799695, 0, 0.600406, 0, 1, 0, -0.600406, 0, 0.799695, -8.79953, 3.8147e-06, -19.6511)
+transform = Transform3D(0.799695, 0, 0.600406, 0, 1, 0, -0.600406, 0, 0.799695, -3.85858, 3.8147e-06, -13.4893)
 start_speed_range = 0.5
 
 [node name="Asteroid9" parent="." instance=ExtResource("2_e3gh6")]
-transform = Transform3D(0.889121, 0, -0.457672, 0, 1, 0, 0.457672, 0, 0.889121, -33.5904, -1.90735e-06, -12.136)
+transform = Transform3D(0.889121, 0, -0.457672, 0, 1, 0, 0.457672, 0, 0.889121, -17.1656, -1.90735e-06, -4.85571)
 start_speed_range = 0.5
 
 [node name="Asteroid12" parent="." instance=ExtResource("3_lks8i")]
@@ -35,5 +35,5 @@ transform = Transform3D(0.912442, 0, 0.409207, 0, 1, 0, -0.409207, 0, 0.912442, 
 start_speed_range = 0.5
 
 [node name="Asteroid14" parent="." instance=ExtResource("3_lks8i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6787, 1.90735e-06, 16.3116)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6116, 1.90735e-06, 8.54272)
 start_speed_range = 0.5

@@ -37,5 +37,4 @@ func state_physics_update(_delta: float) -> void:
 	var direction = destination - self.ship_controller.ship.global_position
 	direction.y = 0
 
-	ship_controller.velocity = direction * lerp_strength
-	ship_controller.move_and_slide()
+	ship_controller.linear_velocity = direction * lerp_strength

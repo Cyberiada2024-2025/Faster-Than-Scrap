@@ -53,4 +53,3 @@ func move_target_spotted(min_range_to_target: int) -> void:
 	# not bad illusion of flying in a circle around target
 	else:
 		ship_controller.linear_velocity = ship_controller.speed * ship_controller.basis.z * -1
-	#ship_controller.move_and_slide()

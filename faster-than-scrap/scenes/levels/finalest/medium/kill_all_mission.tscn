@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://cbpcw4xut260y"]
 
 [ext_resource type="PackedScene" uid="uid://pwsixhrj0x1o" path="res://scenes/levels/finalest/base/base_mission.tscn" id="1_josab"]
-[ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="2_5vild"]
 [ext_resource type="PackedScene" uid="uid://dlp3fs4qym6g2" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group_straight_line.tscn" id="2_bsq6s"]
 [ext_resource type="PackedScene" uid="uid://cdq5hecjw2uki" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_group.tscn" id="3_0disa"]
 [ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="3_4a71x"]
 [ext_resource type="PackedScene" uid="uid://b8ggfura4533j" path="res://prefabs/environment/asteroids/asteroid_small_groups/big_asteroid_group.tscn" id="4_pwg3e"]
+[ext_resource type="Script" uid="uid://cv8qkmxin552e" path="res://code/missions/a/mission_kill_enemies.gd" id="5_t8l1y"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="7_t8l1y"]
 [ext_resource type="PackedScene" uid="uid://do0sasbjik8fp" path="res://prefabs/npc/enemies/corrupted.tscn" id="8_iu4xl"]
 [ext_resource type="PackedScene" uid="uid://dsbr8a55sppml" path="res://prefabs/npc/enemies/drone.tscn" id="9_5q5tw"]
@@ -49,9 +49,10 @@ transform = Transform3D(0.60603, 0, -0.795442, 0, 1, 0, 0.795442, 0, 0.60603, -1
 [node name="AsteroidBigGroup2" parent="Asteroids/Group2" index="2" instance=ExtResource("3_0disa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 62.7651)
 
-[node name="MissionEscape" type="Node" parent="." index="4"]
-script = ExtResource("2_5vild")
-metadata/_custom_type_script = "uid://bq0dwhdq76qw"
+[node name="MissionEscape" type="Node" parent="." index="4" node_paths=PackedStringArray("vortex_center")]
+script = ExtResource("5_t8l1y")
+vortex_center = NodePath("../PortalPosition")
+metadata/_custom_type_script = "uid://cv8qkmxin552e"
 
 [node name="PortalPosition" type="Node3D" parent="." index="5"]
 script = ExtResource("3_4a71x")

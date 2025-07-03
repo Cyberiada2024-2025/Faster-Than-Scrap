@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://ckjg0c7xp6hni" path="res://art/models/enemies/enemy_2/enemy_model_2_2skrzyproccolor.png" id="18_15tkp"]
 [ext_resource type="Texture2D" uid="uid://2c1a1ogf3sa1" path="res://art/textures/vfxy/fire_gradient_weird.png" id="18_hfecr"]
 [ext_resource type="Texture2D" uid="uid://353cf3s01xhx" path="res://art/models/enemies/enemy_2/enemy_model_2_2skrzyprocmetal-2skrzyprocroughn.png" id="19_4wq2y"]
-[ext_resource type="Script" uid="uid://bu4oxed632vj6" path="res://code/enemy/states/move/state_npc_movemenet/knocked_out.gd" id="19_dqdfr"]
+[ext_resource type="Script" path="res://code/enemy/states/move/state_npc_movemenet/knocked_out.gd" id="19_dqdfr"]
 [ext_resource type="Texture2D" uid="uid://brgjvlvgmigyf" path="res://art/textures/vfxy/fire_voronoi.png" id="19_mbqy1"]
 [ext_resource type="Texture2D" uid="uid://bb24thwd52doi" path="res://art/textures/vfxy/2DNoise.png" id="20_8qgvi"]
 [ext_resource type="Texture2D" uid="uid://cwn2a8yi0618d" path="res://art/textures/vfxy/mix_noise.png" id="20_gnj7k"]
@@ -35,6 +35,9 @@
 [ext_resource type="Texture2D" uid="uid://clw46bartp4jm" path="res://art/models/enemies/enemy_2/enemy_model_2_colorproc.png" id="23_164nq"]
 [ext_resource type="Texture2D" uid="uid://dk3jn31dmcblx" path="res://art/models/enemies/enemy_2/enemy_model_2_metalproc-roughnesproc.png" id="24_hfecr"]
 [ext_resource type="Texture2D" uid="uid://bi1x03kbqfegk" path="res://art/models/enemies/enemy_2/enemy_model_2_normalsproc.png" id="25_mbqy1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rj4bm"]
+radius = 1.35787
 
 [sub_resource type="Curve" id="Curve_gnj7k"]
 _data = [Vector2(0.256619, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -78,9 +81,6 @@ use_particle_trails = true
 material = SubResource("StandardMaterial3D_b7ty2")
 size = 0.1
 curve = SubResource("Curve_pg335")
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_rj4bm"]
-radius = 1.35787
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rj4bm"]
 size = Vector3(2.13038, 1, 3.5119)
@@ -531,6 +531,10 @@ weapons = [NodePath("Weapon")]
 ship = NodePath("Ship")
 metadata/_custom_type_script = "uid://do6r4sdoiglip"
 
+[node name="ControlerCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, -0.293046)
+shape = SubResource("SphereShape3D_rj4bm")
+
 [node name="Weapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.24146)
 script = ExtResource("2_4a2gv")
@@ -678,10 +682,6 @@ script = ExtResource("19_dqdfr")
 script = ExtResource("8_1thjt")
 duration = 2.0
 new_state = NodePath("../../Idle")
-
-[node name="ControlerCollider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.00058, 0, 0, 0, 1.00058, 0, 0, 0, 1.00058, 0, 0, -0.293046)
-shape = SubResource("SphereShape3D_rj4bm")
 
 [node name="DamageController" parent="." instance=ExtResource("14_gnj7k")]
 

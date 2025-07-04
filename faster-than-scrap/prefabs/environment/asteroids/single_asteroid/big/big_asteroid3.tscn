@@ -1,20 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://cs2m7lumvnaot"]
+[gd_scene load_steps=9 format=3 uid="uid://cs2m7lumvnaot"]
 
 [ext_resource type="Script" uid="uid://chekqae75l00d" path="res://code/evironment/asteroid.gd" id="1_vmr2c"]
 [ext_resource type="PackedScene" uid="uid://1jrjvgq3vqt4" path="res://art/model_prefabs/asteroids/asteroid_3.tscn" id="2_eb6xg"]
+[ext_resource type="PackedScene" uid="uid://cu7xumld3sb0l" path="res://art/models/asteroids/asteroid_3/asteroid_3_collider.tscn" id="3_0hrkk"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="3_fh86s"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_go66n"]
 [ext_resource type="PackedScene" uid="uid://c5h05bkp7b8go" path="res://prefabs/ui/poi/asteroid_poi.tscn" id="5_3nkdk"]
+[ext_resource type="PackedScene" uid="uid://b2rns0sxx87ar" path="res://prefabs/vfx/particles/timed_particles/collision_asteroid.tscn" id="5_jooj4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gro5k"]
 bounce = 1.0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_keyhs"]
-radius = 1.005
-
-[node name="Asteroid" type="RigidBody3D"]
+[node name="Asteroid" type="RigidBody3D" groups=["asteroid"]]
 axis_lock_linear_y = true
-mass = 40000.0
+mass = 400000.0
 physics_material_override = SubResource("PhysicsMaterial_gro5k")
 gravity_scale = 0.0
 contact_monitor = true
@@ -23,16 +22,16 @@ angular_damp_mode = 1
 script = ExtResource("1_vmr2c")
 hp = 1000
 
+[node name="asteroid_3_collider" parent="." instance=ExtResource("3_0hrkk")]
+transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, -10.624, 0, 8)
+
 [node name="Asteroid3" parent="." instance=ExtResource("2_eb6xg")]
 transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, 0.205451, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, -7.25742, 0, 0)
-shape = SubResource("SphereShape3D_keyhs")
-
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("3_fh86s")]
+collision_particles = ExtResource("5_jooj4")
 damageable = NodePath("../DamageController/Damageable")
-shape = NodePath("../CollisionShape3D")
+shape = NodePath("../asteroid_3_collider")
 
 [node name="DamageController" parent="." instance=ExtResource("4_go66n")]
 
@@ -40,9 +39,8 @@ shape = NodePath("../CollisionShape3D")
 collision_layer = 6
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
-transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, -7.257, 0, 0)
-shape = SubResource("SphereShape3D_keyhs")
+[node name="asteroid_3_collider" parent="DamageController/Damageable" index="0" instance=ExtResource("3_0hrkk")]
+transform = Transform3D(32, 0, 0, 0, 32, 0, 0, 0, 32, -10.624, 0, 8)
 
 [node name="Asteroid Poi" parent="." instance=ExtResource("5_3nkdk")]
 transform = Transform3D(56.542, 0, 0, 0, -2.47153e-06, 56.542, 0, -56.542, -2.47153e-06, -6.64216, 0, 2.1887)

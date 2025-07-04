@@ -37,6 +37,7 @@ alpha_curve = SubResource("CurveTexture_8whst")
 
 [node name="BigExplosionParticle" type="GPUParticles3D"]
 material_override = ExtResource("1_m2k8q")
+cast_shadow = 0
 emitting = false
 amount = 10
 lifetime = 3.0

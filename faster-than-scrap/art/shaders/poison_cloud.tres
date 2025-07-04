@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=48 format=3 uid="uid://bpy625870t77m"]
+[gd_resource type="VisualShader" load_steps=48 format=3 uid="uid://d3iorvkqj7ty2"]
 
 [ext_resource type="Texture2D" uid="uid://brgjvlvgmigyf" path="res://art/textures/vfxy/fire_voronoi.png" id="1_ee8ac"]
 [ext_resource type="Texture2D" uid="uid://cwn2a8yi0618d" path="res://art/textures/vfxy/mix_noise.png" id="2_ik7mh"]

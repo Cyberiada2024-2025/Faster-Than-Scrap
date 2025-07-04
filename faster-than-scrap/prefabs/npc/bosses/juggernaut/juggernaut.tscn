@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bvcjycf02eb4c"]
+[gd_scene load_steps=44 format=3 uid="uid://bvcjycf02eb4c"]
 
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_yarj2"]
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_byxk3"]
@@ -22,21 +22,90 @@
 [ext_resource type="PackedScene" uid="uid://cf4qlk85kdwxg" path="res://prefabs/projectiles/boss_projectiles/star_beam_flash.tscn" id="10_qln4k"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="11_clgev"]
 [ext_resource type="PackedScene" uid="uid://c02tg8vmx2ibt" path="res://prefabs/projectiles/boss_projectiles/juggernaut_shotgun_flash.tscn" id="11_qln4k"]
-[ext_resource type="Script" path="res://code/ui/cutscenes/cutscene_player.gd" id="22_1nvpg"]
-[ext_resource type="PackedScene" uid="uid://bh1max67hf46s" path="res://prefabs/ui/cutscenes/boss_cutscenes/juggernaut_cutscene.tscn" id="23_j2cd8"]
+[ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="22_1nvpg"]
+[ext_resource type="PackedScene" uid="uid://dnqt5dsa6jb20" path="res://prefabs/ui/cutscenes/boss_cutscenes/juggernaut_cutscene.tscn" id="23_j2cd8"]
+[ext_resource type="Script" uid="uid://bdljn5ooj2ryy" path="res://code/evironment/space_vortex/space_vortex.gd" id="25_g4bin"]
+[ext_resource type="Material" uid="uid://dsr4i8f5btjud" path="res://art/materials/vfx/Vortex.tres" id="26_awx37"]
+[ext_resource type="PackedScene" uid="uid://noejc02505g0" path="res://prefabs/ui/poi/vortex_poi.tscn" id="27_awx37"]
+[ext_resource type="Script" uid="uid://btpdstvgw55fd" path="res://code/utilities/auto_reparent.gd" id="29_f7rv0"]
+[ext_resource type="Script" path="res://code/player/aegis_effect.gd" id="31_cc8yn"]
+[ext_resource type="Script" path="res://prefabs/constant_rotation.gd" id="32_1gxgn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_km21v"]
 size = Vector3(5, 1, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qln4k"]
 
-[node name="Juggernaut" type="CharacterBody3D" node_paths=PackedStringArray("ship")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_cujf5"]
+radius = 0.65
+
+[sub_resource type="Gradient" id="Gradient_u6ya2"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_egdpg"]
+gradient = SubResource("Gradient_u6ya2")
+
+[sub_resource type="Gradient" id="Gradient_awx37"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f7rv0"]
+gradient = SubResource("Gradient_awx37")
+
+[sub_resource type="Curve" id="Curve_itp45"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.707317, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_f7rv0"]
+curve = SubResource("Curve_itp45")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_itp45"]
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+tangential_accel_min = 15.0
+tangential_accel_max = 25.0
+damping_max = 5.0
+color = Color(1.246, 1.029, 0.324, 1)
+alpha_curve = SubResource("CurveTexture_f7rv0")
+
+[sub_resource type="Curve" id="Curve_uagw5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.122363, 1), 0.0, 0.0, 0, 0, Vector2(0.852321, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p86qt"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.196078)
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_0kdxi"]
+material = SubResource("StandardMaterial3D_p86qt")
+size = 0.2
+curve = SubResource("Curve_uagw5")
+
+[node name="Juggernaut" type="RigidBody3D" node_paths=PackedStringArray("ship")]
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 100.0
+gravity_scale = 0.0
 script = ExtResource("1_yarj2")
 ship = NodePath("Boss")
 metadata/_custom_type_script = "uid://deimdflghl67a"
 
 [node name="Boss" type="RigidBody3D" parent="."]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 gravity_scale = 0.0
+freeze = true
 script = ExtResource("2_byxk3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -310,6 +379,61 @@ script = ExtResource("22_1nvpg")
 cutscene_path = ExtResource("23_j2cd8")
 play_on_ready = true
 
+[node name="SpaceVortex" type="Area3D" parent="." node_paths=PackedStringArray("graphics")]
+transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, 0, 0, 0)
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("25_g4bin")
+miniboss = true
+graphics = NodePath("Sprite3D")
+mat = ExtResource("26_awx37")
+start_scale = 151.0
+min_scale = 150.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpaceVortex"]
+shape = SubResource("SphereShape3D_cujf5")
+
+[node name="Sprite3D" type="Sprite3D" parent="SpaceVortex"]
+transform = Transform3D(2000, 0, 0, 0, -8.74228e-05, 2000, 0, -2000, -8.74228e-05, 0, -5, 0)
+visible = false
+material_override = ExtResource("26_awx37")
+double_sided = false
+render_priority = 4
+texture = SubResource("GradientTexture2D_egdpg")
+
+[node name="VortexPOI" parent="SpaceVortex" instance=ExtResource("27_awx37")]
+texture = null
+
+[node name="Aegis" type="Node3D" parent="."]
+script = ExtResource("31_cc8yn")
+player = false
+path = "res://art/materials/vfx/Vortex.tres"
+
+[node name="Sprite3D" type="Sprite3D" parent="Aegis"]
+transform = Transform3D(2000, 0, 0, 0, -8.74228e-05, 2000, 0, -2000, -8.74228e-05, 0, -5, 0)
+material_override = ExtResource("26_awx37")
+double_sided = false
+render_priority = 4
+texture = SubResource("GradientTexture2D_f7rv0")
+script = ExtResource("29_f7rv0")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Aegis"]
+visible = false
+amount = 512
+lifetime = 4.0
+preprocess = 2.3
+local_coords = true
+transform_align = 3
+trail_enabled = true
+trail_lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_itp45")
+draw_pass_1 = SubResource("RibbonTrailMesh_0kdxi")
+script = ExtResource("32_1gxgn")
+
 [connection signal="damaged" from="StaticBody3D/Body/DamageController" to="StaticBody3D/Body" method="take_damage"]
+[connection signal="area_entered" from="SpaceVortex" to="SpaceVortex" method="_on_body_entered"]
+[connection signal="area_exited" from="SpaceVortex" to="SpaceVortex" method="_on_body_exited"]
+[connection signal="body_entered" from="SpaceVortex" to="SpaceVortex" method="_on_body_entered"]
+[connection signal="body_exited" from="SpaceVortex" to="SpaceVortex" method="_on_body_exited"]
 
 [editable path="StaticBody3D/Body/DamageController"]

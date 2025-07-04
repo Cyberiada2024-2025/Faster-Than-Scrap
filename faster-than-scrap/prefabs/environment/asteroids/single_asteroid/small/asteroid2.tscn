@@ -1,17 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://c21ake882np85"]
+[gd_scene load_steps=8 format=3 uid="uid://c21ake882np85"]
 
 [ext_resource type="Script" uid="uid://chekqae75l00d" path="res://code/evironment/asteroid.gd" id="1_n8w1b"]
 [ext_resource type="PackedScene" uid="uid://pxlntfewdl2l" path="res://art/model_prefabs/asteroids/asteroid_2.tscn" id="2_n8w1b"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="3_lg46a"]
+[ext_resource type="PackedScene" uid="uid://b2rns0sxx87ar" path="res://prefabs/vfx/particles/timed_particles/collision_asteroid.tscn" id="4_60kjh"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_p6p7g"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gro5k"]
 bounce = 1.0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_keyhs"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0351a"]
+radius = 0.447987
+height = 2.12803
 
-[node name="Asteroid" type="RigidBody3D"]
+[node name="Asteroid" type="RigidBody3D" groups=["asteroid"]]
 axis_lock_linear_y = true
+mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_gro5k")
 gravity_scale = 0.0
 contact_monitor = true
@@ -20,12 +24,14 @@ angular_damp_mode = 1
 script = ExtResource("1_n8w1b")
 hp = 5
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.0279217, -0.995694, 0.0883904, 0.99961, -0.0278123, 0.00246897, 0, 0.0884249, 0.996083, -0.0923008, 0.0316356, -0.0343292)
+shape = SubResource("CapsuleShape3D_0351a")
+
 [node name="Asteroid2" parent="." instance=ExtResource("2_n8w1b")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_keyhs")
-
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("3_lg46a")]
+collision_particles = ExtResource("4_60kjh")
 damageable = NodePath("../DamageController/Damageable")
 shape = NodePath("../CollisionShape3D")
 
@@ -36,7 +42,8 @@ collision_layer = 6
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
-shape = SubResource("SphereShape3D_keyhs")
+transform = Transform3D(-0.0279217, -0.995694, 0.0883904, 0.99961, -0.0278123, 0.00246897, 0, 0.0884249, 0.996083, -0.0923008, 0.0316356, -0.0343292)
+shape = SubResource("CapsuleShape3D_0351a")
 
 [connection signal="damaged" from="DamageController" to="." method="take_damage"]
 

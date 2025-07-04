@@ -17,6 +17,26 @@ script = ExtResource("1_g6mcj")
 cutscene_name = "Energy tutorial"
 metadata/_custom_type_script = "uid://bn8cfyemp6axl"
 
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.69
+anchor_right = 0.255
+anchor_bottom = 1.0
+offset_left = 785.0
+offset_top = 67.4
+offset_right = 784.6
+offset_bottom = 101.0
+grow_vertical = 0
+rotation = -1.5708
+scale = Vector2(0.480843, 0.679661)
+texture = ExtResource("4_o2os4")
+expand_mode = 1
+flip_v = true
+
 [node name="Slide" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -45,107 +65,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -24.0
+offset_right = 24.8
+offset_bottom = 0.199982
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_6qbt1")
 theme_override_font_sizes/font_size = 20
-text = "Caution!
-Use your energy wisely!
-All of your modules use energy."
+text = "Activating modules 
+consumes energy.  
+
+It regenerates
+ at a steady pace."
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Slide2" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-script = ExtResource("2_o2os4")
-duration = 999.0
-metadata/_custom_type_script = "uid://c8potv0p1705d"
-
-[node name="ColorRect" type="ColorRect" parent="Slide2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.2
-anchor_right = 0.8
-anchor_bottom = 0.8
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.292656, 0.388731, 0.540954, 1)
-
-[node name="Label" type="Label" parent="Slide2/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_6qbt1")
-theme_override_font_sizes/font_size = 20
-text = "You can see the current energy level here."
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="TextureRect" type="TextureRect" parent="Slide2"]
-modulate = Color(1, 0, 0, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.7
-anchor_right = 0.2
-anchor_bottom = 1.0
-offset_left = 186.0
-offset_top = -23.6
-offset_right = 186.0
-offset_bottom = -23.6
-grow_vertical = 0
-rotation = 0.935066
-scale = Vector2(0.707474, 1)
-texture = ExtResource("4_o2os4")
-expand_mode = 1
-flip_v = true
-
-[node name="Slide3" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-script = ExtResource("2_o2os4")
-duration = 999.0
-metadata/_custom_type_script = "uid://c8potv0p1705d"
-
-[node name="ColorRect" type="ColorRect" parent="Slide3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.2
-anchor_right = 0.8
-anchor_bottom = 0.8
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.292656, 0.388731, 0.540954, 1)
-
-[node name="Label" type="Label" parent="Slide3/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_6qbt1")
-theme_override_font_sizes/font_size = 20
-text = "But don't worry, the energy is generated moderatly over time."
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
 
 [node name="SkipInfoText" parent="." instance=ExtResource("4_nxaa3")]
 layout_mode = 1

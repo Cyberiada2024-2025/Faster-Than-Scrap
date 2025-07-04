@@ -163,6 +163,7 @@ uniform vec2 Noise_scale = vec2(1.000000, 1.000000);
 uniform sampler2D tex_frg_2 : source_color;
 uniform float Lightning_width = 0.14800000190735;
 uniform vec4 Color : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+uniform float Color_intensity = 1.0;
 uniform float Speed = 1.0;
 uniform float Frequency = 1.0;
 uniform float Pulse_Width : hint_range(0.0, 1.0) = 0.20000000298023;
@@ -198,8 +199,16 @@ void fragment() {
 	vec4 n_out24p0 = Color;
 
 
+// FloatParameter:35
+	float n_out35p0 = Color_intensity;
+
+
+// VectorOp:36
+	vec3 n_out36p0 = vec3(n_out24p0.xyz) * vec3(n_out35p0);
+
+
 // VectorOp:23
-	vec3 n_out23p0 = vec3(n_out3p0 ? 1.0 : 0.0) * vec3(n_out24p0.xyz);
+	vec3 n_out23p0 = vec3(n_out3p0 ? 1.0 : 0.0) * n_out36p0;
 
 
 // Input:26
@@ -300,15 +309,16 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-468.738, -167.797)
 nodes/fragment/0/position = Vector2(1260, 60)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_d2py2")
-nodes/fragment/2/position = Vector2(-740, 80)
+nodes/fragment/2/position = Vector2(-1120, 40)
 nodes/fragment/3/node = SubResource("VisualShaderNodeCompare_3r6cx")
-nodes/fragment/3/position = Vector2(-240, 60)
+nodes/fragment/3/position = Vector2(-620, 20)
 nodes/fragment/4/node = SubResource("VisualShaderNodeFloatParameter_6eld3")
-nodes/fragment/4/position = Vector2(-540, 300)
+nodes/fragment/4/position = Vector2(-920, 260)
 nodes/fragment/5/node = SubResource("VisualShaderNodeInput_wwb3j")
-nodes/fragment/5/position = Vector2(-1380, 100)
+nodes/fragment/5/position = Vector2(-1760, 60)
 nodes/fragment/6/node = SubResource("VisualShaderNodeInput_ifxte")
 nodes/fragment/6/position = Vector2(-1520, 860)
 nodes/fragment/7/node = SubResource("VisualShaderNodeVectorDistance_l2nuo")
@@ -326,9 +336,9 @@ nodes/fragment/14/position = Vector2(-1540, 960)
 nodes/fragment/15/node = SubResource("VisualShaderNodeFloatOp_xmr08")
 nodes/fragment/15/position = Vector2(-1160, 860)
 nodes/fragment/16/node = SubResource("VisualShaderNodeVec2Parameter_3r6cx")
-nodes/fragment/16/position = Vector2(-1360, 260)
+nodes/fragment/16/position = Vector2(-1740, 220)
 nodes/fragment/17/node = SubResource("VisualShaderNodeVectorOp_6eld3")
-nodes/fragment/17/position = Vector2(-960, 60)
+nodes/fragment/17/position = Vector2(-1340, 20)
 nodes/fragment/19/node = SubResource("VisualShaderNodeFloatParameter_xmr08")
 nodes/fragment/19/position = Vector2(-500, 1240)
 nodes/fragment/20/node = SubResource("VisualShaderNodeCompare_tm2w7")
@@ -340,7 +350,7 @@ nodes/fragment/22/position = Vector2(-880, 1160)
 nodes/fragment/23/node = SubResource("VisualShaderNodeVectorOp_tm2w7")
 nodes/fragment/23/position = Vector2(360, 20)
 nodes/fragment/24/node = SubResource("VisualShaderNodeColorParameter_tm2w7")
-nodes/fragment/24/position = Vector2(40, 220)
+nodes/fragment/24/position = Vector2(-280, 200)
 nodes/fragment/25/node = SubResource("VisualShaderNodeVectorOp_wwb3j")
 nodes/fragment/25/position = Vector2(720, 280)
 nodes/fragment/26/node = SubResource("VisualShaderNodeInput_tm2w7")
@@ -358,11 +368,11 @@ nodes/fragment/31/position = Vector2(1020, 180)
 nodes/fragment/32/node = SubResource("VisualShaderNodeFrame_3r6cx")
 nodes/fragment/32/position = Vector2(-740, -721)
 nodes/fragment/33/node = SubResource("VisualShaderNodeFrame_6eld3")
-nodes/fragment/33/position = Vector2(-1420, 20)
+nodes/fragment/33/position = Vector2(-1800, -21)
 nodes/fragment/34/node = SubResource("VisualShaderNodeFrame_wwb3j")
 nodes/fragment/34/position = Vector2(0, -20)
 nodes/fragment/35/node = SubResource("VisualShaderNodeFloatParameter_3r6cx")
 nodes/fragment/35/position = Vector2(-300, 480)
 nodes/fragment/36/node = SubResource("VisualShaderNodeVectorOp_5240d")
 nodes/fragment/36/position = Vector2(80, 260)
-nodes/fragment/connections = PackedInt32Array(4, 0, 3, 1, 2, 0, 3, 0, 8, 0, 7, 0, 7, 0, 11, 1, 6, 0, 15, 0, 15, 0, 11, 0, 14, 0, 15, 1, 5, 0, 17, 0, 16, 0, 17, 1, 17, 0, 2, 0, 9, 0, 20, 0, 19, 0, 20, 2, 11, 0, 21, 0, 21, 0, 9, 0, 22, 0, 21, 1, 3, 0, 23, 0, 23, 0, 25, 0, 20, 0, 25, 1, 26, 0, 27, 0, 27, 0, 28, 0, 27, 0, 29, 0, 29, 0, 30, 0, 28, 0, 31, 0, 25, 0, 31, 1, 31, 0, 0, 1, 23, 0, 0, 0, 30, 0, 28, 3, 30, 0, 28, 5, 24, 0, 36, 0, 36, 0, 23, 1, 35, 0, 36, 1, 24, 0, 23, 1)
+nodes/fragment/connections = PackedInt32Array(4, 0, 3, 1, 2, 0, 3, 0, 8, 0, 7, 0, 7, 0, 11, 1, 6, 0, 15, 0, 15, 0, 11, 0, 14, 0, 15, 1, 5, 0, 17, 0, 16, 0, 17, 1, 17, 0, 2, 0, 9, 0, 20, 0, 19, 0, 20, 2, 11, 0, 21, 0, 21, 0, 9, 0, 22, 0, 21, 1, 3, 0, 23, 0, 23, 0, 25, 0, 20, 0, 25, 1, 26, 0, 27, 0, 27, 0, 28, 0, 27, 0, 29, 0, 29, 0, 30, 0, 28, 0, 31, 0, 25, 0, 31, 1, 31, 0, 0, 1, 23, 0, 0, 0, 30, 0, 28, 3, 30, 0, 28, 5, 24, 0, 36, 0, 36, 0, 23, 1, 35, 0, 36, 1)

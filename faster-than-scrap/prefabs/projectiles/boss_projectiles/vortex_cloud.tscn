@@ -1,10 +1,38 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxlsr82xkj688"]
+[gd_scene load_steps=12 format=3 uid="uid://dxlsr82xkj688"]
 
 [ext_resource type="Script" uid="uid://7rxxtodxpx1d" path="res://code/damage/damage_area_3d.gd" id="1_klv2c"]
 [ext_resource type="Script" uid="uid://dhqxa3bvfn8gj" path="res://code/weapons/projectiles/growable.gd" id="1_s55wj"]
+[ext_resource type="Shader" uid="uid://dcg483ir5tvro" path="res://art/shaders/poison_cloud.tres" id="2_5k44y"]
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="2_s55wj"]
+[ext_resource type="PackedScene" uid="uid://butrr4i156xbg" path="res://prefabs/npc/bosses/vortex/lightnings.tscn" id="3_d74el"]
+[ext_resource type="Shader" uid="uid://b2idmkcjnpd2b" path="res://art/shaders/graphs/lightnings.tres" id="3_tl6w7"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_5k44y"]
+[sub_resource type="SphereMesh" id="SphereMesh_tl6w7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d74el"]
+render_priority = 0
+shader = ExtResource("2_5k44y")
+shader_parameter/Noise_Scale = Vector2(8, 4)
+shader_parameter/Noise_strength = 0.088
+shader_parameter/Wave_frequency = 0.3
+shader_parameter/Scale = Vector2(1, 0.51)
+shader_parameter/Wave_width = 0.2
+shader_parameter/Wave_active_percentage = 0.2
+shader_parameter/Base_color = Color(0.383906, 0.830753, 0.556026, 1)
+shader_parameter/Direction = Vector2(0.405, 0.595)
+shader_parameter/ColorParameter = Color(0, 0.85, 0.3825, 1)
+shader_parameter/Transparency = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_edd17"]
+render_priority = 0
+shader = ExtResource("3_tl6w7")
+shader_parameter/Noise_scale = Vector2(1, 1)
+shader_parameter/Lightning_width = 0.493
+shader_parameter/Color = Color(0.0741666, 0.89, 0, 1)
+shader_parameter/Color_intensity = 13.67
+shader_parameter/Speed = 0.405
+shader_parameter/Frequency = 4.0
+shader_parameter/Pulse_Width = 0.305
 
 [sub_resource type="Resource" id="Resource_tl6w7"]
 script = ExtResource("2_s55wj")
@@ -12,8 +40,7 @@ value = 30.0
 type = 0
 metadata/_custom_type_script = "uid://cukcjob61wwp7"
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_d74el"]
-size = Vector3(1, 0.001, 1)
+[sub_resource type="SphereShape3D" id="SphereShape3D_5k44y"]
 
 [node name="VortexCloud" type="Node3D"]
 script = ExtResource("1_s55wj")
@@ -21,8 +48,14 @@ max_scale = Vector3(10, 1, 10)
 stay_time = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_5k44y")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -0.45, 0, 1, -1.96701e-08, 0, 0, 0)
+mesh = SubResource("SphereMesh_tl6w7")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_d74el")
+
+[node name="Lightnings" parent="." instance=ExtResource("3_d74el")]
+material_override = SubResource("ShaderMaterial_edd17")
+skeleton = NodePath("")
 
 [node name="DamageArea3D" type="Area3D" parent="."]
 collision_layer = 2
@@ -33,4 +66,4 @@ metadata/_custom_type_script = "uid://7rxxtodxpx1d"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02928, 0)
-shape = SubResource("BoxShape3D_d74el")
+shape = SubResource("SphereShape3D_5k44y")

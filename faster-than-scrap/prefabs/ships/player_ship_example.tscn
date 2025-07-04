@@ -13,7 +13,6 @@ cockpit = NodePath("Cockpit")
 leave_animation = NodePath("AnimationPlayer")
 
 [node name="Cockpit" parent="." instance=ExtResource("2_4lw14")]
-gravity_scale = 0.0
 activation_key = 66
 
 [node name="Sprite3D2" type="Sprite3D" parent="Cockpit"]
@@ -42,5 +41,4 @@ activation_key = 32
 ship = NodePath("..")
 parent_module = NodePath("../ModuleBase2")
 
-[node name="AnimationPlayer" parent="." node_paths=PackedStringArray("leaving_body") instance=ExtResource("5_oo5nn")]
-leaving_body = NodePath("..")
+[node name="AnimationPlayer" parent="." instance=ExtResource("5_oo5nn")]

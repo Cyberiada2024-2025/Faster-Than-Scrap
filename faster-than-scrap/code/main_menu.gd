@@ -20,3 +20,7 @@ func _on_start_button_pressed() -> void:
 
 func _on_settings_button_pressed() -> void:
 	$Settings.visible = true
+
+
+func focus() -> void:
+	$Buttons/StartButton.grab_focus()

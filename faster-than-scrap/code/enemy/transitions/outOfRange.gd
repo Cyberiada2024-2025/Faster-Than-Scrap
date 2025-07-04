@@ -9,5 +9,6 @@ func condition() -> void:
 	if target == ship_controller.ship:
 		return
 	var vector_to_target = target.global_position - ship_controller.ship.global_position
+	vector_to_target.y = 0
 	if vector_to_target.length() > range_treshold:
 		finished.emit(new_state.name)

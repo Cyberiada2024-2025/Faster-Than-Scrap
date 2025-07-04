@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ci4ok687xu6h7"]
+[gd_scene load_steps=11 format=3 uid="uid://ci4ok687xu6h7"]
 
 [ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="1_md83u"]
 [ext_resource type="PackedScene" uid="uid://c6hixpni6xar4" path="res://art/model_prefabs/ship/modules/bumper_model_pf.tscn" id="2_sgdr1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="5_t36uj"]
 [ext_resource type="PackedScene" uid="uid://bewasbmybcuql" path="res://art/models/modules/bumper/bumper_collision_shape_3d.tscn" id="5_w4brf"]
 [ext_resource type="PackedScene" uid="uid://cyw1yf0fdjx1j" path="res://prefabs/modules/functional_components/illegal_placement_zone.tscn" id="7_w4brf"]
+[ext_resource type="PackedScene" uid="uid://dtc3u2risx08r" path="res://prefabs/modules/functional_components/module_tooltip_shower.tscn" id="8_6tf8h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jnq3k"]
 size = Vector3(1.01563, 1, 1.36426)
@@ -61,12 +62,17 @@ _damage_multiplier = 0.75
 damageable = NodePath("../DamageController/Damageable")
 shape = NodePath("..")
 flat_damage_reduction = 75.0
+self_damage_multiplier = 0.5
+dealt_damage_multiplier = 1.25
 
 [node name="Illegal Placement Zone" parent="." instance=ExtResource("7_w4brf")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Illegal Placement Zone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.526749)
 shape = SubResource("BoxShape3D_6tf8h")
+
+[node name="ModuleTooltip" parent="." instance=ExtResource("8_6tf8h")]
+hover_size = Vector2(1.315, 1.48)
 
 [connection signal="damaged" from="DamageController" to="." method="take_damage"]
 

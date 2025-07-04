@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://buy7ourt75b2t"]
+[gd_scene load_steps=11 format=3 uid="uid://dmivnukkee4wr"]
 
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_xgqdr"]
 [ext_resource type="PackedScene" uid="uid://bdbipv17ae6j2" path="res://prefabs/ui/cutscenes/tutorials/missions/escape_tutorial.tscn" id="3_ug5yp"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dlp3fs4qym6g2" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group_straight_line.tscn" id="5_subpj"]
 [ext_resource type="PackedScene" uid="uid://dsbr8a55sppml" path="res://prefabs/npc/enemies/drone.tscn" id="6_subpj"]
 [ext_resource type="PackedScene" uid="uid://dm1qlo34r16co" path="res://prefabs/environment/shop_miniature_tutorial.tscn" id="7_0pcpl"]
-[ext_resource type="Script" path="res://code/evironment/enemy_spawner.gd" id="8_ug5yp"]
+[ext_resource type="Script" uid="uid://dgljxwmpb7xrv" path="res://code/evironment/enemy_spawner.gd" id="8_ug5yp"]
 [ext_resource type="PackedScene" uid="uid://do0sasbjik8fp" path="res://prefabs/npc/enemies/corrupted.tscn" id="9_1rg6r"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ul8wb"]
@@ -50,7 +50,7 @@ transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -107.266)
 
 [node name="ShopMiniatureTutorial" parent="." instance=ExtResource("7_0pcpl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.72222)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.0403)
 
 [node name="EnterShop" parent="ShopMiniatureTutorial" index="1"]
 instantiated_cooldown = 2.0

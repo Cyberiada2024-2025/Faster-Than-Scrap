@@ -37,6 +37,7 @@ color_ramp = SubResource("GradientTexture1D_tjqjc")
 
 [node name="Fire" type="GPUParticles3D"]
 material_override = SubResource("StandardMaterial3D_767bt")
+cast_shadow = 0
 amount = 200
 lifetime = 0.25
 local_coords = true

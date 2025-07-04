@@ -80,8 +80,12 @@ func on_destroy() -> void:
 	_explode()
 	destroyed.emit(self)
 	# if enemy delete yourself, player should be kept
-	if owner != null:
+	if _shoud_be_freed():
 		owner.queue_free()
+
+
+func _shoud_be_freed() -> bool:
+	return true
 
 
 func _explode() -> void:
@@ -91,4 +95,8 @@ func _explode() -> void:
 
 
 func leave_map() -> void:
+	pass
+
+
+func update_mass() -> void:
 	pass

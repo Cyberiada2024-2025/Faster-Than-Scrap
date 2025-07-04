@@ -184,7 +184,8 @@ shadow_mesh = SubResource("ArrayMesh_utm00")
 
 [node name="MainCamera" type="Camera3D" node_paths=PackedStringArray("energy_bar")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
-cull_mask = 1048545
+cull_mask = 1048569
+fov = 87.0
 script = ExtResource("1_x65cj")
 energy_bar = NodePath("HUD/Energy Bar")
 main_camera_offset = Vector3(0, 25, 0)
@@ -225,6 +226,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="New Energy Bar" type="Control" parent="HUD" node_paths=PackedStringArray("bar_main")]
 anchors_preset = 0

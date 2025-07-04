@@ -21,6 +21,7 @@ const EXPLOSION_DISTANCE_EXPONENT = 1
 @export var is_activable: bool = true
 @export var max_hp: float = 100
 @export var hp: float = 100
+@export var mass: float = 1
 @export_category("References")
 @export var ship: Ship
 @export var attach_points: Array[Node3D] = []
@@ -57,6 +58,8 @@ func _ready() -> void:
 	activation_key_saved = activation_key
 	_on_key_change()
 	update_sprite()
+
+	visibility_changed.connect(set_tooltip_visibility)
 
 
 func _process(_delta: float) -> void:
@@ -117,32 +120,35 @@ func update_sprite() -> void:
 
 
 func hide_on_module_camera() -> void:
-	sprite.set_layer_mask_value(2, false)
-	label.set_layer_mask_value(2, false)
+	if sprite != null:
+		sprite.set_layer_mask_value(2, false)
+	if label != null:
+		label.set_layer_mask_value(2, false)
 
 
 func show_on_module_camera() -> void:
-	sprite.set_layer_mask_value(2, true)
-	label.set_layer_mask_value(2, true)
+	if sprite != null:
+		sprite.set_layer_mask_value(2, true)
+	if label != null:
+		label.set_layer_mask_value(2, true)
 
 
 ## Destroy self and detach children
 func _on_destroy() -> void:
-	GameManager.player_ship.modules.erase(self)
 	if parent_module != null:
 		parent_module.child_modules.erase(self)
 	_explode()
 
-	detach_all_children(global_position)
+	_detach_all_children(global_position)
 
-	if parent_module != null:
+	if ship != null:
 		on_detach()
 
 	queue_free()  # delete self as an object
 	destroyed.emit()
 
 
-func detach_all_children(explosion_center: Vector3) -> void:
+func _detach_all_children(explosion_center: Vector3) -> void:
 	for child in child_modules:
 		var rb: RigidBody3D = module_rigidbody_prefab.instantiate()
 		get_tree().current_scene.add_child(rb)  # attach floating modules to scene
@@ -168,24 +174,28 @@ func detach_all_children(explosion_center: Vector3) -> void:
 		)
 
 		child.deactivate()
-		child.on_detach()
+		child._detach_all_children(explosion_center)
 
-		child.detach_all_children(explosion_center)
+		child.on_detach()
+	child_modules = []
 
 
 ## Called when the module is attached to the ship
 func on_attach() -> void:
-	pass
+	ship.update_mass()
 
 
 ## Called just before the module is detached from the ship
 func on_detach() -> void:
-	pass
+	ship.modules.erase(self)
+	ship.update_mass()
+	ship = null  # clear refence of a ship
+	hide_on_module_camera()
 
 
 ## Called when the module is attached to a different part of the ship than it previously was
 func on_reattach() -> void:
-	pass
+	ship.update_mass()
 
 
 func deactivate() -> void:
@@ -264,7 +274,17 @@ func create_ghost() -> ModuleGhost:
 	duplicate_node.prize = 0
 	ghost.module_to_ignore = self
 
+	# delete tooltip
+	duplicate_node.find_child("ModuleTooltip").free()
+
 	return ghost
+
+
+func set_tooltip_visibility() -> void:
+	if visible:
+		find_child("ModuleTooltip").show()
+	else:
+		find_child("ModuleTooltip").hide()
 
 
 ## Return all children (even indirect) modules of a given node.
@@ -275,13 +295,15 @@ static func find_all_modules(node: Node) -> Array[Module]:
 			result.append(child)
 		result.append_array(find_all_modules(child))  # Recurse
 	var modules: Array[Module] = []
-	modules.assign(result)	# create module typed array
+	modules.assign(result)  # create module typed array
 	return modules
 
 
 func keycode_from_input_map(event_name: String) -> Key:
-	return (InputMap.action_get_events(event_name)[0] as InputEventKey) \
-			.get_physical_keycode_with_modifiers()
+	return (
+		(InputMap.action_get_events(event_name)[0] as InputEventKey)
+		. get_physical_keycode_with_modifiers()
+	)
 
 
 func reserve_keys_from_actions(actions: Array[String]):
@@ -293,7 +315,4 @@ func reserve_keys():
 	if DebugMenu.is_debug:
 		reserve_keys_from_actions(["debug_menu"])
 
-	reserve_keys_from_actions([
-		"pause_menu",
-		"Skip Cutscene"
-	])
+	reserve_keys_from_actions(["pause_menu", "Skip Cutscene"])

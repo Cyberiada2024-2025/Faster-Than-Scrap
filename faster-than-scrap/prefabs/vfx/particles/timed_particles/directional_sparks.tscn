@@ -37,6 +37,7 @@ bottom_radius = 0.25
 
 [node name="DirectionalSparks" type="GPUParticles3D"]
 material_override = SubResource("StandardMaterial3D_o6jcs")
+cast_shadow = 0
 emitting = false
 amount = 10
 lifetime = 0.2

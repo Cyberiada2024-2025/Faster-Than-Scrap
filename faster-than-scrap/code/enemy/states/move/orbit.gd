@@ -11,18 +11,22 @@ var orbit_radial_speed: float
 func enter(_previous_state_path: String, _data := {}) -> void:
 	target = GameManager.find_closest_ship(ship_controller.ship)
 	direction_from_target = self.ship_controller.ship.global_position - self.target.global_position
+	direction_from_target.y = 0
 	orbit_radial_speed = deg_to_rad(orbit_angular_speed)
 
 
 ## Called by the state machine on the engine's main loop tick.
 func state_physics_update(delta: float) -> void:
+	super(delta)
 	# rotate direction vector
 	direction_from_target = direction_from_target.rotated(Vector3.UP, orbit_radial_speed * delta)
 	direction_from_target = direction_from_target.normalized()
 
 	# calculate direct pos
 	var direct_pos = self.target.global_position + direction_from_target * orbit_radius
+	direct_pos.y = 0
 
 	var direction = direct_pos - self.ship_controller.ship.global_position
-	ship_controller.velocity = direction * lerp_strength
-	ship_controller.move_and_slide()
+	direction.y = 0
+
+	ship_controller.linear_velocity = direction * lerp_strength

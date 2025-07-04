@@ -17,17 +17,19 @@ var direction: Vector3
 func enter(_previous_state_path: String, _data := {}) -> void:
 	counter = 0
 	start_pos = ship_controller.global_position
+	start_pos.y = 0
 	var copied_points = points.duplicate()
 	copied_points.erase(target_node)  # actual position
 	target_node = copied_points.pick_random()  # select new position
 	direction = target_node.global_position - start_pos
+	direction.y = 0
 	direction /= duration
 
 
 ## Called by the state machine on the engine's main loop tick.
 func state_physics_update(_delta: float) -> void:
-	ship_controller.velocity = direction
-	ship_controller.move_and_slide()
+	super(_delta)
+	ship_controller.linear_velocity = direction
 
 
 ## Called by the state machine before changing the active state. Use this function

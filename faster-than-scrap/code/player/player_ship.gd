@@ -19,7 +19,7 @@ signal fuel_change(new_value: int)
 
 ## All modules of the ship (to prevent checking the tree hierarchy).
 ## Mostly used for building phase
-@export var modules: Array[Module] = []
+var modules: Array[Module] = []
 var money: int = 0
 var current_fuel: int = 0:
 	get:
@@ -36,15 +36,16 @@ var _saved_rotation: Vector3 = Vector3.ZERO
 
 func _enter_tree() -> void:
 	GameManager.player_ship = self
+	center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
 
 
 func _ready() -> void:
 	super()
 	change_air_resistance()
+	change_cockpit_icon()
 	for child in get_children():
 		if child is Module:
 			modules.append(child)
-	GameManager.new_game_state.connect(on_game_change_state)
 
 	if DebugMenu.is_debug:
 		DebugMenu.toggle_player_collisions.connect(_toggle_collisions)
@@ -55,22 +56,32 @@ func _ready() -> void:
 	energy_max_change.emit(max_energy)
 	_on_energy_change()
 
+	update_mass()
+
 
 func _process(_delta: float) -> void:
 	super(_delta)
-	$CenterOfMass.position = _center_of_mass()
+	$CenterOfMass.position = center_of_mass
 	# move it down so it won't fiddle with modules (in shop)
 	var children_count = get_children().size()
 	move_child($CenterOfMass, children_count - 1)
 
 
-func _center_of_mass() -> Vector3:
-	var center = Vector3.ZERO
-	center.y = 1
-	for mod in GameManager.player_ship.modules:
-		center += mod.position
-	center /= GameManager.player_ship.modules.size()
-	return center
+func update_mass() -> void:
+	var center = Vector3(0, 1, 0)
+	var total_mass = 0
+	# avoid division by zero
+	if modules.size() == 0:
+		return
+
+	for mod in modules:
+		center += mod.position * mod.mass
+		total_mass += mod.mass
+	center /= total_mass
+	mass = total_mass
+	center_of_mass = center
+
+
 func _physics_process(_delta: float) -> void:
 	if not DebugMenu.enable_debug_movement:
 		return
@@ -97,16 +108,13 @@ func change_air_resistance() -> void:
 		angular_damp = 0
 
 
-func on_game_change_state(new_state: GameState.State) -> void:
-	match new_state:
-		GameState.State.FLY:
-			pass
-		GameState.State.PAUSE:
-			pass
-		GameState.State.BUILD:
-			pass
-		GameState.State.MAIN_MENU:
-			pass
+func change_cockpit_icon() -> void:
+	if SettingsManager.brakes_enabled:
+		cockpit.cockpit_sprite.texture = cockpit.default_texture
+		cockpit.cockpit_label.visible = true
+	else:
+		cockpit.cockpit_sprite.texture = cockpit.cockpit_texture
+		cockpit.cockpit_label.visible = false
 
 
 func save_position():
@@ -146,6 +154,10 @@ func use_energy(amount: float) -> bool:
 func on_destroy() -> void:
 	super()
 	GameManager.show_death_screen()
+
+
+func _shoud_be_freed() -> bool:
+	return false
 
 
 func _toggle_collisions() -> void:

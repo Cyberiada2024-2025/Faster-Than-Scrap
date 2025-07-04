@@ -1,7 +1,8 @@
-[gd_scene load_steps=58 format=3 uid="uid://qemwu1rt7gtj"]
+[gd_scene load_steps=59 format=3 uid="uid://qemwu1rt7gtj"]
 
 [ext_resource type="Script" uid="uid://o52uw8n1ufdc" path="res://code/map_select/map_selector.gd" id="1_yxgtb"]
 [ext_resource type="PackedScene" uid="uid://2oa2dvray5oq" path="res://prefabs/map_select/map_layer.tscn" id="2_bp67s"]
+[ext_resource type="Script" uid="uid://smw6vyfefqxn" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_sau2r"]
 [ext_resource type="PackedScene" uid="uid://ska6812npmde" path="res://prefabs/map_select/nodes/templates/map_node.tscn" id="3_s8emc"]
 [ext_resource type="PackedScene" uid="uid://dko08cmdkba7m" path="res://prefabs/map_select/map_margin.tscn" id="4_nrfml"]
 [ext_resource type="PackedScene" uid="uid://c6sug4hxemhdp" path="res://prefabs/map_select/nodes/templates/missions/mission_escape.tscn" id="5_rwq3m"]
@@ -173,6 +174,9 @@ size_flags_vertical = 3
 alignment = 1
 script = ExtResource("1_yxgtb")
 active_node = NodePath("MapLayer/MapNode")
+
+[node name="ConnectSoundToParentAndAllChildren" type="Node" parent="."]
+script = ExtResource("2_sau2r")
 
 [node name="MapLayer" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2

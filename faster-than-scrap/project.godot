@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DebugMenu="*res://code/singletons/debug_menu.tscn"
+DebugMenu="*res://prefabs/singletons/debug_menu.tscn"
 GameManager="*res://prefabs/singletons/game_manager.tscn"
 MissionManager="*res://prefabs/singletons/mission_manager.tscn"
 BossManager="*res://code/singletons/boss_manager.gd"
@@ -28,6 +28,7 @@ CutsceneManager="*res://code/singletons/cutscene_manager.gd"
 ModulesList="*res://prefabs/singletons/modules_list.tscn"
 ShopContents="*res://code/singletons/shop_contents.gd"
 SettingsManager="*res://code/singletons/settings_manager.gd"
+GlobalSoundManager="*res://prefabs/singletons/global_sound_manager.tscn"
 
 [display]
 
@@ -40,10 +41,14 @@ enabled=PackedStringArray("res://addons/format_on_save/plugin.cfg")
 [global_group]
 
 "affected by vortex"=""
+asteroid="Used by collision detection, to allow enemies to ignore collision damage from asteroids"
+enemy="Used by collision detection, to allow enemies to ignore collision damage from each other"
 
 [gui]
 
+timers/tooltip_delay_sec=0.1
 theme/custom="uid://d37mji7qf4y73"
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 
@@ -144,5 +149,6 @@ debug_move_right={
 
 [rendering]
 
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=4
 viewport/hdr_2d=true
 anti_aliasing/quality/msaa_3d=2

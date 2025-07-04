@@ -1,19 +1,32 @@
-[gd_scene load_steps=15 format=3 uid="uid://b8v177mewyt5j"]
+[gd_scene load_steps=20 format=3 uid="uid://b8v177mewyt5j"]
 
 [ext_resource type="Script" uid="uid://urjr40lajiyq" path="res://code/ship/modules/battery_module.gd" id="1_aagdk"]
-[ext_resource type="PackedScene" uid="uid://dqpqw2adjm7qg" path="res://art/model_prefabs/battery/battery.tscn" id="2_0nt81"]
 [ext_resource type="Texture2D" uid="uid://cebxmyyc7xq5m" path="res://art/textures/frame/frame_Albedo.png" id="2_aagdk"]
+[ext_resource type="Texture2D" uid="uid://kj5g7i54g3jd" path="res://art/textures/battery/final_battery_color.png" id="2_ttear"]
+[ext_resource type="Texture2D" uid="uid://bm7v8lkx5wn8i" path="res://art/textures/battery/final_battery_metal.png" id="3_0dk4p"]
 [ext_resource type="Texture2D" uid="uid://r30h1nnmjryd" path="res://art/textures/frame/frame_AO.png" id="3_0nt81"]
 [ext_resource type="ArrayMesh" uid="uid://dyggmpc21gmcw" path="res://art/models/modules/frame/frame.obj" id="3_6dylh"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="3_vdvrw"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_6dylh"]
 [ext_resource type="Texture2D" uid="uid://p1p3m7hu4bp2" path="res://art/textures/frame/frame_Metalness.png" id="4_7p43c"]
+[ext_resource type="Texture2D" uid="uid://cht2tuc3ktuqe" path="res://art/textures/battery/final_battery_normal.png" id="4_83no4"]
+[ext_resource type="Texture2D" uid="uid://cj64a42nysov1" path="res://art/textures/battery/final_battery_roughnes.png" id="5_khe2h"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="5_mgd80"]
 [ext_resource type="Texture2D" uid="uid://cjv8e2sijiql6" path="res://art/textures/frame/frame_Normal.png" id="5_nemdb"]
 [ext_resource type="Texture2D" uid="uid://bqpvtwe8hkr0w" path="res://art/textures/frame/frame_Roughness.png" id="6_5g11m"]
+[ext_resource type="PackedScene" uid="uid://dtc3u2risx08r" path="res://prefabs/modules/functional_components/module_tooltip_shower.tscn" id="12_7p43c"]
+[ext_resource type="ArrayMesh" uid="uid://ujku2hob0mcy" path="res://art/models/battery/finalest_battery.obj" id="6_8sh17"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jnq3k"]
 size = Vector3(0.665, 1, 1.075)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5p3y"]
+albedo_texture = ExtResource("2_ttear")
+metallic = 1.0
+metallic_texture = ExtResource("3_0dk4p")
+roughness_texture = ExtResource("5_khe2h")
+normal_enabled = true
+normal_texture = ExtResource("4_83no4")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttear"]
 albedo_color = Color(0, 1, 0, 1)
@@ -46,8 +59,12 @@ description = "Increases ship max energy."
 [node name="Frame0Model" type="Node3D" parent="."]
 transform = Transform3D(0.645, 0, 0, 0, 0.645, 0, 0, 0, 0.645, 0, 0, 0)
 
-[node name="Battery" parent="Frame0Model" instance=ExtResource("2_0nt81")]
+[node name="Battery" type="Node3D" parent="Frame0Model"]
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0)
+
+[node name="FinalestBattery" type="MeshInstance3D" parent="Frame0Model/Battery"]
+material_override = SubResource("StandardMaterial3D_u5p3y")
+mesh = ExtResource("6_8sh17")
 
 [node name="Frame0" type="MeshInstance3D" parent="Frame0Model"]
 visible = false
@@ -82,7 +99,9 @@ shape = SubResource("SphereShape3D_e1j53")
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("5_mgd80")]
 damageable = NodePath("../DamageController2/Damageable")
 shape = NodePath("..")
-self_damage_multiplier = 5.0
+
+[node name="ModuleTooltip" parent="." instance=ExtResource("12_7p43c")]
+hover_size = Vector2(0.625, 1)
 
 [connection signal="damaged" from="DamageController2" to="." method="take_damage"]
 

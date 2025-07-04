@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cujiw86wtjlp8" path="res://prefabs/modules/frame1.tscn" id="6_4jqhl"]
 [ext_resource type="PackedScene" uid="uid://b6fx656pcno7s" path="res://prefabs/modules/shield_module.tscn" id="10_rybhy"]
 
-[node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "modules", "leave_animation")]
+[node name="FlyableShip" type="RigidBody3D" node_paths=PackedStringArray("cockpit", "leave_animation")]
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -19,7 +19,6 @@ angular_damp_mode = 1
 angular_damp = 1.5
 script = ExtResource("1_keeht")
 cockpit = NodePath("Cockpit")
-modules = [null, null, null, null, null]
 team = 0
 leave_animation = NodePath("Cockpit/AnimationPlayer")
 

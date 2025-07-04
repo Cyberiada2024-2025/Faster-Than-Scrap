@@ -18,8 +18,11 @@ func state_update(delta: float) -> void:
 
 ## Called by the state machine on the engine's physics update tick.
 func state_physics_update(delta: float) -> void:
+	super(delta)
+	ship_controller.should_reset_velocities = false
 	for state in child_states:
 		state.state_physics_update(delta)
+	ship_controller.should_reset_velocities = true
 
 
 ## Called by the state machine upon changing the active state. The `data` parameter

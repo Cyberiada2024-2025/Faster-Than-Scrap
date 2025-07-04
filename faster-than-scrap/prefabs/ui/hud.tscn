@@ -4,14 +4,14 @@
 [ext_resource type="Script" uid="uid://hpmnb8n3f0n" path="res://code/player/resource_bar.gd" id="2_1s2ai"]
 [ext_resource type="Script" uid="uid://didqucv23c6i1" path="res://code/player/energy_bar.gd" id="2_3xm3k"]
 [ext_resource type="Texture2D" uid="uid://ckq5tf4xlv4v" path="res://art/textures/ui/battery_level_empty.png" id="2_ggpsi"]
-[ext_resource type="Environment" uid="uid://dw4s7x1fwwm7a" path="res://art/materials/environment/new_environment.tres" id="2_u286n"]
+[ext_resource type="Environment" uid="uid://yucan4745p3e" path="res://art/materials/environment/radar_environment.tres" id="2_u286n"]
 [ext_resource type="Texture2D" uid="uid://7rlfp1kyqex2" path="res://art/textures/ui/battery_level.png" id="3_3xm3k"]
 [ext_resource type="Texture2D" uid="uid://b2wcjw2km4vjf" path="res://art/textures/ui/battery2.png" id="3_6m4ql"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="4_5fqad"]
 [ext_resource type="Texture2D" uid="uid://bmw35cwms6w7t" path="res://art/textures/ui/mapselect/Canister.png" id="5_ektdj"]
 [ext_resource type="Script" uid="uid://durs6dd5ncgap" path="res://code/player/fuel_display.gd" id="5_jtpgg"]
 [ext_resource type="ArrayMesh" uid="uid://ctrcha2pvwkt8" path="res://art/models/minimap.obj" id="10_fijqi"]
-[ext_resource type="Texture2D" uid="uid://cwun3qgred5vi" path="res://art/shaders/blah.png" id="11_sb0ep"]
+[ext_resource type="Texture2D" uid="uid://cwun3qgred5vi" path="res://art/textures/ui/radar.png" id="11_sb0ep"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cg4l6"]
 bg_color = Color(0, 0, 0, 1)
@@ -116,7 +116,7 @@ uv1_triplanar = true
 uv1_triplanar_sharpness = 0.659759
 billboard_keep_scale = true
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fijqi"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2iqq7"]
 viewport_path = NodePath("ModuleViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sb0ep"]
@@ -126,7 +126,7 @@ transparency = 1
 no_depth_test = true
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = SubResource("ViewportTexture_fijqi")
+albedo_texture = SubResource("ViewportTexture_2iqq7")
 uv1_scale = Vector3(0.3, 0.3, 0.3)
 uv1_offset = Vector3(0.3, 0, 0.65)
 uv1_triplanar = true

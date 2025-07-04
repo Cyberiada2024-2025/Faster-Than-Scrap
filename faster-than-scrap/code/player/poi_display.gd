@@ -98,7 +98,7 @@ func _set_arrow_transform() -> void:
 
 
 func _clamp_arrow_position(direction: Vector2, radius: float) -> void:
-	## find bigger vector component, to cast it on the square
+	## find bigger vector component, to cast it on the circle
 	direction *= radius
 
 	var map_camera = Hud.instance._minimap_camera

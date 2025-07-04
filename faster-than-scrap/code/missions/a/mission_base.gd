@@ -18,6 +18,8 @@ enum Priority { MAIN_QUEST, SIDE_QUEST }
 @export var _custom_vortex_size: float = 400
 
 var state: MissionState = MissionState.IN_PROGRESS
+@export var jump_circle: CircleProgressBar
+var timer: Timer
 
 
 func _ready() -> void:
@@ -30,23 +32,37 @@ func setup() -> void:
 
 
 func _process(_delta: float) -> void:
-	pass
+	if jump_circle != null:
+		jump_circle.set_percentage(1.0 - timer.time_left / timer.wait_time)
+
+
+func _create_circle():
+	# I tried to use VBox and do it in HUD scene but spaghetti got too real
+	var circle_center: Vector2 = get_window().size - Vector2i.ONE * 50
+	circle_center.y -= get_window().size.y / 1.26
+	circle_center.x += get_window().size.y / 120
+
+	jump_circle = CircleProgressBar.new()
+	add_child(jump_circle)
+	jump_circle.position = circle_center
 
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("use_fuel"):
 		if GameManager.player_ship.current_fuel > 0:
-			var timer := Timer.new()
+			timer = Timer.new()
 			add_child(timer)
 			timer.one_shot = true
 			timer.wait_time = time_to_hold
 			timer.timeout.connect(_use_fuel)
 			timer.name = "hyperdrive"
 			timer.start()
+			_create_circle()
 		else:
 			print("No hyperspace fuel")
 
 	if Input.is_action_just_released("use_fuel"):
+		jump_circle.queue_free()
 		for child in get_children():
 			if child.name == "hyperdrive":
 				child.queue_free()

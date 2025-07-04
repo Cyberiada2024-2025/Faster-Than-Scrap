@@ -96,7 +96,7 @@ func _physics_process(_delta: float) -> void:
 		input_direction.y,
 	)
 
-	apply_force(force_direction * debug_movement_force)
+	apply_force(force_direction * debug_movement_force * mass)
 
 
 func change_air_resistance() -> void:

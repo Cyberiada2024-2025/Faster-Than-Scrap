@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://gwqp0k88sump"]
+[gd_scene load_steps=4 format=3 uid="uid://js76qvbo8iq0"]
 
 [ext_resource type="PackedScene" uid="uid://dn3mypfoixbpt" path="res://prefabs/environment/asteroids/single_asteroid/small/asteroid1.tscn" id="1_go3se"]
 [ext_resource type="PackedScene" uid="uid://c21ake882np85" path="res://prefabs/environment/asteroids/single_asteroid/small/asteroid2.tscn" id="2_uw5h5"]

@@ -80,15 +80,6 @@ func _ended() -> bool:
 	return state == MissionState.FINISHED or state == MissionState.FAILED
 
 
-func create_label(text: String) -> Label3D:
-	var label := Label3D.new()
-	label.text = text
-	label.font_size = 180
-	label.position = Vector3(0, 0, 2)
-	label.rotation_degrees = Vector3(270, 0, 0)
-	return label
-
-
 func _spawn_vortex(target_position: Vector3) -> void:
 	if _use_custom_vortex_size:
 		SpaceVortex.spawn_vortex(target_position, _custom_vortex_size)

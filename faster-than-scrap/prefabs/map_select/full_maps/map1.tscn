@@ -256,7 +256,7 @@ layout_mode = 2
 layout_mode = 2
 boss_prefabs = Array[PackedScene]([ExtResource("24_ui2af")])
 is_miniboss = true
-next_map_nodes = [NodePath(""), NodePath("")]
+next_map_nodes = [null, null]
 
 [node name="MapMargin14" parent="." instance=ExtResource("4_nrfml")]
 layout_mode = 2

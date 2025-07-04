@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://btnqar75x62m0"]
+
+[ext_resource type="Script" uid="uid://65m4xcjhtor5" path="res://code/effects/timed_particle.gd" id="1_ibc5o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3xl1"]
+blend_mode = 1
+albedo_color = Color(0.760203, 3.70607e-06, 4.81307e-07, 1)
+metallic = 0.3
+metallic_specular = 0.3
+roughness = 0.0
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 1.5
+disable_receive_shadows = true
+
+[sub_resource type="Gradient" id="Gradient_ts5mp"]
+offsets = PackedFloat32Array(0.333333, 0.701923, 1)
+colors = PackedColorArray(1, 0, 0.490196, 1, 0.618024, 0.00638921, 0.453658, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h5qc5"]
+gradient = SubResource("Gradient_ts5mp")
+
+[sub_resource type="Curve" id="Curve_hlmsj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.174263, 0.979645), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1vd0d"]
+curve = SubResource("Curve_hlmsj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tsekn"]
+particle_flag_rotate_y = true
+emission_shape_offset = Vector3(0, 0.5, 0)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 0, -1)
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_1vd0d")
+color_ramp = SubResource("GradientTexture1D_h5qc5")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ibc5o"]
+height = 0.5
+radial_segments = 6
+rings = 1
+
+[node name="Explosion" type="GPUParticles3D"]
+material_override = SubResource("StandardMaterial3D_o3xl1")
+transparency = 0.5
+cast_shadow = 0
+amount = 32
+lifetime = 3.0
+one_shot = true
+speed_scale = 3.0
+process_material = SubResource("ParticleProcessMaterial_tsekn")
+draw_pass_1 = SubResource("SphereMesh_ibc5o")
+script = ExtResource("1_ibc5o")
+_lifetime = 5.0
+metadata/_custom_type_script = "uid://65m4xcjhtor5"

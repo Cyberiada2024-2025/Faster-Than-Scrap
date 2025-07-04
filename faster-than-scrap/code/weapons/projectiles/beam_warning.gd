@@ -20,5 +20,5 @@ func _ready() -> void:
 		muzzle_flash.emitting = true
 
 func _notification(notification):
-	if (notification == NOTIFICATION_PREDELETE):
+	if (notification == NOTIFICATION_PREDELETE && active_projectile != null):
 		active_projectile.queue_free()

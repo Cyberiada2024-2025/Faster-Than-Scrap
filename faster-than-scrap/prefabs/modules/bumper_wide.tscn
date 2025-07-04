@@ -73,6 +73,8 @@ _damage_multiplier = 0.75
 damageable = NodePath("../DamageController/Damageable")
 shape = NodePath("..")
 flat_damage_reduction = 100.0
+self_damage_multiplier = 0.4
+dealt_damage_multiplier = 1.5
 
 [node name="Illegal Placement Zone" parent="." instance=ExtResource("7_y5o85")]
 

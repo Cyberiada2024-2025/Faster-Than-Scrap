@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://co00lq4f26bp4"]
+[gd_scene load_steps=4 format=3 uid="uid://co00lq4f26bp4"]
 
+[ext_resource type="Script" path="res://code/ui/connect_sound_to_all_clickables.gd" id="1_62nss"]
 [ext_resource type="Texture2D" uid="uid://cp478xmty8tx6" path="res://art/textures/died_placeholder.png" id="1_katkj"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_b8ji8"]
 
@@ -11,6 +12,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ConnectSoundToParentAndAllChildren" type="Node" parent="."]
+script = ExtResource("1_62nss")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

@@ -17,13 +17,13 @@ func enter(_previous_state_path: String, _data := {}) -> void:
 
 
 ## Called by the state machine on the engine's main loop tick.
-func state_update(delta: float) -> void:
+func state_physics_update(delta: float) -> void:
 	time += delta
 	var percentage := time / duration
 	if percentage >= 1.0:
 		ship_controller.rotation = final_rot.get_euler()
 	else:
-		ship_controller.rotation += Vector3(0, deg_to_rad(y_rotation), 0) * delta / duration
+		ship_controller.angular_velocity = Vector3(0, deg_to_rad(y_rotation), 0) / duration
 
 
 func exit() -> void:

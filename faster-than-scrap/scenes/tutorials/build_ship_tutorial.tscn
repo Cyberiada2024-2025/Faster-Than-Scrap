@@ -1,6 +1,6 @@
 [gd_scene load_steps=46 format=3 uid="uid://dfoh6ok7s6jld"]
 
-[ext_resource type="Script" path="res://code/ui/connect_sound_to_all_clickables.gd" id="1_t6clv"]
+[ext_resource type="Script" uid="uid://smw6vyfefqxn" path="res://code/ui/connect_sound_to_all_clickables.gd" id="1_t6clv"]
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="2_8wcn2"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="3_pj0jo"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="4_u5eix"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dfqok04svlmok" path="res://prefabs/ui/cutscenes/build_tutorial_cutscene.tscn" id="15_ic7qf"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="15_pfpp4"]
 [ext_resource type="AudioStream" uid="uid://p6ddq3n2aw7m" path="res://art/audio/sounds/ui/ship_builder/repair.mp3" id="17_1io85"]
-[ext_resource type="Script" path="res://code/sound/sound_emitter_global.gd" id="18_mxk4f"]
+[ext_resource type="Script" uid="uid://c6mohg4o53eqe" path="res://code/sound/sound_emitter_global.gd" id="18_mxk4f"]
 [ext_resource type="AudioStream" uid="uid://c5x8fjlikxyw7" path="res://art/audio/sounds/ui/ship_builder/pick.mp3" id="19_y14ly"]
 [ext_resource type="AudioStream" uid="uid://bw7fx4gi1ocds" path="res://art/audio/sounds/ui/ship_builder/cannot_pick.mp3" id="20_y0546"]
 [ext_resource type="AudioStream" uid="uid://bx7vsv554fmbm" path="res://art/audio/sounds/ui/ship_builder/rotate.mp3" id="21_b1ffx"]

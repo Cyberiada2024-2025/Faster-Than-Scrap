@@ -272,193 +272,187 @@ transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412
 [node name="AsteroidGroupCircle70" parent="Asteroids/Group1" index="84" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -120.432, 0, -123.58)
 
-[node name="AsteroidGroupCircle71" parent="Asteroids/Group1" index="85" instance=ExtResource("2_prmdt")]
-transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -137.416, 0, -123.645)
+[node name="AsteroidGroupCircle72" parent="Asteroids/Group1" index="85" instance=ExtResource("2_prmdt")]
+transform = Transform3D(0.457703, 0, 0.889105, 0, 1, 0, -0.889105, 0, 0.457703, -108.881, 0, -147.963)
 
-[node name="AsteroidGroupCircle75" parent="Asteroids/Group1" index="86" instance=ExtResource("2_prmdt")]
-transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -137.416, 0, -123.645)
-
-[node name="AsteroidGroupCircle72" parent="Asteroids/Group1" index="87" instance=ExtResource("2_prmdt")]
-transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -105.941, 0, -149.249)
-
-[node name="AsteroidGroupCircle73" parent="Asteroids/Group1" index="88" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle73" parent="Asteroids/Group1" index="86" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -122.666, 0, -144.65)
 
-[node name="AsteroidGroupCircle74" parent="Asteroids/Group1" index="89" instance=ExtResource("2_prmdt")]
-transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -139.65, 0, -144.715)
+[node name="AsteroidGroupCircle74" parent="Asteroids/Group1" index="87" instance=ExtResource("2_prmdt")]
+transform = Transform3D(0.365705, 0, 0.93073, 0, 1, 0, -0.93073, 0, 0.365705, -146.493, 0, -139.131)
 
-[node name="AsteroidGroupCircle76" parent="Asteroids/Group1" index="90" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle76" parent="Asteroids/Group1" index="88" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -154.613, 0, -171.751)
 
-[node name="AsteroidGroupCircle77" parent="Asteroids/Group1" index="91" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle77" parent="Asteroids/Group1" index="89" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -171.338, 0, -167.152)
 
-[node name="AsteroidGroupCircle78" parent="Asteroids/Group1" index="92" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle78" parent="Asteroids/Group1" index="90" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -188.322, 0, -167.218)
 
-[node name="AsteroidGroupCircle79" parent="Asteroids/Group1" index="93" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle79" parent="Asteroids/Group1" index="91" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -188.322, 0, -167.218)
 
-[node name="AsteroidGroupCircle80" parent="Asteroids/Group1" index="94" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle80" parent="Asteroids/Group1" index="92" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -156.847, 0, -192.821)
 
-[node name="AsteroidGroupCircle81" parent="Asteroids/Group1" index="95" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle81" parent="Asteroids/Group1" index="93" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -173.572, 0, -188.222)
 
-[node name="AsteroidGroupCircle82" parent="Asteroids/Group1" index="96" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle82" parent="Asteroids/Group1" index="94" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -190.557, 0, -188.288)
 
-[node name="AsteroidGroupCircle83" parent="Asteroids/Group1" index="97" instance=ExtResource("2_prmdt")]
-transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -157.613, 0, -127.751)
+[node name="AsteroidGroupCircle83" parent="Asteroids/Group1" index="95" instance=ExtResource("2_prmdt")]
+transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -156.51, 0, -127.436)
 
-[node name="AsteroidGroupCircle84" parent="Asteroids/Group1" index="98" instance=ExtResource("2_prmdt")]
-transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -174.338, 0, -123.152)
+[node name="AsteroidGroupCircle84" parent="Asteroids/Group1" index="96" instance=ExtResource("2_prmdt")]
+transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -173.798, 0, -122.747)
 
-[node name="AsteroidGroupCircle85" parent="Asteroids/Group1" index="99" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle85" parent="Asteroids/Group1" index="97" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -191.322, 0, -123.218)
 
-[node name="AsteroidGroupCircle86" parent="Asteroids/Group1" index="100" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle86" parent="Asteroids/Group1" index="98" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -191.322, 0, -123.218)
 
-[node name="AsteroidGroupCircle87" parent="Asteroids/Group1" index="101" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle87" parent="Asteroids/Group1" index="99" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -159.847, 0, -148.821)
 
-[node name="AsteroidGroupCircle88" parent="Asteroids/Group1" index="102" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle88" parent="Asteroids/Group1" index="100" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -176.572, 0, -144.222)
 
-[node name="AsteroidGroupCircle89" parent="Asteroids/Group1" index="103" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle89" parent="Asteroids/Group1" index="101" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -193.557, 0, -144.288)
 
-[node name="AsteroidGroupCircle90" parent="Asteroids/Group1" index="104" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle90" parent="Asteroids/Group1" index="102" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -131.937, 0, -80.6875)
 
-[node name="AsteroidGroupCircle91" parent="Asteroids/Group1" index="105" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle91" parent="Asteroids/Group1" index="103" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -148.662, 0, -76.0884)
 
-[node name="AsteroidGroupCircle92" parent="Asteroids/Group1" index="106" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle92" parent="Asteroids/Group1" index="104" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -165.646, 0, -76.1539)
 
-[node name="AsteroidGroupCircle93" parent="Asteroids/Group1" index="107" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle93" parent="Asteroids/Group1" index="105" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -165.646, 0, -76.1539)
 
-[node name="AsteroidGroupCircle94" parent="Asteroids/Group1" index="108" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle94" parent="Asteroids/Group1" index="106" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -134.172, 0, -101.757)
 
-[node name="AsteroidGroupCircle95" parent="Asteroids/Group1" index="109" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle95" parent="Asteroids/Group1" index="107" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -150.897, 0, -97.1583)
 
-[node name="AsteroidGroupCircle96" parent="Asteroids/Group1" index="110" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle96" parent="Asteroids/Group1" index="108" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -167.881, 0, -97.2238)
 
-[node name="AsteroidGroupCircle97" parent="Asteroids/Group1" index="111" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle97" parent="Asteroids/Group1" index="109" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.999929, 0, 0.0119379, 0, 1, 0, -0.0119379, 0, -0.999929, -121.008, 0, -69.3683)
 
-[node name="AsteroidGroupCircle98" parent="Asteroids/Group1" index="112" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle98" parent="Asteroids/Group1" index="110" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.999929, 0, 0.0119379, 0, 1, 0, -0.0119379, 0, -0.999929, -113.302, 0, -52.3405)
 
-[node name="AsteroidGroupCircle99" parent="Asteroids/Group1" index="113" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle99" parent="Asteroids/Group1" index="111" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.999929, 0, 0.0119379, 0, 1, 0, -0.0119379, 0, -0.999929, -118.039, 0, -35.4854)
 
-[node name="AsteroidGroupCircle100" parent="Asteroids/Group1" index="114" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle100" parent="Asteroids/Group1" index="112" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.999929, 0, 0.0119379, 0, 1, 0, -0.0119379, 0, -0.999929, -118.039, 0, -35.4854)
 
-[node name="AsteroidGroupCircle101" parent="Asteroids/Group1" index="115" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle101" parent="Asteroids/Group1" index="113" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.999929, 0, 0.0119379, 0, 1, 0, -0.0119379, 0, -0.999929, -142.159, 0, -68.1111)
 
-[node name="AsteroidGroupCircle102" parent="Asteroids/Group1" index="116" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle102" parent="Asteroids/Group1" index="114" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.999929, 0, 0.0119379, 0, 1, 0, -0.0119379, 0, -0.999929, -138.339, 0, -51.1912)
 
-[node name="AsteroidGroupCircle103" parent="Asteroids/Group1" index="117" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle103" parent="Asteroids/Group1" index="115" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.999929, 0, 0.0119379, 0, 1, 0, -0.0119379, 0, -0.999929, -139.19, 0, -34.2282)
 
-[node name="AsteroidGroupCircle104" parent="Asteroids/Group1" index="118" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle104" parent="Asteroids/Group1" index="116" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.590901, 0, 0.806744, 0, 1, 0, -0.806744, 0, -0.590901, -85.1005, 0, -1.791)
 
-[node name="AsteroidGroupCircle105" parent="Asteroids/Group1" index="119" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle105" parent="Asteroids/Group1" index="117" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.590901, 0, 0.806744, 0, 1, 0, -0.806744, 0, -0.590901, -102.862, 0, 14.6871)
 
-[node name="AsteroidGroupCircle106" parent="Asteroids/Group1" index="120" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle106" parent="Asteroids/Group1" index="118" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.590901, 0, 0.806744, 0, 1, 0, -0.806744, 0, -0.590901, -116.938, 0, 24.1926)
 
-[node name="AsteroidGroupCircle107" parent="Asteroids/Group1" index="121" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle107" parent="Asteroids/Group1" index="119" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.590901, 0, 0.806744, 0, 1, 0, -0.806744, 0, -0.590901, -116.938, 0, 24.1926)
 
-[node name="AsteroidGroupCircle108" parent="Asteroids/Group1" index="122" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle108" parent="Asteroids/Group1" index="120" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.590901, 0, 0.806744, 0, 1, 0, -0.806744, 0, -0.590901, -105.333, 0, -14.6858)
 
-[node name="AsteroidGroupCircle109" parent="Asteroids/Group1" index="123" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle109" parent="Asteroids/Group1" index="121" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.590901, 0, 0.806744, 0, 1, 0, -0.806744, 0, -0.590901, -116.568, 0, -1.47077)
 
-[node name="AsteroidGroupCircle110" parent="Asteroids/Group1" index="124" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle110" parent="Asteroids/Group1" index="122" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.590901, 0, 0.806744, 0, 1, 0, -0.806744, 0, -0.590901, -130.644, 0, 8.03468)
 
-[node name="AsteroidGroupCircle111" parent="Asteroids/Group1" index="125" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle111" parent="Asteroids/Group1" index="123" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -34.2796, 0, 20.0662)
 
-[node name="AsteroidGroupCircle112" parent="Asteroids/Group1" index="126" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle112" parent="Asteroids/Group1" index="124" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -51.0046, 0, 24.6652)
 
-[node name="AsteroidGroupCircle113" parent="Asteroids/Group1" index="127" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle113" parent="Asteroids/Group1" index="125" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -67.9888, 0, 24.5997)
 
-[node name="AsteroidGroupCircle114" parent="Asteroids/Group1" index="128" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle114" parent="Asteroids/Group1" index="126" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -67.9888, 0, 24.5997)
 
-[node name="AsteroidGroupCircle115" parent="Asteroids/Group1" index="129" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle115" parent="Asteroids/Group1" index="127" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -36.2422, 0, -3.99424)
 
-[node name="AsteroidGroupCircle116" parent="Asteroids/Group1" index="130" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle116" parent="Asteroids/Group1" index="128" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -53.239, 0, 3.59533)
 
-[node name="AsteroidGroupCircle117" parent="Asteroids/Group1" index="131" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle117" parent="Asteroids/Group1" index="129" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.0343412, 0, 0.99941, 0, 1, 0, -0.99941, 0, -0.0343412, -70.2233, 0, 3.52983)
 
-[node name="AsteroidGroupCircle132" parent="Asteroids/Group1" index="132" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle132" parent="Asteroids/Group1" index="130" instance=ExtResource("2_prmdt")]
 transform = Transform3D(0.94288, 0, 0.333132, 0, 1, 0, -0.333132, 0, 0.94288, 35.2487, 0, 47.2368)
 
-[node name="AsteroidGroupCircle133" parent="Asteroids/Group1" index="133" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle133" parent="Asteroids/Group1" index="131" instance=ExtResource("2_prmdt")]
 transform = Transform3D(0.94288, 0, 0.333132, 0, 1, 0, -0.333132, 0, 0.94288, 28.2661, 0, 31.3138)
 
-[node name="AsteroidGroupCircle134" parent="Asteroids/Group1" index="134" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle134" parent="Asteroids/Group1" index="132" instance=ExtResource("2_prmdt")]
 transform = Transform3D(0.94288, 0, 0.333132, 0, 1, 0, -0.333132, 0, 0.94288, 18.7782, 0, 19.088)
 
-[node name="AsteroidGroupCircle135" parent="Asteroids/Group1" index="135" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle135" parent="Asteroids/Group1" index="133" instance=ExtResource("2_prmdt")]
 transform = Transform3D(0.94288, 0, 0.333132, 0, 1, 0, -0.333132, 0, 0.94288, 1.73116, 0, 12.442)
 
-[node name="AsteroidGroupCircle136" parent="Asteroids/Group1" index="136" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle136" parent="Asteroids/Group1" index="134" instance=ExtResource("2_prmdt")]
 transform = Transform3D(0.94288, 0, 0.333132, 0, 1, 0, -0.333132, 0, 0.94288, -11.3344, 0, 24.7212)
 
-[node name="AsteroidGroupCircle137" parent="Asteroids/Group1" index="137" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle137" parent="Asteroids/Group1" index="135" instance=ExtResource("2_prmdt")]
 transform = Transform3D(0.94288, 0, 0.333132, 0, 1, 0, -0.333132, 0, 0.94288, -29.1361, 0, 37.3743)
 
-[node name="AsteroidGroupCircle138" parent="Asteroids/Group1" index="138" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle138" parent="Asteroids/Group1" index="136" instance=ExtResource("2_prmdt")]
 transform = Transform3D(0.94288, 0, 0.333132, 0, 1, 0, -0.333132, 0, 0.94288, -47.8351, 0, 37.8348)
 
-[node name="AsteroidGroupCircle139" parent="Asteroids/Group1" index="139" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle139" parent="Asteroids/Group1" index="137" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.825902, 0, 0.563814, 0, 1, 0, -0.563814, 0, -0.825902, -24.9531, 0, 56.8495)
 
-[node name="AsteroidGroupCircle140" parent="Asteroids/Group1" index="140" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle140" parent="Asteroids/Group1" index="138" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.365315, 0, 0.930884, 0, 1, 0, -0.930884, 0, -0.365315, 30.2462, 0, 60.5281)
 
-[node name="AsteroidGroupCircle141" parent="Asteroids/Group1" index="141" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle141" parent="Asteroids/Group1" index="139" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.365315, 0, 0.930884, 0, 1, 0, -0.930884, 0, -0.365315, 16.0087, 0, 70.4361)
 
-[node name="AsteroidGroupCircle142" parent="Asteroids/Group1" index="142" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle142" parent="Asteroids/Group1" index="140" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.365315, 0, 0.930884, 0, 1, 0, -0.930884, 0, -0.365315, -0.0272887, 0, 76.0324)
 
-[node name="AsteroidGroupCircle143" parent="Asteroids/Group1" index="143" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle143" parent="Asteroids/Group1" index="141" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.365315, 0, 0.930884, 0, 1, 0, -0.930884, 0, -0.365315, -0.0272887, 0, 76.0324)
 
-[node name="AsteroidGroupCircle144" parent="Asteroids/Group1" index="144" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle144" parent="Asteroids/Group1" index="142" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.365315, 0, 0.930884, 0, 1, 0, -0.930884, 0, -0.365315, 20.3804, 0, 38.4959)
 
-[node name="AsteroidGroupCircle145" parent="Asteroids/Group1" index="145" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle145" parent="Asteroids/Group1" index="143" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.365315, 0, 0.930884, 0, 1, 0, -0.930884, 0, -0.365315, 6.88276, 0, 51.3141)
 
-[node name="AsteroidGroupCircle146" parent="Asteroids/Group1" index="146" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle146" parent="Asteroids/Group1" index="144" instance=ExtResource("2_prmdt")]
 transform = Transform3D(-0.365315, 0, 0.930884, 0, 1, 0, -0.930884, 0, -0.365315, -9.1532, 0, 56.9104)
 
-[node name="AsteroidGroupCircle17" parent="Asteroids/Group1" index="147" instance=ExtResource("2_prmdt")]
+[node name="AsteroidGroupCircle17" parent="Asteroids/Group1" index="145" instance=ExtResource("2_prmdt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.6736, 0, -75.4514)
 
 [node name="AsteroidGroupCircle17" parent="Asteroids/Group2" index="0" instance=ExtResource("2_prmdt")]

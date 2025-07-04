@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://qemwu1rt7gtj"]
+[gd_scene load_steps=48 format=3 uid="uid://qemwu1rt7gtj"]
 
 [ext_resource type="Script" uid="uid://o52uw8n1ufdc" path="res://code/map_select/map_selector.gd" id="1_yxgtb"]
 [ext_resource type="PackedScene" uid="uid://2oa2dvray5oq" path="res://prefabs/map_select/map_layer.tscn" id="2_bp67s"]
@@ -17,15 +17,14 @@
 [ext_resource type="PackedScene" uid="uid://ce6o6d7fo8n7x" path="res://scenes/levels/finalest/easy/second_escape.tscn" id="11_uee5q"]
 [ext_resource type="PackedScene" uid="uid://c03u0pmq5d36y" path="res://prefabs/map_select/nodes/templates/missions/mission_fuel.tscn" id="13_rwq3m"]
 [ext_resource type="PackedScene" uid="uid://du6pm1c27imvg" path="res://scenes/levels/finalest/medium/medium_fuel_tradehub.tscn" id="16_sau2r"]
-[ext_resource type="PackedScene" uid="uid://rk0er3r4rdr5" path="res://scenes/levels/final/medium/asteroids_squares_defend.tscn" id="17_0a6x0"]
 [ext_resource type="PackedScene" uid="uid://bko3jm751dtjg" path="res://scenes/levels/finalest/medium/medium_defend_tradehub.tscn" id="18_f40e2"]
 [ext_resource type="PackedScene" uid="uid://ba10gvvebeayk" path="res://scenes/levels/finalest/medium/defend_rocky.tscn" id="19_dlw72"]
 [ext_resource type="PackedScene" uid="uid://cffdw3rw68kj0" path="res://scenes/levels/final/medium/swarms_get_fuel.tscn" id="19_mxsq4"]
 [ext_resource type="PackedScene" uid="uid://djbsm7h83wtff" path="res://scenes/levels/finalest/medium/escape_rocky.tscn" id="20_sau2r"]
 [ext_resource type="PackedScene" uid="uid://1m403ket1u35" path="res://scenes/levels/finalest/medium/fuel_rocky.tscn" id="21_f40e2"]
 [ext_resource type="PackedScene" uid="uid://cbpcw4xut260y" path="res://scenes/levels/finalest/medium/kill_all_mission.tscn" id="22_0a6x0"]
+[ext_resource type="PackedScene" uid="uid://b3uef0qofhpqt" path="res://scenes/levels/finalest/medium/dedicated_defend.tscn" id="23_0a6x0"]
 [ext_resource type="PackedScene" uid="uid://c82mvft7uxknf" path="res://scenes/levels/finalest/medium/dedicated_escape.tscn" id="24_0a6x0"]
-[ext_resource type="PackedScene" uid="uid://bpjc7uuyupx1c" path="res://scenes/levels/final/medium/asteroids_line_defend.tscn" id="24_uee5q"]
 [ext_resource type="PackedScene" uid="uid://c3rsq4emlmuky" path="res://prefabs/npc/bosses/examples/laser_star/laser_star.tscn" id="24_ui2af"]
 [ext_resource type="PackedScene" uid="uid://1x45q2a5nnee" path="res://prefabs/npc/bosses/vortex/vortex_boss.tscn" id="25_bh1t4"]
 [ext_resource type="PackedScene" uid="uid://d18x6bug11tqh" path="res://scenes/levels/final/hard/big_asteroid_sparse_escape.tscn" id="27_0a6x0"]
@@ -267,19 +266,13 @@ layout_mode = 2
 [node name="MissionDefendAsteroidsLines" parent="MapLayer10" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
 layout_mode = 2
 mission_info = SubResource("Resource_fj8or")
-level_prefab = ExtResource("24_uee5q")
+level_prefab = ExtResource("23_0a6x0")
 next_map_nodes = [NodePath("../../MapLayer11/BossNode")]
 
 [node name="MissionEscapeSwarms" parent="MapLayer10" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
 layout_mode = 2
 mission_info = SubResource("Resource_dl063")
 level_prefab = ExtResource("24_0a6x0")
-next_map_nodes = [NodePath("../../MapLayer11/BossNode")]
-
-[node name="MissionDefendAsteroidsSquares" parent="MapLayer10" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
-layout_mode = 2
-mission_info = SubResource("Resource_t1mo6")
-level_prefab = ExtResource("17_0a6x0")
 next_map_nodes = [NodePath("../../MapLayer11/BossNode")]
 
 [node name="MapMargin10" parent="." instance=ExtResource("4_nrfml")]

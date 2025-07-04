@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_nqy7r"]
 [ext_resource type="Material" uid="uid://c04e0wsb1bqto" path="res://art/materials/vfx/engine_fire.tres" id="4_nqy7r"]
 [ext_resource type="Script" uid="uid://2p7oc4a3141y" path="res://code/utilities/wait_free.gd" id="5_nqy7r"]
-[ext_resource type="PackedScene" path="res://prefabs/vfx/particles/thruster_muzzle.tscn" id="6_dhf0v"]
+[ext_resource type="PackedScene" uid="uid://mk5ccx4i28ls" path="res://prefabs/vfx/particles/thruster_muzzle.tscn" id="6_dhf0v"]
 
 [sub_resource type="Resource" id="Resource_7ctxp"]
 script = ExtResource("3_nqy7r")

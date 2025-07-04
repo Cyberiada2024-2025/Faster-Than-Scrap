@@ -102,23 +102,6 @@ viewport_path = NodePath("CircleModules")
 [sub_resource type="ViewportTexture" id="ViewportTexture_sb0ep"]
 viewport_path = NodePath("CircleMinimap")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fijqi"]
-viewport_path = NodePath("ModuleViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sb0ep"]
-resource_local_to_scene = true
-render_priority = 3
-transparency = 1
-no_depth_test = true
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = SubResource("ViewportTexture_fijqi")
-uv1_scale = Vector3(0.3, 0.3, 0.3)
-uv1_offset = Vector3(0.3, 0, 0.65)
-uv1_triplanar = true
-uv1_triplanar_sharpness = 0.93304
-billboard_keep_scale = true
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fijqi"]
 resource_local_to_scene = true
 render_priority = 3
@@ -133,12 +116,29 @@ uv1_triplanar = true
 uv1_triplanar_sharpness = 0.659759
 billboard_keep_scale = true
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_fijqi"]
+viewport_path = NodePath("ModuleViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sb0ep"]
+resource_local_to_scene = true
+render_priority = 4
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("ViewportTexture_fijqi")
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_offset = Vector3(0.3, 0, 0.65)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.93304
+billboard_keep_scale = true
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_3xm3k"]
 viewport_path = NodePath("MinimapViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u286n"]
 resource_local_to_scene = true
-render_priority = 3
+render_priority = 4
 transparency = 1
 no_depth_test = true
 shading_mode = 0
@@ -184,8 +184,7 @@ shadow_mesh = SubResource("ArrayMesh_utm00")
 
 [node name="MainCamera" type="Camera3D" node_paths=PackedStringArray("energy_bar")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
-cull_mask = 1048569
-fov = 87.0
+cull_mask = 1048545
 script = ExtResource("1_x65cj")
 energy_bar = NodePath("HUD/Energy Bar")
 main_camera_offset = Vector3(0, 25, 0)
@@ -419,18 +418,18 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10,
 cull_mask = 1047568
 environment = ExtResource("2_u286n")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="CircleModules/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.35)
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="CircleModules/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.84217e-14, -1.35)
 layers = 16
-material_override = SubResource("StandardMaterial3D_sb0ep")
+material_override = SubResource("StandardMaterial3D_fijqi")
 gi_mode = 0
 mesh = ExtResource("10_fijqi")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="CircleModules/Camera3D"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CircleModules/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.35)
 layers = 16
-material_override = SubResource("StandardMaterial3D_fijqi")
+material_override = SubResource("StandardMaterial3D_sb0ep")
 gi_mode = 0
 mesh = ExtResource("10_fijqi")
 skeleton = NodePath("")

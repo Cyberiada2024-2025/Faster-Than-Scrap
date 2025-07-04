@@ -73,6 +73,7 @@ func _handle_collision(
 	for group_name in ignore_groups:
 		if body.is_in_group(group_name):
 			should_take_damage = false
+			break
 
 	if should_take_damage:
 		var damage: Damage = calculate_damage(calculated_body, body)
@@ -149,5 +150,4 @@ func calculate_damage(me: Node, oponent: Node) -> Damage:
 	damage.value -= flat_damage_reduction
 	if damage.value <= 0:
 		damage.value = 0
-	print(damage, " to ", calculated_body)
 	return damage

@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://djgm5s1ld5wgr" path="res://prefabs/ships/flyable_ship_tutorial.tscn" id="1_8fkjt"]
 [ext_resource type="PackedScene" uid="uid://noejc02505g0" path="res://prefabs/ui/poi/vortex_poi.tscn" id="1_ngx30"]
-[ext_resource type="PackedScene" uid="uid://dm1qlo34r16co" path="res://prefabs/environment/shop_miniature_tutorial.tscn" id="2_8fkjt"]
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="2_ngx30"]
+[ext_resource type="PackedScene" uid="uid://ck4trpcmsem6p" path="res://prefabs/environment/cultist_station_tutorial.tscn" id="3_o6uy4"]
 [ext_resource type="PackedScene" uid="uid://dfco2h1p5vdx1" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid1.tscn" id="4_6bw2y"]
 [ext_resource type="PackedScene" uid="uid://bvng8hdkqm2d6" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid2.tscn" id="5_phkkj"]
 [ext_resource type="PackedScene" uid="uid://cs2m7lumvnaot" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid3.tscn" id="6_tkgtl"]
@@ -41,7 +41,7 @@ transform = Transform3D(1000, 0, 0, 0, -4.37114e-05, 1000, 0, -1000, -4.37114e-0
 
 [node name="FlyableShip" parent="." instance=ExtResource("1_8fkjt")]
 
-[node name="ShopMiniatureTutorial" parent="." instance=ExtResource("2_8fkjt")]
+[node name="CultistStationTutorial" parent="." instance=ExtResource("3_o6uy4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380)
 
 [node name="LevelStaples" parent="." instance=ExtResource("2_ngx30")]
@@ -185,9 +185,6 @@ shape = SubResource("SphereShape3D_83mrs")
 script = ExtResource("8_6xv7r")
 cutscene_path = ExtResource("14_416px")
 
-[connection signal="player_entered" from="ShopMiniatureTutorial/EnterShop" to="ShopMiniatureTutorial/SceneLoader" method="load_lore_scene"]
 [connection signal="player_low_energy" from="Energy cutscene player/Detect player low energy" to="Energy cutscene player" method="play"]
 [connection signal="player_entered" from="Weapon Cutscene player" to="Weapon Cutscene player/Weapon cutscene player" method="play"]
 [connection signal="player_entered" from="Portal Cutscene player" to="Portal Cutscene player/Portal cutscene player" method="play"]
-
-[editable path="ShopMiniatureTutorial"]

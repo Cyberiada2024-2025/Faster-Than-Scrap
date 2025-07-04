@@ -32,7 +32,7 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("2_yafkt")
 rects = [NodePath("Rects/VBoxContainer/HBoxContainer/ColorRect"), NodePath("Rects/VBoxContainer/HBoxContainer/ColorRect2"), NodePath("Rects/VBoxContainer/HBoxContainer/ColorRect3"), NodePath("Rects/VBoxContainer/HBoxContainer/ColorRect4"), NodePath("Rects/VBoxContainer/HBoxContainer2/ColorRect"), NodePath("Rects/VBoxContainer/HBoxContainer2/ColorRect2"), NodePath("Rects/VBoxContainer/HBoxContainer2/ColorRect3"), NodePath("Rects/VBoxContainer/HBoxContainer2/ColorRect4")]
 reveal_time = 0.5
-duration = 10.0
+duration = 20.0
 metadata/_custom_type_script = "uid://4y8nts6ke7i"
 
 [node name="Rects" type="Control" parent="Slide"]

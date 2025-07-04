@@ -85,7 +85,7 @@ func _on_ship_death(ship: Ship):
 	ships.erase(ship)
 
 
-## return the closest ship
+## return the closest ship that is an ENEMY of the given ship
 ## if no ship is found returns input ship
 func find_closest_ship(ship: Ship) -> Ship:
 	var closest: Ship = ship

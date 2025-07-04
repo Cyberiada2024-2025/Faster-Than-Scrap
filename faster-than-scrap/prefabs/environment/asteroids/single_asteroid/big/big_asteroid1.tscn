@@ -11,7 +11,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gro5k"]
 bounce = 1.0
 
-[node name="Asteroid" type="RigidBody3D"]
+[node name="Asteroid" type="RigidBody3D" groups=["asteroid"]]
 axis_lock_linear_y = true
 mass = 400000.0
 physics_material_override = SubResource("PhysicsMaterial_gro5k")

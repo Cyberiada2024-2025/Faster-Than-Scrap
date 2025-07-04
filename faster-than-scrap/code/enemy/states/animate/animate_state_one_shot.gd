@@ -10,6 +10,7 @@ var frame_counter: int = 0
 
 func _ready() -> void:
 	animators.assign(animators_root.find_children("*", "AnimationTree"))
+	super()
 
 
 func enter(_previous_state_path: String, _data := {}) -> void:

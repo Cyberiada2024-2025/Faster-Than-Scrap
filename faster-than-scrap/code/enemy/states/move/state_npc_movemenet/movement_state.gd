@@ -5,11 +5,13 @@ class_name movementState extends StateNPC
 ## in dead_zone do we stop in place [false] or keep circling [true]
 @export var circle_target: bool = false
 
-## we will check for new target every X ms
+## we will check for new target every X s
 @export var recheck_time: float = 5
 var _recheck_timer: float = 999999
 
 
+## Finds the closest ship that is an enemy of this NPC and sets it as target
+## The check only happens once every [member recheck_time] seconds.
 func check_target(_delta: float):
 	_recheck_timer += _delta
 	if _recheck_timer >= recheck_time:
@@ -21,7 +23,9 @@ func move_target_spotted(min_range_to_target: int) -> void:
 	if !is_instance_valid(target):
 		#force target recheck if target is not valid
 		check_target(INF)
+		print("Not valid - rechecking target")
 		return
+
 	var vector_to_target = target.global_position - ship_controller.global_position
 	vector_to_target.y = 0
 	var direction = vector_to_target.normalized()
@@ -40,10 +44,10 @@ func move_target_spotted(min_range_to_target: int) -> void:
 		ship_controller.basis = ship_controller.basis.slerp(
 			target_basis, ship_controller.rotation_speed
 		)
-		ship_controller.velocity = ship_controller.speed * ship_controller.basis.z * -1
+		ship_controller.linear_velocity = ship_controller.speed * ship_controller.basis.z * -1
 	# if we are in dead zone and not circling, then stop moving, and rotate towards target
 	elif !circle_target:
-		ship_controller.velocity = ship_controller.velocity.lerp(Vector3.ZERO, 0.04)
+		ship_controller.linear_velocity = ship_controller.linear_velocity.lerp(Vector3.ZERO, 0.04)
 		target_basis = Basis.looking_at(direction)
 		ship_controller.basis = ship_controller.basis.slerp(
 			target_basis, ship_controller.rotation_speed
@@ -52,5 +56,4 @@ func move_target_spotted(min_range_to_target: int) -> void:
 	# we will leave the dead zone, return to it and again move in a line
 	# not bad illusion of flying in a circle around target
 	else:
-		ship_controller.velocity = ship_controller.speed * ship_controller.basis.z * -1
-	ship_controller.move_and_slide()
+		ship_controller.linear_velocity = ship_controller.speed * ship_controller.basis.z * -1

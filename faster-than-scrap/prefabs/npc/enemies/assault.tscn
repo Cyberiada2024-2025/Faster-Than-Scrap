@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://bhyxhxybm21hs" path="res://code/enemy/transitions/random_transitions/weighted_state.gd" id="7_1thjt"]
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="7_gnj7k"]
 [ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="7_to346"]
-[ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="8_1thjt"]
+[ext_resource type="Script" uid="uid://p2tfapf0egxl" path="res://code/enemy/transitions/timed_transition.gd" id="8_1thjt"]
 [ext_resource type="Script" uid="uid://cjvpeo4f2tmj1" path="res://code/enemy/transitions/outOfRange.gd" id="8_wl7sn"]
 [ext_resource type="Script" uid="uid://4cghdv6buscd" path="res://code/enemy/states/move/state_npc_movemenet/aggressive.gd" id="9_4ypgb"]
 [ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="9_dqdfr"]

@@ -24,10 +24,10 @@
 [ext_resource type="PackedScene" uid="uid://djbsm7h83wtff" path="res://scenes/levels/finalest/medium/escape_rocky.tscn" id="20_sau2r"]
 [ext_resource type="PackedScene" uid="uid://1m403ket1u35" path="res://scenes/levels/finalest/medium/fuel_rocky.tscn" id="21_f40e2"]
 [ext_resource type="PackedScene" uid="uid://cbpcw4xut260y" path="res://scenes/levels/finalest/medium/kill_all_mission.tscn" id="22_0a6x0"]
+[ext_resource type="PackedScene" uid="uid://c82mvft7uxknf" path="res://scenes/levels/finalest/medium/dedicated_escape.tscn" id="24_0a6x0"]
 [ext_resource type="PackedScene" uid="uid://bpjc7uuyupx1c" path="res://scenes/levels/final/medium/asteroids_line_defend.tscn" id="24_uee5q"]
 [ext_resource type="PackedScene" uid="uid://c3rsq4emlmuky" path="res://prefabs/npc/bosses/examples/laser_star/laser_star.tscn" id="24_ui2af"]
 [ext_resource type="PackedScene" uid="uid://1x45q2a5nnee" path="res://prefabs/npc/bosses/vortex/vortex_boss.tscn" id="25_bh1t4"]
-[ext_resource type="PackedScene" uid="uid://pamatfxtjl6c" path="res://scenes/levels/final/medium/swarms_escape.tscn" id="25_mxsq4"]
 [ext_resource type="PackedScene" uid="uid://d18x6bug11tqh" path="res://scenes/levels/final/hard/big_asteroid_sparse_escape.tscn" id="27_0a6x0"]
 [ext_resource type="PackedScene" uid="uid://bi4fprtdhvhfk" path="res://scenes/levels/final/hard/corruption_esacape.tscn" id="28_uee5q"]
 [ext_resource type="PackedScene" uid="uid://dsiunhrpghlkd" path="res://scenes/levels/final/hard/corruption_defend.tscn" id="29_rwq3m"]
@@ -273,7 +273,7 @@ next_map_nodes = [NodePath("../../MapLayer11/BossNode")]
 [node name="MissionEscapeSwarms" parent="MapLayer10" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
 layout_mode = 2
 mission_info = SubResource("Resource_dl063")
-level_prefab = ExtResource("25_mxsq4")
+level_prefab = ExtResource("24_0a6x0")
 next_map_nodes = [NodePath("../../MapLayer11/BossNode")]
 
 [node name="MissionDefendAsteroidsSquares" parent="MapLayer10" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]

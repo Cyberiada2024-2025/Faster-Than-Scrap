@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://st0p1n6f1ygk" path="res://prefabs/npc/enemies/assault.tscn" id="9_1w75s"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="10_afyjx"]
 [ext_resource type="Script" uid="uid://4w17qx65voq6" path="res://code/missions/a/mission_defend.gd" id="11_a1x0n"]
-[ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="12_jq35s"]
+[ext_resource type="Script" path="res://prefabs/environment/mission_related/portal_position.gd" id="12_jq35s"]
 
 [node name="MisssionOneDefend" type="Node3D"]
 
@@ -75,11 +75,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9023, 0, 11.222)
 [node name="Turret Sniper2" parent="Enemies/portal" instance=ExtResource("10_afyjx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0803, 0, -0.764465)
 
-[node name="MissionEscape" type="Node" parent="." node_paths=PackedStringArray("defendable_position")]
+[node name="MissionEscape" type="Node" parent="."]
 script = ExtResource("11_a1x0n")
-defendable_position = NodePath("../DefendPosition")
 metadata/_custom_type_script = "uid://4w17qx65voq6"
 
-[node name="DefendPosition" type="Node3D" parent="."]
+[node name="PortalPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.036, 0, -216.206)
 script = ExtResource("12_jq35s")

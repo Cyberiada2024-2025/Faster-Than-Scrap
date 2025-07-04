@@ -1,11 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://ekkt3qlmp1gs"]
+[gd_scene load_steps=9 format=3 uid="uid://ekkt3qlmp1gs"]
 
 [ext_resource type="Texture2D" uid="uid://nestbbq4mbpo" path="res://art/textures/environment/SpaceTexture.png" id="1_6r5y6"]
-[ext_resource type="Script" path="res://code/credits.gd" id="1_vgts5"]
-[ext_resource type="Script" path="res://code/scene_loader.gd" id="3_5rdoc"]
+[ext_resource type="Script" uid="uid://do6uyun1ndl6f" path="res://code/credits.gd" id="1_vgts5"]
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="3_5rdoc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xcjtr"]
-font_size = 93
+font_size = 89
+font_color = Color(0, 0, 1, 1)
+outline_size = 10
+outline_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ctdu"]
+font_size = 39
 font_color = Color(0, 0, 1, 1)
 outline_size = 10
 outline_color = Color(1, 1, 0, 1)
@@ -15,14 +21,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect/Label:position")
+tracks/0/path = NodePath("TextureRect/VBoxContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -3155)]
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_qxw8i"]
@@ -30,20 +36,20 @@ resource_name = "credits_text"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect/Label:position")
+tracks/0/path = NodePath("TextureRect/VBoxContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 676), Vector2(0, -4220)]
+"values": [Vector2(0, 700), Vector2(0, -5000)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kr3mc"]
 _data = {
-"RESET": SubResource("Animation_ljrtp"),
-"credits_text": SubResource("Animation_qxw8i")
+&"RESET": SubResource("Animation_ljrtp"),
+&"credits_text": SubResource("Animation_qxw8i")
 }
 
 [node name="Credits" type="Control" node_paths=PackedStringArray("animation_player", "scene_loader")]
@@ -66,11 +72,16 @@ offset_bottom = 665.0
 texture = ExtResource("1_6r5y6")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="TextureRect"]
-layout_mode = 0
-offset_top = -3155.0
-offset_right = 1151.0
-offset_bottom = 1427.0
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -12.0
+offset_bottom = 4678.0
+grow_horizontal = 2
+
+[node name="Team" type="Label" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
 text = "Faster than Scrap
 
 
@@ -103,19 +114,29 @@ Filip Lukas
 
 special thanks to mentor:
 Alex Polin
+"
+label_settings = SubResource("LabelSettings_xcjtr")
+horizontal_alignment = 1
 
-ship builder music:
+[node name="Assets Mentions" type="Label" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "ship builder music:
 Groove Grove Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 3.0 License
-http://creativecommons.org/licenses/by/3.0/
+http://creativecommons.org/licenses/by/3.0/"
+label_settings = SubResource("LabelSettings_0ctdu")
+horizontal_alignment = 1
 
+[node name="Thanks" type="Label" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "
 Thanks for playing!"
 label_settings = SubResource("LabelSettings_xcjtr")
 horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_kr3mc")
+&"": SubResource("AnimationLibrary_kr3mc")
 }
 speed_scale = 0.01
 

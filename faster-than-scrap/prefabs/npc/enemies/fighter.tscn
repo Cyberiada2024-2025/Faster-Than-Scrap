@@ -382,7 +382,7 @@ shader_parameter/Glow_Strength = 3.0
 
 [node name="Fighter" type="CharacterBody3D" node_paths=PackedStringArray("weapons", "ship")]
 script = ExtResource("1_5ysbx")
-speed = 12
+speed = 10
 rotation_speed = 0.045
 weapons = [NodePath("Weapon")]
 ship = NodePath("Ship")

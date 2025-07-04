@@ -1,0 +1,137 @@
+[gd_scene load_steps=11 format=3 uid="uid://xbe4600v6f7f"]
+
+[ext_resource type="PackedScene" uid="uid://pwsixhrj0x1o" path="res://scenes/levels/finalest/base/base_mission.tscn" id="1_4oy36"]
+[ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="2_4ceng"]
+[ext_resource type="PackedScene" uid="uid://gwqp0k88sump" path="res://prefabs/environment/asteroids/asteroid_small_groups/sparse_asteroid_group.tscn" id="2_tfqg3"]
+[ext_resource type="PackedScene" uid="uid://dlp3fs4qym6g2" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group_straight_line.tscn" id="3_wvgti"]
+[ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="3_x4vdo"]
+[ext_resource type="PackedScene" uid="uid://dl6p1epbu22fd" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_cramped_group_.tscn" id="4_0tikv"]
+[ext_resource type="PackedScene" uid="uid://fijjj7y4ie3w" path="res://prefabs/npc/enemies/machine_gunner.tscn" id="7_2vltm"]
+[ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/npc/enemies/fighter.tscn" id="8_4ekkh"]
+[ext_resource type="PackedScene" uid="uid://dusrity80tka3" path="res://prefabs/npc/enemies/rocket_ship.tscn" id="9_ueiwe"]
+[ext_resource type="PackedScene" uid="uid://do0sasbjik8fp" path="res://prefabs/npc/enemies/corrupted.tscn" id="10_fwc1p"]
+
+[node name="EscapeMisssionBase" instance=ExtResource("1_4oy36")]
+
+[node name="ShopMiniature" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.1312, 0, 8.66181)
+
+[node name="AsteroidGroupCircle" parent="Asteroids/Group1" index="0" instance=ExtResource("2_tfqg3")]
+
+[node name="AsteroidGroupCircle2" parent="Asteroids/Group1" index="1" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -62.6617)
+
+[node name="AsteroidGroupCircle3" parent="Asteroids/Group1" index="2" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 52.5615)
+
+[node name="AsteroidGroupCircle4" parent="Asteroids/Group1" index="3" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 105.163)
+
+[node name="Group4" type="Node3D" parent="Asteroids" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.6586, 0, 0)
+
+[node name="AsteroidGroupCircle" parent="Asteroids/Group4" index="0" instance=ExtResource("2_tfqg3")]
+
+[node name="AsteroidGroupCircle2" parent="Asteroids/Group4" index="1" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -62.6617)
+
+[node name="AsteroidGroupCircle3" parent="Asteroids/Group4" index="2" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 52.5615)
+
+[node name="AsteroidGroupCircle4" parent="Asteroids/Group4" index="3" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 105.163)
+
+[node name="Group5" type="Node3D" parent="Asteroids" index="2"]
+transform = Transform3D(0.156814, 0, 0.987628, 0, 1, 0, -0.987628, 0, 0.156814, -68.1164, 0, 49.1072)
+
+[node name="AsteroidGroupCircle" parent="Asteroids/Group5" index="0" instance=ExtResource("2_tfqg3")]
+
+[node name="AsteroidGroupCircle2" parent="Asteroids/Group5" index="1" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -62.6617)
+
+[node name="AsteroidGroupCircle5" parent="Asteroids/Group5" index="2" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -62.6617)
+
+[node name="AsteroidGroupCircle3" parent="Asteroids/Group5" index="3" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 52.5615)
+
+[node name="AsteroidGroupCircle4" parent="Asteroids/Group5" index="4" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 105.163)
+
+[node name="Group7" type="Node3D" parent="Asteroids" index="3"]
+transform = Transform3D(0.37734, 0, 0.926075, 0, 1, 0, -0.926075, 0, 0.37734, -68.268, 0, 110.885)
+
+[node name="AsteroidGroupCircle" parent="Asteroids/Group7" index="0" instance=ExtResource("2_tfqg3")]
+
+[node name="AsteroidGroupCircle2" parent="Asteroids/Group7" index="1" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -62.6617)
+
+[node name="AsteroidGroupCircle5" parent="Asteroids/Group7" index="2" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -62.6617)
+
+[node name="AsteroidGroupCircle3" parent="Asteroids/Group7" index="3" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 52.5615)
+
+[node name="AsteroidGroupCircle4" parent="Asteroids/Group7" index="4" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 105.163)
+
+[node name="Group6" type="Node3D" parent="Asteroids" index="4"]
+transform = Transform3D(-0.470827, 0, 0.882225, 0, 1, 0, -0.882225, 0, -0.470827, -75.2182, 7.62939e-06, -53.4785)
+
+[node name="AsteroidGroupCircle" parent="Asteroids/Group6" index="0" instance=ExtResource("2_tfqg3")]
+
+[node name="AsteroidGroupCircle2" parent="Asteroids/Group6" index="1" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -62.6617)
+
+[node name="AsteroidGroupCircle5" parent="Asteroids/Group6" index="2" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -62.6617)
+
+[node name="AsteroidGroupCircle3" parent="Asteroids/Group6" index="3" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 52.5615)
+
+[node name="AsteroidGroupCircle4" parent="Asteroids/Group6" index="4" instance=ExtResource("2_tfqg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 105.163)
+
+[node name="AsteroidGroupStraightLine" parent="Asteroids/Group2" index="0" instance=ExtResource("3_wvgti")]
+transform = Transform3D(0.955931, 0, 0.29359, 0, 1, 0, -0.29359, 0, 0.955931, -39.2941, 0, 0)
+
+[node name="AsteroidGroupCircle" parent="Asteroids/Group2" index="1" instance=ExtResource("4_0tikv")]
+transform = Transform3D(0.941923, 0, 0.33583, 0, 1, 0, -0.33583, 0, 0.941923, -55.2642, 0, 35.8929)
+
+[node name="MissionEscape" type="Node" parent="." index="4"]
+script = ExtResource("2_4ceng")
+metadata/_custom_type_script = "uid://bq0dwhdq76qw"
+
+[node name="PortalPosition" type="Node3D" parent="." index="5"]
+script = ExtResource("3_x4vdo")
+
+[node name="Marker3D" type="Marker3D" parent="PortalPosition" index="0"]
+transform = Transform3D(0.671009, 0, -0.741449, 0, 1, 0, 0.741449, 0, 0.671009, 0, 0, 0)
+gizmo_extents = 23.8
+
+[node name="Machine Gunner3" parent="." index="6" instance=ExtResource("7_2vltm")]
+transform = Transform3D(-0.966165, 0, -0.257926, 0, 1, 0, 0.257926, 0, -0.966165, -22.4927, -3.8147e-06, -65.7585)
+
+[node name="Fighter" parent="." index="7" instance=ExtResource("8_4ekkh")]
+transform = Transform3D(-0.893073, 0, -0.449911, 0, 1, 0, 0.449911, 0, -0.893073, -30.5041, -1.90735e-06, -62.5009)
+
+[node name="Fighter2" parent="." index="8" instance=ExtResource("8_4ekkh")]
+transform = Transform3D(-0.992313, 0, -0.123757, 0, 1, 0, 0.123757, 0, -0.992313, -14.1118, 0, -64.8264)
+
+[node name="Fighter3" parent="." index="9" instance=ExtResource("8_4ekkh")]
+transform = Transform3D(0.769121, 0, -0.639103, 0, 1, 0, 0.639103, 0, 0.769121, -62.4339, 0, 55.0283)
+
+[node name="Rocket Ship" parent="." index="10" instance=ExtResource("9_ueiwe")]
+transform = Transform3D(0.772213, 0, -0.635364, 0, 1, 0, 0.635364, 0, 0.772213, -60.2346, 0, 48.3526)
+
+[node name="Rocket Ship2" parent="." index="11" instance=ExtResource("9_ueiwe")]
+transform = Transform3D(0.772213, 0, -0.635364, 0, 1, 0, 0.635364, 0, 0.772213, -56.0938, 0, 52.1358)
+
+[node name="Corrupted" parent="." index="12" instance=ExtResource("10_fwc1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7172, 0, 67.1648)
+
+[node name="Corrupted2" parent="." index="13" instance=ExtResource("10_fwc1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4599, 0, 69.2307)
+
+[node name="Corrupted3" parent="." index="14" instance=ExtResource("10_fwc1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4511, 0, 71.5221)

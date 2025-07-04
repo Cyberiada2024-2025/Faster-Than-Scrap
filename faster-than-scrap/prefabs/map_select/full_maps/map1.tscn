@@ -1,16 +1,18 @@
-[gd_scene load_steps=39 format=3 uid="uid://qemwu1rt7gtj"]
+[gd_scene load_steps=42 format=3 uid="uid://qemwu1rt7gtj"]
 
 [ext_resource type="Script" uid="uid://o52uw8n1ufdc" path="res://code/map_select/map_selector.gd" id="1_yxgtb"]
 [ext_resource type="PackedScene" uid="uid://2oa2dvray5oq" path="res://prefabs/map_select/map_layer.tscn" id="2_bp67s"]
-[ext_resource type="Script" uid="uid://smw6vyfefqxn" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_sau2r"]
+[ext_resource type="Script" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_sau2r"]
 [ext_resource type="PackedScene" uid="uid://ska6812npmde" path="res://prefabs/map_select/nodes/templates/map_node.tscn" id="3_s8emc"]
 [ext_resource type="PackedScene" uid="uid://dko08cmdkba7m" path="res://prefabs/map_select/map_margin.tscn" id="4_nrfml"]
 [ext_resource type="PackedScene" uid="uid://c6sug4hxemhdp" path="res://prefabs/map_select/nodes/templates/missions/mission_escape.tscn" id="5_rwq3m"]
 [ext_resource type="Script" uid="uid://bmhwp67vae4gu" path="res://code/missions/info/mission_info.gd" id="6_0a6x0"]
 [ext_resource type="PackedScene" uid="uid://ci7ns2p5tsax6" path="res://prefabs/map_select/nodes/templates/boss_node.tscn" id="6_mkmvc"]
+[ext_resource type="PackedScene" uid="uid://c2cxsccrpdjov" path="res://prefabs/map_select/nodes/templates/missions/mission_shop.tscn" id="6_rafgn"]
 [ext_resource type="PackedScene" uid="uid://bvcjycf02eb4c" path="res://prefabs/npc/bosses/juggernaut/juggernaut.tscn" id="7_yxgtb"]
 [ext_resource type="PackedScene" uid="uid://dhnli7a3skvdj" path="res://prefabs/map_select/nodes/templates/missions/mission_defend.tscn" id="8_mxsq4"]
 [ext_resource type="PackedScene" uid="uid://csyc0l2g1nt61" path="res://scenes/levels/finalest/easy/first_defend.tscn" id="8_uee5q"]
+[ext_resource type="PackedScene" uid="uid://bqycw1p4sa2vq" path="res://scenes/levels/finalest/base/shop_mission.tscn" id="8_xfikn"]
 [ext_resource type="PackedScene" uid="uid://diru2u2s3kmy6" path="res://scenes/levels/finalest/easy/first_escape.tscn" id="10_mxsq4"]
 [ext_resource type="PackedScene" uid="uid://b7ty3wbgt75vk" path="res://scenes/levels/finalest/medium/medium_escape_tradehub.tscn" id="10_uee5q"]
 [ext_resource type="PackedScene" uid="uid://bxuab0bqfjkxo" path="res://scenes/levels/finalest/easy/second_defend.tscn" id="11_dlw72"]
@@ -26,6 +28,12 @@
 [ext_resource type="PackedScene" uid="uid://c82mvft7uxknf" path="res://scenes/levels/finalest/medium/dedicated_escape.tscn" id="24_0a6x0"]
 [ext_resource type="PackedScene" uid="uid://c3rsq4emlmuky" path="res://prefabs/npc/bosses/examples/laser_star/laser_star.tscn" id="24_ui2af"]
 [ext_resource type="PackedScene" uid="uid://1x45q2a5nnee" path="res://prefabs/npc/bosses/vortex/vortex_boss.tscn" id="25_bh1t4"]
+
+[sub_resource type="Resource" id="Resource_xfikn"]
+script = ExtResource("6_0a6x0")
+about = "shop mission
+"
+difficulty = 0
 
 [sub_resource type="Resource" id="Resource_pki7u"]
 script = ExtResource("6_0a6x0")
@@ -106,18 +114,30 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 script = ExtResource("1_yxgtb")
-active_node = NodePath("1/MapNode")
+active_node = NodePath("0/MapNode")
 
 [node name="ConnectSoundToParentAndAllChildren" type="Node" parent="."]
 script = ExtResource("2_sau2r")
 
+[node name="0" parent="." instance=ExtResource("2_bp67s")]
+layout_mode = 2
+
+[node name="MapNode" parent="0" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("3_s8emc")]
+layout_mode = 2
+next_map_nodes = [NodePath("../../1/MissionShop")]
+active = true
+
+[node name="MapMargin2" parent="." instance=ExtResource("4_nrfml")]
+layout_mode = 2
+
 [node name="1" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="MapNode" parent="1" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("3_s8emc")]
+[node name="MissionShop" parent="1" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_rafgn")]
 layout_mode = 2
-next_map_nodes = [null, NodePath("../../2/firstdef"), null, null, NodePath("../../2/firstrun")]
-active = true
+mission_info = SubResource("Resource_xfikn")
+level_prefab = ExtResource("8_xfikn")
+next_map_nodes = [NodePath("../../2/firstdef"), NodePath("../../2/firstrun")]
 
 [node name="MapMargin" parent="." instance=ExtResource("4_nrfml")]
 layout_mode = 2

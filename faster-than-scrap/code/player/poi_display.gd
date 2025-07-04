@@ -72,7 +72,8 @@ func _show_arrow() -> void:
 
 
 ## set arrow position to minimap edge.
-## would be much simpler on a circle :P.
+## would be much simpler on a circle :P
+## update: it is indeed now a circle
 func _set_arrow_transform() -> void:
 	var map_camera = Hud.instance._minimap_camera
 	var radius = _get_camera_radius()
@@ -97,16 +98,7 @@ func _set_arrow_transform() -> void:
 
 func _clamp_arrow_position(direction: Vector2, radius: float) -> void:
 	## find bigger vector component, to cast it on the square
-	if abs(direction.x) > abs(direction.y):
-		if direction.x == 0:
-			direction *= radius
-		else:
-			direction *= radius / abs(direction.x)
-	else:
-		if direction.y == 0:
-			direction *= radius
-		else:
-			direction *= radius / abs(direction.y)
+	direction *= radius
 
 	var map_camera = Hud.instance._minimap_camera
 	var new_position: Vector3 = map_camera.global_position

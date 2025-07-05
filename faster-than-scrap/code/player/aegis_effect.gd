@@ -2,7 +2,7 @@ extends Node3D
 
 @export var player: bool = true
 
-@export var aegis_radius: float = 10
+@export var aegis_radius: float = 50
 
 @export var path: String = "res://prefabs/npc/bosses/vortex/vortex_boss.tscn::ShaderMaterial_a17kq"
 

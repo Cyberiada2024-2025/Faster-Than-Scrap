@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2oshlh57wf02"]
 
-[ext_resource type="Script" path="res://code/boss/boss_ui.gd" id="1_1g20g"]
+[ext_resource type="Script" uid="uid://banhvbi3c5lub" path="res://code/boss/boss_ui.gd" id="1_1g20g"]
 
 [node name="BossUi" type="Control" node_paths=PackedStringArray("healh_bar", "boss_name")]
 layout_mode = 3
@@ -15,13 +15,13 @@ boss_name = NodePath("Boss title")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 132.0
+offset_left = 200.0
 offset_top = -44.0
-offset_right = -102.0
+offset_right = -200.0
 offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0

@@ -1,7 +1,5 @@
-extends Node
-
 class_name CutsceneSoundController
-
+extends Node
 
 @export var panel_show_start_sound_emitters: Dictionary[ColorRect, SoundEmitterGlobal]
 @export var panel_show_end_sound_emitters: Dictionary[ColorRect, SoundEmitterGlobal]

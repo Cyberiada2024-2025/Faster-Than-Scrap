@@ -397,7 +397,8 @@ script = ExtResource("32_1gxgn")
 
 [node name="VortexSpawner" type="Node3D" parent="."]
 script = ExtResource("30_f7rv0")
+offset = Vector3(0, 0, 170)
 start_scale = 200.0
-shrinking_time = 1000.0
+min_scale = 100.0
 
 [connection signal="damaged" from="StaticBody3D/Body/DamageController" to="StaticBody3D/Body" method="take_damage"]

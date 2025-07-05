@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c3rsq4emlmuky"]
+[gd_scene load_steps=35 format=3 uid="uid://c3rsq4emlmuky"]
 
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_nesmw"]
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_s6qyd"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://dlck66uao16fg" path="res://prefabs/ui/cutscenes/boss_cutscenes/laster_star_cutscene.tscn" id="17_kardv"]
 [ext_resource type="Script" uid="uid://ca3g5r4yj0pc3" path="res://code/player/aegis_effect.gd" id="24_k5cpc"]
 [ext_resource type="Script" path="res://prefabs/constant_rotation.gd" id="25_ftgr2"]
+[ext_resource type="Script" uid="uid://cjookpuv01c5f" path="res://code/utilities/vortex_spawner.gd" id="27_k5cpc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
 radius = 2.375
@@ -311,6 +312,11 @@ trail_lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_48c16")
 draw_pass_1 = SubResource("RibbonTrailMesh_gewfv")
 script = ExtResource("25_ftgr2")
+
+[node name="VortexSpawner" type="Node3D" parent="."]
+script = ExtResource("27_k5cpc")
+start_scale = 200.0
+shrinking_time = 1000.0
 
 [connection signal="damaged" from="StaticBody3D/Core/DamageController" to="StaticBody3D/Core" method="take_damage"]
 

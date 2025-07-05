@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b8s7l1ii2n8ir"]
+[gd_scene load_steps=10 format=3 uid="uid://b8s7l1ii2n8ir"]
 
 [ext_resource type="Script" uid="uid://iii7qu2px6lf" path="res://code/boss/boss_spawner.gd" id="1_3tnet"]
 [ext_resource type="PackedScene" uid="uid://d2oshlh57wf02" path="res://prefabs/npc/bosses/boss_ui.tscn" id="1_j87ic"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://f6d84uyul237" path="res://code/evironment/generate_nebulas.gd" id="6_itccy"]
 [ext_resource type="AudioStream" uid="uid://e8tnjp7mfohh" path="res://art/audio/music/music_fight.mp3" id="7_ydhkx"]
 [ext_resource type="PackedScene" uid="uid://55masxr1fg7f" path="res://prefabs/vfx/particles/dust_particles.tscn" id="8_qadxt"]
-[ext_resource type="Script" uid="uid://cjookpuv01c5f" path="res://code/utilities/vortex_spawner.gd" id="10_qadxt"]
 
 [node name="BossScene" type="Node3D"]
 script = ExtResource("1_3tnet")
@@ -39,6 +38,3 @@ autoplay = true
 bus = &"Music"
 
 [node name="Dust Particles2" parent="." instance=ExtResource("8_qadxt")]
-
-[node name="VortexSpawner" type="Node3D" parent="."]
-script = ExtResource("10_qadxt")

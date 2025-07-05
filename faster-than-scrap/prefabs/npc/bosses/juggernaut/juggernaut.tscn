@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bvcjycf02eb4c"]
+[gd_scene load_steps=39 format=3 uid="uid://bvcjycf02eb4c"]
 
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_yarj2"]
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_byxk3"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://c02tg8vmx2ibt" path="res://prefabs/projectiles/boss_projectiles/juggernaut_shotgun_flash.tscn" id="11_qln4k"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="22_1nvpg"]
 [ext_resource type="PackedScene" uid="uid://dnqt5dsa6jb20" path="res://prefabs/ui/cutscenes/boss_cutscenes/juggernaut_cutscene.tscn" id="23_j2cd8"]
+[ext_resource type="Script" uid="uid://cjookpuv01c5f" path="res://code/utilities/vortex_spawner.gd" id="30_f7rv0"]
 [ext_resource type="Script" uid="uid://ca3g5r4yj0pc3" path="res://code/player/aegis_effect.gd" id="31_cc8yn"]
 [ext_resource type="Script" path="res://prefabs/constant_rotation.gd" id="32_1gxgn"]
 
@@ -393,5 +394,10 @@ trail_lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_itp45")
 draw_pass_1 = SubResource("RibbonTrailMesh_0kdxi")
 script = ExtResource("32_1gxgn")
+
+[node name="VortexSpawner" type="Node3D" parent="."]
+script = ExtResource("30_f7rv0")
+start_scale = 200.0
+shrinking_time = 1000.0
 
 [connection signal="damaged" from="StaticBody3D/Body/DamageController" to="StaticBody3D/Body" method="take_damage"]

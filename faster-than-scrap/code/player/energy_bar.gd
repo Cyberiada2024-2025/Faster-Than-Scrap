@@ -1,8 +1,12 @@
 extends Node
 
+## name of the "warning no value" animation
+@export var warning_anim: String = "warning"
 @export_group("Nodes")
 ## main bar
 @export var bar_main: TextureProgressBar
+@export var bar_warning: TextureProgressBar
+@export var animator: AnimationPlayer
 
 
 func _ready() -> void:
@@ -22,10 +26,15 @@ func _change_value(input: float) -> void:
 
 ## Call when user tries to use more resource then they have
 func _on_warning() -> void:
-	pass
+	animator.play(warning_anim)
 
 
 ## Call when maximum value displayed by bar has changed
 func _on_max_change(new_max_value: float) -> void:
-	bar_main.max_value = new_max_value
-	bar_main.step = new_max_value / 30
+	if new_max_value > 300:
+		bar_main.step = new_max_value / 30
+		bar_main.max_value = new_max_value
+		bar_warning.max_value = new_max_value
+		bar_warning.value = new_max_value
+	else:
+		bar_warning.value = new_max_value

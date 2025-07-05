@@ -18,11 +18,7 @@ linear_damp = 0.4
 angular_damp_mode = 1
 angular_damp = 1.5
 script = ExtResource("1_keeht")
-linear_damp_value = 0.3
 cockpit = NodePath("Cockpit")
-energy = 130.0
-max_energy = 130.0
-restore = 12.0
 team = 0
 leave_animation = NodePath("Cockpit/AnimationPlayer")
 

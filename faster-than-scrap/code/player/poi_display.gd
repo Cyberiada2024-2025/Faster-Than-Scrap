@@ -48,15 +48,8 @@ func _poi_visible_on_minimap() -> bool:
 	var poi_center = Vector2(global_position.x, global_position.z)
 
 	# calculated on square minimap
-	var distance_from_camera = _chebyshev_distance(camera_center, poi_center)
+	var distance_from_camera = camera_center.distance_to(poi_center)
 	return distance_from_camera <= radius
-
-
-## good measure for checking if on square
-func _chebyshev_distance(a: Vector2, b: Vector2) -> float:
-	var x_diff = abs(a.x - b.x)
-	var y_diff = abs(a.y - b.y)
-	return max(x_diff, y_diff)
 
 
 ## show normal circle, hide arrow
@@ -73,7 +66,8 @@ func _show_arrow() -> void:
 
 
 ## set arrow position to minimap edge.
-## would be much simpler on a circle :P.
+## would be much simpler on a circle :P
+## update: it is indeed now a circle
 func _set_arrow_transform() -> void:
 	var map_camera = Hud.instance._minimap_camera
 	var radius = _get_camera_radius()
@@ -97,17 +91,8 @@ func _set_arrow_transform() -> void:
 
 
 func _clamp_arrow_position(direction: Vector2, radius: float) -> void:
-	## find bigger vector component, to cast it on the square
-	if abs(direction.x) > abs(direction.y):
-		if direction.x == 0:
-			direction *= radius
-		else:
-			direction *= radius / abs(direction.x)
-	else:
-		if direction.y == 0:
-			direction *= radius
-		else:
-			direction *= radius / abs(direction.y)
+	## find bigger vector component, to cast it on the circle
+	direction *= radius
 
 	var map_camera = Hud.instance._minimap_camera
 	var new_position: Vector3 = map_camera.global_position

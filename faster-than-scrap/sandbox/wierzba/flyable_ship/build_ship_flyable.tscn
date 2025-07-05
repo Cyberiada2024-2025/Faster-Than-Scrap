@@ -177,7 +177,6 @@ max_contacts_reported = 5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54414, 0, -1.96366)
 
 [node name="Thruster" parent="Area3D" instance=ExtResource("3_5rsdf")]
-recoil_force = 500.0
 activation_key = 87
 
 [connection signal="pressed" from="Button" to="Button/SceneLoader" method="load_fly_ship_scene"]

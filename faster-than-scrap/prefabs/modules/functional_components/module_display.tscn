@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5ri43mxkksdw"]
+[gd_scene load_steps=4 format=3 uid="uid://b5ri43mxkksdw"]
 
 [ext_resource type="Texture2D" uid="uid://bc3asra4yklg1" path="res://art/textures/ui/minimap/placeholder/Enemy.png" id="1_5j84t"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="2_rgwxi"]
+
+[sub_resource type="FontVariation" id="FontVariation_5j84t"]
+base_font = ExtResource("2_rgwxi")
+variation_embolden = 0.44
 
 [node name="ModuleDisplay" type="Node3D"]
 
@@ -13,12 +17,12 @@ double_sided = false
 texture = ExtResource("1_5j84t")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0209912, 0)
+transform = Transform3D(1.05, 0, 0, 0, -4.5897e-08, 1.05, 0, -1.05, -4.5897e-08, 0, 0.0209912, 0)
 layers = 2
 double_sided = false
 texture_filter = 0
 modulate = Color(0, 0, 0, 1)
-font = ExtResource("2_rgwxi")
+font = SubResource("FontVariation_5j84t")
 font_size = 80
 outline_size = 0
 uppercase = true

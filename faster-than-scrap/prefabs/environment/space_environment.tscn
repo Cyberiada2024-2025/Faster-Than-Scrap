@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b670jj7lnajsd"]
 
-[ext_resource type="Shader" uid="uid://dbnseeh8vg67s" path="res://art/materials/environment/SpaceTexture.gdshader" id="1_8c7b8"]
+[ext_resource type="Shader" uid="uid://cvp66hcnqt7q0" path="res://art/materials/environment/SpaceTexture.gdshader" id="1_8c7b8"]
 [ext_resource type="Texture2D" uid="uid://kqv7cdehidxy" path="res://art/textures/environment/SpaceTexture2.png" id="2_270j1"]
 [ext_resource type="Script" uid="uid://b4j7dpx8vbodq" path="res://code/evironment/space_environment.gd" id="3_2xw8w"]
 

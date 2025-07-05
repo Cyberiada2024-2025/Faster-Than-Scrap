@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
-[ext_resource type="Script" uid="uid://smw6vyfefqxn" path="res://code/ui/connect_sound_to_all_clickables.gd" id="1_eeway"]
+[ext_resource type="Script" path="res://code/ui/connect_sound_to_all_clickables.gd" id="1_eeway"]
 [ext_resource type="Material" uid="uid://blyd1atn5pkii" path="res://art/materials/ui/shipbuilder/outline.tres" id="3_7x66o"]
 [ext_resource type="Material" uid="uid://brspeokluwub5" path="res://art/materials/ui/shipbuilder/outline_flash.tres" id="4_sra6p"]
 [ext_resource type="PackedScene" uid="uid://mjgnhxxmjro3" path="res://prefabs/ui/build_ship_hud.tscn" id="5_cv5l0"]
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="6_au3vu"]
 [ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="7_d8di0"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="7_jtm63"]
-[ext_resource type="Script" path="res://code/ui/tooltip.gd" id="8_bwh47"]
+[ext_resource type="Script" uid="uid://bcm4vfgdqrr2t" path="res://code/ui/tooltip.gd" id="8_bwh47"]
 [ext_resource type="PackedScene" uid="uid://cc0to5vstp8vs" path="res://prefabs/ui/build_ship_help_tooltip.tscn" id="9_cv5l0"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="11_d8di0"]
 [ext_resource type="Script" uid="uid://dsebh10ryevl" path="res://code/building_ship/shop.gd" id="11_jtm63"]
@@ -18,7 +18,7 @@
 [ext_resource type="FontFile" uid="uid://c5684ddhvkomb" path="res://art/fonts/Orbitron-Bold.ttf" id="12_r6xpi"]
 [ext_resource type="PackedScene" uid="uid://btnqar75x62m0" path="res://prefabs/vfx/particles/repair_particles.tscn" id="13_8a3ma"]
 [ext_resource type="PackedScene" uid="uid://dgcndntkhn2hh" path="res://prefabs/ui/cutscenes/inventory_tutorial_cutscene.tscn" id="13_bwh47"]
-[ext_resource type="Script" uid="uid://c6mohg4o53eqe" path="res://code/sound/sound_emitter_global.gd" id="13_sy1ma"]
+[ext_resource type="Script" path="res://code/sound/sound_emitter_global.gd" id="13_sy1ma"]
 [ext_resource type="AudioStream" uid="uid://c5x8fjlikxyw7" path="res://art/audio/sounds/ui/ship_builder/pick.mp3" id="14_iq7ln"]
 [ext_resource type="AudioStream" uid="uid://mavrm3tbmwii" path="res://art/audio/sounds/illegal_position_sound.wav" id="15_o6u5m"]
 [ext_resource type="AudioStream" uid="uid://bw7fx4gi1ocds" path="res://art/audio/sounds/ui/ship_builder/cannot_pick.mp3" id="15_rkphg"]
@@ -286,6 +286,10 @@ metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 script = ExtResource("11_jtm63")
 ship_builder = NodePath("../ShipBuilder")
 starting_bank = 6
+inventory_size_x = 7.5
+inventory_size_z = 7.5
+inventory_columns = 3
+inventory_rows = 3
 shop_area = NodePath("Shop area")
 size_x = 7.5
 size_z = 20.0

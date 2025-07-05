@@ -122,6 +122,7 @@ alignment = 1
 [node name="SlidersLabels" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
+alignment = 1
 
 [node name="general_label" type="Label" parent="VBoxContainer/HBoxContainer/SlidersLabels"]
 layout_mode = 2
@@ -141,14 +142,28 @@ text = "Music"
 layout_mode = 2
 bus_name = "Music"
 
-[node name="sfx_label" type="Label" parent="VBoxContainer/HBoxContainer/SlidersLabels"]
+[node name="SlidersLabels2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="sfx_label" type="Label" parent="VBoxContainer/HBoxContainer/SlidersLabels2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Sound Effects"
 
-[node name="sfx" parent="VBoxContainer/HBoxContainer/SlidersLabels" instance=ExtResource("8_am25x")]
+[node name="sfx" parent="VBoxContainer/HBoxContainer/SlidersLabels2" instance=ExtResource("8_am25x")]
 layout_mode = 2
 bus_name = "SFX"
+
+[node name="ui_label" type="Label" parent="VBoxContainer/HBoxContainer/SlidersLabels2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Interface"
+
+[node name="Music" parent="VBoxContainer/HBoxContainer/SlidersLabels2" instance=ExtResource("8_am25x")]
+layout_mode = 2
+bus_name = "UI"
 
 [node name="Sliders" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2

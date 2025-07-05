@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8vq1jqmowcwf"]
+[gd_scene load_steps=6 format=3 uid="uid://b8vq1jqmowcwf"]
 
+[ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="1_cpmee"]
 [ext_resource type="Script" uid="uid://cntqnnyriiru2" path="res://code/pause_menu.gd" id="1_hf53u"]
 [ext_resource type="PackedScene" uid="uid://36s8658cgl8t" path="res://scenes/settings.tscn" id="2_atv5q"]
 [ext_resource type="Script" uid="uid://smw6vyfefqxn" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_cpmee"]
@@ -14,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_cpmee")
 script = ExtResource("1_hf53u")
 
 [node name="ConnectSoundToParentAndAllChildren" type="Node" parent="."]

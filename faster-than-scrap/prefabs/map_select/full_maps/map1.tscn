@@ -94,8 +94,8 @@ metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_vsw54"]
 script = ExtResource("6_0a6x0")
-about = "
-This is where Seraku founder started his madness and begun hunt for corrupting artifacts, one for each of his most brilliant and trusted man."
+about = "Interrogated a few relocated people working on local archaeological sites. Most of them specialize in ancient civilizations, but what is more important - their mythologies. 
+It sparked my intrest. Seraku must have taken these peculiar, alient artifacts from somewhere..."
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_6ev6g"]
@@ -105,7 +105,8 @@ difficulty = 0
 
 [sub_resource type="Resource" id="Resource_t1mo6"]
 script = ExtResource("6_0a6x0")
-about = ""
+about = "Clustered with asteroids, with unstable hyperlanes, not many ships get in or out of this planetary system. 
+Here, Seraku first time used their supposedly escort ships for military takeover."
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_0a6x0"]
@@ -122,14 +123,15 @@ metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_fj8or"]
 script = ExtResource("6_0a6x0")
-about = "Update after checking with the library: That civilization's mythology used to focus on eldritch being feeding on whole stars.
-Great shamans gathered to cast it out from reality."
+about = "Update after checking with the library: That civilization has an interesting mythology about origins of evil.
+There was an unspecified eldritch being feeding on whole stars. Great shamans gathered to cast it out from reality. However, before they managed to do so, the abomination scattered relicts, through which its voice can be heard.
+"
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_dl063"]
 script = ExtResource("6_0a6x0")
-about = ""
+about = "This difficult to reach place was relocation destination that neither investors nor concerned, intrusive citizens, like me, should hear about. "
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_mxsq4"]

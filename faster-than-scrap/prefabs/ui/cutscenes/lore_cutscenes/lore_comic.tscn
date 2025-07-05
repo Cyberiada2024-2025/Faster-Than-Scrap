@@ -48,6 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("2_yafkt")
+can_skip_individual_slides = false
 rects = [NodePath("Rects/VBoxContainer/HBoxContainer/ColorRect"), NodePath("Rects/VBoxContainer/HBoxContainer/ColorRect2"), NodePath("Rects/VBoxContainer/HBoxContainer/ColorRect3"), NodePath("Rects/VBoxContainer/HBoxContainer/ColorRect4"), NodePath("Rects/VBoxContainer/HBoxContainer2/ColorRect"), NodePath("Rects/VBoxContainer/HBoxContainer2/ColorRect2"), NodePath("Rects/VBoxContainer/HBoxContainer2/ColorRect3"), NodePath("Rects/VBoxContainer/HBoxContainer2/ColorRect4")]
 reveal_time = 0.5
 duration = 30.0

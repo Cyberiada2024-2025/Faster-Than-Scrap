@@ -383,10 +383,12 @@ aegis_radius = 15.0
 path = "res://art/materials/vfx/Vortex.tres"
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Aegis"]
-visible = false
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+transparency = 0.4
 amount = 512
 lifetime = 4.0
 preprocess = 2.3
+visibility_aabb = AABB(-32, -4, -32, 64, 8, 64)
 local_coords = true
 transform_align = 3
 trail_enabled = true

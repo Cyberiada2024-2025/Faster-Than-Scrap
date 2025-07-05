@@ -37,7 +37,7 @@ func on_node_clicked(clicked_node: MapNode) -> void:
 	selected_node.selected = true
 
 	var is_valid = _valid_node(clicked_node)
-	if is_valid:
+	if is_valid or DebugMenu.disable_map_node_checks:
 		label.text = selected_node.get_description()
 	else:
 		label.text = ""

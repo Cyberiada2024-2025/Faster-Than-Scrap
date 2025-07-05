@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="7_xvv2n"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="8_jstny"]
 [ext_resource type="PackedScene" uid="uid://bwji2ay2xd5bf" path="res://prefabs/npc/bosses/examples/laser_star/flow_bottom.tscn" id="9_ame6i"]
-[ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="9_k4714"]
+[ext_resource type="Script" uid="uid://p2tfapf0egxl" path="res://code/enemy/transitions/timed_transition.gd" id="9_k4714"]
 [ext_resource type="PackedScene" uid="uid://bpp1eb4sc4f8q" path="res://prefabs/npc/bosses/examples/laser_star/flow_top.tscn" id="10_8xa4f"]
 [ext_resource type="Script" uid="uid://b0xwjuq1av15m" path="res://code/enemy/states/rotate/constant_rotation.gd" id="10_vhk6y"]
 [ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="11_vp012"]
@@ -82,7 +82,7 @@ material = SubResource("StandardMaterial3D_uagw5")
 size = 0.2
 curve = SubResource("Curve_f7rv0")
 
-[node name="LaserStar" type="RigidBody3D" node_paths=PackedStringArray("ship")]
+[node name="GLARING STAR" type="RigidBody3D" node_paths=PackedStringArray("ship")]
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true

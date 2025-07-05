@@ -1,26 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://bqycw1p4sa2vq"]
+[gd_scene load_steps=9 format=3 uid="uid://bqycw1p4sa2vq"]
 
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_hpyi8"]
 [ext_resource type="PackedScene" uid="uid://cgx7bdd0f2rhg" path="res://prefabs/environment/shop_miniature.tscn" id="2_0635q"]
 [ext_resource type="PackedScene" uid="uid://bvng8hdkqm2d6" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid2.tscn" id="3_ohe1a"]
 [ext_resource type="PackedScene" uid="uid://dfco2h1p5vdx1" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid1.tscn" id="4_34o3a"]
-[ext_resource type="PackedScene" uid="uid://b8ggfura4533j" path="res://prefabs/environment/asteroids/asteroid_small_groups/big_asteroid_group.tscn" id="5_4l3sw"]
 [ext_resource type="PackedScene" uid="uid://dn3mypfoixbpt" path="res://prefabs/environment/asteroids/single_asteroid/small/asteroid1.tscn" id="6_ellwb"]
 [ext_resource type="PackedScene" uid="uid://js76qvbo8iq0" path="res://prefabs/environment/asteroids/asteroid_small_groups/sparse_asteroid_group.tscn" id="7_c1rly"]
 [ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="10_jqj41"]
-[ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="11_jlsfo"]
+[ext_resource type="Script" path="res://prefabs/environment/mission_related/portal_position.gd" id="11_jlsfo"]
 
 [node name="MissionShopTutorial" type="Node3D"]
 
 [node name="LevelStaples" parent="." instance=ExtResource("1_hpyi8")]
 
 [node name="ShopMiniature" parent="." instance=ExtResource("2_0635q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.197, -7.62939e-06, -51.4595)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.5446, -7.62939e-06, -32.2314)
 
 [node name="Asteroids" type="Node3D" parent="."]
 
 [node name="Asteroid" parent="Asteroids" instance=ExtResource("3_ohe1a")]
-transform = Transform3D(0.955742, 0, -0.294207, 0, 1, 0, 0.294207, 0, 0.955742, 62.4676, -1.52588e-05, -70.1306)
+transform = Transform3D(0.955742, 0, -0.294207, 0, 1, 0, 0.294207, 0, 0.955742, 42.4703, -1.52588e-05, -66.3586)
 hp = 100.0
 
 [node name="Asteroid7" parent="Asteroids" instance=ExtResource("3_ohe1a")]
@@ -32,11 +31,8 @@ transform = Transform3D(0.16305, 0, -0.986618, 0, 1, 0, 0.986618, 0, 0.16305, 17
 hp = 100.0
 
 [node name="Asteroid2" parent="Asteroids" instance=ExtResource("4_34o3a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.281, 3.8147e-05, -89.8291)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.284, 3.8147e-05, -86.0571)
 hp = 100.0
-
-[node name="AsteroidGroupCircle" parent="Asteroids" instance=ExtResource("5_4l3sw")]
-transform = Transform3D(0.547257, 0, -0.836965, 0, 1, 0, 0.836965, 0, 0.547257, 127.118, 0, -70.0868)
 
 [node name="Asteroid3" parent="Asteroids" instance=ExtResource("6_ellwb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.09, 0, -188.281)
@@ -55,10 +51,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.0943, -7.62939e-06, -182.4
 hp = 100.0
 
 [node name="AsteroidGroupCircle2" parent="Asteroids" instance=ExtResource("7_c1rly")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1934, 0, -42.352)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.1907, 0, -38.58)
 
 [node name="AsteroidGroupCircle3" parent="Asteroids" instance=ExtResource("7_c1rly")]
-transform = Transform3D(0.974796, 0, -0.223097, 0, 1, 0, 0.223097, 0, 0.974796, -92.3053, 0, -50.8805)
+transform = Transform3D(0.974796, 0, -0.223097, 0, 1, 0, 0.223097, 0, 0.974796, -112.303, 0, -47.1085)
 
 [node name="AsteroidGroupCircle4" parent="Asteroids" instance=ExtResource("7_c1rly")]
 transform = Transform3D(0.974796, 0, -0.223097, 0, 1, 0, 0.223097, 0, 0.974796, -118.601, 0, -144.694)
@@ -75,7 +71,7 @@ portal_position = NodePath("../PortalPosition")
 metadata/_custom_type_script = "uid://bq0dwhdq76qw"
 
 [node name="PortalPosition" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.726, 0, -224.33)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.7722, 0, -149.605)
 script = ExtResource("11_jlsfo")
 metadata/_custom_type_script = "uid://inuu5gi20l6r"
 

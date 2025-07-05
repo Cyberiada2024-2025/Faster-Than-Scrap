@@ -8,7 +8,7 @@
 [node name="EscapeMisssionBase" instance=ExtResource("1_f7nrs")]
 
 [node name="ShopMiniature" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2048, 0, -73.9506)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.648, 0, -63.9079)
 
 [node name="AsteroidGroupCircle" parent="Asteroids/Group1" index="0" instance=ExtResource("2_n3r8i")]
 transform = Transform3D(0.371044, 0, -0.928615, 0, 1, 0, 0.928615, 0, 0.371044, -74.9018, 7.62939e-06, -30.9921)
@@ -41,5 +41,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.3607, 3.8147e-06, -69.5114
 script = ExtResource("3_n3r8i")
 
 [node name="Marker3D" type="Marker3D" parent="PortalPosition" index="0"]
-transform = Transform3D(0.671009, 0, -0.741449, 0, 1, 0, 0.741449, 0, 0.671009, 10.9354, 0, -28.2474)
+transform = Transform3D(0.671009, 0, -0.741449, 0, 1, 0, 0.741449, 0, 0.671009, -30.7738, 0, -34.2586)
 gizmo_extents = 23.8

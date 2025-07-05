@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2cxsccrpdjov"]
+[gd_scene load_steps=8 format=3 uid="uid://dg6858phfq3am"]
 
 [ext_resource type="Texture2D" uid="uid://cf4pm2keeo04k" path="res://art/textures/ui/mapselect/circle.png" id="1_o6eh2"]
 [ext_resource type="Script" uid="uid://c4677xbn24lv5" path="res://code/map_select/nodes/mission_node.gd" id="2_pr0nr"]

@@ -2,17 +2,17 @@
 
 [ext_resource type="Script" uid="uid://o52uw8n1ufdc" path="res://code/map_select/map_selector.gd" id="1_yxgtb"]
 [ext_resource type="PackedScene" uid="uid://2oa2dvray5oq" path="res://prefabs/map_select/map_layer.tscn" id="2_bp67s"]
-[ext_resource type="Script" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_sau2r"]
+[ext_resource type="Script" uid="uid://smw6vyfefqxn" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_sau2r"]
 [ext_resource type="PackedScene" uid="uid://ska6812npmde" path="res://prefabs/map_select/nodes/templates/map_node.tscn" id="3_s8emc"]
 [ext_resource type="PackedScene" uid="uid://dko08cmdkba7m" path="res://prefabs/map_select/map_margin.tscn" id="4_nrfml"]
 [ext_resource type="PackedScene" uid="uid://c6sug4hxemhdp" path="res://prefabs/map_select/nodes/templates/missions/mission_escape.tscn" id="5_rwq3m"]
 [ext_resource type="Script" uid="uid://bmhwp67vae4gu" path="res://code/missions/info/mission_info.gd" id="6_0a6x0"]
 [ext_resource type="PackedScene" uid="uid://ci7ns2p5tsax6" path="res://prefabs/map_select/nodes/templates/boss_node.tscn" id="6_mkmvc"]
-[ext_resource type="PackedScene" uid="uid://c2cxsccrpdjov" path="res://prefabs/map_select/nodes/templates/missions/mission_shop.tscn" id="6_rafgn"]
+[ext_resource type="PackedScene" uid="uid://dg6858phfq3am" path="res://prefabs/map_select/nodes/templates/missions/mission_shop.tscn" id="6_rafgn"]
 [ext_resource type="PackedScene" uid="uid://bvcjycf02eb4c" path="res://prefabs/npc/bosses/juggernaut/juggernaut.tscn" id="7_yxgtb"]
 [ext_resource type="PackedScene" uid="uid://dhnli7a3skvdj" path="res://prefabs/map_select/nodes/templates/missions/mission_defend.tscn" id="8_mxsq4"]
 [ext_resource type="PackedScene" uid="uid://csyc0l2g1nt61" path="res://scenes/levels/finalest/easy/first_defend.tscn" id="8_uee5q"]
-[ext_resource type="PackedScene" uid="uid://bqycw1p4sa2vq" path="res://scenes/levels/finalest/base/shop_mission.tscn" id="8_xfikn"]
+[ext_resource type="PackedScene" uid="uid://dqj3y62aioivm" path="res://scenes/levels/finalest/base/pre_boss_mission.tscn" id="8_xfikn"]
 [ext_resource type="PackedScene" uid="uid://diru2u2s3kmy6" path="res://scenes/levels/finalest/easy/first_escape.tscn" id="10_mxsq4"]
 [ext_resource type="PackedScene" uid="uid://b7ty3wbgt75vk" path="res://scenes/levels/finalest/medium/medium_escape_tradehub.tscn" id="10_uee5q"]
 [ext_resource type="PackedScene" uid="uid://bxuab0bqfjkxo" path="res://scenes/levels/finalest/easy/second_defend.tscn" id="11_dlw72"]
@@ -31,8 +31,7 @@
 
 [sub_resource type="Resource" id="Resource_xfikn"]
 script = ExtResource("6_0a6x0")
-about = "shop mission
-"
+about = "Just some rusty Scrapyard"
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_pki7u"]
@@ -167,13 +166,13 @@ layout_mode = 2
 layout_mode = 2
 mission_info = SubResource("Resource_55wni")
 level_prefab = ExtResource("11_dlw72")
-next_map_nodes = [NodePath("../../4/BossNode")]
+next_map_nodes = [NodePath("../../5/BossNode")]
 
 [node name="secrun" parent="3" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
 layout_mode = 2
 mission_info = SubResource("Resource_gobyi")
 level_prefab = ExtResource("11_uee5q")
-next_map_nodes = [NodePath("../../4/BossNode")]
+next_map_nodes = [NodePath("../../5/BossNode")]
 
 [node name="MapMargin6" parent="." instance=ExtResource("4_nrfml")]
 layout_mode = 2
@@ -181,56 +180,68 @@ layout_mode = 2
 [node name="4" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="BossNode" parent="4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_mkmvc")]
+[node name="MissionShop" parent="4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_rafgn")]
 layout_mode = 2
-boss_prefabs = Array[PackedScene]([ExtResource("7_yxgtb")])
-is_miniboss = true
-next_map_nodes = [NodePath("../../6/rockydef"), NodePath("../../6/rockyrun"), NodePath("../../6/rockyfuel")]
+mission_info = SubResource("Resource_xfikn")
+level_prefab = ExtResource("8_xfikn")
+next_map_nodes = [NodePath("../../2/firstdef"), NodePath("../../2/firstrun")]
 
-[node name="MapMargin5" parent="." instance=ExtResource("4_nrfml")]
+[node name="MapMargin13" parent="." instance=ExtResource("4_nrfml")]
 layout_mode = 2
 
 [node name="5" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="tradefuel2" parent="5" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("13_rwq3m")]
+[node name="BossNode" parent="5" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_mkmvc")]
 layout_mode = 2
-mission_info = SubResource("Resource_3cw18")
-level_prefab = ExtResource("16_sau2r")
-next_map_nodes = [NodePath("../../4/BossNode")]
+boss_prefabs = Array[PackedScene]([ExtResource("7_yxgtb")])
+is_miniboss = true
+next_map_nodes = [NodePath("../../7/rockydef"), NodePath("../../7/rockyrun"), NodePath("../../7/rockyfuel")]
 
-[node name="traderun" parent="5" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
-layout_mode = 2
-mission_info = SubResource("Resource_bpxjr")
-level_prefab = ExtResource("10_uee5q")
-modulate_color = Color(0.380176, 0.911664, 1, 1)
-next_map_nodes = [NodePath("../../4/BossNode")]
-
-[node name="tradedef" parent="5" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
-layout_mode = 2
-mission_info = SubResource("Resource_bpxjr")
-level_prefab = ExtResource("18_f40e2")
-next_map_nodes = [NodePath("../../4/BossNode")]
-
-[node name="MapMargin7" parent="." instance=ExtResource("4_nrfml")]
+[node name="MapMargin5" parent="." instance=ExtResource("4_nrfml")]
 layout_mode = 2
 
 [node name="6" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="rockydef" parent="6" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
+[node name="tradefuel2" parent="6" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("13_rwq3m")]
+layout_mode = 2
+mission_info = SubResource("Resource_3cw18")
+level_prefab = ExtResource("16_sau2r")
+next_map_nodes = [NodePath("../../5/BossNode")]
+
+[node name="traderun" parent="6" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
+layout_mode = 2
+mission_info = SubResource("Resource_bpxjr")
+level_prefab = ExtResource("10_uee5q")
+modulate_color = Color(0.380176, 0.911664, 1, 1)
+next_map_nodes = [NodePath("../../5/BossNode")]
+
+[node name="tradedef" parent="6" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
+layout_mode = 2
+mission_info = SubResource("Resource_bpxjr")
+level_prefab = ExtResource("18_f40e2")
+next_map_nodes = [NodePath("../../5/BossNode")]
+
+[node name="MapMargin7" parent="." instance=ExtResource("4_nrfml")]
+layout_mode = 2
+
+[node name="7" parent="." instance=ExtResource("2_bp67s")]
+layout_mode = 2
+
+[node name="rockydef" parent="7" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
 layout_mode = 2
 mission_info = SubResource("Resource_t1mo6")
 level_prefab = ExtResource("19_dlw72")
-next_map_nodes = [NodePath("../../MapLayer9/killall")]
+next_map_nodes = [NodePath("../../8/killall")]
 
-[node name="rockyrun" parent="6" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
+[node name="rockyrun" parent="7" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
 layout_mode = 2
 mission_info = SubResource("Resource_vsw54")
 level_prefab = ExtResource("20_sau2r")
 next_map_nodes = [null, null]
 
-[node name="rockyfuel" parent="6" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("13_rwq3m")]
+[node name="rockyfuel" parent="7" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("13_rwq3m")]
 layout_mode = 2
 mission_info = SubResource("Resource_6ev6g")
 level_prefab = ExtResource("21_f40e2")
@@ -239,40 +250,52 @@ next_map_nodes = [null]
 [node name="MapMargin8" parent="." instance=ExtResource("4_nrfml")]
 layout_mode = 2
 
-[node name="MapLayer9" parent="." instance=ExtResource("2_bp67s")]
+[node name="8" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="killall" parent="MapLayer9" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
+[node name="killall" parent="8" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
 layout_mode = 2
 mission_info = SubResource("Resource_bbwgh")
 level_prefab = ExtResource("22_0a6x0")
-next_map_nodes = [NodePath("../../MapLayer10/MissionDefendAsteroidsLines")]
+next_map_nodes = [NodePath("../../9/MissionDefendAsteroidsLines")]
 
 [node name="MapMargin9" parent="." instance=ExtResource("4_nrfml")]
 layout_mode = 2
 
-[node name="MapLayer10" parent="." instance=ExtResource("2_bp67s")]
+[node name="9" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="MissionDefendAsteroidsLines" parent="MapLayer10" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
+[node name="MissionDefendAsteroidsLines" parent="9" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("8_mxsq4")]
 layout_mode = 2
 mission_info = SubResource("Resource_fj8or")
 level_prefab = ExtResource("23_0a6x0")
-next_map_nodes = [NodePath("../../MapLayer11/BossNode")]
+next_map_nodes = [NodePath("../../11/BossNode")]
 
-[node name="MissionEscapeSwarms" parent="MapLayer10" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
+[node name="MissionEscapeSwarms" parent="9" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
 layout_mode = 2
 mission_info = SubResource("Resource_dl063")
 level_prefab = ExtResource("24_0a6x0")
-next_map_nodes = [NodePath("../../MapLayer11/BossNode")]
+next_map_nodes = [NodePath("../../11/BossNode")]
 
 [node name="MapMargin10" parent="." instance=ExtResource("4_nrfml")]
 layout_mode = 2
 
-[node name="MapLayer11" parent="." instance=ExtResource("2_bp67s")]
+[node name="10" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="BossNode" parent="MapLayer11" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_mkmvc")]
+[node name="MissionShop" parent="10" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_rafgn")]
+layout_mode = 2
+mission_info = SubResource("Resource_xfikn")
+level_prefab = ExtResource("8_xfikn")
+next_map_nodes = [NodePath("../../2/firstdef"), NodePath("../../2/firstrun")]
+
+[node name="MapMargin11" parent="." instance=ExtResource("4_nrfml")]
+layout_mode = 2
+
+[node name="11" parent="." instance=ExtResource("2_bp67s")]
+layout_mode = 2
+
+[node name="BossNode" parent="11" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_mkmvc")]
 layout_mode = 2
 boss_prefabs = Array[PackedScene]([ExtResource("24_ui2af")])
 is_miniboss = true
@@ -281,9 +304,21 @@ next_map_nodes = [null, null]
 [node name="MapMargin14" parent="." instance=ExtResource("4_nrfml")]
 layout_mode = 2
 
-[node name="MapLayer15" parent="." instance=ExtResource("2_bp67s")]
+[node name="12" parent="." instance=ExtResource("2_bp67s")]
 layout_mode = 2
 
-[node name="BossNode" parent="MapLayer15" instance=ExtResource("6_mkmvc")]
+[node name="MissionShop" parent="12" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_rafgn")]
+layout_mode = 2
+mission_info = SubResource("Resource_xfikn")
+level_prefab = ExtResource("8_xfikn")
+next_map_nodes = [NodePath("../../2/firstdef"), NodePath("../../2/firstrun")]
+
+[node name="MapMargin12" parent="." instance=ExtResource("4_nrfml")]
+layout_mode = 2
+
+[node name="13" parent="." instance=ExtResource("2_bp67s")]
+layout_mode = 2
+
+[node name="BossNode" parent="13" instance=ExtResource("6_mkmvc")]
 layout_mode = 2
 boss_prefabs = Array[PackedScene]([ExtResource("25_bh1t4")])

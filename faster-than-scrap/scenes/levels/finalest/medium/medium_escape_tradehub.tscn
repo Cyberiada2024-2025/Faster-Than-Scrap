@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dxbwuxdfu600q" path="res://prefabs/npc/enemies/turret_laser.tscn" id="7_sor1w"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="8_5w2v7"]
 [ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="9_q0bxb"]
-[ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="10_ojqrg"]
+[ext_resource type="Script" path="res://prefabs/environment/mission_related/portal_position.gd" id="10_ojqrg"]
 
 [node name="EscapeMisssionBase" instance=ExtResource("1_a25w2")]
 

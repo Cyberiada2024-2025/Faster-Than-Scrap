@@ -14,9 +14,12 @@ static var instance: Hud
 @export var max_zoom := 100
 @export var min_zoom := 5
 @export var y_pos: float = 25
-@export var panning_force: float = 2.0/3.0
-
 @export var use_saved_fov: bool = true
+## Decides the camera drag when panning
+@export var panning_force: float = 2.0/3.0
+## Sets the total panning area to initial viewport area + panning_viewport_extension%
+## of the initial area
+@export var panning_viewport_extension: float = 1.0
 
 var _main_camera: Camera3D
 var _module_camera: Camera3D
@@ -24,6 +27,7 @@ var _minimap_camera: Camera3D
 var _tween: Tween
 var _mouse_input: Vector2 = Vector2.ZERO
 var _camera_position: Vector2 = Vector2.ZERO
+var _visibility_range: Vector2
 
 
 func _enter_tree() -> void:
@@ -37,6 +41,8 @@ func _ready() -> void:
 
 	if use_saved_fov and SettingsManager.zoom_level != 0:
 		_main_camera.fov = SettingsManager.zoom_level
+
+	_visibility_range = panning_viewport_extension * _get_viewport_world_span(_main_camera)
 
 
 class Rect:
@@ -162,7 +168,7 @@ func zoom_camera(strength: int) -> void:
 	_tween.tween_property(_main_camera, "fov", fov, zoom_time)
 
 
-func pan_camera(direction):
+func pan_camera(direction) -> void:
 	# This variable normalizes mouse input to a given zoom level
 	# Assumption: max_zoom is never zero
 	var zoom_scaling_factor = _main_camera.fov / max_zoom
@@ -171,17 +177,26 @@ func pan_camera(direction):
 		* zoom_scaling_factor \
 		* (0.1 * panning_force)
 
-	var visibility_range = 0.05 * _main_camera.get_viewport().get_visible_rect().size
-
-	print(visibility_range)
-
 	var xz_offset = Vector2(
 		main_camera_offset.x - relative_camera_offset.x,
 		main_camera_offset.z - relative_camera_offset.y
 	).clamp(
-		-visibility_range,
-		+visibility_range
+		-_visibility_range,
+		+_visibility_range
 	)
 
 	main_camera_offset.x = xz_offset.x
 	main_camera_offset.z = xz_offset.y
+
+
+## Returns a world coordinate diagonal vector that spans the whole viewport
+func _get_viewport_world_span(camera) -> Vector2:
+	var top_left = camera.get_viewport().get_visible_rect().position
+	var btm_right = camera.get_viewport().get_visible_rect().end
+	var z_depth = camera.position.y
+	
+	var world_top_left = camera.project_position(top_left, z_depth)
+	var world_btm_right = camera.project_position(btm_right, z_depth)
+
+	var world_span_3d = world_btm_right - world_top_left
+	return Vector2(world_span_3d.x, world_span_3d.z)

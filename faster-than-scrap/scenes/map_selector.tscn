@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpr65ttaqujar"]
+[gd_scene load_steps=11 format=3 uid="uid://bpr65ttaqujar"]
 
 [ext_resource type="Script" uid="uid://n3n525xrpgvs" path="res://code/map_select/map_manager.gd" id="1_0byna"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_0byna"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dh6fl5n30osgh" path="res://art/textures/main_menu/map_select_background_light.png" id="4_d2opd"]
 [ext_resource type="Texture2D" uid="uid://go1u7xe1f41q" path="res://art/textures/main_menu/background_mask.png" id="5_jq2mv"]
 [ext_resource type="Script" uid="uid://b8kgrdxasqvq0" path="res://code/main_menu/background_light.gd" id="6_17kcy"]
+[ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="8_jq2mv"]
 
 [node name="MapSelector" type="Node" node_paths=PackedStringArray("map_container", "button", "label", "scene_loader")]
 script = ExtResource("1_0byna")
@@ -56,6 +57,7 @@ anchor_right = 0.97
 anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_jq2mv")
 text = "FLY!"
 
 [node name="Edge" type="ColorRect" parent="."]
@@ -66,6 +68,7 @@ anchor_right = 0.7
 anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_jq2mv")
 color = Color(0.741385, 0.741385, 0.741385, 1)
 
 [node name="Background" type="ColorRect" parent="Edge"]

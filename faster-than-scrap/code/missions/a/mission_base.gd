@@ -16,9 +16,9 @@ enum Priority { MAIN_QUEST, SIDE_QUEST }
 @export_category("Vortex paramaters")
 @export var _use_custom_vortex_size: bool = false
 @export var _custom_vortex_size: float = 400
+@export var jump_circle: CircleProgressBar
 
 var state: MissionState = MissionState.IN_PROGRESS
-@export var jump_circle: CircleProgressBar
 var timer: Timer
 
 

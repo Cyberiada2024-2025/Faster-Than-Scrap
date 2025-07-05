@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_wxnq3"]
 [ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_8uwey"]
-[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="3_b46f7"]
+[ext_resource type="Theme" uid="uid://dvjkohqrk78av" path="res://prefabs/ui/themes/tutorial_theme.tres" id="3_mhi17"]
 [ext_resource type="PackedScene" uid="uid://c78jp45hhpqhd" path="res://prefabs/ui/cutscenes/skip_info_text.tscn" id="5_3l0a1"]
 
 [node name="FuelUseTutorialCutscene" type="ColorRect"]
@@ -46,8 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_b46f7")
-theme_override_font_sizes/font_size = 20
+theme = ExtResource("3_mhi17")
 text = "Hold ENTER to use hyperspace fuel and immediately jump to the next sector.
 "
 horizontal_alignment = 1

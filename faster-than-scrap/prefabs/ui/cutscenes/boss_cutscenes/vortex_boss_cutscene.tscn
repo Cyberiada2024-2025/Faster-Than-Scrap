@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6daqms6qnhjg"]
+[gd_scene load_steps=9 format=3 uid="uid://b6daqms6qnhjg"]
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_md78p"]
 [ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_6cdjk"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://iwk1g8ku76ys" path="res://code/ui/cutscenes/slide_elements/slide_element_scale.gd" id="5_p5483"]
 [ext_resource type="Script" uid="uid://decpi0ok1lasp" path="res://code/ui/cutscenes/slide_elements/slide_element_rotate.gd" id="6_86fdj"]
 [ext_resource type="Texture2D" uid="uid://d4bs5r0bdkc3s" path="res://art/textures/ui/cutscenes/vortex_boss2.PNG" id="7_6cdjk"]
+[ext_resource type="FontFile" uid="uid://c5684ddhvkomb" path="res://art/fonts/Orbitron-Bold.ttf" id="8_2rmj8"]
 
 [node name="BossCutsceneExample" type="ColorRect"]
 anchors_preset = 15
@@ -87,5 +88,6 @@ offset_left = 411.0
 offset_top = 463.0
 offset_right = 969.0
 offset_bottom = 546.0
+theme_override_fonts/font = ExtResource("8_2rmj8")
 theme_override_font_sizes/font_size = 60
 text = "VORTEX"

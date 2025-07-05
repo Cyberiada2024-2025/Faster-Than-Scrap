@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_unui1"]
 [ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_hak7e"]
-[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="3_01i7v"]
+[ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="3_p6mgp"]
 [ext_resource type="PackedScene" uid="uid://c78jp45hhpqhd" path="res://prefabs/ui/cutscenes/skip_info_text.tscn" id="4_mp3n5"]
 
 [node name="FlyTutorialCutscene" type="ColorRect"]
@@ -46,7 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_01i7v")
+theme = ExtResource("3_p6mgp")
 theme_override_font_sizes/font_size = 20
 text = "Now you've started your cosmic journey! Beware of dangers laying out there!"
 horizontal_alignment = 1
@@ -83,7 +83,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_01i7v")
+theme = ExtResource("3_p6mgp")
 theme_override_font_sizes/font_size = 20
 text = "In the corner you can see you fuel count. By using fuel you can skip level to instantly finish it. 
 
@@ -122,7 +122,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_01i7v")
+theme = ExtResource("3_p6mgp")
 theme_override_font_sizes/font_size = 20
 text = "In the right lower corner you can see the minimap. It show nearby points of interest. Yellow means shop, and blue are missions."
 horizontal_alignment = 1
@@ -159,7 +159,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_01i7v")
+theme = ExtResource("3_p6mgp")
 theme_override_font_sizes/font_size = 20
 text = "In the left corner is battery level. All modules use energy to activate. Use it wisely."
 horizontal_alignment = 1

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_c7aa7"]
 [ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_s1ex1"]
-[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="3_jrdi4"]
+[ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="3_h1t3u"]
 [ext_resource type="PackedScene" uid="uid://c78jp45hhpqhd" path="res://prefabs/ui/cutscenes/skip_info_text.tscn" id="4_4gsco"]
 [ext_resource type="Texture2D" uid="uid://ddm80lnoo3ty7" path="res://art/textures/ui/arrow.png" id="4_5yjj4"]
 
@@ -47,7 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_jrdi4")
+theme = ExtResource("3_h1t3u")
 theme_override_font_sizes/font_size = 20
 text = "Modules are building blocks of your ship. 
 
@@ -103,7 +103,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_jrdi4")
+theme = ExtResource("3_h1t3u")
 theme_override_font_sizes/font_size = 20
 text = "Your ship's preview shows
  each module's health and
@@ -148,7 +148,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_jrdi4")
+theme = ExtResource("3_h1t3u")
 theme_override_font_sizes/font_size = 20
 text = "Automatic flight assist 
 is turned on. 

@@ -48,15 +48,8 @@ func _poi_visible_on_minimap() -> bool:
 	var poi_center = Vector2(global_position.x, global_position.z)
 
 	# calculated on square minimap
-	var distance_from_camera = _chebyshev_distance(camera_center, poi_center)
+	var distance_from_camera = camera_center.distance_to(poi_center)
 	return distance_from_camera <= radius
-
-
-## good measure for checking if on square
-func _chebyshev_distance(a: Vector2, b: Vector2) -> float:
-	var x_diff = abs(a.x - b.x)
-	var y_diff = abs(a.y - b.y)
-	return max(x_diff, y_diff)
 
 
 ## show normal circle, hide arrow

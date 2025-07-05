@@ -15,11 +15,6 @@ func _ready() -> void:
 	_change_value(player_ship.energy)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 ## Call when value displayed by the bar has changed
 func _change_value(input: float) -> void:
 	bar_main.value = input

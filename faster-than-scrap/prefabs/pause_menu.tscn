@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8vq1jqmowcwf"]
+[gd_scene load_steps=6 format=3 uid="uid://b8vq1jqmowcwf"]
 
 [ext_resource type="Script" uid="uid://cntqnnyriiru2" path="res://code/pause_menu.gd" id="1_hf53u"]
 [ext_resource type="PackedScene" uid="uid://36s8658cgl8t" path="res://scenes/settings.tscn" id="2_atv5q"]
-[ext_resource type="Script" uid="uid://smw6vyfefqxn" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_cpmee"]
+[ext_resource type="Script" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_cpmee"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_iyb4f"]
+[ext_resource type="FontFile" uid="uid://c5684ddhvkomb" path="res://art/fonts/Orbitron-Bold.ttf" id="3_cpmee"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -44,6 +45,7 @@ alignment = 1
 layout_mode = 2
 focus_neighbor_top = NodePath("../Exit")
 focus_neighbor_bottom = NodePath("../SettingsButton")
+theme_override_fonts/font = ExtResource("3_cpmee")
 theme_override_font_sizes/font_size = 30
 text = "RESUME
 "
@@ -52,6 +54,7 @@ text = "RESUME
 layout_mode = 2
 focus_neighbor_top = NodePath("../Resume")
 focus_neighbor_bottom = NodePath("../Exit")
+theme_override_fonts/font = ExtResource("3_cpmee")
 theme_override_font_sizes/font_size = 30
 text = "SETTINGS"
 
@@ -59,6 +62,7 @@ text = "SETTINGS"
 layout_mode = 2
 focus_neighbor_top = NodePath("../SettingsButton")
 focus_neighbor_bottom = NodePath("../Resume")
+theme_override_fonts/font = ExtResource("3_cpmee")
 theme_override_font_sizes/font_size = 30
 text = "EXIT TO MAIN MENU
 "

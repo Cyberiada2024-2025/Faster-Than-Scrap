@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dfco2h1p5vdx1" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid1.tscn" id="4_g8833"]
 [ext_resource type="PackedScene" uid="uid://b8ggfura4533j" path="res://prefabs/environment/asteroids/asteroid_small_groups/big_asteroid_group.tscn" id="5_m0rg2"]
 [ext_resource type="PackedScene" uid="uid://dn3mypfoixbpt" path="res://prefabs/environment/asteroids/single_asteroid/small/asteroid1.tscn" id="6_oaeco"]
-[ext_resource type="PackedScene" path="res://prefabs/environment/asteroids/asteroid_small_groups/sparse_asteroid_group.tscn" id="7_on7h1"]
+[ext_resource type="PackedScene" uid="uid://js76qvbo8iq0" path="res://prefabs/environment/asteroids/asteroid_small_groups/sparse_asteroid_group.tscn" id="7_on7h1"]
 [ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/npc/enemies/fighter.tscn" id="9_r1hfd"]
 [ext_resource type="PackedScene" uid="uid://ceu6i6ji4q3oq" path="res://prefabs/npc/enemies/turret_gun.tscn" id="10_hswym"]
 [ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="11_yhsao"]
@@ -79,10 +79,7 @@ transform = Transform3D(-0.65648, 0, -0.754343, 0, 1, 0, 0.754343, 0, -0.65648, 
 transform = Transform3D(-0.695512, 0, 0.718514, 0, 1, 0, -0.718514, 0, -0.695512, 108.508, 0, -79.1868)
 
 [node name="Fighter5" parent="Enemies/shop" instance=ExtResource("9_r1hfd")]
-transform = Transform3D(-0.695512, 0, 0.718514, 0, 1, 0, -0.718514, 0, -0.695512, 113.433, 0, -89.8049)
-
-[node name="Fighter6" parent="Enemies/shop" instance=ExtResource("9_r1hfd")]
-transform = Transform3D(-0.695512, 0, 0.718514, 0, 1, 0, -0.718514, 0, -0.695512, 64.1691, 0, -111.881)
+transform = Transform3D(-0.695512, 0, 0.718514, 0, 1, 0, -0.718514, 0, -0.695512, 220.005, 0, -68.8246)
 
 [node name="Fighter7" parent="Enemies/shop" instance=ExtResource("9_r1hfd")]
 transform = Transform3D(-0.695512, 0, 0.718514, 0, 1, 0, -0.718514, 0, -0.695512, 67.3026, 0, -123.171)
@@ -110,7 +107,6 @@ metadata/_custom_type_script = "uid://bq0dwhdq76qw"
 [node name="PortalPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.726, 0, -224.33)
 script = ExtResource("12_je32r")
-metadata/_custom_type_script = "uid://inuu5gi20l6r"
 
 [node name="Marker3D" type="Marker3D" parent="PortalPosition"]
 transform = Transform3D(3.23549, 0, 2.86252, 0, 4.32, 0, -2.86252, 0, 3.23549, 0, 0, 0)

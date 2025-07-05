@@ -1,19 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://ce6o6d7fo8n7x"]
+[gd_scene load_steps=9 format=3 uid="uid://ce6o6d7fo8n7x"]
 
 [ext_resource type="PackedScene" uid="uid://pwsixhrj0x1o" path="res://scenes/levels/finalest/base/base_mission.tscn" id="1_a4le3"]
 [ext_resource type="PackedScene" uid="uid://b7d6dp7jrytp3" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group.tscn" id="2_dhrg8"]
-[ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="3_qkv3p"]
+[ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="2_w4bb3"]
+[ext_resource type="Script" path="res://prefabs/environment/mission_related/portal_position.gd" id="3_qkv3p"]
 [ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/npc/enemies/fighter.tscn" id="3_w4bb3"]
-[ext_resource type="Script" uid="uid://4w17qx65voq6" path="res://code/missions/a/mission_defend.gd" id="6_n3nok"]
 [ext_resource type="PackedScene" uid="uid://chtuqjjikj2f" path="res://prefabs/npc/enemies/bomber.tscn" id="6_w4bb3"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="7_w4bb3"]
+[ext_resource type="PackedScene" uid="uid://dlp3fs4qym6g2" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group_straight_line.tscn" id="8_q8435"]
 
 [node name="EscapeMisssionBase" instance=ExtResource("1_a4le3")]
 
-[node name="Missiondef" type="Node" parent="." index="0" node_paths=PackedStringArray("defendable_position")]
-script = ExtResource("6_n3nok")
-defendable_position = NodePath("../PortalPosition")
-metadata/_custom_type_script = "uid://4w17qx65voq6"
+[node name="Missionescape" type="Node" parent="." index="0"]
+script = ExtResource("2_w4bb3")
+metadata/_custom_type_script = "uid://bq0dwhdq76qw"
 
 [node name="PortalPosition" type="Node3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13194, 3.05176e-05, -245.092)
@@ -72,7 +72,7 @@ transform = Transform3D(0.354406, 0, -0.935092, 0, 1, 0, 0.935092, 0, 0.354406, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.3175, 1.52588e-05, -178.658)
 
 [node name="Fighter" parent="Enemies/ShopEnemies2" index="0" instance=ExtResource("3_w4bb3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.8775, 0, 14.7183)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.6548, 0, 18.3892)
 
 [node name="ShopEnemies3" type="Node3D" parent="Enemies" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2775, 2.28882e-05, -131.079)
@@ -89,13 +89,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97342, 0, 47.2271)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.1026, 0, -3.11902)
 
 [node name="Bomber" parent="Enemies/Other" index="2" instance=ExtResource("6_w4bb3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 234.682, 0, -25.0965)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8004, 0, -38.3118)
 
 [node name="Bomber2" parent="Enemies/Other" index="3" instance=ExtResource("6_w4bb3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 328.906, 0, -102.581)
 
 [node name="Fighter" parent="Enemies/Other" index="4" instance=ExtResource("3_w4bb3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5123, 0, -25.5961)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 280.376, 0, -58.6343)
 
 [node name="Turret Sniper" parent="Enemies/Other" index="5" instance=ExtResource("7_w4bb3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.983, -7.62939e-06, -0.643494)
+
+[node name="Turret Sniper2" parent="Enemies/Other" index="6" instance=ExtResource("7_w4bb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.195, -7.62939e-06, -179.778)
+
+[node name="Turret Sniper3" parent="Enemies/Other" index="7" instance=ExtResource("7_w4bb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.078, -7.62939e-06, -196.072)
+
+[node name="Turret Sniper6" parent="Enemies/Other" index="8" instance=ExtResource("7_w4bb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.63, -7.62939e-06, -163.368)
+
+[node name="Turret Sniper5" parent="Enemies/Other" index="9" instance=ExtResource("7_w4bb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.711, -7.62939e-06, -213.313)
+
+[node name="Turret Sniper4" parent="Enemies/Other" index="10" instance=ExtResource("7_w4bb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.074, -7.62939e-06, -151.996)
+
+[node name="AsteroidGroupStraightLine" parent="Enemies/Other" index="11" instance=ExtResource("8_q8435")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.016, 0, -160.365)
+
+[node name="AsteroidGroupStraightLine2" parent="Enemies/Other" index="12" instance=ExtResource("8_q8435")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.266, 0, -200.109)
+
+[node name="AsteroidGroupStraightLine3" parent="Enemies/Other" index="13" instance=ExtResource("8_q8435")]
+transform = Transform3D(0.143769, 0, -0.989611, 0, 1, 0, 0.989611, 0, 0.143769, 156.763, 0, -178.362)

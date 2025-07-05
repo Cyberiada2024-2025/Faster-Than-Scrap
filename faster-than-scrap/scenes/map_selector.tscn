@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://n3n525xrpgvs" path="res://code/map_select/map_manager.gd" id="1_0byna"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_0byna"]
-[ext_resource type="Script" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_273au"]
+[ext_resource type="Script" uid="uid://smw6vyfefqxn" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_273au"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="3_0byna"]
 [ext_resource type="Texture2D" uid="uid://ic7d4huaalha" path="res://art/textures/main_menu/light_mask.png" id="3_exisy"]
 [ext_resource type="Script" uid="uid://dqpv50nhd6ixc" path="res://code/main_menu/light_mask.gd" id="4_273au"]
@@ -93,7 +93,7 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "Select Mission"
+text = "All the clues lead here. Reality plane is the weakest right here. Seraku cult will recite their ancient incantation, to crack it. The fracture will spread all over the galaxy in form of the VORTEX."
 
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("2_0byna")

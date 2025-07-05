@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c3rsq4emlmuky"]
+[gd_scene load_steps=31 format=3 uid="uid://c3rsq4emlmuky"]
 
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_nesmw"]
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_s6qyd"]
@@ -21,30 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="15_vhk6y"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="16_mynj6"]
 [ext_resource type="PackedScene" uid="uid://dlck66uao16fg" path="res://prefabs/ui/cutscenes/boss_cutscenes/laster_star_cutscene.tscn" id="17_kardv"]
-[ext_resource type="Script" uid="uid://bdljn5ooj2ryy" path="res://code/evironment/space_vortex/space_vortex.gd" id="22_10vjq"]
-[ext_resource type="Material" uid="uid://dsr4i8f5btjud" path="res://art/materials/vfx/Vortex.tres" id="23_8tl01"]
-[ext_resource type="PackedScene" uid="uid://noejc02505g0" path="res://prefabs/ui/poi/vortex_poi.tscn" id="24_8tl01"]
-[ext_resource type="Script" path="res://code/player/aegis_effect.gd" id="24_k5cpc"]
+[ext_resource type="Script" uid="uid://ca3g5r4yj0pc3" path="res://code/player/aegis_effect.gd" id="24_k5cpc"]
 [ext_resource type="Script" path="res://prefabs/constant_rotation.gd" id="25_ftgr2"]
-[ext_resource type="Script" uid="uid://btpdstvgw55fd" path="res://code/utilities/auto_reparent.gd" id="26_k5cpc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
 radius = 2.375
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_k5cpc"]
-radius = 0.65
-
-[sub_resource type="Gradient" id="Gradient_u6ya2"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ftgr2"]
-gradient = SubResource("Gradient_u6ya2")
-
-[sub_resource type="Gradient" id="Gradient_g4bin"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_malni"]
-gradient = SubResource("Gradient_g4bin")
 
 [sub_resource type="Curve" id="Curve_hy2wa"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.707317, 0), 0.0, 0.0, 0, 0]
@@ -297,43 +278,11 @@ script = ExtResource("16_mynj6")
 cutscene_path = ExtResource("17_kardv")
 play_on_ready = true
 
-[node name="SpaceVortex" type="Area3D" parent="." node_paths=PackedStringArray("graphics")]
-transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, 0, 0, 0)
-collision_layer = 6
-collision_mask = 6
-script = ExtResource("22_10vjq")
-miniboss = true
-graphics = NodePath("Sprite3D")
-mat = ExtResource("23_8tl01")
-start_scale = 151.0
-min_scale = 150.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpaceVortex"]
-shape = SubResource("SphereShape3D_k5cpc")
-
-[node name="Sprite3D" type="Sprite3D" parent="SpaceVortex"]
-transform = Transform3D(2000, 0, 0, 0, -8.74228e-05, 2000, 0, -2000, -8.74228e-05, 0, -5, 0)
-visible = false
-material_override = ExtResource("23_8tl01")
-double_sided = false
-render_priority = 4
-texture = SubResource("GradientTexture2D_ftgr2")
-
-[node name="VortexPOI" parent="SpaceVortex" instance=ExtResource("24_8tl01")]
-texture = null
-
 [node name="Aegis" type="Node3D" parent="."]
 script = ExtResource("24_k5cpc")
 player = false
+aegis_radius = 15.0
 path = "res://art/materials/vfx/Vortex.tres"
-
-[node name="Sprite3D" type="Sprite3D" parent="Aegis"]
-transform = Transform3D(2000, 0, 0, 0, -8.74228e-05, 2000, 0, -2000, -8.74228e-05, 0, -5, 0)
-material_override = ExtResource("23_8tl01")
-double_sided = false
-render_priority = 4
-texture = SubResource("GradientTexture2D_malni")
-script = ExtResource("26_k5cpc")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Aegis"]
 visible = false
@@ -349,25 +298,9 @@ draw_pass_1 = SubResource("RibbonTrailMesh_gewfv")
 script = ExtResource("25_ftgr2")
 
 [connection signal="damaged" from="StaticBody3D/Core/DamageController" to="StaticBody3D/Core" method="take_damage"]
-[connection signal="area_entered" from="SpaceVortex" to="SpaceVortex" method="_on_body_entered"]
-[connection signal="area_exited" from="SpaceVortex" to="SpaceVortex" method="_on_body_exited"]
-[connection signal="body_entered" from="SpaceVortex" to="SpaceVortex" method="_on_body_entered"]
-[connection signal="body_exited" from="SpaceVortex" to="SpaceVortex" method="_on_body_exited"]
 
 [editable path="StaticBody3D/Core/DamageController"]
 [editable path="StaticBody3D/Core/Star Laser"]
-[editable path="StaticBody3D/Core/Star Laser/Laser/DamageController"]
-[editable path="StaticBody3D/Core/Star Laser/Right/DamageController"]
-[editable path="StaticBody3D/Core/Star Laser/Left/DamageController"]
 [editable path="StaticBody3D/Core/Star Laser2"]
-[editable path="StaticBody3D/Core/Star Laser2/Laser/DamageController"]
-[editable path="StaticBody3D/Core/Star Laser2/Right/DamageController"]
-[editable path="StaticBody3D/Core/Star Laser2/Left/DamageController"]
 [editable path="StaticBody3D/Core/Star Laser3"]
-[editable path="StaticBody3D/Core/Star Laser3/Laser/DamageController"]
-[editable path="StaticBody3D/Core/Star Laser3/Right/DamageController"]
-[editable path="StaticBody3D/Core/Star Laser3/Left/DamageController"]
 [editable path="StaticBody3D/Core/Star Laser4"]
-[editable path="StaticBody3D/Core/Star Laser4/Laser/DamageController"]
-[editable path="StaticBody3D/Core/Star Laser4/Right/DamageController"]
-[editable path="StaticBody3D/Core/Star Laser4/Left/DamageController"]

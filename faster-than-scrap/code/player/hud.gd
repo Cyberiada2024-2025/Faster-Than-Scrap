@@ -19,7 +19,7 @@ static var instance: Hud
 @export var panning_force: float = 2.0/3.0
 ## Sets the total panning area to initial viewport area + panning_viewport_extension%
 ## of the initial area
-@export var panning_viewport_extension: float = 1.0
+@export var panning_viewport_extension: float = 2.0/3.0
 
 var _main_camera: Camera3D
 var _module_camera: Camera3D
@@ -42,7 +42,11 @@ func _ready() -> void:
 	if use_saved_fov and SettingsManager.zoom_level != 0:
 		_main_camera.fov = SettingsManager.zoom_level
 
-	_visibility_range = panning_viewport_extension * _get_viewport_world_span(_main_camera)
+	if SettingsManager.panning_range == null:
+		SettingsManager.panning_range = panning_viewport_extension \
+			* _get_viewport_world_span(_main_camera)
+
+	_visibility_range = SettingsManager.panning_range
 
 
 class Rect:

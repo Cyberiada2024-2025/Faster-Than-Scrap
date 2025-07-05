@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://36s8658cgl8t"]
+[gd_scene load_steps=11 format=3 uid="uid://36s8658cgl8t"]
 
+[ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="1_4ppmf"]
 [ext_resource type="Script" uid="uid://ba3jfd0801hhd" path="res://code/ui/settings_menu.gd" id="1_gjs24"]
 [ext_resource type="Script" uid="uid://smw6vyfefqxn" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_4ppmf"]
 [ext_resource type="Texture2D" uid="uid://d4ea46ajcslyj" path="res://art/textures/main_menu/map_select_background.png" id="2_am25x"]
@@ -19,6 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_4ppmf")
 script = ExtResource("1_gjs24")
 metadata/_edit_horizontal_guides_ = [517.0]
 
@@ -88,6 +90,7 @@ alignment = 1
 layout_mode = 2
 focus_neighbor_top = NodePath("../../../ReturnButton")
 focus_neighbor_bottom = NodePath("../AirResistanceCheckBox")
+theme = ExtResource("1_4ppmf")
 theme_override_font_sizes/font_size = 30
 text = "Cockpit brakes"
 alignment = 1
@@ -95,6 +98,7 @@ icon_alignment = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Buttons"]
 layout_mode = 2
+theme = ExtResource("1_4ppmf")
 text = "Assign Key to cockpit for easier stopping"
 vertical_alignment = 1
 
@@ -102,12 +106,14 @@ vertical_alignment = 1
 layout_mode = 2
 focus_neighbor_top = NodePath("../BrakesCheckBox")
 focus_neighbor_bottom = NodePath("../SkipCutscenesCheckBox")
+theme = ExtResource("1_4ppmf")
 theme_override_font_sizes/font_size = 30
 text = "Void resistance"
 alignment = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Buttons"]
 layout_mode = 2
+theme = ExtResource("1_4ppmf")
 text = "Ship is always stopping"
 horizontal_alignment = 1
 
@@ -115,6 +121,7 @@ horizontal_alignment = 1
 layout_mode = 2
 focus_neighbor_top = NodePath("../AirResistanceCheckBox")
 focus_neighbor_bottom = NodePath("../../../ReturnButton")
+theme = ExtResource("1_4ppmf")
 theme_override_font_sizes/font_size = 30
 text = "Skip cutscenes"
 alignment = 1
@@ -126,20 +133,24 @@ alignment = 1
 
 [node name="general_label" type="Label" parent="VBoxContainer/HBoxContainer/SlidersLabels"]
 layout_mode = 2
+theme = ExtResource("1_4ppmf")
 theme_override_font_sizes/font_size = 30
 text = "General"
 
 [node name="General" parent="VBoxContainer/HBoxContainer/SlidersLabels" instance=ExtResource("8_am25x")]
 layout_mode = 2
+theme = ExtResource("1_4ppmf")
 bus_name = "Master"
 
 [node name="music_label" type="Label" parent="VBoxContainer/HBoxContainer/SlidersLabels"]
 layout_mode = 2
+theme = ExtResource("1_4ppmf")
 theme_override_font_sizes/font_size = 30
 text = "Music"
 
 [node name="Music" parent="VBoxContainer/HBoxContainer/SlidersLabels" instance=ExtResource("8_am25x")]
 layout_mode = 2
+theme = ExtResource("1_4ppmf")
 bus_name = "Music"
 
 [node name="SlidersLabels2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
@@ -149,20 +160,24 @@ alignment = 1
 
 [node name="sfx_label" type="Label" parent="VBoxContainer/HBoxContainer/SlidersLabels2"]
 layout_mode = 2
+theme = ExtResource("1_4ppmf")
 theme_override_font_sizes/font_size = 30
 text = "Sound Effects"
 
 [node name="sfx" parent="VBoxContainer/HBoxContainer/SlidersLabels2" instance=ExtResource("8_am25x")]
 layout_mode = 2
+theme = ExtResource("1_4ppmf")
 bus_name = "SFX"
 
 [node name="ui_label" type="Label" parent="VBoxContainer/HBoxContainer/SlidersLabels2"]
 layout_mode = 2
+theme = ExtResource("1_4ppmf")
 theme_override_font_sizes/font_size = 30
 text = "Interface"
 
 [node name="Music" parent="VBoxContainer/HBoxContainer/SlidersLabels2" instance=ExtResource("8_am25x")]
 layout_mode = 2
+theme = ExtResource("1_4ppmf")
 bus_name = "UI"
 
 [node name="Sliders" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
@@ -173,6 +188,7 @@ theme_override_constants/separation = 24
 layout_mode = 2
 focus_neighbor_top = NodePath("../HBoxContainer/Buttons/SkipCutscenesCheckBox")
 focus_neighbor_bottom = NodePath("../HBoxContainer/Buttons/BrakesCheckBox")
+theme = ExtResource("1_4ppmf")
 theme_override_font_sizes/font_size = 30
 text = "RETURN"
 

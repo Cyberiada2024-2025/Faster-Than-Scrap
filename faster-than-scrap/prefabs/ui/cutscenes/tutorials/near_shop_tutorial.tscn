@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_5gsu5"]
 [ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_l46mg"]
-[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="3_dtod5"]
+[ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="3_g7dsw"]
 [ext_resource type="PackedScene" uid="uid://c78jp45hhpqhd" path="res://prefabs/ui/cutscenes/skip_info_text.tscn" id="4_nc2nx"]
 
 [node name="MovementTutorialCutscene" type="ColorRect"]
@@ -50,7 +50,7 @@ offset_right = -0.400024
 offset_bottom = 0.399994
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_dtod5")
+theme = ExtResource("3_g7dsw")
 theme_override_font_sizes/font_size = 20
 text = "Fly into the abandoned shipyard."
 horizontal_alignment = 1

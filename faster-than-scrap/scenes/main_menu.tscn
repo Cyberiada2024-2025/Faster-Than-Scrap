@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyj46rbaohfnw"]
+[gd_scene load_steps=12 format=3 uid="uid://dyj46rbaohfnw"]
 
 [ext_resource type="Script" uid="uid://bk270qnughqkv" path="res://code/main_menu.gd" id="1_4xnjd"]
 [ext_resource type="Script" uid="uid://smw6vyfefqxn" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_5dd4i"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b8kgrdxasqvq0" path="res://code/main_menu/background_light.gd" id="6_flqon"]
 [ext_resource type="Texture2D" uid="uid://cvsc1hfn6jjb" path="res://art/textures/main_menu/main_title.png" id="7_rcqid"]
 [ext_resource type="PackedScene" uid="uid://36s8658cgl8t" path="res://scenes/settings.tscn" id="9_jk1qb"]
+[ext_resource type="Theme" uid="uid://bsbjem43ux80p" path="res://prefabs/ui/themes/build_ship_theme.tres" id="9_lgwnu"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -81,6 +82,7 @@ alignment = 1
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitButton")
 focus_neighbor_bottom = NodePath("../SettingsButton")
+theme = ExtResource("9_lgwnu")
 theme_override_font_sizes/font_size = 30
 text = "START"
 icon_alignment = 1
@@ -89,6 +91,7 @@ icon_alignment = 1
 layout_mode = 2
 focus_neighbor_top = NodePath("../StartButton")
 focus_neighbor_bottom = NodePath("../ExitButton")
+theme = ExtResource("9_lgwnu")
 theme_override_font_sizes/font_size = 30
 text = "SETTINGS"
 
@@ -96,6 +99,7 @@ text = "SETTINGS"
 layout_mode = 2
 focus_neighbor_top = NodePath("../SettingsButton")
 focus_neighbor_bottom = NodePath("../StartButton")
+theme = ExtResource("9_lgwnu")
 theme_override_font_sizes/font_size = 30
 text = "EXIT"
 

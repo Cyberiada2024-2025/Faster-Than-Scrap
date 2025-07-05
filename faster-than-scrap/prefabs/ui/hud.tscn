@@ -15,42 +15,6 @@
 [ext_resource type="ArrayMesh" uid="uid://ctrcha2pvwkt8" path="res://art/models/minimap.obj" id="10_fijqi"]
 [ext_resource type="Texture2D" uid="uid://cwun3qgred5vi" path="res://art/textures/ui/radar.png" id="11_sb0ep"]
 
-[sub_resource type="Animation" id="Animation_85xya"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureProgressBar2:tint_progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ha5er"]
-resource_name = "warning"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureProgressBar2:tint_progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.4, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.705882), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_oq2i2"]
-_data = {
-&"RESET": SubResource("Animation_85xya"),
-&"warning": SubResource("Animation_ha5er")
-}
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cg4l6"]
 bg_color = Color(0, 0, 0, 1)
 corner_detail = 1
@@ -139,6 +103,42 @@ viewport_path = NodePath("CircleModules")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_sb0ep"]
 viewport_path = NodePath("CircleMinimap")
+
+[sub_resource type="Animation" id="Animation_85xya"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureProgressBar2:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ha5er"]
+resource_name = "warning"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureProgressBar2:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.705882), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oq2i2"]
+_data = {
+&"RESET": SubResource("Animation_85xya"),
+&"warning": SubResource("Animation_ha5er")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fijqi"]
 resource_local_to_scene = true
@@ -265,61 +265,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="New Energy Bar" type="Control" parent="HUD" node_paths=PackedStringArray("bar_main", "bar_warning", "animator")]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("2_3xm3k")
-bar_main = NodePath("TextureProgressBar")
-bar_warning = NodePath("TextureProgressBar2")
-animator = NodePath("AnimationPlayer")
-
-[node name="NoEnergyWarning" type="TextureProgressBar" parent="HUD/New Energy Bar"]
-layout_mode = 0
-offset_left = 666.0
-offset_top = 14.0
-offset_right = 1140.0
-offset_bottom = 50.0
-max_value = 300.0
-step = 10.0
-value = 200.0
-fill_mode = 1
-texture_under = ExtResource("2_ggpsi")
-texture_progress = ExtResource("5_iyfgc")
-tint_progress = Color(1, 1, 1, 0)
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD/New Energy Bar"]
-layout_mode = 0
-offset_left = 666.0
-offset_top = 14.0
-offset_right = 1140.0
-offset_bottom = 50.0
-max_value = 300.0
-step = 10.0
-value = 10.0
-fill_mode = 1
-texture_under = ExtResource("2_ggpsi")
-texture_progress = ExtResource("3_3xm3k")
-tint_progress = Color(0.516637, 0.995974, 0.541332, 1)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/New Energy Bar"]
-libraries = {
-&"": SubResource("AnimationLibrary_oq2i2")
-}
-
-[node name="TextureProgressBar2" type="TextureProgressBar" parent="HUD/New Energy Bar"]
-layout_mode = 0
-offset_left = 666.0
-offset_top = 14.0
-offset_right = 1123.0
-offset_bottom = 54.0
-max_value = 300.0
-step = 10.0
-value = 300.0
-fill_mode = 1
-texture_progress = ExtResource("5_iyfgc")
-tint_progress = Color(1, 1, 1, 0)
-
 [node name="Energy Bar" type="Control" parent="HUD" node_paths=PackedStringArray("bar_main", "bar_under", "overlay", "numbers", "animator")]
 visible = false
 layout_mode = 3
@@ -420,11 +365,15 @@ offset_right = 98.0
 offset_bottom = 383.0
 
 [node name="AspectRatioContainer4" type="AspectRatioContainer" parent="HUD"]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
 offset_left = 10.0
-offset_top = 430.0
+offset_top = -220.0
 offset_right = 220.0
-offset_bottom = 640.0
+offset_bottom = -10.0
+grow_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="HUD/AspectRatioContainer4"]
 layout_mode = 2
@@ -432,49 +381,118 @@ texture = SubResource("ViewportTexture_u286n")
 expand_mode = 4
 
 [node name="AspectRatioContainer3" type="AspectRatioContainer" parent="HUD"]
-layout_mode = 2
-offset_left = 930.0
-offset_top = 430.0
-offset_right = 1140.0
-offset_bottom = 640.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -220.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="HUD/AspectRatioContainer3"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_sb0ep")
 expand_mode = 4
 
-[node name="Fuel indicator" type="ColorRect" parent="HUD" node_paths=PackedStringArray("fuel_display")]
+[node name="New Energy Bar" type="Control" parent="." node_paths=PackedStringArray("bar_main", "bar_warning", "animator")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1052.0
+offset_top = 10.0
+offset_right = 1142.0
+offset_bottom = 10.0
+script = ExtResource("2_3xm3k")
+bar_main = NodePath("TextureProgressBar")
+bar_warning = NodePath("TextureProgressBar2")
+animator = NodePath("AnimationPlayer")
+
+[node name="NoEnergyWarning" type="TextureProgressBar" parent="New Energy Bar"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -97.0
-offset_top = 60.0
-offset_right = -2.0
-offset_bottom = 104.0
+offset_left = -474.0
+offset_bottom = 36.0
+grow_horizontal = 0
+max_value = 300.0
+step = 10.0
+value = 200.0
+fill_mode = 1
+texture_under = ExtResource("2_ggpsi")
+texture_progress = ExtResource("5_iyfgc")
+tint_progress = Color(1, 1, 1, 0)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="New Energy Bar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -474.0
+offset_bottom = 36.0
+grow_horizontal = 0
+max_value = 300.0
+step = 10.0
+value = 10.0
+fill_mode = 1
+texture_under = ExtResource("2_ggpsi")
+texture_progress = ExtResource("3_3xm3k")
+tint_progress = Color(0.516637, 0.995974, 0.541332, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="New Energy Bar"]
+libraries = {
+&"": SubResource("AnimationLibrary_oq2i2")
+}
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="New Energy Bar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -457.0
+offset_bottom = 40.0
+grow_horizontal = 0
+max_value = 300.0
+step = 10.0
+value = 300.0
+fill_mode = 1
+texture_progress = ExtResource("5_iyfgc")
+tint_progress = Color(1, 1, 1, 0)
+
+[node name="Fuel indicator" type="ColorRect" parent="." node_paths=PackedStringArray("fuel_display")]
+offset_left = 1052.0
+offset_top = 70.0
+offset_right = 1142.0
+offset_bottom = 70.0
 grow_horizontal = 0
 theme = ExtResource("9_2iqq7")
 color = Color(0, 0, 0, 0)
 script = ExtResource("5_jtpgg")
 fuel_display = NodePath("HBoxContainer/Fuel Label")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Fuel indicator"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Fuel indicator"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 11
+anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
+offset_left = -55.0
+grow_horizontal = 0
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="HUD/Fuel indicator/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Fuel indicator/HBoxContainer"]
 modulate = Color(0.0818909, 0.749821, 0.185708, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("5_ektdj")
-expand_mode = 4
+expand_mode = 2
 stretch_mode = 4
 
-[node name="Fuel Label" type="Label" parent="HUD/Fuel indicator/HBoxContainer"]
+[node name="Fuel Label" type="Label" parent="Fuel indicator/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.909804, 0.976471, 0.937255, 1)

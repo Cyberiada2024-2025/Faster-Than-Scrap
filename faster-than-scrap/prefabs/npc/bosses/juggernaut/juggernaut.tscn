@@ -4,12 +4,12 @@
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_byxk3"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="3_5ov2f"]
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="3_a8moe"]
-[ext_resource type="Script" path="res://code/ship/modules/explodable.gd" id="3_qln4k"]
+[ext_resource type="Script" uid="uid://dc42aagfm4o0o" path="res://code/ship/modules/explodable.gd" id="3_qln4k"]
 [ext_resource type="Script" uid="uid://crmxerc164n6q" path="res://code/weapons/constant_fire_weapon.gd" id="4_1irkd"]
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="4_clgev"]
 [ext_resource type="PackedScene" uid="uid://bgpoyw23tdb7h" path="res://art/model_prefabs/bosses/juggernaut/juggernaut.tscn" id="4_t21y8"]
 [ext_resource type="Script" uid="uid://befj25g2qfhr7" path="res://code/enemy/states/move/orbit.gd" id="5_5ov2f"]
-[ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="6_cla4x"]
+[ext_resource type="Script" uid="uid://p2tfapf0egxl" path="res://code/enemy/transitions/timed_transition.gd" id="6_cla4x"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="6_ion51"]
 [ext_resource type="Script" uid="uid://c14j6cdbgt38o" path="res://code/enemy/states/rotate/look_at_target.gd" id="6_xr00f"]
 [ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="7_a8moe"]
@@ -87,7 +87,7 @@ material = SubResource("StandardMaterial3D_p86qt")
 size = 0.2
 curve = SubResource("Curve_uagw5")
 
-[node name="Juggernaut" type="RigidBody3D" node_paths=PackedStringArray("ship")]
+[node name="JUGGERNAUT" type="RigidBody3D" node_paths=PackedStringArray("ship")]
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true

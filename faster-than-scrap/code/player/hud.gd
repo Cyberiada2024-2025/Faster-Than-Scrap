@@ -173,7 +173,7 @@ func pan_camera(direction) -> void:
 	# Assumption: max_zoom is never zero
 	var zoom_scaling_factor = _main_camera.fov / max_zoom
 
-	var relative_camera_offset = _mouse_input \
+	var relative_camera_offset = direction \
 		* zoom_scaling_factor \
 		* (0.1 * panning_force)
 
@@ -194,7 +194,7 @@ func _get_viewport_world_span(camera) -> Vector2:
 	var top_left = camera.get_viewport().get_visible_rect().position
 	var btm_right = camera.get_viewport().get_visible_rect().end
 	var z_depth = camera.position.y
-	
+
 	var world_top_left = camera.project_position(top_left, z_depth)
 	var world_btm_right = camera.project_position(btm_right, z_depth)
 

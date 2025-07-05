@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://qemwu1rt7gtj"]
+[gd_scene load_steps=48 format=3 uid="uid://qemwu1rt7gtj"]
 
 [ext_resource type="Script" uid="uid://o52uw8n1ufdc" path="res://code/map_select/map_selector.gd" id="1_yxgtb"]
 [ext_resource type="PackedScene" uid="uid://2oa2dvray5oq" path="res://prefabs/map_select/map_layer.tscn" id="2_bp67s"]
@@ -30,14 +30,15 @@
 [ext_resource type="PackedScene" uid="uid://1x45q2a5nnee" path="res://prefabs/npc/bosses/vortex/vortex_boss.tscn" id="25_bh1t4"]
 [ext_resource type="PackedScene" uid="uid://dvdu57kxdkwq" path="res://prefabs/map_select/nodes/templates/missions/mission_kill_enemies.tscn" id="30_0a6x0"]
 
-[sub_resource type="Resource" id="Resource_xfikn"]
+[sub_resource type="Resource" id="Resource_mqg28"]
 script = ExtResource("6_0a6x0")
-about = "Just some rusty Scrapyard"
+about = "Refueling stop between hyperspace jumps."
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_pki7u"]
 script = ExtResource("6_0a6x0")
-about = "first def"
+about = "Barren planet, yet chosen for relocation. 
+Just some old scrap, insignificant remnants of ancient civilization."
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
@@ -55,47 +56,82 @@ metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_55wni"]
 script = ExtResource("6_0a6x0")
-about = "second def"
+about = "Field hospitals set by Seraku in war-torn cities seem to work wonders despite relying on superstitious practices."
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
+[sub_resource type="Resource" id="Resource_rwq3m"]
+script = ExtResource("6_0a6x0")
+about = "Refueling stop between hyperspace jumps"
+difficulty = 0
+
 [sub_resource type="Resource" id="Resource_3cw18"]
 script = ExtResource("6_0a6x0")
-about = "GET SOME FUEL"
+about = "Abandoned trading hub and refueling station made for perfect Seraku outpost. Secret investigation, conducted behind their formal facade, revealed hidden, alien artifacts."
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_bpxjr"]
 script = ExtResource("6_0a6x0")
-about = "RUN
+about = "Unstable hyperlanes made this trading hub obsolete.
 "
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[sub_resource type="Resource" id="Resource_ax5eh"]
+script = ExtResource("6_0a6x0")
+about = "Trading hub with controlled traffic and automated defense."
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_vsw54"]
 script = ExtResource("6_0a6x0")
-about = "Escape - Hope you are not afraid of squares"
+about = "
+This is where Seraku founder started his madness and begun hunt for corrupting artifacts, one for each of his most brilliant and trusted man."
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_6ev6g"]
 script = ExtResource("6_0a6x0")
-about = "Get fuel - SWARMS"
+about = "Interrogated a few relocated people working on local archaeological sites. Most of them specialize in ancient civilizations, but what is more important - their mythologies. "
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_t1mo6"]
 script = ExtResource("6_0a6x0")
-about = "Defend - beware of squares"
+about = ""
 difficulty = 0
+
+[sub_resource type="Resource" id="Resource_0a6x0"]
+script = ExtResource("6_0a6x0")
+about = "Once again, seemingly insignificant remnants of ancient civilization. This time I need to dig deeper. I will check with the library."
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
+
+[sub_resource type="Resource" id="Resource_uee5q"]
+script = ExtResource("6_0a6x0")
+about = "This is where Seraku founder started his madness and begun hunt for corrupting artifacts, one for each of his most brilliant and trusted man."
+difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_fj8or"]
 script = ExtResource("6_0a6x0")
-about = "Defend"
+about = "Update after checking with the library: That civilization's mythology used to focus on eldritch being feeding on whole stars.
+Great shamans gathered to cast it out from reality."
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_dl063"]
 script = ExtResource("6_0a6x0")
-about = "Escape  - SWARMS"
+about = ""
+difficulty = 0
+
+[sub_resource type="Resource" id="Resource_mxsq4"]
+script = ExtResource("6_0a6x0")
+about = "Refueling stop between hyperspace jumps"
+difficulty = 0
+
+[sub_resource type="Resource" id="Resource_dlw72"]
+script = ExtResource("6_0a6x0")
+about = "Refueling stop between hyperspace jumps"
 difficulty = 0
 
 [node name="Map1" type="HBoxContainer" node_paths=PackedStringArray("active_node")]
@@ -129,7 +165,7 @@ layout_mode = 2
 
 [node name="MissionShop" parent="Shop1" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_rafgn")]
 layout_mode = 2
-mission_info = SubResource("Resource_xfikn")
+mission_info = SubResource("Resource_mqg28")
 level_prefab = ExtResource("8_xfikn")
 next_map_nodes = [NodePath("../../2/firstdef"), NodePath("../../2/firstrun")]
 
@@ -177,7 +213,7 @@ layout_mode = 2
 
 [node name="MissionShop" parent="Shop2" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_rafgn")]
 layout_mode = 2
-mission_info = SubResource("Resource_xfikn")
+mission_info = SubResource("Resource_rwq3m")
 level_prefab = ExtResource("8_xfikn")
 next_map_nodes = [NodePath("../../5/BossNode")]
 
@@ -213,6 +249,7 @@ next_map_nodes = [NodePath("../../7/rockyfuel")]
 
 [node name="MissionEscape" parent="6" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("5_rwq3m")]
 layout_mode = 2
+mission_info = SubResource("Resource_ax5eh")
 level_prefab = ExtResource("10_uee5q")
 next_map_nodes = [NodePath("../../7/rockydef")]
 
@@ -248,10 +285,12 @@ layout_mode = 2
 
 [node name="MissionKillEnemies" parent="8" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("30_0a6x0")]
 layout_mode = 2
+mission_info = SubResource("Resource_0a6x0")
 next_map_nodes = [NodePath("../../9/dedicatedDefend")]
 
 [node name="MissionKillEnemiesSparse" parent="8" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("30_0a6x0")]
 layout_mode = 2
+mission_info = SubResource("Resource_uee5q")
 level_prefab = ExtResource("25_ax5eh")
 next_map_nodes = [NodePath("../../9/dedicatedRun")]
 
@@ -281,7 +320,7 @@ layout_mode = 2
 
 [node name="MissionShop" parent="Shop3" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_rafgn")]
 layout_mode = 2
-mission_info = SubResource("Resource_xfikn")
+mission_info = SubResource("Resource_mxsq4")
 level_prefab = ExtResource("8_xfikn")
 next_map_nodes = [NodePath("../../11/BossNode")]
 
@@ -305,7 +344,7 @@ layout_mode = 2
 
 [node name="MissionShop" parent="Shop4" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("6_rafgn")]
 layout_mode = 2
-mission_info = SubResource("Resource_xfikn")
+mission_info = SubResource("Resource_dlw72")
 level_prefab = ExtResource("8_xfikn")
 next_map_nodes = [NodePath("../../13/BossNode")]
 

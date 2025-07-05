@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://go1u7xe1f41q" path="res://art/textures/main_menu/background_mask.png" id="5_1g033"]
 [ext_resource type="Script" uid="uid://b8kgrdxasqvq0" path="res://code/main_menu/background_light.gd" id="6_01roj"]
 [ext_resource type="Texture2D" uid="uid://cvsc1hfn6jjb" path="res://art/textures/main_menu/main_title.png" id="7_wqwn7"]
-[ext_resource type="PackedScene" path="res://prefabs/ui/volume_slider.tscn" id="8_am25x"]
+[ext_resource type="PackedScene" uid="uid://b62j1li7psxce" path="res://prefabs/ui/volume_slider.tscn" id="8_am25x"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -122,6 +122,7 @@ alignment = 1
 [node name="SlidersLabels" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
+alignment = 1
 
 [node name="general_label" type="Label" parent="VBoxContainer/HBoxContainer/SlidersLabels"]
 layout_mode = 2
@@ -141,14 +142,28 @@ text = "Music"
 layout_mode = 2
 bus_name = "Music"
 
-[node name="sfx_label" type="Label" parent="VBoxContainer/HBoxContainer/SlidersLabels"]
+[node name="SlidersLabels2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="sfx_label" type="Label" parent="VBoxContainer/HBoxContainer/SlidersLabels2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Sound Effects"
 
-[node name="sfx" parent="VBoxContainer/HBoxContainer/SlidersLabels" instance=ExtResource("8_am25x")]
+[node name="sfx" parent="VBoxContainer/HBoxContainer/SlidersLabels2" instance=ExtResource("8_am25x")]
 layout_mode = 2
 bus_name = "SFX"
+
+[node name="ui_label" type="Label" parent="VBoxContainer/HBoxContainer/SlidersLabels2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Interface"
+
+[node name="Music" parent="VBoxContainer/HBoxContainer/SlidersLabels2" instance=ExtResource("8_am25x")]
+layout_mode = 2
+bus_name = "UI"
 
 [node name="Sliders" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://qemwu1rt7gtj"]
+[gd_scene load_steps=52 format=3 uid="uid://qemwu1rt7gtj"]
 
 [ext_resource type="Script" uid="uid://o52uw8n1ufdc" path="res://code/map_select/map_selector.gd" id="1_yxgtb"]
 [ext_resource type="PackedScene" uid="uid://2oa2dvray5oq" path="res://prefabs/map_select/map_layer.tscn" id="2_bp67s"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://c3rsq4emlmuky" path="res://prefabs/npc/bosses/examples/laser_star/laser_star.tscn" id="24_ui2af"]
 [ext_resource type="PackedScene" uid="uid://xbe4600v6f7f" path="res://scenes/levels/finalest/medium/kill_all_sparse_rocks.tscn" id="25_ax5eh"]
 [ext_resource type="PackedScene" uid="uid://1x45q2a5nnee" path="res://prefabs/npc/bosses/vortex/vortex_boss.tscn" id="25_bh1t4"]
+[ext_resource type="PackedScene" uid="uid://cbpcw4xut260y" path="res://scenes/levels/finalest/medium/kill_all_mission.tscn" id="25_mqg28"]
 [ext_resource type="PackedScene" uid="uid://dvdu57kxdkwq" path="res://prefabs/map_select/nodes/templates/missions/mission_kill_enemies.tscn" id="30_0a6x0"]
 
 [sub_resource type="Resource" id="Resource_mqg28"]
@@ -44,31 +45,34 @@ metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_5jnkn"]
 script = ExtResource("6_0a6x0")
-about = "Asteroid mining corporations funneled serious money into Seraku to relocate civilians here. "
+about = "Asteroid mining corporations funneled serious money into Seraku Organization to relocate civilians here. 
+
+Update: Seraku are sending some workers down on untamed and unimpressive planet. I heard rumors in bar, about undisclosed incidents. However, I shouldn't dig so deep that early in the investigation, I would catch too much attention."
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_gobyi"]
 script = ExtResource("6_0a6x0")
-about = "Used to be corporations' warzone. Seraku made sure no one was left behind on these destroyed worlds. Yet, they seem to stick around, looking for something"
+about = "Used to be corporations' warzone. Seraku Organization made sure no one was left behind on these destroyed worlds. Yet, they seem to stick around, looking for something."
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_55wni"]
 script = ExtResource("6_0a6x0")
-about = "Field hospitals set by Seraku in war-torn cities seem to work wonders despite relying on superstitious practices."
+about = "Field hospitals set by Seraku Organization in war-torn cities seem to work wonders despite relying on superstitious practices."
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_rwq3m"]
 script = ExtResource("6_0a6x0")
-about = ""
+about = "Everyone has forgotten about this place.
+But I did not. The rusty old scrapyard will stay here for me."
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_sau2r"]
 script = ExtResource("6_0a6x0")
 about = "104 day of the investigation.
-High ranking officer of Seraku - now deserter, told me rumors about Aegis, the Golden Shield. It's meant to protect them when the time comes. I should be able to calculate path to Aegis signal and retrieve it. 
+High ranking officer of Seraku cult- now deserter, told me rumors about Aegis, the Golden Shield. It's meant to protect them when the time comes. I should be able to calculate path to Aegis signal and retrieve it. 
 
 Do I really need it? Vortex still can be stopped."
 difficulty = 0
@@ -105,7 +109,7 @@ difficulty = 0
 
 [sub_resource type="Resource" id="Resource_t1mo6"]
 script = ExtResource("6_0a6x0")
-about = "Clustered with asteroids, with unstable hyperlanes, not many ships get in or out of this planetary system. 
+about = "Clustered with asteroids and unstable hyperlanes, not many ships get in or out of this planetary system. 
 Here, Seraku first time used their supposedly escort ships for military takeover."
 difficulty = 0
 
@@ -124,7 +128,7 @@ metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 [sub_resource type="Resource" id="Resource_fj8or"]
 script = ExtResource("6_0a6x0")
 about = "Update after checking with the library: That civilization has an interesting mythology about origins of evil.
-There was an unspecified eldritch being feeding on whole stars. Great shamans gathered to cast it out from reality. However, before they managed to do so, the abomination scattered relicts, through which its voice can be heard.
+There was an unspecified eldritch being of unquenchable hunger, feeding on whole stars. Great shamans gathered to cast it out from reality. However, before they managed to do so, the abomination scattered relicts, through which its voice can be heard.
 "
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
@@ -136,14 +140,14 @@ difficulty = 0
 
 [sub_resource type="Resource" id="Resource_mxsq4"]
 script = ExtResource("6_0a6x0")
-about = "Everyone has forgotten about this place."
+about = "The calm before the storm."
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_f40e2"]
 script = ExtResource("6_0a6x0")
 about = "62 day of the investigation. 
 It seems like Seraku members (or at least those aware of its redefined purpose) are devoted to feed cosmic horror from ancient mythologies. 
-It sounds like deliriums of a madmen... but influence they've gained before reaches too far to ignore.
+It sounds like deliriums of madmen... but the influence they've gained before reaches too far to ignore.
 
 How did Seraku fall for this?"
 difficulty = 0
@@ -153,8 +157,7 @@ script = ExtResource("6_0a6x0")
 about = "The final day of the investigation.
 This is it. The Aegis, my shield against Vortex is assembled. 
 That... Eldritch abomination is real. I have pinpointed its location. Cultists created fracture, the Vortex, but that thing outside is sustaining it. 
-There is one way to stop it from spreading.
-"
+There is one way to stop it from spreading."
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_4e3x0"]
@@ -318,6 +321,7 @@ layout_mode = 2
 [node name="MissionKillEnemies" parent="8" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("30_0a6x0")]
 layout_mode = 2
 mission_info = SubResource("Resource_0a6x0")
+level_prefab = ExtResource("25_mqg28")
 next_map_nodes = [NodePath("../../9/dedicatedDefend")]
 
 [node name="MissionKillEnemiesSparse" parent="8" node_paths=PackedStringArray("next_map_nodes") instance=ExtResource("30_0a6x0")]

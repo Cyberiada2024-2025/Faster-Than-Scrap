@@ -1,34 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://du6pm1c27imvg"]
+[gd_scene load_steps=8 format=3 uid="uid://du6pm1c27imvg"]
 
 [ext_resource type="PackedScene" uid="uid://pwsixhrj0x1o" path="res://scenes/levels/finalest/base/base_mission.tscn" id="1_6hxda"]
 [ext_resource type="PackedScene" uid="uid://cc818ge6m4to5" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_cramped_group.tscn" id="2_jqovc"]
-[ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/npc/enemies/fighter.tscn" id="6_0p8mm"]
-[ext_resource type="PackedScene" uid="uid://dsbr8a55sppml" path="res://prefabs/npc/enemies/drone.tscn" id="6_6hxda"]
 [ext_resource type="PackedScene" uid="uid://dxbwuxdfu600q" path="res://prefabs/npc/enemies/turret_laser.tscn" id="7_qujcq"]
+[ext_resource type="PackedScene" uid="uid://do0sasbjik8fp" path="res://prefabs/npc/enemies/corrupted.tscn" id="7_t5lfe"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="8_f74t2"]
 [ext_resource type="Script" uid="uid://cne5mpb7d4xce" path="res://code/missions/a/mission_fuel.gd" id="9_6hxda"]
 [ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="10_ol25r"]
 
 [node name="EscapeMisssionBase" instance=ExtResource("1_6hxda")]
 
-[node name="Enemies_ObjectiveEnemies#Fighter" parent="." index="0" instance=ExtResource("6_0p8mm")]
-transform = Transform3D(0.210335, 0, 0.977629, 0, 1, 0, -0.977629, 0, 0.210335, 44.9777, 3.8147e-06, -68.0285)
-
-[node name="Enemies_ObjectiveEnemies#Drone" parent="." index="1" instance=ExtResource("6_6hxda")]
-transform = Transform3D(0.32177, 0, 0.946818, 0, 1, 0, -0.946818, 0, 0.32177, 42.2151, 3.8147e-06, -62.2854)
-
-[node name="Enemies_ObjectiveEnemies#Drone2" parent="." index="2" instance=ExtResource("6_6hxda")]
-transform = Transform3D(0.210335, 0, 0.977629, 0, 1, 0, -0.977629, 0, 0.210335, 39.308, 3.8147e-06, -74.068)
-
-[node name="LevelStaples" parent="." index="3"]
+[node name="LevelStaples" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.007, 0, -218.774)
 
-[node name="MissionEscape" type="Node" parent="." index="4" node_paths=PackedStringArray("fuel_position")]
+[node name="MissionEscape" type="Node" parent="." index="1" node_paths=PackedStringArray("fuel_position")]
 script = ExtResource("9_6hxda")
 fuel_position = NodePath("../PortalPosition")
 metadata/_custom_type_script = "uid://cne5mpb7d4xce"
 
-[node name="PortalPosition" type="Node3D" parent="." index="5"]
+[node name="PortalPosition" type="Node3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.7497, -0.137329, -71.0415)
 script = ExtResource("10_ol25r")
 
@@ -36,10 +26,10 @@ script = ExtResource("10_ol25r")
 transform = Transform3D(0.671009, 0, -0.741449, 0, 1, 0, 0.741449, 0, 0.671009, 0, 0, 0)
 gizmo_extents = 23.8
 
-[node name="ShopMiniature" parent="." index="6"]
+[node name="ShopMiniature" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.1511, 0, -65.317)
 
-[node name="Asteroids" parent="." index="7"]
+[node name="Asteroids" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.7775)
 
 [node name="AsteroidBigGroup" parent="Asteroids/Group1" index="0" instance=ExtResource("2_jqovc")]
@@ -137,3 +127,12 @@ transform = Transform3D(0.0836255, 0, -0.996498, 0, 1, 0, 0.996498, 0, 0.0836255
 
 [node name="Turret Sniper4" parent="Enemies" index="5" instance=ExtResource("8_f74t2")]
 transform = Transform3D(0.10911, 0, 0.99403, 0, 1, 0, -0.99403, 0, 0.10911, 33.0029, 0, -88.5512)
+
+[node name="Corrupted" parent="Enemies" index="6" instance=ExtResource("7_t5lfe")]
+transform = Transform3D(-0.4763, 0, 0.879283, 0, 1, 0, -0.879283, 0, -0.4763, 50.2193, 0, -84.1057)
+
+[node name="Corrupted2" parent="Enemies" index="7" instance=ExtResource("7_t5lfe")]
+transform = Transform3D(-0.4763, 0, 0.879283, 0, 1, 0, -0.879283, 0, -0.4763, 51.7794, 0, -79.2847)
+
+[node name="Corrupted3" parent="Enemies" index="8" instance=ExtResource("7_t5lfe")]
+transform = Transform3D(-0.4763, 0, 0.879283, 0, 1, 0, -0.879283, 0, -0.4763, 56.1888, 0, -85.0055)

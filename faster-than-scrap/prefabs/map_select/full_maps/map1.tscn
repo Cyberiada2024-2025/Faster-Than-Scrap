@@ -44,13 +44,13 @@ metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_5jnkn"]
 script = ExtResource("6_0a6x0")
-about = "first escape"
+about = "Asteroid mining corporations funneled serious money into Seraku to relocate civilians here. "
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_gobyi"]
 script = ExtResource("6_0a6x0")
-about = "second run"
+about = "Used to be corporations' warzone. Seraku made sure no one was left behind on these destroyed worlds. Yet, they seem to stick around, looking for something"
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
@@ -62,12 +62,12 @@ metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_rwq3m"]
 script = ExtResource("6_0a6x0")
-about = "Refueling stop between hyperspace jumps"
+about = ""
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_sau2r"]
 script = ExtResource("6_0a6x0")
-about = "104 day of investigation 
+about = "104 day of the investigation.
 High ranking officer of Seraku - now deserter, told me rumors about Aegis, the Golden Shield. It's meant to protect them when the time comes. I should be able to calculate path to Aegis signal and retrieve it. 
 
 Do I really need it? Vortex still can be stopped."
@@ -134,12 +134,12 @@ difficulty = 0
 
 [sub_resource type="Resource" id="Resource_mxsq4"]
 script = ExtResource("6_0a6x0")
-about = "Refueling stop between hyperspace jumps"
+about = "Everyone has forgotten about this place."
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_f40e2"]
 script = ExtResource("6_0a6x0")
-about = "62 day of investigation 
+about = "62 day of the investigation. 
 It seems like Seraku members (or at least those aware of its redefined purpose) are devoted to feed cosmic horror from ancient mythologies. 
 It sounds like deliriums of a madmen... but influence they've gained before reaches too far to ignore.
 
@@ -148,7 +148,11 @@ difficulty = 0
 
 [sub_resource type="Resource" id="Resource_dlw72"]
 script = ExtResource("6_0a6x0")
-about = "Refueling stop between hyperspace jumps"
+about = "The final day of the investigation.
+This is it. The Aegis, my shield against Vortex is assembled. 
+That... Eldritch abomination is real. I have pinpointed its location. Cultists created fracture, the Vortex, but that thing outside is sustaining it. 
+There is one way to stop it from spreading.
+"
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_4e3x0"]

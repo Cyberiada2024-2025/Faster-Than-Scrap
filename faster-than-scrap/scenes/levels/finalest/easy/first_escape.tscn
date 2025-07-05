@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/npc/enemies/fighter.tscn" id="9_r1hfd"]
 [ext_resource type="PackedScene" uid="uid://ceu6i6ji4q3oq" path="res://prefabs/npc/enemies/turret_gun.tscn" id="10_hswym"]
 [ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="11_yhsao"]
-[ext_resource type="Script" path="res://prefabs/environment/mission_related/portal_position.gd" id="12_je32r"]
+[ext_resource type="Script" uid="uid://inuu5gi20l6r" path="res://prefabs/environment/mission_related/portal_position.gd" id="12_je32r"]
 
 [node name="MisssionOneEscape" type="Node3D"]
 
@@ -24,6 +24,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.6088, -7.62939e-06, -140.
 transform = Transform3D(0.955742, 0, -0.294207, 0, 1, 0, 0.294207, 0, 0.955742, 62.4676, -1.52588e-05, -70.1306)
 hp = 100.0
 
+[node name="Asteroid10" parent="Asteroids" instance=ExtResource("3_on7h1")]
+transform = Transform3D(0.955742, 0, -0.294207, 0, 1, 0, 0.294207, 0, 0.955742, -92.0427, -1.52588e-05, 7.68844)
+hp = 100.0
+
 [node name="Asteroid7" parent="Asteroids" instance=ExtResource("3_on7h1")]
 transform = Transform3D(0.645964, 0, -0.763368, 0, 1, 0, 0.763368, 0, 0.645964, -24.9888, -1.52588e-05, 25.201)
 hp = 100.0
@@ -32,8 +36,20 @@ hp = 100.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.505, 3.8147e-05, -89.8291)
 hp = 100.0
 
+[node name="Asteroid11" parent="Asteroids" instance=ExtResource("4_g8833")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.9717, 3.8147e-05, -21.5964)
+hp = 100.0
+
+[node name="Asteroid9" parent="Asteroids" instance=ExtResource("4_g8833")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.219, 3.8147e-05, -200.919)
+hp = 100.0
+
+[node name="Asteroid6" parent="Asteroids" instance=ExtResource("4_g8833")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 215.324, 3.8147e-05, -116.333)
+hp = 100.0
+
 [node name="Asteroid3" parent="Asteroids" instance=ExtResource("4_g8833")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.1895, 3.8147e-05, 7.72672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.3101, 3.8147e-05, 30.283)
 hp = 100.0
 
 [node name="AsteroidGroupCircle2" parent="Asteroids" instance=ExtResource("7_on7h1")]
@@ -50,6 +66,9 @@ transform = Transform3D(0.974796, 0, -0.223097, 0, 1, 0, 0.223097, 0, 0.974796, 
 
 [node name="Asteroid4" parent="Asteroids" instance=ExtResource("6_53nq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.298, 0, -146.547)
+
+[node name="Asteroid8" parent="Asteroids" instance=ExtResource("6_53nq1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.8135, 0, -232.825)
 
 [node name="Asteroid5" parent="Asteroids" instance=ExtResource("6_53nq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.561, 0, -35.4572)

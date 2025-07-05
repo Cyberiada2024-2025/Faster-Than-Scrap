@@ -148,21 +148,7 @@ func _process(_delta: float) -> void:
 		zoom_camera(zoom_strength)
 
 	if Input.is_action_pressed("pan_camera"):
-		# This variable normalizes mouse input to a given zoom level
-		# Assumption: max_zoom is never zero
-		var zoom_scaling_factor = _main_camera.fov / max_zoom
-
-		var relative_camera_offset = _mouse_input \
-			* zoom_scaling_factor \
-			* (0.1 * panning_force)
-
-		var xz_offset = Vector2(
-			main_camera_offset.x - relative_camera_offset.x,
-			main_camera_offset.z - relative_camera_offset.y,
-		)
-
-		main_camera_offset.x = xz_offset.x
-		main_camera_offset.z = xz_offset.y
+		pan_camera(_mouse_input)
 
 	position.y = y_pos
 	_mouse_input = Vector2.ZERO
@@ -174,3 +160,28 @@ func zoom_camera(strength: int) -> void:
 		SettingsManager.zoom_level = fov
 	_tween = create_tween()
 	_tween.tween_property(_main_camera, "fov", fov, zoom_time)
+
+
+func pan_camera(direction):
+	# This variable normalizes mouse input to a given zoom level
+	# Assumption: max_zoom is never zero
+	var zoom_scaling_factor = _main_camera.fov / max_zoom
+
+	var relative_camera_offset = _mouse_input \
+		* zoom_scaling_factor \
+		* (0.1 * panning_force)
+
+	var visibility_range = 0.05 * _main_camera.get_viewport().get_visible_rect().size
+
+	print(visibility_range)
+
+	var xz_offset = Vector2(
+		main_camera_offset.x - relative_camera_offset.x,
+		main_camera_offset.z - relative_camera_offset.y
+	).clamp(
+		-visibility_range,
+		+visibility_range
+	)
+
+	main_camera_offset.x = xz_offset.x
+	main_camera_offset.z = xz_offset.y

@@ -117,6 +117,7 @@ player = NodePath("AnimationPlayer")
 [node name="MissionPoi" parent="." instance=ExtResource("1_yvaxx")]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 amount = 1000
 lifetime = 6.0
 preprocess = 6.0

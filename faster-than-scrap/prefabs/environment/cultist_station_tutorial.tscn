@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://ck4trpcmsem6p"]
+
+[ext_resource type="PackedScene" uid="uid://cy2ou6iqaansv" path="res://prefabs/environment/cultists_station_pf.tscn" id="1_c4cfa"]
+[ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://code/damage/damageable.gd" id="1_r8v52"]
+[ext_resource type="Script" uid="uid://bceg4vylbdwdr" path="res://code/evironment/player_detector.gd" id="2_r8v52"]
+[ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="3_c4cfa"]
+[ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="4_b065n"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_r8v52"]
+height = 8.322
+radius = 21.5571
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_seei7"]
+radius = 4.0
+
+[node name="CultistStationTutorial" type="Node3D"]
+
+[node name="CultistStation" parent="." instance=ExtResource("1_c4cfa")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Damageable" type="Area3D" parent="."]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_r8v52")
+metadata/_custom_type_script = "uid://b7c5dxlqsxtlt"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Damageable"]
+shape = SubResource("CylinderShape3D_r8v52")
+
+[node name="EnterStation" type="Area3D" parent="."]
+script = ExtResource("2_r8v52")
+metadata/_custom_type_script = "uid://bceg4vylbdwdr"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnterStation"]
+transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_seei7")
+
+[node name="EnemyPoi" parent="." instance=ExtResource("3_c4cfa")]
+max_range = 10000.0
+
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource("4_b065n")
+metadata/_custom_type_script = "uid://16i5n2yxnlsr"
+
+[connection signal="player_entered" from="EnterStation" to="SceneLoader" method="load_lore_scene"]

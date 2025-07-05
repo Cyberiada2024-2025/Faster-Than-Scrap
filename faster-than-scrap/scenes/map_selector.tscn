@@ -93,7 +93,7 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "Select Mission"
+text = "All the clues lead here. Reality plane is the weakest right here. Seraku cult will recite their ancient incantation, to crack it. The fracture will spread all over the galaxy in form of the VORTEX."
 
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("2_0byna")

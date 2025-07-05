@@ -7,57 +7,37 @@
 [node name="AsteroidGroupStraightLine" type="Node3D"]
 
 [node name="Asteroid" parent="." instance=ExtResource("1_vqyr1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14655, 0, 0.592408)
-start_speed_range = 0.5
-
-[node name="Asteroid4" parent="." instance=ExtResource("1_vqyr1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.32321, 0, -1.26353)
-start_speed_range = 0.5
-
-[node name="Asteroid5" parent="." instance=ExtResource("1_vqyr1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83223, 0, 1.14513)
-start_speed_range = 0.5
-
-[node name="Asteroid2" parent="." instance=ExtResource("2_lxhdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.71242, 0, 0.993363)
-start_speed_range = 0.5
-
-[node name="Asteroid6" parent="." instance=ExtResource("2_lxhdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535796, 0, -0.236385)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5433, 0, -5.12545)
 start_speed_range = 0.5
 
 [node name="Asteroid7" parent="." instance=ExtResource("2_lxhdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.52777, 0, 0.764737)
+transform = Transform3D(0.858244, 0, -0.513242, 0, 1, 0, 0.513242, 0, 0.858244, 14.2695, 0, 1.28413)
 start_speed_range = 0.5
 
 [node name="Asteroid8" parent="." instance=ExtResource("2_lxhdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.24853, 0, 0.976435)
+transform = Transform3D(0.993512, -0.0359136, 0.107904, 0, 0.948826, 0.315798, -0.113723, -0.313749, 0.942671, -6.59316, 0, 3.98061)
 start_speed_range = 0.5
 
 [node name="Asteroid9" parent="." instance=ExtResource("2_lxhdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.51346, 0, -1.91331)
+transform = Transform3D(0.866992, 0, -0.498321, 0, 1, 0, 0.498321, 0, 0.866992, -12.3323, 0, -2.94119)
 start_speed_range = 0.5
 
 [node name="Asteroid3" parent="." instance=ExtResource("3_2dtby")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.73935, 0, -1.31165)
+transform = Transform3D(0.858244, 0, -0.513242, 0, 1, 0, 0.513242, 0, 0.858244, 4.92395, 0, -5.80606)
 start_speed_range = 0.5
 
 [node name="Asteroid10" parent="." instance=ExtResource("3_2dtby")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5629, 0, 0.035085)
-start_speed_range = 0.5
-
-[node name="Asteroid11" parent="." instance=ExtResource("3_2dtby")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.291904, 0, 1.62722)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7779, 0, -4.98197)
 start_speed_range = 0.5
 
 [node name="Asteroid12" parent="." instance=ExtResource("3_2dtby")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.53358, 0, -0.974613)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.621392, 0, 1.38249)
 start_speed_range = 0.5
 
 [node name="Asteroid13" parent="." instance=ExtResource("3_2dtby")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.71856, 0, -1.09429)
+transform = Transform3D(0.866992, 0, -0.498321, 0, 1, 0, 0.498321, 0, 0.866992, -5.37153, 0, -8.32424)
 start_speed_range = 0.5
 
 [node name="Asteroid14" parent="." instance=ExtResource("3_2dtby")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2172, 0, 0.177463)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3533, 0, 2.57084)
 start_speed_range = 0.5

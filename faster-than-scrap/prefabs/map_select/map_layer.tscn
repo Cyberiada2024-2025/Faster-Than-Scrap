@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://2oa2dvray5oq"]
 
-[ext_resource type="Script" path="res://code/map_select/map_layer.gd" id="1_5oavr"]
+[ext_resource type="Script" uid="uid://dx5xv0u8tmkl0" path="res://code/map_select/map_layer.gd" id="1_5oavr"]
 
 [node name="MapLayer" type="VBoxContainer"]
 anchors_preset = 15

@@ -303,15 +303,28 @@ layout_mode = 2
 texture = SubResource("ViewportTexture_5rj5o")
 expand_mode = 2
 
+[node name="AspectRatioContainer4" type="AspectRatioContainer" parent="HUD"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 430.0
+offset_right = 220.0
+offset_bottom = 640.0
+
+[node name="TextureRect" type="TextureRect" parent="HUD/AspectRatioContainer4"]
+layout_mode = 2
+texture = SubResource("ViewportTexture_7yov6")
+expand_mode = 4
+
 [node name="Fuel indicator" type="ColorRect" parent="HUD" node_paths=PackedStringArray("fuel_display")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -95.0
+offset_left = -97.0
+offset_right = -2.0
 offset_bottom = 44.0
 grow_horizontal = 0
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 script = ExtResource("5_iqdg1")
 fuel_display = NodePath("HBoxContainer/Fuel Label")
 
@@ -324,7 +337,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="HUD/Fuel indicator/HBoxContainer"]
-modulate = Color(0.514008, 0.191253, 0, 1)
+modulate = Color(0.0818909, 0.749821, 0.185708, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("6_bskxl")
@@ -334,21 +347,10 @@ stretch_mode = 4
 [node name="Fuel Label" type="Label" parent="HUD/Fuel indicator/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.909804, 0.976471, 0.937255, 1)
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="AspectRatioContainer4" type="AspectRatioContainer" parent="HUD"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 430.0
-offset_right = 220.0
-offset_bottom = 640.0
-
-[node name="TextureRect" type="TextureRect" parent="HUD/AspectRatioContainer4"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_7yov6")
-expand_mode = 4
 
 [node name="CircleModules" type="SubViewport" parent="."]
 transparent_bg = true

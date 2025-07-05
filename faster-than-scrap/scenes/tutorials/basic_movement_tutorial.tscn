@@ -25,8 +25,11 @@ size = Vector3(800, 1, 1)
 size = Vector3(800, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngx30"]
-transparency = 1
-albedo_color = Color(0.77, 0.48972, 0.1232, 0.278431)
+blend_mode = 1
+albedo_color = Color(0.94902, 0.109804, 0, 1)
+emission_enabled = true
+emission = Color(0.94902, 0.109804, 0, 1)
+emission_energy_multiplier = 25.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pdi7d"]
 size = Vector3(1, 1, 1000)

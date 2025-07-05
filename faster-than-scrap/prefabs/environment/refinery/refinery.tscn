@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbu3cnrdvxlyf"]
+
+[ext_resource type="PackedScene" uid="uid://bmm4v523jqpd5" path="res://prefabs/environment/refinery/oil_asteroid.tscn" id="1_8m6r5"]
+[ext_resource type="PackedScene" uid="uid://bdpimpy2lfvb5" path="res://art/models/refinery/pipes/pipes.glb" id="2_u01um"]
+[ext_resource type="Texture2D" uid="uid://b6fxi7qvpo48k" path="res://art/textures/refinery/pipes/pipes_Albedo.png" id="3_7okro"]
+[ext_resource type="PackedScene" uid="uid://dtbkmyrij6aqw" path="res://art/models/refinery/scaffolding/scaffolding.glb" id="4_5ofr7"]
+[ext_resource type="Texture2D" uid="uid://c80awuhohae0b" path="res://art/textures/refinery/scaffolding/scaffolding_Albedo.png" id="5_vs77f"]
+[ext_resource type="Texture2D" uid="uid://cj78d54c5gm5i" path="res://art/textures/refinery/scaffolding/scaffolding_Roughness.png" id="6_ysij4"]
+[ext_resource type="PackedScene" uid="uid://31tqhp6pyb5y" path="res://prefabs/environment/refinery/container.tscn" id="7_vs77f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ofr7"]
+albedo_texture = ExtResource("3_7okro")
+roughness = 0.41
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydkeg"]
+albedo_texture = ExtResource("5_vs77f")
+metallic = 1.0
+roughness_texture = ExtResource("6_ysij4")
+
+[node name="Refinery" type="Node3D"]
+
+[node name="OilAsteroid" parent="." instance=ExtResource("1_8m6r5")]
+
+[node name="Pipes" parent="." instance=ExtResource("2_u01um")]
+
+[node name="Pipes" parent="Pipes" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5ofr7")
+
+[node name="Scaffolding" parent="." instance=ExtResource("4_5ofr7")]
+
+[node name="Scaffolding" parent="Scaffolding" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ydkeg")
+
+[node name="Containers" type="Node3D" parent="."]
+
+[node name="Container" parent="Containers" instance=ExtResource("7_vs77f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.68978, -5.35726, 1.44947)
+
+[node name="Container2" parent="Containers" instance=ExtResource("7_vs77f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.40765, -6.53681, 1.40441)
+
+[node name="Container3" parent="Containers" instance=ExtResource("7_vs77f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.76234, -7.39908, 1.40257)
+
+[node name="Container4" parent="Containers" instance=ExtResource("7_vs77f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.48021, -8.57863, 1.35751)
+
+[node name="Container5" parent="Containers" instance=ExtResource("7_vs77f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75427, -9.39565, 1.40975)
+
+[node name="Container6" parent="Containers" instance=ExtResource("7_vs77f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.47214, -10.5752, 1.36469)
+
+[editable path="Pipes"]
+[editable path="Scaffolding"]

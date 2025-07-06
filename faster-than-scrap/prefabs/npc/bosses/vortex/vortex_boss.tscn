@@ -1488,7 +1488,7 @@ _data = {
 &"clear_world": SubResource("Animation_ot5ry")
 }
 
-[node name="Vortex Boss" type="RigidBody3D" node_paths=PackedStringArray("ship")]
+[node name="ELDRITCH ABOMINATION" type="RigidBody3D" node_paths=PackedStringArray("ship")]
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true

@@ -67,7 +67,7 @@ material = SubResource("StandardMaterial3D_uagw5")
 size = 0.2
 curve = SubResource("Curve_f7rv0")
 
-[node name="LaserStar" type="RigidBody3D" node_paths=PackedStringArray("ship")]
+[node name="GLARING STAR" type="RigidBody3D" node_paths=PackedStringArray("ship")]
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true

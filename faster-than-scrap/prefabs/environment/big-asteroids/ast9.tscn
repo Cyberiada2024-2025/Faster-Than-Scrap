@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://sc1vdlxpdgie"]
+[gd_scene load_steps=12 format=3 uid="uid://sc1vdlxpdgie"]
 
 [ext_resource type="Script" uid="uid://chekqae75l00d" path="res://code/evironment/asteroid.gd" id="1_2kbm7"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="2_sj18o"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_e5vvt"]
 [ext_resource type="PackedScene" uid="uid://c5h05bkp7b8go" path="res://prefabs/ui/poi/asteroid_poi.tscn" id="5_gq2r8"]
 [ext_resource type="PackedScene" uid="uid://bo82hmvlowob5" path="res://art/models/big-asteroids/9.glb" id="6_q22i8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2kbm7"]
+bounce = 1.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2kbm7"]
 height = 3.95148
@@ -25,11 +28,15 @@ height = 27.5037
 
 [node name="Ast9" type="RigidBody3D"]
 mass = 400000.0
+physics_material_override = SubResource("PhysicsMaterial_2kbm7")
+gravity_scale = 0.0
 script = ExtResource("1_2kbm7")
 hp = 1000.0
 
-[node name="CollisionDamageCalculator" parent="." instance=ExtResource("2_sj18o")]
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("2_sj18o")]
 collision_particles = ExtResource("3_m2vyn")
+damageable = NodePath("../DamageController/Damageable")
+shape = NodePath("../DamageController/Damageable/CollisionShape3D")
 
 [node name="DamageController" parent="." instance=ExtResource("4_e5vvt")]
 

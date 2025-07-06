@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d208svkcysryn"]
+[gd_scene load_steps=9 format=3 uid="uid://d208svkcysryn"]
 
 [ext_resource type="Script" uid="uid://chekqae75l00d" path="res://code/evironment/asteroid.gd" id="1_2ajve"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="2_dm6bx"]
@@ -7,16 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://c5h05bkp7b8go" path="res://prefabs/ui/poi/asteroid_poi.tscn" id="5_ujj44"]
 [ext_resource type="PackedScene" uid="uid://bd3fs4ke2eeh2" path="res://art/models/big-asteroids/5.glb" id="6_smxhb"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2ajve"]
+bounce = 1.0
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_2ajve"]
 radius = 6.88591
 
 [node name="Ast5" type="RigidBody3D"]
 mass = 400000.0
+physics_material_override = SubResource("PhysicsMaterial_2ajve")
+gravity_scale = 0.0
 script = ExtResource("1_2ajve")
 hp = 1000.0
 
-[node name="CollisionDamageCalculator" parent="." instance=ExtResource("2_dm6bx")]
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("2_dm6bx")]
 collision_particles = ExtResource("3_p3wg1")
+damageable = NodePath("../DamageController/Damageable")
+shape = NodePath("../DamageController/Damageable/CollisionShape3D")
 
 [node name="DamageController" parent="." instance=ExtResource("4_8tap4")]
 

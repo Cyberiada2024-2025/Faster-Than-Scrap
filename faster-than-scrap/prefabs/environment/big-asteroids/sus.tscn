@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dlj65iw4efkso"]
+[gd_scene load_steps=14 format=4 uid="uid://dlj65iw4efkso"]
 
 [ext_resource type="Script" uid="uid://chekqae75l00d" path="res://code/evironment/asteroid.gd" id="1_02gt3"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="2_ej33g"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://c5h05bkp7b8go" path="res://prefabs/ui/poi/asteroid_poi.tscn" id="5_3v6dy"]
 [ext_resource type="Texture2D" uid="uid://fu1055k4b2o7" path="res://art/models/big-asteroids/sus_amog_albedo_16_samples_0.png" id="6_lvoeb"]
 [ext_resource type="Texture2D" uid="uid://5pf5caqay5jb" path="res://art/models/big-asteroids/sus_amog_normal_2_samples_0.png" id="7_x885l"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_02gt3"]
+bounce = 1.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ksehd"]
 radius = 4.18563
@@ -60,11 +63,15 @@ shadow_mesh = SubResource("ArrayMesh_88ktq")
 
 [node name="Sus" type="RigidBody3D"]
 mass = 400000.0
+physics_material_override = SubResource("PhysicsMaterial_02gt3")
+gravity_scale = 0.0
 script = ExtResource("1_02gt3")
 hp = 1000.0
 
-[node name="CollisionDamageCalculator" parent="." instance=ExtResource("2_ej33g")]
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("2_ej33g")]
 collision_particles = ExtResource("3_l1egh")
+damageable = NodePath("../DamageController/Damageable")
+shape = NodePath("../DamageController/Damageable/CollisionShape3D")
 
 [node name="DamageController" parent="." instance=ExtResource("4_r31ie")]
 
@@ -86,7 +93,6 @@ shape = SubResource("CapsuleShape3D_uukik")
 
 [node name="Asteroid Poi" parent="." instance=ExtResource("5_3v6dy")]
 transform = Transform3D(9.46794, 0, 0, 0, -4.13857e-07, 9.46794, 0, -9.46794, -4.13857e-07, -0.575544, 0.346762, 0.0338677)
-visible = false
 
 [node name="sus" type="Node3D" parent="."]
 

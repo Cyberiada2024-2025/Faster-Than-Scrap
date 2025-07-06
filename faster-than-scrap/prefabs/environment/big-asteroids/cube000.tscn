@@ -22,8 +22,10 @@ hp = 1000.0
 
 [node name="cube000" parent="." instance=ExtResource("1_rgurs")]
 
-[node name="CollisionDamageCalculator" parent="." instance=ExtResource("2_lvs01")]
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("2_lvs01")]
 collision_particles = ExtResource("3_u7c7x")
+damageable = NodePath("../DamageController/Damageable")
+shape = NodePath("../DamageController/Damageable/CollisionShape3D")
 
 [node name="DamageController" parent="." instance=ExtResource("4_h8d04")]
 

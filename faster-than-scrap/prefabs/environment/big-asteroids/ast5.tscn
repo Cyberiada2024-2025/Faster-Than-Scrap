@@ -32,17 +32,17 @@ collision_layer = 6
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
-transform = Transform3D(2.09747, 0, 0, 0, 2.09747, 0, 0, 0, 2.09747, -0.0622152, 0.0018193, -0.00929218)
+transform = Transform3D(4.34886, 0, 0, 0, 4.34886, 0, 0, 0, 4.34886, -0.189845, 0.00555147, -0.0283545)
 shape = SubResource("SphereShape3D_2ajve")
 
 [node name="Asteroid Poi" parent="." instance=ExtResource("5_ujj44")]
-transform = Transform3D(28.4331, 0, 0, 0, -1.24285e-06, 28.4331, 0, -28.4331, -1.24285e-06, 0.413404, -0.0120888, 0.0617442)
+transform = Transform3D(58.9527, 0, 0, 0, -2.5769e-06, 58.9527, 0, -58.9527, -2.5769e-06, 0.796295, -0.0232853, 0.118931)
 
 [node name="5" parent="." instance=ExtResource("6_smxhb")]
-transform = Transform3D(2.09747, 0, 0, 0, 2.09747, 0, 0, 0, 2.09747, -0.0622152, 0.0018193, -0.00929218)
+transform = Transform3D(4.34886, 0, 0, 0, 4.34886, 0, 0, 0, 4.34886, -0.189845, 0.00555147, -0.0283545)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(2.09747, 0, 0, 0, 2.09747, 0, 0, 0, 2.09747, -0.0622152, 0.0018193, -0.00929218)
+transform = Transform3D(4.34886, 0, 0, 0, 4.34886, 0, 0, 0, 4.34886, -0.189845, 0.00555147, -0.0283545)
 shape = SubResource("SphereShape3D_2ajve")
 
 [editable path="DamageController"]

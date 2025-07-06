@@ -4,9 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://noejc02505g0" path="res://prefabs/ui/poi/vortex_poi.tscn" id="1_ngx30"]
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="2_ngx30"]
 [ext_resource type="PackedScene" uid="uid://ck4trpcmsem6p" path="res://prefabs/environment/cultist_station_tutorial.tscn" id="3_o6uy4"]
-[ext_resource type="PackedScene" uid="uid://dfco2h1p5vdx1" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid1.tscn" id="4_6bw2y"]
-[ext_resource type="PackedScene" uid="uid://bvng8hdkqm2d6" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid2.tscn" id="5_phkkj"]
-[ext_resource type="PackedScene" uid="uid://cs2m7lumvnaot" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid3.tscn" id="6_tkgtl"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="8_6xv7r"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="9_6bw2y"]
 [ext_resource type="PackedScene" uid="uid://dsc8yod53e2qk" path="res://prefabs/ui/cutscenes/tutorials/movement_tutorial.tscn" id="9_l855j"]
@@ -17,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://31y5kdihtoxf" path="res://prefabs/ui/cutscenes/tutorials/firing_tutorial.tscn" id="13_jcith"]
 [ext_resource type="PackedScene" uid="uid://crti8uuwttken" path="res://prefabs/ui/cutscenes/tutorials/near_shop_tutorial.tscn" id="14_416px"]
 [ext_resource type="PackedScene" uid="uid://b7d6dp7jrytp3" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group.tscn" id="15_ngx30"]
+[ext_resource type="PackedScene" uid="uid://d208svkcysryn" path="res://prefabs/environment/big-asteroids/ast5.tscn" id="22_rnr04"]
+[ext_resource type="PackedScene" uid="uid://c7b4st8mxwkos" path="res://prefabs/environment/big-asteroids/ast7.tscn" id="24_w8r6r"]
+[ext_resource type="PackedScene" uid="uid://b6nohfwmtxepc" path="res://prefabs/environment/big-asteroids/cube002.tscn" id="30_of0ks"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uf04d"]
 size = Vector3(800, 1, 1)
@@ -59,41 +59,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380)
 
 [node name="Big Asteroids" type="Node3D" parent="Asteroids"]
 
-[node name="Asteroid" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.0614, 0, -155.991)
-hp = 100.0
-start_speed_range = 0.0
-start_angular_speed_range = 0.02
+[node name="Ast8" parent="Asteroids/Big Asteroids" instance=ExtResource("24_w8r6r")]
+transform = Transform3D(-0.97545, 0, -0.220221, 0, 1, 0, 0.220221, 0, -0.97545, 141.39, -1.68555, -67.8973)
 
-[node name="Asteroid5" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.871, 0, -72.1861)
-hp = 100.0
-start_speed_range = 0.0
-start_angular_speed_range = 0.02
+[node name="Ast10" parent="Asteroids/Big Asteroids" instance=ExtResource("24_w8r6r")]
+transform = Transform3D(0.17174, 0, 0.985142, 0, 1, 0, -0.985142, 0, 0.17174, 89.6517, -2.34058, -152.687)
 
-[node name="Asteroid6" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -186.8, 0, -72.1861)
-hp = 100.0
-start_speed_range = 0.0
-start_angular_speed_range = 0.02
+[node name="Ast9" parent="Asteroids/Big Asteroids" instance=ExtResource("24_w8r6r")]
+transform = Transform3D(-0.999526, 0, 0.0307827, 0, 1, 0, -0.0307827, 0, -0.999526, -103.71, -3.81528, -157.482)
 
-[node name="Asteroid3" parent="Asteroids/Big Asteroids" instance=ExtResource("4_6bw2y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.9386, 0, -155.991)
-hp = 100.0
-start_speed_range = 0.0
-start_angular_speed_range = 0.02
+[node name="Ast7" parent="Asteroids/Big Asteroids" instance=ExtResource("24_w8r6r")]
+transform = Transform3D(0.110792, 0, -0.993844, 0, 1, 0, 0.993844, 0, 0.110792, -154.59, -1.11449, -59.1999)
 
-[node name="Asteroid2" parent="Asteroids/Big Asteroids" instance=ExtResource("5_phkkj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01693, 0, -74.1182)
-hp = 100.0
-start_speed_range = 0.0
-start_angular_speed_range = 0.0
-
-[node name="Asteroid4" parent="Asteroids/Big Asteroids" instance=ExtResource("6_tkgtl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -221.78)
-hp = 100.0
-start_speed_range = 0.0
-start_angular_speed_range = 0.0
+[node name="Ast5" parent="Asteroids/Big Asteroids" instance=ExtResource("22_rnr04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37284, -0.868809, -222.472)
 
 [node name="Groups" type="Node3D" parent="Asteroids"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380.205)
@@ -215,6 +194,9 @@ shape = SubResource("SphereShape3D_83mrs")
 [node name="Portal cutscene player" type="Node" parent="Portal Cutscene player"]
 script = ExtResource("8_6xv7r")
 cutscene_path = ExtResource("14_416px")
+
+[node name="Cube002" parent="." instance=ExtResource("30_of0ks")]
+transform = Transform3D(0.042329, 0, 0.999104, 0, 1, 0, -0.999104, 0, 0.042329, -1.68285, 0.0623932, -62.5508)
 
 [connection signal="player_low_energy" from="Energy cutscene player/Detect player low energy" to="Energy cutscene player" method="play"]
 [connection signal="player_entered" from="Weapon Cutscene player" to="Weapon Cutscene player/Weapon cutscene player" method="play"]

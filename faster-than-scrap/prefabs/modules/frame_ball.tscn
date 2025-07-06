@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxd2j8hslqs0x"]
+[gd_scene load_steps=10 format=3 uid="uid://bxd2j8hslqs0x"]
 
 [ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="1_8w3de"]
 [ext_resource type="Material" uid="uid://cqu6fkku70tof" path="res://art/materials/modules/frame1/frame1_material_3d.tres" id="2_xcflu"]
@@ -6,14 +6,18 @@
 [ext_resource type="ArrayMesh" uid="uid://ckvyc3t3ef841" path="res://art/models/modules/frame_ball.obj" id="3_jld5d"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_jld5d"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="5_ca7vv"]
+[ext_resource type="PackedScene" uid="uid://bi504wqk2wtoy" path="res://prefabs/modules/functional_components/module_tooltip_shower.tscn" id="7_fs7hw"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jnq3k"]
-size = Vector3(0.87, 1, 1.015)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xcflu"]
+height = 1.4
+radius = 0.68
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_e1j53"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fs7hw"]
+height = 1.4
+radius = 0.68
 
 [node name="Frame" type="CollisionShape3D" node_paths=PackedStringArray("attach_points", "sprite", "label")]
-shape = SubResource("BoxShape3D_jnq3k")
+shape = SubResource("CylinderShape3D_xcflu")
 script = ExtResource("1_8w3de")
 is_activable = false
 attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2"), NodePath("AttachPoints/AttachPoint3"), NodePath("AttachPoints/AttachPoint4")]
@@ -21,11 +25,12 @@ sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
-module_name = "Frame var. 2"
-description = "One of the available variants of basic frame. Holds more important pieces together and withstands [i]some[/i] fire."
+module_name = "Round frame"
+prize = 2
+description = "Round frame description."
 
 [node name="Frame1Model" type="Node3D" parent="."]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 0, 0)
 
 [node name="Frame1" type="MeshInstance3D" parent="Frame1Model"]
 material_override = ExtResource("2_xcflu")
@@ -34,19 +39,19 @@ mesh = ExtResource("3_jld5d")
 [node name="AttachPoints" type="Node3D" parent="."]
 
 [node name="AttachPoint1" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.71002e-09, 0, 0.576754)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.62545e-08, 0, 0.68593)
 metadata/_edit_group_ = true
 
 [node name="AttachPoint2" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 0)
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.485026, 0, 0.485026)
 metadata/_edit_group_ = true
 
 [node name="AttachPoint3" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, -0.577)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.68593, 0, -4.62375e-08)
 metadata/_edit_group_ = true
 
 [node name="AttachPoint4" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 0, 0)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.485026, 0, -0.485026)
 metadata/_edit_group_ = true
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("3_fs7hw")]
@@ -54,11 +59,14 @@ metadata/_edit_group_ = true
 [node name="DamageController2" parent="." instance=ExtResource("4_jld5d")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController2/Damageable" index="0"]
-shape = SubResource("SphereShape3D_e1j53")
+shape = SubResource("CylinderShape3D_fs7hw")
 
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("5_ca7vv")]
 damageable = NodePath("../DamageController2/Damageable")
 shape = NodePath("..")
+
+[node name="ModuleTooltip" parent="." instance=ExtResource("7_fs7hw")]
+hover_size = Vector2(0.625, 1)
 
 [connection signal="damaged" from="DamageController2" to="." method="take_damage"]
 

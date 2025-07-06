@@ -3,7 +3,7 @@ enum { COMMON = 5, UNCOMMON = 3, RARE = 2 }
 var modules_and_chances = [
 	#frames
 	[preload("res://prefabs/modules/frame1.tscn"), COMMON],
-	[preload("res://prefabs/modules/frame2.tscn"), COMMON],
+	[preload("res://prefabs/modules/frame_ball.tscn"), COMMON],
 	#energy
 	[preload("res://prefabs/modules/battery.tscn"), UNCOMMON],
 	[preload("res://prefabs/modules/generator.tscn"), UNCOMMON],

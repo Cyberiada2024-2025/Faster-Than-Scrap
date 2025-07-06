@@ -15,6 +15,7 @@ transform = Transform3D(2.5, 0, 0, 0, 2.525, 0, 0, 0, 2.5, 0, 0, 0)
 
 [node name="EnterShop" type="Area3D" parent="."]
 script = ExtResource("2_0yipc")
+instantiated_cooldown = 1.0
 metadata/_custom_type_script = "uid://bceg4vylbdwdr"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnterShop"]
@@ -26,3 +27,5 @@ shape = SubResource("SphereShape3D_seei7")
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("4_yv3rc")
 metadata/_custom_type_script = "uid://16i5n2yxnlsr"
+
+[connection signal="player_entered" from="EnterShop" to="SceneLoader" method="load_build_tutorial"]

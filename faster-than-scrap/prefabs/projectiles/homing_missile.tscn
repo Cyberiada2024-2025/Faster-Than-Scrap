@@ -344,8 +344,9 @@ shader_parameter/Glow_Strength = 3.0
 script = ExtResource("1_r34wv")
 turn_rate = SubResource("Curve_2fpxk")
 turn_rate_multiplier = 90.0
+velocity_offset_decay_time = 4.0
 velocity = SubResource("Curve_qxyfj")
-velocity_multiplier = 15.0
+velocity_multiplier = 10.0
 lifetime = 10.0
 hit_particle_prefab = ExtResource("2_qnowd")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlck66uao16fg"]
+[gd_scene load_steps=9 format=3 uid="uid://dlck66uao16fg"]
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_lx7v8"]
 [ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_jinyo"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://iwk1g8ku76ys" path="res://code/ui/cutscenes/slide_elements/slide_element_scale.gd" id="5_whgyc"]
 [ext_resource type="Script" uid="uid://decpi0ok1lasp" path="res://code/ui/cutscenes/slide_elements/slide_element_rotate.gd" id="6_na8ck"]
 [ext_resource type="Texture2D" uid="uid://ct3tpifn57p7y" path="res://art/textures/ui/cutscenes/laser_star1.PNG" id="7_f5vhi"]
+[ext_resource type="FontFile" uid="uid://c5684ddhvkomb" path="res://art/fonts/Orbitron-Bold.ttf" id="8_gqk7w"]
 
 [node name="BossCutsceneExample" type="ColorRect"]
 anchors_preset = 15
@@ -87,5 +88,6 @@ offset_left = 411.0
 offset_top = 463.0
 offset_right = 969.0
 offset_bottom = 546.0
+theme_override_fonts/font = ExtResource("8_gqk7w")
 theme_override_font_sizes/font_size = 60
-text = "LASER STAR"
+text = "GLARING STAR"

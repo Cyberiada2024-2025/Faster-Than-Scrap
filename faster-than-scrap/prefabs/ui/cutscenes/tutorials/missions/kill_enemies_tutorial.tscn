@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_5xdl4"]
 [ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_1v7aa"]
-[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="3_isrpc"]
+[ext_resource type="Theme" path="res://prefabs/ui/themes/tutorial_theme.tres" id="3_ds26x"]
 [ext_resource type="PackedScene" uid="uid://c78jp45hhpqhd" path="res://prefabs/ui/cutscenes/skip_info_text.tscn" id="5_tjw6i"]
 
 [node name="KillEnemiesTutorialCutscene" type="ColorRect"]
@@ -46,51 +46,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_isrpc")
-theme_override_font_sizes/font_size = 20
+theme = ExtResource("3_ds26x")
 text = "The enemies in this sector are
-equipped with hyperspace jammers."
+equipped with hyperspace jammers.
+Destroy them all!"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Slide2" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-script = ExtResource("2_1v7aa")
-duration = 999.0
-metadata/_custom_type_script = "uid://c8potv0p1705d"
-
-[node name="ColorRect" type="ColorRect" parent="Slide2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.2
-anchor_right = 0.8
-anchor_bottom = 0.8
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.292656, 0.388731, 0.540954, 1)
-
-[node name="Label" type="Label" parent="Slide2/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_isrpc")
-theme_override_font_sizes/font_size = 20
-text = "The vortex will not advance here,
-but you will need to destroy them
-to jump to the next sector."
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
 
 [node name="SkipInfoText" parent="." instance=ExtResource("5_tjw6i")]
 layout_mode = 1

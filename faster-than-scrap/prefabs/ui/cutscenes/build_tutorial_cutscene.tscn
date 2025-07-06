@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_unui1"]
 [ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_hak7e"]
-[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="3_01i7v"]
+[ext_resource type="Theme" uid="uid://bbjc8fyf8oqv2" path="res://prefabs/ui/themes/tutorial_theme.tres" id="3_kghuc"]
 [ext_resource type="PackedScene" uid="uid://c78jp45hhpqhd" path="res://prefabs/ui/cutscenes/skip_info_text.tscn" id="4_eqp44"]
 [ext_resource type="Texture2D" uid="uid://ddm80lnoo3ty7" path="res://art/textures/ui/arrow.png" id="4_kghuc"]
 
@@ -18,6 +18,7 @@ cutscene_name = "BuildTutorial"
 metadata/_custom_type_script = "uid://bn8cfyemp6axl"
 
 [node name="Slide" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,11 +52,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_01i7v")
-theme_override_font_sizes/font_size = 20
-text = "These are modules 
+theme = ExtResource("3_kghuc")
+text = "
+These are the modules 
 you've found in
- this abandoned Shipyard."
+ this abandoned Scrapyard
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -79,7 +81,6 @@ expand_mode = 1
 flip_v = true
 
 [node name="Slide3" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,14 +110,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_01i7v")
-text = "Attaching module
+theme = ExtResource("3_kghuc")
+text = "Attaching a module
  costs Scrap.
 
-Detaching module 
-refunds full cost.
+Detaching a module 
+refunds its full cost.
 
-In every Shipyard you will find Scrap and a few new modules."
+In every Scrapyard you will find Scrap and a few new modules."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

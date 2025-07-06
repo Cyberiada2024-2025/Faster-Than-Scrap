@@ -16,8 +16,10 @@ enum Priority { MAIN_QUEST, SIDE_QUEST }
 @export_category("Vortex paramaters")
 @export var _use_custom_vortex_size: bool = false
 @export var _custom_vortex_size: float = 400
+@export var jump_circle: CircleProgressBar
 
 var state: MissionState = MissionState.IN_PROGRESS
+var timer: Timer
 
 
 func _ready() -> void:
@@ -30,26 +32,41 @@ func setup() -> void:
 
 
 func _process(_delta: float) -> void:
-	pass
+	if jump_circle != null:
+		jump_circle.set_percentage(1.0 - timer.time_left / timer.wait_time)
+
+
+func _create_circle():
+	# I tried to use VBox and do it in HUD scene but spaghetti got too real
+	var circle_center: Vector2 = get_window().size - Vector2i.ONE * 50
+	circle_center.y -= get_window().size.y / 1.26
+	circle_center.x += get_window().size.y / 120
+
+	jump_circle = CircleProgressBar.new()
+	add_child(jump_circle)
+	jump_circle.position = circle_center
 
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("use_fuel"):
 		if GameManager.player_ship.current_fuel > 0:
-			var timer := Timer.new()
+			timer = Timer.new()
 			add_child(timer)
 			timer.one_shot = true
 			timer.wait_time = time_to_hold
 			timer.timeout.connect(_use_fuel)
 			timer.name = "hyperdrive"
 			timer.start()
+			_create_circle()
 		else:
 			print("No hyperspace fuel")
 
 	if Input.is_action_just_released("use_fuel"):
-		for child in get_children():
-			if child.name == "hyperdrive":
-				child.queue_free()
+		if jump_circle != null:
+			jump_circle.queue_free()
+			for child in get_children():
+				if child.name == "hyperdrive":
+					child.queue_free()
 
 
 func _use_fuel() -> void:
@@ -62,15 +79,6 @@ func _use_fuel() -> void:
 ## Either by success or failure
 func _ended() -> bool:
 	return state == MissionState.FINISHED or state == MissionState.FAILED
-
-
-func create_label(text: String) -> Label3D:
-	var label := Label3D.new()
-	label.text = text
-	label.font_size = 180
-	label.position = Vector3(0, 0, 2)
-	label.rotation_degrees = Vector3(270, 0, 0)
-	return label
 
 
 func _spawn_vortex(target_position: Vector3) -> void:

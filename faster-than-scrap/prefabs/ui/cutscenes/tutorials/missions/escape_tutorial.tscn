@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_crplj"]
 [ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_fakub"]
-[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="3_4ttu0"]
+[ext_resource type="Theme" uid="uid://bbjc8fyf8oqv2" path="res://prefabs/ui/themes/tutorial_theme.tres" id="4_x8owx"]
 [ext_resource type="PackedScene" uid="uid://c78jp45hhpqhd" path="res://prefabs/ui/cutscenes/skip_info_text.tscn" id="5_ho5ni"]
 
 [node name="EscapeTutorialCutscene" type="ColorRect"]
@@ -46,8 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_4ttu0")
-theme_override_font_sizes/font_size = 20
+theme = ExtResource("4_x8owx")
 text = "Detecting multiple
  Interceptor-class starfighters 
 in the region. 
@@ -58,6 +57,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Slide2" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -87,9 +87,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_4ttu0")
-theme_override_font_sizes/font_size = 20
-text = "Follow the blue map marker 
+theme = ExtResource("4_x8owx")
+text = "Follow the green map marker 
 and escape through the hyperspace portal"
 horizontal_alignment = 1
 vertical_alignment = 1

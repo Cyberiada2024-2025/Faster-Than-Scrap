@@ -1,0 +1,174 @@
+[gd_scene load_steps=12 format=3 uid="uid://duy8courlpm01"]
+
+[ext_resource type="Script" uid="uid://b86vmkhkjsh2k" path="res://code/weapons/projectiles/beam.gd" id="1_0gdr7"]
+[ext_resource type="Script" uid="uid://buwehho3rx3g0" path="res://code/damage/damage_raycast_3d.gd" id="2_gxbi3"]
+[ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_b33sl"]
+[ext_resource type="Material" uid="uid://dqervnb6blk48" path="res://art/materials/vfx/engine_fire_antimatter.tres" id="4_0gdr7"]
+[ext_resource type="Script" uid="uid://2p7oc4a3141y" path="res://code/utilities/wait_free.gd" id="5_14khn"]
+[ext_resource type="PackedScene" uid="uid://mk5ccx4i28ls" path="res://prefabs/vfx/particles/thruster_muzzle.tscn" id="6_4d48l"]
+
+[sub_resource type="Resource" id="Resource_7ctxp"]
+script = ExtResource("3_b33sl")
+value = 50.0
+type = 0
+
+[sub_resource type="Animation" id="Animation_6ipff"]
+resource_name = "Off"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/On")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 0.353553),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Thruster_Muzzle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Thruster_Muzzle:amount_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nqy7r"]
+resource_name = "On"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/On")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 0.784584),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Thruster_Muzzle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Thruster_Muzzle:amount_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_dhf0v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/On")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Thruster_Muzzle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Thruster_Muzzle:amount_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ipff"]
+_data = {
+&"Off": SubResource("Animation_6ipff"),
+&"On": SubResource("Animation_nqy7r"),
+&"RESET": SubResource("Animation_dhf0v")
+}
+
+[node name="ThrusterFireAntimatter" type="Node3D" node_paths=PackedStringArray("beam_indicator", "player", "holder")]
+script = ExtResource("1_0gdr7")
+beam_indicator = NodePath("BeamHolder")
+max_length = 3.0
+player = NodePath("BeamHolder/exhaust fire/AnimationPlayer")
+holder = NodePath("BeamHolder/exhaust fire")
+
+[node name="DamageRaycast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -3.2)
+collision_mask = 6
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("2_gxbi3")
+_damage = SubResource("Resource_7ctxp")
+
+[node name="BeamHolder" type="Node3D" parent="."]
+
+[node name="exhaust fire" type="CSGCylinder3D" parent="BeamHolder"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0, 0, -0.5)
+radius = 0.15
+height = 1.0
+smooth_faces = false
+material = ExtResource("4_0gdr7")
+script = ExtResource("5_14khn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BeamHolder/exhaust fire"]
+libraries = {
+&"": SubResource("AnimationLibrary_6ipff")
+}
+movie_quit_on_finish = true
+
+[node name="Thruster_Muzzle" parent="BeamHolder/exhaust fire" instance=ExtResource("6_4d48l")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 9.22953e-08, -0.737683, -6.00502e-08)
+visible = false

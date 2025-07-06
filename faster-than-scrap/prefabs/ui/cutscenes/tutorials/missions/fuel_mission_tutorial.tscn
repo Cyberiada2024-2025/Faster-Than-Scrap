@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_m40ju"]
 [ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_rs125"]
-[ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="3_pahdt"]
+[ext_resource type="Theme" uid="uid://rgcurhqys5cl" path="res://prefabs/ui/themes/tutorial_theme.tres" id="3_8awcm"]
 [ext_resource type="Texture2D" uid="uid://pk8dr6mspfou" path="res://art/textures/ui/cutscenes/fuel_source.PNG" id="4_8awcm"]
 [ext_resource type="PackedScene" uid="uid://c78jp45hhpqhd" path="res://prefabs/ui/cutscenes/skip_info_text.tscn" id="5_1r4xr"]
 
@@ -47,8 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_pahdt")
-theme_override_font_sizes/font_size = 20
+theme = ExtResource("3_8awcm")
 text = "There is no time to refuel properly. 
 Destroy the abandoned refinery and salvage what remains."
 horizontal_alignment = 1

@@ -21,8 +21,8 @@ sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
-module_name = "Frame"
-description = "One of the available variants of basic frame. Holds more important pieces together and withstands [i]some[/i] fire."
+module_name = "Structural Frame"
+description = "A basic ship frame, crafted from rusted metal. Holds more important modules together and withstands some fire."
 
 [node name="Frame0Model" parent="." instance=ExtResource("2_pgbm5")]
 transform = Transform3D(0.645, 0, 0, 0, 0.645, 0, 0, 0, 0.645, 0, 0, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d20m07wnheiru"]
+[gd_scene load_steps=14 format=3 uid="uid://d20m07wnheiru"]
 
 [ext_resource type="Script" uid="uid://urjr40lajiyq" path="res://code/ship/modules/battery_module.gd" id="1_4jleu"]
 [ext_resource type="Texture2D" uid="uid://kj5g7i54g3jd" path="res://art/textures/battery/final_battery_color.png" id="2_12wby"]
@@ -6,18 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://cht2tuc3ktuqe" path="res://art/textures/battery/final_battery_normal.png" id="4_ryx23"]
 [ext_resource type="Texture2D" uid="uid://cj64a42nysov1" path="res://art/textures/battery/final_battery_roughnes.png" id="5_hyrp6"]
 [ext_resource type="ArrayMesh" uid="uid://by3dga3fjvp1d" path="res://art/models/modules/quad_battery.obj" id="6_4jleu"]
-[ext_resource type="Texture2D" uid="uid://cebxmyyc7xq5m" path="res://art/textures/frame/frame_Albedo.png" id="7_yolwc"]
-[ext_resource type="Texture2D" uid="uid://r30h1nnmjryd" path="res://art/textures/frame/frame_AO.png" id="8_xs2s6"]
-[ext_resource type="Texture2D" uid="uid://p1p3m7hu4bp2" path="res://art/textures/frame/frame_Metalness.png" id="9_7t6kp"]
-[ext_resource type="Texture2D" uid="uid://cjv8e2sijiql6" path="res://art/textures/frame/frame_Normal.png" id="10_lkkjt"]
-[ext_resource type="Texture2D" uid="uid://bqpvtwe8hkr0w" path="res://art/textures/frame/frame_Roughness.png" id="11_h77s2"]
-[ext_resource type="ArrayMesh" uid="uid://dyggmpc21gmcw" path="res://art/models/modules/frame/frame.obj" id="12_3nxc1"]
+[ext_resource type="PackedScene" uid="uid://bi504wqk2wtoy" path="res://prefabs/modules/functional_components/module_tooltip_shower.tscn" id="10_8y3af"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="13_dllix"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="14_pgsic"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="15_3ivvo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jnq3k"]
-size = Vector3(0.665, 1, 1.075)
+size = Vector3(1.1, 1.1, 1.7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5p3y"]
 albedo_texture = ExtResource("2_12wby")
@@ -27,78 +22,79 @@ roughness_texture = ExtResource("5_hyrp6")
 normal_enabled = true
 normal_texture = ExtResource("4_ryx23")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttear"]
-albedo_color = Color(0, 1, 0, 1)
-albedo_texture = ExtResource("7_yolwc")
-metallic = 1.0
-metallic_texture = ExtResource("9_7t6kp")
-roughness_texture = ExtResource("11_h77s2")
-emission_enabled = true
-emission = Color(0, 0.490196, 0, 1)
-normal_enabled = true
-normal_texture = ExtResource("10_lkkjt")
-ao_enabled = true
-ao_texture = ExtResource("8_xs2s6")
+[sub_resource type="BoxShape3D" id="BoxShape3D_3mbx4"]
+size = Vector3(1.1, 1.1, 1.7)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_e1j53"]
-radius = 0.679699
-
-[node name="Battery" type="CollisionShape3D" node_paths=PackedStringArray("attach_points", "sprite", "label")]
+[node name="BatteryQuad" type="CollisionShape3D" node_paths=PackedStringArray("attach_points", "sprite", "label")]
 shape = SubResource("BoxShape3D_jnq3k")
 script = ExtResource("1_4jleu")
+energy = 200.0
+energy_regeneration = 0.0
 is_activable = false
 attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2"), NodePath("AttachPoints/AttachPoint3"), NodePath("AttachPoints/AttachPoint4")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
-module_name = "Battery"
+module_name = "Quad Battery"
 prize = 2
-description = "Increases ship max energy."
+description = "A cluster of four batteries crudely welded together. They may have seen better days, but they can still hold some charge."
 
-[node name="Frame0Model" type="Node3D" parent="."]
-transform = Transform3D(0.645, 0, 0, 0, 0.645, 0, 0, 0, 0.645, 0, 0, 0)
+[node name="Battery" type="Node3D" parent="."]
+transform = Transform3D(1.25, 0, 0, 0, -5.46392e-08, 1.25, 0, -1.25, -5.46392e-08, 0, 0, 0)
 
-[node name="Battery" type="Node3D" parent="Frame0Model"]
-transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0)
+[node name="Node3D" type="Node3D" parent="Battery"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.275, 0)
 
-[node name="FinalestBattery" type="MeshInstance3D" parent="Frame0Model/Battery"]
+[node name="FinalestBattery" type="MeshInstance3D" parent="Battery/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 3.55271e-15, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_u5p3y")
 mesh = ExtResource("6_4jleu")
+skeleton = NodePath("../..")
 
-[node name="Frame0" type="MeshInstance3D" parent="Frame0Model"]
-visible = false
-material_override = SubResource("StandardMaterial3D_ttear")
-mesh = ExtResource("12_3nxc1")
+[node name="Node3D2" type="Node3D" parent="Battery"]
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0.274834, 6.68354e-16)
+
+[node name="FinalestBattery" type="MeshInstance3D" parent="Battery/Node3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 3.55271e-15, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_u5p3y")
+mesh = ExtResource("6_4jleu")
+skeleton = NodePath("../..")
 
 [node name="AttachPoints" type="Node3D" parent="."]
 
 [node name="AttachPoint1" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.85682e-09, 0, 0.566994)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.32875e-08, 0, 0.880764)
 metadata/_edit_group_ = true
 
 [node name="AttachPoint2" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.59546, 0, 1.04484e-08)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.57859, 0, 9.71098e-09)
 metadata/_edit_group_ = true
 
 [node name="AttachPoint3" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.567)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.879836)
 metadata/_edit_group_ = true
 
 [node name="AttachPoint4" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.683292, 0, 1.43064e-08)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.571999, 0, 9.44162e-09)
 metadata/_edit_group_ = true
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("13_dllix")]
 
+[node name="Sprite3D" parent="ModuleDisplay" index="0"]
+transform = Transform3D(0.45, 0, 0, 0, -3.54062e-08, 0.45, 0, -0.81, -1.96701e-08, 0, 0, 0)
+
 [node name="DamageController2" parent="." instance=ExtResource("14_pgsic")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController2/Damageable" index="0"]
-shape = SubResource("SphereShape3D_e1j53")
+shape = SubResource("BoxShape3D_3mbx4")
 
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("15_3ivvo")]
 damageable = NodePath("../DamageController2/Damageable")
 shape = NodePath("..")
+
+[node name="ModuleTooltip" parent="." instance=ExtResource("10_8y3af")]
+hover_size = Vector2(0.625, 1)
 
 [connection signal="damaged" from="DamageController2" to="." method="take_damage"]
 

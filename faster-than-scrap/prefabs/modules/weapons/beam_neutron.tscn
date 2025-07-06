@@ -38,7 +38,7 @@ healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Neutron beam"
 prize = 3
-description = "Beams neutrons"
+description = "This advanced weapon module emits a focused beam of pure energy. Its destructive power is matched only by its energy consumption."
 
 [node name="LaserBeamGunModel" type="MeshInstance3D" parent="."]
 transform = Transform3D(6.55671e-08, 1.31134e-07, -1.5, 5.73206e-15, -1.5, -1.31134e-07, -1.5, 0, -6.55671e-08, 0, 0, 0)

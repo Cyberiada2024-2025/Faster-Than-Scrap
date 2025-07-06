@@ -45,14 +45,16 @@ script = ExtResource("1_p6uur")
 energy = 0.0
 energy_regeneration = 10.0
 is_activable = false
+max_hp = 50.0
+hp = 50.0
 attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
-module_name = "Battery"
+module_name = "Energy Generator"
 prize = 2
-description = "Generates energy"
+description = "A decomissioned reactor, once used to power deepspace cargo vessels. Its hull shows years of wear but it can still be useful in the right hands."
 
 [node name="Model" type="Node3D" parent="."]
 

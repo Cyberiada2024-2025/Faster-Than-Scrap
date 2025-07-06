@@ -34,8 +34,7 @@ healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Antimatter Thruster"
 prize = 4
-description = "Backwards thruster
-"
+description = "This strange thruster uses inverse matter polarization technology to provide negative thrust. It pulls your ship, instead of pushing it."
 
 [node name="Thruster" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1.90145e-08, -1, 0, 0.435, -4.37114e-08, 0, 0, 0, 0.6, 0.0386379, 0.10193, 0.554815)

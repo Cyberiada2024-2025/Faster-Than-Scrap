@@ -38,7 +38,7 @@ healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Battery"
 prize = 2
-description = "Increases ship max energy."
+description = "Although it's weathered and rusty, this old battery can be adapted to your ship's systems and provide additional max energy."
 
 [node name="Frame0Model" type="Node3D" parent="."]
 transform = Transform3D(0.645, 0, 0, 0, 0.645, 0, 0, 0, 0.645, 0, 0, 0.0325984)

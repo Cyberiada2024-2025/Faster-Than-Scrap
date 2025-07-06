@@ -25,9 +25,9 @@ sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
-module_name = "Round frame"
+module_name = "Spherical frame"
 prize = 2
-description = "Round frame description."
+description = "A uniquely shaped structural frame. Perfect for attaching modules at unconventional angles."
 
 [node name="Frame1Model" type="Node3D" parent="."]
 transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 0, 0)

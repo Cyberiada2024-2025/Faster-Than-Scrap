@@ -25,9 +25,9 @@ sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
-module_name = "Long frame"
+module_name = "Extended Frame"
 prize = 2
-description = "Long frame description"
+description = "A long structural frame that provides additional space for modules."
 
 [node name="Model" type="Node3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)

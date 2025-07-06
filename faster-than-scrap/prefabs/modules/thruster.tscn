@@ -31,7 +31,7 @@ healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Thruster"
 prize = 2
-description = "Basic movement module. Activate to push ship forward (relative to thruster)."
+description = "Basic propulsion unit. Generates thrust when activated, at the cost of energy."
 
 [node name="ConstantFireWeapon" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.898123)

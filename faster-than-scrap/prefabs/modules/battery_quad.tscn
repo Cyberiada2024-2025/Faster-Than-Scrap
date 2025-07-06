@@ -36,9 +36,9 @@ sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
-module_name = "Battery"
+module_name = "Quad Battery"
 prize = 2
-description = "Increases ship max energy."
+description = "A cluster of four batteries crudely welded together. They may have seen better days, but they can still hold some charge."
 
 [node name="Battery" type="Node3D" parent="."]
 transform = Transform3D(1.25, 0, 0, 0, -5.46392e-08, 1.25, 0, -1.25, -5.46392e-08, 0, 0, 0)

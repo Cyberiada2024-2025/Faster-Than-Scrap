@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dyj46rbaohfnw"]
+[gd_scene load_steps=13 format=3 uid="uid://dyj46rbaohfnw"]
 
 [ext_resource type="Script" uid="uid://bk270qnughqkv" path="res://code/main_menu.gd" id="1_4xnjd"]
 [ext_resource type="Script" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_5dd4i"]
@@ -11,6 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://cvsc1hfn6jjb" path="res://art/textures/main_menu/main_title.png" id="7_rcqid"]
 [ext_resource type="PackedScene" uid="uid://36s8658cgl8t" path="res://scenes/settings.tscn" id="9_jk1qb"]
 [ext_resource type="FontFile" uid="uid://c5684ddhvkomb" path="res://art/fonts/Orbitron-Bold.ttf" id="9_lgwnu"]
+
+[sub_resource type="FontVariation" id="FontVariation_lgwnu"]
+base_font = ExtResource("9_lgwnu")
+spacing_glyph = 2
+spacing_space = 2
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -82,7 +87,7 @@ alignment = 1
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitButton")
 focus_neighbor_bottom = NodePath("../SettingsButton")
-theme_override_fonts/font = ExtResource("9_lgwnu")
+theme_override_fonts/font = SubResource("FontVariation_lgwnu")
 theme_override_font_sizes/font_size = 30
 text = "START"
 icon_alignment = 1
@@ -91,7 +96,7 @@ icon_alignment = 1
 layout_mode = 2
 focus_neighbor_top = NodePath("../StartButton")
 focus_neighbor_bottom = NodePath("../ExitButton")
-theme_override_fonts/font = ExtResource("9_lgwnu")
+theme_override_fonts/font = SubResource("FontVariation_lgwnu")
 theme_override_font_sizes/font_size = 30
 text = "SETTINGS"
 
@@ -99,7 +104,7 @@ text = "SETTINGS"
 layout_mode = 2
 focus_neighbor_top = NodePath("../SettingsButton")
 focus_neighbor_bottom = NodePath("../StartButton")
-theme_override_fonts/font = ExtResource("9_lgwnu")
+theme_override_fonts/font = SubResource("FontVariation_lgwnu")
 theme_override_font_sizes/font_size = 30
 text = "EXIT"
 

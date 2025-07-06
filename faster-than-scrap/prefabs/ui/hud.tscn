@@ -109,7 +109,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureProgressBar2:tint_progress")
+tracks/0/path = NodePath("NoEnergyWarningBar:tint_progress")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -124,7 +124,7 @@ resource_name = "warning"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TextureProgressBar2:tint_progress")
+tracks/0/path = NodePath("NoEnergyWarningBar:tint_progress")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -399,7 +399,7 @@ layout_mode = 2
 texture = SubResource("ViewportTexture_sb0ep")
 expand_mode = 4
 
-[node name="New Energy Bar" type="Control" parent="." node_paths=PackedStringArray("bar_main", "bar_warning", "animator")]
+[node name="NewEnergyBar" type="Control" parent="." node_paths=PackedStringArray("bar_main", "bar_warning", "animator")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1052.0
@@ -407,27 +407,11 @@ offset_top = 10.0
 offset_right = 1142.0
 offset_bottom = 10.0
 script = ExtResource("2_3xm3k")
-bar_main = NodePath("TextureProgressBar")
-bar_warning = NodePath("TextureProgressBar2")
+bar_main = NodePath("MainBar")
+bar_warning = NodePath("NoEnergyWarningBar")
 animator = NodePath("AnimationPlayer")
 
-[node name="NoEnergyWarning" type="TextureProgressBar" parent="New Energy Bar"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -474.0
-offset_bottom = 36.0
-grow_horizontal = 0
-max_value = 300.0
-step = 10.0
-value = 200.0
-fill_mode = 1
-texture_under = ExtResource("2_ggpsi")
-texture_progress = ExtResource("5_iyfgc")
-tint_progress = Color(1, 1, 1, 0)
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="New Energy Bar"]
+[node name="MainBar" type="TextureProgressBar" parent="NewEnergyBar"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -443,18 +427,18 @@ texture_under = ExtResource("2_ggpsi")
 texture_progress = ExtResource("3_3xm3k")
 tint_progress = Color(0.516637, 0.995974, 0.541332, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="New Energy Bar"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NewEnergyBar"]
 libraries = {
 &"": SubResource("AnimationLibrary_oq2i2")
 }
 
-[node name="TextureProgressBar2" type="TextureProgressBar" parent="New Energy Bar"]
+[node name="NoEnergyWarningBar" type="TextureProgressBar" parent="NewEnergyBar"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -457.0
-offset_bottom = 40.0
+offset_left = -474.0
+offset_bottom = 36.0
 grow_horizontal = 0
 max_value = 300.0
 step = 10.0
@@ -475,12 +459,15 @@ script = ExtResource("5_jtpgg")
 fuel_display = NodePath("HBoxContainer/Fuel Label")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Fuel indicator"]
+layout_direction = 2
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -55.0
+offset_left = -65.0
+offset_top = -15.0
+offset_bottom = 25.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -497,7 +484,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.909804, 0.976471, 0.937255, 1)
 text = "0"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="CircleModules" type="SubViewport" parent="."]

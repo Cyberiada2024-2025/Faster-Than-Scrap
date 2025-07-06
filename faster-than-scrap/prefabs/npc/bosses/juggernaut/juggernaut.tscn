@@ -1,55 +1,40 @@
-[gd_scene load_steps=44 format=3 uid="uid://bvcjycf02eb4c"]
+[gd_scene load_steps=39 format=3 uid="uid://bvcjycf02eb4c"]
 
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_yarj2"]
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_byxk3"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="3_5ov2f"]
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="3_a8moe"]
-[ext_resource type="Script" path="res://code/ship/modules/explodable.gd" id="3_qln4k"]
+[ext_resource type="Script" uid="uid://dc42aagfm4o0o" path="res://code/ship/modules/explodable.gd" id="3_qln4k"]
 [ext_resource type="Script" uid="uid://crmxerc164n6q" path="res://code/weapons/constant_fire_weapon.gd" id="4_1irkd"]
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="4_clgev"]
 [ext_resource type="PackedScene" uid="uid://bgpoyw23tdb7h" path="res://art/model_prefabs/bosses/juggernaut/juggernaut.tscn" id="4_t21y8"]
 [ext_resource type="Script" uid="uid://befj25g2qfhr7" path="res://code/enemy/states/move/orbit.gd" id="5_5ov2f"]
+[ext_resource type="Script" uid="uid://k3n7j0mjfmxt" path="res://code/damage/damage_controller.gd" id="5_jywsr"]
 [ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="6_cla4x"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="6_ion51"]
+[ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://code/damage/damageable.gd" id="6_nsh4b"]
 [ext_resource type="Script" uid="uid://c14j6cdbgt38o" path="res://code/enemy/states/rotate/look_at_target.gd" id="6_xr00f"]
 [ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="7_a8moe"]
+[ext_resource type="AudioStream" uid="uid://b3yhuj0eups7i" path="res://art/audio/sounds/dmg_taken.mp3" id="7_m51ew"]
 [ext_resource type="PackedScene" uid="uid://6mrvum8tjctj" path="res://prefabs/projectiles/boss_projectiles/juggernaut_ball_flash.tscn" id="7_qln4k"]
 [ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="8_1irkd"]
+[ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="8_jpxyi"]
 [ext_resource type="PackedScene" uid="uid://cl32aepiu0lax" path="res://prefabs/projectiles/boss_projectiles/juggernaut_bullet_flash.tscn" id="8_qln4k"]
 [ext_resource type="Script" uid="uid://dig16nwffnibt" path="res://code/enemy/states/supplementary/restore_energy.gd" id="9_ion51"]
-[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="10_6fxl0"]
 [ext_resource type="Script" uid="uid://crp1vxubokrt" path="res://code/enemy/states/move/move_to_orbit_place.gd" id="10_clgev"]
 [ext_resource type="PackedScene" uid="uid://cf4qlk85kdwxg" path="res://prefabs/projectiles/boss_projectiles/star_beam_flash.tscn" id="10_qln4k"]
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="11_clgev"]
 [ext_resource type="PackedScene" uid="uid://c02tg8vmx2ibt" path="res://prefabs/projectiles/boss_projectiles/juggernaut_shotgun_flash.tscn" id="11_qln4k"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="22_1nvpg"]
 [ext_resource type="PackedScene" uid="uid://dnqt5dsa6jb20" path="res://prefabs/ui/cutscenes/boss_cutscenes/juggernaut_cutscene.tscn" id="23_j2cd8"]
-[ext_resource type="Script" uid="uid://bdljn5ooj2ryy" path="res://code/evironment/space_vortex/space_vortex.gd" id="25_g4bin"]
-[ext_resource type="Material" uid="uid://dsr4i8f5btjud" path="res://art/materials/vfx/Vortex.tres" id="26_awx37"]
-[ext_resource type="PackedScene" uid="uid://noejc02505g0" path="res://prefabs/ui/poi/vortex_poi.tscn" id="27_awx37"]
-[ext_resource type="Script" uid="uid://btpdstvgw55fd" path="res://code/utilities/auto_reparent.gd" id="29_f7rv0"]
-[ext_resource type="Script" path="res://code/player/aegis_effect.gd" id="31_cc8yn"]
+[ext_resource type="Script" uid="uid://cjookpuv01c5f" path="res://code/utilities/vortex_spawner.gd" id="30_f7rv0"]
+[ext_resource type="Script" uid="uid://ca3g5r4yj0pc3" path="res://code/player/aegis_effect.gd" id="31_cc8yn"]
 [ext_resource type="Script" path="res://prefabs/constant_rotation.gd" id="32_1gxgn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_km21v"]
 size = Vector3(5, 1, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qln4k"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_cujf5"]
-radius = 0.65
-
-[sub_resource type="Gradient" id="Gradient_u6ya2"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_egdpg"]
-gradient = SubResource("Gradient_u6ya2")
-
-[sub_resource type="Gradient" id="Gradient_awx37"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_f7rv0"]
-gradient = SubResource("Gradient_awx37")
 
 [sub_resource type="Curve" id="Curve_itp45"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.707317, 0), 0.0, 0.0, 0, 0]
@@ -87,7 +72,7 @@ material = SubResource("StandardMaterial3D_p86qt")
 size = 0.2
 curve = SubResource("Curve_uagw5")
 
-[node name="Juggernaut" type="RigidBody3D" node_paths=PackedStringArray("ship")]
+[node name="JUGGERNAUT" type="RigidBody3D" node_paths=PackedStringArray("ship")]
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -120,35 +105,47 @@ metadata/_custom_type_script = "uid://cs6qd5cf3gviv"
 [node name="Juggernaut" parent="StaticBody3D/Body" instance=ExtResource("4_t21y8")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="DamageController" parent="StaticBody3D/Body" instance=ExtResource("10_6fxl0")]
+[node name="DamageController" type="Node3D" parent="StaticBody3D/Body" node_paths=PackedStringArray("_damaged_sound_emitter")]
+script = ExtResource("5_jywsr")
+_damaged_sound_emitter = NodePath("SoundEmitter")
 
-[node name="Damageable" parent="StaticBody3D/Body/DamageController" index="0"]
+[node name="Damageable" type="Area3D" parent="StaticBody3D/Body/DamageController"]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("6_nsh4b")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable"]
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("BoxShape3D_qln4k")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="1"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable"]
 transform = Transform3D(3.63411, 0, 0, 0, 1, 0, 0, 0, 1.92392, 4.20319, 0, 0)
 shape = SubResource("BoxShape3D_qln4k")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="2"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable"]
 transform = Transform3D(3.63411, 0, 0, 0, 1, 0, 0, 0, 1.92392, -4.203, 0, 0)
 shape = SubResource("BoxShape3D_qln4k")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="3"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, -6.34885)
 shape = SubResource("BoxShape3D_qln4k")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="4"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, 5.39856, 0, -1.95781)
 shape = SubResource("BoxShape3D_qln4k")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable" index="5"]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D/Body/DamageController/Damageable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, -5.399, 0, -1.958)
 shape = SubResource("BoxShape3D_qln4k")
+
+[node name="SoundEmitter" type="AudioStreamPlayer3D" parent="StaticBody3D/Body/DamageController"]
+stream = ExtResource("7_m51ew")
+max_polyphony = 5
+bus = &"SFX"
+script = ExtResource("8_jpxyi")
+min_pitch_scale = 0.75
+max_pitch_scale = 1.15
+metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
 
 [node name="Weapons" type="Node3D" parent="StaticBody3D"]
 
@@ -379,49 +376,19 @@ script = ExtResource("22_1nvpg")
 cutscene_path = ExtResource("23_j2cd8")
 play_on_ready = true
 
-[node name="SpaceVortex" type="Area3D" parent="." node_paths=PackedStringArray("graphics")]
-transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, 0, 0, 0)
-collision_layer = 6
-collision_mask = 6
-script = ExtResource("25_g4bin")
-miniboss = true
-graphics = NodePath("Sprite3D")
-mat = ExtResource("26_awx37")
-start_scale = 151.0
-min_scale = 150.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpaceVortex"]
-shape = SubResource("SphereShape3D_cujf5")
-
-[node name="Sprite3D" type="Sprite3D" parent="SpaceVortex"]
-transform = Transform3D(2000, 0, 0, 0, -8.74228e-05, 2000, 0, -2000, -8.74228e-05, 0, -5, 0)
-visible = false
-material_override = ExtResource("26_awx37")
-double_sided = false
-render_priority = 4
-texture = SubResource("GradientTexture2D_egdpg")
-
-[node name="VortexPOI" parent="SpaceVortex" instance=ExtResource("27_awx37")]
-texture = null
-
 [node name="Aegis" type="Node3D" parent="."]
 script = ExtResource("31_cc8yn")
 player = false
+aegis_radius = 15.0
 path = "res://art/materials/vfx/Vortex.tres"
 
-[node name="Sprite3D" type="Sprite3D" parent="Aegis"]
-transform = Transform3D(2000, 0, 0, 0, -8.74228e-05, 2000, 0, -2000, -8.74228e-05, 0, -5, 0)
-material_override = ExtResource("26_awx37")
-double_sided = false
-render_priority = 4
-texture = SubResource("GradientTexture2D_f7rv0")
-script = ExtResource("29_f7rv0")
-
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Aegis"]
-visible = false
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+transparency = 0.4
 amount = 512
 lifetime = 4.0
 preprocess = 2.3
+visibility_aabb = AABB(-32, -4, -32, 64, 8, 64)
 local_coords = true
 transform_align = 3
 trail_enabled = true
@@ -430,10 +397,10 @@ process_material = SubResource("ParticleProcessMaterial_itp45")
 draw_pass_1 = SubResource("RibbonTrailMesh_0kdxi")
 script = ExtResource("32_1gxgn")
 
-[connection signal="damaged" from="StaticBody3D/Body/DamageController" to="StaticBody3D/Body" method="take_damage"]
-[connection signal="area_entered" from="SpaceVortex" to="SpaceVortex" method="_on_body_entered"]
-[connection signal="area_exited" from="SpaceVortex" to="SpaceVortex" method="_on_body_exited"]
-[connection signal="body_entered" from="SpaceVortex" to="SpaceVortex" method="_on_body_entered"]
-[connection signal="body_exited" from="SpaceVortex" to="SpaceVortex" method="_on_body_exited"]
+[node name="VortexSpawner" type="Node3D" parent="."]
+script = ExtResource("30_f7rv0")
+offset = Vector3(0, 0, 170)
+start_scale = 200.0
+min_scale = 100.0
 
-[editable path="StaticBody3D/Body/DamageController"]
+[connection signal="damaged" from="StaticBody3D/Body/DamageController" to="StaticBody3D/Body" method="take_damage"]

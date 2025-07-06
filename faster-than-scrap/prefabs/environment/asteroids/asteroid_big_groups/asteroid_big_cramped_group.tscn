@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc818ge6m4to5"]
+
+[ext_resource type="PackedScene" uid="uid://dl6p1epbu22fd" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_cramped_group_.tscn" id="1_tgp6h"]
+
+[node name="AsteroidBigGroup" type="Node3D"]
+
+[node name="AsteroidGroupCircle" parent="." instance=ExtResource("1_tgp6h")]
+
+[node name="AsteroidGroupCircle2" parent="." instance=ExtResource("1_tgp6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.919, 1.90735e-06, -18.7906)
+
+[node name="AsteroidGroupCircle3" parent="." instance=ExtResource("1_tgp6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2962, 0, -15.0664)
+
+[node name="AsteroidGroupCircle4" parent="." instance=ExtResource("1_tgp6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5961, 0, 4.50481)
+
+[node name="AsteroidGroupCircle5" parent="." instance=ExtResource("1_tgp6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59615, 0, 19.5048)
+
+[node name="AsteroidGroupCircle6" parent="." instance=ExtResource("1_tgp6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.8094, 0, 23.3778)

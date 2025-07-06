@@ -1,0 +1,2 @@
+class_name DefendPosition
+extends Node3D

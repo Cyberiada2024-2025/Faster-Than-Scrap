@@ -1,18 +1,21 @@
-[gd_scene load_steps=40 format=3 uid="uid://c3rsq4emlmuky"]
+[gd_scene load_steps=35 format=3 uid="uid://c3rsq4emlmuky"]
 
 [ext_resource type="Script" uid="uid://deimdflghl67a" path="res://code/ship/ship_controller.gd" id="1_nesmw"]
 [ext_resource type="Script" uid="uid://cuh6pulecxtjx" path="res://code/boss/boss.gd" id="2_s6qyd"]
 [ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="3_4c6o0"]
 [ext_resource type="Material" uid="uid://fp26so8t1e6n" path="res://art/materials/bosses/laserstar/laserstar_material_with_diffuse.tres" id="4_4miem"]
 [ext_resource type="PackedScene" uid="uid://otlsujtci37k" path="res://prefabs/npc/bosses/examples/laser_star/star_quarter.tscn" id="4_06rxb"]
-[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_f6ca3"]
 [ext_resource type="ArrayMesh" uid="uid://bekmcaup47wjt" path="res://art/models/bosses/laserstar/core.obj" id="5_xo358"]
+[ext_resource type="Script" uid="uid://k3n7j0mjfmxt" path="res://code/damage/damage_controller.gd" id="6_8tl01"]
 [ext_resource type="Script" uid="uid://c70pkbnps6ysy" path="res://code/enemy/states/shoot/shooting.gd" id="6_vtp5i"]
+[ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://code/damage/damageable.gd" id="7_k5cpc"]
 [ext_resource type="Script" uid="uid://crp1vxubokrt" path="res://code/enemy/states/move/move_to_orbit_place.gd" id="7_tge7b"]
 [ext_resource type="Script" uid="uid://d204dtgxrsbc" path="res://code/enemy/states/composite_state.gd" id="7_xvv2n"]
+[ext_resource type="AudioStream" uid="uid://b3yhuj0eups7i" path="res://art/audio/sounds/dmg_taken.mp3" id="8_ftgr2"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="8_jstny"]
 [ext_resource type="PackedScene" uid="uid://bwji2ay2xd5bf" path="res://prefabs/npc/bosses/examples/laser_star/flow_bottom.tscn" id="9_ame6i"]
 [ext_resource type="Script" path="res://code/enemy/transitions/timed_transition.gd" id="9_k4714"]
+[ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="9_malni"]
 [ext_resource type="PackedScene" uid="uid://bpp1eb4sc4f8q" path="res://prefabs/npc/bosses/examples/laser_star/flow_top.tscn" id="10_8xa4f"]
 [ext_resource type="Script" uid="uid://b0xwjuq1av15m" path="res://code/enemy/states/rotate/constant_rotation.gd" id="10_vhk6y"]
 [ext_resource type="Script" uid="uid://ba4gmgmjlco33" path="res://code/enemy/transitions/transitionLowEnergy.gd" id="11_vp012"]
@@ -21,30 +24,12 @@
 [ext_resource type="PackedScene" uid="uid://dqwslygxfrmnh" path="res://prefabs/ui/poi/enemy_poi.tscn" id="15_vhk6y"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="16_mynj6"]
 [ext_resource type="PackedScene" uid="uid://dlck66uao16fg" path="res://prefabs/ui/cutscenes/boss_cutscenes/laster_star_cutscene.tscn" id="17_kardv"]
-[ext_resource type="Script" uid="uid://bdljn5ooj2ryy" path="res://code/evironment/space_vortex/space_vortex.gd" id="22_10vjq"]
-[ext_resource type="Material" uid="uid://dsr4i8f5btjud" path="res://art/materials/vfx/Vortex.tres" id="23_8tl01"]
-[ext_resource type="PackedScene" uid="uid://noejc02505g0" path="res://prefabs/ui/poi/vortex_poi.tscn" id="24_8tl01"]
-[ext_resource type="Script" path="res://code/player/aegis_effect.gd" id="24_k5cpc"]
+[ext_resource type="Script" uid="uid://ca3g5r4yj0pc3" path="res://code/player/aegis_effect.gd" id="24_k5cpc"]
 [ext_resource type="Script" path="res://prefabs/constant_rotation.gd" id="25_ftgr2"]
-[ext_resource type="Script" uid="uid://btpdstvgw55fd" path="res://code/utilities/auto_reparent.gd" id="26_k5cpc"]
+[ext_resource type="Script" uid="uid://cjookpuv01c5f" path="res://code/utilities/vortex_spawner.gd" id="27_k5cpc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fe0g0"]
 radius = 2.375
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_k5cpc"]
-radius = 0.65
-
-[sub_resource type="Gradient" id="Gradient_u6ya2"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ftgr2"]
-gradient = SubResource("Gradient_u6ya2")
-
-[sub_resource type="Gradient" id="Gradient_g4bin"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_malni"]
-gradient = SubResource("Gradient_g4bin")
 
 [sub_resource type="Curve" id="Curve_hy2wa"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.707317, 0), 0.0, 0.0, 0, 0]
@@ -82,7 +67,7 @@ material = SubResource("StandardMaterial3D_uagw5")
 size = 0.2
 curve = SubResource("Curve_f7rv0")
 
-[node name="LaserStar" type="RigidBody3D" node_paths=PackedStringArray("ship")]
+[node name="GLARING STAR" type="RigidBody3D" node_paths=PackedStringArray("ship")]
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -112,15 +97,27 @@ script = ExtResource("3_4c6o0")
 material_override = ExtResource("4_4miem")
 mesh = ExtResource("5_xo358")
 
-[node name="DamageController" parent="StaticBody3D/Core" instance=ExtResource("4_f6ca3")]
+[node name="DamageController" type="Node3D" parent="StaticBody3D/Core" node_paths=PackedStringArray("_damaged_sound_emitter")]
 transform = Transform3D(0.999998, 0.000325448, -0.00194442, -0.000327706, 0.999999, -0.00115764, 0.00194404, 0.00115827, 0.999997, 0, 0, 0)
+script = ExtResource("6_8tl01")
+_damaged_sound_emitter = NodePath("SoundEmitter")
 
-[node name="Damageable" parent="StaticBody3D/Core/DamageController" index="0"]
+[node name="Damageable" type="Area3D" parent="StaticBody3D/Core/DamageController"]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("7_k5cpc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Core/DamageController/Damageable" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Core/DamageController/Damageable"]
 shape = SubResource("SphereShape3D_fe0g0")
+
+[node name="SoundEmitter" type="AudioStreamPlayer3D" parent="StaticBody3D/Core/DamageController"]
+stream = ExtResource("8_ftgr2")
+max_polyphony = 5
+bus = &"SFX"
+script = ExtResource("9_malni")
+min_pitch_scale = 0.75
+max_pitch_scale = 1.15
+metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
 
 [node name="Star Laser" parent="StaticBody3D/Core" instance=ExtResource("4_06rxb")]
 
@@ -297,49 +294,19 @@ script = ExtResource("16_mynj6")
 cutscene_path = ExtResource("17_kardv")
 play_on_ready = true
 
-[node name="SpaceVortex" type="Area3D" parent="." node_paths=PackedStringArray("graphics")]
-transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, 0, 0, 0)
-collision_layer = 6
-collision_mask = 6
-script = ExtResource("22_10vjq")
-miniboss = true
-graphics = NodePath("Sprite3D")
-mat = ExtResource("23_8tl01")
-start_scale = 151.0
-min_scale = 150.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpaceVortex"]
-shape = SubResource("SphereShape3D_k5cpc")
-
-[node name="Sprite3D" type="Sprite3D" parent="SpaceVortex"]
-transform = Transform3D(2000, 0, 0, 0, -8.74228e-05, 2000, 0, -2000, -8.74228e-05, 0, -5, 0)
-visible = false
-material_override = ExtResource("23_8tl01")
-double_sided = false
-render_priority = 4
-texture = SubResource("GradientTexture2D_ftgr2")
-
-[node name="VortexPOI" parent="SpaceVortex" instance=ExtResource("24_8tl01")]
-texture = null
-
 [node name="Aegis" type="Node3D" parent="."]
 script = ExtResource("24_k5cpc")
 player = false
+aegis_radius = 19.0
 path = "res://art/materials/vfx/Vortex.tres"
 
-[node name="Sprite3D" type="Sprite3D" parent="Aegis"]
-transform = Transform3D(2000, 0, 0, 0, -8.74228e-05, 2000, 0, -2000, -8.74228e-05, 0, -5, 0)
-material_override = ExtResource("23_8tl01")
-double_sided = false
-render_priority = 4
-texture = SubResource("GradientTexture2D_malni")
-script = ExtResource("26_k5cpc")
-
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Aegis"]
-visible = false
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+transparency = 0.4
 amount = 512
 lifetime = 4.0
 preprocess = 2.3
+visibility_aabb = AABB(-32, -4, -32, 64, 8, 64)
 local_coords = true
 transform_align = 3
 trail_enabled = true
@@ -348,26 +315,15 @@ process_material = SubResource("ParticleProcessMaterial_48c16")
 draw_pass_1 = SubResource("RibbonTrailMesh_gewfv")
 script = ExtResource("25_ftgr2")
 
-[connection signal="damaged" from="StaticBody3D/Core/DamageController" to="StaticBody3D/Core" method="take_damage"]
-[connection signal="area_entered" from="SpaceVortex" to="SpaceVortex" method="_on_body_entered"]
-[connection signal="area_exited" from="SpaceVortex" to="SpaceVortex" method="_on_body_exited"]
-[connection signal="body_entered" from="SpaceVortex" to="SpaceVortex" method="_on_body_entered"]
-[connection signal="body_exited" from="SpaceVortex" to="SpaceVortex" method="_on_body_exited"]
+[node name="VortexSpawner" type="Node3D" parent="."]
+script = ExtResource("27_k5cpc")
+offset = Vector3(0, 0, 170)
+start_scale = 200.0
+min_scale = 100.0
 
-[editable path="StaticBody3D/Core/DamageController"]
+[connection signal="damaged" from="StaticBody3D/Core/DamageController" to="StaticBody3D/Core" method="take_damage"]
+
 [editable path="StaticBody3D/Core/Star Laser"]
-[editable path="StaticBody3D/Core/Star Laser/Laser/DamageController"]
-[editable path="StaticBody3D/Core/Star Laser/Right/DamageController"]
-[editable path="StaticBody3D/Core/Star Laser/Left/DamageController"]
 [editable path="StaticBody3D/Core/Star Laser2"]
-[editable path="StaticBody3D/Core/Star Laser2/Laser/DamageController"]
-[editable path="StaticBody3D/Core/Star Laser2/Right/DamageController"]
-[editable path="StaticBody3D/Core/Star Laser2/Left/DamageController"]
 [editable path="StaticBody3D/Core/Star Laser3"]
-[editable path="StaticBody3D/Core/Star Laser3/Laser/DamageController"]
-[editable path="StaticBody3D/Core/Star Laser3/Right/DamageController"]
-[editable path="StaticBody3D/Core/Star Laser3/Left/DamageController"]
 [editable path="StaticBody3D/Core/Star Laser4"]
-[editable path="StaticBody3D/Core/Star Laser4/Laser/DamageController"]
-[editable path="StaticBody3D/Core/Star Laser4/Right/DamageController"]
-[editable path="StaticBody3D/Core/Star Laser4/Left/DamageController"]

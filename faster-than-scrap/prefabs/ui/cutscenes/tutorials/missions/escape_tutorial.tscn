@@ -88,7 +88,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_x8owx")
-text = "Follow the blue map marker 
+text = "Follow the green map marker 
 and escape through the hyperspace portal"
 horizontal_alignment = 1
 vertical_alignment = 1

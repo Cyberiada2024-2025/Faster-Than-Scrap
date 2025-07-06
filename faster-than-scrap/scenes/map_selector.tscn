@@ -101,7 +101,7 @@ theme_override_fonts/italics_font = ExtResource("8_jq2mv")
 theme_override_fonts/bold_italics_font = ExtResource("8_jq2mv")
 theme_override_fonts/bold_font = ExtResource("8_jq2mv")
 bbcode_enabled = true
-text = "Select Mission"
+text = "All the clues lead here. Reality plane is the weakest right here. Seraku cult will recite their ancient incantation, to crack it. The fracture will spread all over the galaxy in form of the VORTEX."
 
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("2_0byna")

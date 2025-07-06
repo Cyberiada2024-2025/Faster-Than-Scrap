@@ -1,26 +1,35 @@
-[gd_scene load_steps=22 format=3 uid="uid://buaupty5vjbs5"]
+[gd_scene load_steps=25 format=3 uid="uid://buaupty5vjbs5"]
 
 [ext_resource type="PackedScene" uid="uid://djgm5s1ld5wgr" path="res://prefabs/ships/flyable_ship_tutorial.tscn" id="1_8fkjt"]
 [ext_resource type="PackedScene" uid="uid://noejc02505g0" path="res://prefabs/ui/poi/vortex_poi.tscn" id="1_ngx30"]
-[ext_resource type="PackedScene" uid="uid://dm1qlo34r16co" path="res://prefabs/environment/shop_miniature_tutorial.tscn" id="2_8fkjt"]
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="2_ngx30"]
+[ext_resource type="PackedScene" uid="uid://ck4trpcmsem6p" path="res://prefabs/environment/cultist_station_tutorial.tscn" id="3_o6uy4"]
 [ext_resource type="PackedScene" uid="uid://dfco2h1p5vdx1" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid1.tscn" id="4_6bw2y"]
 [ext_resource type="PackedScene" uid="uid://bvng8hdkqm2d6" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid2.tscn" id="5_phkkj"]
 [ext_resource type="PackedScene" uid="uid://cs2m7lumvnaot" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid3.tscn" id="6_tkgtl"]
-[ext_resource type="PackedScene" uid="uid://cdq5hecjw2uki" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_group.tscn" id="7_7xu24"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="8_6xv7r"]
+[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="9_6bw2y"]
 [ext_resource type="PackedScene" uid="uid://dsc8yod53e2qk" path="res://prefabs/ui/cutscenes/tutorials/movement_tutorial.tscn" id="9_l855j"]
 [ext_resource type="PackedScene" uid="uid://dpdbniaaphy1t" path="res://prefabs/ui/cutscenes/tutorials/energy_tutorial.tscn" id="10_aa5ti"]
+[ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://code/damage/damageable.gd" id="10_phkkj"]
 [ext_resource type="Script" uid="uid://driyjosimvut3" path="res://code/player/detect_player_low_energy.gd" id="11_37dpr"]
 [ext_resource type="Script" uid="uid://bceg4vylbdwdr" path="res://code/evironment/player_detector.gd" id="12_8j6x4"]
 [ext_resource type="PackedScene" uid="uid://31y5kdihtoxf" path="res://prefabs/ui/cutscenes/tutorials/firing_tutorial.tscn" id="13_jcith"]
 [ext_resource type="PackedScene" uid="uid://crti8uuwttken" path="res://prefabs/ui/cutscenes/tutorials/near_shop_tutorial.tscn" id="14_416px"]
+[ext_resource type="PackedScene" uid="uid://b7d6dp7jrytp3" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group.tscn" id="15_ngx30"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uf04d"]
 size = Vector3(800, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pdi7d"]
 size = Vector3(800, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngx30"]
+blend_mode = 1
+albedo_color = Color(0.94902, 0.109804, 0, 1)
+emission_enabled = true
+emission = Color(0.94902, 0.109804, 0, 1)
+emission_energy_multiplier = 25.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pdi7d"]
 size = Vector3(1, 1, 1000)
@@ -41,7 +50,7 @@ transform = Transform3D(1000, 0, 0, 0, -4.37114e-05, 1000, 0, -1000, -4.37114e-0
 
 [node name="FlyableShip" parent="." instance=ExtResource("1_8fkjt")]
 
-[node name="ShopMiniatureTutorial" parent="." instance=ExtResource("2_8fkjt")]
+[node name="CultistStationTutorial" parent="." instance=ExtResource("3_o6uy4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380)
 
 [node name="LevelStaples" parent="." instance=ExtResource("2_ngx30")]
@@ -89,21 +98,41 @@ start_angular_speed_range = 0.0
 [node name="Groups" type="Node3D" parent="Asteroids"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380.205)
 
-[node name="AsteroidBigGroup" parent="Asteroids/Groups" instance=ExtResource("7_7xu24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.526077, -0.224533, 56.1773)
+[node name="AsteroidGroupCircle" parent="Asteroids" instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.804044, 0, 0.59457, 0, 1, 0, -0.59457, 0, 0.804044, -62.0615, -0.00012207, -384.996)
 
-[node name="AsteroidBigGroup2" parent="Asteroids/Groups" instance=ExtResource("7_7xu24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -56.5887)
+[node name="AsteroidGroupCircle2" parent="Asteroids" instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.908676, 0, -0.417502, 0, 1, 0, 0.417502, 0, 0.908676, -45.4108, -0.00012207, -336.432)
 
-[node name="AsteroidBigGroup3" parent="Asteroids/Groups" instance=ExtResource("7_7xu24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.8234, 0, 3.36975)
+[node name="AsteroidGroupCircle5" parent="Asteroids" instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.908676, 0, -0.417502, 0, 1, 0, 0.417502, 0, 0.908676, 40.8652, -0.00012207, -317.468)
 
-[node name="AsteroidBigGroup4" parent="Asteroids/Groups" instance=ExtResource("7_7xu24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.3829, 0, 2.2291)
+[node name="AsteroidGroupCircle6" parent="Asteroids" instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.927452, 0, -0.373943, 0, 1, 0, 0.373943, 0, 0.927452, -27.1663, -0.00012207, -429.647)
+
+[node name="AsteroidGroupCircle3" parent="Asteroids" instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.97278, 0, -0.231731, 0, 1, 0, 0.231731, 0, 0.97278, 47.6686, 0.00012207, -419.293)
+
+[node name="AsteroidGroupCircle4" parent="Asteroids" instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.734773, 0, 0.678314, 0, 1, 0, -0.678314, 0, 0.734773, 84.8653, -0.00012207, -401.299)
+
+[node name="AsteroidGroupCircle7" parent="Asteroids" instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.734773, 0, 0.678314, 0, 1, 0, -0.678314, 0, 0.734773, 63.9077, -0.00012207, -365.795)
+
+[node name="AsteroidGroupCircle8" parent="Asteroids" instance=ExtResource("15_ngx30")]
+transform = Transform3D(0.734773, 0, 0.678314, 0, 1, 0, -0.678314, 0, 0.734773, -9.92151, 0, -308.302)
 
 [node name="SpaceLimit" type="Node3D" parent="."]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SpaceLimit"]
+[node name="StaticBody3D" type="RigidBody3D" parent="SpaceLimit"]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 1e+08
+gravity_scale = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpaceLimit/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -500)
@@ -112,6 +141,7 @@ shape = SubResource("BoxShape3D_uf04d")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpaceLimit/StaticBody3D/CollisionShape3D"]
 mesh = SubResource("BoxMesh_pdi7d")
 skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ngx30")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="SpaceLimit/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 500)
@@ -120,6 +150,7 @@ shape = SubResource("BoxShape3D_uf04d")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpaceLimit/StaticBody3D/CollisionShape3D2"]
 mesh = SubResource("BoxMesh_pdi7d")
 skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ngx30")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="SpaceLimit/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 0, 0)
@@ -128,6 +159,7 @@ shape = SubResource("BoxShape3D_pdi7d")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpaceLimit/StaticBody3D/CollisionShape3D3"]
 mesh = SubResource("BoxMesh_q6xgx")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ngx30")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="SpaceLimit/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -400, 0, 0)
@@ -136,6 +168,17 @@ shape = SubResource("BoxShape3D_pdi7d")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpaceLimit/StaticBody3D/CollisionShape3D4"]
 mesh = SubResource("BoxMesh_q6xgx")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ngx30")
+
+[node name="CollisionDamageCalculator" parent="SpaceLimit/StaticBody3D" node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("9_6bw2y")]
+damageable = NodePath("../Damageable")
+shape = NodePath("../CollisionShape3D")
+include_other_shapes = true
+dealt_damage_multiplier = 0.0
+
+[node name="Damageable" type="Area3D" parent="SpaceLimit/StaticBody3D"]
+script = ExtResource("10_phkkj")
+metadata/_custom_type_script = "uid://b7c5dxlqsxtlt"
 
 [node name="Movement cutscene player" type="Node" parent="."]
 script = ExtResource("8_6xv7r")
@@ -173,9 +216,6 @@ shape = SubResource("SphereShape3D_83mrs")
 script = ExtResource("8_6xv7r")
 cutscene_path = ExtResource("14_416px")
 
-[connection signal="player_entered" from="ShopMiniatureTutorial/EnterShop" to="ShopMiniatureTutorial/SceneLoader" method="load_lore_scene"]
 [connection signal="player_low_energy" from="Energy cutscene player/Detect player low energy" to="Energy cutscene player" method="play"]
 [connection signal="player_entered" from="Weapon Cutscene player" to="Weapon Cutscene player/Weapon cutscene player" method="play"]
 [connection signal="player_entered" from="Portal Cutscene player" to="Portal Cutscene player/Portal cutscene player" method="play"]
-
-[editable path="ShopMiniatureTutorial"]

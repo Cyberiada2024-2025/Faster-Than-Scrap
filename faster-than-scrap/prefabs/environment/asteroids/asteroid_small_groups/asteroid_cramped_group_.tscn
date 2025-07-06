@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl6p1epbu22fd"]
+
+[ext_resource type="PackedScene" uid="uid://dn3mypfoixbpt" path="res://prefabs/environment/asteroids/single_asteroid/small/asteroid1.tscn" id="1_envq7"]
+[ext_resource type="PackedScene" uid="uid://c21ake882np85" path="res://prefabs/environment/asteroids/single_asteroid/small/asteroid2.tscn" id="2_tmfxe"]
+[ext_resource type="PackedScene" uid="uid://uuv0d0vpd0wf" path="res://prefabs/environment/asteroids/single_asteroid/small/asteroid3.tscn" id="3_gd62o"]
+
+[node name="AsteroidGroupCircle" type="Node3D"]
+
+[node name="Asteroid" parent="." instance=ExtResource("1_envq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.42945, -1.90735e-06, 3.06124)
+start_speed_range = 0.5
+
+[node name="Asteroid5" parent="." instance=ExtResource("1_envq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00646, 1.90735e-06, 3.44545)
+start_speed_range = 0.5
+
+[node name="Asteroid7" parent="." instance=ExtResource("2_tmfxe")]
+transform = Transform3D(0.942752, 0, -0.333494, 0, 1, 0, 0.333494, 0, 0.942752, 17.0812, 0, -1.36808)
+start_speed_range = 0.5
+
+[node name="Asteroid8" parent="." instance=ExtResource("2_tmfxe")]
+transform = Transform3D(0.976341, 0, 0.216235, 0, 1, 0, -0.216235, 0, 0.976341, 6.3066, 1.52588e-05, -8.67262)
+start_speed_range = 0.5
+
+[node name="Asteroid10" parent="." instance=ExtResource("2_tmfxe")]
+transform = Transform3D(0.934254, 0, -0.356608, 0.299269, 0.543804, 0.784037, 0.193925, -0.839212, 0.508052, 13.4977, 1.52588e-05, -10.8284)
+start_speed_range = 0.5
+
+[node name="Asteroid9" parent="." instance=ExtResource("2_tmfxe")]
+transform = Transform3D(0.889121, 0, -0.457672, 0, 1, 0, 0.457672, 0, 0.889121, 15.6172, -5.72205e-06, -6.81301)
+start_speed_range = 0.5
+
+[node name="Asteroid12" parent="." instance=ExtResource("3_gd62o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.23261, -1.90735e-06, -3.30353)
+start_speed_range = 0.5
+
+[node name="Asteroid13" parent="." instance=ExtResource("3_gd62o")]
+transform = Transform3D(0.912442, 0, 0.409207, 0, 1, 0, -0.409207, 0, 0.912442, 10.9754, 0, -2.94499)
+start_speed_range = 0.5
+
+[node name="Asteroid14" parent="." instance=ExtResource("3_gd62o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7416, 1.36424e-12, 4.0436)
+start_speed_range = 0.5

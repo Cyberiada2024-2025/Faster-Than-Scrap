@@ -144,7 +144,7 @@ healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Shield"
 prize = 2
-description = "Activate to project protective energy field. Drains energy on activation, slowly over time, and per absorbed damage."
+description = "Scrapped from an old military frigate, this shield won't protect you from collisions, but can effectively block most projectiles."
 metadata/_custom_type_script = "uid://dsdbrxhbn35w7"
 
 [node name="Shield2" type="Node3D" parent="." node_paths=PackedStringArray("close_animator", "hit_animator", "collider")]

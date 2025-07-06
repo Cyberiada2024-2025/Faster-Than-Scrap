@@ -35,10 +35,7 @@ healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Minigun"
 prize = 2
-description = "It's like a gun, but small
-
-also fast
-that's probably important"
+description = "Salvaged from military equipment, this gun is all but \"mini\". Shoots fast, low-damage projectiles at an extremally high rate."
 
 [node name="CommonGunModel" type="Node3D" parent="."]
 transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, -0.0650702, 0.369401)

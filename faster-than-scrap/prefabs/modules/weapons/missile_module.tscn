@@ -77,9 +77,9 @@ sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
-module_name = "Missile"
+module_name = "Missile Launcher"
 prize = 3
-description = "Advanced weapon. Activate to release a slow-moving homing missile."
+description = "An old, decomissioned weapon from a long-gone age. When activated, it releases a slow-moving homing missile."
 
 [node name="SpawnerWeapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.14689)

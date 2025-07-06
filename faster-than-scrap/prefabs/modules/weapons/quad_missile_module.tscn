@@ -81,9 +81,9 @@ sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
-module_name = "Missile"
+module_name = "Quad Missile Launcher"
 prize = 3
-description = "Advanced waepon. Activate to release a slow-moving homing missile."
+description = "Four smaller launchers, hastily welded together. This weapon fires fast, inaccurate missiles at a high rate."
 
 [node name="MissileLauncher" type="Node3D" parent="."]
 transform = Transform3D(-5.46392e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-08, 5.58616e-08, 0, -0.305589)

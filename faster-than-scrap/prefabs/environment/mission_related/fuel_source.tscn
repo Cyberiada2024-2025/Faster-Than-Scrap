@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://83pmb3ixecep"]
+[gd_scene load_steps=12 format=3 uid="uid://83pmb3ixecep"]
 
 [ext_resource type="Script" uid="uid://bk38eedjmfub" path="res://code/evironment/refinery.gd" id="1_bd28u"]
 [ext_resource type="Script" uid="uid://bxvqss31pcw3p" path="res://code/evironment/droppable.gd" id="2_kaa5q"]
@@ -8,11 +8,19 @@
 [ext_resource type="PackedScene" uid="uid://c7gr12rhsysjx" path="res://prefabs/ui/poi/mission_poi.tscn" id="6_4x2we"]
 [ext_resource type="PackedScene" uid="uid://dbu3cnrdvxlyf" path="res://prefabs/environment/refinery/refinery.tscn" id="7_bd28u"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vf3at"]
-size = Vector3(20, 26, 20)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bd28u"]
+radius = 10.5879
+height = 37.8047
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_r16pb"]
-size = Vector3(7.492, 14.618, 10.102)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r16pb"]
+radius = 7.10163
+height = 15.9511
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bd28u"]
+size = Vector3(7.5061, 25.0134, 7.43728)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bd28u"]
+radius = 8.90603
 
 [node name="FuelSource" type="RigidBody3D"]
 axis_lock_linear_y = true
@@ -20,11 +28,32 @@ mass = 400000.0
 script = ExtResource("1_bd28u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_vf3at")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36227, -10.9687, -1.26647)
+shape = SubResource("CapsuleShape3D_bd28u")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1679, -5.69469, 3.40728)
-shape = SubResource("BoxShape3D_r16pb")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36227, -6.92267, 8.47211)
+shape = SubResource("CapsuleShape3D_r16pb")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7516, -7.34291, -11.1074)
+shape = SubResource("CapsuleShape3D_r16pb")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6168, -6.30323, 9.74606)
+shape = SubResource("BoxShape3D_bd28u")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5092, -7.35964, 1.21211)
+shape = SubResource("SphereShape3D_bd28u")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09236, -4.24452, -6.07778)
+shape = SubResource("SphereShape3D_bd28u")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.79691, 0.298439, -2.29986)
+shape = SubResource("SphereShape3D_bd28u")
 
 [node name="Pickable Fuel Spawner" type="Node3D" parent="."]
 script = ExtResource("2_kaa5q")
@@ -35,22 +64,44 @@ damageable = NodePath("../DamageController/Damageable")
 shape = NodePath("../CollisionShape3D")
 
 [node name="DamageController" parent="." instance=ExtResource("4_kaa5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.39423, 0)
 
 [node name="Damageable" parent="DamageController" index="0"]
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
-shape = SubResource("BoxShape3D_vf3at")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36227, -10.9687, -1.26647)
+shape = SubResource("CapsuleShape3D_bd28u")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="DamageController/Damageable" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1679, -5.69469, 3.40728)
-shape = SubResource("BoxShape3D_r16pb")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36227, -6.92267, 8.47211)
+shape = SubResource("CapsuleShape3D_r16pb")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="DamageController/Damageable" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7516, -7.34291, -11.1074)
+shape = SubResource("CapsuleShape3D_r16pb")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="DamageController/Damageable" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6168, -6.30323, 9.74606)
+shape = SubResource("BoxShape3D_bd28u")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="DamageController/Damageable" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5092, -7.35964, 1.21211)
+shape = SubResource("SphereShape3D_bd28u")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="DamageController/Damageable" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09236, -4.24452, -6.07778)
+shape = SubResource("SphereShape3D_bd28u")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="DamageController/Damageable" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.79691, 0.298439, -2.29986)
+shape = SubResource("SphereShape3D_bd28u")
 
 [node name="MissionPoi" parent="." instance=ExtResource("6_4x2we")]
 
 [node name="Refinery" parent="." instance=ExtResource("7_bd28u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.045805, 10.1508, 0.477286)
+transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 3, -0.045805, 3.75657, 0.477286)
 
 [connection signal="damaged" from="DamageController" to="." method="take_damage"]
 

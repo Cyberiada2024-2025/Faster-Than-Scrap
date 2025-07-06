@@ -153,9 +153,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_kghuc")
-text = "Hover mouse over
-the \"?\" icon to view
-the Scrapyard
+text = "Hover your mouse
+over the \"?\" icon
+to view the Scrapyard
 construction controls."
 horizontal_alignment = 1
 vertical_alignment = 1

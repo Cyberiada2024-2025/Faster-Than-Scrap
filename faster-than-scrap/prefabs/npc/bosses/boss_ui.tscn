@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2oshlh57wf02"]
+[gd_scene load_steps=3 format=3 uid="uid://d2oshlh57wf02"]
 
-[ext_resource type="Script" path="res://code/boss/boss_ui.gd" id="1_1g20g"]
+[ext_resource type="Script" uid="uid://banhvbi3c5lub" path="res://code/boss/boss_ui.gd" id="1_1g20g"]
+[ext_resource type="FontFile" uid="uid://c5684ddhvkomb" path="res://art/fonts/Orbitron-Bold.ttf" id="2_0n5q2"]
 
 [node name="BossUi" type="Control" node_paths=PackedStringArray("healh_bar", "boss_name")]
 layout_mode = 3
@@ -41,5 +42,6 @@ layout_mode = 2
 offset_top = 563.0
 offset_right = 1152.0
 offset_bottom = 604.0
+theme_override_fonts/font = ExtResource("2_0n5q2")
 text = "BOSS"
 horizontal_alignment = 1

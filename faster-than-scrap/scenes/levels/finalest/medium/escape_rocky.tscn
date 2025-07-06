@@ -81,7 +81,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5375, 0, -74.5501)
 [node name="Turret Gun4" parent="Enemies" index="7" instance=ExtResource("6_8kwhc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.523, 0, -101.312)
 
-[node name="MissionFuel" type="Node" parent="." index="5" node_paths=PackedStringArray("portal_position")]
+[node name="MissionEscape" type="Node" parent="." index="5" node_paths=PackedStringArray("portal_position")]
 script = ExtResource("2_h5eom")
 portal_position = NodePath("../PortalPosition")
 metadata/_custom_type_script = "uid://bq0dwhdq76qw"

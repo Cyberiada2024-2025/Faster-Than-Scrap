@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://sc1vdlxpdgie"]
+
+[ext_resource type="Script" uid="uid://chekqae75l00d" path="res://code/evironment/asteroid.gd" id="1_2kbm7"]
+[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="2_sj18o"]
+[ext_resource type="PackedScene" uid="uid://b2rns0sxx87ar" path="res://prefabs/vfx/particles/timed_particles/collision_asteroid.tscn" id="3_m2vyn"]
+[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_e5vvt"]
+[ext_resource type="PackedScene" uid="uid://c5h05bkp7b8go" path="res://prefabs/ui/poi/asteroid_poi.tscn" id="5_gq2r8"]
+[ext_resource type="PackedScene" uid="uid://bo82hmvlowob5" path="res://art/models/big-asteroids/9.glb" id="6_q22i8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2kbm7"]
+height = 3.95148
+radius = 8.20117
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sj18o"]
+radius = 3.46472
+height = 16.5984
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m2vyn"]
+radius = 3.77374
+height = 15.4947
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e5vvt"]
+radius = 4.12219
+height = 27.5037
+
+[node name="Ast9" type="RigidBody3D"]
+mass = 400000.0
+script = ExtResource("1_2kbm7")
+hp = 1000.0
+
+[node name="CollisionDamageCalculator" parent="." instance=ExtResource("2_sj18o")]
+collision_particles = ExtResource("3_m2vyn")
+
+[node name="DamageController" parent="." instance=ExtResource("4_e5vvt")]
+
+[node name="Damageable" parent="DamageController" index="0"]
+collision_layer = 6
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.272251, -0.481625, -0.149462)
+shape = SubResource("CylinderShape3D_2kbm7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="DamageController/Damageable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.928525, 0.371271, 0, -0.371271, 0.928525, 2.75498, 8.60005, -5.73814)
+shape = SubResource("CapsuleShape3D_sj18o")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="DamageController/Damageable" index="2"]
+transform = Transform3D(0.981336, -0.188917, 0.035908, 0.192299, 0.964076, -0.183245, 9.29582e-10, 0.18673, 0.982411, -6.65476, 7.88065, 2.82692)
+shape = SubResource("CapsuleShape3D_m2vyn")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="DamageController/Damageable" index="3"]
+transform = Transform3D(0.999771, -0.021242, 0.00270496, 0.0214136, 0.991762, -0.126291, 0, 0.12632, 0.991989, 5.82183, 10.0353, 6.24696)
+shape = SubResource("CapsuleShape3D_e5vvt")
+
+[node name="Asteroid Poi" parent="." instance=ExtResource("5_gq2r8")]
+transform = Transform3D(19.7091, 0, 0, 0, -8.61512e-07, 37.6508, 0, -19.7091, -1.64577e-06, 0.226759, 5.83184, 0.0338677)
+visible = false
+
+[node name="9" parent="." instance=ExtResource("6_q22i8")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.272251, -0.481625, -0.149462)
+shape = SubResource("CylinderShape3D_2kbm7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.928525, 0.371271, 0, -0.371271, 0.928525, 2.75498, 8.60005, -5.73814)
+shape = SubResource("CapsuleShape3D_sj18o")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.981336, -0.188917, 0.035908, 0.192299, 0.964076, -0.183245, 9.29582e-10, 0.18673, 0.982411, -6.65476, 7.88065, 2.82692)
+shape = SubResource("CapsuleShape3D_m2vyn")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999771, -0.021242, 0.00270496, 0.0214136, 0.991762, -0.126291, 0, 0.12632, 0.991989, 5.82183, 10.0353, 6.24696)
+shape = SubResource("CapsuleShape3D_e5vvt")
+
+[editable path="DamageController"]

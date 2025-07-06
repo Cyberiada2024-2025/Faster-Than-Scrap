@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5t55uwwv5ewk"]
+[gd_scene load_steps=4 format=3 uid="uid://c5t55uwwv5ewk"]
 
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_pv37b"]
 [ext_resource type="PackedScene" uid="uid://cgx7bdd0f2rhg" path="res://prefabs/environment/shop_miniature.tscn" id="2_0o61q"]
-[ext_resource type="PackedScene" uid="uid://cdq5hecjw2uki" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_group.tscn" id="3_n88ki"]
 [ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/npc/enemies/fighter.tscn" id="4_c5b33"]
 
 [node name="Asteroid cramped" type="Node3D"]
@@ -13,24 +12,6 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.475, 0, -61.196)
 
 [node name="Asteroids" type="Node3D" parent="."]
-
-[node name="AsteroidBigGroup" parent="Asteroids" instance=ExtResource("3_n88ki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.853, 0, -59.6391)
-
-[node name="AsteroidBigGroup6" parent="Asteroids" instance=ExtResource("3_n88ki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9275, 0, -75.2872)
-
-[node name="AsteroidBigGroup2" parent="Asteroids" instance=ExtResource("3_n88ki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.853, 0, 25.3609)
-
-[node name="AsteroidBigGroup3" parent="Asteroids" instance=ExtResource("3_n88ki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.14697, 0, 67.3609)
-
-[node name="AsteroidBigGroup4" parent="Asteroids" instance=ExtResource("3_n88ki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.1187, 0, 17.4029)
-
-[node name="AsteroidBigGroup5" parent="Asteroids" instance=ExtResource("3_n88ki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.1187, 0, -60.5971)
 
 [node name="Enemies" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9275, 0, -75.2872)
@@ -58,3 +39,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.359, -3.8147e-06, 0.1007
 
 [node name="Fighter8" parent="Enemies" instance=ExtResource("4_c5b33")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.542, -3.8147e-06, -7.3923)
+
+[editable path="LevelStaples"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnqt5dsa6jb20"]
+[gd_scene load_steps=9 format=3 uid="uid://dnqt5dsa6jb20"]
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_xtrno"]
 [ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_xxfpo"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://iwk1g8ku76ys" path="res://code/ui/cutscenes/slide_elements/slide_element_scale.gd" id="5_6a47g"]
 [ext_resource type="Script" uid="uid://decpi0ok1lasp" path="res://code/ui/cutscenes/slide_elements/slide_element_rotate.gd" id="6_jox1w"]
 [ext_resource type="Texture2D" uid="uid://c8cn324f1an8b" path="res://art/textures/ui/cutscenes/boss_images/juggernaut2.PNG" id="7_xxfpo"]
+[ext_resource type="FontFile" uid="uid://c5684ddhvkomb" path="res://art/fonts/Orbitron-Bold.ttf" id="8_ioisw"]
 
 [node name="BossCutsceneExample" type="ColorRect"]
 anchors_preset = 15
@@ -87,5 +88,6 @@ offset_left = 411.0
 offset_top = 463.0
 offset_right = 969.0
 offset_bottom = 546.0
+theme_override_fonts/font = ExtResource("8_ioisw")
 theme_override_font_sizes/font_size = 60
 text = "JUGGERNAUT"

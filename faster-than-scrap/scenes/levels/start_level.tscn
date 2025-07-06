@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmivnukkee4wr"]
+[gd_scene load_steps=12 format=3 uid="uid://dmivnukkee4wr"]
 
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_xgqdr"]
 [ext_resource type="PackedScene" uid="uid://bdbipv17ae6j2" path="res://prefabs/ui/cutscenes/tutorials/missions/escape_tutorial.tscn" id="3_ug5yp"]
@@ -6,9 +6,13 @@
 [ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="5_25ioe"]
 [ext_resource type="PackedScene" uid="uid://dlp3fs4qym6g2" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group_straight_line.tscn" id="5_subpj"]
 [ext_resource type="PackedScene" uid="uid://dsbr8a55sppml" path="res://prefabs/npc/enemies/drone.tscn" id="6_subpj"]
-[ext_resource type="PackedScene" uid="uid://dm1qlo34r16co" path="res://prefabs/environment/shop_miniature_tutorial.tscn" id="7_0pcpl"]
+[ext_resource type="PackedScene" uid="uid://ck4trpcmsem6p" path="res://prefabs/environment/cultist_station_tutorial.tscn" id="6_ug5yp"]
 [ext_resource type="Script" uid="uid://dgljxwmpb7xrv" path="res://code/evironment/enemy_spawner.gd" id="8_ug5yp"]
 [ext_resource type="PackedScene" uid="uid://do0sasbjik8fp" path="res://prefabs/npc/enemies/corrupted.tscn" id="9_1rg6r"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ug5yp"]
+height = 8.0957
+radius = 21.0723
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ul8wb"]
 radius = 30.819
@@ -49,11 +53,30 @@ transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819
 [node name="Portal Position" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -107.266)
 
-[node name="ShopMiniatureTutorial" parent="." instance=ExtResource("7_0pcpl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.0403)
+[node name="CultistStationTutorial" parent="." instance=ExtResource("6_ug5yp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27)
 
-[node name="EnterShop" parent="ShopMiniatureTutorial" index="1"]
-instantiated_cooldown = 2.0
+[node name="EnterStation" parent="CultistStationTutorial" index="2"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" parent="CultistStationTutorial/EnterStation" index="0"]
+shape = null
+disabled = true
+
+[node name="EnemyPoi" parent="CultistStationTutorial" index="3"]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CultistStationTutorial"]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CultistStationTutorial/StaticBody3D"]
+shape = SubResource("CylinderShape3D_ug5yp")
 
 [node name="Enemies" type="Node3D" parent="."]
 
@@ -88,6 +111,4 @@ capture_time = 100000.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D"]
 shape = SubResource("SphereShape3D_ul8wb")
 
-[connection signal="player_entered" from="ShopMiniatureTutorial/EnterShop" to="ShopMiniatureTutorial/SceneLoader" method="load_build_tutorial"]
-
-[editable path="ShopMiniatureTutorial"]
+[editable path="CultistStationTutorial"]

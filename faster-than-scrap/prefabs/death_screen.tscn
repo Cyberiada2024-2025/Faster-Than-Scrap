@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://co00lq4f26bp4"]
+[gd_scene load_steps=5 format=3 uid="uid://co00lq4f26bp4"]
 
 [ext_resource type="Script" path="res://code/ui/connect_sound_to_all_clickables.gd" id="1_62nss"]
-[ext_resource type="Texture2D" uid="uid://cp478xmty8tx6" path="res://art/textures/died_placeholder.png" id="1_katkj"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_b8ji8"]
+[ext_resource type="FontFile" uid="uid://c5684ddhvkomb" path="res://art/fonts/Orbitron-Bold.ttf" id="4_2m0o8"]
+[ext_resource type="Theme" uid="uid://d37mji7qf4y73" path="res://prefabs/ui/themes/ui_theme.tres" id="4_jbbuh"]
 
 [node name="DeathScreen" type="Control"]
 layout_direction = 1
@@ -49,9 +50,15 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_katkj")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_2m0o8")
+theme_override_font_sizes/font_size = 80
+text = "Ashes to ashes
+Scrap to scrap"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_direction = 1
@@ -64,6 +71,9 @@ alignment = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("4_jbbuh")
+theme_override_fonts/font = ExtResource("4_2m0o8")
+theme_override_font_sizes/font_size = 30
 text = "MAIN MENU"
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="UI/SceneLoader" method="load_main_menu_scene"]

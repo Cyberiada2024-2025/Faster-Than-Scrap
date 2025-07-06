@@ -19,9 +19,9 @@ script = ExtResource("1_y502x")
 linear_damp_value = 0.3
 angular_damp_value = 1.2
 cockpit = NodePath("Cockpit")
-energy = 130.0
-max_energy = 130.0
-restore = 12.0
+energy = 200.0
+max_energy = 200.0
+restore = 20.0
 team = 0
 leave_animation = NodePath("Cockpit/AnimationPlayer")
 

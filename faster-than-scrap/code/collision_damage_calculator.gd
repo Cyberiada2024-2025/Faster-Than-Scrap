@@ -97,8 +97,7 @@ func _spawn_collision_particles() -> void:
 
 	var particles: Node3D = collision_particles.instantiate()
 	particles.global_position = average_position
-	if get_tree().current_scene != null:
-		get_tree().current_scene.add_child(particles)
+	get_tree().current_scene.add_child(particles)
 	particles.look_at(average_position + average_normal)
 
 

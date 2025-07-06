@@ -45,6 +45,7 @@ metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 [sub_resource type="Resource" id="Resource_5jnkn"]
 script = ExtResource("6_0a6x0")
 about = "Asteroid mining corporations funneled serious money into the Seraku Organization to relocate civilians here. 
+
 Update: Seraku is sending some workers down on an untamed and unimpressive planet. I've heard rumors in the bar, about undisclosed incidents... Best not to dig too deep this early in the investigation, I'd draw too much attention."
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
@@ -129,13 +130,15 @@ metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 [sub_resource type="Resource" id="Resource_fj8or"]
 script = ExtResource("6_0a6x0")
 about = "Update after checking with the library: That civilization has an interesting mythology about the origins of evil.
+
 There was an unspecified eldritch being of unquenchable hunger, feeding on whole stars. The great shamans gathered to cast it out from reality, but before it was banished, the abomination scattered relics, through which its voice can be heard."
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_dl063"]
 script = ExtResource("6_0a6x0")
-about = "This hard-to-reach place was a relocation destination that neither investors nor concerned or intrusive citizens, like me, should hear about. I... I can't infiltrate it on my own and there isn't time for a large-scale operation."
+about = "This hard-to-reach place was a relocation destination that neither investors nor concerned or intrusive citizens, like me, should ever hear about.
+I... I can't infiltrate it on my own and there isn't time for a large-scale operation."
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_mxsq4"]
@@ -164,7 +167,7 @@ metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 script = ExtResource("6_0a6x0")
 about = "1st day of investigation 
 The Humanitarian Organization of Seraku was helping countless civilians find refuge on remote worlds. Driven out by constant wars, most of them found new lives on previously uninhabited planets. Corporations supported this operation, gaining footholds on these new frontiers. 
-However, the covered-up incidents on relocation sites finally sparked the Lord Inquisitor's attention."
+However, the covered-up incidents on relocation sites finally sparked the Lord Inquisitor's attention, and I've been sent to investigate."
 difficulty = 0
 
 [node name="Map1" type="HBoxContainer" node_paths=PackedStringArray("active_node")]

@@ -14,7 +14,7 @@ difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [node name="MissionKillEnemies" type="TextureButton" node_paths=PackedStringArray("icon", "cross")]
-self_modulate = Color(2.93598e-06, 0.635492, 0.537048, 1)
+self_modulate = Color(0.2176, 0.64, 0.57664, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -26,7 +26,7 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_5430q")
 mission_info = SubResource("Resource_83pbw")
-modulate_color = Color(0, 0.635294, 0.537255, 1)
+modulate_color = Color(0.215686, 0.639216, 0.576471, 1)
 icon = NodePath("TextureRect")
 cross = NodePath("Cross")
 

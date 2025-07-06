@@ -8,11 +8,6 @@ extends MapNode
 @export var is_miniboss = false
 
 
-func _set_color() -> void:
-	self_modulate = Color.RED
-	super()
-
-
 func get_description() -> String:
 	return mission_info.get_node_description()
 

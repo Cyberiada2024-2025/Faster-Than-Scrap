@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://50o55qmu5g5c" path="res://code/map_select/cross.gd" id="5_ufxmx"]
 
 [node name="BossNode" type="TextureButton" node_paths=PackedStringArray("icon", "cross")]
-self_modulate = Color(1, 0, 0, 1)
+self_modulate = Color(0.8, 0.168627, 0.168627, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

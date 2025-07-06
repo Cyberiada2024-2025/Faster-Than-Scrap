@@ -13,7 +13,7 @@ about = ""
 difficulty = 0
 
 [node name="MissionFuel" type="TextureButton" node_paths=PackedStringArray("icon", "cross")]
-self_modulate = Color(1, 1, 0, 1)
+self_modulate = Color(0.83, 0.62001, 0.2822, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,7 +25,7 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_awgas")
 mission_info = SubResource("Resource_awgas")
-modulate_color = Color(1, 1, 0, 1)
+modulate_color = Color(1, 0.8, 0.329412, 1)
 icon = NodePath("TextureRect")
 cross = NodePath("Cross")
 

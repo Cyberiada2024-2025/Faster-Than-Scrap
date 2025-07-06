@@ -30,8 +30,8 @@ sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
-module_name = "Gun"
-description = "One of basic weapons. Activate to shoot long-range projectile."
+module_name = "Blaster"
+description = "A basic energy weapon. While it shows signs of wear, it's still effective for dealing damage to weaker opponents."
 
 [node name="SpawnerWeapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.17352)

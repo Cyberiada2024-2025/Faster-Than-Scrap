@@ -1,28 +1,8 @@
-[gd_scene load_steps=43 format=3 uid="uid://dyn1ks7ebosel"]
+[gd_resource type="ShaderMaterial" load_steps=32 format=3 uid="uid://bbvh1platrtd5"]
 
-[ext_resource type="Script" uid="uid://c7b8vg6a5y45v" path="res://code/weapons/projectiles/missile.gd" id="1_r34wv"]
-[ext_resource type="PackedScene" uid="uid://ci5sidx0cqr4g" path="res://prefabs/vfx/particles/timed_particles/hit particles/rocket_explosion.tscn" id="2_qnowd"]
-[ext_resource type="Script" uid="uid://7rxxtodxpx1d" path="res://code/damage/damage_area_3d.gd" id="2_xnu3b"]
-[ext_resource type="Script" uid="uid://cukcjob61wwp7" path="res://code/damage/damage.gd" id="3_31ug8"]
-[ext_resource type="PackedScene" uid="uid://dyelnq2hlcth4" path="res://art/model_prefabs/projectiles/missile_model_pf.tscn" id="4_jac8t"]
-[ext_resource type="PackedScene" uid="uid://cslkg7x0muy4u" path="res://prefabs/vfx/particles/basic/fire.tscn" id="5_43hr5"]
-
-[sub_resource type="Curve" id="Curve_2fpxk"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0526316, 0), 0.0, 0.0, 0, 0, Vector2(0.101754, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="Curve" id="Curve_qxyfj"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="Resource" id="Resource_43gyh"]
-script = ExtResource("3_31ug8")
-value = 15.0
-type = 0
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_jac8t"]
-height = 1.20422
-radius = 0.1
+[ext_resource type="Texture2D" uid="uid://ditdai7w78iji" path="res://art/textures/vfxy/fire_gradient.png" id="1_1sdiq"]
+[ext_resource type="Texture2D" uid="uid://brgjvlvgmigyf" path="res://art/textures/vfxy/fire_voronoi.png" id="2_bcbyh"]
+[ext_resource type="Texture2D" uid="uid://bb24thwd52doi" path="res://art/textures/vfxy/2DNoise.png" id="3_bfidg"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_728c8"]
 source = 5
@@ -321,55 +301,15 @@ nodes/fragment/61/node = SubResource("VisualShaderNodeStep_dhf0v")
 nodes/fragment/61/position = Vector2(400, -100)
 nodes/fragment/connections = PackedInt32Array(9, 0, 10, 2, 29, 0, 28, 1, 23, 0, 30, 0, 25, 0, 30, 1, 35, 0, 38, 2, 30, 0, 42, 0, 38, 0, 42, 1, 42, 0, 10, 0, 43, 0, 42, 2, 8, 0, 45, 0, 44, 0, 45, 1, 45, 0, 30, 2, 27, 0, 29, 0, 27, 0, 28, 0, 10, 0, 49, 1, 10, 0, 28, 2, 50, 0, 51, 2, 49, 0, 52, 0, 28, 0, 0, 1, 52, 0, 51, 0, 51, 0, 53, 0, 53, 0, 0, 0, 54, 0, 53, 1, 20, 2, 58, 1, 58, 0, 22, 0, 55, 0, 58, 0, 58, 0, 49, 0, 22, 0, 59, 0, 59, 0, 27, 0, 61, 0, 59, 1, 58, 0, 61, 1)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g1423"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a51ss"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ivgdy"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tm3ko"]
+[resource]
 resource_local_to_scene = true
 render_priority = 0
 shader = SubResource("VisualShader_adqk0")
 shader_parameter/On = 1.0
 shader_parameter/Noise_Scale = Vector2(1, 2)
 shader_parameter/ScrollingSpeed = Vector2(0.25, 1)
-shader_parameter/Warp_Noise = SubResource("CompressedTexture2D_ivgdy")
+shader_parameter/Warp_Noise = ExtResource("3_bfidg")
 shader_parameter/Warp_Strength = 0.05
-shader_parameter/Noise = SubResource("CompressedTexture2D_a51ss")
-shader_parameter/Gradient = SubResource("CompressedTexture2D_g1423")
+shader_parameter/Noise = ExtResource("2_bcbyh")
+shader_parameter/Gradient = ExtResource("1_1sdiq")
 shader_parameter/Glow_Strength = 3.0
-
-[node name="TestMissile" type="Node3D"]
-script = ExtResource("1_r34wv")
-turn_rate = SubResource("Curve_2fpxk")
-turn_rate_multiplier = 90.0
-velocity_offset_decay_time = 4.0
-velocity = SubResource("Curve_qxyfj")
-velocity_multiplier = 10.0
-lifetime = 10.0
-hit_particle_prefab = ExtResource("2_qnowd")
-
-[node name="Missile" parent="." instance=ExtResource("4_jac8t")]
-transform = Transform3D(-5.46392e-08, 0, 1, 0, 1, 0, -1.25, 0, -4.37114e-08, -2.63203e-08, 0, -0.602139)
-
-[node name="DamageArea3D" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 6
-input_ray_pickable = false
-monitorable = false
-script = ExtResource("2_xnu3b")
-_damage_type = 0
-_damage = SubResource("Resource_43gyh")
-_die_on_hit = true
-collision_activation_delay = 0.075
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -6.07488e-09, -0.611023)
-shape = SubResource("CylinderShape3D_jac8t")
-
-[node name="exhaust fire2" parent="." instance=ExtResource("5_43hr5")]
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 2.05604e-08, 2.05604e-08, 0.470368)
-radius = 0.09
-height = 1.0
-material = SubResource("ShaderMaterial_tm3ko")

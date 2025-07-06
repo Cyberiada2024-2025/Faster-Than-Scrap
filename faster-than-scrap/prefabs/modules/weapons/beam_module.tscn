@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqkj1jovh07cf"]
+[gd_scene load_steps=18 format=3 uid="uid://cqkj1jovh07cf"]
 
 [ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_da12c"]
 [ext_resource type="Script" uid="uid://crmxerc164n6q" path="res://code/weapons/constant_fire_weapon.gd" id="2_7ulne"]
@@ -6,12 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://d1sstofe0o57n" path="res://prefabs/vfx/particles/laser_muzzle.tscn" id="4_j1wmj"]
 [ext_resource type="PackedScene" uid="uid://diw1t40pjk68x" path="res://art/model_prefabs/laser_beam_gun_pf.tscn" id="5_5nrh6"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="6_5nrh6"]
+[ext_resource type="Material" uid="uid://cd26awjqmtnkj" path="res://art/materials/laser_beam_gun/laser_beam_gun_material_3d.tres" id="6_twmd2"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="7_a44b7"]
+[ext_resource type="ArrayMesh" uid="uid://clb3j7cenx6bv" path="res://art/models/modules/beam_head.obj" id="7_psec7"]
 [ext_resource type="AudioStream" uid="uid://caj6xj0dd5615" path="res://art/audio/sounds/laser_beam.mp3" id="10_3d6pv"]
 [ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="11_3d6pv"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="12_5nrh6"]
 [ext_resource type="PackedScene" uid="uid://cyw1yf0fdjx1j" path="res://prefabs/modules/functional_components/illegal_placement_zone.tscn" id="12_a44b7"]
-[ext_resource type="PackedScene" uid="uid://dtc3u2risx08r" path="res://prefabs/modules/functional_components/module_tooltip_shower.tscn" id="13_3d6pv"]
+[ext_resource type="PackedScene" uid="uid://bi504wqk2wtoy" path="res://prefabs/modules/functional_components/module_tooltip_shower.tscn" id="13_3d6pv"]
 [ext_resource type="PackedScene" uid="uid://bij3qdd0iavi3" path="res://prefabs/modules/functional_components/direction_arrow.tscn" id="13_a44b7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yf3ku"]
@@ -32,7 +34,7 @@ healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Beam"
 prize = 2
-description = "One of basic weapons. Hold activation to shoot continous beam."
+description = "A makeshift energy weapon, that fires a continuous beam of focused energy. It's effective at slicing through most materials, but requires a lot of power."
 
 [node name="Constant" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.610518)
@@ -44,10 +46,16 @@ projectile = ExtResource("3_nosfs")
 metadata/_custom_type_script = "uid://crmxerc164n6q"
 
 [node name="Laser_Muzzle" parent="Constant" instance=ExtResource("4_j1wmj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0617512)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.410266)
 
 [node name="LaserBeamGunModel" parent="." instance=ExtResource("5_5nrh6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="LaserBeamGunModel2" type="MeshInstance3D" parent="LaserBeamGunModel"]
+transform = Transform3D(1.5, -1.69407e-21, 2.13163e-14, 4.23516e-22, -1.5, -1.31134e-07, 2.13163e-14, 1.31134e-07, -1.5, 0.212703, -0.000508158, 7.79012e-11)
+material_override = ExtResource("6_twmd2")
+mesh = ExtResource("7_psec7")
+skeleton = NodePath("../..")
 
 [node name="AttachPoints" type="Node3D" parent="."]
 

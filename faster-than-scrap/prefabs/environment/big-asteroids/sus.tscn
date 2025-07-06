@@ -80,36 +80,37 @@ collision_layer = 6
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.544265, 0.930466, 0)
+transform = Transform3D(1.96853, 0, 0, 0, 1.96853, 0, 0, 0, 1.96853, -0.455866, 2.99663, 0.01574)
 shape = SubResource("CapsuleShape3D_ksehd")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="DamageController/Damageable" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.947108, -3.01237, -2.15409)
+transform = Transform3D(1.96853, 0, 0, 0, 1.96853, 0, 0, 0, 1.96853, -1.24887, -4.76494, -4.22464)
 shape = SubResource("CapsuleShape3D_uukik")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="DamageController/Damageable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.763, -2.90287, 2.07215)
+transform = Transform3D(1.96853, 0, 0, 0, 1.96853, 0, 0, 0, 1.96853, -0.886452, -4.54938, 4.09482)
 shape = SubResource("CapsuleShape3D_uukik")
 
 [node name="Asteroid Poi" parent="." instance=ExtResource("5_3v6dy")]
-transform = Transform3D(9.46794, 0, 0, 0, -4.13857e-07, 9.46794, 0, -9.46794, -4.13857e-07, -0.575544, 0.346762, 0.0338677)
+transform = Transform3D(18.6379, 0, 0, 0, -8.14688e-07, 18.6379, 0, -18.6379, -8.14688e-07, -0.51744, 1.8476, 0.0824094)
 
 [node name="sus" type="Node3D" parent="."]
 
 [node name="sus_low_poly" type="MeshInstance3D" parent="sus"]
+transform = Transform3D(1.96853, 0, 0, 0, 1.96853, 0, 0, 0, 1.96853, 0.615533, 1.16499, 0.01574)
 mesh = SubResource("ArrayMesh_fh58e")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.544265, 0.930466, 0)
+transform = Transform3D(1.96853, 0, 0, 0, 1.96853, 0, 0, 0, 1.96853, -0.455866, 2.99663, 0.01574)
 shape = SubResource("CapsuleShape3D_ksehd")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.947108, -3.01237, -2.15409)
+transform = Transform3D(1.96853, 0, 0, 0, 1.96853, 0, 0, 0, 1.96853, -1.24887, -4.76494, -4.22464)
 shape = SubResource("CapsuleShape3D_uukik")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.763, -2.90287, 2.07215)
+transform = Transform3D(1.96853, 0, 0, 0, 1.96853, 0, 0, 0, 1.96853, -0.886452, -4.54938, 4.09482)
 shape = SubResource("CapsuleShape3D_uukik")
 
 [editable path="DamageController"]

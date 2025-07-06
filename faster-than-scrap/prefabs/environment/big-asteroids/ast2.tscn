@@ -75,18 +75,21 @@ collision_layer = 6
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
+transform = Transform3D(3.5425, 0, 0, 0, 3.5425, 0, 0, 0, 3.5425, -0.144134, -1.27125, -0.521338)
 shape = SubResource("ConvexPolygonShape3D_0ydak")
 
 [node name="Asteroid Poi" parent="." instance=ExtResource("5_y2bh3")]
-transform = Transform3D(9.08644, 0, 0, 0, -3.97181e-07, 9.08644, 0, -9.08644, -3.97181e-07, 0.226759, 2, 0.820196)
+transform = Transform3D(32.1888, 0, 0, 0, -1.40702e-06, 32.1888, 0, -32.1888, -1.40702e-06, 0.659161, 5.81376, 2.38421)
 
 [node name="2" type="Node3D" parent="."]
 
 [node name="2_001" type="MeshInstance3D" parent="2"]
+transform = Transform3D(3.5425, 0, 0, 0, 3.5425, 0, 0, 0, 3.5425, -0.144134, -1.27125, -0.521338)
 mesh = SubResource("ArrayMesh_fi6i8")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3.5425, 0, 0, 0, 3.5425, 0, 0, 0, 3.5425, -0.144134, -1.27125, -0.521338)
 shape = SubResource("ConvexPolygonShape3D_0ydak")
 
 [editable path="DamageController"]

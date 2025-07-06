@@ -45,41 +45,41 @@ collision_layer = 6
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.272251, -0.481625, -0.149462)
+transform = Transform3D(1.58537, 0, 0, 0, 1.58537, 0, 0, 0, 1.58537, -0.638041, -4.15288, -0.611965)
 shape = SubResource("CylinderShape3D_2kbm7")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="DamageController/Damageable" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.928525, 0.371271, 0, -0.371271, 0.928525, 2.75498, 8.60005, -5.73814)
+transform = Transform3D(1.58537, 0, 0, 0, 1.47206, 0.588602, 0, -0.588602, 1.47206, 4.16124, 10.2449, -9.47209)
 shape = SubResource("CapsuleShape3D_sj18o")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="DamageController/Damageable" index="2"]
-transform = Transform3D(0.981336, -0.188917, 0.035908, 0.192299, 0.964076, -0.183245, 9.29582e-10, 0.18673, 0.982411, -6.65476, 7.88065, 2.82692)
+transform = Transform3D(1.55578, -0.299503, 0.0569275, 0.304865, 1.52842, -0.290511, 1.47373e-09, 0.296036, 1.55748, -10.7567, 9.10442, 4.1067)
 shape = SubResource("CapsuleShape3D_m2vyn")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="DamageController/Damageable" index="3"]
-transform = Transform3D(0.999771, -0.021242, 0.00270496, 0.0214136, 0.991762, -0.126291, 0, 0.12632, 0.991989, 5.82183, 10.0353, 6.24696)
+transform = Transform3D(1.58501, -0.0336764, 0.00428836, 0.0339485, 1.57231, -0.200218, 0, 0.200264, 1.57267, 9.02333, 12.5203, 9.52873)
 shape = SubResource("CapsuleShape3D_e5vvt")
 
 [node name="Asteroid Poi" parent="." instance=ExtResource("5_gq2r8")]
-transform = Transform3D(19.7091, 0, 0, 0, -8.61512e-07, 37.6508, 0, -19.7091, -1.64577e-06, 0.226759, 5.83184, 0.0338677)
-visible = false
+transform = Transform3D(31.2462, 0, 0, 0, -1.36582e-06, 59.6904, 0, -31.2462, -2.60915e-06, 0.153075, 5.8563, -0.32132)
 
 [node name="9" parent="." instance=ExtResource("6_q22i8")]
+transform = Transform3D(1.58537, 0, 0, 0, 1.58537, 0, 0, 0, 1.58537, -0.206422, -3.38933, -0.375013)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.272251, -0.481625, -0.149462)
+transform = Transform3D(1.58537, 0, 0, 0, 1.58537, 0, 0, 0, 1.58537, -0.638041, -4.15288, -0.611965)
 shape = SubResource("CylinderShape3D_2kbm7")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.928525, 0.371271, 0, -0.371271, 0.928525, 2.75498, 8.60005, -5.73814)
+transform = Transform3D(1.58537, 0, 0, 0, 1.47206, 0.588602, 0, -0.588602, 1.47206, 4.16124, 10.2449, -9.47209)
 shape = SubResource("CapsuleShape3D_sj18o")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.981336, -0.188917, 0.035908, 0.192299, 0.964076, -0.183245, 9.29582e-10, 0.18673, 0.982411, -6.65476, 7.88065, 2.82692)
+transform = Transform3D(1.55578, -0.299503, 0.0569275, 0.304865, 1.52842, -0.290511, 1.47373e-09, 0.296036, 1.55748, -10.7567, 9.10442, 4.1067)
 shape = SubResource("CapsuleShape3D_m2vyn")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.999771, -0.021242, 0.00270496, 0.0214136, 0.991762, -0.126291, 0, 0.12632, 0.991989, 5.82183, 10.0353, 6.24696)
+transform = Transform3D(1.58501, -0.0336764, 0.00428836, 0.0339485, 1.57231, -0.200218, 0, 0.200264, 1.57267, 9.02333, 12.5203, 9.52873)
 shape = SubResource("CapsuleShape3D_e5vvt")
 
 [editable path="DamageController"]

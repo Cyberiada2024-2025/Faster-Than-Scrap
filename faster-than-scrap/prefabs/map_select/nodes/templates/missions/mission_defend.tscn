@@ -13,7 +13,7 @@ about = ""
 difficulty = 0
 
 [node name="MissionDefend" type="TextureButton" node_paths=PackedStringArray("icon", "cross")]
-self_modulate = Color(0, 1, 0, 1)
+self_modulate = Color(0.273, 0.78, 0.3406, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,7 +25,7 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_6tlui")
 mission_info = SubResource("Resource_ckn8g")
-modulate_color = Color(0, 1, 0, 1)
+modulate_color = Color(0.27451, 0.780392, 0.341176, 1)
 icon = NodePath("TextureRect")
 cross = NodePath("Cross")
 

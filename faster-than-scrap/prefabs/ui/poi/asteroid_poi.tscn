@@ -9,5 +9,6 @@ grow_amount = 0.47
 
 [node name="Asteroid Poi" type="MeshInstance3D"]
 layers = 4
+transparency = 0.51
 mesh = SubResource("SphereMesh_u2r44")
 surface_material_override/0 = SubResource("StandardMaterial3D_tcbvu")

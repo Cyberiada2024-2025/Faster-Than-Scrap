@@ -1,19 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5lojkrqty626"]
+[gd_scene load_steps=12 format=3 uid="uid://b5lojkrqty626"]
 
 [ext_resource type="Script" uid="uid://cs6qd5cf3gviv" path="res://code/ship/modules/module.gd" id="1_nhp4f"]
 [ext_resource type="Material" uid="uid://u2jcla7cl0d0" path="res://art/materials/modules/frame/frame_material_3d.tres" id="2_jo5w3"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="3_4slmq"]
-[ext_resource type="ArrayMesh" uid="uid://cmsv8p8iouio6" path="res://art/models/modules/frame_long_1.obj" id="3_r3y0y"]
+[ext_resource type="Material" uid="uid://cqu6fkku70tof" path="res://art/materials/modules/frame1/frame1_material_3d.tres" id="4_3wvo6"]
+[ext_resource type="ArrayMesh" uid="uid://dyggmpc21gmcw" path="res://art/models/modules/frame/frame.obj" id="4_4slmq"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_r3y0y"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="5_3wvo6"]
+[ext_resource type="ArrayMesh" uid="uid://ckvyc3t3ef841" path="res://art/models/modules/frame_ball.obj" id="5_bvrvk"]
+[ext_resource type="PackedScene" uid="uid://bi504wqk2wtoy" path="res://prefabs/modules/functional_components/module_tooltip_shower.tscn" id="8_r3y0y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jnq3k"]
-size = Vector3(0.71, 1, 1.075)
+size = Vector3(0.85, 0.9, 2.9)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3wvo6"]
-size = Vector3(1, 1, 2.64374)
+size = Vector3(0.85, 0.9, 2.9)
 
-[node name="Frame" type="CollisionShape3D" node_paths=PackedStringArray("attach_points", "sprite", "label")]
+[node name="FrameLong" type="CollisionShape3D" node_paths=PackedStringArray("attach_points", "sprite", "label")]
 shape = SubResource("BoxShape3D_jnq3k")
 script = ExtResource("1_nhp4f")
 is_activable = false
@@ -22,32 +25,74 @@ sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
-module_name = "Frame var. 1"
-description = "One of the available variants of basic frame. Holds more important pieces together and withstands [i]some[/i] fire."
+module_name = "Long frame"
+prize = 2
+description = "Long frame description"
 
-[node name="Frame0Model" type="Node3D" parent="."]
-transform = Transform3D(0.645, 0, 0, 0, 0.645, 0, 0, 0, 0.645, 0, 0, 0)
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 
-[node name="Frame0" type="MeshInstance3D" parent="Frame0Model"]
+[node name="Frame1" type="MeshInstance3D" parent="Model"]
 material_override = ExtResource("2_jo5w3")
-mesh = ExtResource("3_r3y0y")
+mesh = ExtResource("4_4slmq")
+skeleton = NodePath("../..")
+
+[node name="Frame2" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0.793882)
+material_override = ExtResource("2_jo5w3")
+mesh = ExtResource("4_4slmq")
+skeleton = NodePath("../..")
+
+[node name="Frame3" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.58852)
+material_override = ExtResource("2_jo5w3")
+mesh = ExtResource("4_4slmq")
+skeleton = NodePath("../..")
+
+[node name="Frame4" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.59137)
+material_override = ExtResource("2_jo5w3")
+mesh = ExtResource("4_4slmq")
+skeleton = NodePath("../..")
+
+[node name="Frame5" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, -0.797487)
+material_override = ExtResource("2_jo5w3")
+mesh = ExtResource("4_4slmq")
+skeleton = NodePath("../..")
+
+[node name="Node3D" type="Node3D" parent="Model"]
+transform = Transform3D(1.215, 0, 0, 0, 1.4, 0, 0, 0, 2.525, 0, 0, 0)
+
+[node name="Frame6" type="MeshInstance3D" parent="Model/Node3D"]
+material_override = ExtResource("4_3wvo6")
+mesh = ExtResource("5_bvrvk")
+skeleton = NodePath("../../..")
+
+[node name="Node3D2" type="Node3D" parent="Model"]
+transform = Transform3D(1.085, 0, 0, 0, 1.285, 0, 0, 0, 3.54, 0, 0, 0)
+
+[node name="Frame6" type="MeshInstance3D" parent="Model/Node3D2"]
+material_override = ExtResource("4_3wvo6")
+mesh = ExtResource("5_bvrvk")
+skeleton = NodePath("../../..")
 
 [node name="AttachPoints" type="Node3D" parent="."]
 
 [node name="AttachPoint1" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.2391e-08, 0, 1.32806)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.468021, 0, 0)
 metadata/_edit_group_ = true
 
 [node name="AttachPoint2" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.475, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.468021, 0, -0.70809)
 metadata/_edit_group_ = true
 
 [node name="AttachPoint3" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.29814)
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 8.25256e-15, 0, -1.4823)
 metadata/_edit_group_ = true
 
 [node name="AttachPoint4" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.475, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.468, 0, -0.708)
 metadata/_edit_group_ = true
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("3_4slmq")]
@@ -55,12 +100,14 @@ metadata/_edit_group_ = true
 [node name="DamageController2" parent="." instance=ExtResource("4_r3y0y")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController2/Damageable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0915833)
 shape = SubResource("BoxShape3D_3wvo6")
 
 [node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("5_3wvo6")]
 damageable = NodePath("../DamageController2/Damageable")
 shape = NodePath("..")
+
+[node name="ModuleTooltip" parent="." instance=ExtResource("8_r3y0y")]
+hover_size = Vector2(0.625, 1)
 
 [connection signal="damaged" from="DamageController2" to="." method="take_damage"]
 

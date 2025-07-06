@@ -84,6 +84,8 @@ func _handle_collision(
 
 
 func _spawn_collision_particles() -> void:
+	if get_tree().current_scene == null:
+		return
 	var body_direct_state = PhysicsServer3D.body_get_direct_state(calculated_body.get_rid())
 	if body_direct_state == null:
 		return
@@ -95,8 +97,7 @@ func _spawn_collision_particles() -> void:
 
 	var particles: Node3D = collision_particles.instantiate()
 	particles.global_position = average_position
-	if get_tree().current_scene == null:
-		return
+
 	get_tree().current_scene.add_child(particles)
 	particles.look_at(average_position + average_normal)
 

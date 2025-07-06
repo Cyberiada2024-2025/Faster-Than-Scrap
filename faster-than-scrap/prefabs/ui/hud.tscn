@@ -118,6 +118,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainBar:tint_progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.516637, 0.995974, 0.541332, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ha5er"]
 resource_name = "warning"
@@ -132,6 +144,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.705882), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainBar:tint_progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.7, 0.866667),
+"transitions": PackedFloat32Array(1, 8.05365e-05, 1e-05),
+"update": 0,
+"values": [Color(0.517647, 0.996078, 0.541176, 0), Color(0.517647, 0.996078, 0.541176, 0), Color(0.517647, 0.996078, 0.541176, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oq2i2"]

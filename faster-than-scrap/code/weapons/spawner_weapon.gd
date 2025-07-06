@@ -33,3 +33,9 @@ func try_activate() -> Node3D:
 		muzzle_flash.emitting = true
 
 	return new_projectile
+
+
+func can_activate() -> bool:
+	if _current_cooldown > 0:
+		return false
+	return true

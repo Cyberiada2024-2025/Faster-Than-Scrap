@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="7_xe5we"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4r7dq"]
-size = Vector3(0.74, 1, 1)
+size = Vector3(0.663086, 1, 1.1936)
 
 [node name="Cockpit" type="CollisionShape3D" node_paths=PackedStringArray("sprite", "label")]
 shape = SubResource("BoxShape3D_4r7dq")
@@ -24,7 +24,7 @@ module_name = "Cockpit"
 description = "Thin metal box standing between you and blood-boiling void."
 
 [node name="CabinModel" parent="." instance=ExtResource("2_bb6ao")]
-transform = Transform3D(-1.55175e-08, 0, -0.355, 0, 0.355, 0, 0.355, 0, -1.55175e-08, 0, 0, 0)
+transform = Transform3D(-1.55175e-08, 0, -0.355, 0, 0.355, 0, 0.355, 0, -1.55175e-08, 0, 0, -0.088879)
 
 [node name="Minimap" type="Sprite3D" parent="."]
 transform = Transform3D(2, 4.76838e-07, 1.32005e-14, -7.64273e-15, 8.74228e-08, -2, -4.76838e-07, 2, 8.74228e-08, 0, 0, 0)

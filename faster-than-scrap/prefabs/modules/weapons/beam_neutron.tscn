@@ -1,0 +1,134 @@
+[gd_scene load_steps=20 format=3 uid="uid://bcif2b0ujk6o5"]
+
+[ext_resource type="Script" uid="uid://6f2yjn6wgcun" path="res://code/ship/modules/weapons/weapon_module.gd" id="1_t725w"]
+[ext_resource type="Material" uid="uid://cd26awjqmtnkj" path="res://art/materials/laser_beam_gun/laser_beam_gun_material_3d.tres" id="2_cxftk"]
+[ext_resource type="ArrayMesh" uid="uid://clb3j7cenx6bv" path="res://art/models/modules/beam_head.obj" id="3_5xhxh"]
+[ext_resource type="Material" uid="uid://bbmx3djnt7c0u" path="res://art/materials/modules/thruster/thruster_material_3d.tres" id="4_lx6cd"]
+[ext_resource type="ArrayMesh" uid="uid://d1ll6drdjnwks" path="res://art/models/modules/thruster_head.obj" id="5_c736j"]
+[ext_resource type="Script" uid="uid://crmxerc164n6q" path="res://code/weapons/constant_fire_weapon.gd" id="6_3tmsq"]
+[ext_resource type="PackedScene" uid="uid://cev8t0t4q6ora" path="res://prefabs/projectiles/neutron_beam.tscn" id="7_t725w"]
+[ext_resource type="PackedScene" uid="uid://irs2tnoa6akj" path="res://prefabs/vfx/particles/neutron_laser_muzzle.tscn" id="8_t725w"]
+[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="9_87248"]
+[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="10_whske"]
+[ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="11_vl65m"]
+[ext_resource type="AudioStream" uid="uid://caj6xj0dd5615" path="res://art/audio/sounds/laser_beam.mp3" id="12_6mx7o"]
+[ext_resource type="Script" uid="uid://b1ghhc3fukfu3" path="res://code/sound/sound_emitter.gd" id="13_ffr4n"]
+[ext_resource type="PackedScene" uid="uid://bij3qdd0iavi3" path="res://prefabs/modules/functional_components/direction_arrow.tscn" id="14_0cm78"]
+[ext_resource type="PackedScene" uid="uid://cyw1yf0fdjx1j" path="res://prefabs/modules/functional_components/illegal_placement_zone.tscn" id="15_18lxk"]
+[ext_resource type="PackedScene" uid="uid://bi504wqk2wtoy" path="res://prefabs/modules/functional_components/module_tooltip_shower.tscn" id="16_akfy8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yf3ku"]
+size = Vector3(2.85254, 1, 1.41895)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3d6pv"]
+size = Vector3(2.35254, 0.81, 0.22053)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sin21"]
+size = Vector3(0.289551, 0.81, 1.23242)
+
+[node name="BeamModule" type="CollisionShape3D" node_paths=PackedStringArray("weapon", "attach_points", "sprite", "label")]
+shape = SubResource("BoxShape3D_yf3ku")
+script = ExtResource("1_t725w")
+weapon = NodePath("Constant")
+allow_auto_fire = true
+attach_points = [NodePath("AttachPoints/AttachPoint")]
+sprite = NodePath("ModuleDisplay/Sprite3D")
+label = NodePath("ModuleDisplay/Label3D")
+healthy_color = Color(0, 1, 0, 1)
+dead_color = Color(1, 0, 0, 1)
+module_name = "Neutron beam"
+prize = 3
+description = "Beams neutrons"
+
+[node name="LaserBeamGunModel" type="MeshInstance3D" parent="."]
+transform = Transform3D(6.55671e-08, 1.31134e-07, -1.5, 5.73206e-15, -1.5, -1.31134e-07, -1.5, 0, -6.55671e-08, 0, 0, 0)
+material_override = ExtResource("2_cxftk")
+mesh = ExtResource("3_5xhxh")
+
+[node name="Thruster" type="MeshInstance3D" parent="LaserBeamGunModel"]
+transform = Transform3D(-4.0433e-08, 0, -0.765, 0, 0.445, 0, 0.925, 0, -3.34392e-08, 1.50582e-08, 0, -0.344492)
+material_override = ExtResource("4_lx6cd")
+mesh = ExtResource("5_c736j")
+skeleton = NodePath("../..")
+
+[node name="Thruster2" type="MeshInstance3D" parent="LaserBeamGunModel"]
+transform = Transform3D(-3.32582e-08, 0, 0.765, 0, 0.445, 0, -0.31, 0, -8.20726e-08, 4.35366e-08, 0, -0.996)
+material_override = ExtResource("4_lx6cd")
+mesh = ExtResource("5_c736j")
+skeleton = NodePath("../..")
+
+[node name="Thruster3" type="MeshInstance3D" parent="LaserBeamGunModel"]
+transform = Transform3D(1.21299e-07, 0, 0.765, 0, 0.445, 0, -0.925, 0, 1.00318e-07, 1.28399e-08, 0, 0.357766)
+material_override = ExtResource("4_lx6cd")
+mesh = ExtResource("5_c736j")
+skeleton = NodePath("../..")
+
+[node name="Thruster4" type="MeshInstance3D" parent="LaserBeamGunModel"]
+transform = Transform3D(6.15711e-09, 0, -0.765, 0, 0.445, 0, 0.31, 0, 1.51941e-08, -7.2595e-08, 0, 1.00927)
+material_override = ExtResource("4_lx6cd")
+mesh = ExtResource("5_c736j")
+skeleton = NodePath("../..")
+
+[node name="Constant" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.610518)
+script = ExtResource("6_3tmsq")
+muzzle_flash = NodePath("Laser_Muzzle")
+energy_cost = 20.0
+recoil_force = 500.0
+projectile = ExtResource("7_t725w")
+metadata/_custom_type_script = "uid://crmxerc164n6q"
+
+[node name="Laser_Muzzle" parent="Constant" instance=ExtResource("8_t725w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.186736)
+
+[node name="AttachPoints" type="Node3D" parent="."]
+
+[node name="AttachPoint" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.03615e-08, 0, 0.752732)
+
+[node name="DamageController" parent="." instance=ExtResource("9_87248")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
+shape = SubResource("BoxShape3D_yf3ku")
+
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("10_whske")]
+damageable = NodePath("../DamageController/Damageable")
+shape = NodePath("..")
+
+[node name="ModuleDisplay" parent="." instance=ExtResource("11_vl65m")]
+
+[node name="SoundEmitter" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("12_6mx7o")
+volume_db = 1.0
+bus = &"SFX"
+script = ExtResource("13_ffr4n")
+allow_multiple_sounds_at_once = false
+min_pitch_scale = 1.75
+max_pitch_scale = 1.75
+max_random_start_offset = 10.0
+metadata/_custom_type_script = "uid://b1ghhc3fukfu3"
+
+[node name="DirectionArrow" parent="." instance=ExtResource("14_0cm78")]
+
+[node name="Illegal Placement Zone" parent="." instance=ExtResource("15_18lxk")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Illegal Placement Zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.635885)
+shape = SubResource("BoxShape3D_3d6pv")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Illegal Placement Zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.30291, 0, -0.142969)
+shape = SubResource("BoxShape3D_sin21")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Illegal Placement Zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30023, 0, -0.149475)
+shape = SubResource("BoxShape3D_sin21")
+
+[node name="ModuleTooltip" parent="." instance=ExtResource("16_akfy8")]
+
+[connection signal="activated" from="." to="SoundEmitter" method="start_playing"]
+[connection signal="deactivated" from="." to="SoundEmitter" method="stop_playing"]
+[connection signal="damaged" from="DamageController" to="." method="take_damage"]
+
+[editable path="DamageController"]
+[editable path="ModuleDisplay"]

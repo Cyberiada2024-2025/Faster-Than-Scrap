@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpr65ttaqujar"]
+[gd_scene load_steps=11 format=3 uid="uid://bpr65ttaqujar"]
 
 [ext_resource type="Script" uid="uid://n3n525xrpgvs" path="res://code/map_select/map_manager.gd" id="1_0byna"]
 [ext_resource type="Script" uid="uid://16i5n2yxnlsr" path="res://code/scene_loader.gd" id="2_0byna"]
-[ext_resource type="Script" uid="uid://smw6vyfefqxn" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_273au"]
+[ext_resource type="Script" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_273au"]
 [ext_resource type="PackedScene" uid="uid://b8vq1jqmowcwf" path="res://prefabs/pause_menu.tscn" id="3_0byna"]
 [ext_resource type="Texture2D" uid="uid://ic7d4huaalha" path="res://art/textures/main_menu/light_mask.png" id="3_exisy"]
 [ext_resource type="Script" uid="uid://dqpv50nhd6ixc" path="res://code/main_menu/light_mask.gd" id="4_273au"]
 [ext_resource type="Texture2D" uid="uid://dh6fl5n30osgh" path="res://art/textures/main_menu/map_select_background_light.png" id="4_d2opd"]
 [ext_resource type="Texture2D" uid="uid://go1u7xe1f41q" path="res://art/textures/main_menu/background_mask.png" id="5_jq2mv"]
 [ext_resource type="Script" uid="uid://b8kgrdxasqvq0" path="res://code/main_menu/background_light.gd" id="6_17kcy"]
+[ext_resource type="FontFile" uid="uid://c5684ddhvkomb" path="res://art/fonts/Orbitron-Bold.ttf" id="8_jq2mv"]
 
 [node name="MapSelector" type="Node" node_paths=PackedStringArray("map_container", "button", "label", "scene_loader")]
 script = ExtResource("1_0byna")
@@ -56,6 +57,8 @@ anchor_right = 0.97
 anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_jq2mv")
+theme_override_font_sizes/font_size = 30
 text = "FLY!"
 
 [node name="Edge" type="ColorRect" parent="."]
@@ -92,6 +95,11 @@ offset_right = -10.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("8_jq2mv")
+theme_override_fonts/mono_font = ExtResource("8_jq2mv")
+theme_override_fonts/italics_font = ExtResource("8_jq2mv")
+theme_override_fonts/bold_italics_font = ExtResource("8_jq2mv")
+theme_override_fonts/bold_font = ExtResource("8_jq2mv")
 bbcode_enabled = true
 text = "All the clues lead here. Reality plane is the weakest right here. Seraku cult will recite their ancient incantation, to crack it. The fracture will spread all over the galaxy in form of the VORTEX."
 

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_cramped_group.tscn" id="4_ywtum"]
 [ext_resource type="PackedScene" uid="uid://dusrity80tka3" path="res://prefabs/npc/enemies/rocket_ship.tscn" id="5_bwnpf"]
 [ext_resource type="PackedScene" uid="uid://ceu6i6ji4q3oq" path="res://prefabs/npc/enemies/turret_gun.tscn" id="6_wtu0u"]
-[ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="7_4pjra"]
+[ext_resource type="Script" uid="uid://cne5mpb7d4xce" path="res://code/missions/a/mission_fuel.gd" id="7_woclj"]
 
 [node name="EscapeMisssionBase" instance=ExtResource("1_woclj")]
 
@@ -81,6 +81,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5375, 0, -74.5501)
 [node name="Turret Gun4" parent="Enemies" index="7" instance=ExtResource("6_wtu0u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.523, 0, -101.312)
 
-[node name="MissionEscape" type="Node" parent="." index="5"]
-script = ExtResource("7_4pjra")
-metadata/_custom_type_script = "uid://bq0dwhdq76qw"
+[node name="MissionFuel" type="Node" parent="." index="5" node_paths=PackedStringArray("fuel_position")]
+script = ExtResource("7_woclj")
+fuel_position = NodePath("../PortalPosition")
+metadata/_custom_type_script = "uid://cne5mpb7d4xce"

@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://xbe4600v6f7f"]
 
 [ext_resource type="PackedScene" uid="uid://pwsixhrj0x1o" path="res://scenes/levels/finalest/base/base_mission.tscn" id="1_4oy36"]
-[ext_resource type="Script" uid="uid://bq0dwhdq76qw" path="res://code/missions/a/mission_escape.gd" id="2_4ceng"]
-[ext_resource type="PackedScene" uid="uid://js76qvbo8iq0" path="res://prefabs/environment/asteroids/asteroid_small_groups/sparse_asteroid_group.tscn" id="2_tfqg3"]
+[ext_resource type="PackedScene" path="res://prefabs/environment/asteroids/asteroid_small_groups/sparse_asteroid_group.tscn" id="2_tfqg3"]
 [ext_resource type="PackedScene" uid="uid://dlp3fs4qym6g2" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_group_straight_line.tscn" id="3_wvgti"]
 [ext_resource type="Script" path="res://prefabs/environment/mission_related/portal_position.gd" id="3_x4vdo"]
-[ext_resource type="PackedScene" uid="uid://dl6p1epbu22fd" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_cramped_group_.tscn" id="4_0tikv"]
+[ext_resource type="PackedScene" path="res://prefabs/environment/asteroids/asteroid_small_groups/asteroid_cramped_group_.tscn" id="4_0tikv"]
+[ext_resource type="Script" uid="uid://cv8qkmxin552e" path="res://code/missions/a/mission_kill_enemies.gd" id="5_tfqg3"]
 [ext_resource type="PackedScene" uid="uid://fijjj7y4ie3w" path="res://prefabs/npc/enemies/machine_gunner.tscn" id="7_2vltm"]
 [ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/npc/enemies/fighter.tscn" id="8_4ekkh"]
 [ext_resource type="PackedScene" uid="uid://dusrity80tka3" path="res://prefabs/npc/enemies/rocket_ship.tscn" id="9_ueiwe"]
@@ -98,9 +98,10 @@ transform = Transform3D(0.955931, 0, 0.29359, 0, 1, 0, -0.29359, 0, 0.955931, -3
 [node name="AsteroidGroupCircle" parent="Asteroids/Group2" index="1" instance=ExtResource("4_0tikv")]
 transform = Transform3D(0.941923, 0, 0.33583, 0, 1, 0, -0.33583, 0, 0.941923, -55.2642, 0, 35.8929)
 
-[node name="MissionEscape" type="Node" parent="." index="4"]
-script = ExtResource("2_4ceng")
-metadata/_custom_type_script = "uid://bq0dwhdq76qw"
+[node name="MissionEscape" type="Node" parent="." index="4" node_paths=PackedStringArray("vortex_center")]
+script = ExtResource("5_tfqg3")
+vortex_center = NodePath("../PortalPosition")
+metadata/_custom_type_script = "uid://cv8qkmxin552e"
 
 [node name="PortalPosition" type="Node3D" parent="." index="5"]
 script = ExtResource("3_x4vdo")

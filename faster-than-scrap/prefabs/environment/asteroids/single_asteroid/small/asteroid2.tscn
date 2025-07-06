@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c21ake882np85"]
+[gd_scene load_steps=9 format=3 uid="uid://c21ake882np85"]
 
 [ext_resource type="Script" uid="uid://chekqae75l00d" path="res://code/evironment/asteroid.gd" id="1_n8w1b"]
 [ext_resource type="PackedScene" uid="uid://pxlntfewdl2l" path="res://art/model_prefabs/asteroids/asteroid_2.tscn" id="2_n8w1b"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="3_lg46a"]
 [ext_resource type="PackedScene" uid="uid://b2rns0sxx87ar" path="res://prefabs/vfx/particles/timed_particles/collision_asteroid.tscn" id="4_60kjh"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_p6p7g"]
+[ext_resource type="PackedScene" uid="uid://c5h05bkp7b8go" path="res://prefabs/ui/poi/asteroid_poi.tscn" id="6_gwe33"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gro5k"]
 bounce = 1.0
@@ -44,6 +45,9 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
 transform = Transform3D(-0.0279217, -0.995694, 0.0883904, 0.99961, -0.0278123, 0.00246897, 0, 0.0884249, 0.996083, -0.0923008, 0.0316356, -0.0343292)
 shape = SubResource("CapsuleShape3D_0351a")
+
+[node name="Asteroid Poi" parent="." instance=ExtResource("6_gwe33")]
+transform = Transform3D(1.6675, 0, 0, 0, -3.21537e-08, 0.535875, 0, -0.735592, -2.34238e-08, 0, 0, 0)
 
 [connection signal="damaged" from="DamageController" to="." method="take_damage"]
 

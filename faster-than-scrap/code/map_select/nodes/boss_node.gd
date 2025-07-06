@@ -1,9 +1,9 @@
 @tool
-
 class_name BossNode
 
 extends MapNode
 
+@export var mission_info: MissionInfo = MissionInfo.new()
 @export var boss_prefabs: Array[PackedScene] = []
 @export var is_miniboss = false
 
@@ -14,7 +14,7 @@ func _set_color() -> void:
 
 
 func get_description() -> String:
-	return "Mission Type: \nBoss"
+	return mission_info.get_node_description()
 
 
 func change_scene(scene_loader: SceneLoader) -> void:

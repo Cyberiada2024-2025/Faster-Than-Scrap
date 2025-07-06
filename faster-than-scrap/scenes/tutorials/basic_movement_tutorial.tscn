@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://buaupty5vjbs5"]
+[gd_scene load_steps=25 format=3 uid="uid://buaupty5vjbs5"]
 
 [ext_resource type="PackedScene" uid="uid://djgm5s1ld5wgr" path="res://prefabs/ships/flyable_ship_tutorial.tscn" id="1_8fkjt"]
 [ext_resource type="PackedScene" uid="uid://noejc02505g0" path="res://prefabs/ui/poi/vortex_poi.tscn" id="1_ngx30"]
@@ -9,8 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://cs2m7lumvnaot" path="res://prefabs/environment/asteroids/single_asteroid/big/big_asteroid3.tscn" id="6_tkgtl"]
 [ext_resource type="PackedScene" uid="uid://cdq5hecjw2uki" path="res://prefabs/environment/asteroids/asteroid_big_groups/asteroid_big_group.tscn" id="7_7xu24"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="8_6xv7r"]
+[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="9_6bw2y"]
 [ext_resource type="PackedScene" uid="uid://dsc8yod53e2qk" path="res://prefabs/ui/cutscenes/tutorials/movement_tutorial.tscn" id="9_l855j"]
 [ext_resource type="PackedScene" uid="uid://dpdbniaaphy1t" path="res://prefabs/ui/cutscenes/tutorials/energy_tutorial.tscn" id="10_aa5ti"]
+[ext_resource type="Script" uid="uid://b7c5dxlqsxtlt" path="res://code/damage/damageable.gd" id="10_phkkj"]
 [ext_resource type="Script" uid="uid://driyjosimvut3" path="res://code/player/detect_player_low_energy.gd" id="11_37dpr"]
 [ext_resource type="Script" uid="uid://bceg4vylbdwdr" path="res://code/evironment/player_detector.gd" id="12_8j6x4"]
 [ext_resource type="PackedScene" uid="uid://31y5kdihtoxf" path="res://prefabs/ui/cutscenes/tutorials/firing_tutorial.tscn" id="13_jcith"]
@@ -21,6 +23,13 @@ size = Vector3(800, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pdi7d"]
 size = Vector3(800, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngx30"]
+blend_mode = 1
+albedo_color = Color(0.94902, 0.109804, 0, 1)
+emission_enabled = true
+emission = Color(0.94902, 0.109804, 0, 1)
+emission_energy_multiplier = 25.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pdi7d"]
 size = Vector3(1, 1, 1000)
@@ -104,7 +113,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.3829, 0, 2.2291)
 
 [node name="SpaceLimit" type="Node3D" parent="."]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SpaceLimit"]
+[node name="StaticBody3D" type="RigidBody3D" parent="SpaceLimit"]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 1e+08
+gravity_scale = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpaceLimit/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -500)
@@ -113,6 +130,7 @@ shape = SubResource("BoxShape3D_uf04d")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpaceLimit/StaticBody3D/CollisionShape3D"]
 mesh = SubResource("BoxMesh_pdi7d")
 skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ngx30")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="SpaceLimit/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 500)
@@ -121,6 +139,7 @@ shape = SubResource("BoxShape3D_uf04d")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpaceLimit/StaticBody3D/CollisionShape3D2"]
 mesh = SubResource("BoxMesh_pdi7d")
 skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ngx30")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="SpaceLimit/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 0, 0)
@@ -129,6 +148,7 @@ shape = SubResource("BoxShape3D_pdi7d")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpaceLimit/StaticBody3D/CollisionShape3D3"]
 mesh = SubResource("BoxMesh_q6xgx")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ngx30")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="SpaceLimit/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -400, 0, 0)
@@ -137,6 +157,17 @@ shape = SubResource("BoxShape3D_pdi7d")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpaceLimit/StaticBody3D/CollisionShape3D4"]
 mesh = SubResource("BoxMesh_q6xgx")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ngx30")
+
+[node name="CollisionDamageCalculator" parent="SpaceLimit/StaticBody3D" node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("9_6bw2y")]
+damageable = NodePath("../Damageable")
+shape = NodePath("../CollisionShape3D")
+include_other_shapes = true
+dealt_damage_multiplier = 0.0
+
+[node name="Damageable" type="Area3D" parent="SpaceLimit/StaticBody3D"]
+script = ExtResource("10_phkkj")
+metadata/_custom_type_script = "uid://b7c5dxlqsxtlt"
 
 [node name="Movement cutscene player" type="Node" parent="."]
 script = ExtResource("8_6xv7r")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c6ut4p0tkv47j"]
+[gd_scene load_steps=20 format=3 uid="uid://c6ut4p0tkv47j"]
 
 [ext_resource type="Script" uid="uid://urjr40lajiyq" path="res://code/ship/modules/battery_module.gd" id="1_p6uur"]
 [ext_resource type="Texture2D" uid="uid://kj5g7i54g3jd" path="res://art/textures/battery/final_battery_color.png" id="2_trny3"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cht2tuc3ktuqe" path="res://art/textures/battery/final_battery_normal.png" id="4_5ki7y"]
 [ext_resource type="Texture2D" uid="uid://cj64a42nysov1" path="res://art/textures/battery/final_battery_roughnes.png" id="5_pnqtk"]
 [ext_resource type="ArrayMesh" uid="uid://ujku2hob0mcy" path="res://art/models/battery/finalest_battery.obj" id="6_leg1j"]
+[ext_resource type="Material" uid="uid://cqu6fkku70tof" path="res://art/materials/modules/frame1/frame1_material_3d.tres" id="9_m1npl"]
+[ext_resource type="ArrayMesh" uid="uid://ckvyc3t3ef841" path="res://art/models/modules/frame_ball.obj" id="10_7acgp"]
 [ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="13_tv3qx"]
 [ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="14_x8qhg"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="15_o8lfs"]
@@ -112,6 +114,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 1.66908e-15, 0, -1.66908e-15, 1, 0, -0.12
 material_override = SubResource("StandardMaterial3D_u5p3y")
 mesh = ExtResource("6_leg1j")
 skeleton = NodePath("")
+
+[node name="Balls" type="Node3D" parent="Model"]
+
+[node name="Frame1" type="MeshInstance3D" parent="Model/Balls"]
+transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1.83, 0, 0, 0)
+material_override = ExtResource("9_m1npl")
+mesh = ExtResource("10_7acgp")
+
+[node name="Frame2" type="MeshInstance3D" parent="Model/Balls"]
+transform = Transform3D(-4.37114e-08, 0, -1.83, 0, 0.8, 0, 1, 0, -7.99918e-08, 0, 0, 0)
+material_override = ExtResource("9_m1npl")
+mesh = ExtResource("10_7acgp")
 
 [node name="AttachPoints" type="Node3D" parent="."]
 

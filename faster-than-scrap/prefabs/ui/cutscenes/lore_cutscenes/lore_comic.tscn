@@ -331,11 +331,13 @@ metadata/_custom_type_script = "uid://chkhh3t50ph5m"
 [node name="Slide1" type="AudioStreamPlayer" parent="CutsceneSoundController"]
 stream = ExtResource("11_f6lqe")
 volume_db = 3.0
+bus = &"SFX"
 script = ExtResource("11_g5k2g")
 metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="Slide2" type="AudioStreamPlayer" parent="CutsceneSoundController"]
 stream = ExtResource("13_wkrj0")
+bus = &"SFX"
 script = ExtResource("11_g5k2g")
 min_pitch_scale = 1.3
 max_pitch_scale = 1.3
@@ -343,6 +345,7 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="Slide3" type="AudioStreamPlayer" parent="CutsceneSoundController"]
 stream = ExtResource("14_7uy4p")
+bus = &"SFX"
 script = ExtResource("11_g5k2g")
 min_pitch_scale = 0.75
 max_pitch_scale = 0.75
@@ -350,12 +353,14 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="Slide4" type="AudioStreamPlayer" parent="CutsceneSoundController"]
 stream = SubResource("AudioStreamPlaylist_7uy4p")
+bus = &"SFX"
 script = ExtResource("11_g5k2g")
 metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="Slide5" type="AudioStreamPlayer" parent="CutsceneSoundController"]
 stream = ExtResource("13_wkrj0")
 pitch_scale = 0.6
+bus = &"SFX"
 script = ExtResource("11_g5k2g")
 min_pitch_scale = 0.7
 max_pitch_scale = 0.7
@@ -365,5 +370,6 @@ metadata/_custom_type_script = "uid://c6mohg4o53eqe"
 
 [node name="Slide6" type="AudioStreamPlayer" parent="CutsceneSoundController"]
 stream = ExtResource("17_f6lqe")
+bus = &"SFX"
 script = ExtResource("11_g5k2g")
 metadata/_custom_type_script = "uid://c6mohg4o53eqe"

@@ -21,7 +21,7 @@ angular_damp_value = 1.2
 cockpit = NodePath("Cockpit")
 energy = 200.0
 max_energy = 200.0
-restore = 20.0
+restore = 15.0
 team = 0
 leave_animation = NodePath("Cockpit/AnimationPlayer")
 

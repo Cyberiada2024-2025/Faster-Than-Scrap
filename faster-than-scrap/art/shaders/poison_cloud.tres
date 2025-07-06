@@ -179,7 +179,7 @@ title = "Material decision"
 attached_nodes = PackedInt32Array(24)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_skx5j"]
-size = Vector2(301, 463)
+size = Vector2(343, 463)
 title = "Wave color"
 attached_nodes = PackedInt32Array(44)
 

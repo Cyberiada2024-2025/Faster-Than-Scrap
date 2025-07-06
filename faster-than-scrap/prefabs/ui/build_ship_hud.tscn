@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://mjgnhxxmjro3"]
+[gd_scene load_steps=25 format=3 uid="uid://b3metvwgpktpt"]
 
 [ext_resource type="Script" uid="uid://y01yp5jqupge" path="res://code/player/hud.gd" id="1_w0hyp"]
 [ext_resource type="Script" uid="uid://hpmnb8n3f0n" path="res://code/player/resource_bar.gd" id="2_ga8k1"]
@@ -6,6 +6,9 @@
 [ext_resource type="FontFile" uid="uid://c46lihhopk2wc" path="res://art/fonts/PressStart2P-Regular.ttf" id="4_7yov6"]
 [ext_resource type="Script" uid="uid://durs6dd5ncgap" path="res://code/player/fuel_display.gd" id="5_iqdg1"]
 [ext_resource type="Texture2D" uid="uid://bmw35cwms6w7t" path="res://art/textures/ui/mapselect/Canister.png" id="6_bskxl"]
+[ext_resource type="Environment" uid="uid://yucan4745p3e" path="res://art/materials/environment/radar_environment.tres" id="7_7yov6"]
+[ext_resource type="Texture2D" uid="uid://cwun3qgred5vi" path="res://art/textures/ui/radar.png" id="8_iqdg1"]
+[ext_resource type="ArrayMesh" uid="uid://ctrcha2pvwkt8" path="res://art/models/minimap.obj" id="9_bskxl"]
 
 [sub_resource type="Environment" id="Environment_s7i6o"]
 background_mode = 1
@@ -105,13 +108,47 @@ shadow_size = 0
 [sub_resource type="ViewportTexture" id="ViewportTexture_5rj5o"]
 viewport_path = NodePath("ModuleViewport")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_7yov6"]
+viewport_path = NodePath("CircleModules")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqdg1"]
+resource_local_to_scene = true
+render_priority = 3
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("8_iqdg1")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(1.5, 0, 0.5)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.659759
+billboard_keep_scale = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fijqi"]
+viewport_path = NodePath("ModuleViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bskxl"]
+resource_local_to_scene = true
+render_priority = 4
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("ViewportTexture_fijqi")
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_offset = Vector3(0.3, 0, 0.65)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.93304
+billboard_keep_scale = true
+
 [node name="MainCamera" type="Camera3D" node_paths=PackedStringArray("energy_bar")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
-cull_mask = 1048569
+cull_mask = 1048545
 script = ExtResource("1_w0hyp")
 energy_bar = NodePath("HUD/Energy Bar")
 main_camera_offset = Vector3(0, 25, 0)
-module_camera_offset = Vector3(13, 10, -13)
+module_camera_offset = Vector3(6.5, 7, -5)
 
 [node name="ModuleViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -150,6 +187,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Energy Bar" type="Control" parent="HUD" node_paths=PackedStringArray("bar_main", "bar_under", "overlay", "numbers", "animator")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1101.0
@@ -248,6 +286,7 @@ offset_right = 98.0
 offset_bottom = 383.0
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="HUD"]
+visible = false
 layout_mode = 0
 offset_left = 1.0
 offset_top = 262.0
@@ -264,15 +303,28 @@ layout_mode = 2
 texture = SubResource("ViewportTexture_5rj5o")
 expand_mode = 2
 
+[node name="AspectRatioContainer4" type="AspectRatioContainer" parent="HUD"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 430.0
+offset_right = 220.0
+offset_bottom = 640.0
+
+[node name="TextureRect" type="TextureRect" parent="HUD/AspectRatioContainer4"]
+layout_mode = 2
+texture = SubResource("ViewportTexture_7yov6")
+expand_mode = 4
+
 [node name="Fuel indicator" type="ColorRect" parent="HUD" node_paths=PackedStringArray("fuel_display")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -95.0
+offset_left = -97.0
+offset_right = -2.0
 offset_bottom = 44.0
 grow_horizontal = 0
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 script = ExtResource("5_iqdg1")
 fuel_display = NodePath("HBoxContainer/Fuel Label")
 
@@ -285,7 +337,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="HUD/Fuel indicator/HBoxContainer"]
-modulate = Color(0.514008, 0.191253, 0, 1)
+modulate = Color(0.0818909, 0.749821, 0.185708, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("6_bskxl")
@@ -295,6 +347,32 @@ stretch_mode = 4
 [node name="Fuel Label" type="Label" parent="HUD/Fuel indicator/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.909804, 0.976471, 0.937255, 1)
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CircleModules" type="SubViewport" parent="."]
+transparent_bg = true
+canvas_cull_mask = 4294967280
+
+[node name="Camera3D" type="Camera3D" parent="CircleModules"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+cull_mask = 1047568
+environment = ExtResource("7_7yov6")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="CircleModules/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.84217e-14, -1.35)
+layers = 16
+material_override = SubResource("StandardMaterial3D_iqdg1")
+gi_mode = 0
+mesh = ExtResource("9_bskxl")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CircleModules/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.35)
+layers = 16
+material_override = SubResource("StandardMaterial3D_bskxl")
+gi_mode = 0
+mesh = ExtResource("9_bskxl")
+skeleton = NodePath("")

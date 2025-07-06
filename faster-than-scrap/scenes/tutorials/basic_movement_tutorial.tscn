@@ -47,6 +47,7 @@ radius = 22.121
 
 [node name="FakeNoVortexPOI" parent="." instance=ExtResource("1_ngx30")]
 transform = Transform3D(1000, 0, 0, 0, -4.37114e-05, 1000, 0, -1000, -4.37114e-05, 0, 0, 0)
+visible = false
 
 [node name="FlyableShip" parent="." instance=ExtResource("1_8fkjt")]
 

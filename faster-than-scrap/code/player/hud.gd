@@ -140,15 +140,14 @@ func _process(_delta: float) -> void:
 
 	## static version (stable)
 	# calculate size of a ship
-	var bounding_rect: Rect = _ship_bounding_rect()
-	bounding_rect.squarify()  # make both edges of rectangle the same size
+	var bounding_rect: Rect = _ship_bounding_rect(false)
 	# move camera to look at center of player
 	_module_camera.global_position = player_ship.global_position
-	# move camera to look at lower left corner of a ship
-	_module_camera.global_position.x += bounding_rect.x.min
-	_module_camera.global_position.z += bounding_rect.z.max
-	# add constant offset so the ship is always in the lower left corner
-	# of a module display
+	# move camera to make ship stay in the middle of the radar
+	# after adding/deleting modules
+	_module_camera.global_position.x = (bounding_rect.x.max + bounding_rect.x.min) / 2
+	_module_camera.global_position.z = (bounding_rect.z.max + bounding_rect.z.min) / 2
+	# add constant offset
 	_module_camera.global_position += module_camera_offset
 
 	if Input.is_action_just_pressed("zoom_in"):

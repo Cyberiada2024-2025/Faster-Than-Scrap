@@ -11,9 +11,10 @@ extends BaseWeapon
 func try_activate() -> Node3D:
 	if not can_activate():
 		return null
-
+	if not ship.use_energy(energy_cost):
+		return null
 	_current_cooldown = cooldown
-	ship.use_energy(energy_cost)
+
 	recoil.emit(recoil_force)
 
 	var new_projectile = _spawn_projectile()
@@ -32,3 +33,9 @@ func try_activate() -> Node3D:
 		muzzle_flash.emitting = true
 
 	return new_projectile
+
+
+func can_activate() -> bool:
+	if _current_cooldown > 0:
+		return false
+	return true

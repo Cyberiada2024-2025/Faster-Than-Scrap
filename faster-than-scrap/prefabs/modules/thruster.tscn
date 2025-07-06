@@ -49,10 +49,10 @@ transform = Transform3D(-3.67176e-08, 0, -0.84, 0, 0.84, 0, 0.84, 0, -3.67176e-0
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8.86382e-09, 0, 0.884314)
 
 [node name="AttachPoint2" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.373358, 0, 0.199009)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.155768, 0, 0.285052)
 
 [node name="AttachPoint3" type="Node3D" parent="AttachPoints"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.373, 0, 0.199)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.15541, 0, 0.285043)
 
 [node name="DamageController" parent="." instance=ExtResource("5_24upk")]
 

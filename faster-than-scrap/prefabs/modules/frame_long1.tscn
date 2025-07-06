@@ -97,6 +97,9 @@ metadata/_edit_group_ = true
 
 [node name="ModuleDisplay" parent="." instance=ExtResource("3_4slmq")]
 
+[node name="Sprite3D" parent="ModuleDisplay" index="0"]
+transform = Transform3D(0.45, 0, 0, 0, -5.13609e-08, 0.45, 0, -1.175, -1.96701e-08, 0, 0, 0)
+
 [node name="DamageController2" parent="." instance=ExtResource("4_r3y0y")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController2/Damageable" index="0"]

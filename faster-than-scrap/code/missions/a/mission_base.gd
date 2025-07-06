@@ -62,10 +62,11 @@ func _input(_event: InputEvent) -> void:
 			print("No hyperspace fuel")
 
 	if Input.is_action_just_released("use_fuel"):
-		jump_circle.queue_free()
-		for child in get_children():
-			if child.name == "hyperdrive":
-				child.queue_free()
+		if jump_circle != null:
+			jump_circle.queue_free()
+			for child in get_children():
+				if child.name == "hyperdrive":
+					child.queue_free()
 
 
 func _use_fuel() -> void:

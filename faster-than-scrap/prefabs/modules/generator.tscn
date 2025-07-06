@@ -1,0 +1,146 @@
+[gd_scene load_steps=18 format=3 uid="uid://c6ut4p0tkv47j"]
+
+[ext_resource type="Script" uid="uid://urjr40lajiyq" path="res://code/ship/modules/battery_module.gd" id="1_p6uur"]
+[ext_resource type="Texture2D" uid="uid://kj5g7i54g3jd" path="res://art/textures/battery/final_battery_color.png" id="2_trny3"]
+[ext_resource type="Material" uid="uid://b8keu47disj17" path="res://art/materials/scrap_shop/base/scrap_shop_base_material_3d.tres" id="2_v8si5"]
+[ext_resource type="ArrayMesh" uid="uid://cfj7df0phfn4y" path="res://art/models/modules/scrap_shop/base/base.obj" id="3_bm5rs"]
+[ext_resource type="Texture2D" uid="uid://bm7v8lkx5wn8i" path="res://art/textures/battery/final_battery_metal.png" id="3_jroyb"]
+[ext_resource type="Texture2D" uid="uid://cht2tuc3ktuqe" path="res://art/textures/battery/final_battery_normal.png" id="4_5ki7y"]
+[ext_resource type="Texture2D" uid="uid://cj64a42nysov1" path="res://art/textures/battery/final_battery_roughnes.png" id="5_pnqtk"]
+[ext_resource type="ArrayMesh" uid="uid://ujku2hob0mcy" path="res://art/models/battery/finalest_battery.obj" id="6_leg1j"]
+[ext_resource type="PackedScene" uid="uid://b5ri43mxkksdw" path="res://prefabs/modules/functional_components/module_display.tscn" id="13_tv3qx"]
+[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="14_x8qhg"]
+[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="15_o8lfs"]
+[ext_resource type="PackedScene" uid="uid://bi504wqk2wtoy" path="res://prefabs/modules/functional_components/module_tooltip_shower.tscn" id="16_jg2di"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v8si5"]
+height = 1.0
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1npl"]
+albedo_color = Color(0, 0, 1, 1)
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="PrismMesh" id="PrismMesh_7acgp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5p3y"]
+albedo_texture = ExtResource("2_trny3")
+metallic = 1.0
+metallic_texture = ExtResource("3_jroyb")
+roughness_texture = ExtResource("5_pnqtk")
+normal_enabled = true
+normal_texture = ExtResource("4_5ki7y")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bm5rs"]
+height = 1.0
+radius = 1.0
+
+[node name="Generator" type="CollisionShape3D" node_paths=PackedStringArray("attach_points", "sprite", "label")]
+shape = SubResource("CylinderShape3D_v8si5")
+script = ExtResource("1_p6uur")
+energy = 0.0
+energy_regeneration = 10.0
+is_activable = false
+attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2")]
+sprite = NodePath("ModuleDisplay/Sprite3D")
+label = NodePath("ModuleDisplay/Label3D")
+healthy_color = Color(0, 1, 0, 1)
+dead_color = Color(1, 0, 0, 1)
+module_name = "Battery"
+prize = 2
+description = "Generates energy"
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Ring" type="Node3D" parent="Model"]
+transform = Transform3D(0.15, 0, 0, 0, 0.25, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="Base" type="MeshInstance3D" parent="Model/Ring"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01531, 0)
+material_override = ExtResource("2_v8si5")
+mesh = ExtResource("3_bm5rs")
+skeleton = NodePath("../../..")
+
+[node name="Base2" type="MeshInstance3D" parent="Model/Ring"]
+transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 4.7863e-08, -1.02954, 0)
+material_override = ExtResource("2_v8si5")
+mesh = ExtResource("3_bm5rs")
+skeleton = NodePath("../../..")
+
+[node name="RingInner" type="Node3D" parent="Model"]
+transform = Transform3D(0.12, 0, 0, 0, 0.2, 0, 0, 0, 0.12, 0, 0, 0)
+
+[node name="Base3" type="MeshInstance3D" parent="Model/RingInner"]
+transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 0, 1.59726, 0)
+material_override = ExtResource("2_v8si5")
+mesh = ExtResource("3_bm5rs")
+skeleton = NodePath("../..")
+
+[node name="Emission" type="Node3D" parent="Model"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Emission"]
+transform = Transform3D(0.212132, -0.493166, -0.00603985, 0, 0.0597915, -0.0996345, 0.212132, 0.493166, 0.00603985, 0.322607, 0.485501, -0.322607)
+material_override = SubResource("StandardMaterial3D_m1npl")
+mesh = SubResource("PrismMesh_7acgp")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model/Emission"]
+transform = Transform3D(-0.212132, -0.493166, -0.00603985, 0, 0.0597915, -0.0996345, 0.212132, -0.493166, -0.00603985, 0.322607, 0.485501, 0.322607)
+material_override = SubResource("StandardMaterial3D_m1npl")
+mesh = SubResource("PrismMesh_7acgp")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Model/Emission"]
+transform = Transform3D(-0.212132, 0.493166, 0.00603985, 0, 0.0597915, -0.0996345, -0.212132, -0.493166, -0.00603985, -0.322607, 0.485501, 0.322607)
+material_override = SubResource("StandardMaterial3D_m1npl")
+mesh = SubResource("PrismMesh_7acgp")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Model/Emission"]
+transform = Transform3D(0.212132, 0.493166, 0.00603985, -2.66452e-16, 0.0597915, -0.0996345, -0.212132, 0.493166, 0.00603985, -0.322607, 0.485501, -0.322607)
+material_override = SubResource("StandardMaterial3D_m1npl")
+mesh = SubResource("PrismMesh_7acgp")
+skeleton = NodePath("../../..")
+
+[node name="Inside" type="Node3D" parent="Model"]
+transform = Transform3D(4.1, 0, 0, 0, 1.553, 0, 0, 0, 4.1, 0, 0, 0)
+
+[node name="FinalestBattery" type="MeshInstance3D" parent="Model/Inside"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.66908e-15, 0, -1.66908e-15, 1, 0, -0.124895, 4.33258e-16)
+material_override = SubResource("StandardMaterial3D_u5p3y")
+mesh = ExtResource("6_leg1j")
+skeleton = NodePath("")
+
+[node name="AttachPoints" type="Node3D" parent="."]
+
+[node name="AttachPoint1" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.85682e-09, 0, 1.04481)
+metadata/_edit_group_ = true
+
+[node name="AttachPoint2" type="Node3D" parent="AttachPoints"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -0.738795, 0, 0.738795)
+metadata/_edit_group_ = true
+
+[node name="ModuleDisplay" parent="." instance=ExtResource("13_tv3qx")]
+
+[node name="Sprite3D" parent="ModuleDisplay" index="0"]
+transform = Transform3D(0.8, 0, 0, 0, -3.49691e-08, 0.8, 0, -0.8, -3.49691e-08, 0, 0, 0)
+
+[node name="DamageController2" parent="." instance=ExtResource("14_x8qhg")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController2/Damageable" index="0"]
+shape = SubResource("CylinderShape3D_bm5rs")
+
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("15_o8lfs")]
+damageable = NodePath("../DamageController2/Damageable")
+shape = NodePath("..")
+
+[node name="ModuleTooltip" parent="." instance=ExtResource("16_jg2di")]
+hover_size = Vector2(0.625, 1)
+
+[connection signal="damaged" from="DamageController2" to="." method="take_damage"]
+
+[editable path="ModuleDisplay"]
+[editable path="DamageController2"]

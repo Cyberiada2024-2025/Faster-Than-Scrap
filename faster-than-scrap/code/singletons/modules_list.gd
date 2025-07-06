@@ -4,6 +4,7 @@ var modules_and_chances = [
 	[preload("res://prefabs/modules/frame1.tscn"), COMMON],
 	[preload("res://prefabs/modules/frame2.tscn"), COMMON],
 	[preload("res://prefabs/modules/battery.tscn"), UNCOMMON],
+	[preload("res://prefabs/modules/generator.tscn"), UNCOMMON],
 	[preload("res://prefabs/modules/shield_module.tscn"), RARE],
 	[preload("res://prefabs/modules/thruster.tscn"), COMMON],
 	[preload("res://prefabs/modules/weapons/beam_module.tscn"), UNCOMMON],

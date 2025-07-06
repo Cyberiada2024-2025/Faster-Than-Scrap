@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bn8cfyemp6axl" path="res://code/ui/cutscenes/cutscene.gd" id="1_g6mcj"]
 [ext_resource type="Script" uid="uid://c8potv0p1705d" path="res://code/ui/cutscenes/slide.gd" id="2_o2os4"]
-[ext_resource type="Theme" uid="uid://dvjkohqrk78av" path="res://prefabs/ui/themes/tutorial_theme.tres" id="4_6qbt1"]
+[ext_resource type="Theme" uid="uid://bbjc8fyf8oqv2" path="res://prefabs/ui/themes/tutorial_theme.tres" id="4_6qbt1"]
 [ext_resource type="PackedScene" uid="uid://c78jp45hhpqhd" path="res://prefabs/ui/cutscenes/skip_info_text.tscn" id="4_nxaa3"]
 [ext_resource type="Texture2D" uid="uid://ddm80lnoo3ty7" path="res://art/textures/ui/arrow.png" id="4_o2os4"]
 
@@ -74,8 +74,9 @@ theme = ExtResource("4_6qbt1")
 text = "Activating modules 
 consumes energy.  
 
-It regenerates
- at a steady pace."
+Energy regenerates
+ at a steady pace.
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 

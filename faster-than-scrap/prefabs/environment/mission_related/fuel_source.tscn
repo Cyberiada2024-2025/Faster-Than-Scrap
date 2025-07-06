@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://83pmb3ixecep"]
 
-[ext_resource type="Script" uid="uid://chekqae75l00d" path="res://code/evironment/asteroid.gd" id="1_76agp"]
+[ext_resource type="Script" uid="uid://bk38eedjmfub" path="res://code/evironment/refinery.gd" id="1_bd28u"]
 [ext_resource type="Script" uid="uid://bxvqss31pcw3p" path="res://code/evironment/droppable.gd" id="2_kaa5q"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="3_3d00i"]
 [ext_resource type="PackedScene" uid="uid://bymii530libmh" path="res://prefabs/environment/mission_related/fuel_pickup.tscn" id="3_4x2we"]
@@ -16,11 +16,8 @@ size = Vector3(7.492, 14.618, 10.102)
 
 [node name="FuelSource" type="RigidBody3D"]
 axis_lock_linear_y = true
-mass = 1000.0
-gravity_scale = 0.0
-script = ExtResource("1_76agp")
-hp = 1
-start_speed_range = 0.0
+mass = 400000.0
+script = ExtResource("1_bd28u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_vf3at")
@@ -45,6 +42,10 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
 shape = SubResource("BoxShape3D_vf3at")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="DamageController/Damageable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1679, -5.69469, 3.40728)
+shape = SubResource("BoxShape3D_r16pb")
 
 [node name="MissionPoi" parent="." instance=ExtResource("6_4x2we")]
 

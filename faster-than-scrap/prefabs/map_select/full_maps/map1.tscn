@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c6sug4hxemhdp" path="res://prefabs/map_select/nodes/templates/missions/mission_escape.tscn" id="5_rwq3m"]
 [ext_resource type="Script" uid="uid://bmhwp67vae4gu" path="res://code/missions/info/mission_info.gd" id="6_0a6x0"]
 [ext_resource type="PackedScene" uid="uid://ci7ns2p5tsax6" path="res://prefabs/map_select/nodes/templates/boss_node.tscn" id="6_mkmvc"]
-[ext_resource type="PackedScene" uid="uid://dg6858phfq3am" path="res://prefabs/map_select/nodes/templates/missions/mission_shop.tscn" id="6_rafgn"]
+[ext_resource type="PackedScene" path="res://prefabs/map_select/nodes/templates/missions/mission_shop.tscn" id="6_rafgn"]
 [ext_resource type="PackedScene" uid="uid://bvcjycf02eb4c" path="res://prefabs/npc/bosses/juggernaut/juggernaut.tscn" id="7_yxgtb"]
 [ext_resource type="PackedScene" uid="uid://dhnli7a3skvdj" path="res://prefabs/map_select/nodes/templates/missions/mission_defend.tscn" id="8_mxsq4"]
 [ext_resource type="PackedScene" uid="uid://csyc0l2g1nt61" path="res://scenes/levels/finalest/easy/first_defend.tscn" id="8_uee5q"]
@@ -38,28 +38,27 @@ difficulty = 0
 
 [sub_resource type="Resource" id="Resource_pki7u"]
 script = ExtResource("6_0a6x0")
-about = "Barren planet, yet chosen for relocation. 
-Just some old scrap, insignificant remnants of ancient civilization."
+about = "Another barren rock, another 'relocation away from war' site. There are just some old scraps, insignificant remnants of an ancient civilization. Why were so many sent to such places?"
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_5jnkn"]
 script = ExtResource("6_0a6x0")
-about = "Asteroid mining corporations funneled serious money into Seraku Organization to relocate civilians here. 
+about = "Asteroid mining corporations funneled serious money into the Seraku Organization to relocate civilians here. 
 
-Update: Seraku are sending some workers down on untamed and unimpressive planet. I heard rumors in bar, about undisclosed incidents. However, I shouldn't dig so deep that early in the investigation, I would catch too much attention."
+Update: Seraku is sending some workers down on an untamed and unimpressive planet. I've heard rumors in the bar, about undisclosed incidents... Best not to dig too deep this early in the investigation, I'd draw too much attention."
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_gobyi"]
 script = ExtResource("6_0a6x0")
-about = "Used to be corporations' warzone. Seraku Organization made sure no one was left behind on these destroyed worlds. Yet, they seem to stick around, looking for something."
+about = "It used to be a corporate warzone. The Seraku Organization made sure no one was left behind on these destroyed worlds. Yet, their presence lingers, long after the last refugee ships departed. They're searching. For what?"
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_55wni"]
 script = ExtResource("6_0a6x0")
-about = "Field hospitals set by Seraku Organization in war-torn cities seem to work wonders despite relying on superstitious practices."
+about = "Field hospitals set up by the Seraku Organization in war-torn cities seem to work wonders despite relying on superstitious practices."
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
@@ -71,15 +70,14 @@ difficulty = 0
 
 [sub_resource type="Resource" id="Resource_sau2r"]
 script = ExtResource("6_0a6x0")
-about = "104 day of the investigation.
-High ranking officer of Seraku cult- now deserter, told me rumors about Aegis, the Golden Shield. It's meant to protect them when the time comes. I should be able to calculate path to Aegis signal and retrieve it. 
-
-Do I really need it? Vortex still can be stopped."
+about = "104th day of the investigation.
+A Seraku deserter, high-ranking, told me about the Aegis. He claims it's their Golden Shield for 'when the time comes.' I'm triangulating its signal now. Refitting it to my ship won't be a problem. But do I truly need it? The Vortex... it can still be stopped. Right?"
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_3cw18"]
 script = ExtResource("6_0a6x0")
-about = "Abandoned trading hub and refueling station made for perfect Seraku outpost. Secret investigation, conducted behind their formal facade, revealed hidden, alien artifacts."
+about = "Abandoned trading hub and refueling station made for perfect Seraku outpost. A secret investigation, conducted behind their formal facade, revealed hidden, alien artifacts.
+"
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
@@ -99,43 +97,48 @@ metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 [sub_resource type="Resource" id="Resource_vsw54"]
 script = ExtResource("6_0a6x0")
 about = "Interrogated a few relocated people working on local archaeological sites. Most of them specialize in ancient civilizations, but what is more important - their mythologies. 
-It sparked my intrest. Seraku must have taken these peculiar, alient artifacts from somewhere..."
+It sparked my interest. Seraku must have taken these peculiar, alien artifacts from somewhere...
+"
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_6ev6g"]
 script = ExtResource("6_0a6x0")
-about = "Interrogated a few relocated people working on local archaeological sites. Most of them specialize in ancient civilizations, but what is more important - their mythologies. "
+about = "No longer an active distress beacon, found in a dense asteroid field. It reads:
+\"These Seraku people are lies! They are all lies! They aren't here to save us from the old wars, but to bring much worse one!\"
+"
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_t1mo6"]
 script = ExtResource("6_0a6x0")
 about = "Clustered with asteroids and unstable hyperlanes, not many ships get in or out of this planetary system. 
-Here, Seraku first time used their supposedly escort ships for military takeover."
+Here, Seraku for the first time used their supposedly escort ships for a military takeover.
+"
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_0a6x0"]
 script = ExtResource("6_0a6x0")
-about = "Once again, seemingly insignificant remnants of ancient civilization. This time I need to dig deeper. I will check with the library."
+about = "Once again, seemingly insignificant remnants of an ancient civilization. This time I need to dig deeper. I'll check with the library."
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_uee5q"]
 script = ExtResource("6_0a6x0")
-about = "This is where Seraku founder started his madness and begun hunt for corrupting artifacts, one for each of his most brilliant and trusted man."
+about = "This is where the Seraku founder started his madness and began the hunt for corrupting artifacts, one for each of his most brilliant and trusted men."
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_fj8or"]
 script = ExtResource("6_0a6x0")
-about = "Update after checking with the library: That civilization has an interesting mythology about origins of evil.
-There was an unspecified eldritch being of unquenchable hunger, feeding on whole stars. Great shamans gathered to cast it out from reality. However, before they managed to do so, the abomination scattered relicts, through which its voice can be heard.
-"
+about = "Update after checking with the library: That civilization has an interesting mythology about the origins of evil.
+
+There was an unspecified eldritch being of unquenchable hunger, feeding on whole stars. The great shamans gathered to cast it out from reality, but before it was banished, the abomination scattered relics, through which its voice can be heard."
 difficulty = 0
 metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_dl063"]
 script = ExtResource("6_0a6x0")
-about = "This difficult to reach place was relocation destination that neither investors nor concerned, intrusive citizens, like me, should hear about. "
+about = "This hard-to-reach place was a relocation destination that neither investors nor concerned or intrusive citizens, like me, should ever hear about.
+I... I can't infiltrate it on my own and there isn't time for a large-scale operation."
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_mxsq4"]
@@ -145,27 +148,26 @@ difficulty = 0
 
 [sub_resource type="Resource" id="Resource_f40e2"]
 script = ExtResource("6_0a6x0")
-about = "62 day of the investigation. 
-It seems like Seraku members (or at least those aware of its redefined purpose) are devoted to feed cosmic horror from ancient mythologies. 
-It sounds like deliriums of madmen... but the influence they've gained before reaches too far to ignore.
-
-How did Seraku fall for this?"
+about = "62nd day of the investigation. 
+It seems like the Seraku members (or at least those aware of its redefined purpose) are devoted to feeding a cosmic horror from ancient mythologies. 
+It sounds like the deliriums of madmen... but the influence they've gained before reaches too far to ignore.
+How did they fall for this?"
 difficulty = 0
 
 [sub_resource type="Resource" id="Resource_dlw72"]
 script = ExtResource("6_0a6x0")
 about = "The final day of the investigation.
-This is it. The Aegis, my shield against Vortex is assembled. 
-That... Eldritch abomination is real. I have pinpointed its location. Cultists created fracture, the Vortex, but that thing outside is sustaining it. 
-There is one way to stop it from spreading."
+This is it. The Aegis, my shield against the Vortex is assembled. 
+That... Eldritch abomination is real. I have pinpointed its location. Cultists created a fracture, the Vortex, but that thing inside is sustaining it. 
+There is only one way to stop it from spreading."
 difficulty = 0
+metadata/_custom_type_script = "uid://bmhwp67vae4gu"
 
 [sub_resource type="Resource" id="Resource_4e3x0"]
 script = ExtResource("6_0a6x0")
-about = "1 day of investigation 
-Humanitarian Organization of Seraku was helping countless civilians find refuge on remote worlds. Driven out by constant wars, most of them found new lives on previously uninhabited planets. Corporations provided generous financial aid this operation, gaining footholds on new frontiers. 
-
-However, covered up incidents finally sparked Lord Inquisitor attention."
+about = "1st day of investigation 
+The Humanitarian Organization of Seraku was helping countless civilians find refuge on remote worlds. Driven out by constant wars, most of them found new lives on previously uninhabited planets. Corporations supported this operation, gaining footholds on these new frontiers. 
+However, the covered-up incidents on relocation sites finally sparked the Lord Inquisitor's attention, and I've been sent to investigate."
 difficulty = 0
 
 [node name="Map1" type="HBoxContainer" node_paths=PackedStringArray("active_node")]

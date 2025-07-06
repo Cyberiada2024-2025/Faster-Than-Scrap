@@ -37,6 +37,9 @@ var _saved_rotation: Vector3 = Vector3.ZERO
 func _enter_tree() -> void:
 	GameManager.player_ship = self
 	center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
+	# spaghetti fix
+	max_energy = 200
+	energy = 200
 
 
 func _ready() -> void:

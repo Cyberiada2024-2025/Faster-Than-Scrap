@@ -14,6 +14,6 @@ func _process(_delta: float) -> void:
 		return
 
 	var player = GameManager.player_ship
-	if player.energy < player.max_energy / 1.4:
+	if player.energy < player.max_energy * percentage:
 		triggered = true
 		player_low_energy.emit()

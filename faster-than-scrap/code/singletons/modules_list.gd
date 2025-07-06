@@ -1,17 +1,25 @@
 extends Node
 enum { COMMON = 5, UNCOMMON = 3, RARE = 2 }
 var modules_and_chances = [
+	#frames
 	[preload("res://prefabs/modules/frame1.tscn"), COMMON],
 	[preload("res://prefabs/modules/frame2.tscn"), COMMON],
+	#energy
 	[preload("res://prefabs/modules/battery.tscn"), UNCOMMON],
 	[preload("res://prefabs/modules/generator.tscn"), UNCOMMON],
-	[preload("res://prefabs/modules/shield_module.tscn"), RARE],
+	#thrusters
 	[preload("res://prefabs/modules/thruster.tscn"), COMMON],
+	#beams
 	[preload("res://prefabs/modules/weapons/beam_module.tscn"), UNCOMMON],
+	#lasers
 	[preload("res://prefabs/modules/weapons/laser_module.tscn"), COMMON],
+	#missiles
 	[preload("res://prefabs/modules/weapons/missile_module.tscn"), RARE],
+	#bumpers
 	[preload("res://prefabs/modules/bumper.tscn"), UNCOMMON],
 	[preload("res://prefabs/modules/bumper_wide.tscn"), RARE],
+	#shield
+	[preload("res://prefabs/modules/shield_module.tscn"), RARE],
 ]
 
 

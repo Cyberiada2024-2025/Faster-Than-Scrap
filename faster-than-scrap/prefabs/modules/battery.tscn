@@ -46,6 +46,8 @@ ao_texture = ExtResource("3_0nt81")
 [node name="Battery" type="CollisionShape3D" node_paths=PackedStringArray("attach_points", "sprite", "label")]
 shape = SubResource("BoxShape3D_jnq3k")
 script = ExtResource("1_aagdk")
+energy = 50.0
+energy_regeneration = 0.0
 is_activable = false
 attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2"), NodePath("AttachPoints/AttachPoint3"), NodePath("AttachPoints/AttachPoint4")]
 sprite = NodePath("ModuleDisplay/Sprite3D")

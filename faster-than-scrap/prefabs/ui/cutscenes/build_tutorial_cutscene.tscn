@@ -122,5 +122,63 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="Slide4" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_hak7e")
+duration = 999.0
+metadata/_custom_type_script = "uid://c8potv0p1705d"
+
+[node name="ColorRect" type="ColorRect" parent="Slide4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.6
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.292656, 0.388731, 0.540954, 1)
+
+[node name="Label" type="Label" parent="Slide4/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_kghuc")
+text = "Hover your mouse
+over the \"?\" icon
+to view the Scrapyard
+construction controls."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="Slide4/ColorRect"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.434
+anchor_top = 0.555
+anchor_right = 0.58
+anchor_bottom = 0.79
+offset_left = -200.387
+offset_top = -245.384
+offset_right = -200.387
+offset_bottom = -245.384
+grow_vertical = 0
+rotation = 2.17468
+scale = Vector2(0.707474, 1)
+texture = ExtResource("4_kghuc")
+expand_mode = 1
+flip_v = true
+
 [node name="SkipInfoText" parent="." instance=ExtResource("4_eqp44")]
 layout_mode = 1

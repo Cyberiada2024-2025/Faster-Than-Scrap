@@ -133,6 +133,14 @@ func get_saved_rotation():
 	return _saved_rotation
 
 
+func clear_saved_position():
+	_saved_position = Vector3.ZERO
+
+
+func clear_saved_rotation():
+	_saved_rotation = Vector3.ZERO
+
+
 ## Called whenever the energy amount changes.
 func _on_energy_change() -> void:
 	super()

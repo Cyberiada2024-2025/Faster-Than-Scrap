@@ -15,6 +15,14 @@ extends Node3D
 @export_custom(PROPERTY_HINT_NONE, "suffix:$") var starting_bank: int = 0
 @export var max_items_count = 10
 
+@export_category("Inventory modules")
+## Inventory size X
+@export_custom(PROPERTY_HINT_NONE, "suffix:m") var inventory_size_x: float = 0
+## Inventory size Y
+@export_custom(PROPERTY_HINT_NONE, "suffix:m") var inventory_size_z: float = 15
+@export var inventory_columns: int
+@export var inventory_rows: int
+
 @export_category("Shop modules")
 @export var shop_area: Node3D
 ## shop size X
@@ -141,9 +149,17 @@ func _generate_inventory() -> void:
 	var i = 0
 	for obj in InventoryManager.inventory:
 		add_child(obj)
-		var x: float = size_x / columns / 2 + i % columns * size_x / columns - size_x / 2
+		var x: float = (
+			inventory_size_x / inventory_columns / 2
+			+ i % inventory_columns * inventory_size_x / inventory_columns
+			- inventory_size_x / 2
+			+ $Inventory.position.x
+		)
 		var z: float = (
-			size_z / rows / 2 + i / columns * size_z / rows - size_z / 2 + $Inventory.position.z
+			inventory_size_z / inventory_rows / 2
+			+ i / inventory_columns * inventory_size_z / inventory_rows
+			- inventory_size_z / 2
+			+ $Inventory.position.z
 		)
 		obj.position = Vector3(x, 0, z)
 		obj.get_child(0).position = Vector3(0, 0, 0)

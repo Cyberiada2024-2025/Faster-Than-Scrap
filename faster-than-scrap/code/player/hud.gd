@@ -159,6 +159,9 @@ func _process(_delta: float) -> void:
 	if Input.is_action_pressed("pan_camera"):
 		pan_camera(_mouse_input)
 
+	if Input.is_action_pressed("rotate_camera"):
+		rotate_camera(_mouse_input)
+
 	position.y = y_pos
 	_mouse_input = Vector2.ZERO
 
@@ -190,6 +193,17 @@ func pan_camera(direction) -> void:
 
 	main_camera_offset.x = xz_offset.x
 	main_camera_offset.z = xz_offset.y
+
+
+func rotate_camera(direction: Vector2) -> void:
+	var rotation_factor = 0.005
+	var center_pos = get_viewport().get_visible_rect().size / 2
+	var mouse_from_center = (get_viewport().get_mouse_position() - center_pos)
+	# This code is based on the angular momentum formula. The built-in Godot
+	# angular momentum function cannot be used because Camera is not a RigidBody.
+	var amount = mouse_from_center.normalized().cross(direction) * rotation_factor
+	_main_camera.rotate_y(amount)
+	_minimap_camera.rotate_y(amount)
 
 
 ## Returns a world coordinate diagonal vector that spans the whole viewport

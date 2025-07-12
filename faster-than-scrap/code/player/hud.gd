@@ -130,28 +130,16 @@ func _process(_delta: float) -> void:
 	var player_view = _camera_transform.translated(player_ship.global_position)
 	_main_camera.transform = player_view.translated(Vector3.UP * y_pos)
 	_minimap_camera.transform = player_view.translated(minimap_camera_offset)
+	_module_camera.transform = player_view \
+		.orthonormalized() \
+		.translated(module_camera_offset)
 
-	## adaptive version worse effect
-	#var bounding_rect: Rect = _ship_bounding_rect(false)
-	## move camera to look at lower left corner of a ship
-	#_module_camera.global_position.x = bounding_rect.x.min
-	#_module_camera.global_position.y = 0
-	#_module_camera.global_position.z = bounding_rect.z.max
-	## add constant offset so the ship is always in the lower left corner
-	## of a module display
-	#_module_camera.global_position += module_camera_offset
-
-	## static version (stable)
 	# calculate size of a ship
 	var bounding_rect: Rect = _ship_bounding_rect(false)
-	# move camera to look at center of player
-	_module_camera.global_position = player_ship.global_position
 	# move camera to make ship stay in the middle of the radar
 	# after adding/deleting modules
 	_module_camera.global_position.x = (bounding_rect.x.max + bounding_rect.x.min) / 2
 	_module_camera.global_position.z = (bounding_rect.z.max + bounding_rect.z.min) / 2
-	# add constant offset
-	_module_camera.global_position += module_camera_offset
 
 	if Input.is_action_just_pressed("zoom_in"):
 		zoom_camera(-zoom_strength)

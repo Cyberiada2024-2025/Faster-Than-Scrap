@@ -6,7 +6,6 @@ static var instance: Hud
 
 @export var energy_bar: ResourceBar
 
-@export var main_camera_offset: Vector3 = Vector3(0, 40, 0)
 @export var module_camera_offset: Vector3
 @export var minimap_camera_offset: Vector3 = Vector3(0, 30, 0)
 @export var zoom_strength := 15
@@ -127,9 +126,10 @@ func _process(_delta: float) -> void:
 		return
 	# keep camera offsets relatively to player
 	var player_ship = GameManager.player_ship
-	
-	_main_camera.transform = _camera_transform.translated(player_ship.global_position)
-	_minimap_camera.global_position = player_ship.global_position + minimap_camera_offset
+
+	var player_view = _camera_transform.translated(player_ship.global_position)
+	_main_camera.transform = player_view.translated(Vector3.UP * y_pos)
+	_minimap_camera.transform = player_view.translated(minimap_camera_offset)
 
 	## adaptive version worse effect
 	#var bounding_rect: Rect = _ship_bounding_rect(false)
@@ -165,7 +165,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_pressed("rotate_camera"):
 		rotate_camera(_mouse_input)
 
-	position.y = y_pos
+	#position.y = y_pos
 	_mouse_input = Vector2.ZERO
 
 

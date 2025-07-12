@@ -249,7 +249,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10,
 cull_mask = 1048545
 script = ExtResource("1_x65cj")
 energy_bar = NodePath("HUD/Energy Bar")
-module_camera_offset = Vector3(6.5, 7, -5)
 
 [node name="ModuleViewport" type="SubViewport" parent="."]
 transparent_bg = true

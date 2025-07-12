@@ -6,13 +6,13 @@ static var instance: Hud
 
 @export var energy_bar: ResourceBar
 
-@export var module_camera_offset: Vector3
-@export var minimap_camera_offset: Vector3 = Vector3(0, 30, 0)
+@export var main_camera_height: float = 25
+@export var module_camera_height: float = 7.0
+@export var minimap_camera_height: float = 30.0
 @export var zoom_strength := 15
 @export var zoom_time := 0.2
 @export var max_zoom := 100
 @export var min_zoom := 5
-@export var y_pos: float = 25
 @export var use_saved_fov: bool = true
 ## Decides the camera drag when panning
 @export var panning_force: float = 2.0/3.0
@@ -128,11 +128,11 @@ func _process(_delta: float) -> void:
 	var player_ship = GameManager.player_ship
 
 	var player_view = _camera_transform.translated(player_ship.global_position)
-	_main_camera.transform = player_view.translated(Vector3.UP * y_pos)
-	_minimap_camera.transform = player_view.translated(minimap_camera_offset)
+	_main_camera.transform = player_view.translated(Vector3.UP * main_camera_height)
+	_minimap_camera.transform = player_view.translated(Vector3.UP * minimap_camera_height)
 	_module_camera.transform = player_view \
 		.orthonormalized() \
-		.translated(module_camera_offset)
+		.translated(Vector3.UP * module_camera_height)
 
 	# calculate size of a ship
 	var bounding_rect: Rect = _ship_bounding_rect(false)
@@ -153,7 +153,6 @@ func _process(_delta: float) -> void:
 	if Input.is_action_pressed("rotate_camera"):
 		rotate_camera(_mouse_input)
 
-	#position.y = y_pos
 	_mouse_input = Vector2.ZERO
 
 

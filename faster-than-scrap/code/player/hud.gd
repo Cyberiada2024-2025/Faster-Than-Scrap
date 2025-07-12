@@ -26,8 +26,10 @@ var _module_camera: Camera3D
 var _minimap_camera: Camera3D
 var _tween: Tween
 var _mouse_input: Vector2 = Vector2.ZERO
-var _camera_position: Vector2 = Vector2.ZERO
-var _visibility_range: Vector2
+var _camera_transform: Transform3D = Transform3D.IDENTITY \
+	.looking_at(Vector3.DOWN) \
+	.rotated(Vector3.DOWN, PI/2)
+var _visibility_range: float
 
 
 func _enter_tree() -> void:
@@ -43,8 +45,8 @@ func _ready() -> void:
 		_main_camera.fov = SettingsManager.zoom_level
 
 	if SettingsManager.panning_range == null:
-		SettingsManager.panning_range = panning_viewport_extension \
-			* _get_viewport_world_span(_main_camera)
+		SettingsManager.panning_range = \
+			(panning_viewport_extension * _get_viewport_world_span(_main_camera)).x
 
 	_visibility_range = SettingsManager.panning_range
 
@@ -125,7 +127,8 @@ func _process(_delta: float) -> void:
 		return
 	# keep camera offsets relatively to player
 	var player_ship = GameManager.player_ship
-	_main_camera.global_position = player_ship.global_position + main_camera_offset
+	
+	_main_camera.transform = _camera_transform.translated(player_ship.global_position)
 	_minimap_camera.global_position = player_ship.global_position + minimap_camera_offset
 
 	## adaptive version worse effect
@@ -179,20 +182,17 @@ func pan_camera(direction) -> void:
 	# Assumption: max_zoom is never zero
 	var zoom_scaling_factor = _main_camera.fov / max_zoom
 
-	var relative_camera_offset = direction \
+	var camera_offset = direction \
 		* zoom_scaling_factor \
 		* (0.1 * panning_force)
 
-	var xz_offset = Vector2(
-		main_camera_offset.x - relative_camera_offset.x,
-		main_camera_offset.z - relative_camera_offset.y
-	).clamp(
-		-_visibility_range,
-		+_visibility_range
-	)
+	var translation = Vector3(-camera_offset.x, camera_offset.y, 0)
+	var transformed = _camera_transform.translated_local(translation)
 
-	main_camera_offset.x = xz_offset.x
-	main_camera_offset.z = xz_offset.y
+	if transformed.origin.length_squared() > _visibility_range * _visibility_range:
+		transformed.origin = transformed.origin.normalized() * _visibility_range
+
+	_camera_transform = transformed
 
 
 func rotate_camera(direction: Vector2) -> void:
@@ -202,7 +202,7 @@ func rotate_camera(direction: Vector2) -> void:
 	# This code is based on the angular momentum formula. The built-in Godot
 	# angular momentum function cannot be used because Camera is not a RigidBody.
 	var amount = mouse_from_center.normalized().cross(direction) * rotation_factor
-	_main_camera.rotate_y(amount)
+	_camera_transform = _camera_transform.rotated_local(Vector3.MODEL_FRONT, amount)
 	_minimap_camera.rotate_y(amount)
 
 

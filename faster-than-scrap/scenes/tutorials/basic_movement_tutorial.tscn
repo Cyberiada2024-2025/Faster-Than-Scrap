@@ -192,7 +192,7 @@ cutscene_path = ExtResource("10_aa5ti")
 
 [node name="Detect player low energy" type="Node" parent="Energy cutscene player"]
 script = ExtResource("11_37dpr")
-percentage = 0.8
+percentage = 0.9
 
 [node name="Weapon Cutscene player" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -380)

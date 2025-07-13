@@ -1,6 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://ce4vpw5ov403e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3xl1"]
+blend_mode = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
 
 [sub_resource type="Gradient" id="Gradient_ts5mp"]
@@ -28,6 +30,8 @@ color_ramp = SubResource("GradientTexture1D_h5qc5")
 [sub_resource type="SphereMesh" id="SphereMesh_x8uhr"]
 radius = 0.2
 height = 0.4
+radial_segments = 12
+rings = 6
 
 [node name="BeamParticles" type="GPUParticles3D"]
 material_override = SubResource("StandardMaterial3D_o3xl1")

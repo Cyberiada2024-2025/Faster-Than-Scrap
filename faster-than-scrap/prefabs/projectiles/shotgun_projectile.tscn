@@ -7,13 +7,13 @@
 [ext_resource type="Script" uid="uid://2p7oc4a3141y" path="res://code/utilities/wait_free.gd" id="5_b88sc"]
 
 [sub_resource type="Curve" id="Curve_4quhm"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 1), 0.0, -0.116552, 0, 0, Vector2(0.672727, 0.905911), -0.369637, -0.369637, 0, 0, Vector2(1, 0.49035), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ld4gu"]
-albedo_color = Color(1, 0.682353, 0, 1)
+albedo_color = Color(1, 0.188235, 0.172549, 1)
 emission_enabled = true
-emission = Color(1, 0.682353, 0, 1)
+emission = Color(1, 0.187083, 0.173976, 1)
 emission_energy_multiplier = 16.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_386xi"]
@@ -56,9 +56,9 @@ scale_curve = SubResource("CurveTexture_o73pc")
 alpha_curve = SubResource("CurveTexture_xn5pm")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1cn7k"]
-albedo_color = Color(1, 0.682353, 0, 1)
+albedo_color = Color(1, 0.188235, 0.172549, 1)
 emission_enabled = true
-emission = Color(1, 0.682353, 0, 1)
+emission = Color(1, 0.188235, 0.172549, 1)
 emission_energy_multiplier = 16.0
 use_particle_trails = true
 
@@ -68,7 +68,7 @@ material = SubResource("StandardMaterial3D_1cn7k")
 [node name="EnemyFastProjectile" type="Node3D" node_paths=PackedStringArray("particle_holder", "particles")]
 script = ExtResource("1_canbu")
 velocity = SubResource("Curve_4quhm")
-velocity_multiplier = 100.0
+velocity_multiplier = 60.0
 lifetime = 1.0
 particle_holder = NodePath("ParticleHolder")
 particles = [NodePath("ParticleHolder/Trail")]

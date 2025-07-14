@@ -20,7 +20,7 @@ func _on_key_press(_delta: float) -> void:
 	super(_delta)
 	if not allow_auto_fire:
 		var result = weapon.try_activate()
-		if result != null:
+		if result != []:
 			activated.emit()
 
 
@@ -28,14 +28,14 @@ func _on_key(_delta: float) -> void:
 	super(_delta)
 	if allow_auto_fire:
 		var result = weapon.try_activate()
-		if result != null:
+		if result != []:
 			activated.emit()
 
 
 func _on_release(_delta: float) -> void:
 	super(_delta)
 	var result = weapon.try_deactivate()
-	if result != null:
+	if result != false:
 		deactivated.emit()
 
 

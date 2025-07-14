@@ -31,9 +31,9 @@ func can_activate() -> bool:
 
 
 ## Tries to activate the weapon.
-## Returns the spawned projectile if it succeded and [code]null[/code] otherwise
-func try_activate() -> Node3D:
-	return null
+## Returns an array of spawned projectiles if it succeded and [code][][/code] otherwise
+func try_activate() -> Array[Node3D]:
+	return []
 
 
 ## Tries to deactivate the weapon.

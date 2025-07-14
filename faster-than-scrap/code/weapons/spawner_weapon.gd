@@ -8,6 +8,9 @@ extends BaseWeapon
 @export_category("Projectile spread")
 @export var projectiles_per_fire: int = 1
 @export_range(0, 360) var spread_angle: float = 0
+@export_range(0, 360) var random_spread_angle: float = 0
+@export_range(0, 1) var random_spread_influence: float = 0
+@export_enum("Absolute", "Relative") var random_spread_mode = "Absolute"
 
 ## Weapon that can spawn multiple projectiles, such as bullets, laser bolts, etc.
 
@@ -36,9 +39,9 @@ func _shoot() -> Array[Node3D]:
 
 		if !warning:
 			new_projectile.transform = global_transform
-			if projectiles_per_fire > 1:
-				var angle = -spread_angle / 2 + (spread_angle / (projectiles_per_fire - 1) * i)
-				new_projectile.rotate(Vector3.UP, deg_to_rad(angle))
+
+			_rotate_projectile(new_projectile, i)
+
 			get_tree().current_scene.add_child(new_projectile)
 		else:
 			add_child(new_projectile)
@@ -50,6 +53,21 @@ func _shoot() -> Array[Node3D]:
 		muzzle_flash.emitting = true
 
 	return spawned_projectiles
+
+
+func _rotate_projectile(projectile: Node3D, projectile_index: int):
+	var angle = 0
+	if projectiles_per_fire > 1:
+		angle = -spread_angle / 2 + (spread_angle / (projectiles_per_fire - 1) * projectile_index)
+
+	var random_angle = randf_range(-random_spread_angle / 2, random_spread_angle / 2)
+	match random_spread_mode:
+		"Absolute":
+			angle = (random_angle * random_spread_influence + angle * (1 - random_spread_influence))
+		"Relative":
+			angle += random_angle * random_spread_influence
+
+	projectile.rotate(Vector3.UP, deg_to_rad(angle))
 
 
 func can_activate() -> bool:

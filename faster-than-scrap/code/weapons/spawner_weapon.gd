@@ -20,7 +20,7 @@ extends BaseWeapon
 @export_range(0, 360) var spread_angle: float = 0
 
 ## Random component of the fire spread angle.
-## See [member random_spread_mode] for more details on how this affects the final projectiles' angle.
+## See [member random_spread_mode] for more details on how this affects the final projectiles' angle
 @export_range(0, 360) var random_spread_angle: float = 0
 
 ## Influence of the random spread angle on the final projectile angle. [br]

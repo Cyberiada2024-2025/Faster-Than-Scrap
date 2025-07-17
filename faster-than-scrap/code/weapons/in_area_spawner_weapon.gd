@@ -6,23 +6,24 @@ extends SpawnerWeapon
 @export var max_range: float = 20
 
 
-func try_activate() -> Node3D:
-	var created_projectile := super()
-	if created_projectile == null:
-		return null
+func try_activate() -> Array[Node3D]:
+	var created_projectiles := super()
+	if created_projectiles == []:
+		return []
 
 	var target = GameManager.find_closest_ship(ship)
 	if target == null:
-		return null
+		return []
 
-	created_projectile.position += get_random_point_in_donut()
+	for created_projectile in created_projectiles:
+		created_projectile.position += get_random_point_in_donut()
 
 	# spawn multiple if needed
 	for index in range(spawn_count - 2):
 		var copy: Node3D = _spawn_projectile()
 		copy.position += get_random_point_in_donut()
 
-	return created_projectile
+	return created_projectiles
 
 
 func get_random_point_in_donut() -> Vector3:

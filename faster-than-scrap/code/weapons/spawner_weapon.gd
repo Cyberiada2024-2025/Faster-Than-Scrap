@@ -1,18 +1,38 @@
 class_name SpawnerWeapon
 
 extends BaseWeapon
+
+## Weapon that can spawn multiple projectiles, such as bullets, laser bolts, etc.
+
 @export var muzzle_flash: GPUParticles3D
 @export var warning: bool
 @export var apply_ship_velocity_to_projectiles: bool = true
 
 @export_category("Projectile spread")
+## Number of projectiles that will be spawned when the weapon is successfully activated.
 @export var projectiles_per_fire: int = 1
-@export_range(0, 360) var spread_angle: float = 0
-@export_range(0, 360) var random_spread_angle: float = 0
-@export_range(0, 1) var random_spread_influence: float = 0
-@export_enum("Absolute", "Relative") var random_spread_mode = "Absolute"
 
-## Weapon that can spawn multiple projectiles, such as bullets, laser bolts, etc.
+## The spawned projectiles will be uniformly rotated within this angle,
+## relative to the weapon's forward directon [br]
+## i.e. the leftmost projectile will be rotated by [code]-spread_angle/2[/code]
+## and the rightmost by [code]spread_angle/2[/code]. [br]
+## Has no effect if [member projectiles_per_fire] is equal to [code]1[/code].
+@export_range(0, 360) var spread_angle: float = 0
+
+## Random component of the fire spread angle.
+## See [member random_spread_mode] for more details on how this affects the final projectiles' angle.
+@export_range(0, 360) var random_spread_angle: float = 0
+
+## Influence of the random spread angle on the final projectile angle. [br]
+## [code]0[/code] means that the random component is ignored. [br]
+## [code]1[/code] means that only the random component is used. [br]
+## Values between are an interpolation between random and uniform angles.
+@export_range(0, 1) var random_spread_influence: float = 0
+
+## Determines how random spread angle affects the final projectile angle: [br]
+## - [code]Absolute[/code] - The random spread angle is applied directly [br]
+## - [code]Relative[/code] - The random spread angle is applied as an offset to the base angle
+@export_enum("Absolute", "Relative") var random_spread_mode = "Absolute"
 
 
 func try_activate() -> Array[Node3D]:

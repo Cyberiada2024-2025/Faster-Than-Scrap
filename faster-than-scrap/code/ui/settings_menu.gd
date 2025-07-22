@@ -39,3 +39,13 @@ func _on_skip_cutscenes_check_box_pressed() -> void:
 func _on_visibility_changed() -> void:
 	if brakes_check_box != null:
 		brakes_check_box.grab_focus()
+
+
+func _on_resolution_option_item_selected(index: int) -> void:
+	match index:
+		0:
+			DisplayServer.window_set_size(Vector2i(1920, 1080))
+		1:
+			DisplayServer.window_set_size(Vector2i(1600, 900))
+		2:
+			DisplayServer.window_set_size(Vector2i(1280, 720))

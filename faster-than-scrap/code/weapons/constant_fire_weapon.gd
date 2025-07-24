@@ -28,15 +28,15 @@ func can_activate() -> bool:
 	return super()
 
 
-func try_activate() -> Node3D:
+func try_activate() -> Array[Node3D]:
 	if not can_activate():
-		return null
+		return []
 
 	active_projectile = _spawn_projectile()
 	add_child(active_projectile)
 	if muzzle_flash != null:
 		muzzle_flash.emitting = true
-	return active_projectile
+	return [active_projectile]
 
 
 ## Tries to deactivate the weapon. Returns whether or not it succeeded. [br]

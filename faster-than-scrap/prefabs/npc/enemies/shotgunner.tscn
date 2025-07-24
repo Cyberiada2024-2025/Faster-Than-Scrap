@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://do6r4sdoiglip" path="res://code/enemy/NPC.gd" id="1_ok4vr"]
 [ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="2_23gon"]
 [ext_resource type="Script" uid="uid://bin0oxv424iww" path="res://code/weapons/spawner_weapon.gd" id="2_yc3bl"]
-[ext_resource type="PackedScene" uid="uid://dpuxvcnuhlg62" path="res://prefabs/projectiles/enemy projectiles/heavy_enemy_blast.tscn" id="3_s1yp8"]
+[ext_resource type="PackedScene" uid="uid://chcrxxwm78c8k" path="res://prefabs/projectiles/enemy projectiles/heavy_enemy_pellet.tscn" id="4_23gon"]
 [ext_resource type="Script" uid="uid://dpubtuvds874u" path="res://code/ship/ship.gd" id="4_s1yp8"]
 [ext_resource type="Script" uid="uid://c22pp68e4yhg8" path="res://code/enemy/state_machine_npc.gd" id="5_q0blx"]
 [ext_resource type="Script" uid="uid://b1evvkbdec4yo" path="res://code/enemy/states/move/state_npc_movemenet/agressive_shooting.gd" id="6_xxpwe"]
@@ -407,9 +407,11 @@ self_damage_multiplier = 0.25
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.75564)
 script = ExtResource("2_yc3bl")
 muzzle_flash = NodePath("MuzzleFlash")
+projectiles_per_fire = 7
+spread_angle = 30.0
 energy_cost = 20.0
 cooldown = 2.0
-projectile = ExtResource("3_s1yp8")
+projectile = ExtResource("4_23gon")
 
 [node name="MuzzleFlash" type="GPUParticles3D" parent="Weapon"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.572005)

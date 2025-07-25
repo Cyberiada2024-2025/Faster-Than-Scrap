@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://do65lngs5afsu"
+path.s3tc="res://.godot/imported/3_3_Normal.png-20c7d71c8512b269c6df06e48c9ae25b.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "d0a9d04a70fa57487ef5bd252193924b"
+}
+
+[deps]
+
+source_file="res://art/models/big-asteroids/3_3_Normal.png"
+dest_files=["res://.godot/imported/3_3_Normal.png-20c7d71c8512b269c6df06e48c9ae25b.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://art/models/big-asteroids/3_3_Normal.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

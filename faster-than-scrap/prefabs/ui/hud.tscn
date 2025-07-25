@@ -190,7 +190,7 @@ shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = SubResource("ViewportTexture_2iqq7")
 uv1_scale = Vector3(0.3, 0.3, 0.3)
-uv1_offset = Vector3(0.3, 0, 0.65)
+uv1_offset = Vector3(0.5, 0, 0.5)
 uv1_triplanar = true
 uv1_triplanar_sharpness = 0.93304
 billboard_keep_scale = true
@@ -249,8 +249,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10,
 cull_mask = 1048545
 script = ExtResource("1_x65cj")
 energy_bar = NodePath("HUD/Energy Bar")
-main_camera_offset = Vector3(0, 25, 0)
-module_camera_offset = Vector3(6.5, 7, -5)
 
 [node name="ModuleViewport" type="SubViewport" parent="."]
 transparent_bg = true

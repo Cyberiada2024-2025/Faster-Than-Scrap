@@ -59,6 +59,11 @@ func _ready() -> void:
 	instance = self
 	mat.set_shader_parameter(RADIUS, start_scale)
 	mat.set_shader_parameter("Aegis_Position", Vector2(3000.0, 3000.0))
+	GameManager.game_reset.connect(_on_game_manager_reset)
+
+
+func _on_game_manager_reset():
+	instance = null
 
 
 func _process(delta: float) -> void:

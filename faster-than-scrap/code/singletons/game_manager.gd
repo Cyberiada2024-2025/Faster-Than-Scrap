@@ -27,7 +27,6 @@ func on_scene_exit() -> void:
 
 
 func reset() -> void:
-	SpaceVortex.instance = null
 	game_reset.emit()
 
 	game_over = false

@@ -71,7 +71,7 @@ mesh = ExtResource("4_2o8ji")
 skeleton = NodePath("../CommonGun4")
 
 [node name="SpawnerWeapon" type="Node3D" parent="." node_paths=PackedStringArray("muzzle_flash")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.40907)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.00265)
 script = ExtResource("2_y8vnx")
 muzzle_flash = NodePath("MuzzleFlash")
 projectiles_per_fire = 7
@@ -86,7 +86,7 @@ projectile = ExtResource("6_74umi")
 metadata/_custom_type_script = "uid://crmxerc164n6q"
 
 [node name="MuzzleFlash" parent="SpawnerWeapon" instance=ExtResource("4_1xakl")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, -0.0391308)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0.350918)
 
 [node name="AttachPoints" type="Node3D" parent="."]
 

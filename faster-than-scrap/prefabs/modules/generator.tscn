@@ -1,7 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://c6ut4p0tkv47j"]
+[gd_scene load_steps=19 format=3 uid="uid://c6ut4p0tkv47j"]
 
 [ext_resource type="Script" uid="uid://urjr40lajiyq" path="res://code/ship/modules/battery_module.gd" id="1_p6uur"]
-[ext_resource type="Texture2D" uid="uid://kj5g7i54g3jd" path="res://art/textures/battery/final_battery_color.png" id="2_trny3"]
 [ext_resource type="Material" uid="uid://b8keu47disj17" path="res://art/materials/scrap_shop/base/scrap_shop_base_material_3d.tres" id="2_v8si5"]
 [ext_resource type="ArrayMesh" uid="uid://cfj7df0phfn4y" path="res://art/models/modules/scrap_shop/base/base.obj" id="3_bm5rs"]
 [ext_resource type="Texture2D" uid="uid://bm7v8lkx5wn8i" path="res://art/textures/battery/final_battery_metal.png" id="3_jroyb"]
@@ -28,7 +27,7 @@ emission_energy_multiplier = 5.0
 [sub_resource type="PrismMesh" id="PrismMesh_7acgp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5p3y"]
-albedo_texture = ExtResource("2_trny3")
+albedo_color = Color(0.5, 0.5, 0.5, 1)
 metallic = 1.0
 metallic_texture = ExtResource("3_jroyb")
 roughness_texture = ExtResource("5_pnqtk")
@@ -73,11 +72,23 @@ material_override = ExtResource("2_v8si5")
 mesh = ExtResource("3_bm5rs")
 skeleton = NodePath("../../..")
 
+[node name="Base3" type="MeshInstance3D" parent="Model/Ring"]
+transform = Transform3D(-0.925, 1.39671e-07, 0, -1.39671e-07, -0.925, 0, 0, 0, 0.925, 1.71352e-07, -1.84737, 0)
+material_override = ExtResource("2_v8si5")
+mesh = ExtResource("3_bm5rs")
+skeleton = NodePath("../../..")
+
 [node name="RingInner" type="Node3D" parent="Model"]
 transform = Transform3D(0.12, 0, 0, 0, 0.2, 0, 0, 0, 0.12, 0, 0, 0)
 
 [node name="Base3" type="MeshInstance3D" parent="Model/RingInner"]
-transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 0, 1.59726, 0)
+transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 0, 1.6, 0)
+material_override = ExtResource("2_v8si5")
+mesh = ExtResource("3_bm5rs")
+skeleton = NodePath("../..")
+
+[node name="Base4" type="MeshInstance3D" parent="Model/RingInner"]
+transform = Transform3D(0.92388, 0, 0.382683, 0, 1, 0, -0.382683, 0, 0.92388, 0, -2.20931, 0)
 material_override = ExtResource("2_v8si5")
 mesh = ExtResource("3_bm5rs")
 skeleton = NodePath("../..")
@@ -85,34 +96,43 @@ skeleton = NodePath("../..")
 [node name="Emission" type="Node3D" parent="Model"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Emission"]
-transform = Transform3D(0.212132, -0.493166, -0.00603985, 0, 0.0597915, -0.0996345, 0.212132, 0.493166, 0.00603985, 0.322607, 0.485501, -0.322607)
+transform = Transform3D(0.212132, -0.493381, -0.00567092, 0, 0.0561393, -0.0996779, 0.212132, 0.493381, 0.00567092, 0.322607, 0.485501, -0.322607)
 material_override = SubResource("StandardMaterial3D_m1npl")
 mesh = SubResource("PrismMesh_7acgp")
 skeleton = NodePath("../../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Model/Emission"]
-transform = Transform3D(-0.212132, -0.493166, -0.00603985, 0, 0.0597915, -0.0996345, 0.212132, -0.493166, -0.00603985, 0.322607, 0.485501, 0.322607)
+transform = Transform3D(-0.212132, -0.493381, -0.00567092, 0, 0.0561393, -0.0996779, 0.212132, -0.493381, -0.00567092, 0.322607, 0.485501, 0.322607)
 material_override = SubResource("StandardMaterial3D_m1npl")
 mesh = SubResource("PrismMesh_7acgp")
 skeleton = NodePath("../../..")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Model/Emission"]
-transform = Transform3D(-0.212132, 0.493166, 0.00603985, 0, 0.0597915, -0.0996345, -0.212132, -0.493166, -0.00603985, -0.322607, 0.485501, 0.322607)
+transform = Transform3D(-0.212132, 0.493381, 0.00567092, 0, 0.0561393, -0.0996779, -0.212132, -0.493381, -0.00567092, -0.322607, 0.485501, 0.322607)
 material_override = SubResource("StandardMaterial3D_m1npl")
 mesh = SubResource("PrismMesh_7acgp")
 skeleton = NodePath("../../..")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Model/Emission"]
-transform = Transform3D(0.212132, 0.493166, 0.00603985, -2.66452e-16, 0.0597915, -0.0996345, -0.212132, 0.493166, 0.00603985, -0.322607, 0.485501, -0.322607)
+transform = Transform3D(0.212132, 0.493381, 0.00567092, 0, 0.0561393, -0.0996779, -0.212132, 0.493381, 0.00567092, -0.322607, 0.485501, -0.322607)
 material_override = SubResource("StandardMaterial3D_m1npl")
 mesh = SubResource("PrismMesh_7acgp")
 skeleton = NodePath("../../..")
 
 [node name="Inside" type="Node3D" parent="Model"]
-transform = Transform3D(4.1, 0, 0, 0, 1.553, 0, 0, 0, 4.1, 0, 0, 0)
+transform = Transform3D(4.1, 0, 0, 0, 1.35, 0, 0, 0, 4.1, 0, 0.0684792, 0)
 
 [node name="FinalestBattery" type="MeshInstance3D" parent="Model/Inside"]
-transform = Transform3D(1, 0, 0, 0, 1, 1.66908e-15, 0, -1.66908e-15, 1, 0, -0.124895, 4.33258e-16)
+transform = Transform3D(1, 0, 0, 0, 1, 1.66908e-15, 0, -1.66908e-15, 1, 0, -0.124, 0)
+material_override = SubResource("StandardMaterial3D_u5p3y")
+mesh = ExtResource("6_leg1j")
+skeleton = NodePath("")
+
+[node name="InsideBottom" type="Node3D" parent="Model"]
+transform = Transform3D(4.1, 0, 0, 0, 1.325, 0, 0, 0, 4.1, 0, 0.050455, 0)
+
+[node name="FinalestBattery" type="MeshInstance3D" parent="Model/InsideBottom"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -0.124, 0)
 material_override = SubResource("StandardMaterial3D_u5p3y")
 mesh = ExtResource("6_leg1j")
 skeleton = NodePath("")

@@ -52,8 +52,8 @@ label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Energy Generator"
-prize = 2
-description = "A decomissioned reactor, once used to power deepspace cargo vessels. Its hull shows years of wear but it can still be useful in the right hands."
+prize = 4
+description = "A decommissioned reactor, once used to power deepspace cargo vessels. Its hull shows years of wear and questionable durability, but it can still be useful in the right hands."
 
 [node name="Model" type="Node3D" parent="."]
 

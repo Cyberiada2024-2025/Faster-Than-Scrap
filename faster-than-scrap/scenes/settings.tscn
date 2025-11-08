@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://36s8658cgl8t"]
+[gd_scene load_steps=13 format=3 uid="uid://36s8658cgl8t"]
 
 [ext_resource type="Script" uid="uid://ba3jfd0801hhd" path="res://code/ui/settings_menu.gd" id="1_gjs24"]
 [ext_resource type="Script" path="res://code/ui/connect_sound_to_all_clickables.gd" id="2_4ppmf"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cvsc1hfn6jjb" path="res://art/textures/main_menu/main_title.png" id="7_wqwn7"]
 [ext_resource type="PackedScene" uid="uid://b62j1li7psxce" path="res://prefabs/ui/volume_slider.tscn" id="8_am25x"]
 [ext_resource type="FontFile" uid="uid://c5684ddhvkomb" path="res://art/fonts/Orbitron-Bold.ttf" id="9_4ppmf"]
+[ext_resource type="Script" uid="uid://dsc4arbw08gah" path="res://scale_slider.gd" id="11_uhhto"]
 
 [sub_resource type="FontVariation" id="FontVariation_4ppmf"]
 base_font = ExtResource("9_4ppmf")
@@ -130,6 +131,15 @@ theme_override_font_sizes/font_size = 30
 text = "Skip cutscenes"
 alignment = 1
 
+[node name="FullScreenCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/Buttons"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../AirResistanceCheckBox")
+focus_neighbor_bottom = NodePath("../../../ReturnButton")
+theme_override_fonts/font = SubResource("FontVariation_4ppmf")
+theme_override_font_sizes/font_size = 30
+text = "Fullscreen mode"
+alignment = 1
+
 [node name="SlidersLabels" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
@@ -180,6 +190,17 @@ text = "Interface"
 layout_mode = 2
 bus_name = "UI"
 
+[node name="scale_label" type="Label" parent="VBoxContainer/HBoxContainer/SlidersLabels2"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_4ppmf")
+theme_override_font_sizes/font_size = 30
+text = "Render Scale"
+
+[node name="Scale" parent="VBoxContainer/HBoxContainer/SlidersLabels2" instance=ExtResource("8_am25x")]
+layout_mode = 2
+value = 1.0
+script = ExtResource("11_uhhto")
+
 [node name="Sliders" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 24
@@ -196,4 +217,5 @@ text = "RETURN"
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Buttons/BrakesCheckBox" to="." method="_on_brakes_check_box_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Buttons/AirResistanceCheckBox" to="." method="_on_air_resistance_check_box_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Buttons/SkipCutscenesCheckBox" to="." method="_on_skip_cutscenes_check_box_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Buttons/FullScreenCheckBox" to="." method="_on_fullscreen_check_box_pressed"]
 [connection signal="pressed" from="VBoxContainer/ReturnButton" to="." method="_on_button_pressed"]

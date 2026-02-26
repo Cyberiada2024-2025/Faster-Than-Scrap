@@ -271,6 +271,7 @@ func _display_inventory_number() -> void:
 func _on_module_attached(module: Module) -> void:
 	bank -= module.prize
 	_on_bank_change()
+	if DebugMenu.disable_money_checks:
 
 
 func _on_ship_builder_on_module_detach(module: Module) -> void:

@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dabw2qokhe2yd"]
+[gd_scene load_steps=9 format=3 uid="uid://btyo04j4us752"]
 
+[ext_resource type="Script" uid="uid://cbatmfsj1wp0v" path="res://scenes/levels/level_sandbox.gd" id="1_7hvjb"]
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_8xiir"]
 [ext_resource type="PackedScene" uid="uid://cgx7bdd0f2rhg" path="res://prefabs/environment/shop_miniature.tscn" id="2_blj0i"]
 [ext_resource type="PackedScene" uid="uid://st0p1n6f1ygk" path="res://prefabs/npc/enemies/assault.tscn" id="3_blj0i"]
@@ -10,7 +11,8 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_7hvjb"]
 radius = 30.819
 
-[node name="DummyLevel" type="Node3D"]
+[node name="SandboxLevel" type="Node3D"]
+script = ExtResource("1_7hvjb")
 
 [node name="LevelBase" parent="." instance=ExtResource("1_8xiir")]
 

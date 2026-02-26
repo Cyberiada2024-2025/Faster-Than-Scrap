@@ -86,7 +86,7 @@ alignment = 1
 [node name="StartButton" type="Button" parent="Buttons"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitButton")
-focus_neighbor_bottom = NodePath("../SettingsButton")
+focus_neighbor_bottom = NodePath("../SandboxButton")
 theme_override_fonts/font = SubResource("FontVariation_lgwnu")
 theme_override_font_sizes/font_size = 30
 text = "START"
@@ -94,7 +94,7 @@ icon_alignment = 1
 
 [node name="SandboxButton" type="Button" parent="Buttons"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../ExitButton")
+focus_neighbor_top = NodePath("../StartButton")
 focus_neighbor_bottom = NodePath("../SettingsButton")
 theme_override_fonts/font = SubResource("FontVariation_lgwnu")
 theme_override_font_sizes/font_size = 30
@@ -103,7 +103,7 @@ icon_alignment = 1
 
 [node name="SettingsButton" type="Button" parent="Buttons"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_top = NodePath("../SandboxButton")
 focus_neighbor_bottom = NodePath("../ExitButton")
 theme_override_fonts/font = SubResource("FontVariation_lgwnu")
 theme_override_font_sizes/font_size = 30

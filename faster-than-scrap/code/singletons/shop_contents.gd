@@ -22,3 +22,11 @@ func generate_contents() -> void:
 		)]
 		var module = module_packed.instantiate()
 		shop_modules.append(SceneData.new(module.name, module_packed))
+
+
+func generate_all_modules() -> void:
+	shop_modules = []
+	var module_packed := ModulesList.get_packed_modules()
+	for i in range(module_packed.size()):
+		var module = module_packed[i].instantiate()
+		shop_modules.append(SceneData.new(module.name, module_packed[i]))

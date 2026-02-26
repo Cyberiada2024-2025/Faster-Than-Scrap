@@ -45,7 +45,6 @@ func _remove_enemy(enemy: Ship) -> void:
 func _show_help() -> void:
 	help_label.text = """
 		[types] a b c d f m r s tg tl ts [count] ('tl 5' will spawn 5 turret_laser)
-		shop_reset
 		Press F3 for cheats
 	"""
 	await get_tree().create_timer(4.51).timeout

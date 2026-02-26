@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dabw2qokhe2yd"]
+
+[ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_8xiir"]
+[ext_resource type="PackedScene" uid="uid://cgx7bdd0f2rhg" path="res://prefabs/environment/shop_miniature.tscn" id="2_blj0i"]
+[ext_resource type="PackedScene" uid="uid://st0p1n6f1ygk" path="res://prefabs/npc/enemies/assault.tscn" id="3_blj0i"]
+
+[node name="DummyLevel" type="Node3D"]
+
+[node name="LevelBase" parent="." instance=ExtResource("1_8xiir")]
+
+[node name="ShopMiniature" parent="." instance=ExtResource("2_blj0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.8337, 0, 6.7092)
+
+[node name="enemies" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3947, 0, -34.272)
+
+[node name="Assault" parent="enemies" instance=ExtResource("3_blj0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15613, 0, -9.28294)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer"]
+offset_right = 68.5417
+offset_bottom = 30.3333

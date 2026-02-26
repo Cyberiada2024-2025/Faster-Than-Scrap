@@ -24,3 +24,7 @@ func _on_settings_button_pressed() -> void:
 
 func focus() -> void:
 	$Buttons/StartButton.grab_focus()
+
+
+func _on_sandbox_button_pressed() -> void:
+	scene_loader.load_sandbox()

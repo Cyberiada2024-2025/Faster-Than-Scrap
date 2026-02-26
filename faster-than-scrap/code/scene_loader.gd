@@ -79,6 +79,42 @@ func load_fly_ship_scene(
 	_set_vortex_preserve(false)
 
 
+func load_sandbox(
+	scene_to_load: PackedScene = null,
+	pos: Vector3 = Vector3.ZERO,
+	rot: Vector3 = Vector3.ZERO,
+	use_saved_pos_rot: bool = true
+) -> void:
+	var attached_fly_scene: bool = false
+
+	if GameManager.game_state == GameState.State.BUILD:
+		InventoryManager.save_inventory()
+
+	_detach_ship()
+	if scene_to_load != null:
+		GameManager.on_scene_exit()
+		get_tree().change_scene_to_file(scene_to_load.resource_path)
+	else:
+		if GameManager.game_state == GameState.State.BUILD:
+			attached_fly_scene = MapGenerator.swap_saved_and_current_scene()
+		if not attached_fly_scene:
+			GameManager.on_scene_exit()
+			GameManager.get_tree().change_scene_to_file("res://scenes/levels/level_sandbox.tscn")
+			use_saved_pos_rot = false
+
+	GameManager.set_game_state(GameState.State.FLY)
+
+	if use_saved_pos_rot and GameManager.player_ship != null:
+		pos = GameManager.player_ship.get_saved_position()
+		rot = GameManager.player_ship.get_saved_rotation()
+		GameManager.player_ship.clear_saved_position()
+		GameManager.player_ship.clear_saved_rotation()
+
+	_attach_ship_with_hud.call_deferred(pos, rot)
+
+	_set_vortex_preserve(false)
+
+
 func load_boss_scene(pos: Vector3 = Vector3.ZERO, rot: Vector3 = Vector3.ZERO) -> void:
 	_detach_ship()
 	GameManager.on_scene_exit()

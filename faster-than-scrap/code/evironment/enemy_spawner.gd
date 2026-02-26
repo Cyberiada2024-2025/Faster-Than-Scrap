@@ -15,6 +15,10 @@ var _spawn_timer: float = spawn_interval
 var _spawned_enemies: Array[NPC] = []
 
 
+func _ready() -> void:
+	_show_help()
+
+
 func _spawn() -> void:
 	var enemy: NPC = enemy_prefab.instantiate()
 	var offset_2d = RandomUtils._random_on_edge_unit_circle() * spawn_range
@@ -28,10 +32,11 @@ func _spawn() -> void:
 
 func _spawn_specific(name: String, count: int) -> void:
 	if name == "bj" or name == "bv" or name == "bl":
-		var bs = BossSpawner.new()
-		#var bu = BossUI.new()
-		add_child(bs)
-		bs._spawn_boss(enemies_dict.get(name))
+		for x in range(count):
+			var bs = BossSpawner.new()
+			#var bu = BossUI.new()
+			add_child(bs)
+			bs._spawn_boss(enemies_dict.get(name))
 		#add_child(bu)
 		return
 
@@ -51,10 +56,12 @@ func _remove_enemy(enemy: Ship) -> void:
 
 func _show_help() -> void:
 	help_label.text = """
-		[types] a b c d f m r s tg tl ts [count] ('tl 5' will spawn 5 turret_laser)
-		Press F3 for cheats
+		a b c d f m r s tg tl ts bj bl bv '[type] [count]' 
+		default count = 1
+		'help' for help
+		Press F3 for cheats and shop
 	"""
-	await get_tree().create_timer(4.51).timeout
+	await get_tree().create_timer(14.51).timeout
 	help_label.text = ""
 
 
@@ -66,7 +73,9 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 
 	var command = parts[0]
 	if command in enemies_dict:
-		var count = int(parts[1])
+		var count = 1
+		if parts.size() > 1:
+			count = int(parts[1])
 		_spawn_specific(command, count)
 	elif command == "help":
 		_show_help()

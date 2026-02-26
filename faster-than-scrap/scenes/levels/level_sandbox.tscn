@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cbatmfsj1wp0v" path="res://scenes/levels/level_sandbox.gd" id="1_7hvjb"]
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_8xiir"]
-[ext_resource type="PackedScene" uid="uid://cgx7bdd0f2rhg" path="res://prefabs/environment/shop_miniature.tscn" id="2_blj0i"]
 [ext_resource type="PackedScene" uid="uid://st0p1n6f1ygk" path="res://prefabs/npc/enemies/assault.tscn" id="3_blj0i"]
+[ext_resource type="FontFile" uid="uid://clhrhnhrv4lq2" path="res://art/fonts/Orbitron-VariableFont_wght.ttf" id="4_5iuwg"]
 [ext_resource type="Script" uid="uid://dgljxwmpb7xrv" path="res://code/evironment/enemy_spawner.gd" id="4_dglst"]
 [ext_resource type="FontFile" uid="uid://c5684ddhvkomb" path="res://art/fonts/Orbitron-Bold.ttf" id="4_ngfpf"]
 [ext_resource type="PackedScene" uid="uid://do0sasbjik8fp" path="res://prefabs/npc/enemies/corrupted.tscn" id="5_ngfpf"]
@@ -29,9 +29,6 @@ script = ExtResource("1_7hvjb")
 
 [node name="LevelBase" parent="." instance=ExtResource("1_8xiir")]
 
-[node name="ShopMiniature" parent="." instance=ExtResource("2_blj0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.8337, 0, 6.7092)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LineEdit" type="LineEdit" parent="CanvasLayer"]
@@ -48,7 +45,7 @@ offset_top = 35.0
 offset_right = 1061.42
 offset_bottom = 162.912
 theme_override_colors/default_color = Color(0, 1, 0, 1)
-theme_override_fonts/normal_font = ExtResource("4_ngfpf")
+theme_override_fonts/normal_font = ExtResource("4_5iuwg")
 horizontal_alignment = 1
 
 [node name="Node3D" type="Area3D" parent="." node_paths=PackedStringArray("help_label", "lide_edit")]

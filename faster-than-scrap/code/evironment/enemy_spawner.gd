@@ -33,9 +33,7 @@ func _spawn_specific(name: String, count: int) -> void:
 		get_tree().current_scene.add_child.call_deferred(enemy)
 		enemy.global_position = global_position + offset_3d
 		_spawned_enemies.append(enemy)
-
 		enemy.ship.destroyed.connect(_remove_enemy)
-		print("success")
 
 
 func _remove_enemy(enemy: Ship) -> void:

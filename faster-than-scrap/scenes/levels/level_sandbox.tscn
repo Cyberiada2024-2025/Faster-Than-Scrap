@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://btyo04j4us752"]
+[gd_scene load_steps=19 format=3 uid="uid://btyo04j4us752"]
 
 [ext_resource type="Script" uid="uid://cbatmfsj1wp0v" path="res://scenes/levels/level_sandbox.gd" id="1_7hvjb"]
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_8xiir"]
@@ -7,6 +7,16 @@
 [ext_resource type="Script" uid="uid://dgljxwmpb7xrv" path="res://code/evironment/enemy_spawner.gd" id="4_dglst"]
 [ext_resource type="FontFile" uid="uid://c5684ddhvkomb" path="res://art/fonts/Orbitron-Bold.ttf" id="4_ngfpf"]
 [ext_resource type="PackedScene" uid="uid://do0sasbjik8fp" path="res://prefabs/npc/enemies/corrupted.tscn" id="5_ngfpf"]
+[ext_resource type="PackedScene" uid="uid://chtuqjjikj2f" path="res://prefabs/npc/enemies/bomber.tscn" id="8_egjig"]
+[ext_resource type="PackedScene" uid="uid://dsbr8a55sppml" path="res://prefabs/npc/enemies/drone.tscn" id="9_uou4v"]
+[ext_resource type="PackedScene" uid="uid://c1bx3ko83hdsi" path="res://prefabs/npc/enemies/fighter.tscn" id="10_nest8"]
+[ext_resource type="PackedScene" uid="uid://fijjj7y4ie3w" path="res://prefabs/npc/enemies/machine_gunner.tscn" id="11_2xl1v"]
+[ext_resource type="PackedScene" uid="uid://dusrity80tka3" path="res://prefabs/npc/enemies/rocket_ship.tscn" id="12_5iuwg"]
+[ext_resource type="PackedScene" uid="uid://tw5ceddtulbf" path="res://prefabs/npc/enemies/shotgunner.tscn" id="13_h6iba"]
+[ext_resource type="PackedScene" uid="uid://ceu6i6ji4q3oq" path="res://prefabs/npc/enemies/turret_gun.tscn" id="14_vpguq"]
+[ext_resource type="PackedScene" uid="uid://dxbwuxdfu600q" path="res://prefabs/npc/enemies/turret_laser.tscn" id="15_6ftu2"]
+[ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="16_7r4ys"]
+[ext_resource type="PackedScene" uid="uid://dn3mypfoixbpt" path="res://prefabs/environment/asteroids/single_asteroid/small/asteroid1.tscn" id="17_uou4v"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7hvjb"]
 radius = 30.819
@@ -18,12 +28,6 @@ script = ExtResource("1_7hvjb")
 
 [node name="ShopMiniature" parent="." instance=ExtResource("2_blj0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.8337, 0, 6.7092)
-
-[node name="enemies" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3947, 0, -34.272)
-
-[node name="Assault" parent="enemies" instance=ExtResource("3_blj0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15613, 0, -9.28294)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -51,7 +55,18 @@ enemy_prefab = ExtResource("5_ngfpf")
 spawn_interval = 2.0
 max_enemies = 10
 enemies_dict = Dictionary[String, PackedScene]({
-"a": ExtResource("3_blj0i")
+"a": ExtResource("3_blj0i"),
+"as": ExtResource("17_uou4v"),
+"b": ExtResource("8_egjig"),
+"c": ExtResource("5_ngfpf"),
+"d": ExtResource("9_uou4v"),
+"f": ExtResource("10_nest8"),
+"m": ExtResource("11_2xl1v"),
+"r": ExtResource("12_5iuwg"),
+"s": ExtResource("13_h6iba"),
+"tg": ExtResource("14_vpguq"),
+"tl": ExtResource("15_6ftu2"),
+"ts": ExtResource("16_7r4ys")
 })
 help_label = NodePath("../CanvasLayer/RichTextLabel")
 capture_time = 100000.0

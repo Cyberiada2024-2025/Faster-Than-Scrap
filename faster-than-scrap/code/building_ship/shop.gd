@@ -272,6 +272,12 @@ func _on_module_attached(module: Module) -> void:
 	bank -= module.prize
 	_on_bank_change()
 	if DebugMenu.disable_money_checks:
+		print("new modules")
+		#_clear_shop()
+		ShopContents.generate_all_modules()
+		_generate_shop()
+		#_generate_inventory()
+		#_update_repair_button_visibility()
 
 
 func _on_ship_builder_on_module_detach(module: Module) -> void:

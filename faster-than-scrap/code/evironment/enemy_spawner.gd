@@ -9,6 +9,7 @@ extends CapturePoint
 # short name -> scene
 @export var enemies_dict: Dictionary[String, PackedScene]
 @export var help_label: RichTextLabel
+@export var lide_edit: LineEdit
 
 var _spawn_timer: float = spawn_interval
 var _spawned_enemies: Array[NPC] = []
@@ -26,7 +27,7 @@ func _spawn() -> void:
 
 
 func _spawn_specific(name: String, count: int) -> void:
-	if name == "bj":
+	if name == "bj" or name == "bv" or name == "bl":
 		var bs = BossSpawner.new()
 		#var bu = BossUI.new()
 		add_child(bs)
@@ -69,4 +70,9 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 		_spawn_specific(command, count)
 	elif command == "help":
 		_show_help()
-	$"../CanvasLayer/LineEdit".clear()
+	lide_edit.clear()
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.keycode == KEY_ENTER:
+		lide_edit.call_deferred("grab_focus")

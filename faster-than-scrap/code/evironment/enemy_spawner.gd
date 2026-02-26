@@ -26,6 +26,14 @@ func _spawn() -> void:
 
 
 func _spawn_specific(name: String, count: int) -> void:
+	if name == "bj":
+		var bs = BossSpawner.new()
+		#var bu = BossUI.new()
+		add_child(bs)
+		bs._spawn_boss(enemies_dict.get(name))
+		#add_child(bu)
+		return
+
 	for x in range(count):
 		var enemy: NPC = enemies_dict.get(name).instantiate()
 		var offset_2d = RandomUtils._random_on_edge_unit_circle() * spawn_range

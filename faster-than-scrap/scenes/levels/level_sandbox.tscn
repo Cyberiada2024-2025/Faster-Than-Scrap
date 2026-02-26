@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://btyo04j4us752"]
+[gd_scene load_steps=20 format=3 uid="uid://btyo04j4us752"]
 
 [ext_resource type="Script" uid="uid://cbatmfsj1wp0v" path="res://scenes/levels/level_sandbox.gd" id="1_7hvjb"]
 [ext_resource type="PackedScene" uid="uid://bnp5ctgr2bm66" path="res://scenes/levels/level_staples.tscn" id="1_8xiir"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dxbwuxdfu600q" path="res://prefabs/npc/enemies/turret_laser.tscn" id="15_6ftu2"]
 [ext_resource type="PackedScene" uid="uid://b1m8dg3ed47u8" path="res://prefabs/npc/enemies/turret_sniper.tscn" id="16_7r4ys"]
 [ext_resource type="PackedScene" uid="uid://dn3mypfoixbpt" path="res://prefabs/environment/asteroids/single_asteroid/small/asteroid1.tscn" id="17_uou4v"]
+[ext_resource type="PackedScene" uid="uid://bvcjycf02eb4c" path="res://prefabs/npc/bosses/juggernaut/juggernaut.tscn" id="18_nest8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7hvjb"]
 radius = 30.819
@@ -58,6 +59,7 @@ enemies_dict = Dictionary[String, PackedScene]({
 "a": ExtResource("3_blj0i"),
 "as": ExtResource("17_uou4v"),
 "b": ExtResource("8_egjig"),
+"bj": ExtResource("18_nest8"),
 "c": ExtResource("5_ngfpf"),
 "d": ExtResource("9_uou4v"),
 "f": ExtResource("10_nest8"),

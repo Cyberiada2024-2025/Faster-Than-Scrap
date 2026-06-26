@@ -1,5 +1,10 @@
 # Faster-Than-Scrap
 
+View and download the game from https://sebhe.itch.io/faster-than-scrap
+___
+___
+For developers
+
 Please follow these naming convention in the project:
 
 ## Godot Naming Conventions

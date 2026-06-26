@@ -12,7 +12,10 @@ signal damaged(hp_percent: float)
 	set(value):
 		var start_energy = energy
 		energy = value
-		if energy > max_energy:
+		if energy > max_energy and is_node_ready():
+			# the is_node_ready() check is needed because Godot calls the setter
+			# just after starting the game, if the default value is changed from the editor
+			# in overriding class (PlayerShip in this case) - a bug in Godot, probably?
 			energy = max_energy
 		if energy != start_energy:
 			_on_energy_change()

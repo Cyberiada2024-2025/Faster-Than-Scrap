@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://dtjixr3e113vw"]
+[gd_scene load_steps=50 format=3 uid="uid://dtjixr3e113vw"]
 
 [ext_resource type="PackedScene" uid="uid://b670jj7lnajsd" path="res://prefabs/environment/space_environment.tscn" id="1_8ccmg"]
 [ext_resource type="Script" uid="uid://dsxm6i5w4uh08" path="res://code/building_ship/ship_builder.gd" id="1_d5jmr"]
@@ -16,9 +16,8 @@
 [ext_resource type="AudioStream" uid="uid://p6ddq3n2aw7m" path="res://art/audio/sounds/ui/ship_builder/repair.mp3" id="12_1npui"]
 [ext_resource type="Script" uid="uid://c3nbl6g1km3w7" path="res://code/ui/cutscenes/cutscene_player.gd" id="12_bwh47"]
 [ext_resource type="FontFile" uid="uid://c5684ddhvkomb" path="res://art/fonts/Orbitron-Bold.ttf" id="12_r6xpi"]
-[ext_resource type="PackedScene" uid="uid://btnqar75x62m0" path="res://prefabs/vfx/particles/repair_particles.tscn" id="13_8a3ma"]
 [ext_resource type="PackedScene" uid="uid://dgcndntkhn2hh" path="res://prefabs/ui/cutscenes/inventory_tutorial_cutscene.tscn" id="13_bwh47"]
-[ext_resource type="Script" path="res://code/sound/sound_emitter_global.gd" id="13_sy1ma"]
+[ext_resource type="Script" uid="uid://c6mohg4o53eqe" path="res://code/sound/sound_emitter_global.gd" id="13_sy1ma"]
 [ext_resource type="AudioStream" uid="uid://c5x8fjlikxyw7" path="res://art/audio/sounds/ui/ship_builder/pick.mp3" id="14_iq7ln"]
 [ext_resource type="AudioStream" uid="uid://mavrm3tbmwii" path="res://art/audio/sounds/illegal_position_sound.wav" id="15_o6u5m"]
 [ext_resource type="AudioStream" uid="uid://bw7fx4gi1ocds" path="res://art/audio/sounds/ui/ship_builder/cannot_pick.mp3" id="15_rkphg"]
@@ -117,10 +116,10 @@ script = ExtResource("1_eeway")
 
 [node name="ShipBuilder" type="Node3D" parent="." node_paths=PackedStringArray("ship_borders", "choose_key_message", "pick_sound", "cannot_pick_sound", "rotate_sound", "cannot_rotate_sound", "attach_sound", "place_sound", "cannot_place_sound", "start_assigning_key_sound", "assign_key_sound")]
 script = ExtResource("1_d5jmr")
+ship_borders = NodePath("../Ship Max Size/Area3D")
 outline_mat = ExtResource("3_7x66o")
 flash_mat = ExtResource("4_sra6p")
 flash_time = 0.5
-ship_borders = NodePath("../Ship Max Size/Area3D")
 choose_key_message = NodePath("Control/Choose_key")
 pick_sound = NodePath("../PickSound")
 cannot_pick_sound = NodePath("../CannotPickSound")
@@ -283,6 +282,7 @@ metadata/_custom_type_script = "uid://16i5n2yxnlsr"
 
 [node name="Shop" type="Node3D" parent="." node_paths=PackedStringArray("ship_builder", "shop_area", "bank_display", "inventory_limit_display", "deny_finish", "deny_finish_label", "repair_button", "confirm_finish_message_with_unassigned_keys", "warning_sound")]
 script = ExtResource("11_jtm63")
+ship_builder = NodePath("../ShipBuilder")
 starting_bank = 6
 inventory_size_x = 7.5
 inventory_size_z = 7.5
@@ -293,7 +293,6 @@ size_x = 7.5
 size_z = 20.0
 columns = 3
 rows = 5
-repair_particles = ExtResource("13_8a3ma")
 ship_builder = NodePath("../ShipBuilder")
 shop_area = NodePath("Shop area")
 bank_display = NodePath("../ShipBuilder/Control/Money")

@@ -44,7 +44,7 @@ extends Node3D
 @export var repair_button: Button
 @export var repair_cost: int = 2
 @export var repair_particles: PackedScene = preload(
-	"res://prefabs/vfx/particles/base_projectile_hit_particles.tscn"
+	"res://prefabs/vfx/particles/repair_particles.tscn"
 )
 
 @export var confirm_finish_message_with_unassigned_keys: Control

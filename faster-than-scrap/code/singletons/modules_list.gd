@@ -18,6 +18,7 @@ var modules_and_chances = [
 	#lasers
 	[preload("res://prefabs/modules/weapons/laser_module.tscn"), COMMON],
 	[preload("res://prefabs/modules/weapons/minigun_module.tscn"), RARE],
+	[preload("res://prefabs/modules/weapons/shotgun_module.tscn"), RARE],
 	#missiles
 	[preload("res://prefabs/modules/weapons/missile_module.tscn"), RARE],
 	[preload("res://prefabs/modules/weapons/quad_missile_module.tscn"), RARE],

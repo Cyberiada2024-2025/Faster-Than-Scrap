@@ -3,7 +3,6 @@
 [ext_resource type="Shader" uid="uid://ohokcopb2fdp" path="res://art/shaders/graphs/Shield.tres" id="1_mu0sc"]
 [ext_resource type="ArrayMesh" uid="uid://cadsh5rgfnp6t" path="res://art/models/vfx/Shield.obj" id="2_bgmlk"]
 
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bbfm5"]
 render_priority = 0
 shader = ExtResource("1_mu0sc")
@@ -21,5 +20,6 @@ shader_parameter/BackColor = Color(0.131, 1, 2, 1)
 [node name="Shield_VFX" type="MeshInstance3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_bbfm5")
+cast_shadow = 0
 gi_mode = 0
 mesh = ExtResource("2_bgmlk")

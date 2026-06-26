@@ -6,14 +6,13 @@ static var instance: Hud
 
 @export var energy_bar: ResourceBar
 
-@export var main_camera_offset: Vector3 = Vector3(0, 40, 0)
-@export var module_camera_offset: Vector3
-@export var minimap_camera_offset: Vector3 = Vector3(0, 30, 0)
+@export var main_camera_height: float = 25
+@export var module_camera_height: float = 7.0
+@export var minimap_camera_height: float = 30.0
 @export var zoom_strength := 15
 @export var zoom_time := 0.2
 @export var max_zoom := 100
 @export var min_zoom := 5
-@export var y_pos: float = 25
 @export var use_saved_fov: bool = true
 ## Decides the camera drag when panning
 @export var panning_force: float = 2.0/3.0
@@ -26,8 +25,10 @@ var _module_camera: Camera3D
 var _minimap_camera: Camera3D
 var _tween: Tween
 var _mouse_input: Vector2 = Vector2.ZERO
-var _camera_position: Vector2 = Vector2.ZERO
-var _visibility_range: Vector2
+var _camera_transform: Transform3D = Transform3D.IDENTITY \
+	.looking_at(Vector3.DOWN) \
+	.rotated(Vector3.DOWN, PI/2)
+var _visibility_range: float
 
 
 func _enter_tree() -> void:
@@ -43,8 +44,8 @@ func _ready() -> void:
 		_main_camera.fov = SettingsManager.zoom_level
 
 	if SettingsManager.panning_range == null:
-		SettingsManager.panning_range = panning_viewport_extension \
-			* _get_viewport_world_span(_main_camera)
+		SettingsManager.panning_range = \
+			(panning_viewport_extension * _get_viewport_world_span(_main_camera)).x
 
 	_visibility_range = SettingsManager.panning_range
 
@@ -125,30 +126,20 @@ func _process(_delta: float) -> void:
 		return
 	# keep camera offsets relatively to player
 	var player_ship = GameManager.player_ship
-	_main_camera.global_position = player_ship.global_position + main_camera_offset
-	_minimap_camera.global_position = player_ship.global_position + minimap_camera_offset
 
-	## adaptive version worse effect
-	#var bounding_rect: Rect = _ship_bounding_rect(false)
-	## move camera to look at lower left corner of a ship
-	#_module_camera.global_position.x = bounding_rect.x.min
-	#_module_camera.global_position.y = 0
-	#_module_camera.global_position.z = bounding_rect.z.max
-	## add constant offset so the ship is always in the lower left corner
-	## of a module display
-	#_module_camera.global_position += module_camera_offset
+	var player_view = _camera_transform.translated(player_ship.global_position)
+	_main_camera.transform = player_view.translated(Vector3.UP * main_camera_height)
+	_minimap_camera.transform = player_view.translated(Vector3.UP * minimap_camera_height)
+	_module_camera.transform = player_view \
+		.orthonormalized() \
+		.translated(Vector3.UP * module_camera_height)
 
-	## static version (stable)
 	# calculate size of a ship
 	var bounding_rect: Rect = _ship_bounding_rect(false)
-	# move camera to look at center of player
-	_module_camera.global_position = player_ship.global_position
 	# move camera to make ship stay in the middle of the radar
 	# after adding/deleting modules
 	_module_camera.global_position.x = (bounding_rect.x.max + bounding_rect.x.min) / 2
 	_module_camera.global_position.z = (bounding_rect.z.max + bounding_rect.z.min) / 2
-	# add constant offset
-	_module_camera.global_position += module_camera_offset
 
 	if Input.is_action_just_pressed("zoom_in"):
 		zoom_camera(-zoom_strength)
@@ -159,7 +150,9 @@ func _process(_delta: float) -> void:
 	if Input.is_action_pressed("pan_camera"):
 		pan_camera(_mouse_input)
 
-	position.y = y_pos
+	if Input.is_action_pressed("rotate_camera"):
+		rotate_camera(_mouse_input)
+
 	_mouse_input = Vector2.ZERO
 
 
@@ -176,20 +169,28 @@ func pan_camera(direction) -> void:
 	# Assumption: max_zoom is never zero
 	var zoom_scaling_factor = _main_camera.fov / max_zoom
 
-	var relative_camera_offset = direction \
+	var camera_offset = direction \
 		* zoom_scaling_factor \
 		* (0.1 * panning_force)
 
-	var xz_offset = Vector2(
-		main_camera_offset.x - relative_camera_offset.x,
-		main_camera_offset.z - relative_camera_offset.y
-	).clamp(
-		-_visibility_range,
-		+_visibility_range
-	)
+	var translation = Vector3(-camera_offset.x, camera_offset.y, 0)
+	var transformed = _camera_transform.translated_local(translation)
 
-	main_camera_offset.x = xz_offset.x
-	main_camera_offset.z = xz_offset.y
+	if transformed.origin.length_squared() > _visibility_range * _visibility_range:
+		transformed.origin = transformed.origin.normalized() * _visibility_range
+
+	_camera_transform = transformed
+
+
+func rotate_camera(direction: Vector2) -> void:
+	var rotation_factor = 0.005
+	var center_pos = get_viewport().get_visible_rect().size / 2
+	var mouse_from_center = (get_viewport().get_mouse_position() - center_pos)
+	# This code is based on the angular momentum formula. The built-in Godot
+	# angular momentum function cannot be used because Camera is not a RigidBody.
+	var amount = mouse_from_center.normalized().cross(direction) * rotation_factor
+	_camera_transform = _camera_transform.rotated_local(Vector3.MODEL_FRONT, amount)
+	_minimap_camera.rotate_y(amount)
 
 
 ## Returns a world coordinate diagonal vector that spans the whole viewport

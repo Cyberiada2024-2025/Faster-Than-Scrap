@@ -31,14 +31,16 @@ script = ExtResource("1_4jleu")
 energy = 200.0
 energy_regeneration = 0.0
 is_activable = false
+max_hp = 50.0
+hp = 50.0
 attach_points = [NodePath("AttachPoints/AttachPoint1"), NodePath("AttachPoints/AttachPoint2"), NodePath("AttachPoints/AttachPoint3"), NodePath("AttachPoints/AttachPoint4")]
 sprite = NodePath("ModuleDisplay/Sprite3D")
 label = NodePath("ModuleDisplay/Label3D")
 healthy_color = Color(0, 1, 0, 1)
 dead_color = Color(1, 0, 0, 1)
 module_name = "Quad Battery"
-prize = 2
-description = "A cluster of four batteries crudely welded together. They may have seen better days, but they can still hold some charge."
+prize = 4
+description = "A cluster of four batteries crudely welded together. They can hold a lot of charge, but don't seem very sturdy."
 
 [node name="Battery" type="Node3D" parent="."]
 transform = Transform3D(1.25, 0, 0, 0, -5.46392e-08, 1.25, 0, -1.25, -5.46392e-08, 0, 0, 0)

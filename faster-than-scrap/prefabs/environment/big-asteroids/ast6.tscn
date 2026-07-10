@@ -1,0 +1,126 @@
+[gd_scene load_steps=16 format=3 uid="uid://bmrsmusx2ihy0"]
+
+[ext_resource type="Script" uid="uid://chekqae75l00d" path="res://code/evironment/asteroid.gd" id="1_dxdjh"]
+[ext_resource type="PackedScene" uid="uid://hs3ujnysju5o" path="res://prefabs/collision_damage_calculator.tscn" id="2_ygd0r"]
+[ext_resource type="PackedScene" uid="uid://b2rns0sxx87ar" path="res://prefabs/vfx/particles/timed_particles/collision_asteroid.tscn" id="3_tdl0s"]
+[ext_resource type="PackedScene" uid="uid://0txf83d46q4j" path="res://prefabs/modules/functional_components/damage_controller.tscn" id="4_04wx8"]
+[ext_resource type="PackedScene" uid="uid://c5h05bkp7b8go" path="res://prefabs/ui/poi/asteroid_poi.tscn" id="5_xo4n7"]
+[ext_resource type="PackedScene" uid="uid://c1wwfnu7y1n2f" path="res://art/models/big-asteroids/6.glb" id="6_3n4tf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dxdjh"]
+bounce = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dxdjh"]
+size = Vector3(10.3779, 1, 7.59671)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ygd0r"]
+size = Vector3(9.68784, 7.41553, 2.1853)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tdl0s"]
+size = Vector3(6.99579, 7.41553, 2.1853)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_04wx8"]
+size = Vector3(7.96967, 6.41321, 2.30579)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xo4n7"]
+size = Vector3(3.55957, 4.35217, 2.05878)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3n4tf"]
+size = Vector3(6.46526, 1, 6.33643)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jy8uw"]
+size = Vector3(9.14777, 5.41687, 2.35144)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_js2wo"]
+size = Vector3(9.20358, 1.92773, 1.50635)
+
+[node name="Ast6" type="RigidBody3D"]
+mass = 400000.0
+physics_material_override = SubResource("PhysicsMaterial_dxdjh")
+gravity_scale = 0.0
+script = ExtResource("1_dxdjh")
+hp = 1000.0
+
+[node name="CollisionDamageCalculator" parent="." node_paths=PackedStringArray("damageable", "shape") instance=ExtResource("2_ygd0r")]
+collision_particles = ExtResource("3_tdl0s")
+damageable = NodePath("../DamageController/Damageable")
+shape = NodePath("../DamageController/Damageable/CollisionShape3D")
+
+[node name="DamageController" parent="." instance=ExtResource("4_04wx8")]
+
+[node name="Damageable" parent="DamageController" index="0"]
+collision_layer = 6
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageController/Damageable" index="0"]
+transform = Transform3D(2.45371, 0, 0, 0, 2.45371, 0, 0, 0, 2.45371, 12.4448, 5.30553, 1.5696)
+shape = SubResource("BoxShape3D_dxdjh")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="DamageController/Damageable" index="1"]
+transform = Transform3D(2.33167, 0, 0.764223, 0.356436, 2.17049, -1.08749, -0.676012, 1.14442, 2.06253, -8.26916, -5.05063, 12.1044)
+shape = SubResource("BoxShape3D_ygd0r")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="DamageController/Damageable" index="2"]
+transform = Transform3D(2.45371, 0, 0, 0, 2.45371, 0, 0, 0, 2.45371, 18.8256, -4.70782, 8.9265)
+shape = SubResource("BoxShape3D_tdl0s")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="DamageController/Damageable" index="3"]
+transform = Transform3D(2.45371, 0, 0, 0, 2.45371, 0, 0, 0, 2.45371, 12.6781, -1.80911, -9.59283)
+shape = SubResource("BoxShape3D_04wx8")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="DamageController/Damageable" index="4"]
+transform = Transform3D(2.45371, 0, 0, 0, 2.45371, 0, 0, 0, 2.45371, -21.484, -5.3783, -9.54725)
+shape = SubResource("BoxShape3D_xo4n7")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="DamageController/Damageable" index="5"]
+transform = Transform3D(2.38774, 0.475382, 0.305612, -0.565144, 2.0085, 1.29122, 0, -1.32689, 2.06399, -5.68152, 6.08016, -9.57595)
+shape = SubResource("BoxShape3D_3n4tf")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="DamageController/Damageable" index="6"]
+transform = Transform3D(2.19384, -1.06398, 0.275193, -0.531034, -0.488362, 2.34525, -0.962174, -2.15642, -0.666906, -12.6464, 6.48115, -6.95807)
+shape = SubResource("BoxShape3D_jy8uw")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="DamageController/Damageable" index="7"]
+transform = Transform3D(0.541696, 1.496e-08, -2.39317, -0.754212, 2.32867, -0.170716, 2.27122, 0.773292, 0.514092, -19.529, 6.02883, 9.8527)
+shape = SubResource("BoxShape3D_js2wo")
+
+[node name="Asteroid Poi" parent="." instance=ExtResource("5_xo4n7")]
+transform = Transform3D(56.1649, 0, 0, 0, -1.84461e-06, 33.2623, 0, -42.1999, -1.45394e-06, -1.22036, -0.981593, 1.82573)
+visible = false
+
+[node name="6" parent="." instance=ExtResource("6_3n4tf")]
+transform = Transform3D(2.45371, 0, 0, 0, 2.45371, 0, 0, 0, 2.45371, 3.62749, -0.965322, 0.344938)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.45371, 0, 0, 0, 2.45371, 0, 0, 0, 2.45371, 12.4448, 5.30553, 1.5696)
+shape = SubResource("BoxShape3D_dxdjh")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.33167, 0, 0.764223, 0.356436, 2.17049, -1.08749, -0.676012, 1.14442, 2.06253, -8.26916, -5.05063, 12.1044)
+shape = SubResource("BoxShape3D_ygd0r")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.45371, 0, 0, 0, 2.45371, 0, 0, 0, 2.45371, 18.8256, -4.70782, 8.9265)
+shape = SubResource("BoxShape3D_tdl0s")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.45371, 0, 0, 0, 2.45371, 0, 0, 0, 2.45371, 12.6781, -1.80911, -9.59283)
+shape = SubResource("BoxShape3D_04wx8")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.45371, 0, 0, 0, 2.45371, 0, 0, 0, 2.45371, -21.484, -5.3783, -9.54725)
+shape = SubResource("BoxShape3D_xo4n7")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.38774, 0.475382, 0.305612, -0.565144, 2.0085, 1.29122, 0, -1.32689, 2.06399, -5.68152, 6.08016, -9.57595)
+shape = SubResource("BoxShape3D_3n4tf")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.19384, -1.06398, 0.275193, -0.531034, -0.488362, 2.34525, -0.962174, -2.15642, -0.666906, -12.6464, 6.48115, -6.95807)
+shape = SubResource("BoxShape3D_jy8uw")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.541696, 1.496e-08, -2.39317, -0.754212, 2.32867, -0.170716, 2.27122, 0.773292, 0.514092, -19.529, 6.02883, 9.8527)
+shape = SubResource("BoxShape3D_js2wo")
+
+[editable path="DamageController"]

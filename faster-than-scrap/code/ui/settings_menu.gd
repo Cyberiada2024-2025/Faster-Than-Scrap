@@ -3,16 +3,19 @@ extends Control
 var brakes_check_box: CheckBox
 var air_resistance_check_box: CheckBox
 var skip_cutscenes_check_box: CheckBox
+var fullscreen_check_box: CheckBox
 
 
 func _enter_tree() -> void:
 	brakes_check_box = $VBoxContainer/HBoxContainer/Buttons/BrakesCheckBox
 	air_resistance_check_box = $VBoxContainer/HBoxContainer/Buttons/AirResistanceCheckBox
 	skip_cutscenes_check_box = $VBoxContainer/HBoxContainer/Buttons/SkipCutscenesCheckBox
+	fullscreen_check_box = $VBoxContainer/HBoxContainer/Buttons/FullScreenCheckBox
 
 	brakes_check_box.button_pressed = SettingsManager.brakes_enabled
 	air_resistance_check_box.button_pressed = SettingsManager.air_resistance
 	skip_cutscenes_check_box.button_pressed = SettingsManager.skip_cutscenes
+	fullscreen_check_box.button_pressed = SettingsManager.fullscreen
 
 
 func _on_button_pressed() -> void:
@@ -34,6 +37,13 @@ func _on_air_resistance_check_box_pressed() -> void:
 
 func _on_skip_cutscenes_check_box_pressed() -> void:
 	SettingsManager.skip_cutscenes = skip_cutscenes_check_box.is_pressed()
+
+
+func _on_fullscreen_check_box_pressed() -> void:
+	if fullscreen_check_box.is_pressed():
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 
 func _on_visibility_changed() -> void:

@@ -3,6 +3,7 @@ extends Node
 var brakes_enabled := false
 var air_resistance := true
 var skip_cutscenes := false
+var fullscreen := false
 
 var zoom_level := 0
 
